@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NFStatisticMainCell" rowHeight="196" id="Hj2-XV-Brx" customClass="NFStatisticMainCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hj2-XV-Brx" id="OyL-dL-com">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="194"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="job_value_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="q4O-2O-sII">
+                        <rect key="frame" x="21" y="12" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Rv8-8M-g6G"/>
+                            <constraint firstAttribute="height" constant="20" id="rZk-VG-ewm"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Работа" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu0-oZ-S9u">
+                        <rect key="frame" x="69" y="9.5" width="298" height="26"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="26" id="aIy-eN-g7J"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec4-OP-7az">
+                        <rect key="frame" x="0.0" y="44" width="375" height="1"/>
+                        <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="pxC-kh-k0f"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-iW-CIA">
+                        <rect key="frame" x="0.0" y="59" width="375" height="46"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Поставленные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiA-2V-mgd">
+                                <rect key="frame" x="68" y="0.0" width="299" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njT-wu-SHL">
+                                <rect key="frame" x="344" y="18" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-iq-RHQ">
+                                <rect key="frame" x="68" y="21" width="12" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-H6-LOm" customClass="NFProgressView">
+                                <rect key="frame" x="93" y="22" width="240" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="x4J-Mb-DPI"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0c-Eg-iei">
+                        <rect key="frame" x="0.0" y="105" width="375" height="54.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выполненные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-Dg-4Bp">
+                                <rect key="frame" x="68" y="0.0" width="299" height="13"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E54-eJ-ezh">
+                                <rect key="frame" x="344" y="18" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-q5-jnV">
+                                <rect key="frame" x="68" y="21" width="12" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-Cz-LoM" customClass="NFProgressView">
+                                <rect key="frame" x="93" y="21" width="240" height="12"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                        </subviews>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhA-z6-sz0">
+                        <rect key="frame" x="0.0" y="159.5" width="375" height="36"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJh-7I-YoV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="ORP-5A-VWz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mJh-7I-YoV" secondAttribute="trailing" id="Ucd-Ma-ziU"/>
+                            <constraint firstItem="mJh-7I-YoV" firstAttribute="leading" secondItem="EhA-z6-sz0" secondAttribute="leading" id="V3V-9y-5UL"/>
+                            <constraint firstAttribute="height" constant="36" id="YWj-8v-pje"/>
+                            <constraint firstItem="mJh-7I-YoV" firstAttribute="top" secondItem="EhA-z6-sz0" secondAttribute="top" id="yOc-9V-FTl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="j0c-Eg-iei" firstAttribute="leading" secondItem="OyL-dL-com" secondAttribute="leading" id="396-Ez-sLR"/>
+                    <constraint firstItem="q4O-2O-sII" firstAttribute="leading" secondItem="OyL-dL-com" secondAttribute="leadingMargin" constant="13" id="BSC-MT-fnP"/>
+                    <constraint firstItem="gu0-oZ-S9u" firstAttribute="centerY" secondItem="q4O-2O-sII" secondAttribute="centerY" id="C1w-bo-FGH"/>
+                    <constraint firstItem="q4O-2O-sII" firstAttribute="top" secondItem="OyL-dL-com" secondAttribute="topMargin" constant="4" id="CbO-7L-2Ag"/>
+                    <constraint firstItem="gu0-oZ-S9u" firstAttribute="leading" secondItem="q4O-2O-sII" secondAttribute="trailing" constant="28" id="Dlq-Ha-nBD"/>
+                    <constraint firstAttribute="trailing" secondItem="j0c-Eg-iei" secondAttribute="trailing" id="GYa-W4-uTX"/>
+                    <constraint firstItem="j0c-Eg-iei" firstAttribute="top" secondItem="KiB-iW-CIA" secondAttribute="bottom" id="HkR-8P-wGM"/>
+                    <constraint firstItem="KiB-iW-CIA" firstAttribute="leading" secondItem="OyL-dL-com" secondAttribute="leading" id="Iki-z6-YSa"/>
+                    <constraint firstItem="ec4-OP-7az" firstAttribute="top" secondItem="q4O-2O-sII" secondAttribute="bottom" constant="12" id="ImD-eg-YdF"/>
+                    <constraint firstItem="ec4-OP-7az" firstAttribute="leading" secondItem="OyL-dL-com" secondAttribute="leading" id="KwI-CN-ULe"/>
+                    <constraint firstAttribute="trailing" secondItem="KiB-iW-CIA" secondAttribute="trailing" id="OO6-es-7G1"/>
+                    <constraint firstAttribute="trailing" secondItem="ec4-OP-7az" secondAttribute="trailing" id="ams-PR-ZtM"/>
+                    <constraint firstItem="KiB-iW-CIA" firstAttribute="top" secondItem="ec4-OP-7az" secondAttribute="bottom" constant="14" id="as1-Bp-8n7"/>
+                    <constraint firstItem="EhA-z6-sz0" firstAttribute="top" secondItem="j0c-Eg-iei" secondAttribute="bottom" id="lbN-Mq-RJi"/>
+                    <constraint firstAttribute="bottom" secondItem="EhA-z6-sz0" secondAttribute="bottom" constant="-2" id="oJP-Zs-pNQ"/>
+                    <constraint firstAttribute="trailing" secondItem="EhA-z6-sz0" secondAttribute="trailing" id="pnd-Xc-NyK"/>
+                    <constraint firstItem="EhA-z6-sz0" firstAttribute="leading" secondItem="OyL-dL-com" secondAttribute="leading" id="twA-dA-Q52"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="gu0-oZ-S9u" secondAttribute="trailing" id="wO0-Q4-q9n"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="doneTaskCount" destination="E54-eJ-ezh" id="2cO-dF-JX9"/>
+                <outlet property="doneTaskLabel" destination="Ous-Dg-4Bp" id="3NW-mB-65b"/>
+                <outlet property="doneTaskProgressView" destination="Pe2-Cz-LoM" id="Qhn-RF-SQc"/>
+                <outlet property="doneTaskchackBoxImage" destination="aQ3-q5-jnV" id="j1I-2u-U5G"/>
+                <outlet property="footerView" destination="EhA-z6-sz0" id="gCE-Un-EsX"/>
+                <outlet property="realTaskCount" destination="njT-wu-SHL" id="zFf-is-pHw"/>
+                <outlet property="realTaskLabel" destination="QiA-2V-mgd" id="Tsb-cV-gdK"/>
+                <outlet property="realTaskProgressView" destination="qwT-H6-LOm" id="vFS-Rd-d45"/>
+                <outlet property="valieImage" destination="q4O-2O-sII" id="peq-We-dw2"/>
+                <outlet property="valueTitle" destination="gu0-oZ-S9u" id="UPt-xy-ASF"/>
+            </connections>
+            <point key="canvasLocation" x="58.5" y="83"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="checked_disable.png" width="39" height="39"/>
+        <image name="job_value_icon.png" width="35" height="35"/>
+    </resources>
+</document>

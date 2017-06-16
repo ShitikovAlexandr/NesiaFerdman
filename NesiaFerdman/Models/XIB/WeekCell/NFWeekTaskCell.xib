@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NFWeekTaskCell" rowHeight="80" id="U2I-bl-1x6" customClass="NFWeekTaskCell">
+            <rect key="frame" x="0.0" y="0.0" width="469" height="80"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U2I-bl-1x6" id="9DD-XF-QSI">
+                <rect key="frame" x="0.0" y="0.0" width="469" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TgV-vp-kyc" customClass="NFWeekDayView">
+                        <rect key="frame" x="410" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AXz-Bg-BfL" customClass="NFWeekDayView">
+                        <rect key="frame" x="351.5" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aao-LH-kLk" customClass="NFWeekDayView">
+                        <rect key="frame" x="234.5" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EBE-dI-CkE" customClass="NFWeekDayView">
+                        <rect key="frame" x="176" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="6" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KgM-kP-Nsg" customClass="NFWeekDayView">
+                        <rect key="frame" x="117" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="7" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wMl-jg-BYy" customClass="NFWeekDayView">
+                        <rect key="frame" x="58.5" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJe-vh-fKo" customClass="NFWeekDayView">
+                        <rect key="frame" x="293" y="0.0" width="58.5" height="80"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dg3-nx-XPV">
+                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="80"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xle-KS-Z2r">
+                                <rect key="frame" x="10" y="20" width="40" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="EBE-dI-CkE" firstAttribute="bottom" secondItem="KgM-kP-Nsg" secondAttribute="bottom" id="0qi-bH-Las"/>
+                    <constraint firstAttribute="bottom" secondItem="Dg3-nx-XPV" secondAttribute="bottom" id="0rd-4q-6hL"/>
+                    <constraint firstItem="dJe-vh-fKo" firstAttribute="bottom" secondItem="aao-LH-kLk" secondAttribute="bottom" id="1HI-Pn-lsA"/>
+                    <constraint firstItem="aao-LH-kLk" firstAttribute="bottom" secondItem="EBE-dI-CkE" secondAttribute="bottom" id="2a2-Rx-7fm"/>
+                    <constraint firstItem="wMl-jg-BYy" firstAttribute="bottom" secondItem="Dg3-nx-XPV" secondAttribute="bottom" id="6PE-09-wvo"/>
+                    <constraint firstItem="wMl-jg-BYy" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="70s-oM-ti7"/>
+                    <constraint firstItem="aao-LH-kLk" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="7vV-Jg-JR9"/>
+                    <constraint firstItem="TgV-vp-kyc" firstAttribute="leading" secondItem="AXz-Bg-BfL" secondAttribute="trailing" id="ArH-h0-Pqa"/>
+                    <constraint firstItem="wMl-jg-BYy" firstAttribute="leading" secondItem="Dg3-nx-XPV" secondAttribute="trailing" id="Dbt-3I-eId"/>
+                    <constraint firstItem="Dg3-nx-XPV" firstAttribute="width" secondItem="9DD-XF-QSI" secondAttribute="width" multiplier="0.125:1" id="J4c-cR-6gQ"/>
+                    <constraint firstItem="KgM-kP-Nsg" firstAttribute="top" secondItem="wMl-jg-BYy" secondAttribute="top" id="JVl-Sd-4VR"/>
+                    <constraint firstItem="AXz-Bg-BfL" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="Ll1-wo-wvA"/>
+                    <constraint firstItem="AXz-Bg-BfL" firstAttribute="top" secondItem="dJe-vh-fKo" secondAttribute="top" id="Lte-Lj-Cq8"/>
+                    <constraint firstItem="Dg3-nx-XPV" firstAttribute="leading" secondItem="9DD-XF-QSI" secondAttribute="leading" id="OTE-cm-Rzz"/>
+                    <constraint firstItem="AXz-Bg-BfL" firstAttribute="leading" secondItem="dJe-vh-fKo" secondAttribute="trailing" id="TO3-ob-QlW"/>
+                    <constraint firstItem="EBE-dI-CkE" firstAttribute="leading" secondItem="KgM-kP-Nsg" secondAttribute="trailing" id="Uy6-55-uHa"/>
+                    <constraint firstItem="aao-LH-kLk" firstAttribute="leading" secondItem="EBE-dI-CkE" secondAttribute="trailing" id="YkJ-sY-WEB"/>
+                    <constraint firstItem="Dg3-nx-XPV" firstAttribute="top" secondItem="9DD-XF-QSI" secondAttribute="top" id="aWF-kw-5vF"/>
+                    <constraint firstItem="AXz-Bg-BfL" firstAttribute="bottom" secondItem="dJe-vh-fKo" secondAttribute="bottom" id="b6K-ih-HNr"/>
+                    <constraint firstItem="KgM-kP-Nsg" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="d8d-ew-kUY"/>
+                    <constraint firstItem="dJe-vh-fKo" firstAttribute="top" secondItem="aao-LH-kLk" secondAttribute="top" id="dK0-KI-Xl4"/>
+                    <constraint firstItem="aao-LH-kLk" firstAttribute="top" secondItem="EBE-dI-CkE" secondAttribute="top" id="dYs-Q1-Yhh"/>
+                    <constraint firstItem="EBE-dI-CkE" firstAttribute="top" secondItem="KgM-kP-Nsg" secondAttribute="top" id="gU8-iD-mPP"/>
+                    <constraint firstItem="KgM-kP-Nsg" firstAttribute="bottom" secondItem="wMl-jg-BYy" secondAttribute="bottom" id="icv-Y0-sPV"/>
+                    <constraint firstItem="TgV-vp-kyc" firstAttribute="top" secondItem="AXz-Bg-BfL" secondAttribute="top" id="jgu-jU-T0E"/>
+                    <constraint firstItem="dJe-vh-fKo" firstAttribute="leading" secondItem="aao-LH-kLk" secondAttribute="trailing" id="lwF-dh-wvJ"/>
+                    <constraint firstItem="KgM-kP-Nsg" firstAttribute="leading" secondItem="wMl-jg-BYy" secondAttribute="trailing" id="opw-SL-zt0"/>
+                    <constraint firstItem="TgV-vp-kyc" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="pDP-9o-1PD"/>
+                    <constraint firstItem="wMl-jg-BYy" firstAttribute="top" secondItem="Dg3-nx-XPV" secondAttribute="top" id="q16-tQ-yBW"/>
+                    <constraint firstItem="TgV-vp-kyc" firstAttribute="bottom" secondItem="AXz-Bg-BfL" secondAttribute="bottom" id="rkC-B0-4nL"/>
+                    <constraint firstItem="dJe-vh-fKo" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="tCm-cE-4YI"/>
+                    <constraint firstItem="EBE-dI-CkE" firstAttribute="width" secondItem="Dg3-nx-XPV" secondAttribute="width" id="trk-C6-LhX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="timeLabel" destination="xle-KS-Z2r" id="VVM-cM-XUM"/>
+                <outletCollection property="dayViewArray" destination="TgV-vp-kyc" id="Qok-DE-IoV"/>
+                <outletCollection property="dayViewArray" destination="AXz-Bg-BfL" id="XnT-4E-GYT"/>
+                <outletCollection property="dayViewArray" destination="dJe-vh-fKo" id="CO0-bU-CPf"/>
+                <outletCollection property="dayViewArray" destination="aao-LH-kLk" id="yfD-7s-Tgg"/>
+                <outletCollection property="dayViewArray" destination="EBE-dI-CkE" id="3BK-uG-lEk"/>
+                <outletCollection property="dayViewArray" destination="KgM-kP-Nsg" id="5HM-4r-cwn"/>
+                <outletCollection property="dayViewArray" destination="wMl-jg-BYy" id="6bg-lv-520"/>
+            </connections>
+            <point key="canvasLocation" x="71.5" y="38"/>
+        </tableViewCell>
+    </objects>
+</document>
