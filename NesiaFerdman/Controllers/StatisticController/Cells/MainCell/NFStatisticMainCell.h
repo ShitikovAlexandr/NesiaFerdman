@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NFValue.h"
+
 
 @interface NFStatisticMainCell : UITableViewCell
+@property (strong, nonatomic) NFValue *value;
+@property (assign, nonatomic) NSInteger eventCount;
 
 - (void)addDatatoCellwithDictionary:(NSMutableDictionary*)inputDic indexPath:(NSIndexPath*)indexPath;
 

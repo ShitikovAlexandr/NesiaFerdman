@@ -10,7 +10,6 @@
 #import "NFProgressView.h"
 #import "NFStyleKit.h"
 #import "NFTaskManager.h"
-#import "NFValue.h"
 #import "NFEvent.h"
 
 @interface NFStatisticMainCell()
@@ -58,6 +57,7 @@
         [_valieImage setImage:[UIImage imageNamed:@"response-value45.png"]];
     } else {
         NFValue *value = [dataArray objectAtIndex:indexPath.section];
+        self.value = value;
         if (value.valueImage) {
             [_valieImage setImage:[UIImage imageNamed:value.valueImage]];
         } else {
@@ -114,6 +114,7 @@
             [self isTaskChacked:false];
         }
     }
+    _eventCount = done;
     CGFloat result = (1.0/(CGFloat)taskArray.count) * done;
     return result;
 }
@@ -122,6 +123,8 @@
     self.doneTaskCount.text = @"0";
     self.realTaskCount.text = @"0";
     [self isTaskChacked:false];
+    self.value = nil;
+    self.eventCount = 0;
 }
 
 - (void)isTaskChacked:(BOOL)chack {

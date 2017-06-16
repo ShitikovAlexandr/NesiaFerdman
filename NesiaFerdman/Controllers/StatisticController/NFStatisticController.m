@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftScroll;
 @property (weak, nonatomic) IBOutlet UIButton *rightScroll;
 @property (weak, nonatomic) IBOutlet UIView *headerMainView;
+
+
 @end
 
 @implementation NFStatisticController
@@ -39,6 +41,7 @@
     self.title = @"Статистика";
     [self addNavigationButton];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFStatisticMainCell" bundle:nil] forCellReuseIdentifier:@"NFStatisticMainCell"];
+    self.tableView.tableFooterView = [UIView new];
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
     // Create a min and max date for limit the calendar, optional
@@ -81,7 +84,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self navigateToMonthDitailScreen];
+    [self navigateToMonthDitailScreenWithIndexPath:indexPath];
 }
 
 
@@ -160,9 +163,18 @@
     _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:24];
 }
 
-- (void)navigateToMonthDitailScreen {
-    NFStatisticDetailController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticDetailController"];
-    [self presentViewController:viewController animated:YES completion:nil];
+- (void)navigateToMonthDitailScreenWithIndexPath:(NSIndexPath*)indexPath {
+    NFStatisticMainCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (cell.value && cell.eventCount > 0) {
+        NFStatisticDetailController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticDetailController"];
+        viewController.selectedDate = _calendarManager.date ? _calendarManager.date : _todayDate;
+        viewController.value = cell.value;
+        [self presentViewController:viewController animated:YES completion:nil];
+    } else {
+        NSLog(@"no value");
+    }
+        
+    
 }
 
 

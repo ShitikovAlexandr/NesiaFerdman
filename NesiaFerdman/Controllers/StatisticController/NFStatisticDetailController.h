@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NFValue.h"
 
 @interface NFStatisticDetailController : UIViewController
+@property (strong, nonatomic) NFValue *value;
+@property (strong, nonatomic) NSDate *selectedDate;
 
 @end

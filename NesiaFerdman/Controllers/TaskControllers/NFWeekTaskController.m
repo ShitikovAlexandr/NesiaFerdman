@@ -86,7 +86,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (self.dataArray.count > 0) {
-        return 34.f;//[NFHeaderForTaskSection headerSize];
+        return [NFHeaderForTaskSection headerSize];
     } else {
         return 0.0001;
     }
