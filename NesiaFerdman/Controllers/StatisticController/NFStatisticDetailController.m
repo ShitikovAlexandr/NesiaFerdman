@@ -55,7 +55,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return  _dataArray.count > 0 ? _dataArray.count : 1;;
+    return  _dataArray.count > 0 ? _dataArray.count : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

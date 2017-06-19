@@ -10,7 +10,10 @@
 #import "NFDatePicker.h"
 #import "NFPickerView.h"
 #import "NFSyncManager.h"
+#import "NFActivityIndicatorView.h"
 #import <UITextView+Placeholder.h>
+#import "NFChackBox.h"
+#import "NotifyList.h"
 
 @interface NFTAddImportantTaskTableViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
@@ -19,31 +22,37 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleTask;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTask;
 @property (strong, nonatomic) IBOutlet UITextField *dateTextField;
-@property (weak, nonatomic) IBOutlet UITextField *valueTextField;
-@property (strong, nonatomic) NFPickerView *valuePicker;
-@property (strong, nonatomic) NSMutableArray *valuesArray;
 @property (strong, nonatomic) NFDatePicker *datePicker;
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
+@property (weak, nonatomic) IBOutlet UILabel *compliteLabel;
+
 @end
 
 @implementation NFTAddImportantTaskTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     self.descriptionTask.placeholder = @"Описание";
     self.tableView.tableFooterView = [UIView new];
     self.tableView.estimatedRowHeight = 150;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    
     self.dateTextField.text = [self stringFromDate:[NSDate date]];
     _datePicker = [[NFDatePicker alloc] initWithTextField:_dateTextField];
     _datePicker.minimumDate = [NSDate date];
-    
-    _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
-    self.valueTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
-    _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_valueTextField   keyTitle:@"valueTitle"];
-    
-    
+    [self setStartDataToDisplay];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
+}
+
 #pragma mark - UITableViewDataSource
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -61,7 +70,6 @@
         return _textFrame.size.height < 150.f ? 150 : _textFrame.size.height;
     } else {
         return UITableViewAutomaticDimension;
-        
     }
 }
 
@@ -74,35 +82,19 @@
     }
 }
 
-
-
 #pragma mark - Helpers
 
 - (IBAction)pressSaveOrCancelAction:(UIBarButtonItem *)sender {
     if (sender.tag == 1) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } else if (sender.tag == 2) {
-        NFValue *val = [self.valuesArray objectAtIndex:[_valuePicker.selectedIndex integerValue]];
-        NFEvent *newEvent = [NFEvent new];
-        newEvent.title = self.titleTask.text;
-        newEvent.eventDescription = self.descriptionTask.text;
-        newEvent.startDate = [NSString stringWithFormat:@"%@",_datePicker.selectedDate];
-        //newEvent.value = [val convertToDictionary];
-        newEvent.socialType = NesiaEvent;
-        newEvent.eventType = _eventType;
-        //[[NFSyncManager sharedManager] writeEventToFirebase:newEvent];
-        //[[NFTaskManager sharedManager] convertToDictionary:[NFTaskManager sharedManager].eventConclusionsDictionary array:[NSMutableArray arrayWithObject:newEvent]];
-        NSLog(@"controller from dissmiss %@", self.navigationController.presentingViewController);
-
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self saveChanges];
     }
-
 }
 
-- (NSString *)stringFromDate:(NSDate *)date {
-    NSDateFormatter *dateFormater = [NSDateFormatter new];
-    [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
-    return [dateFormater stringFromDate:date];
+- (void)endUpdate {
+    [_indicator endAnimating];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - UITextView
@@ -119,6 +111,62 @@
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         [textView becomeFirstResponder];
     }
+}
+
+#pragma mark - Helpers 
+
+- (void)setStartDataToDisplay {
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    if (_event) {
+        self.title = @"Редактирование";
+        [self.saveButton setTitle:@"Изменить"];
+        self.dateTextField.text = [self stringDate:_event.startDate
+                                        withFormat:@"yyyy-MM-dd'T'HH:mm:ss"
+                                dateStringToFromat:@"LLLL, dd, yyyy HH:mm"];
+        self.titleTask.text = _event.title;
+        if (_event.eventDescription.length > 0) {
+            self.descriptionTask.text = _event.eventDescription;
+        }
+    } else {
+        [self.saveButton setTitle:@"Сохранить"];
+        self.title = @"Соэдание записи";
+    }
+}
+
+- (NSString *)stringFromDate:(NSDate *)date {
+    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
+    return [dateFormater stringFromDate:date];
+}
+
+- (NSString *)stringDate:(NSString *)stringInput
+              withFormat:(NSString *)inputFormat
+      dateStringToFromat:(NSString*)outputFormat {
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:inputFormat];
+    NSDate *dateFromString = [dateFormatter dateFromString:stringInput];
+    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:outputFormat];
+    NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
+    return newDate;
+}
+
+- (void)saveChanges {
+    [_indicator startAnimating];
+    if (!_event) {
+        _event = [[NFEvent alloc] init];
+    }
+    _event.eventType = self.eventType;
+    _event.title = _titleTask.text;
+    _event.eventDescription = _descriptionTask.text;
+    _event.startDate = [self stringDate:_dateTextField.text
+                             withFormat:@"LLLL, dd, yyyy HH:mm"
+                     dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    [[NFSyncManager sharedManager] writeEventToFirebase:_event];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NFSyncManager sharedManager]  updateAllData];
+    });
 }
 
 @end

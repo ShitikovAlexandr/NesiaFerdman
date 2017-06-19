@@ -48,6 +48,7 @@
     _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
     self.filterTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_filterTextField   keyTitle:@"valueTitle"];
+    self.tableView.tableFooterView = [UIView new];
     
 //    [NFStyleKit drawDownBorderWithView:self.headerMainView];
     
@@ -268,7 +269,7 @@
         NFEvent *event = [self.dataArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
+        [cell addData:nil];
     }
     cell.editing = YES;
     return cell;

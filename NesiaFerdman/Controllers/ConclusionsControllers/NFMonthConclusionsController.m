@@ -14,6 +14,7 @@
 #import <STCollapseTableView.h>
 #import "NotifyList.h"
 #import "NFStyleKit.h"
+#import "NFTAddImportantTaskTableViewController.h"
 
 @interface NFMonthConclusionsController ()  <UITableViewDelegate, UITableViewDataSource>
 
@@ -30,7 +31,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *leftScroll;
 @property (weak, nonatomic) IBOutlet UIButton *rightScroll;
 @property (weak, nonatomic) IBOutlet UIView *headerMainView;
-
 @end
 
 @implementation NFMonthConclusionsController
@@ -38,26 +38,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataArray = [NSMutableArray array];
-        
-//    [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
-    self.dataArray = [NSMutableArray array];
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.allowsSelectionDuringEditing = YES;
-    self.tableView.allowsSelection = YES;
     
-    // Do any additional setup after loading the view.
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
     
-    // Generate random events sort by date using a dateformatter for the demonstration
-    //    [self createRandomEvents];
     _eventsByDate = [NSMutableDictionary dictionary];
     _eventsByDate = [NFTaskManager sharedManager].eventImportantDictionary;
     
     // Create a min and max date for limit the calendar, optional
     [self createMinAndMaxDate];
     _calendarManager.dateHelper.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
-    
     
     [_calendarManager setMenuView:_calendarMenuView];
     [_calendarManager setContentView:_calendarContentView];
@@ -66,13 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cellSendLongTouch) name:LONG_CELL_PRESS object:nil];
     [self addDataToDisplay:_calendarManager.date ? _calendarManager.date : _todayDate];
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:LONG_CELL_PRESS object:nil];
 }
 
 #pragma mark - Buttons callback
@@ -100,7 +85,6 @@
 {
     NSLog(@"Previous page loaded %@", _calendarManager.date);
     [self addDataToDisplay:_calendarManager.date];
-    
 }
 
 #pragma mark - Fake data
@@ -146,7 +130,6 @@
         
         dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;
         dateFormatter.timeZone = _calendarManager.dateHelper.calendar.timeZone;
-        //self.calendarMenuView.backgroundColor = [UIColor colorWithRed:240/255.0 green:239/255.0 blue:245/255.0 alpha:1];
     }
     menuItemView.text = [dateFormatter stringFromDate:date].uppercaseString;
 }
@@ -162,16 +145,11 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    
-    NSLog(@"section count %lu", (unsigned long)(_dataArray.count > 0 ? _dataArray.count : 1));
     return  _dataArray.count > 0 ? _dataArray.count : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : nil;
-    
-    NSLog(@"numberOfRows %lu InSection %ld", (unsigned long)(sectionData.count > 0 ? sectionData.count : 1), (long)section);
-    
+    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
     return sectionData.count > 0 ? sectionData.count : 1;
 }
 
@@ -185,7 +163,7 @@
         NFEvent *event = [eventDayArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
+        [cell addData:nil];
     }
     return cell;
 }
@@ -215,54 +193,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    if (tableView.editing) {
-        [tableView setEditing:NO animated:YES];
-    } else {
-        NSLog(@"go to detail screen");
-    }
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"input indexPath %@", indexPath);
-        [self.tableView beginUpdates];
-        
-        [[_dataArray objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-        
-        if ([[_dataArray objectAtIndex:indexPath.section] count] > 0) {
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        } else {
-            
-            [_dataArray removeObjectAtIndex:indexPath.section];
-            
-            if (_dataArray.count > 0) {
-                //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationFade];
-            } else {
-                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            }
-            NSLog(@"table view %@", self.tableView);
-        }
-        NSLog(@"modigy indexPath %@", indexPath);
-        [self.tableView endUpdates];
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [tableView setEditing:NO animated:YES];
-        });
-        
-    } else {
-        NSLog(@"else");
-    }
-}
-
-- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    return indexPath;
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
+    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self navigateToEditTaskScreenWithEvent:eventCell.event];
 }
 
 #pragma mark - Helpers
@@ -288,21 +220,21 @@
             }
         }
     }
-    
-    //[self.dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getImportantForMonth:currentDate]];
-    NSLog(@"input date %@", [[NFTaskManager sharedManager] getImportantForMonth:currentDate]);
-    [_tableView setEditing:NO animated:YES];
     [self.tableView reloadData];
+    [self.tableView openSection:0 animated:NO];
     NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
     NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
     [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
 }
 
-- (void)cellSendLongTouch {
-    if (_dataArray.count > 0 && !_tableView.editing) {
-        [_tableView setEditing:YES animated:YES];
-        NSLog(@"edit");
-    }
+- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
+    NFTAddImportantTaskTableViewController *addVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTAddImportantTaskTableViewController"];
+    addVC.event = event;
+    addVC.eventType = Conclusions;
+    UINavigationController *navVCB = [self.storyboard instantiateViewControllerWithIdentifier:@"UINavViewController"];
+    navVCB.navigationBar.barStyle = UIBarStyleBlack;
+    [navVCB setViewControllers:@[addVC] animated:YES];
+    [self presentViewController:navVCB animated:YES completion:nil];
 }
 
 @end

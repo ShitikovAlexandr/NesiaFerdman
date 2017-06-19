@@ -137,6 +137,8 @@
 		C2CB589D1EA0E8580023ADAA /* NFHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2CB589C1EA0E8580023ADAA /* NFHeaderCell.xib */; };
 		C2CB58A01EA0E8AB0023ADAA /* NFHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CB589F1EA0E8AB0023ADAA /* NFHeaderCell.m */; };
 		C2CB58A41EA109390023ADAA /* NFHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CB58A31EA109390023ADAA /* NFHeaderView.m */; };
+		C2CD10981EF8026E00546566 /* point.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CD10971EF8026E00546566 /* point.png */; };
+		C2CD109A1EF8212B00546566 /* menu_green.png in Resources */ = {isa = PBXBuildFile; fileRef = C2CD10991EF8212B00546566 /* menu_green.png */; };
 		C2D13F6E1EEA7CB200A9A4F3 /* Home_life_value_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D13F6D1EEA7CB200A9A4F3 /* Home_life_value_icon.png */; };
 		C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F711EEAC9E400A9A4F3 /* NFValueCell.m */; };
 		C2D13F741EEAC9F000A9A4F3 /* NFValueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D13F731EEAC9F000A9A4F3 /* NFValueCell.xib */; };
@@ -407,6 +409,8 @@
 		C2CB589F1EA0E8AB0023ADAA /* NFHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderCell.m; sourceTree = "<group>"; };
 		C2CB58A21EA109390023ADAA /* NFHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHeaderView.h; sourceTree = "<group>"; };
 		C2CB58A31EA109390023ADAA /* NFHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderView.m; sourceTree = "<group>"; };
+		C2CD10971EF8026E00546566 /* point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = point.png; sourceTree = "<group>"; };
+		C2CD10991EF8212B00546566 /* menu_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_green.png; sourceTree = "<group>"; };
 		C2D13F6D1EEA7CB200A9A4F3 /* Home_life_value_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home_life_value_icon.png; sourceTree = "<group>"; };
 		C2D13F701EEAC9E400A9A4F3 /* NFValueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueCell.h; sourceTree = "<group>"; };
 		C2D13F711EEAC9E400A9A4F3 /* NFValueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValueCell.m; sourceTree = "<group>"; };
@@ -710,6 +714,7 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2CD10971EF8026E00546566 /* point.png */,
 				C20595711EF2C39E00BF3BFD /* Right_arrow_label.png */,
 				C205956A1EF2875E00BF3BFD /* Laft_arr_heade.png */,
 				C205956B1EF2875E00BF3BFD /* Right_arr_header.png */,
@@ -1056,6 +1061,7 @@
 		C2C22D941EE9827B006BD83A /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				C2CD10991EF8212B00546566 /* menu_green.png */,
 				C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */,
 				C2C22DBE1EE99420006BD83A /* ChevronMediumBack@2x.png */,
 				C2C22D951EE98283006BD83A /* about_icon.png */,
@@ -1414,6 +1420,7 @@
 				C2C0D6021EC5F034003C7741 /* task@2x.png in Resources */,
 				C2CB589D1EA0E8580023ADAA /* NFHeaderCell.xib in Resources */,
 				C24AA5151EBB281C00ABA92C /* NFTaskSimpleCell.xib in Resources */,
+				C2CD109A1EF8212B00546566 /* menu_green.png in Resources */,
 				C2C22DAC1EE98283006BD83A /* job_value_icon.png in Resources */,
 				C2C22DA61EE98283006BD83A /* about_icon.png in Resources */,
 				C2C0D6031EC5F034003C7741 /* task@3x.png in Resources */,
@@ -1433,6 +1440,7 @@
 				C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */,
 				C2C0D6131EC60140003C7741 /* menu-options@3x.png in Resources */,
 				C2B3D9741EDEB74800A0A44E /* NFValueFilterCell.xib in Resources */,
+				C2CD10981EF8026E00546566 /* point.png in Resources */,
 				C2C22DAA1EE98283006BD83A /* famely_value_icon.png in Resources */,
 				C2C22DB21EE98283006BD83A /* result_icon.png in Resources */,
 				C22407821E9CB351004B089A /* Main.storyboard in Resources */,
@@ -1870,12 +1878,14 @@
 			baseConfigurationReference = D5255076F5DCD1666D4F6E56 /* Pods-NesiaFerdman.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D7BCEBCF9Z;
 				INFOPLIST_FILE = NesiaFerdman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Gemicle.NesiaFerdman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1884,12 +1894,14 @@
 			baseConfigurationReference = DF2B5860071CF37E9123FE31 /* Pods-NesiaFerdman.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D7BCEBCF9Z;
 				INFOPLIST_FILE = NesiaFerdman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Gemicle.NesiaFerdman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

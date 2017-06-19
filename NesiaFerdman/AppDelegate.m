@@ -114,11 +114,11 @@
 
     [UITabBarItem.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}
                                            forState:UIControlStateSelected];
+    [UITabBarItem.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor colorWithRed:184/255.0 green:216/255.0 blue:187/255.0 alpha:1]}
+                                           forState:UIControlStateNormal];
     [UITabBar.appearance setBackgroundColor:[NFStyleKit bASE_GREEN]];
     [UITabBar.appearance setTranslucent:NO];
     [UITabBar.appearance setTintColor:[UIColor whiteColor]];
-//    [UITabBarItem.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor]}
-//                                           forState:UIControlStateNormal];
     
     [UINavigationBar.appearance setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
     

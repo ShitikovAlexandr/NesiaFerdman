@@ -40,4 +40,6 @@
 + (UIImage*)imageOfRoundetViewWithSize: (CGSize)imageSize;
 + (UIImage*)imageOfCircleWithSize: (CGSize)imageSize;
 
++ (UIImage*)imageOfCirclePointWithSize: (CGSize)imageSize;
+
 @end

@@ -12,6 +12,7 @@
 #import "NFMonthConclusionsController.h"
 #import "NFWeekConclusionsController.h"
 #import "NFTAddImportantTaskTableViewController.h"
+#import "NFStatisticController.h"
 
 @interface NFPageConclusionsController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
@@ -36,9 +37,10 @@
     _segmentedControl.center = self.navigationController.navigationBar.center;
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
     
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonAction)];
-    addButton.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = addButton;
+//    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonAction)];
+//    addButton.tintColor = [UIColor whiteColor];
+//    self.navigationItem.rightBarButtonItem = addButton;
+    [self setNavigationbarButtons];
     
     NFDayConclusionsController *dayController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFDayConclusionsController"];
     NFWeekConclusionsController *weekController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFWeekConclusionsController"];
@@ -124,11 +126,36 @@
 - (void) addButtonAction {
     NFTAddImportantTaskTableViewController *addVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTAddImportantTaskTableViewController"];
     addVC.eventType = Conclusions;
+    addVC.title = @"Выводы";
     UINavigationController *navVCB = [self.storyboard instantiateViewControllerWithIdentifier:@"UINavViewController"];
     navVCB.navigationBar.barStyle = UIBarStyleBlack;
     [navVCB setViewControllers:@[addVC] animated:YES];
     [self presentViewController:navVCB animated:YES completion:nil];
+}
+
+- (void)resultButtonAction {
+    [self navigateToResultWeekScreen];
+}
+
+- (void)navigateToResultWeekScreen {
+    NSLog(@"go to result week screen - >");
+    NFStatisticController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
     
 }
+
+- (void)setNavigationbarButtons {
+    
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonAction)];
+    addButton.tintColor = [UIColor whiteColor];
+    //    self.navigationItem.rightBarButtonItem = addButton;
+    
+    UIBarButtonItem *resultButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"result_nav_bar_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(resultButtonAction)];
+    
+    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton, resultButton, nil]];
+}
+
 
 @end

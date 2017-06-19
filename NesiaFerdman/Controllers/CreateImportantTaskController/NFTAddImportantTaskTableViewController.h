@@ -12,5 +12,6 @@
 @interface NFTAddImportantTaskTableViewController : UITableViewController
 
 @property (assign ,nonatomic) EventType eventType;
+@property (strong, nonatomic) NFEvent *event;
 
 @end

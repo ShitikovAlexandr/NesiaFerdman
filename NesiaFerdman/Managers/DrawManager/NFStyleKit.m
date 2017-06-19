@@ -265,4 +265,35 @@ static UIColor* _googleRed = nil;
     return imageOfCircle;
 }
 
++ (void)drawCirclePointWithFrame: (CGRect)frame
+{
+    //// Color Declarations
+    UIColor* color = [NFStyleKit bASE_GREEN];
+    
+    //// OvalPoint Drawing
+    UIBezierPath* ovalPointPath = [UIBezierPath bezierPath];
+    [ovalPointPath moveToPoint: CGPointMake(CGRectGetMinX(frame) + 18, CGRectGetMinY(frame) + 10)];
+    [ovalPointPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMinY(frame) + 18) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 18, CGRectGetMinY(frame) + 14.42) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 14.42, CGRectGetMinY(frame) + 18)];
+    [ovalPointPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 2, CGRectGetMinY(frame) + 10) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 5.58, CGRectGetMinY(frame) + 18) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 2, CGRectGetMinY(frame) + 14.42)];
+    [ovalPointPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 10, CGRectGetMinY(frame) + 2) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 2, CGRectGetMinY(frame) + 5.58) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 5.58, CGRectGetMinY(frame) + 2)];
+    [ovalPointPath addCurveToPoint: CGPointMake(CGRectGetMinX(frame) + 18, CGRectGetMinY(frame) + 10) controlPoint1: CGPointMake(CGRectGetMinX(frame) + 14.42, CGRectGetMinY(frame) + 2) controlPoint2: CGPointMake(CGRectGetMinX(frame) + 18, CGRectGetMinY(frame) + 5.58)];
+    [ovalPointPath closePath];
+    [color setFill];
+    [ovalPointPath fill];
+}
+
+#pragma mark Generated Images
+
++ (UIImage*)imageOfCirclePointWithSize: (CGSize)imageSize
+{
+    UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    [NFStyleKit drawCirclePointWithFrame: CGRectMake(0, 0, imageSize.width, imageSize.height)];
+    
+    UIImage* imageOfCirclePoint = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return imageOfCirclePoint;
+}
+
+
 @end

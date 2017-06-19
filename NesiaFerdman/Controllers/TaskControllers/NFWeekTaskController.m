@@ -77,7 +77,7 @@
         NFEvent *event = [eventDayArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
+        [cell addData:nil];
     }
     return cell;
 }

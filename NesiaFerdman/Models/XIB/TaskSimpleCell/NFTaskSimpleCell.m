@@ -8,6 +8,7 @@
 
 #import "NFTaskSimpleCell.h"
 #import "NotifyList.h"
+#import "NFStyleKit.h"
 
 @interface NFTaskSimpleCell ()
 @property (strong, nonatomic) UILongPressGestureRecognizer *lpgr;
@@ -34,15 +35,22 @@
 }
 
 - (void)addData:(NFEvent*)event {
-    self.event = event;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (event) {
+        self.event = event;
         self.textLabel.text = event.title;
-        if (event.isDone) {
-            [self.imageView setImage:[UIImage imageNamed:@"checked_enable.png"]];
+        if (event.eventType == Event) {
+            if (event.isDone) {
+                [self.imageView setImage:[UIImage imageNamed:@"checked_enable.png"]];
+            } else {
+                [self.imageView setImage:[UIImage imageNamed:@"checked_disable.png"]];
+            }
         } else {
-            [self.imageView setImage:[UIImage imageNamed:@"checked_disable.png"]];
+            [self.imageView setImage:[UIImage imageNamed:@"point.png"]];
         }
+    } else {
+        self.textLabel.text = @"Добавить";
+        [self.imageView setImage:[UIImage imageNamed:@"Add.png"]];
     }
 }
 
@@ -72,5 +80,9 @@
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     
 }
+
+
+    
+
 
 @end

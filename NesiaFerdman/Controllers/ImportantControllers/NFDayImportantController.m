@@ -32,15 +32,12 @@
     self.header.selectetDate = [NSDate date];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.allowsSelectionDuringEditing = YES;
-    [self addDataToDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self addDataToDisplay];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDataToDisplay) name:HEADER_NOTIF object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cellSendLongTouch) name:LONG_CELL_PRESS object:nil];
-
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -66,56 +63,31 @@
         cell = [[NFTaskSimpleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     if (self.eventsArray.count > 0) {
-        NFEvent *event = [self.eventsArray objectAtIndex:indexPath.row];
+        NFEvent *event = [_eventsArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
-        [tableView setEditing:NO animated:YES];
-
+        [cell addData:nil];
     }
     return cell;
 }
 
 #pragma mark - UITableViewDelegate -
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self navigateToEditTaskScreenWithEvent:eventCell.event];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 40.f;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.editing) {
-        [tableView setEditing:NO animated:YES];
-    } else {
-        NSLog(@"go to detail screen");
-    }
-    
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"delete");
-        [self.eventsArray removeObjectAtIndex:indexPath.row];
-        if (_eventsArray.count>0) {
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView endUpdates];
-
-        } else {
-            [_tableView reloadData];
-        }
-    }
-    
-}
-
-
 #pragma mark - Helpers -
 
 - (void)addDataToDisplay {
-    
-    // NSLog(@"change Day -> %@", self.header.selectetDate);
     [self.eventsArray removeAllObjects];
     [self.eventsArray addObjectsFromArray:[[NFTaskManager sharedManager] getImportantForDay:self.header.selectetDate]];
-    [_tableView setEditing:NO animated:YES];
+    [self.tableView reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
     NSLog(@"day header %@", self.header.selectetDate);
     NSLog(@"eventsArray for day %@", _eventsArray);
@@ -131,12 +103,24 @@
     return newDate;
 }
 
+- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
+    NFTAddImportantTaskTableViewController *addVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTAddImportantTaskTableViewController"];
+    addVC.event = event;
+    addVC.eventType = Important;
+    UINavigationController *navVCB = [self.storyboard instantiateViewControllerWithIdentifier:@"UINavViewController"];
+    navVCB.navigationBar.barStyle = UIBarStyleBlack;
+    [navVCB setViewControllers:@[addVC] animated:YES];
+    [self presentViewController:navVCB animated:YES completion:nil];
+}
+
 - (void)cellSendLongTouch {
     if (_eventsArray.count > 0 && !_tableView.editing ) {
         [_tableView setEditing:YES animated:YES];
         NSLog(@"edit");
     }
 }
+
+
 
 
 

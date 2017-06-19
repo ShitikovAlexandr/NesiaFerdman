@@ -103,7 +103,9 @@
 
 - (CGFloat)doneValueWithTaskArray:(NSMutableArray*)taskArray {
     int done = 0;
+    int allTasks = 0;
     for (NFEvent *event in taskArray) {
+        allTasks++;
         if (event.isDone) {
             done++;
         }
@@ -114,7 +116,7 @@
             [self isTaskChacked:false];
         }
     }
-    _eventCount = done;
+    _eventCount = allTasks;
     CGFloat result = (1.0/(CGFloat)taskArray.count) * done;
     return result;
 }

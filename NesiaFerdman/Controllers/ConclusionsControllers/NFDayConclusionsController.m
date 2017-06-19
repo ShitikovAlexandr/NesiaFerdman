@@ -11,6 +11,7 @@
 #import "NFTaskSimpleCell.h"
 #import "NotifyList.h"
 #import "NFSyncManager.h"
+#import "NFTAddImportantTaskTableViewController.h"
 
 @interface NFDayConclusionsController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -23,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _eventsArray = [NSMutableArray array];
-    [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
     NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
     NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
@@ -31,20 +31,17 @@
     self.header.selectetDate = [NSDate date];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.allowsSelectionDuringEditing = YES;
-    [self addDataToDisplay];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self addDataToDisplay];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDataToDisplay) name:HEADER_NOTIF object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cellSendLongTouch) name:LONG_CELL_PRESS object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_NOTIF object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:LONG_CELL_PRESS object:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -63,11 +60,10 @@
         cell = [[NFTaskSimpleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     if (self.eventsArray.count > 0) {
-        NFEvent *event = [self.eventsArray objectAtIndex:indexPath.row];
+        NFEvent *event = [_eventsArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
-        [tableView setEditing:NO animated:YES];
+        [cell addData:nil];
     }
     return cell;
 }
@@ -79,32 +75,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView.editing) {
-        [tableView setEditing:NO animated:YES];
-    } else {
-        NSLog(@"go to detail screen");
-    }
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        NSLog(@"delete");
-        [self.eventsArray removeObjectAtIndex:indexPath.row];
-        if (_eventsArray.count>0) {
-            [self.tableView beginUpdates];
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView endUpdates];
-        } else {
-            [_tableView reloadData];
-        }
-    }
+    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    [self navigateToEditTaskScreenWithEvent:eventCell.event];
 }
 
 #pragma mark - Helpers -
 
 - (void)addDataToDisplay {
-    
-    // NSLog(@"change Day -> %@", self.header.selectetDate);
     [self.eventsArray removeAllObjects];
     [self.eventsArray addObjectsFromArray:[[NFTaskManager sharedManager] getConclusionsForDay:self.header.selectetDate]];
     [_tableView setEditing:NO animated:YES];
@@ -123,14 +100,15 @@
     return newDate;
 }
 
-- (void)cellSendLongTouch {
-    if (_eventsArray.count > 0 && !_tableView.editing ) {
-        [_tableView setEditing:YES animated:YES];
-        NSLog(@"edit");
-    }
+- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
+    NFTAddImportantTaskTableViewController *addVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTAddImportantTaskTableViewController"];
+    addVC.event = event;
+    addVC.eventType = Conclusions;
+    UINavigationController *navVCB = [self.storyboard instantiateViewControllerWithIdentifier:@"UINavViewController"];
+    navVCB.navigationBar.barStyle = UIBarStyleBlack;
+    [navVCB setViewControllers:@[addVC] animated:YES];
+    [self presentViewController:navVCB animated:YES completion:nil];
 }
-
-
 
 
 @end
