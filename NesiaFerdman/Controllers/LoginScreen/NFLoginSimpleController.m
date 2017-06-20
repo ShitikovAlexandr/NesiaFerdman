@@ -138,7 +138,7 @@ static NFLoginSimpleController *sharedController;
         _loginButton.userInteractionEnabled = false;
         _loginButton.alpha = 0;
         [_indicator startAnimating];
-        
+        //[[NFSyncManager sharedManager] addStandartListOfResultCategory];
         if ([[NFSyncManager sharedManager] isFirstRunApp]) {
             [[NFSyncManager sharedManager] addStandartListOfValue];
         }

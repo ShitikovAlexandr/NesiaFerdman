@@ -69,6 +69,10 @@
 		C24AA51C1EBB4FD100ABA92C /* NFDayImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA51B1EBB4FD100ABA92C /* NFDayImportantController.m */; };
 		C24AA51F1EBB4FE900ABA92C /* NFWeekImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA51E1EBB4FE900ABA92C /* NFWeekImportantController.m */; };
 		C24AA5221EBB4FFC00ABA92C /* NFMonthImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA5211EBB4FFC00ABA92C /* NFMonthImportantController.m */; };
+		C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF7471EF914FF003FCF5C /* NFResult.m */; };
+		C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF74A1EF916E0003FCF5C /* NFResultCategory.m */; };
+		C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF74E1EF943F2003FCF5C /* NFResultController.m */; };
+		C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF7511EF9440A003FCF5C /* NFResultDetailController.m */; };
 		C25737521E9CD11D00C4A4EA /* NFCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = C25737511E9CD11D00C4A4EA /* NFCircle.m */; };
 		C25737541E9CE7F900C4A4EA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C25737531E9CE7F900C4A4EA /* logo.png */; };
 		C25737591E9CEBD100C4A4EA /* NFRoundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C25737581E9CEBD100C4A4EA /* NFRoundButton.m */; };
@@ -312,6 +316,14 @@
 		C24AA51E1EBB4FE900ABA92C /* NFWeekImportantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekImportantController.m; sourceTree = "<group>"; };
 		C24AA5201EBB4FFC00ABA92C /* NFMonthImportantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFMonthImportantController.h; sourceTree = "<group>"; };
 		C24AA5211EBB4FFC00ABA92C /* NFMonthImportantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFMonthImportantController.m; sourceTree = "<group>"; };
+		C24DF7461EF914FF003FCF5C /* NFResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResult.h; sourceTree = "<group>"; };
+		C24DF7471EF914FF003FCF5C /* NFResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResult.m; sourceTree = "<group>"; };
+		C24DF7491EF916E0003FCF5C /* NFResultCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFResultCategory.h; path = ../NFResultCategory.h; sourceTree = "<group>"; };
+		C24DF74A1EF916E0003FCF5C /* NFResultCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFResultCategory.m; path = ../NFResultCategory.m; sourceTree = "<group>"; };
+		C24DF74D1EF943F2003FCF5C /* NFResultController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultController.h; sourceTree = "<group>"; };
+		C24DF74E1EF943F2003FCF5C /* NFResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultController.m; sourceTree = "<group>"; };
+		C24DF7501EF9440A003FCF5C /* NFResultDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDetailController.h; sourceTree = "<group>"; };
+		C24DF7511EF9440A003FCF5C /* NFResultDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultDetailController.m; sourceTree = "<group>"; };
 		C25737501E9CD11D00C4A4EA /* NFCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCircle.h; sourceTree = "<group>"; };
 		C25737511E9CD11D00C4A4EA /* NFCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCircle.m; sourceTree = "<group>"; };
 		C25737531E9CE7F900C4A4EA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -683,6 +695,7 @@
 		C22407B51E9CB4E8004B089A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C24DF74C1EF943D6003FCF5C /* ResultControllers */,
 				C212DEE21EF119530082EF38 /* StatisticController */,
 				C2B3C8A91EE9355A000B917D /* ValueController */,
 				C2B3C84C1EE82BF2000B917D /* NFGoogleCalendarController */,
@@ -870,6 +883,17 @@
 			);
 			name = AddImportantTaskController;
 			path = CreateImportantTaskController;
+			sourceTree = "<group>";
+		};
+		C24DF74C1EF943D6003FCF5C /* ResultControllers */ = {
+			isa = PBXGroup;
+			children = (
+				C24DF74D1EF943F2003FCF5C /* NFResultController.h */,
+				C24DF74E1EF943F2003FCF5C /* NFResultController.m */,
+				C24DF7501EF9440A003FCF5C /* NFResultDetailController.h */,
+				C24DF7511EF9440A003FCF5C /* NFResultDetailController.m */,
+			);
+			path = ResultControllers;
 			sourceTree = "<group>";
 		};
 		C257379D1E9D28E000C4A4EA /* Splash */ = {
@@ -1211,6 +1235,10 @@
 				C2A77B6E1EAF66D6005FE7A4 /* NFEvent.m */,
 				C28C9BB31EC06B80002D74C0 /* NFValue.h */,
 				C28C9BB41EC06B80002D74C0 /* NFValue.m */,
+				C24DF7491EF916E0003FCF5C /* NFResultCategory.h */,
+				C24DF74A1EF916E0003FCF5C /* NFResultCategory.m */,
+				C24DF7461EF914FF003FCF5C /* NFResult.h */,
+				C24DF7471EF914FF003FCF5C /* NFResult.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -1642,6 +1670,7 @@
 				C2E334961E9E796D0086FDDC /* NFNavigationController.m in Sources */,
 				C24AA50B1EBB11B400ABA92C /* NFHeaderForTaskSection.m in Sources */,
 				C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */,
+				C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */,
 				C28190061EAF40C100EE13AB /* NFGoogleUserInfo.m in Sources */,
 				C2B3C84F1EE82C01000B917D /* NFGoogleCalendarController.m in Sources */,
 				C216D8B11EB1D6CF001D1006 /* NFYearTask.m in Sources */,
@@ -1658,6 +1687,8 @@
 				C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */,
 				C2359FFF1EC9AAB300EB8FDC /* NFMonthConclusionsController.m in Sources */,
 				C2136CD91EB077B6009E08D6 /* NFSyncManager.m in Sources */,
+				C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */,
+				C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */,
 				C2359FFC1EC9AA9800EB8FDC /* NFWeekConclusionsController.m in Sources */,
 				C2C22DBB1EE984E6006BD83A /* NFMenuCell.m in Sources */,
 				C25737521E9CD11D00C4A4EA /* NFCircle.m in Sources */,
@@ -1693,6 +1724,7 @@
 				C22407851E9CB351004B089A /* NesiaFerdman.xcdatamodeld in Sources */,
 				C2DDBCE21ED4597300F61F02 /* NFLoginController.m in Sources */,
 				C22407791E9CB351004B089A /* main.m in Sources */,
+				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
 				C20595701EF2A1F400BF3BFD /* NFViewWithDownBorder.m in Sources */,

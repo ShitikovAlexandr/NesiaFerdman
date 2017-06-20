@@ -676,14 +676,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qyJ-G0-exu" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LRY-pg-JOR"/>
+                                    <constraint firstAttribute="height" constant="46" id="LRY-pg-JOR"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QJK-pC-JwW">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -923,14 +923,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RJp-fk-4Fm" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.66268795728683472" green="0.66278296709060669" blue="0.66265803575515747" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SnN-Ja-nHb"/>
+                                    <constraint firstAttribute="height" constant="46" id="SnN-Ja-nHb"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fxv-71-OqK">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -973,10 +973,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ald-4m-p9X" customClass="NFViewWithDownBorder">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JyU-tg-lWK">
-                                        <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="hfO-fW-Jac"/>
                                         </constraints>
@@ -988,7 +988,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k0-Zw-BJI">
-                                        <rect key="frame" x="345" y="0.0" width="30" height="40"/>
+                                        <rect key="frame" x="345" y="0.0" width="30" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="M9e-At-diE"/>
                                         </constraints>
@@ -1000,9 +1000,9 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ohg-G6-tZp" customClass="JTCalendarMenuView">
-                                        <rect key="frame" x="42" y="0.0" width="291" height="38"/>
+                                        <rect key="frame" x="42" y="0.0" width="291" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="Wn5-k5-b3J"/>
+                                            <constraint firstAttribute="height" constant="46" id="Wn5-k5-b3J"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1013,7 +1013,7 @@
                                     <constraint firstItem="Ohg-G6-tZp" firstAttribute="leading" secondItem="JyU-tg-lWK" secondAttribute="trailing" constant="12" id="8jN-WN-vCS"/>
                                     <constraint firstItem="7k0-Zw-BJI" firstAttribute="top" secondItem="ald-4m-p9X" secondAttribute="top" id="Iyw-jt-Qgz"/>
                                     <constraint firstAttribute="trailing" secondItem="7k0-Zw-BJI" secondAttribute="trailing" id="M99-wl-mz7"/>
-                                    <constraint firstAttribute="height" constant="40" id="ijm-aY-vYH"/>
+                                    <constraint firstAttribute="height" constant="46" id="ijm-aY-vYH"/>
                                     <constraint firstItem="JyU-tg-lWK" firstAttribute="top" secondItem="ald-4m-p9X" secondAttribute="top" id="rDR-VY-4vE"/>
                                     <constraint firstAttribute="bottom" secondItem="JyU-tg-lWK" secondAttribute="bottom" id="sy0-8k-gTH"/>
                                     <constraint firstAttribute="bottom" secondItem="7k0-Zw-BJI" secondAttribute="bottom" id="tEm-PF-lE3"/>
@@ -1026,7 +1026,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bG9-AF-E1V" customClass="STCollapseTableView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1085,14 +1085,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlV-EF-Ns1" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="W3f-4X-8Ig"/>
+                                    <constraint firstAttribute="height" constant="46" id="W3f-4X-8Ig"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="44" translatesAutoresizingMaskIntoConstraints="NO" id="TGH-5G-cGH">
-                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="80" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1101,7 +1101,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dRa-3q-O5f" customClass="NFValuesFilterView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="sft-Ek-oA8"/>
@@ -1148,14 +1148,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ays-U6-ZYe" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Dee-8z-bOa"/>
+                                    <constraint firstAttribute="height" constant="46" id="Dee-8z-bOa"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="2TU-I9-Vy6">
-                                <rect key="frame" x="0.0" y="159" width="375" height="459"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="453"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1164,7 +1164,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mH2-eR-1KD" customClass="NFValuesFilterView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="X7m-II-6aX"/>
@@ -1208,10 +1208,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elx-fA-bdW" customClass="JTHorizontalCalendarView">
-                                <rect key="frame" x="0.0" y="159" width="375" height="267"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="267"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ayy-xW-Naw">
-                                <rect key="frame" x="0.0" y="434" width="375" height="176"/>
+                                <rect key="frame" x="0.0" y="440" width="375" height="170"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
@@ -1230,16 +1230,16 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ThE-It-Mpf" customClass="NFViewWithDownBorder">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iJX-gq-0Z2" customClass="JTCalendarMenuView">
-                                        <rect key="frame" x="50" y="0.0" width="275" height="38"/>
+                                        <rect key="frame" x="50" y="0.0" width="275" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="Lsu-GD-RLm"/>
+                                            <constraint firstAttribute="height" constant="46" id="Lsu-GD-RLm"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YYv-vT-C2w">
-                                        <rect key="frame" x="8" y="10" width="30" height="22"/>
+                                        <rect key="frame" x="8" y="10" width="30" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="8hy-U0-iRW"/>
                                         </constraints>
@@ -1252,7 +1252,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oel-sA-AXi">
-                                        <rect key="frame" x="337" y="10" width="30" height="22"/>
+                                        <rect key="frame" x="337" y="10" width="30" height="28"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="3zw-65-pQp"/>
                                         </constraints>
@@ -1270,7 +1270,7 @@
                                     <constraint firstAttribute="trailing" secondItem="iJX-gq-0Z2" secondAttribute="trailing" constant="50" id="40z-nT-PgE"/>
                                     <constraint firstAttribute="trailing" secondItem="Oel-sA-AXi" secondAttribute="trailing" constant="8" id="4RO-eT-BR5"/>
                                     <constraint firstItem="YYv-vT-C2w" firstAttribute="top" secondItem="ThE-It-Mpf" secondAttribute="top" constant="10" id="G89-IF-f7N"/>
-                                    <constraint firstAttribute="height" constant="40" id="JTh-eM-3ap"/>
+                                    <constraint firstAttribute="height" constant="46" id="JTh-eM-3ap"/>
                                     <constraint firstItem="Oel-sA-AXi" firstAttribute="top" secondItem="ThE-It-Mpf" secondAttribute="top" constant="10" id="MKE-Hd-wr5"/>
                                     <constraint firstItem="iJX-gq-0Z2" firstAttribute="top" secondItem="ThE-It-Mpf" secondAttribute="top" id="QXh-bx-ZLk"/>
                                     <constraint firstItem="iJX-gq-0Z2" firstAttribute="leading" secondItem="ThE-It-Mpf" secondAttribute="leading" constant="50" id="ae8-hv-rIe"/>
@@ -1279,7 +1279,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9yv-Cg-2eO" customClass="NFValuesFilterView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="55"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="DUU-me-ogQ"/>
@@ -1385,14 +1385,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ay5-oz-fqK" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="LqU-1z-1fl"/>
+                                    <constraint firstAttribute="height" constant="46" id="LqU-1z-1fl"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4XZ-vC-wv4">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1435,14 +1435,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1LZ-U5-h0t" customClass="NFHeaderView">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <color key="backgroundColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="9bg-2s-LI3"/>
+                                    <constraint firstAttribute="height" constant="46" id="9bg-2s-LI3"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fTh-PO-sJN">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1485,13 +1485,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MNc-4h-YX1" customClass="NFViewWithDownBorder">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ooV-Q4-rgk" customClass="JTCalendarMenuView">
-                                        <rect key="frame" x="42" y="0.0" width="291" height="38"/>
+                                        <rect key="frame" x="42" y="0.0" width="291" height="46"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="Os8-MD-NxK"/>
+                                            <constraint firstAttribute="height" constant="46" id="Os8-MD-NxK"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZbU-xf-rMz">
@@ -1529,14 +1529,14 @@
                                     <constraint firstAttribute="trailing" secondItem="dBx-Dd-eUB" secondAttribute="trailing" id="EVQ-dT-G5Z"/>
                                     <constraint firstItem="ooV-Q4-rgk" firstAttribute="top" secondItem="MNc-4h-YX1" secondAttribute="top" id="MT4-zD-q2C"/>
                                     <constraint firstItem="dBx-Dd-eUB" firstAttribute="top" secondItem="MNc-4h-YX1" secondAttribute="top" constant="-2" id="Mh1-g8-eUi"/>
-                                    <constraint firstAttribute="height" constant="40" id="XCH-Gc-lPo"/>
+                                    <constraint firstAttribute="height" constant="46" id="XCH-Gc-lPo"/>
                                     <constraint firstItem="ZbU-xf-rMz" firstAttribute="top" secondItem="MNc-4h-YX1" secondAttribute="top" id="gwS-fJ-MsC"/>
                                     <constraint firstItem="ooV-Q4-rgk" firstAttribute="leading" secondItem="ZbU-xf-rMz" secondAttribute="trailing" constant="12" id="pcn-KU-wxm"/>
                                     <constraint firstItem="dBx-Dd-eUB" firstAttribute="leading" secondItem="ooV-Q4-rgk" secondAttribute="trailing" constant="12" id="ysh-cg-pi9"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="i7C-Yv-jmH" customClass="STCollapseTableView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="514"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="24" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1742,7 +1742,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2Pr-Vf-3ah">
-                                <rect key="frame" x="0.0" y="159" width="375" height="508"/>
+                                <rect key="frame" x="0.0" y="165" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -1751,16 +1751,16 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQ0-hQ-ncF" customClass="NFViewWithDownBorder">
-                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6V-Xp-Xq1" customClass="JTCalendarMenuView">
-                                        <rect key="frame" x="50" y="0.0" width="275" height="38"/>
+                                        <rect key="frame" x="50" y="0.0" width="275" height="46"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="38" id="sm3-KE-YBY"/>
+                                            <constraint firstAttribute="height" constant="46" id="sm3-KE-YBY"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KNI-P2-Gkh">
-                                        <rect key="frame" x="337" y="0.0" width="38" height="40"/>
+                                        <rect key="frame" x="337" y="0.0" width="38" height="46"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="Right_arr_header">
                                             <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1770,7 +1770,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcr-us-dSL">
-                                        <rect key="frame" x="0.0" y="0.0" width="38" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="38" height="46"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" image="Laft_arr_heade">
                                             <color key="titleColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1790,13 +1790,13 @@
                                     <constraint firstItem="z6V-Xp-Xq1" firstAttribute="leading" secondItem="gcr-us-dSL" secondAttribute="trailing" constant="12" id="hC3-5e-RXU"/>
                                     <constraint firstItem="z6V-Xp-Xq1" firstAttribute="leading" secondItem="SQ0-hQ-ncF" secondAttribute="leading" constant="50" id="hO4-1t-gMt"/>
                                     <constraint firstAttribute="trailing" secondItem="KNI-P2-Gkh" secondAttribute="trailing" id="laR-Q7-t8O"/>
-                                    <constraint firstAttribute="height" constant="40" id="q7m-g6-2rI"/>
+                                    <constraint firstAttribute="height" constant="46" id="q7m-g6-2rI"/>
                                     <constraint firstItem="gcr-us-dSL" firstAttribute="leading" secondItem="SQ0-hQ-ncF" secondAttribute="leading" id="sse-2d-K0s"/>
                                     <constraint firstItem="z6V-Xp-Xq1" firstAttribute="centerX" secondItem="SQ0-hQ-ncF" secondAttribute="centerX" id="zmq-EI-4tC"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1IU-Bv-sPi" customClass="NFValuesFilterView">
-                                <rect key="frame" x="0.0" y="104" width="375" height="55"/>
+                                <rect key="frame" x="0.0" y="110" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="JCR-Vv-hi7"/>
@@ -1828,7 +1828,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pAf-IO-KIH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7164" y="2756.6716641679163"/>
+            <point key="canvasLocation" x="8103.1999999999998" y="2756.6716641679163"/>
         </scene>
         <!--Statistic Detail Controller-->
         <scene sceneID="Eeq-bC-z8I">
@@ -1988,7 +1988,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scJ-fD-16w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7949.6000000000004" y="2756.6716641679163"/>
+            <point key="canvasLocation" x="8888.7999999999993" y="2756.6716641679163"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ubb-r0-7pK">
@@ -2095,6 +2095,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QxC-iI-TDF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6224.8000000000002" y="2756.6716641679163"/>
+        </scene>
+        <!--Result Controller-->
+        <scene sceneID="1tB-yM-XRC">
+            <objects>
+                <viewController storyboardIdentifier="NFResultController" id="gb6-Fn-PNc" customClass="NFResultController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yWp-ex-KMD"/>
+                        <viewControllerLayoutGuide type="bottom" id="wNU-Ri-i81"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SA3-Zc-Bbb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JFZ-JG-cGL" customClass="NFHeaderView">
+                                <rect key="frame" x="0.0" y="64" width="375" height="46"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="46" id="H3Q-HC-suG"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-UQ-UPz">
+                                <rect key="frame" x="0.0" y="110" width="375" height="557"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gb6-Fn-PNc" id="qp0-Oy-IIA"/>
+                                    <outlet property="delegate" destination="gb6-Fn-PNc" id="fE4-QH-eUZ"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hMU-UQ-UPz" secondAttribute="trailing" id="5r3-Gw-3ep"/>
+                            <constraint firstItem="JFZ-JG-cGL" firstAttribute="leading" secondItem="SA3-Zc-Bbb" secondAttribute="leading" id="Dnw-6C-5cE"/>
+                            <constraint firstItem="hMU-UQ-UPz" firstAttribute="leading" secondItem="SA3-Zc-Bbb" secondAttribute="leading" id="Ezg-N9-E8n"/>
+                            <constraint firstItem="wNU-Ri-i81" firstAttribute="top" secondItem="hMU-UQ-UPz" secondAttribute="bottom" id="Vr0-Wb-BgN"/>
+                            <constraint firstItem="hMU-UQ-UPz" firstAttribute="top" secondItem="JFZ-JG-cGL" secondAttribute="bottom" id="YT2-2f-T3O"/>
+                            <constraint firstAttribute="trailing" secondItem="JFZ-JG-cGL" secondAttribute="trailing" id="ng6-sg-kQT"/>
+                            <constraint firstItem="JFZ-JG-cGL" firstAttribute="top" secondItem="yWp-ex-KMD" secondAttribute="bottom" id="vAG-q8-zeQ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="eAY-uV-qBL"/>
+                    <connections>
+                        <outlet property="headerView" destination="JFZ-JG-cGL" id="Vei-aC-tt9"/>
+                        <outlet property="tableView" destination="hMU-UQ-UPz" id="ER3-FS-oC3"/>
+                        <segue destination="QPp-P9-HtQ" kind="show" id="cJn-ti-RB9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jFv-ZD-Svd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7167.1999999999998" y="3401.649175412294"/>
+        </scene>
+        <!--Result Detail Controller-->
+        <scene sceneID="75C-Pb-HMg">
+            <objects>
+                <viewController storyboardIdentifier="NFResultDetailController" id="QPp-P9-HtQ" customClass="NFResultDetailController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aa4-LC-rCI"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iha-fJ-V2n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Ci-eg-Y7x">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uE3-5s-Fsa">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="QPp-P9-HtQ" id="oQM-kY-j2F"/>
+                                    <outlet property="delegate" destination="QPp-P9-HtQ" id="A9x-3B-Rk1"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Iha-fJ-V2n" firstAttribute="top" secondItem="uE3-5s-Fsa" secondAttribute="bottom" id="Xat-QQ-s06"/>
+                            <constraint firstItem="uE3-5s-Fsa" firstAttribute="leading" secondItem="3Ci-eg-Y7x" secondAttribute="leading" id="eou-hA-9Zl"/>
+                            <constraint firstAttribute="trailing" secondItem="uE3-5s-Fsa" secondAttribute="trailing" id="gB1-3z-YoV"/>
+                            <constraint firstItem="uE3-5s-Fsa" firstAttribute="top" secondItem="aa4-LC-rCI" secondAttribute="bottom" id="ihj-9N-2Pv"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="uE3-5s-Fsa" id="us8-0c-IIn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="csm-b1-WXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7992.8000000000002" y="3401.649175412294"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3Ky-I6-KK4">
+            <objects>
+                <navigationController storyboardIdentifier="NFResultControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="Qgf-BS-TID" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="pdl-yL-QQH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="gb6-Fn-PNc" kind="relationship" relationship="rootViewController" id="UOO-Gs-BBE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rzb-38-qSL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6228" y="3401.649175412294"/>
         </scene>
     </scenes>
     <resources>

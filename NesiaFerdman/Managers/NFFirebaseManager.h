@@ -10,6 +10,8 @@
 #import "NFEvent.h"
 #import "NotifyList.h"
 #import "NFValue.h"
+#import "NFResult.h"
+
 @import Firebase;
 
 
@@ -17,6 +19,8 @@
 @interface NFFirebaseManager : NSObject
 @property (strong, nonatomic) NSMutableArray *firebaseEventsArray;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
+@property (strong, nonatomic) NSMutableArray *resultCategoryArray;
+@property (strong, nonatomic) NSMutableArray *resultsArray;
 
 + (NFFirebaseManager *)sharedManager;
 
@@ -27,10 +31,16 @@
 - (void)getDataFromFirebase;
 
 - (void)getAllValues;
+
+- (void)getAllResultCategory;
+- (void)getAllResultsWithUserId:(NSString*)userId;
+- (void)addResult:(NFResult*)result withUserId:(NSString *)userId;
+
 - (void)deleteValue:(NFValue *)value withUserId:(NSString *)userId;
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId;
 
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
+- (void) addStandartListOfResultCategoryToDateBase;
 
 //
 

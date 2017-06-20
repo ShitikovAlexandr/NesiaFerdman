@@ -30,12 +30,23 @@
         self.eventConclusionsDictionary = [NSMutableDictionary dictionary];
         self.valuesArray = [NSMutableArray array];
         self.selectedValuesArray = [NSMutableArray array];
+        self.resultCategoryArray = [NSMutableArray array];
+        self.resultsArray = [NSMutableArray array];
+        self.resultsDictionary = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
+- (NSMutableArray*)getAllResultCategory {
+    return self.resultCategoryArray;
+}
+
 - (NSMutableArray *)getAllValues {
     return self.valuesArray;
+}
+
+- (NSMutableArray*)getAllResult {
+    return self.resultsArray;
 }
 
 - (NSMutableArray *)getTaskForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray {
@@ -168,6 +179,7 @@
     [self.eventImportantDictionary removeAllObjects];
     [self.eventConclusionsDictionary removeAllObjects];
     [self.valuesArray removeAllObjects];
+    [self.resultCategoryArray removeAllObjects];
 }
 
 - (NSMutableArray*)filterArray:(NSArray*)input withFilterArray:(NSArray*)filterArray {

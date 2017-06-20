@@ -23,9 +23,13 @@
 @property (strong, nonatomic) NSMutableDictionary *eventImportantDictionary;
 @property (strong, nonatomic) NSMutableDictionary *eventConclusionsDictionary;
 
-
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 @property (strong, nonatomic) NSMutableArray *selectedValuesArray;
+
+@property (strong, nonatomic) NSMutableArray *resultCategoryArray;
+
+@property (strong, nonatomic) NSMutableArray *resultsArray;
+@property (strong, nonatomic) NSMutableDictionary *resultsDictionary;
 
 @property (strong, nonatomic) NFYearTask *yearTask;
 
@@ -44,9 +48,9 @@
 - (NSMutableArray *)getConclusionsForMonth:(NSDate*)currentDate;
 - (NSMutableDictionary *)eventSortedByValue:(NSMutableArray* )inputArray;
 
-
-
 - (NSMutableArray *)getAllValues;
+- (NSMutableArray*)getAllResultCategory;
+- (NSMutableArray*)getAllResult;
 
 - (void)clearAllData;
 - (void)addAllEventsFromArray:(NSMutableArray *)array;

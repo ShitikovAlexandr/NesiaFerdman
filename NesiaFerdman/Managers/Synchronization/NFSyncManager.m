@@ -72,6 +72,12 @@
     [[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:_userId];
 }
 
+- (void)addStandartListOfResultCategory {
+    [[NFFirebaseManager sharedManager] addStandartListOfResultCategoryToDateBase];
+}
+
+
+
 //Methods of downloading/uploading the data managers
 
 
@@ -98,6 +104,14 @@
 
 - (void)writeValueToFirebase:(NFValue *)value {
     [[NFFirebaseManager sharedManager] addValue:value withUserId:_userId];
+}
+
+- (void)writeResultToFirebase:(NFResult*)result {
+    [[NFFirebaseManager sharedManager] addResult:result withUserId:_userId];
+}
+
+- (void)updateAllResults {
+    [[NFFirebaseManager sharedManager] getAllResultsWithUserId:_userId];
 }
 
 - (void)deleteValueFromFirebase:(NFValue *)value {
@@ -156,6 +170,11 @@
     }
 }
 
+- (void)updateResults {
+    [[NFFirebaseManager sharedManager] getAllResultsWithUserId:_userId];
+    [[NFTaskManager sharedManager].resultsArray addObjectsFromArray:[NFFirebaseManager sharedManager].resultsArray];
+}
+
 - (void)filterEvents {
     [self.eventsArray removeAllObjects];
     [self.eventsArray addObjectsFromArray:[NFFirebaseManager sharedManager].firebaseEventsArray]; // new
@@ -163,15 +182,17 @@
     
     [[NFTaskManager sharedManager] addAllEventsFromArray:self.eventsArray];
     [[NFTaskManager sharedManager].valuesArray removeAllObjects];
+    [[NFTaskManager sharedManager].resultCategoryArray removeAllObjects];
+    [[NFTaskManager sharedManager].resultCategoryArray addObjectsFromArray: [self sortArray:[NFFirebaseManager sharedManager].resultCategoryArray withKey:@"resultCategoryIndex"]];
+    
+    [[NFTaskManager sharedManager].resultsArray removeAllObjects];
+    [[NFTaskManager sharedManager].resultsArray  addObjectsFromArray:[NFFirebaseManager sharedManager].resultsArray];
+    
     [[NFTaskManager sharedManager].valuesArray addObjectsFromArray:[self sortArray:self.valuesArray withKey:@"valueIndex"]];
     NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 //    [self clearAllData];
-
-    
 }
-
-
 
 - (NSMutableArray *)addEventWithFilterFromArray:(NSMutableArray*)eventsArray {
     NSMutableArray *tempInputArray = [NSMutableArray array];

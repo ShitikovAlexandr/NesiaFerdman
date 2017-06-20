@@ -8,6 +8,8 @@
 
 #import "NFFirebaseManager.h"
 #import "NFGoogleManager.h"
+#import "NFResultCategory.h"
+
 @import FirebaseAuth;
 
 @interface NFFirebaseManager()
@@ -16,6 +18,9 @@
 
 @property (assign, nonatomic) BOOL isValueLoaded;
 @property (assign, nonatomic) BOOL isEventLoaded;
+@property (assign, nonatomic) BOOL isResultCategoryLoaded;
+@property (assign, nonatomic) BOOL isResultLoaded;
+
 
 @end
 
@@ -36,6 +41,8 @@
         self.ref = [[FIRDatabase database] reference];
         self.firebaseEventsArray = [NSMutableArray array];
         self.valuesArray = [NSMutableArray array];
+        self.resultCategoryArray = [NSMutableArray array];
+        self.resultsArray = [NSMutableArray array];
             }
     return self;
 }
@@ -90,6 +97,8 @@
          }
          
          [self getAllValues];
+         [self getAllResultCategory];
+         [self getAllResultsWithUserId:[[NFGoogleManager sharedManager] getUserId]];
          
          [self.firebaseEventsArray removeAllObjects];
          [self.firebaseEventsArray addObjectsFromArray:eventsArray];
@@ -127,14 +136,79 @@
          [self.valuesArray addObjectsFromArray:valuesArray];
          _isValueLoaded = YES;
          [self compliteLoading];
-        
-
      }];
+}
+
+- (void)getAllResultsWithUserId:(NSString*)userId {
+    [[[[self.ref child:@"Users"] child:userId] child:@"Results"]
+     observeEventType:FIRDataEventTypeValue
+     withBlock:^(FIRDataSnapshot *snapshot) {
+         NSMutableArray *valuesArray = [NSMutableArray array];
+         
+         // Loop over children
+         NSMutableArray *dataArray = [NSMutableArray array];
+         NSEnumerator *children = [snapshot children];
+         //NSLog(@"children %@", children);
+         FIRDataSnapshot *child;
+         while (child = [children nextObject]) {
+             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+             [dataArray addObject:value];
+             //NSLog(@"events form firebase->>> %@", event);
+         }
+         for (NSDictionary *dic in dataArray) {
+             NFResult *val = [[NFResult alloc] initWithDictionary:dic];
+             [valuesArray addObject:val];
+             //NSLog(@"value name %@", val.valueTitle);
+         }
+         [self.resultsArray removeAllObjects];
+         [self.resultsArray addObjectsFromArray:valuesArray];
+         _isResultLoaded = YES;
+         [self compliteLoading];
+     }];
+}
+
+- (void)getAllResultCategory {
+   [[self.ref child:@"ResultCategory"]
+     observeEventType:FIRDataEventTypeValue
+     withBlock:^(FIRDataSnapshot *snapshot) {
+         NSMutableArray *valuesArray = [NSMutableArray array];
+         
+         // Loop over children
+         NSMutableArray *dataArray = [NSMutableArray array];
+         NSEnumerator *children = [snapshot children];
+         FIRDataSnapshot *child;
+         while (child = [children nextObject]) {
+             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+             [dataArray addObject:value];
+             //NSLog(@"events form firebase->>> %@", event);
+         }
+         for (NSDictionary *dic in dataArray) {
+             NFResultCategory *val = [[NFResultCategory alloc] initWithDictionary:dic];
+             [valuesArray addObject:val];
+             NSLog(@"NFResultCategory name %@", val.resultCategoryTitle);
+         }
+         [self.resultCategoryArray removeAllObjects];
+         [self.resultCategoryArray addObjectsFromArray:valuesArray];
+         _isResultCategoryLoaded = YES;
+         [self compliteLoading];
+         
+         
+     }];
+
+    
+}
+
+- (void)addResultCategory:(NFResultCategory *)category {
+     [[[self.ref child:@"ResultCategory"]  child:category.resultCategoryId] updateChildValues:[category convertToDictionary]];
 }
 
 
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId {
     [[[[[self.ref child:@"Users"] child:userId] child:@"Values"] child:value.valueId] updateChildValues:[value convertToDictionary]];
+}
+
+- (void)addResult:(NFResult*)result withUserId:(NSString *)userId {
+    [[[[[self.ref child:@"Users"] child:userId] child:@"Results"] child:result.resultId] updateChildValues:[result convertToDictionary]];
 }
 
 - (void)deleteValue:(NFValue *)value withUserId:(NSString *)userId {
@@ -173,6 +247,8 @@
         return;
     }
 }
+
+// standart data Admin part
 
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId {
     
@@ -233,14 +309,81 @@
     [self addValue:relaxation withUserId:userId];
 }
 
+- (void) addStandartListOfResultCategoryToDateBase {
+    NFResultCategory *achievements = [NFResultCategory new];
+    achievements.resultCategoryTitle = @"Достижения";
+    achievements.resultCategoryId = @"0703F55D-0CAE-495C-8202-achievements";
+    achievements.resultCategoryIndex = @0;
+    [self addResultCategory:achievements];
+    //
+    NFResultCategory *discoveries = [NFResultCategory new];
+    discoveries.resultCategoryTitle = @"Открытия";
+    discoveries.resultCategoryId = @"0703F55D-0CAE-495C-8202-discoveries";
+    discoveries.resultCategoryIndex = @1;
+    [self addResultCategory:discoveries];
+
+    //
+    NFResultCategory *people = [NFResultCategory new];
+    people.resultCategoryTitle = @"Люди";
+    people.resultCategoryId = @"0703F55D-0CAE-495C-8202-people";
+    people.resultCategoryIndex = @2;
+    [self addResultCategory:people];
+
+    //
+    NFResultCategory *quotesOrThoughts = [NFResultCategory new];
+    quotesOrThoughts.resultCategoryTitle = @"Цитаты или мысли";
+    quotesOrThoughts.resultCategoryId = @"0703F55D-0CAE-495C-8202-quotesOrThoughts";
+    quotesOrThoughts.resultCategoryIndex = @3;
+    [self addResultCategory:quotesOrThoughts];
+
+    //
+    NFResultCategory *growthArea = [NFResultCategory new];
+    growthArea.resultCategoryTitle = @"Зона роста";
+    growthArea.resultCategoryId = @"0703F55D-0CAE-495C-8202-growthArea";
+    growthArea.resultCategoryIndex = @4;
+    [self addResultCategory:growthArea];
+
+    //
+    NFResultCategory *pleased = [NFResultCategory new];
+    pleased.resultCategoryTitle = @"Порадовало";
+    pleased.resultCategoryId = @"0703F55D-0CAE-495C-8202-pleased";
+    pleased.resultCategoryIndex = @5;
+    [self addResultCategory:pleased];
+
+    //
+    NFResultCategory *interesting = [NFResultCategory new];
+    interesting.resultCategoryTitle = @"Интересное";
+    interesting.resultCategoryId = @"0703F55D-0CAE-495C-8202-interesting";
+    interesting.resultCategoryIndex = @6;
+    [self addResultCategory:interesting];
+
+    //
+    NFResultCategory *thankfulness = [NFResultCategory new];
+    thankfulness.resultCategoryTitle = @"Благодарность";
+    thankfulness.resultCategoryId = @"0703F55D-0CAE-495C-8202-thankfulness";
+    thankfulness.resultCategoryIndex = @7;
+    [self addResultCategory:thankfulness];
+
+    //
+    
+    
+    
+
+    
+    
+}
+
 - (void)compliteLoading {
-    if (_isValueLoaded && _isEventLoaded) {
+    if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded) {
         NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
         _isValueLoaded = NO;
         _isEventLoaded = NO;
+        _isResultCategoryLoaded = NO;
+        _isResultLoaded = NO;
     }
 }
+
 
 - (void)clearData {
     [self.firebaseEventsArray removeAllObjects];

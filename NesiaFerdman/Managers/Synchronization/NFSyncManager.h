@@ -22,12 +22,13 @@
 
 + (NFSyncManager *)sharedManager;
 
-
 - (void)updateAllData;
 - (void)clearAllData;
 - (void)writeEventToFirebase:(NFEvent *)event;
 - (void)addStandartListOfValue;
+- (void)addStandartListOfResultCategory;
 - (void)writeValueToFirebase:(NFValue *)value;
+- (void)writeResultToFirebase:(NFResult*)result;
 - (void)deleteValueFromFirebase:(NFValue *)value;
 
 - (BOOL)isFirstRunApp;

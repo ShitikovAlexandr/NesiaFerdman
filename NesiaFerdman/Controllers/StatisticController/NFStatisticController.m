@@ -11,6 +11,7 @@
 #import "NFStatisticMainCell.h"
 #import "NFStyleKit.h"
 #import "NFStatisticDetailController.h"
+#import "NFResultCategory.h"
 
 
 @interface NFStatisticController () <UITableViewDelegate, UITableViewDataSource, JTCalendarDelegate>
@@ -124,6 +125,7 @@
     menuItemView.text = [dateFormatter stringFromDate:date].uppercaseString;
 }
 
+
 - (IBAction)scrollCalendarAction:(UIButton*)sender {
     if (sender.tag == 1) {
         [self.calendarContentView loadPreviousPageWithAnimation];
@@ -155,7 +157,6 @@
 - (void)createMinAndMaxDate
 {
     _todayDate = [NSDate date];
-    
     // Min date will be 2 month before today
     _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
     

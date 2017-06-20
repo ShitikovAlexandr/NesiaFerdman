@@ -11,6 +11,7 @@
 
 #import "NFLoginSimpleController.h"
 #import "NFValueController.h"
+#import "NFResultController.h"
 
 typedef NS_ENUM(NSInteger, MenuItem)
 {
@@ -40,6 +41,10 @@ typedef NS_ENUM(NSInteger, MenuItem)
     switch (index) {
         case Results:
         {
+            NFResultController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFResultController class])];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [target presentViewController:navController animated:YES completion:nil];
             
             break;
         }
