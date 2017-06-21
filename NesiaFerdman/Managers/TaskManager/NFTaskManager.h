@@ -13,6 +13,8 @@
 #import "NFDayTask.h"
 #import "NFHourTask.h"
 #import "NFEvent.h"
+#import "NFResult.h"
+#import "NFResultCategory.h"
 
 @interface NFTaskManager : NSObject
 @property (strong, nonatomic) NSMutableArray *inputEventsArray;
@@ -51,6 +53,7 @@
 - (NSMutableArray *)getAllValues;
 - (NSMutableArray*)getAllResultCategory;
 - (NSMutableArray*)getAllResult;
+- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forDay:(NSDate*)date;
 
 - (void)clearAllData;
 - (void)addAllEventsFromArray:(NSMutableArray *)array;

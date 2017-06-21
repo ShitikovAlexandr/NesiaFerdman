@@ -44,59 +44,105 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KiB-iW-CIA">
                         <rect key="frame" x="0.0" y="59" width="375" height="46"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Поставленные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiA-2V-mgd">
-                                <rect key="frame" x="68" y="0.0" width="299" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поставленные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiA-2V-mgd">
+                                <rect key="frame" x="68" y="0.0" width="299" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="y8d-bF-kSv"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njT-wu-SHL">
-                                <rect key="frame" x="344" y="18" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="njT-wu-SHL">
+                                <rect key="frame" x="339" y="22" width="25" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="s6j-pW-xZr"/>
+                                    <constraint firstAttribute="width" constant="25" id="shf-oU-4NX"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-iq-RHQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z9D-iq-RHQ">
                                 <rect key="frame" x="68" y="21" width="12" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="Tvw-pq-zH7"/>
+                                    <constraint firstAttribute="height" constant="12" id="rbm-wS-qoF"/>
+                                </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-H6-LOm" customClass="NFProgressView">
-                                <rect key="frame" x="93" y="22" width="240" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qwT-H6-LOm" customClass="NFProgressView">
+                                <rect key="frame" x="93" y="22" width="234" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="5Dr-La-fkj"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="QiA-2V-mgd" firstAttribute="top" secondItem="KiB-iW-CIA" secondAttribute="top" id="2tC-Wk-puU"/>
+                            <constraint firstItem="QiA-2V-mgd" firstAttribute="leading" secondItem="KiB-iW-CIA" secondAttribute="leading" constant="68" id="4sh-Kl-szk"/>
+                            <constraint firstItem="qwT-H6-LOm" firstAttribute="top" secondItem="QiA-2V-mgd" secondAttribute="bottom" constant="5" id="9BD-tb-JIo"/>
+                            <constraint firstItem="njT-wu-SHL" firstAttribute="leading" secondItem="qwT-H6-LOm" secondAttribute="trailing" constant="11.5" id="AMn-mR-tWQ"/>
+                            <constraint firstItem="Z9D-iq-RHQ" firstAttribute="leading" secondItem="KiB-iW-CIA" secondAttribute="leading" constant="68" id="Cop-TQ-DdA"/>
+                            <constraint firstAttribute="trailing" secondItem="QiA-2V-mgd" secondAttribute="trailing" constant="8" id="PZZ-1a-AoQ"/>
+                            <constraint firstItem="njT-wu-SHL" firstAttribute="leading" secondItem="qwT-H6-LOm" secondAttribute="trailing" constant="11.5" id="Wxp-7C-hye"/>
+                            <constraint firstItem="njT-wu-SHL" firstAttribute="top" secondItem="QiA-2V-mgd" secondAttribute="bottom" constant="5" id="Xxh-fx-Igd"/>
+                            <constraint firstItem="qwT-H6-LOm" firstAttribute="leading" secondItem="Z9D-iq-RHQ" secondAttribute="trailing" constant="13" id="ZAK-JQ-Q4V"/>
+                            <constraint firstAttribute="trailing" secondItem="njT-wu-SHL" secondAttribute="trailing" constant="11" id="dcX-HX-SgP"/>
+                            <constraint firstItem="qwT-H6-LOm" firstAttribute="leading" secondItem="Z9D-iq-RHQ" secondAttribute="trailing" constant="13" id="f2L-KM-wqg"/>
+                            <constraint firstItem="Z9D-iq-RHQ" firstAttribute="top" secondItem="QiA-2V-mgd" secondAttribute="bottom" constant="4" id="gdw-Kb-vYa"/>
                             <constraint firstAttribute="height" constant="46" id="x4J-Mb-DPI"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0c-Eg-iei">
                         <rect key="frame" x="0.0" y="105" width="375" height="54.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Выполненные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-Dg-4Bp">
-                                <rect key="frame" x="68" y="0.0" width="299" height="13"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Выполненные задачи" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ous-Dg-4Bp">
+                                <rect key="frame" x="68" y="0.0" width="299" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="RQ9-BU-MoT"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E54-eJ-ezh">
-                                <rect key="frame" x="344" y="18" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E54-eJ-ezh">
+                                <rect key="frame" x="339" y="22" width="25" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="lbp-TM-ooE"/>
+                                    <constraint firstAttribute="height" constant="17" id="xRU-rT-d4x"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-q5-jnV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checked_disable.png" translatesAutoresizingMaskIntoConstraints="NO" id="aQ3-q5-jnV">
                                 <rect key="frame" x="68" y="21" width="12" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="WO3-aE-4TL"/>
+                                    <constraint firstAttribute="height" constant="12" id="eY2-j7-Eva"/>
+                                </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-Cz-LoM" customClass="NFProgressView">
-                                <rect key="frame" x="93" y="21" width="240" height="12"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pe2-Cz-LoM" customClass="NFProgressView">
+                                <rect key="frame" x="93" y="21" width="235" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="bw1-43-Fhp"/>
+                                </constraints>
                             </view>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="aQ3-q5-jnV" firstAttribute="top" secondItem="Ous-Dg-4Bp" secondAttribute="bottom" constant="4" id="10V-8Q-OCc"/>
+                            <constraint firstItem="Pe2-Cz-LoM" firstAttribute="leading" secondItem="aQ3-q5-jnV" secondAttribute="trailing" constant="13" id="1Jo-UG-l20"/>
+                            <constraint firstItem="Ous-Dg-4Bp" firstAttribute="top" secondItem="j0c-Eg-iei" secondAttribute="top" id="ASg-y7-Nl9"/>
+                            <constraint firstItem="E54-eJ-ezh" firstAttribute="top" secondItem="Ous-Dg-4Bp" secondAttribute="bottom" constant="5" id="Asz-Ay-tbH"/>
+                            <constraint firstItem="E54-eJ-ezh" firstAttribute="leading" secondItem="Pe2-Cz-LoM" secondAttribute="trailing" constant="11" id="L7L-sF-9SD"/>
+                            <constraint firstItem="E54-eJ-ezh" firstAttribute="leading" secondItem="Pe2-Cz-LoM" secondAttribute="trailing" constant="11" id="NIN-kT-RQ9"/>
+                            <constraint firstAttribute="trailing" secondItem="Ous-Dg-4Bp" secondAttribute="trailing" constant="8" id="XV4-Kt-nyL"/>
+                            <constraint firstItem="aQ3-q5-jnV" firstAttribute="leading" secondItem="j0c-Eg-iei" secondAttribute="leading" constant="68" id="Xll-KN-fVK"/>
+                            <constraint firstItem="Ous-Dg-4Bp" firstAttribute="leading" secondItem="j0c-Eg-iei" secondAttribute="leading" constant="68" id="csc-Kn-g2v"/>
+                            <constraint firstItem="Pe2-Cz-LoM" firstAttribute="top" secondItem="Ous-Dg-4Bp" secondAttribute="bottom" constant="4" id="eNr-SH-lkF"/>
+                            <constraint firstAttribute="trailing" secondItem="E54-eJ-ezh" secondAttribute="trailing" constant="11" id="gt7-Op-mvc"/>
+                            <constraint firstItem="Pe2-Cz-LoM" firstAttribute="leading" secondItem="aQ3-q5-jnV" secondAttribute="trailing" constant="13" id="ykx-Mm-xsv"/>
+                        </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EhA-z6-sz0">
                         <rect key="frame" x="0.0" y="159.5" width="375" height="36"/>

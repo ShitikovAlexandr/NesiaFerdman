@@ -36,6 +36,7 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-   
+    self.progressLayer.frame = self.bounds;
+
 }
 @end

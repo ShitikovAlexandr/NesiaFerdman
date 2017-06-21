@@ -81,14 +81,13 @@
     self.progressLayer.lineCap = kCALineCapRound;
     self.progressLayer.masksToBounds = YES;
     [self.layer addSublayer:self.progressLayer];
-
-    
-    
 }
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+    self.progressLayer.frame = self.bounds;
+    UIBezierPath* progressPath = [UIBezierPath bezierPathWithArcCenter:CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2) radius:self.frame.size.width / 2 - 10 startAngle:DEGREES_TO_RADIANS(-90) endAngle:DEGREES_TO_RADIANS(270) clockwise:YES];
+    self.progressLayer.path = progressPath.CGPath;
 }
 
 

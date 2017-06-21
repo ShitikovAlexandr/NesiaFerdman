@@ -19,6 +19,7 @@
         self.resultIndex = [dictionary objectForKey:@"resultIndex"];
         self.resultDescription = [dictionary objectForKey:@"resultDescription"];
         self.resultCategoryId = [dictionary objectForKey:@"resultCategoryId"];
+        self.startDate = [dictionary objectForKey:@"startDate"];
     }
     return self;
 }
@@ -36,6 +37,17 @@
     free(properties);
     return dictionary;
 }
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        NSString *newID = [[NSUUID UUID] UUIDString];
+        self.resultId = newID;
+        self.startDate = [NSString stringWithFormat:@"%@", [NSDate date]];
+    }
+    return self;
+}
+
 
 
 @end

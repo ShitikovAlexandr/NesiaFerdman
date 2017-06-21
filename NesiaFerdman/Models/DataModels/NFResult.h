@@ -14,6 +14,7 @@
 @property (strong, nonatomic) NSString* resultId;
 @property (strong, nonatomic) NSNumber* resultIndex;
 @property (strong, nonatomic) NSString *resultCategoryId;
+@property (strong, nonatomic) NSString *startDate;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)convertToDictionary;

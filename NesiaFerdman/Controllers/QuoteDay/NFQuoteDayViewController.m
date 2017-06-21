@@ -17,6 +17,8 @@
 
 
 @interface NFQuoteDayViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *monthLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dayLabel;
 @property (weak, nonatomic) IBOutlet NFRoundButton *nextbutton;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
@@ -32,6 +34,7 @@
     self.quoteLabel.text = day.quote;
     [self.quoteLabel sizeToFit];
     self.autorLabel.text = day.autor;
+    [self setCurrentDateToScreen];
     
     
 }
@@ -43,6 +46,19 @@
 - (IBAction)goNextAction:(NFRoundButton *)sender {
     NSLog(@"go next from quote of the day to the calendar ->");
     
+}
+
+- (void)setCurrentDateToScreen {
+    NSDate *currentDate = [NSDate date];
+    self.dayLabel.text = [self stringFromDate:currentDate withFormat:@"dd"];
+    self.monthLabel.text = [self stringFromDate:currentDate withFormat:@"MMMM"];
+    
+}
+
+- (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString*)formar {
+    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    [dateFormater setDateFormat:formar];
+    return [dateFormater stringFromDate:date];
 }
 
 @end

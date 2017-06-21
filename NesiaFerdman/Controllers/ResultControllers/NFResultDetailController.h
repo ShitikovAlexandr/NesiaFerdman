@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "NFResultCategory.h"
+#import "NFWeekDateModel.h"
 
 @interface NFResultDetailController : UIViewController
 @property (strong, nonatomic) NFResultCategory *selectedCategory;
 @property (strong, nonatomic) NSDate *selectedDate;
+@property (strong, nonatomic) NFWeekDateModel *week;
 
 @end

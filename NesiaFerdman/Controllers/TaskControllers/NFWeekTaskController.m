@@ -127,7 +127,6 @@
             [self.dataArray addObject:dayArray];
         }
     }
-    [_tableView setEditing:NO animated:YES];
     [self.tableView reloadData];
     NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
     NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];

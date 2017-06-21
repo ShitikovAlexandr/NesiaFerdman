@@ -43,6 +43,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.calendarContentView = [[JTHorizontalCalendarView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height * 0.58)];
+
+    
     [_ValuesFilterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
     NSLog(@"[UIScreen mainScreen].scale %f", [UIScreen mainScreen].scale);
     _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
@@ -250,11 +253,19 @@
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (_dataArray.count > 0) {
-        return _dataArray.count;
+    if (section == 0) {
+        return 0;
     } else {
-        return 1;
+        if (_dataArray.count > 0) {
+            return _dataArray.count;
+        } else {
+            return 1;
+        }
     }
 }
 
@@ -276,14 +287,24 @@
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
-    [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
-    [headerView setCurrentDate:_dateSelected?_dateSelected:_todayDate];
-    return headerView;
+    if (section == 0) {
+               return self.calendarContentView;
+        
+    } else {
+        NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
+        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
+        [headerView setCurrentDate:_dateSelected?_dateSelected:_todayDate];
+        return headerView;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [NFHeaderForTaskSection headerSize];
+    if (section == 0) {
+        return self.view.frame.size.height * 0.58;
+    } else {
+        return [NFHeaderForTaskSection headerSize];
+
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -326,6 +347,7 @@
 - (void)setEventsToTableViewWithCurrentDate:(NSDate *)date {
     [self.dataArray removeAllObjects];
     self.dataArray = [[NFTaskManager sharedManager] getTasksForDay:date];
+    [self.tableView reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
 

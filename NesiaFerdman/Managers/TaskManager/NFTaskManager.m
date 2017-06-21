@@ -49,10 +49,25 @@
     return self.resultsArray;
 }
 
+- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forDay:(NSDate*)date {
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NFResult *result in _resultsArray) {
+        if ([result.resultCategoryId isEqualToString:resultCategory.resultCategoryId]) {
+            [tempArray addObject:result];
+        }
+    }
+    NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
+    [self convertToDictionary:resultDic array:tempArray];
+    NSMutableArray *result = [NSMutableArray array];
+    [result addObjectsFromArray:[resultDic objectForKey:[self stringFromDate:date]]];
+    return result;
+}
+
 - (NSMutableArray *)getTaskForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray {
     NSMutableArray *result = [NSMutableArray array];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.startDate contains[c] %@",[NSString stringWithFormat:@"T%02ld", (long)hour]];
     [result addObjectsFromArray:[eventsArray filteredArrayUsingPredicate:predicate]];
+    NSLog(@"%@", self.yearTask);
     return [self sortArray:result withKey:@"startDate"];
 }
 
@@ -244,6 +259,8 @@
     [eventsConclusions addObjectsFromArray:[array filteredArrayUsingPredicate:predicateConclusions]];
     [self.inputConclusionsEventsArray addObjectsFromArray:eventsConclusions];
     [self convertToDictionary:_eventConclusionsDictionary array:_inputConclusionsEventsArray];
+    
+    [self convertToDictionary:self.resultsDictionary array:self.resultsArray];
 }
 
 - (NSMutableArray*)sortArray:(NSMutableArray *)array withKey:(NSString*)key {

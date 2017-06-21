@@ -11,6 +11,9 @@
 #import "NFTaskManager.h"
 #import "NFResultCategory.h"
 #import "NFResultDetailController.h"
+#import "UIBarButtonItem+FHButtons.h"
+#import "NFWeekDateModel.h"
+
 
 @interface NFResultController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
@@ -22,7 +25,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self addNavigationButton];
+//    [self addNavigationButton];
     self.title = @"Итоги";
     self.tableView.tableFooterView = [UIView new];
     self.dataArray = [NSMutableArray array];
@@ -31,6 +34,8 @@
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
     [self.headerView addNFDateModel:dateLimits weeks:YES];
     [self addDataToDisplay];
+    [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+
 
 }
 
@@ -69,7 +74,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
-    [self navigateToDitailWithDate:_headerView.selectetDate category:category];
+    [self navigateToDitailCategory:category];
 }
 
 #pragma mark - Helpers
@@ -98,11 +103,11 @@
     [label.layer addAnimation:animation forKey:@"changeTextTransition"];
 }
 
-- (void)navigateToDitailWithDate:(NSDate*)date category:(NFResultCategory*)category {
+- (void)navigateToDitailCategory:(NFResultCategory*)category {
     NFResultDetailController *viewCotroller = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
-    viewCotroller.selectedDate = date;
+    viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
     viewCotroller.selectedCategory = category;
-    
+    [self.navigationController pushViewController:viewCotroller animated:YES];
 }
 
 @end
