@@ -30,6 +30,7 @@
         self.valueId = [dictionary objectForKey:@"valueId"];
         self.valueIndex = [dictionary objectForKey:@"valueIndex"];
         self.valueImage = [dictionary objectForKey:@"valueImage"];
+        self.isDeleted = [[dictionary objectForKey:@"isDeleted"] boolValue];
     }
     return self;
 }

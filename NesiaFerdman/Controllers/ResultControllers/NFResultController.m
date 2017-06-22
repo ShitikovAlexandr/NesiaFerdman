@@ -33,7 +33,6 @@
     NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
     [self.headerView addNFDateModel:dateLimits weeks:YES];
-    [self addDataToDisplay];
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
 
 
@@ -41,6 +40,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self addDataToDisplay];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDataToDisplay) name:HEADER_NOTIF object:nil];
 }
 

@@ -20,5 +20,7 @@
 #define IS_FIRST_RUN_APP @"kFirstRunApp"
 #define IS_FIRST_RUN_TODAY @"kFirstRunToday"
 
+#define CHANGE_IN_GOOGLR @"kChangeInGoogle"
+
 
 

@@ -36,6 +36,8 @@
         self.socialId = [dictionary objectForKey:@"socialId"];
         self.isImportant = [[dictionary objectForKey:@"isImportant"] boolValue];
         self.isDone = [[dictionary objectForKey:@"isDone"] boolValue];
+        self.isDeleted = [[dictionary objectForKey:@"isDeleted"] boolValue];
+        self.dateChange = [dictionary objectForKey:@"dateChange"];
     }
     return self;
 }
@@ -61,6 +63,7 @@
         NSString *newID = [[NSUUID UUID] UUIDString];
         self.eventId = newID;
         self.createDate = [NSString stringWithFormat:@"%@", [NSDate date]];
+        self.startDate = [NSString stringWithFormat:@"%@", [NSDate date]];
         self.eventType = Event;
     }
     return self;

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "NFFirebaseManager.h"
 #import "NFGoogleManager.h"
-#import "NFPhoneManager.h"
 #import "NFTaskManager.h"
 #import "NotifyList.h"
 #import "NFValue.h"

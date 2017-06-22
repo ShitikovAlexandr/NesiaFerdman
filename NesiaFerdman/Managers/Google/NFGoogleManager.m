@@ -81,7 +81,7 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     GTMOAuth2ViewControllerTouch *authController;
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
-    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeCalendarReadonly, nil];
+    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeCalendar, nil];
     authController = [[GTMOAuth2ViewControllerTouch alloc]
                       initWithScope:[scopes componentsJoinedByString:@" "]
                       clientID:kClientID
@@ -160,7 +160,9 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
         [self.eventsArray removeAllObjects];
         for (GTLCalendarEvent *event in events) {
           //  NSLog(@"event %@", event.summary);
-            [self.eventsArray addObject:[self NFEventFromGoogle:event]];
+            if (event) {
+                [self.eventsArray addObject:[self NFEventFromGoogle:event]];
+            }
         }
         NSNotification *notification = [NSNotification notificationWithName:GOOGLE_NOTIF object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
@@ -175,24 +177,47 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
 }
 
 - (NFEvent *)NFEventFromGoogle:(GTLCalendarEvent *)googleEvent {
-    
     NFEvent *event = [[NFEvent alloc]  init];
-    //NSLog(@"Google event %@", googleEvent.JSON);
+    NSLog(@"Google event %@", googleEvent.JSON);
     event.title = [googleEvent.JSON objectForKey:@"summary"];
     event.eventDescription = [googleEvent.JSON objectForKey:@"description"];
     event.createDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
-    event.startDate = [[[googleEvent.JSON objectForKey:@"start"] objectForKey:@"dateTime"] substringToIndex:19];
-    event.endDate = [[[googleEvent.JSON objectForKey:@"end"] objectForKey:@"dateTime"] substringToIndex:19];
+    
+    if ([[googleEvent.JSON objectForKey:@"start"] objectForKey:@"dateTime"]) {
+        event.startDate = [[[googleEvent.JSON objectForKey:@"start"] objectForKey:@"dateTime"] substringToIndex:19];
+    } else if ([[googleEvent.JSON objectForKey:@"start"] objectForKey:@"date"]) {
+        event.startDate =[NSString stringWithFormat:@"%@T00:01:00",[[googleEvent.JSON objectForKey:@"start"] objectForKey:@"date"] ];
+    } else {
+        event.startDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
+    }
+    
+    if ([[googleEvent.JSON objectForKey:@"end"] objectForKey:@"dateTime"]) {
+        event.endDate = [[[googleEvent.JSON objectForKey:@"end"] objectForKey:@"dateTime"] substringToIndex:19];
+    } else if ([[googleEvent.JSON objectForKey:@"end"] objectForKey:@"date"]) {
+        event.endDate =  [NSString stringWithFormat:@"%@T00:01:00",[[googleEvent.JSON objectForKey:@"end"] objectForKey:@"date"]];
+    } else  {
+        event.endDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
+    }
+    
+    //update key:updated   value:2017-06-21T08:10:19.845Z
+    
     //event.isRepeat = @"";
     //event.value = @"";
+    
     event.eventType = Event;
     event.socialType = GoogleEvent;
     //event.eventId = [googleEvent.JSON objectForKey:@"id"];
     event.socialId = [googleEvent.JSON objectForKey:@"id"];
+    NSLog(@"start %@ name %@", event.startDate, event.title);
+    [googleEvent setSummary:@"NEW EVENT FROM APP"];
+    
+    //GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];
+    //[self.service executeQuery:query delegate:nil didFinishSelector:nil];
+    //[GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];//googleEvent calendarId:@"shitikov.net@gmail.com" eventId:[googleEvent.JSON objectForKey:@"id"]];//iCalUID
+    //[self writeEvents];
+    [self addAnEvent];
     return event;
 }
-
-
 
 - (void)loadLoginScreenWithController:(id)controller {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
@@ -203,6 +228,97 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     [controller presentViewController:navController animated:YES completion:nil];
 }
 
+- (void)writEventToGoogle:(NFEvent*)event {
+    //[GTLQueryCalendar queryForEventsInsertWithObject:yourEventObject calendarId:yourCalendarId];
+}
 
+//- (void)writeEvents {
+//    GTLCalendarEvent *event = [GTLCalendarEvent new];
+//    
+//    // 予定のタイトル
+//    [event setSummary:@"イベント"];
+//    
+//    // 予定の説明
+//    [event setDescriptionProperty:@"created by google calendar sample"];
+//    
+//    // 予定の日時を指定する準備
+//    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+//    
+//    // 予定の開始日時
+//    GTLDateTime *startDateTime = [GTLDateTime dateTimeWithDate:[dateFormatter dateFromString:@"2015/07/19 11:00:00"] timeZone:[NSTimeZone systemTimeZone]];
+//    GTLCalendarEventDateTime *start = [GTLCalendarEventDateTime new];
+//    [start setDateTime:startDateTime];
+//    [start setTimeZone:@"Asia/Tokyo"];
+//    [event setStart:start];
+//    
+//    // 予定の終了日時
+//    GTLDateTime *endDateTime = [GTLDateTime dateTimeWithDate:[dateFormatter dateFromString:@"2015/07/19 15:00:00"] timeZone:[NSTimeZone systemTimeZone]];
+//    GTLCalendarEventDateTime *end = [GTLCalendarEventDateTime new];
+//    [end setDateTime:endDateTime];
+//    [end setTimeZone:@"Asia/Tokyo"];
+//    [event setEnd:end];
+//    
+//    //
+//    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:event calendarId:@"shitikov.net@gmail.com"];
+//    
+//    [self.service executeQuery:query
+//             completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+//                 NSLog(@"object = %@ error = %@", object, error);
+//             }];
+//}
+//
+
+- (void)addAnEvent {
+    // Make a new event, and show it to the user to edit
+    GTLCalendarEvent *newEvent = [GTLCalendarEvent object];
+    newEvent.summary = @"Sample Added Event";
+    newEvent.descriptionProperty = @"Description of sample added event";
+    
+    // We'll set the start time to now, and the end time to an hour from now,
+    // with a reminder 10 minutes before
+    NSDate *anHourFromNow = [NSDate dateWithTimeIntervalSinceNow:60*60];
+    GTLDateTime *startDateTime = [GTLDateTime dateTimeWithDate:[NSDate date]
+                                                      timeZone:[NSTimeZone systemTimeZone]];
+    GTLDateTime *endDateTime = [GTLDateTime dateTimeWithDate:anHourFromNow
+                                                    timeZone:[NSTimeZone systemTimeZone]];
+    
+    newEvent.start = [GTLCalendarEventDateTime object];
+    newEvent.start.dateTime = startDateTime;
+    
+    newEvent.end = [GTLCalendarEventDateTime object];
+    newEvent.end.dateTime = endDateTime;
+    
+    GTLCalendarEventReminder *reminder = [GTLCalendarEventReminder object];
+    reminder.minutes = [NSNumber numberWithInteger:10];
+    reminder.method = @"email";
+    
+    newEvent.reminders = [GTLCalendarEventReminders object];
+    newEvent.reminders.overrides = [NSArray arrayWithObject:reminder];
+    newEvent.reminders.useDefault = [NSNumber numberWithBool:NO];
+    
+    [self addEvent:newEvent];
+}
+
+
+- (void)addEvent:(GTLCalendarEvent *)event {
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:event
+                                                                    calendarId:@"shitikov.net@gmail.com"];
+    [self.service executeQuery:query
+             completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                 NSLog(@"");
+             }];
+}
+
+- (void)displayAddEventResultWithTicket:(GTLServiceTicket *)ticket
+                     finishedWithObject:(GTLCalendarEvents *)events
+                                  error:(NSError *)error {
+    if (error == nil) {
+        NSLog(@"I think event has been added successfully!");
+        
+    } else {
+        NSLog(@"ERROR : %@", error.localizedDescription);
+    }
+}
 
 @end

@@ -42,6 +42,9 @@ typedef NS_ENUM(NSUInteger, SocialType)
 @property (assign, nonatomic) BOOL isImportant;
 @property (assign, nonatomic) BOOL  isDone;
 
+@property (assign, nonatomic) BOOL isDeleted;
+@property (strong, nonatomic) NSString *dateChange;
+
 - (NSDictionary *)convertToDictionary;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

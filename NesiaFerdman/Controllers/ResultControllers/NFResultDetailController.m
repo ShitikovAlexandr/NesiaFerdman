@@ -23,8 +23,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataArray = [NSMutableArray array];
     self.title = self.selectedCategory.resultCategoryTitle;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewItem)];
+    self.navigationItem.rightBarButtonItem = item;
+
     self.tableView.tableFooterView = [UIView new];
 }
 
@@ -63,7 +67,6 @@
         return headerView;
     }
 }
-
 
 #pragma mark - UITableViewDataSource
 
@@ -126,5 +129,11 @@
     return dateFromString;
 }
 
+- (void)createNewItem {
+ NFEditResultController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditResultController"];
+    viewController.category = self.selectedCategory;
+    viewController.resultItem = nil;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 @end

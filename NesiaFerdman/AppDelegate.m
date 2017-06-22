@@ -127,6 +127,11 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     self.window.backgroundColor = [UIColor whiteColor];
+    
+    //cell
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [[NFStyleKit bASE_GREEN] colorWithAlphaComponent:0.3];
+    [UITableViewCell appearance].selectedBackgroundView = bgColorView;
 
 }
 
