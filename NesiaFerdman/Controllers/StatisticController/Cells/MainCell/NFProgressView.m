@@ -37,6 +37,10 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     self.progressLayer.frame = self.bounds;
+    UIBezierPath *linePath = [UIBezierPath bezierPath];
+    [linePath moveToPoint:CGPointMake(0, self.frame.size.height/2.0)];
+    [linePath addLineToPoint:CGPointMake(self.frame.size.width, self.frame.size.height/2.0)];
+    self.progressLayer.path = linePath.CGPath;
 
 }
 @end

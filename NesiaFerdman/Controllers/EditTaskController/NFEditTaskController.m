@@ -61,6 +61,7 @@ UICollectionViewDelegateFlowLayout
     [self.compliteButton addTarget:self action:@selector(compliteTaskAction) forControlEvents:UIControlEventTouchDown];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTagCell" bundle:nil] forCellWithReuseIdentifier:@"NFTagCell"];
     [self.collectionView reloadData];
+    //[self.titleOfTaskTextField addRegx:@"[{1,60}]" withMsg:@"Количество символов не должно превышать 60"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -79,7 +80,7 @@ UICollectionViewDelegateFlowLayout
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 4) {
-        return _textFrame.size.height < 150.f ? 150 : _textFrame.size.height;
+        return _textFrame.size.height < 110.f ? 110 : _textFrame.size.height;
     } else if (indexPath.row == 2) {
         return 62.0;
     } else {

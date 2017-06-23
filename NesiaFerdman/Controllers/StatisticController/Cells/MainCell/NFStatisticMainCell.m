@@ -48,7 +48,7 @@
     if ([NFTaskManager sharedManager].selectedValuesArray.count > 0 ) {
         [dataArray addObjectsFromArray:[NFTaskManager sharedManager].selectedValuesArray];
     } else {
-        [dataArray addObjectsFromArray:[NFTaskManager sharedManager].valuesArray];
+        [dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllValues]];
     }
     NSString *key;
     if (indexPath.section == dataArray.count) {

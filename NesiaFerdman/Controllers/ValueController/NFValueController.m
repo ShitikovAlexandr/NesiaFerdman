@@ -103,7 +103,15 @@
     [textField resignFirstResponder];
     [self addNewValueWithName:textField.text andIndex:_dataArray.count];
     textField.text = @"";
+    [self addNavigationButtons];
     return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSLog(@"new value");
+    self.navigationItem.rightBarButtonItem = nil;
+    self.navigationItem.leftBarButtonItem = nil;
+     [_tableView setEditing:NO animated:YES];
 }
 
 #pragma mark - Helpers
@@ -144,6 +152,7 @@
     
     UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:@"Изменить" style:UIBarButtonItemStylePlain target:self action:@selector (editButtonAction:)];
     self.navigationItem.rightBarButtonItem = rigtButton;
+    self.navigationItem.rightBarButtonItem.customView.hidden = NO;
 }
 
 - (void)addNavigationButton {
@@ -211,5 +220,10 @@
         });
     }
 }
+
+- (void)addValueCancelAction {
+    
+    
+};
 
 @end

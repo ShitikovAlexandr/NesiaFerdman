@@ -68,7 +68,7 @@
     if ([NFTaskManager sharedManager].selectedValuesArray.count) {
         return [NFTaskManager sharedManager].selectedValuesArray.count;
     } else {
-        return [NFTaskManager sharedManager].valuesArray.count + 1;
+        return [[NFTaskManager sharedManager] getAllValues].count + 1;
     }
 }
 

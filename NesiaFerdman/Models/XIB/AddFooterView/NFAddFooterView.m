@@ -42,6 +42,7 @@
     _textField.clipsToBounds = YES;
     _textField.leftView = iconImageView;
     _textField.translatesAutoresizingMaskIntoConstraints = NO;
+    _textField.returnKeyType = UIReturnKeyDone;
     [_textField setLeftViewMode:UITextFieldViewModeUnlessEditing];
     [self addSubview:_textField];
 }

@@ -129,7 +129,7 @@
         }
     } else {
         [self.saveButton setTitle:@"Сохранить"];
-        self.title = @"Соэдание записи";
+        self.title = @"Создание записи";
     }
 }
 
