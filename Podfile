@@ -20,8 +20,8 @@ target 'NesiaFerdman' do
 	pod 'ACFloatingTextfield-Objc', '~> 1.4'
 	pod 'TPKeyboardAvoiding'
 	pod 'DGActivityIndicatorView'
-
-
+	pod 'Fabric'
+	pod 'Crashlytics'
 
   target 'NesiaFerdmanTests' do
     inherit! :search_paths

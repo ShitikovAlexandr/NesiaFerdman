@@ -1,6 +1,9 @@
 PODS:
   - ACFloatingTextfield-Objc (1.4)
+  - Crashlytics (3.8.4):
+    - Fabric (~> 1.6.3)
   - DGActivityIndicatorView (2.1.1)
+  - Fabric (1.6.11)
   - Firebase/Auth (4.0.0):
     - Firebase/Core
     - FirebaseAuth (= 4.0.0)
@@ -70,7 +73,9 @@ PODS:
 
 DEPENDENCIES:
   - ACFloatingTextfield-Objc (~> 1.4)
+  - Crashlytics
   - DGActivityIndicatorView
+  - Fabric
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -86,7 +91,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   ACFloatingTextfield-Objc: 4f8ad8327ac57119c901f2e6109b017cc98c3f12
+  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DGActivityIndicatorView: ff2c76073d79692f724863c8dd38685866a03cb6
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Firebase: 284eea779b73fdff309791817da7c68bff8dd572
   FirebaseAnalytics: 6f08e746f7d66f5452931bc2e822b5df9c66b64a
   FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
@@ -106,6 +113,6 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: 0d6af20e95e2850f4c621841225b59ec7d8dd852
   UITextView+Placeholder: 77680995fcdd07c3f52ec92fe1150874a2ac89ff
 
-PODFILE CHECKSUM: 6af5a7791fd0673ea3a482135aa960c9935afc94
+PODFILE CHECKSUM: d5a56a365f60b3afadd3e28c4a8f784461c1e1d9
 
 COCOAPODS: 1.2.0

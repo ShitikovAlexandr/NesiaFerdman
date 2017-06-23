@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "NFStyleKit.h"
 #import "NFGoogleManager.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 @import Firebase;
 
 
@@ -24,7 +26,7 @@
     NSDictionary *dictionary = [[NSDictionary alloc]initWithObjectsAndKeys:userAgent,@"UserAgent", nil];
     [[NSUserDefaults standardUserDefaults] registerDefaults:(dictionary)];
     [self setNFStyleAndColors];
-    
+    [Fabric with:@[[Crashlytics class]]];
     [FIRApp configure];
     
     

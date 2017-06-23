@@ -1431,6 +1431,7 @@
 				C22407721E9CB351004B089A /* Resources */,
 				619545FE9460AADBC79D5DDC /* [CP] Embed Pods Frameworks */,
 				F74D62AB6199F2F0ABC46776 /* [CP] Copy Pods Resources */,
+				C23AD8DC1EFD62BA00BAFF1E /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1720,6 +1721,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NesiaFerdmanUITests/Pods-NesiaFerdmanUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C23AD8DC1EFD62BA00BAFF1E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 79d86107e9708511f8d622edd8b3bce072182e07 0129e08a5bad7e420f4bb7debd1b2fa26930156aba050587c30471e3798d7c7b";
+		};
 		E1AB7B673587B74F945F9C63 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1955,7 +1969,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;

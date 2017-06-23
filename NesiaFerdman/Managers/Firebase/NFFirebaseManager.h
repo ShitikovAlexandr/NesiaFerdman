@@ -43,7 +43,7 @@
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId;
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
 
-- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
+//- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
 - (void) addStandartListOfResultCategoryToDateBase;
 
 //
