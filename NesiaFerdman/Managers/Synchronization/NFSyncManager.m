@@ -87,6 +87,7 @@
     
     [[NFFirebaseManager sharedManager].firebaseEventsArray removeAllObjects];
     [[NFFirebaseManager sharedManager] getDataFromFirebase];
+    //[[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:@"XXX"];
 }
 
 - (void)writeEventToFirebase:(NFEvent *)event {
@@ -115,7 +116,9 @@
 }
 
 - (void)deleteValueFromFirebase:(NFValue *)value {
-    [[NFFirebaseManager sharedManager] deleteValue:value withUserId:_userId];
+    value.isDeleted = true;
+    [self writeValueToFirebase:value];
+//    [[NFFirebaseManager sharedManager] deleteValue:value withUserId:_userId];
 }
 //----------------
 
@@ -188,7 +191,9 @@
     [[NFTaskManager sharedManager].resultsArray removeAllObjects];
     [[NFTaskManager sharedManager].resultsArray  addObjectsFromArray:[NFFirebaseManager sharedManager].resultsArray];
     
-    [[NFTaskManager sharedManager].valuesArray addObjectsFromArray:[self sortArray:self.valuesArray withKey:@"valueIndex"]];
+    //[[NFTaskManager sharedManager].valuesArray addObjectsFromArray:[self sortArray:self.valuesArray withKey:@"valueIndex"]];
+    [[NFTaskManager sharedManager].valuesArray addObjectsFromArray: [self sincUserValues:self.valuesArray withBaseValues:[NFFirebaseManager sharedManager].baseValuesArray]];
+    
     NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 //    [self clearAllData];
@@ -260,7 +265,27 @@
     return (NSMutableArray*)[array sortedArrayUsingDescriptors:sortDescriptors];
 }
 
+- (NSMutableArray*)sincUserValues:(NSMutableArray*)userValues withBaseValues:(NSMutableArray*)baseValues {
+    NSMutableArray *tempInputArray = [NSMutableArray array];
+    [tempInputArray addObjectsFromArray:baseValues];
+    NSMutableArray *equalsEvent = [NSMutableArray array];
+    if (tempInputArray.count > 0) {
+        for (NFValue *value in userValues) {
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@", value.valueId];
+            [equalsEvent addObjectsFromArray:[tempInputArray filteredArrayUsingPredicate:predicate]];
+        }
+        for (NFValue *value in equalsEvent) {
+            [tempInputArray removeObject:value];
+        }
+        for (NFValue *newVALUE in tempInputArray) {
+            [[NFFirebaseManager sharedManager] addValue:newVALUE withUserId:_userId];
+        }
+        
+    }
+    [userValues addObjectsFromArray:tempInputArray];
+    return [self sortArray:userValues withKey:@"valueIndex"];
 
+}
 /*
  NSSortDescriptor *sortDescriptor;
  sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"categoryID"

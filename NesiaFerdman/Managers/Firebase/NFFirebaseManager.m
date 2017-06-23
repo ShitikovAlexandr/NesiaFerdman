@@ -17,6 +17,7 @@
 @property (strong, nonatomic) FIRRemoteConfig *remoteConfig;
 
 @property (assign, nonatomic) BOOL isValueLoaded;
+@property (assign, nonatomic) BOOL isBaseValueLoaded;
 @property (assign, nonatomic) BOOL isEventLoaded;
 @property (assign, nonatomic) BOOL isResultCategoryLoaded;
 @property (assign, nonatomic) BOOL isResultLoaded;
@@ -41,6 +42,7 @@
         self.ref = [[FIRDatabase database] reference];
         self.firebaseEventsArray = [NSMutableArray array];
         self.valuesArray = [NSMutableArray array];
+        self.baseValuesArray = [NSMutableArray array];
         self.resultCategoryArray = [NSMutableArray array];
         self.resultsArray = [NSMutableArray array];
             }
@@ -97,6 +99,7 @@
          }
          
          [self getAllValues];
+         [self getAllBaseValues];
          [self getAllResultCategory];
          [self getAllResultsWithUserId:[[NFGoogleManager sharedManager] getUserId]];
          
@@ -137,6 +140,37 @@
          _isValueLoaded = YES;
          [self compliteLoading];
      }];
+}
+
+- (void)getAllBaseValues {
+    
+    [[self.ref child:@"Values"]
+     observeEventType:FIRDataEventTypeValue
+     withBlock:^(FIRDataSnapshot *snapshot) {
+         NSMutableArray *valuesArray = [NSMutableArray array];
+         
+         // Loop over children
+         NSMutableArray *dataArray = [NSMutableArray array];
+         NSEnumerator *children = [snapshot children];
+         //NSLog(@"children %@", children);
+         FIRDataSnapshot *child;
+         while (child = [children nextObject]) {
+             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+             [dataArray addObject:value];
+             //NSLog(@"events form firebase->>> %@", event);
+         }
+         for (NSDictionary *dic in dataArray) {
+             NFValue *val = [[NFValue alloc] initWithDictionary:dic];
+             [valuesArray addObject:val];
+             NSLog(@"value name %@", val.valueTitle);
+         }
+         [self.baseValuesArray removeAllObjects];
+         [self.baseValuesArray addObjectsFromArray:valuesArray];
+         _isBaseValueLoaded = YES;
+         [self compliteLoading];
+     }];
+
+    
 }
 
 - (void)getAllResultsWithUserId:(NSString*)userId {
@@ -250,6 +284,11 @@
 
 // standart data Admin part
 
+
+- (void)addStandartValue:(NFValue *)value withUserId:(NSString *)userId {
+    [[[self.ref child:@"Values"]  child:value.valueId] updateChildValues:[value convertToDictionary]];
+}
+
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId {
     
     NFValue *job = [NFValue new];
@@ -257,56 +296,56 @@
     job.valueTitle = @"Работа";
     job.valueIndex = @0;
     job.valueImage = @"job_value_icon.png";
-    [self addValue:job withUserId:userId];
+    [self addStandartValue:job withUserId:userId];
     
     NFValue *relations = [NFValue new];
     relations.valueId = @"0703F55D-0CAE-495C-8202-relations";
     relations.valueTitle = @"Отношения";
     relations.valueIndex = @1;
     relations.valueImage = @"relations_value_icon.png";
-    [self addValue:relations withUserId:userId];
+    [self addStandartValue:relations withUserId:userId];
     
     NFValue *familyAndFriends = [NFValue new];
     familyAndFriends.valueId = @"0703F55D-0CAE-495C-8202-familyAndFriends";
     familyAndFriends.valueTitle = @"Семья и друзья";
     familyAndFriends.valueIndex = @2;
     familyAndFriends.valueImage = @"famely_value_icon.png";
-    [self addValue:familyAndFriends withUserId:userId];
+    [self addStandartValue:familyAndFriends withUserId:userId];
     
     NFValue *life = [NFValue new];
     life.valueId = @"0703F55D-0CAE-495C-8202-life";
     life.valueTitle = @"Быт";
     life.valueIndex = @3;
     life.valueImage = @"Home_life_value_icon.png";
-    [self addValue:life withUserId:userId];
+    [self addStandartValue:life withUserId:userId];
     
     NFValue *bodyAndHealth = [NFValue new];
     bodyAndHealth.valueId = @"0703F55D-0CAE-495C-8202-bodyAndHealth";
     bodyAndHealth.valueTitle = @"Тело и здоровье";
     bodyAndHealth.valueIndex = @4;
     bodyAndHealth.valueImage = @"heart_value_icon.png";
-    [self addValue:bodyAndHealth withUserId:userId];
+    [self addStandartValue:bodyAndHealth withUserId:userId];
     
     NFValue *evolution = [NFValue new];
     evolution.valueId = @"0703F55D-0CAE-495C-8202-evolution";
     evolution.valueTitle = @"Развитие";
     evolution.valueIndex = @5;
     evolution.valueImage = @"upgrate_value_icon.png";
-    [self addValue:evolution withUserId:userId];
+    [self addStandartValue:evolution withUserId:userId];
     
     NFValue *materialProsperity = [NFValue new];
     materialProsperity.valueId = @"0703F55D-0CAE-495C-8202-materialProsperity";
     materialProsperity.valueTitle = @"Материальное благополучие";
     materialProsperity.valueIndex = @6;
     materialProsperity.valueImage = @"money_value_icon.png";
-    [self addValue:materialProsperity withUserId:userId];
+    [self addStandartValue:materialProsperity withUserId:userId];
     
     NFValue *relaxation = [NFValue new];
     relaxation.valueId =@"0703F55D-0CAE-495C-8202-relaxation";
     relaxation.valueTitle = @"Отдых";
     relaxation.valueIndex = @7;
     relaxation.valueImage = @"relax_value_icon.png";
-    [self addValue:relaxation withUserId:userId];
+    [self addStandartValue:relaxation withUserId:userId];
 }
 
 - (void) addStandartListOfResultCategoryToDateBase {
@@ -374,13 +413,14 @@
 }
 
 - (void)compliteLoading {
-    if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded) {
+    if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded && _isBaseValueLoaded) {
         NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
         _isValueLoaded = NO;
         _isEventLoaded = NO;
         _isResultCategoryLoaded = NO;
         _isResultLoaded = NO;
+        _isBaseValueLoaded = NO;
     }
 }
 

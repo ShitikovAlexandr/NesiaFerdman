@@ -19,6 +19,8 @@
 @interface NFFirebaseManager : NSObject
 @property (strong, nonatomic) NSMutableArray *firebaseEventsArray;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
+@property (strong, nonatomic) NSMutableArray *baseValuesArray;
+
 @property (strong, nonatomic) NSMutableArray *resultCategoryArray;
 @property (strong, nonatomic) NSMutableArray *resultsArray;
 
@@ -31,6 +33,7 @@
 - (void)getDataFromFirebase;
 
 - (void)getAllValues;
+- (void)getAllBaseValues;
 
 - (void)getAllResultCategory;
 - (void)getAllResultsWithUserId:(NSString*)userId;
@@ -38,6 +41,7 @@
 
 - (void)deleteValue:(NFValue *)value withUserId:(NSString *)userId;
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId;
+- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
 
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
 - (void) addStandartListOfResultCategoryToDateBase;

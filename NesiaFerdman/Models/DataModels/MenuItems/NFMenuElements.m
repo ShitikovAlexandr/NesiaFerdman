@@ -12,10 +12,14 @@
 #import "NFLoginSimpleController.h"
 #import "NFValueController.h"
 #import "NFResultController.h"
+#import "NFStatisticController.h"
+#import "NFAboutController.h"
+#import "NFTutorialController.h"
 
 typedef NS_ENUM(NSInteger, MenuItem)
 {
     Results,
+    Statistic,
     Values,
     Manifestations,
     Settings,
@@ -48,6 +52,15 @@ typedef NS_ENUM(NSInteger, MenuItem)
             
             break;
         }
+        case Statistic:
+        {
+            NFStatisticController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [target presentViewController:navController animated:YES completion:nil];
+            break;
+        }
+
         case Values:
         {
             NFValueController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFValueController class])];
@@ -68,11 +81,19 @@ typedef NS_ENUM(NSInteger, MenuItem)
         }
         case Training:
         {
+            NFTutorialController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFTutorialController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [target presentViewController:navController animated:YES completion:nil];
             
             break;
         }
         case About:
         {
+            NFAboutController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFAboutController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFAboutControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [target presentViewController:navController animated:YES completion:nil];
             
             break;
         }
@@ -94,44 +115,50 @@ typedef NS_ENUM(NSInteger, MenuItem)
 //    calendar.index = 0;
     
     NFMenuItem *results = [NFMenuItem new];
-    results.title = @"Итоги";
+    results.title = @"Итоги недели";
     results.index = 1;
     results.imageName = @"result_icon.png";
     [_itemsArray addObject:results];
     
+    NFMenuItem *statistic = [NFMenuItem new];
+    statistic.title = @"Статистика";
+    statistic.index = 2;
+    statistic.imageName = @"result_icon.png";
+    [_itemsArray addObject:statistic];
+    
     NFMenuItem *myValues = [NFMenuItem new];
     myValues.title = @"Мои ценности";
-    myValues.index = 2;
+    myValues.index = 3;
     myValues.imageName = @"value_icon.png";
     [_itemsArray addObject:myValues];
     
     NFMenuItem *manifestations = [NFMenuItem new];
     manifestations.title = @"Проявления";
-    manifestations.index = 3;
+    manifestations.index = 4;
     manifestations.imageName = @"manifestations_icon.png";
     [_itemsArray addObject:manifestations];
     
     NFMenuItem *settings = [NFMenuItem new];
     settings.title = @"Настройки";
-    settings.index = 4;
+    settings.index = 5;
     settings.imageName = @"setting_icon.png";
     [_itemsArray addObject:settings];
     
     NFMenuItem *training = [NFMenuItem new];
     training.title = @"Обучалка";
-    training.index = 5;
+    training.index = 6;
     training.imageName =@"question_icon.png";
     [_itemsArray addObject:training];
     
     NFMenuItem *about = [NFMenuItem new];
     about.title = @"О нас";
-    about.index = 6;
+    about.index = 7;
     about.imageName = @"about_icon.png";
     [_itemsArray addObject:about];
     
     NFMenuItem *exit = [NFMenuItem new];
     exit.title = @"Выйти";
-    exit.index = 7;
+    exit.index = 8;
     exit.imageName = @"exit_icon.png";
     [_itemsArray addObject:exit];
 }

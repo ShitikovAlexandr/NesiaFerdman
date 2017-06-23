@@ -33,6 +33,7 @@
         self.resultCategoryArray = [NSMutableArray array];
         self.resultsArray = [NSMutableArray array];
         self.resultsDictionary = [NSMutableDictionary dictionary];
+        
     }
     return self;
 }
@@ -42,7 +43,12 @@
 }
 
 - (NSMutableArray *)getAllValues {
-    return self.valuesArray;
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NFValue *value in self.valuesArray)
+        if (!value.isDeleted) {
+            [resultArray addObject:value];
+        }
+    return resultArray;
 }
 
 - (NSMutableArray*)getAllResult {

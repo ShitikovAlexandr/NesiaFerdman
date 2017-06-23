@@ -215,7 +215,7 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     //[self.service executeQuery:query delegate:nil didFinishSelector:nil];
     //[GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];//googleEvent calendarId:@"shitikov.net@gmail.com" eventId:[googleEvent.JSON objectForKey:@"id"]];//iCalUID
     //[self writeEvents];
-    [self addAnEvent];
+    //[self addAnEvent];
     return event;
 }
 
@@ -272,7 +272,7 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
 - (void)addAnEvent {
     // Make a new event, and show it to the user to edit
     GTLCalendarEvent *newEvent = [GTLCalendarEvent object];
-    newEvent.summary = @"Sample Added Event";
+    newEvent.summary = @"Sample Added Event today";
     newEvent.descriptionProperty = @"Description of sample added event";
     
     // We'll set the start time to now, and the end time to an hour from now,
