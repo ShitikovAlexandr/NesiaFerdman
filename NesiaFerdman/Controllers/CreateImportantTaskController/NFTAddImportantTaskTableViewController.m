@@ -107,7 +107,6 @@
     if (newFrame.size.height != textView.frame.size.height) {
         textView.frame = newFrame;
         self.textFrame = newFrame;
-        NSLog(@"new frame height ");
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         [textView becomeFirstResponder];
     }

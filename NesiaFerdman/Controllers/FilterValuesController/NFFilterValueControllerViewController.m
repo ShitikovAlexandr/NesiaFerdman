@@ -57,7 +57,6 @@
 
 - (IBAction)saveOrCancelAction:(UIBarButtonItem *)sender {
     
-    NSLog(@"selected value %@", [NFTaskManager sharedManager].selectedValuesArray);
     
     if (sender.tag == 2) //save
     {
@@ -74,11 +73,9 @@
 
 - (void) switchToggled:(UISwitch *)sender {
     if ([sender isOn]) {
-        NSLog(@"its on! with tag %ld", (long)sender.tag);
         NFValue *value = [_valuesArray objectAtIndex:sender.tag];
         [_selectedValue addObject:value];
     } else {
-        NSLog(@"its off! with tag %ld", (long)sender.tag);
         NFValue *value = [_valuesArray objectAtIndex:sender.tag];
         [_selectedValue removeObject:value];
     }

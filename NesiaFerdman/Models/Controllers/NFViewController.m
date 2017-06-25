@@ -47,7 +47,6 @@
 
 
 - (void)addButtonAction {
-    NSLog(@"add button pressed from %@", NSStringFromClass([self class]));
 }
 
 - (void)navigateToFilterScreen {

@@ -98,7 +98,6 @@ UICollectionViewDelegateFlowLayout
     if (newFrame.size.height != textView.frame.size.height) {
         textView.frame = newFrame;
         self.textFrame = newFrame;
-        NSLog(@"new frame height ");
         [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
         [textView becomeFirstResponder];
     }
@@ -196,7 +195,6 @@ UICollectionViewDelegateFlowLayout
 
 - (void)compliteTaskAction {
     _compliteButton.selected = !_compliteButton.selected;
-    NSLog(@"complite button  pressed");
 }
 
 // tag collection view
@@ -259,10 +257,7 @@ UICollectionViewDelegateFlowLayout
                              withFormat:@"LLLL, dd, yyyy HH:mm"
                      dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    NSLog(@"start text %@",_starttextField.text);
-    NSLog(@"end text %@", _endTextField.text);
     
-    NSLog(@"new event is %@", _event);
     [[NFSyncManager sharedManager] writeEventToFirebase:_event];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NFSyncManager sharedManager]  updateAllData];

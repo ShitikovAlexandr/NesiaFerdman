@@ -89,8 +89,6 @@
     [self.eventsArray addObjectsFromArray:[[NFTaskManager sharedManager] getImportantForDay:self.header.selectetDate]];
     [self.tableView reloadData];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
-    NSLog(@"day header %@", self.header.selectetDate);
-    NSLog(@"eventsArray for day %@", _eventsArray);
 }
 
 - (NSString *)dateFormater:(NSString *)dateString {
@@ -116,7 +114,6 @@
 - (void)cellSendLongTouch {
     if (_eventsArray.count > 0 && !_tableView.editing ) {
         [_tableView setEditing:YES animated:YES];
-        NSLog(@"edit");
     }
 }
 

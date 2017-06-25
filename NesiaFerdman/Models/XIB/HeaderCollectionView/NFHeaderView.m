@@ -149,7 +149,6 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    NSLog(@"end scroll");
     NSIndexPath *centerCellIndexPath =
     [self.collectionView indexPathForItemAtPoint:
      [self convertPoint:[self.collectionView center] toView:self.collectionView]];
@@ -169,7 +168,6 @@
 
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"end druggin");
     NSIndexPath *centerCellIndexPath =
     [self.collectionView indexPathForItemAtPoint:
      [self convertPoint:[self.collectionView center] toView:self.collectionView]];
@@ -219,7 +217,6 @@
 
 - (void)scrollToCurrentDate {
     if (_displayWeeks) {
-        NSLog(@"display week");
         for (NFWeekDateModel* week in self.dateSourse.weekArray) {
             for (NSDate *current in week.allDateOfWeek) {
                 if ([[NSCalendar currentCalendar] isDate:[NSDate date] inSameDayAsDate:current]) {

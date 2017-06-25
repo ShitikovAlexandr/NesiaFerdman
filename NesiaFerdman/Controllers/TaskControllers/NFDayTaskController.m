@@ -130,8 +130,6 @@
     NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
     NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
     [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
-    NSLog(@"day header %@", self.header.selectetDate);
-    NSLog(@"eventsArray for day %@", _eventsArray);
 }
 
 - (NSString *)dateFormater:(NSString *)dateString {

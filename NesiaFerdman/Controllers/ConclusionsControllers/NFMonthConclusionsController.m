@@ -205,7 +205,6 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
-    NSLog(@"new date %@", dateFromString);
     return dateFromString;
 }
 

@@ -141,7 +141,6 @@
     NSMutableArray* eventsArray = [NSMutableArray array];
     [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTaskForMonth:selectedDate]];
     [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
-    NSLog(@"dataDictionari %@", self.dataDictionary);
     [self.tableView reloadData];
 }
 

@@ -47,7 +47,6 @@
 
     
     [_ValuesFilterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
-    NSLog(@"[UIScreen mainScreen].scale %f", [UIScreen mainScreen].scale);
     _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
     self.filterTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_filterTextField   keyTitle:@"valueTitle"];
@@ -140,7 +139,6 @@
 - (void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView
 {
     _dateSelected = dayView.date;
-    NSLog(@"selected date %@ and class %@", dayView.date , [dayView.date class]);
     [self setEventsToTableViewWithCurrentDate:dayView.date];
     
     // Animation for the circleView

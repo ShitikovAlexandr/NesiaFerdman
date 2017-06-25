@@ -140,12 +140,10 @@
 }
 
 - (void)navigateToResultWeekScreen {
-    NSLog(@"go to result week screen - >");
     NFStatisticController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
     [navController setViewControllers:@[viewController]];
     [self presentViewController:navController animated:YES completion:nil];
-    
 }
 
 - (void)setNavigationbarButtons {

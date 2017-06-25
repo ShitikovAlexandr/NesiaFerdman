@@ -9,6 +9,7 @@
 #import "NFFirebaseManager.h"
 #import "NFGoogleManager.h"
 #import "NFResultCategory.h"
+#import "NFManifestation.h"
 
 @import FirebaseAuth;
 
@@ -60,7 +61,6 @@
         [event.values addObjectsFromArray:tempValues];
     }
     eventlDictionary = (NSMutableDictionary*)[event convertToDictionary];
-    NSLog(@"event to firebase %@", eventlDictionary);
     [[[[[self.ref child:@"Users"] child:userId] child:@"Events"]child:event.eventId] updateChildValues:eventlDictionary];
 }
 
@@ -133,7 +133,6 @@
          for (NSDictionary *dic in dataArray) {
              NFValue *val = [[NFValue alloc] initWithDictionary:dic];
              [valuesArray addObject:val];
-             NSLog(@"value name %@", val.valueTitle);
          }
          [self.valuesArray removeAllObjects];
          [self.valuesArray addObjectsFromArray:valuesArray];
@@ -219,7 +218,6 @@
          for (NSDictionary *dic in dataArray) {
              NFResultCategory *val = [[NFResultCategory alloc] initWithDictionary:dic];
              [valuesArray addObject:val];
-             NSLog(@"NFResultCategory name %@", val.resultCategoryTitle);
          }
          [self.resultCategoryArray removeAllObjects];
          [self.resultCategoryArray addObjectsFromArray:valuesArray];
@@ -311,17 +309,28 @@
     job.valueIndex = @0;
     job.valueImage = @"job_value_icon.png";
     
-    
+//    NFManifestation *jobMan1 = [[NFManifestation alloc] init];
+//    jobMan1.name = @"Что для меня важно в этой сфере?";
+//    jobMan1.index = @0;
+//    [job.manifestations addObject:jobMan1];
+//    
+//    NFManifestation *jobMan2 = [[NFManifestation alloc] init];
+//    jobMan2.name = @"Что для меня на самом деле имеет значение?";
+//    jobMan2.index = @1;
+//    [job.manifestations addObject:jobMan2];
+//    
+//    NFManifestation *jobMan3 = [[NFManifestation alloc] init];
     
     [self addStandartValue:job withUserId:userId];
-    
+    //
     NFValue *relations = [NFValue new];
     relations.valueId = @"0703F55D-0CAE-495C-8202-relations";
     relations.valueTitle = @"Отношения";
     relations.valueIndex = @1;
     relations.valueImage = @"relations_value_icon.png";
-    [self addStandartValue:relations withUserId:userId];
     
+    [self addStandartValue:relations withUserId:userId];
+    //
     NFValue *familyAndFriends = [NFValue new];
     familyAndFriends.valueId = @"0703F55D-0CAE-495C-8202-familyAndFriends";
     familyAndFriends.valueTitle = @"Семья и друзья";

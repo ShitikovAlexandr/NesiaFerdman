@@ -86,8 +86,6 @@
     [self.eventsArray addObjectsFromArray:[[NFTaskManager sharedManager] getConclusionsForDay:self.header.selectetDate]];
     [_tableView setEditing:NO animated:YES];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
-    NSLog(@"day header %@", self.header.selectetDate);
-    NSLog(@"eventsArray for day %@", _eventsArray);
 }
 
 - (NSString *)dateFormater:(NSString *)dateString {

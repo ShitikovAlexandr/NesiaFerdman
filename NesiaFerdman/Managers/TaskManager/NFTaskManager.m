@@ -73,7 +73,6 @@
     NSMutableArray *result = [NSMutableArray array];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.startDate contains[c] %@",[NSString stringWithFormat:@"T%02ld", (long)hour]];
     [result addObjectsFromArray:[eventsArray filteredArrayUsingPredicate:predicate]];
-    NSLog(@"%@", self.yearTask);
     return [self sortArray:result withKey:@"startDate"];
 }
 
@@ -108,7 +107,6 @@
     NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
 //    NSMutableArray *tempArray = [NSMutableArray array];
 //    [tempArray addObjectsFromArray:resultArray];
-    NSLog(@"getTaskForMonth %@", resultArray);
     return resultArray.count > 0 ? [self getObjectsFromArrayWithArrays:(NSMutableArray *)resultArray] : nil;
 }
 
@@ -132,17 +130,14 @@
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
     NSArray *filtered = [[[_eventConclusionsDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [_eventConclusionsDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    NSLog(@"getConclusionsForMonth %@", resultArray);
     return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
 }
 
 
 - (NSMutableArray *)getImportantForMonth:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
-    NSLog(@"[[self stringFromDate:currentDate]  substringToIndex:7]] %@", [[self stringFromDate:currentDate]  substringToIndex:7]);
     NSArray *filtered = [[[_eventImportantDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [_eventImportantDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    NSLog(@"getImportantForMonth %@", resultArray);
     return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
 }
 
@@ -237,7 +232,6 @@
             }
         }
         if (event.values.count < 1) {
-            NSLog(@"event values count %@",event.values);
             [tempArrayVal addObject:event];
         }
     }

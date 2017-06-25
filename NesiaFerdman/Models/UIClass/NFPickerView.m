@@ -72,7 +72,6 @@
     self.selectedIndex = [NSNumber numberWithInteger:row];
     NSString *title = [[self.dataArray objectAtIndex:row] valueForKey:_keyTitle];
     //self.textfield.text = title;
-    NSLog(@"select row %@", title);
 }
 
 
