@@ -27,6 +27,7 @@
     self.delegate = self;
     self.dataSource = self;
     self.navigationItem.title = @"Важно";
+    [self addMaskViewNavigationBar];
     
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
@@ -156,6 +157,12 @@
     UIBarButtonItem *resultButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"result_nav_bar_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(resultButtonAction)];
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton, resultButton, nil]];
+}
+
+- (void)addMaskViewNavigationBar {
+    UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 42, self.view.frame.size.width, 52.0)];
+    maskView.backgroundColor = [UIColor clearColor];
+    [self.navigationController.navigationBar addSubview:maskView];
 }
 
 @end
