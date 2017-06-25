@@ -193,6 +193,8 @@
 		C2FE1C671E9F610500B4E03A /* NFDayTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE1C661E9F610500B4E03A /* NFDayTaskController.m */; };
 		D0D88CE4E2655892A0D39FFA /* libPods-NesiaFerdman.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D91AA015C04563F622F9B93 /* libPods-NesiaFerdman.a */; };
 		F605BACD2B4A0A32B8DB0582 /* libPods-NesiaFerdmanUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB48DE7B3CA095E48E7600E1 /* libPods-NesiaFerdmanUITests.a */; };
+		FA9966071EFFAF24003CF84A /* NFManifestationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9966061EFFAF24003CF84A /* NFManifestationsController.m */; };
+		FA99660A1EFFB104003CF84A /* NFManifestation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9966091EFFB104003CF84A /* NFManifestation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -517,6 +519,10 @@
 		C2FE1C661E9F610500B4E03A /* NFDayTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDayTaskController.m; sourceTree = "<group>"; };
 		D5255076F5DCD1666D4F6E56 /* Pods-NesiaFerdman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NesiaFerdman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NesiaFerdman/Pods-NesiaFerdman.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2B5860071CF37E9123FE31 /* Pods-NesiaFerdman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NesiaFerdman.release.xcconfig"; path = "Pods/Target Support Files/Pods-NesiaFerdman/Pods-NesiaFerdman.release.xcconfig"; sourceTree = "<group>"; };
+		FA9966051EFFAF24003CF84A /* NFManifestationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFManifestationsController.h; sourceTree = "<group>"; };
+		FA9966061EFFAF24003CF84A /* NFManifestationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFManifestationsController.m; sourceTree = "<group>"; };
+		FA9966081EFFB104003CF84A /* NFManifestation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFManifestation.h; sourceTree = "<group>"; };
+		FA9966091EFFB104003CF84A /* NFManifestation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFManifestation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -729,6 +735,7 @@
 		C22407B51E9CB4E8004B089A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FA9966041EFFAF07003CF84A /* ManifestationsController */,
 				C23AD8CB1EFD109800BAFF1E /* TutorialController */,
 				C23AD8CA1EFD106600BAFF1E /* AboutController */,
 				C24DF74C1EF943D6003FCF5C /* ResultControllers */,
@@ -1341,6 +1348,8 @@
 				C24DF74A1EF916E0003FCF5C /* NFResultCategory.m */,
 				C24DF7461EF914FF003FCF5C /* NFResult.h */,
 				C24DF7471EF914FF003FCF5C /* NFResult.m */,
+				FA9966081EFFB104003CF84A /* NFManifestation.h */,
+				FA9966091EFFB104003CF84A /* NFManifestation.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -1416,6 +1425,15 @@
 				AB48DE7B3CA095E48E7600E1 /* libPods-NesiaFerdmanUITests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA9966041EFFAF07003CF84A /* ManifestationsController */ = {
+			isa = PBXGroup;
+			children = (
+				FA9966051EFFAF24003CF84A /* NFManifestationsController.h */,
+				FA9966061EFFAF24003CF84A /* NFManifestationsController.m */,
+			);
+			path = ManifestationsController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1810,6 +1828,7 @@
 				C286D6041EA613EC007C2395 /* NFDayView.m in Sources */,
 				C28DD0C31EF430CD004E0C7E /* NFAnimatedLabel.m in Sources */,
 				C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */,
+				FA9966071EFFAF24003CF84A /* NFManifestationsController.m in Sources */,
 				C2359FFF1EC9AAB300EB8FDC /* NFMonthConclusionsController.m in Sources */,
 				C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */,
 				C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */,
@@ -1831,6 +1850,7 @@
 				C207EF541EA89BAD00BFF383 /* NFWeekTaskCell.m in Sources */,
 				C22407BF1E9CB78E004B089A /* NFRoundetView.m in Sources */,
 				C25737591E9CEBD100C4A4EA /* NFRoundButton.m in Sources */,
+				FA99660A1EFFB104003CF84A /* NFManifestation.m in Sources */,
 				C24552651EBC9677003EBB11 /* NFPickerView.m in Sources */,
 				C2B3D96E1EDEABEB00A0A44E /* NFFilterValueControllerViewController.m in Sources */,
 				C2DDBCE61ED45A1200F61F02 /* NFRoundView.m in Sources */,

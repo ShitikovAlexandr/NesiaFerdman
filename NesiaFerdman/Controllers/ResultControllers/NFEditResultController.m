@@ -14,14 +14,10 @@
 #import "NFSyncManager.h"
 #import "NotifyList.h"
 
-
-
-
 @interface NFEditResultController ()
 @property (weak, nonatomic) IBOutlet NFViewWithDownBorder *mainView;
 @property (weak, nonatomic) IBOutlet UITextView *textView;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
-
 
 @end
 
@@ -54,9 +50,6 @@
     [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
     return [dateFormater stringFromDate:date];
 }
-
-
-
 
 - (void)setStartDataToDisplay {
     self.textView.placeholder = @"Описание";

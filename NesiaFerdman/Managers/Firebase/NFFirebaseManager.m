@@ -291,11 +291,28 @@
 
 - (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId {
     
+//    NSMutableDictionary *eventlDictionary = [NSMutableDictionary dictionary];
+//    if (event.values.count > 0) {
+//        NSMutableArray *tempValues = [NSMutableArray array];
+//        for (NFValue *val in event.values) {
+//            [tempValues addObject:[val convertToDictionary]];
+//        }
+//        [event.values removeAllObjects];
+//        [event.values addObjectsFromArray:tempValues];
+//    }
+//    eventlDictionary = (NSMutableDictionary*)[event convertToDictionary];
+//    NSLog(@"event to firebase %@", eventlDictionary);
+//    [[[[[self.ref child:@"Users"] child:userId] child:@"Events"]child:event.eventId] updateChildValues:eventlDictionary];
+//
+    
     NFValue *job = [NFValue new];
     job.valueId = @"0703F55D-0CAE-495C-8202-job";
     job.valueTitle = @"Работа";
     job.valueIndex = @0;
     job.valueImage = @"job_value_icon.png";
+    
+    
+    
     [self addStandartValue:job withUserId:userId];
     
     NFValue *relations = [NFValue new];
