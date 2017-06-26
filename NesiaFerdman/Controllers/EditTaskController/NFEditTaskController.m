@@ -241,9 +241,10 @@ UICollectionViewDelegateFlowLayout
 
 - (void)saveChanges {
     [_indicator startAnimating];
+    BOOL newEvent = false;
     if (!_event) {
         _event = [[NFEvent alloc] init];
-        [[NFSyncManager sharedManager] writeEventToGoogle:_event];
+        newEvent = true;
     }
     [_event.values removeAllObjects];
     _event.values = [NSMutableArray array];
@@ -257,6 +258,10 @@ UICollectionViewDelegateFlowLayout
     _event.endDate = [self stringDate:_endTextField.text
                              withFormat:@"LLLL, dd, yyyy HH:mm"
                      dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    
+    if (newEvent) {
+        [[NFSyncManager sharedManager] writeEventToGoogle:_event];
+    }
     
     
     [[NFSyncManager sharedManager] writeEventToFirebase:_event];

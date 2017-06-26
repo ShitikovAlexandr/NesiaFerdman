@@ -16,6 +16,7 @@
 
 static NSString *const kKeychainItemName = @"Google Calendar API";
 static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo3m.apps.googleusercontent.com";
+static NSString *const kAppCalendar = @"Nesia Ferdman";
 
 @interface NFGoogleManager()
 @property (strong, nonatomic) UIViewController *target;
@@ -81,7 +82,9 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     GTMOAuth2ViewControllerTouch *authController;
     // If modifying these scopes, delete your previously saved credentials by
     // resetting the iOS simulator or uninstall the app.
-    NSArray *scopes = [NSArray arrayWithObjects:kGTLAuthScopeCalendar, nil];
+    NSArray *scopes = [NSArray arrayWithObjects:@"https://www.googleapis.com/auth/userinfo.profile",
+                       @"https://www.googleapis.com/auth/calendar",
+                       @"https://www.googleapis.com/auth/calendar.readonly", nil];
     authController = [[GTMOAuth2ViewControllerTouch alloc]
                       initWithScope:[scopes componentsJoinedByString:@" "]
                       clientID:kClientID
@@ -91,7 +94,11 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
                       finishedSelector:@selector(viewController:finishedWithAuth:error:)];
     return authController;
 }
-
+//[NSArray arrayWithObjects:
+//@"https://www.googleapis.com/auth/userinfo.profile",
+//@"https://www.googleapis.com/auth/calendar",
+//@"https://www.googleapis.com/auth/calendar.readonly",
+//nil]
 - (void)viewController:(GTMOAuth2ViewControllerTouch *)viewController
       finishedWithAuth:(GTMOAuth2Authentication *)authResult
                  error:(NSError *)error {
@@ -199,11 +206,6 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
         event.endDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
     }
     
-    //update key:updated   value:2017-06-21T08:10:19.845Z
-    
-    //event.isRepeat = @"";
-    //event.value = @"";
-    
     event.eventType = Event;
     event.socialType = GoogleEvent;
     //event.eventId = [googleEvent.JSON objectForKey:@"id"];
@@ -211,12 +213,6 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     NSLog(@"start %@ name %@", event.startDate, event.title);
     [googleEvent setSummary:@"NEW EVENT FROM APP"];
     
-    //GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];
-    //[self.service executeQuery:query delegate:nil didFinishSelector:nil];
-    //[GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];//googleEvent calendarId:@"shitikov.net@gmail.com" eventId:[googleEvent.JSON objectForKey:@"id"]];//iCalUID
-    //[self writeEvents];
-    //[self addAnEvent];
-    //[self addEventToGoogleCalendar];
     return event;
 }
 
@@ -232,43 +228,40 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
 - (void)addEventToGoogleCalendar:(NFEvent*)event {
     
     GTLCalendarEvent* calendarEvent = [[GTLCalendarEvent alloc] init];
-    
-    [calendarEvent setSummary:@"test"];
-    [ calendarEvent setDescriptionProperty:@"description"];
-    
-    NSDate *startDate = [NSDate date];
-    NSDate *endDate = [NSDate date];
-    
-    if (endDate == nil) {
-        endDate = [startDate dateByAddingTimeInterval:(60 * 60)];
-    }
-    
+    [calendarEvent setSummary:event.title];
+    [calendarEvent setDescriptionProperty:event.eventDescription];
+    NSDate *startDate = [self dateFromString:event.startDate];
+    NSDate *endDate = [self dateFromString:event.endDate];
     GTLDateTime *startTime = [GTLDateTime dateTimeWithDate:startDate
-                                                  timeZone:[NSTimeZone systemTimeZone]];
-    
+                                                  timeZone:[NSTimeZone defaultTimeZone]];
     [calendarEvent setStart:[GTLCalendarEventDateTime object]];
     [calendarEvent.start setDateTime:startTime];
-    
     GTLDateTime *endTime = [GTLDateTime dateTimeWithDate:endDate
-                                                timeZone:[NSTimeZone systemTimeZone]];
-    
+                                                timeZone:[NSTimeZone defaultTimeZone]];
     [calendarEvent setEnd:[GTLCalendarEventDateTime object]];
     [calendarEvent.end setDateTime:endTime];
-    
-    
     GTLQueryCalendar *insertQuery = [GTLQueryCalendar queryForEventsInsertWithObject:calendarEvent
                                                                           calendarId:@"shitikov.net@gmail.com"];
     NSLog(@"Adding Event…?????");
+    
     [self.service executeQuery:insertQuery
                  completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                      if (error == nil) {
+                         if ([object isKindOfClass:[GTLCalendarEvent class]]) {
+                             GTLCalendarEvent *eventGoogle = object;
+//                             NFEvent *eventNesia = [NFEvent new];
+                             //eventNesia = event;
+                             event.socialId = [eventGoogle.JSON objectForKey:@"id"];
+                             [[NFSyncManager sharedManager] writeEventToFirebase:event];
+                         }
                          NSLog(@"Adding Event…");
+                         
                      } else {
                          NSLog(@"Event Entry Failed");
-                        
                      }
                  }];
 }
+
 
 
 
@@ -364,5 +357,13 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
         NSLog(@"ERROR : %@", error.localizedDescription);
     }
 }
+
+- (NSDate *)dateFromString:(NSString*)dateString {
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    NSDate *dateFromString = [dateFormatter dateFromString:dateString];
+    return dateFromString;
+}
+
 
 @end
