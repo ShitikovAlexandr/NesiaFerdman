@@ -25,6 +25,7 @@
 - (void)clearAllData;
 - (void)writeEventToFirebase:(NFEvent *)event;
 - (void)addStandartListOfValue;
+- (void)addStandartListOfMainifestations;
 - (void)addStandartListOfResultCategory;
 - (void)writeValueToFirebase:(NFValue *)value;
 - (void)writeResultToFirebase:(NFResult*)result;
@@ -32,6 +33,8 @@
 
 - (BOOL)isFirstRunApp;
 - (BOOL)isFirstRunToday;
+
+- (void)writeEventToGoogle:(NFEvent*)event;
 
 
 

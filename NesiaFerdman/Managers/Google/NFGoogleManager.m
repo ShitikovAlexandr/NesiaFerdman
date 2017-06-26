@@ -216,6 +216,7 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     //[GTLQueryCalendar queryForEventsInsertWithObject:googleEvent calendarId:@"shitikov.net@gmail.com"];//googleEvent calendarId:@"shitikov.net@gmail.com" eventId:[googleEvent.JSON objectForKey:@"id"]];//iCalUID
     //[self writeEvents];
     //[self addAnEvent];
+    //[self addEventToGoogleCalendar];
     return event;
 }
 
@@ -227,6 +228,49 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     [navController setViewControllers:@[viewController]];
     [controller presentViewController:navController animated:YES completion:nil];
 }
+
+- (void)addEventToGoogleCalendar:(NFEvent*)event {
+    
+    GTLCalendarEvent* calendarEvent = [[GTLCalendarEvent alloc] init];
+    
+    [calendarEvent setSummary:@"test"];
+    [ calendarEvent setDescriptionProperty:@"description"];
+    
+    NSDate *startDate = [NSDate date];
+    NSDate *endDate = [NSDate date];
+    
+    if (endDate == nil) {
+        endDate = [startDate dateByAddingTimeInterval:(60 * 60)];
+    }
+    
+    GTLDateTime *startTime = [GTLDateTime dateTimeWithDate:startDate
+                                                  timeZone:[NSTimeZone systemTimeZone]];
+    
+    [calendarEvent setStart:[GTLCalendarEventDateTime object]];
+    [calendarEvent.start setDateTime:startTime];
+    
+    GTLDateTime *endTime = [GTLDateTime dateTimeWithDate:endDate
+                                                timeZone:[NSTimeZone systemTimeZone]];
+    
+    [calendarEvent setEnd:[GTLCalendarEventDateTime object]];
+    [calendarEvent.end setDateTime:endTime];
+    
+    
+    GTLQueryCalendar *insertQuery = [GTLQueryCalendar queryForEventsInsertWithObject:calendarEvent
+                                                                          calendarId:@"shitikov.net@gmail.com"];
+    NSLog(@"Adding Event…?????");
+    [self.service executeQuery:insertQuery
+                 completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                     if (error == nil) {
+                         NSLog(@"Adding Event…");
+                     } else {
+                         NSLog(@"Event Entry Failed");
+                        
+                     }
+                 }];
+}
+
+
 
 - (void)writEventToGoogle:(NFEvent*)event {
     //[GTLQueryCalendar queryForEventsInsertWithObject:yourEventObject calendarId:yourCalendarId];
@@ -272,7 +316,7 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
 - (void)addAnEvent {
     // Make a new event, and show it to the user to edit
     GTLCalendarEvent *newEvent = [GTLCalendarEvent object];
-    newEvent.summary = @"Sample Added Event today";
+    newEvent.summary = @"Added  today";
     newEvent.descriptionProperty = @"Description of sample added event";
     
     // We'll set the start time to now, and the end time to an hour from now,
@@ -289,14 +333,14 @@ static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo
     newEvent.end = [GTLCalendarEventDateTime object];
     newEvent.end.dateTime = endDateTime;
     
-    GTLCalendarEventReminder *reminder = [GTLCalendarEventReminder object];
-    reminder.minutes = [NSNumber numberWithInteger:10];
-    reminder.method = @"email";
+//    GTLCalendarEventReminder *reminder = [GTLCalendarEventReminder object];
+//    reminder.minutes = [NSNumber numberWithInteger:10];
+//    reminder.method = @"email";
     
-    newEvent.reminders = [GTLCalendarEventReminders object];
-    newEvent.reminders.overrides = [NSArray arrayWithObject:reminder];
-    newEvent.reminders.useDefault = [NSNumber numberWithBool:NO];
-    
+//    newEvent.reminders = [GTLCalendarEventReminders object];
+//    newEvent.reminders.overrides = [NSArray arrayWithObject:reminder];
+//    newEvent.reminders.useDefault = [NSNumber numberWithBool:NO];
+    NSLog(@"new event id %@", newEvent.identifier);
     [self addEvent:newEvent];
 }
 

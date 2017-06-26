@@ -15,6 +15,8 @@
 #import "NFStatisticController.h"
 #import "NFAboutController.h"
 #import "NFTutorialController.h"
+#import "NFManifestationsController.h"
+
 
 typedef NS_ENUM(NSInteger, MenuItem)
 {
@@ -71,7 +73,10 @@ typedef NS_ENUM(NSInteger, MenuItem)
         }
         case Manifestations:
         {
-            
+            NFManifestationsController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFManifestationsController class])];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFManifestationsControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [target presentViewController:navController animated:YES completion:nil];
             break;
         }
         case Settings:

@@ -22,6 +22,8 @@
 @property (assign, nonatomic) BOOL isEventLoaded;
 @property (assign, nonatomic) BOOL isResultCategoryLoaded;
 @property (assign, nonatomic) BOOL isResultLoaded;
+@property (assign, nonatomic) BOOL isManifestationsLoaded;
+
 
 
 @end
@@ -46,6 +48,7 @@
         self.baseValuesArray = [NSMutableArray array];
         self.resultCategoryArray = [NSMutableArray array];
         self.resultsArray = [NSMutableArray array];
+        self.manifestationsArray = [NSMutableArray array];
             }
     return self;
 }
@@ -101,6 +104,7 @@
          [self getAllValues];
          [self getAllBaseValues];
          [self getAllResultCategory];
+         [self getAllManifestations];
          [self getAllResultsWithUserId:[[NFGoogleManager sharedManager] getUserId]];
          
          [self.firebaseEventsArray removeAllObjects];
@@ -223,17 +227,42 @@
          [self.resultCategoryArray addObjectsFromArray:valuesArray];
          _isResultCategoryLoaded = YES;
          [self compliteLoading];
-         
-         
      }];
-
-    
 }
 
-- (void)addResultCategory:(NFResultCategory *)category {
-     [[[self.ref child:@"ResultCategory"]  child:category.resultCategoryId] updateChildValues:[category convertToDictionary]];
+- (void)getAllManifestations {
+    [[self.ref child:@"Manifestations"]
+     observeEventType:FIRDataEventTypeValue
+     withBlock:^(FIRDataSnapshot *snapshot) {
+         NSMutableArray* resultArray = [NSMutableArray new];
+         
+         // Loop over children
+         NSMutableArray *dataArray = [NSMutableArray array];
+         NSEnumerator *children = [snapshot children];
+         FIRDataSnapshot *child;
+         while (child = [children nextObject]) {
+             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+             [dataArray addObject:value];
+             NSLog(@"Manifestations");
+         }
+         for (NSDictionary *dic in dataArray) {
+             NSMutableArray *tempArray = [NSMutableArray new];
+             NSMutableArray *list = [NSMutableArray new];
+             [tempArray addObjectsFromArray:[dic allValues]];
+             for (NSDictionary *dicM in tempArray) {
+                 NFManifestation *item = [[NFManifestation alloc] initWithDictionary:dicM];
+                 [list addObject:item];
+             }
+             if (list.count > 0) {
+                 [resultArray addObject:list];
+             }
+         }
+         [self.manifestationsArray removeAllObjects];
+         [self.manifestationsArray addObjectsFromArray:resultArray];
+         _isManifestationsLoaded = YES;
+         [self compliteLoading];
+     }];
 }
-
 
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId {
     [[[[[self.ref child:@"Users"] child:userId] child:@"Values"] child:value.valueId] updateChildValues:[value convertToDictionary]];
@@ -282,44 +311,69 @@
 
 // standart data Admin part
 
+- (void)addResultCategory:(NFResultCategory *)category {
+    [[[self.ref child:@"ResultCategory"]  child:category.resultCategoryId] updateChildValues:[category convertToDictionary]];
+}
+
+- (void)addManifestation:(NFManifestation*)manifestation {
+    [[[[self.ref child:@"Manifestations"]  child:manifestation.categoryKey] child:manifestation.manifestationId] updateChildValues:[manifestation convertToDictionary]];
+}
 
 - (void)addStandartValue:(NFValue *)value withUserId:(NSString *)userId {
     [[[self.ref child:@"Values"]  child:value.valueId] updateChildValues:[value convertToDictionary]];
 }
 
-- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId {
+- (void)addSatndartListOfManifestations {
+    NSString *kJob = @"Job";
+    NSString *kRelations = @"Relations";
+    NSString *kFamilyAndFriends = @"FamilyAndFriends";
+    NSString *kLife = @"Life";
+    NSString *kBodyAndHealth = @"BodyAndHealth";
+    NSString *kEvolution = @"Evolution";
+    NSString *kMaterialProsperity = @"MaterialProsperity";
+    NSString *kRelaxation = @"Relaxation";
     
-//    NSMutableDictionary *eventlDictionary = [NSMutableDictionary dictionary];
-//    if (event.values.count > 0) {
-//        NSMutableArray *tempValues = [NSMutableArray array];
-//        for (NFValue *val in event.values) {
-//            [tempValues addObject:[val convertToDictionary]];
-//        }
-//        [event.values removeAllObjects];
-//        [event.values addObjectsFromArray:tempValues];
-//    }
-//    eventlDictionary = (NSMutableDictionary*)[event convertToDictionary];
-//    NSLog(@"event to firebase %@", eventlDictionary);
-//    [[[[[self.ref child:@"Users"] child:userId] child:@"Events"]child:event.eventId] updateChildValues:eventlDictionary];
-//
+    NSString *kJobTitle = @"Работа";
+    NSString *kRelationsTitle = @"Отношения";
+    NSString *kFamilyAndFriendsTitle = @"Семья и друзья";
+    NSString *kLifeTitle = @"Быт";
+    NSString *kBodyAndHealthTitle = @"Тело и здоровье";
+    NSString *kEvolutionTitle = @"Развитие";
+    NSString *kMaterialProsperityTitle = @"Материальное благополучие";
+    NSString *kRelaxationTitle = @"Отдых";
+
+    
+    
+    NSArray *categorysTitle = [NSArray arrayWithObjects:kJobTitle, kRelationsTitle, kFamilyAndFriendsTitle,
+                               kLifeTitle, kBodyAndHealthTitle, kEvolutionTitle, kMaterialProsperityTitle, kRelaxationTitle,  nil];
+    NSArray *keyArray = [NSArray arrayWithObjects:kJob,kRelations, kFamilyAndFriends, kLife, kBodyAndHealth, kEvolution, kMaterialProsperity, kRelaxation,  nil];
+    NSArray *manifestationsTitle = [NSArray arrayWithObjects:@"Что для меня важно в этой сфере?",
+                                    @"Что для меня на самом деле имеет значение?",
+                                    @"Чего я хочу?",
+                                    @"Без чего я чувствую себя неудовлетворенным в этой сфере?", nil];
+    
+    for (NSString* key in keyArray) {
+        int index = 0;
+        
+        for (NSString *title in manifestationsTitle) {
+            NFManifestation *manifestation = [NFManifestation new];
+            manifestation.categoryKey = key;
+            manifestation.categoryTitle = [categorysTitle objectAtIndex:[keyArray indexOfObject:key]];
+            manifestation.index = [NSNumber numberWithInt:index];
+            manifestation.name = title;
+            [self addManifestation:manifestation];
+            index++;
+        }
+    }
+}
+
+- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId {
     
     NFValue *job = [NFValue new];
     job.valueId = @"0703F55D-0CAE-495C-8202-job";
     job.valueTitle = @"Работа";
     job.valueIndex = @0;
     job.valueImage = @"job_value_icon.png";
-    
-//    NFManifestation *jobMan1 = [[NFManifestation alloc] init];
-//    jobMan1.name = @"Что для меня важно в этой сфере?";
-//    jobMan1.index = @0;
-//    [job.manifestations addObject:jobMan1];
-//    
-//    NFManifestation *jobMan2 = [[NFManifestation alloc] init];
-//    jobMan2.name = @"Что для меня на самом деле имеет значение?";
-//    jobMan2.index = @1;
-//    [job.manifestations addObject:jobMan2];
-//    
-//    NFManifestation *jobMan3 = [[NFManifestation alloc] init];
     
     [self addStandartValue:job withUserId:userId];
     //
@@ -439,7 +493,7 @@
 }
 
 - (void)compliteLoading {
-    if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded && _isBaseValueLoaded) {
+    if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded && _isBaseValueLoaded && _isManifestationsLoaded) {
         NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
         _isValueLoaded = NO;
@@ -447,6 +501,7 @@
         _isResultCategoryLoaded = NO;
         _isResultLoaded = NO;
         _isBaseValueLoaded = NO;
+        _isManifestationsLoaded = NO;
     }
 }
 

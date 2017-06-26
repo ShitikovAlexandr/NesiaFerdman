@@ -7,9 +7,15 @@
 //
 
 #import "NFManifestationsController.h"
+#import "NFTaskManager.h"
+#import "NFHeaderForTaskSection.h"
+#import "NFManifestation.h"
+#import "UIBarButtonItem+FHButtons.h"
+
 
 @interface NFManifestationsController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *dataArray;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -18,6 +24,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataArray = [NSMutableArray array];
+    self.title = @"Проявления";
+    [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 44.0;     [self addDataToDisplay];
 }
 
 #pragma mark - UITableViewDataSource
@@ -36,10 +46,34 @@
     if (!cell) {
         cell = [[UITableViewCell alloc]  initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+    NSArray *array = [NSArray arrayWithArray:[_dataArray objectAtIndex:indexPath.section]];
+    NFManifestation *item = [array objectAtIndex:indexPath.row];
+    cell.textLabel.text = item.name;
+
     return cell;
 }
 
+- (void)addDataToDisplay {
+    [_dataArray removeAllObjects];
+    [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllManifestations]];
+    [_tableView reloadData];
+}
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return [NFHeaderForTaskSection headerSize];
+}
+
+- (nullable NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (_dataArray.count > 0) {
+        NSArray *array = [NSArray arrayWithArray:[_dataArray objectAtIndex:section]];
+        NFManifestation *item = [array firstObject];
+        return item.categoryTitle;
+    } else {
+        return @"";
+    }
+}
+
 
 @end

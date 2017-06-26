@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *baseValuesArray;
 
 @property (strong, nonatomic) NSMutableArray *resultCategoryArray;
+@property (strong, nonatomic) NSMutableArray *manifestationsArray;
 @property (strong, nonatomic) NSMutableArray *resultsArray;
 
 + (NFFirebaseManager *)sharedManager;
@@ -34,6 +35,7 @@
 
 - (void)getAllValues;
 - (void)getAllBaseValues;
+- (void)getAllManifestations;
 
 - (void)getAllResultCategory;
 - (void)getAllResultsWithUserId:(NSString*)userId;
@@ -45,6 +47,7 @@
 
 //- (void)addStandartListOfValuesToDateBaseWithUserId:(NSString *)userId;
 - (void) addStandartListOfResultCategoryToDateBase;
+- (void)addSatndartListOfManifestations;
 
 //
 

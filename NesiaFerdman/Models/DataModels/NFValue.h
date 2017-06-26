@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSNumber *valueIndex;
 @property (strong, nonatomic) NSString *valueImage;
 @property (assign, nonatomic) BOOL isDeleted;
-@property (strong, nonatomic) NSMutableArray* manifestations;
+//@property (strong, nonatomic) NSMutableArray* manifestations;
 
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;

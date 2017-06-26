@@ -1,24 +1,23 @@
 //
-//  NFManifestation.m
+//  NFManifestationCategory.m
 //  NesiaFerdman
 //
-//  Created by alex on 25.06.17.
+//  Created by Alex_Shitikov on 6/26/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
-#import "NFManifestation.h"
+#import "NFManifestationCategory.h"
 #import <objc/runtime.h>
 
-@implementation NFManifestation
 
-- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+@implementation NFManifestationCategory
+
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        self.name = [dictionary objectForKey:@"name"];
-        self.manifestationId = [dictionary objectForKey:@"manifestationId"];
-        self.index = [dictionary objectForKey:@"index"];
-        self.categoryKey = [dictionary objectForKey:@"categoryKey"];
-        self.categoryTitle = [dictionary objectForKey:@"categoryTitle"];
+        self.manifestationCategoryIndex = [dictionary objectForKey:@"manifestationCategoryIndex"];
+        self.manifestationCategoryId = [dictionary objectForKey:@"manifestationCategoryId"];
+        self.manifestationCategoryTitle = [dictionary objectForKey:@"manifestationCategoryTitle"];
     }
     return self;
 }
@@ -36,16 +35,6 @@
     }
     free(properties);
     return dictionary;
-}
-
-- (instancetype)init {
-    self = [super init];
-    if (self) {
-        NSString *newID = [[NSUUID UUID] UUIDString];
-        self.manifestationId = newID;
-        self.name = @"name";
-    }
-    return self;
 }
 
 @end

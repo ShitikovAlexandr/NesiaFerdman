@@ -243,6 +243,7 @@ UICollectionViewDelegateFlowLayout
     [_indicator startAnimating];
     if (!_event) {
         _event = [[NFEvent alloc] init];
+        [[NFSyncManager sharedManager] writeEventToGoogle:_event];
     }
     [_event.values removeAllObjects];
     _event.values = [NSMutableArray array];

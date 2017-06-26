@@ -72,6 +72,10 @@
     [[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:_userId];
 }
 
+- (void)addStandartListOfMainifestations {
+    [[NFFirebaseManager sharedManager] addSatndartListOfManifestations];
+}
+
 - (void)addStandartListOfResultCategory {
     [[NFFirebaseManager sharedManager] addStandartListOfResultCategoryToDateBase];
 }
@@ -169,6 +173,7 @@
         _firebaseIsFinished = NO;
         _googleIsFinished = NO;
         _phoneIsFinished = NO;
+        //[self addStandartListOfMainifestations];
         [self filterEvents];
     }
 }
@@ -193,6 +198,9 @@
     
     //[[NFTaskManager sharedManager].valuesArray addObjectsFromArray:[self sortArray:self.valuesArray withKey:@"valueIndex"]];
     [[NFTaskManager sharedManager].valuesArray addObjectsFromArray: [self sincUserValues:self.valuesArray withBaseValues:[NFFirebaseManager sharedManager].baseValuesArray]];
+    
+    [[NFTaskManager sharedManager].manifestationsArray removeAllObjects];
+    [[NFTaskManager sharedManager].manifestationsArray addObjectsFromArray:[NFFirebaseManager sharedManager].manifestationsArray];
     
     NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA object:nil];
     [[NSNotificationCenter defaultCenter] postNotification:notification];
@@ -286,12 +294,13 @@
     return [self sortArray:userValues withKey:@"valueIndex"];
 
 }
-/*
- NSSortDescriptor *sortDescriptor;
- sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"categoryID"
- ascending:YES];
- NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
- self.carCategories = (NSMutableArray*)[thisData sortedArrayUsingDescriptors:sortDescriptors];
- */
+
+//-----------
+
+- (void)writeEventToGoogle:(NFEvent*)event {
+    [[NFGoogleManager sharedManager] addEventToGoogleCalendar:event];
+}
+
+
 
 @end

@@ -33,9 +33,13 @@
         self.resultCategoryArray = [NSMutableArray array];
         self.resultsArray = [NSMutableArray array];
         self.resultsDictionary = [NSMutableDictionary dictionary];
-        
+        self.manifestationsArray = [NSMutableArray array];
     }
     return self;
+}
+
+- (NSMutableArray*) getAllManifestations {
+    return self.manifestationsArray;
 }
 
 - (NSMutableArray*)getAllResultCategory {

@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *manifestationId;
 @property (strong, nonatomic) NSNumber *index;
+@property (strong, nonatomic) NSString *categoryKey;
+@property (strong, nonatomic) NSString *categoryTitle;
+
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (NSDictionary *)convertToDictionary;

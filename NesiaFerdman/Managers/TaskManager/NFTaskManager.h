@@ -29,6 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *selectedValuesArray;
 
 @property (strong, nonatomic) NSMutableArray *resultCategoryArray;
+@property (strong, nonatomic) NSMutableArray *manifestationsArray;
 
 @property (strong, nonatomic) NSMutableArray *resultsArray;
 @property (strong, nonatomic) NSMutableDictionary *resultsDictionary;
@@ -51,6 +52,7 @@
 - (NSMutableDictionary *)eventSortedByValue:(NSMutableArray* )inputArray;
 
 - (NSMutableArray *)getAllValues;
+- (NSMutableArray*) getAllManifestations;
 - (NSMutableArray*)getAllResultCategory;
 - (NSMutableArray*)getAllResult;
 - (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forDay:(NSDate*)date;
