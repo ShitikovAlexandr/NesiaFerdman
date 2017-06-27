@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wg-ob-7Jc">
-                    <rect key="frame" x="55" y="6.5" width="124" height="21"/>
+                    <rect key="frame" x="55" y="6.5" width="225" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -35,7 +35,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fK9-wd-08a">
-                    <rect key="frame" x="235" y="6.5" width="124" height="21"/>
+                    <rect key="frame" x="134" y="6.5" width="225" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3N9-Xq-MiV" firstAttribute="centerY" secondItem="6Wg-ob-7Jc" secondAttribute="centerY" id="0K9-9K-7os"/>
-                <constraint firstItem="6Wg-ob-7Jc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.33:1" id="Nat-QY-Syf"/>
+                <constraint firstItem="6Wg-ob-7Jc" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.6:1" id="Nat-QY-Syf"/>
                 <constraint firstAttribute="trailing" secondItem="fK9-wd-08a" secondAttribute="trailing" constant="16" id="XHJ-1D-Cbd"/>
                 <constraint firstItem="6Wg-ob-7Jc" firstAttribute="leading" secondItem="3N9-Xq-MiV" secondAttribute="trailing" constant="14" id="eHW-eg-RTl"/>
                 <constraint firstItem="fK9-wd-08a" firstAttribute="centerY" secondItem="6Wg-ob-7Jc" secondAttribute="centerY" id="hBi-lM-qv0"/>

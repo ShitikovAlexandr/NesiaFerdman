@@ -39,6 +39,7 @@ typedef NS_ENUM(NSUInteger, SocialType)
 @property (assign, nonatomic) EventType eventType;
 @property (strong, nonatomic) NSString *eventId;
 @property (strong, nonatomic) NSString *socialId;
+@property (strong, nonatomic) NSString *calendarId;
 @property (assign, nonatomic) BOOL isImportant;
 @property (assign, nonatomic) BOOL  isDone;
 

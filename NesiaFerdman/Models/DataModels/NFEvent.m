@@ -29,7 +29,6 @@
                 [self.values addObject:value];
             }
         }
-        //self.value = [dictionary objectForKey:@"value"];
         self.socialType = [[dictionary objectForKey:@"socialType"] integerValue];
         self.eventType = [[dictionary objectForKey:@"eventType"] integerValue];
         self.eventId = [dictionary objectForKey:@"eventId"];
@@ -38,6 +37,11 @@
         self.isDone = [[dictionary objectForKey:@"isDone"] boolValue];
         self.isDeleted = [[dictionary objectForKey:@"isDeleted"] boolValue];
         self.dateChange = [dictionary objectForKey:@"dateChange"];
+        if ([dictionary objectForKey:@"calendarId"]) {
+            self.calendarId = [dictionary objectForKey:@"calendarId"];
+        } else {
+            self.calendarId = @"primary";
+        }
     }
     return self;
 }

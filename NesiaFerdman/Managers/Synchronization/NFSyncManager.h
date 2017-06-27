@@ -30,11 +30,14 @@
 - (void)writeValueToFirebase:(NFValue *)value;
 - (void)writeResultToFirebase:(NFResult*)result;
 - (void)deleteValueFromFirebase:(NFValue *)value;
+- (void)deleteEventFromFirebase:(NFEvent *)event;
+
 
 - (BOOL)isFirstRunApp;
 - (BOOL)isFirstRunToday;
 
 - (void)writeEventToGoogle:(NFEvent*)event;
+- (void)updateEventInGoogleWithEvent:(NFEvent*)event;
 
 
 

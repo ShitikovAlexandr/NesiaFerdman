@@ -29,7 +29,9 @@
 
 - (void)fetchEventsWithCount:(NSInteger)count minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate;
 - (NFEvent *)NFEventFromGoogle:(GTLCalendarEvent *)googleEvent;
+
 - (void)addEventToGoogleCalendar:(NFEvent*)event;
+- (void)updateGoogleEventWith:(NFEvent*)event;
 
 
 @end

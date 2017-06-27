@@ -113,6 +113,7 @@
 		C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A541931EBA062A005BEC47 /* NFWeekDaysHeader.xib */; };
 		C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A541961EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m */; };
 		C2A77B6F1EAF66D6005FE7A4 /* NFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A77B6E1EAF66D6005FE7A4 /* NFEvent.m */; };
+		C2AA72021F028C19007DB785 /* NFSettingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AA72011F028C19007DB785 /* NFSettingDetailController.m */; };
 		C2B3C84F1EE82C01000B917D /* NFGoogleCalendarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C84E1EE82C01000B917D /* NFGoogleCalendarController.m */; };
 		C2B3C8AC1EE935FA000B917D /* NFValueController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C8AB1EE935FA000B917D /* NFValueController.m */; };
 		C2B3C8B01EE93D71000B917D /* NFMenuElements.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C8AF1EE93D71000B917D /* NFMenuElements.m */; };
@@ -407,6 +408,8 @@
 		C2A541961EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderDayOfWeek.m; sourceTree = "<group>"; };
 		C2A77B6D1EAF66D6005FE7A4 /* NFEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFEvent.h; sourceTree = "<group>"; };
 		C2A77B6E1EAF66D6005FE7A4 /* NFEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFEvent.m; sourceTree = "<group>"; };
+		C2AA72001F028C19007DB785 /* NFSettingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSettingDetailController.h; sourceTree = "<group>"; };
+		C2AA72011F028C19007DB785 /* NFSettingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSettingDetailController.m; sourceTree = "<group>"; };
 		C2B3C84D1EE82C01000B917D /* NFGoogleCalendarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleCalendarController.h; sourceTree = "<group>"; };
 		C2B3C84E1EE82C01000B917D /* NFGoogleCalendarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFGoogleCalendarController.m; sourceTree = "<group>"; };
 		C2B3C8AA1EE935FA000B917D /* NFValueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueController.h; sourceTree = "<group>"; };
@@ -593,12 +596,13 @@
 			path = "Task models";
 			sourceTree = "<group>";
 		};
-		C20AF31D1EA9E2EF00637A49 /* SettingsController */ = {
+		C20AF31D1EA9E2EF00637A49 /* MenuControllers */ = {
 			isa = PBXGroup;
 			children = (
 				C20AF3211EA9E34C00637A49 /* NFSittingsController.h */,
 				C20AF3221EA9E34C00637A49 /* NFSittingsController.m */,
 			);
+			name = MenuControllers;
 			path = SettingsController;
 			sourceTree = "<group>";
 		};
@@ -738,6 +742,7 @@
 		C22407B51E9CB4E8004B089A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C2AA71FF1F028BF9007DB785 /* SettingDetailController */,
 				FA9966041EFFAF07003CF84A /* ManifestationsController */,
 				C23AD8CB1EFD109800BAFF1E /* TutorialController */,
 				C23AD8CA1EFD106600BAFF1E /* AboutController */,
@@ -751,7 +756,7 @@
 				C2359FF31EC9A9CB00EB8FDC /* ConclusionsControllers */,
 				C24AA5231EBB62C300ABA92C /* AddImportantTaskController */,
 				C24AA5161EBB4F5A00ABA92C /* ImportantControllers */,
-				C20AF31D1EA9E2EF00637A49 /* SettingsController */,
+				C20AF31D1EA9E2EF00637A49 /* MenuControllers */,
 				C2FE1C641E9F60E900B4E03A /* TaskControllers */,
 				C257379E1E9D28FD00C4A4EA /* QuoteDay */,
 				C257379D1E9D28E000C4A4EA /* Splash */,
@@ -1119,6 +1124,15 @@
 				C2A541961EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m */,
 			);
 			path = WeekDaysHeader;
+			sourceTree = "<group>";
+		};
+		C2AA71FF1F028BF9007DB785 /* SettingDetailController */ = {
+			isa = PBXGroup;
+			children = (
+				C2AA72001F028C19007DB785 /* NFSettingDetailController.h */,
+				C2AA72011F028C19007DB785 /* NFSettingDetailController.m */,
+			);
+			path = SettingDetailController;
 			sourceTree = "<group>";
 		};
 		C2B3C84C1EE82BF2000B917D /* NFGoogleCalendarController */ = {
@@ -1884,6 +1898,7 @@
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
 				C20595701EF2A1F400BF3BFD /* NFViewWithDownBorder.m in Sources */,
 				C21321021EA65BAA00CE2B5D /* NFPageTaskController.m in Sources */,
+				C2AA72021F028C19007DB785 /* NFSettingDetailController.m in Sources */,
 				C2FA691B1EE1848500D58D18 /* NFTagCell.m in Sources */,
 				C2FE1C601E9F534A00B4E03A /* NFViewController.m in Sources */,
 				C24AA5221EBB4FFC00ABA92C /* NFMonthImportantController.m in Sources */,

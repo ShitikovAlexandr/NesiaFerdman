@@ -24,8 +24,6 @@
 @property (assign, nonatomic) BOOL isResultLoaded;
 @property (assign, nonatomic) BOOL isManifestationsLoaded;
 
-
-
 @end
 
 @implementation NFFirebaseManager
@@ -57,8 +55,14 @@
     NSMutableDictionary *eventlDictionary = [NSMutableDictionary dictionary];
     if (event.values.count > 0) {
         NSMutableArray *tempValues = [NSMutableArray array];
-        for (NFValue *val in event.values) {
-            [tempValues addObject:[val convertToDictionary]];
+        for (id val in event.values) {
+            if ([val isKindOfClass:[NFValue class]]) {
+                [tempValues addObject:[val convertToDictionary]];
+            } else if ([val isKindOfClass:[NSMutableDictionary class]]) {
+                [tempValues addObject:val];
+            } else {
+                NSLog(@"error convert value");
+            }
         }
         [event.values removeAllObjects];
         [event.values addObjectsFromArray:tempValues];
@@ -98,7 +102,11 @@
          }
          for (NSDictionary *dic in dataArray) {
              NFEvent *event = [[NFEvent alloc] initWithDictionary:dic];
-             [eventsArray addObject:event];
+             if (!event.isDeleted) {
+                 [eventsArray addObject:event];
+             } else {
+                 NSLog(@"event set as deleted %@", event.eventId);
+             }
          }
          
          [self getAllValues];

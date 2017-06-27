@@ -39,34 +39,6 @@
     self.timeLabel.layer.borderColor = [UIColor clearColor].CGColor;
     self.timeLabel.layer.borderWidth = 2;
 
-
-    
-    // time circle with line
-    
-//    _circleView = [[UIView alloc] initWithFrame:CGRectMake(_timeLabel.frame.origin.x - ovalRadius, _timeLabel.center.y - ovalRadius, ovalRadius * 2, ovalRadius * 2)];
-//    _circleView.layer.cornerRadius = ovalRadius;
-//    _circleView.layer.borderWidth = 4.f;
-//    _circleView.layer.borderColor = [NFStyleKit sUPER_LIGHT_GREEN].CGColor;
-//    //[self addSubview:_circleView];
-//    
-//    _lineView = [[UIView alloc] initWithFrame:CGRectMake(0, _timeLabel.center.y, _circleView.frame.origin.x, timelineWidth)];
-//    _lineView.backgroundColor = [NFStyleKit sUPER_LIGHT_GREEN];
-//    //[self addSubview: _lineView];
-//    _circleView.hidden = true;
-//    _lineView.hidden = true;
-
-    
-    //task circle with line
-    
-//    _taskCircleViewUpLine = [[UIView alloc] initWithFrame:CGRectMake(_taskCircleView.center.x, 0, timelineWidth, rect.size.height/2)];
-//    _taskCircleViewUpLine.backgroundColor = [NFStyleKit sUPER_LIGHT_GREEN];
-//    [self addSubview: _taskCircleViewUpLine];
-//    //_taskCircleViewUpLine.hidden = YES;
-//    
-//    _taskCircleViewDownLine = [[UIView alloc] initWithFrame:CGRectMake(_taskCircleView.center.x, _taskCircleView.center.y, timelineWidth, rect.size.height/2)];
-//    _taskCircleViewDownLine.backgroundColor = [NFStyleKit sUPER_LIGHT_GREEN];
-//    [self addSubview: _taskCircleViewDownLine];
-//    //_taskCircleViewDownLine.hidden = YES;
     
     _taskCircleView = [[UIView alloc] initWithFrame:CGRectMake(_timeLabel.center.x - ovalRadius, _timeLabel.center.y - ovalRadius, ovalRadius * 2, ovalRadius * 2)];
     _taskCircleView.layer.cornerRadius = ovalRadius;

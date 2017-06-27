@@ -100,7 +100,9 @@
 }
 
 - (void)deleteEventFromFirebase:(NFEvent *)event {
-    [[NFFirebaseManager sharedManager] deleteEventFromFirebase:event withUserId:_userId];
+    //[[NFFirebaseManager sharedManager] deleteEventFromFirebase:event withUserId:_userId];
+    event.isDeleted = true;
+    [[NFFirebaseManager sharedManager] writeEventToFirebase:event withUserId:_userId];
 }
 
 //- (void)getValuesFromFirebase {
@@ -299,6 +301,10 @@
 
 - (void)writeEventToGoogle:(NFEvent*)event {
     [[NFGoogleManager sharedManager] addEventToGoogleCalendar:event];
+}
+
+- (void)updateEventInGoogleWithEvent:(NFEvent*)event {
+    [[NFGoogleManager sharedManager] updateGoogleEventWith:event];
 }
 
 

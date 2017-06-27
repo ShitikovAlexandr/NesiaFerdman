@@ -31,13 +31,13 @@
                         <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HhQ-Uq-Dl7">
-                        <rect key="frame" x="98" y="11" width="226" height="25"/>
+                        <rect key="frame" x="98" y="11" width="261" height="25"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NiT-FC-S3h">
-                        <rect key="frame" x="98" y="56" width="226" height="0.0"/>
+                        <rect key="frame" x="98" y="56" width="261" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                     <constraint firstItem="9LU-fg-qLX" firstAttribute="centerX" secondItem="b1B-g0-oZp" secondAttribute="centerX" id="KDr-bw-Epg"/>
                     <constraint firstItem="b1B-g0-oZp" firstAttribute="centerY" secondItem="87v-id-jZU" secondAttribute="centerY" id="OzC-5H-cD1"/>
                     <constraint firstItem="HhQ-Uq-Dl7" firstAttribute="leading" secondItem="b1B-g0-oZp" secondAttribute="trailing" constant="30" id="UJL-Lh-82t"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="HhQ-Uq-Dl7" secondAttribute="trailing" constant="43" id="YtQ-gC-wSP"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="HhQ-Uq-Dl7" secondAttribute="trailing" constant="8" id="YtQ-gC-wSP"/>
                     <constraint firstItem="xRq-ig-IuL" firstAttribute="height" secondItem="9LU-fg-qLX" secondAttribute="height" id="eBk-jh-Pam"/>
                     <constraint firstItem="9LU-fg-qLX" firstAttribute="trailing" secondItem="xRq-ig-IuL" secondAttribute="trailing" id="eT1-0h-hnG"/>
                     <constraint firstItem="9LU-fg-qLX" firstAttribute="height" secondItem="87v-id-jZU" secondAttribute="height" multiplier="0.5:1" id="g2K-fH-jWo"/>
