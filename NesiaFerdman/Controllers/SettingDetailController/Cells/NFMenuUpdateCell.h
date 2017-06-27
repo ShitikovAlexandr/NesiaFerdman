@@ -1,5 +1,5 @@
 //
-//  NFSettingDetailController.h
+//  NFMenuUpdateCell.h
 //  NesiaFerdman
 //
 //  Created by Alex_Shitikov on 6/27/17.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFSettingItem.h"
 
-@interface NFSettingDetailController : UITableViewController
+@interface NFMenuUpdateCell : UITableViewCell
 
 @end

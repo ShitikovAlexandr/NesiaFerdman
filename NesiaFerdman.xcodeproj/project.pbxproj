@@ -114,6 +114,12 @@
 		C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A541961EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m */; };
 		C2A77B6F1EAF66D6005FE7A4 /* NFEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A77B6E1EAF66D6005FE7A4 /* NFEvent.m */; };
 		C2AA72021F028C19007DB785 /* NFSettingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AA72011F028C19007DB785 /* NFSettingDetailController.m */; };
+		C2AA72061F028FD4007DB785 /* NFMenuSwitcherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AA72051F028FD4007DB785 /* NFMenuSwitcherCell.m */; };
+		C2AA72091F028FE8007DB785 /* NFMenuUpdateCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AA72081F028FE8007DB785 /* NFMenuUpdateCell.m */; };
+		C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AA720A1F029001007DB785 /* NFMenuSwitcherCell.xib */; };
+		C2AA720D1F029014007DB785 /* NFMenuUpdateCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2AA720C1F029014007DB785 /* NFMenuUpdateCell.xib */; };
+		C2AA72111F029253007DB785 /* NFSettingItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2AA72101F029253007DB785 /* NFSettingItem.m */; };
+		C2AA72131F02A0B2007DB785 /* uodate_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2AA72121F02A0B2007DB785 /* uodate_icon.png */; };
 		C2B3C84F1EE82C01000B917D /* NFGoogleCalendarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C84E1EE82C01000B917D /* NFGoogleCalendarController.m */; };
 		C2B3C8AC1EE935FA000B917D /* NFValueController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C8AB1EE935FA000B917D /* NFValueController.m */; };
 		C2B3C8B01EE93D71000B917D /* NFMenuElements.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3C8AF1EE93D71000B917D /* NFMenuElements.m */; };
@@ -410,6 +416,15 @@
 		C2A77B6E1EAF66D6005FE7A4 /* NFEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFEvent.m; sourceTree = "<group>"; };
 		C2AA72001F028C19007DB785 /* NFSettingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSettingDetailController.h; sourceTree = "<group>"; };
 		C2AA72011F028C19007DB785 /* NFSettingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSettingDetailController.m; sourceTree = "<group>"; };
+		C2AA72041F028FD4007DB785 /* NFMenuSwitcherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFMenuSwitcherCell.h; sourceTree = "<group>"; };
+		C2AA72051F028FD4007DB785 /* NFMenuSwitcherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFMenuSwitcherCell.m; sourceTree = "<group>"; };
+		C2AA72071F028FE8007DB785 /* NFMenuUpdateCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFMenuUpdateCell.h; sourceTree = "<group>"; };
+		C2AA72081F028FE8007DB785 /* NFMenuUpdateCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFMenuUpdateCell.m; sourceTree = "<group>"; };
+		C2AA720A1F029001007DB785 /* NFMenuSwitcherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFMenuSwitcherCell.xib; sourceTree = "<group>"; };
+		C2AA720C1F029014007DB785 /* NFMenuUpdateCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFMenuUpdateCell.xib; sourceTree = "<group>"; };
+		C2AA720F1F029253007DB785 /* NFSettingItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSettingItem.h; sourceTree = "<group>"; };
+		C2AA72101F029253007DB785 /* NFSettingItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSettingItem.m; sourceTree = "<group>"; };
+		C2AA72121F02A0B2007DB785 /* uodate_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uodate_icon.png; sourceTree = "<group>"; };
 		C2B3C84D1EE82C01000B917D /* NFGoogleCalendarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleCalendarController.h; sourceTree = "<group>"; };
 		C2B3C84E1EE82C01000B917D /* NFGoogleCalendarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFGoogleCalendarController.m; sourceTree = "<group>"; };
 		C2B3C8AA1EE935FA000B917D /* NFValueController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueController.h; sourceTree = "<group>"; };
@@ -778,6 +793,7 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2AA72121F02A0B2007DB785 /* uodate_icon.png */,
 				C23AD8D21EFD159300BAFF1E /* Screen1.png */,
 				C23AD8D31EFD159300BAFF1E /* Screen2.png */,
 				C21B0ECD1EFA642C001D85CE /* quote_img.png */,
@@ -1129,10 +1145,34 @@
 		C2AA71FF1F028BF9007DB785 /* SettingDetailController */ = {
 			isa = PBXGroup;
 			children = (
+				C2AA720E1F029234007DB785 /* SettingItem */,
+				C2AA72031F028FAC007DB785 /* Cells */,
 				C2AA72001F028C19007DB785 /* NFSettingDetailController.h */,
 				C2AA72011F028C19007DB785 /* NFSettingDetailController.m */,
 			);
 			path = SettingDetailController;
+			sourceTree = "<group>";
+		};
+		C2AA72031F028FAC007DB785 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C2AA72041F028FD4007DB785 /* NFMenuSwitcherCell.h */,
+				C2AA72051F028FD4007DB785 /* NFMenuSwitcherCell.m */,
+				C2AA72071F028FE8007DB785 /* NFMenuUpdateCell.h */,
+				C2AA72081F028FE8007DB785 /* NFMenuUpdateCell.m */,
+				C2AA720A1F029001007DB785 /* NFMenuSwitcherCell.xib */,
+				C2AA720C1F029014007DB785 /* NFMenuUpdateCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C2AA720E1F029234007DB785 /* SettingItem */ = {
+			isa = PBXGroup;
+			children = (
+				C2AA720F1F029253007DB785 /* NFSettingItem.h */,
+				C2AA72101F029253007DB785 /* NFSettingItem.m */,
+			);
+			path = SettingItem;
 			sourceTree = "<group>";
 		};
 		C2B3C84C1EE82BF2000B917D /* NFGoogleCalendarController */ = {
@@ -1606,6 +1646,7 @@
 				C2FCC6FC1EEEC918009D47B5 /* taskFill@2x.png in Resources */,
 				C20595721EF2C39E00BF3BFD /* Right_arrow_label.png in Resources */,
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
+				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
 				C2C22DA71EE98283006BD83A /* add_icon.png in Resources */,
 				C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */,
 				C2C22DA91EE98283006BD83A /* exit_icon.png in Resources */,
@@ -1618,6 +1659,7 @@
 				C22407821E9CB351004B089A /* Main.storyboard in Resources */,
 				C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */,
 				C23AD8D41EFD159300BAFF1E /* Screen1.png in Resources */,
+				C2AA720D1F029014007DB785 /* NFMenuUpdateCell.xib in Resources */,
 				C2C22DAF1EE98283006BD83A /* question_icon.png in Resources */,
 				C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */,
 				C2D13F741EEAC9F000A9A4F3 /* NFValueCell.xib in Resources */,
@@ -1635,6 +1677,7 @@
 				C2C22DB01EE98283006BD83A /* relations_value_icon.png in Resources */,
 				C207EF561EA89BB900BFF383 /* NFWeekTaskCell.xib in Resources */,
 				C20876701ED83144005FF719 /* NFLogin.storyboard in Resources */,
+				C2AA72131F02A0B2007DB785 /* uodate_icon.png in Resources */,
 				C2C22DA81EE98283006BD83A /* Back_standart.png in Resources */,
 				C205956D1EF2875E00BF3BFD /* Right_arr_header.png in Resources */,
 				C2D13F6E1EEA7CB200A9A4F3 /* Home_life_value_icon.png in Resources */,
@@ -1828,10 +1871,12 @@
 				C2FA69091EE1436500D58D18 /* NFTagView.m in Sources */,
 				C2E334961E9E796D0086FDDC /* NFNavigationController.m in Sources */,
 				C24AA50B1EBB11B400ABA92C /* NFHeaderForTaskSection.m in Sources */,
+				C2AA72091F028FE8007DB785 /* NFMenuUpdateCell.m in Sources */,
 				C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */,
 				C2470C341EFBEA37003BA93D /* NFFirebaseManager.m in Sources */,
 				C2470BFE1EFBA929003BA93D /* NFTableViewCell.m in Sources */,
 				C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */,
+				C2AA72061F028FD4007DB785 /* NFMenuSwitcherCell.m in Sources */,
 				C28190061EAF40C100EE13AB /* NFGoogleUserInfo.m in Sources */,
 				C23AD8C91EFCF26D00BAFF1E /* TextFieldValidator.m in Sources */,
 				C2B3C84F1EE82C01000B917D /* NFGoogleCalendarController.m in Sources */,
@@ -1896,6 +1941,7 @@
 				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
+				C2AA72111F029253007DB785 /* NFSettingItem.m in Sources */,
 				C20595701EF2A1F400BF3BFD /* NFViewWithDownBorder.m in Sources */,
 				C21321021EA65BAA00CE2B5D /* NFPageTaskController.m in Sources */,
 				C2AA72021F028C19007DB785 /* NFSettingDetailController.m in Sources */,

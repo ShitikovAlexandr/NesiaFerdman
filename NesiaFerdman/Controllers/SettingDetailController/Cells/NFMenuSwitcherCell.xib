@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NFMenuSwitcherCell" id="r3Y-2M-QHe" customClass="NFMenuSwitcherCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r3Y-2M-QHe" id="XAa-jO-24i">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pio-TD-Nq3">
+                        <rect key="frame" x="8" y="11" width="302" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="F7M-KM-u6R"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jeo-uZ-uYT">
+                        <rect key="frame" x="318" y="6" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="31" id="bdy-mb-HnG"/>
+                            <constraint firstAttribute="width" constant="49" id="cxX-Sp-ACF"/>
+                        </constraints>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="jeo-uZ-uYT" firstAttribute="leading" secondItem="pio-TD-Nq3" secondAttribute="trailing" constant="8" id="CQf-XM-msL"/>
+                    <constraint firstItem="pio-TD-Nq3" firstAttribute="leading" secondItem="XAa-jO-24i" secondAttribute="leadingMargin" id="KuR-4Z-VQ1"/>
+                    <constraint firstItem="jeo-uZ-uYT" firstAttribute="centerY" secondItem="XAa-jO-24i" secondAttribute="centerY" id="jUx-WQ-wyZ"/>
+                    <constraint firstAttribute="trailing" secondItem="jeo-uZ-uYT" secondAttribute="trailing" constant="8" id="sNz-dn-Kii"/>
+                    <constraint firstItem="pio-TD-Nq3" firstAttribute="centerY" secondItem="XAa-jO-24i" secondAttribute="centerY" id="tvJ-8V-YuM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="switcher" destination="jeo-uZ-uYT" id="BNI-Qs-FQu"/>
+                <outlet property="titleLabel" destination="pio-TD-Nq3" id="UpO-RZ-KTJ"/>
+            </connections>
+            <point key="canvasLocation" x="52" y="-21"/>
+        </tableViewCell>
+    </objects>
+</document>
