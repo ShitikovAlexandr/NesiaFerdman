@@ -10,4 +10,18 @@
 
 @interface NFSettingManager : NSObject
 
+// Google sync
++ (void)setOnGoogleSync;
++ (void)setOffGoogleSync;
+
++ (void)setOnWriteToGoogle;
++ (void)setOffWriteToGoogle;
+
++ (void)setOnDeleteFromGoogle;
++ (void)setOffDeleteFromGoogle;
+
++ (BOOL)isOnGoogleSync;
++ (BOOL)isOnWriteToGoogle;
++ (BOOL)isOnDeleteFromGoogle;
+
 @end
