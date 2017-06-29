@@ -12,6 +12,9 @@
 #define WRITE_TO_GOOGLE @"kWriteToGoogle"
 #define DELETE_FROM_GOOGLE @"kDeleteFromGoogle"
 
+#define MIN_PERIOD @"kMinPeriod"
+#define MAX_PERIOD @"kMaxPeriod"
+
 @implementation NFSettingManager
 
 // Google sync
@@ -61,6 +64,46 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     BOOL result = [defaults boolForKey:DELETE_FROM_GOOGLE];
     return result;
+}
+
+// Synchronization boundaries
+
++ (void)setStandartIntervalsOfSync {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:95 forKey:MIN_PERIOD];
+    [defaults setInteger:95 forKey:MAX_PERIOD];
+}
+
++ (void)setMinIntervalOfSync:(NSNumber*)dayInterval {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[dayInterval integerValue] forKey:MIN_PERIOD];
+}
+
++ (void)setMaxIntervalOfSync:(NSNumber*)dayInterval {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[dayInterval integerValue] forKey:MAX_PERIOD];
+}
+
++ (NSInteger)getMinPerionOfSync {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger result =  [defaults integerForKey:MIN_PERIOD];
+    return result < 30 ? 30 : result;
+}
+
++ (NSInteger)getMaxPerionOfSync {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSInteger result =  [defaults integerForKey:MAX_PERIOD];
+    return result < 30 ? 30 : result;
+}
+
++ (NSDate*)getMinDate {
+    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-86400 * [self getMinPerionOfSync]];
+    return startDate;
+}
+
++ (NSDate*)getMaxDate {
+    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:86400 * [self getMaxPerionOfSync]];
+    return endDate;
 }
 
 

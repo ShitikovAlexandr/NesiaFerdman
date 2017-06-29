@@ -10,6 +10,7 @@
 #import "NFGoogleManager.h"
 #import "NFResultCategory.h"
 #import "NFManifestation.h"
+#import "NFSettingManager.h"
 
 @import FirebaseAuth;
 
@@ -317,7 +318,35 @@
     }
 }
 
+- (void)getMinSyncInterval  {
+    [[[_ref child:@"SyncTimeInterval"] child:@"Min"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *interval = snapshot.value;
+        if (interval) {
+            [NFSettingManager setMinIntervalOfSync:interval];
+            NSLog(@"min %@", interval);
+        }
+    }];
+}
+
+- (void)getMaxSyncInterval {
+    [[[_ref child:@"SyncTimeInterval"] child:@"Max"] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *interval = snapshot.value;
+        if (interval) {
+            [NFSettingManager setMaxIntervalOfSync:interval];
+            NSLog(@"max %@", interval);
+        }
+    }];
+
+}
+
 // standart data Admin part
+
+- (void)setMinSyncPeriodDays:(NSNumber*)min andMaxPeriodDays:(NSNumber*)max {
+    
+    [[[self.ref child:@"SyncTimeInterval"]  child:@"Min"] setValue:min];
+    [[[self.ref child:@"SyncTimeInterval"]  child:@"Max"] setValue:max];
+
+}
 
 - (void)addResultCategory:(NFResultCategory *)category {
     [[[self.ref child:@"ResultCategory"]  child:category.resultCategoryId] updateChildValues:[category convertToDictionary]];

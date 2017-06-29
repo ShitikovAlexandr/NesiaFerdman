@@ -8,6 +8,11 @@
 
 #import "NFSettingDetailController.h"
 #import "UIBarButtonItem+FHButtons.h"
+#import "NFSettingManager.h"
+#import "NFSyncManager.h"
+#import "NFActivityIndicatorView.h"
+#import "NotifyList.h"
+
 
 
 @interface NFSettingDetailController ()
@@ -23,6 +28,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *googleWriteSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleDeleteSwitcher;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
+
 
 @end
 
@@ -34,6 +41,17 @@
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     self.tableView.tableFooterView = [UIView new];
 }
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
+}
+
 
 
 #pragma mark - UITableViewDelegate
@@ -55,10 +73,22 @@
     _googleWriteLabel.text = @"Запись в Google";
     _googleDeleteLabel.text = @"Удаление с Google";
     _updateLabel.text = @"Обновить";
+    
+//    _googleSyncSwitcher.selected = [NFSettingManager isOnGoogleSync];
+//    _googleWriteSwitcher.selected = [NFSettingManager isOnWriteToGoogle];
+//    _googleDeleteSwitcher.selected = [NFSettingManager isOnDeleteFromGoogle];
+    
+    [_googleSyncSwitcher setOn:[NFSettingManager isOnGoogleSync]];
+    [_googleWriteSwitcher setOn:[NFSettingManager isOnWriteToGoogle]];
+    [_googleDeleteSwitcher setOn:[NFSettingManager isOnDeleteFromGoogle]];
+    
+    
     [_googleSyncSwitcher addTarget:self action:@selector(syncAction:) forControlEvents:UIControlEventValueChanged];
     [_googleWriteSwitcher addTarget:self action:@selector(writeAction:) forControlEvents:UIControlEventValueChanged];
     [_googleDeleteSwitcher addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventValueChanged];
     [_updateButton addTarget:self action:@selector(updateAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
 }
 
 - (void)changeTableViewState {
@@ -70,23 +100,43 @@
 
 - (void)syncAction:(UISwitch*)sender {
     NSLog(@"syncAction %hhd", sender.isOn);
+    if (sender.isOn) {
+        [NFSettingManager setOnGoogleSync];
+    } else {
+        [NFSettingManager setOffGoogleSync];
+    }
     [self changeTableViewState];
 }
 
 - (void)writeAction:(UISwitch*)sender {
     NSLog(@"writeAction %hhd", sender.isOn);
-
+    if (sender.isOn) {
+        [NFSettingManager setOnWriteToGoogle];
+    } else {
+        [NFSettingManager setOffWriteToGoogle];
+    }
 }
 
 - (void)deleteAction:(UISwitch*)sender {
     NSLog(@"deleteAction  %hhd", sender.isOn);
-
+    if (sender.isOn) {
+        [NFSettingManager setOnDeleteFromGoogle];
+    } else {
+        [NFSettingManager setOffDeleteFromGoogle];
+    }
 }
 
 - (void)updateAction {
     NSLog(@"updateAction");
+    [_indicator startAnimating];
+    [[NFSyncManager sharedManager] updateAllData];
 
 }
+
+- (void)endUpdate {
+    [_indicator endAnimating];
+}
+
 
 
 @end

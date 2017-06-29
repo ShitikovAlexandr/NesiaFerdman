@@ -13,6 +13,7 @@
 #import "NFTaskSimpleCell.h"
 #import "NFHeaderForTaskSection.h"
 #import "NFTAddImportantTaskTableViewController.h"
+#import "NFSettingManager.h"
 
 @interface NFWeekImportantController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet NFHeaderView *header;
@@ -28,11 +29,10 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
     self.tableView.tableFooterView = [UIView new];
     self.tableView.allowsSelectionDuringEditing = YES;
-
-    
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
-    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
+//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
+//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
+    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
+                                                             endDate:[NFSettingManager getMaxDate]];
     [self.header addNFDateModel:dateLimits weeks:YES];
 }
 

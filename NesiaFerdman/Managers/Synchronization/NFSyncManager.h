@@ -32,12 +32,17 @@
 - (void)deleteValueFromFirebase:(NFValue *)value;
 - (void)deleteEventFromFirebase:(NFEvent *)event;
 
+- (void)writeNewEventWithSetting:(NFEvent*)event;
+- (void)editEventWithSetting:(NFEvent*)event;
+- (void)deleteEventWithSetting:(NFEvent*)event;
+
 
 - (BOOL)isFirstRunApp;
 - (BOOL)isFirstRunToday;
 
 - (void)writeEventToGoogle:(NFEvent*)event;
 - (void)updateEventInGoogleWithEvent:(NFEvent*)event;
+- (void)deleteEventFromGoogle:(NFEvent*)event;
 
 
 

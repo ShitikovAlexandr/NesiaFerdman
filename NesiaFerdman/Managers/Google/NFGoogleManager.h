@@ -32,6 +32,7 @@
 
 - (void)addEventToGoogleCalendar:(NFEvent*)event;
 - (void)updateGoogleEventWith:(NFEvent*)event;
+- (void)deleteGoogleEventWithEvent:(NFEvent*)event;
 
 
 @end

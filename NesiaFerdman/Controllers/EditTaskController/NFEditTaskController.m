@@ -45,6 +45,7 @@ UICollectionViewDelegateFlowLayout
 @property (assign, nonatomic) CGRect textFrame;
 @property (strong, nonatomic) NSMutableArray *selectedTags;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 @end
 
@@ -54,14 +55,15 @@ UICollectionViewDelegateFlowLayout
     [super viewDidLoad];
     self.title = @"Задача";
     self.selectedTags = [NSMutableArray array];
-    self.tableView.tableFooterView = [UIView new];
-    self.tableView.estimatedRowHeight = 150;
+//    self.tableView.tableFooterView = [UIView new];
+    self.tableView.estimatedRowHeight = 90;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self setStartDataToDisplay];
     [self configurePickers];
     [self.compliteButton addTarget:self action:@selector(compliteTaskAction) forControlEvents:UIControlEventTouchDown];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTagCell" bundle:nil] forCellWithReuseIdentifier:@"NFTagCell"];
     [self.collectionView reloadData];
+     [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     //[self.titleOfTaskTextField addRegx:@"[{1,60}]" withMsg:@"Количество символов не должно превышать 60"];
 }
 
@@ -81,7 +83,7 @@ UICollectionViewDelegateFlowLayout
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 4) {
-        return _textFrame.size.height < 110.f ? 110 : _textFrame.size.height;
+        return _textFrame.size.height < 90.f ? 90 : _textFrame.size.height;
     } else if (indexPath.row == 2) {
         return 62.0;
     } else {
@@ -140,9 +142,11 @@ UICollectionViewDelegateFlowLayout
 
 - (void)setStartDataToDisplay {
     self.taskDescriptionTextView.placeholder = @"Описание";
+    [self.deleteButton setTitle:@"Удалить задачу" forState:UIControlStateNormal];
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    [_selectedTags addObjectsFromArray:_event.values];
     if (_event) {
-        _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
-        [_selectedTags addObjectsFromArray:_event.values];
+        self.deleteButton.hidden = NO;
         self.titleOfTaskTextField.text = _event.title;
         
         if (_event.eventDescription.length > 0) {
@@ -157,10 +161,12 @@ UICollectionViewDelegateFlowLayout
                                dateStringToFromat:@"LLLL, dd, yyyy HH:mm"];
         self.compliteButton.selected = _event.isDone;
     } else {
+        self.deleteButton.hidden = YES;
         [self.saveButton setTitle:@"Сохранить"];
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
+       
     }
 }
 
@@ -192,6 +198,11 @@ UICollectionViewDelegateFlowLayout
             [self.collectionView reloadData];
         }
     }
+}
+
+- (void)deleteAction {
+    [_indicator startAnimating];
+    [[NFSyncManager sharedManager] deleteEventWithSetting:_event];
 }
 
 - (void)compliteTaskAction {
@@ -257,26 +268,14 @@ UICollectionViewDelegateFlowLayout
                              withFormat:@"LLLL, dd, yyyy HH:mm"
                      dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
     _event.endDate = [self stringDate:_endTextField.text
-                             withFormat:@"LLLL, dd, yyyy HH:mm"
-                     dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+                           withFormat:@"LLLL, dd, yyyy HH:mm"
+                   dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    if (<#condition#>) {
-        <#statements#>
+    if (newEvent) {
+        [[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
+    } else {
+        [[NFSyncManager sharedManager] editEventWithSetting:_event];
     }
-    
-//    if (newEvent) {
-//        [[NFSyncManager sharedManager] writeEventToGoogle:_event];
-//    } else {
-//        [[NFSyncManager sharedManager] writeEventToFirebase:_event];
-//    }
-//    
-//    if (_event.socialType == GoogleEvent) {
-//        [[NFSyncManager sharedManager] updateEventInGoogleWithEvent:_event];
-//    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[NFSyncManager sharedManager]  updateAllData];
-    });
 }
 
 - (void)endUpdate {

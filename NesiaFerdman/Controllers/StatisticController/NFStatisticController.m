@@ -12,6 +12,7 @@
 #import "NFStyleKit.h"
 #import "NFStatisticDetailController.h"
 #import "NFResultCategory.h"
+#import "NFSettingManager.h"
 
 
 @interface NFStatisticController () <UITableViewDelegate, UITableViewDataSource, JTCalendarDelegate>
@@ -157,25 +158,21 @@
 {
     _todayDate = [NSDate date];
     // Min date will be 2 month before today
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    //_minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [NFSettingManager getMinDate];
     
     // Max date will be 2 month after today
-    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:24];
+    //_maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:24];
+    _maxDate = [NFSettingManager getMaxDate];
 }
 
 - (void)navigateToMonthDitailScreenWithIndexPath:(NSIndexPath*)indexPath {
     NFStatisticMainCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    if (cell.value && cell.eventCount > 0) {
         NFStatisticDetailController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticDetailController"];
         viewController.selectedDate = _calendarManager.date ? _calendarManager.date : _todayDate;
         viewController.value = cell.value;
         [self presentViewController:viewController animated:YES completion:nil];
-    } else {
-        NSLog(@"no value");
     }
-        
-    
-}
 
 
 @end

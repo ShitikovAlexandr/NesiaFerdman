@@ -18,6 +18,7 @@
 #import "NFSyncManager.h"
 #import "NFValuesFilterView.h"
 #import "NFStyleKit.h"
+#import "NFSettingManager.h"
 
 @interface NFDayTaskController () <UITableViewDelegate, UITableViewDataSource, NFHeaderViewProtocol>
 
@@ -35,9 +36,10 @@
     
     self.eventsArray =  [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFDayTableViewCell" bundle:nil] forCellReuseIdentifier:@"NFDayTableViewCell"];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
-    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
+//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
+//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
+    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
+                                                             endDate:[NFSettingManager getMaxDate]];
     [self.header addNFDateModel:dateLimits weeks:NO];
     self.header.selectetDate = [NSDate date];
     [self setCurrentCellVisible];

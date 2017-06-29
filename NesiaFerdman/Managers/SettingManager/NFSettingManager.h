@@ -24,4 +24,10 @@
 + (BOOL)isOnWriteToGoogle;
 + (BOOL)isOnDeleteFromGoogle;
 
++ (void)setMinIntervalOfSync:(NSNumber*)dayInterval;
++ (void)setMaxIntervalOfSync:(NSNumber*)dayInterval;
+
++ (NSDate*)getMinDate;
++ (NSDate*)getMaxDate;
+
 @end

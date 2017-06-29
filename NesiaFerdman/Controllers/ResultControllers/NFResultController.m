@@ -13,6 +13,7 @@
 #import "NFResultDetailController.h"
 #import "UIBarButtonItem+FHButtons.h"
 #import "NFWeekDateModel.h"
+#import "NFSettingManager.h"
 
 
 @interface NFResultController () <UITableViewDelegate, UITableViewDataSource>
@@ -29,12 +30,12 @@
     self.title = @"Итоги";
     self.tableView.tableFooterView = [UIView new];
     self.dataArray = [NSMutableArray array];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
-    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
+//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
+//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
+    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
+                                                             endDate:[NFSettingManager getMaxDate]];
     [self.headerView addNFDateModel:dateLimits weeks:YES];
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
-
 
 }
 

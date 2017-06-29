@@ -12,6 +12,7 @@
 #import "NotifyList.h"
 #import "NFSyncManager.h"
 #import "NFTAddImportantTaskTableViewController.h"
+#import "NFSettingManager.h"
 
 @interface NFDayConclusionsController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -24,9 +25,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _eventsArray = [NSMutableArray array];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
-    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:startDate endDate:endDate];
+//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
+//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
+    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
+                                                             endDate:[NFSettingManager getMaxDate]];
     [self.header addNFDateModel:dateLimits weeks:NO];
     self.header.selectetDate = [NSDate date];
     self.tableView.tableFooterView = [UIView new];

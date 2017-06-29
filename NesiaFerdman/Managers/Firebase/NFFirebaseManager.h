@@ -55,7 +55,12 @@
 - (void)sinInWithEmail:(NSString*)email password:(NSString*)password;
 - (void)singOutFromFirebase;
 
+- (void)setMinSyncPeriodDays:(NSNumber*)min andMaxPeriodDays:(NSNumber*)max;
+
 - (void)clearData;
+
+- (void)getMinSyncInterval;
+- (void)getMaxSyncInterval;
 
 
 @end

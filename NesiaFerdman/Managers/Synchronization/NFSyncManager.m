@@ -8,6 +8,7 @@
 
 #import "NFSyncManager.h"
 #import "NotifyList.h"
+#import "NFSettingManager.h"
 
 @interface NFSyncManager()
 //@property (strong ,nonatomic) NSMutableArray *googleEvents;
@@ -80,10 +81,66 @@
     [[NFFirebaseManager sharedManager] addStandartListOfResultCategoryToDateBase];
 }
 
+- (void)writeNewEventWithSetting:(NFEvent*)event {
+    if ([NFSettingManager isOnGoogleSync]) {
+        if ([NFSettingManager isOnWriteToGoogle]) {
+            event.socialType = GoogleEvent;
+            [self writeEventToGoogle:event];
+            
+        } else {
+            event.socialType = NesiaEvent;
+            [self writeEventToFirebase:event];
+        }
+        
+    } else {
+        event.socialType = NesiaEvent;
+        [self writeEventToFirebase:event];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NFSyncManager sharedManager]  updateAllData];
+    });
+}
 
+- (void)editEventWithSetting:(NFEvent*)event {
+    if ([NFSettingManager isOnGoogleSync]) {
+        if ([NFSettingManager isOnWriteToGoogle]) {
+            if (event.socialType == GoogleEvent) {
+                [self updateEventInGoogleWithEvent:event];
+            } else {
+                [self writeEventToFirebase:event];
+            }
+        } else {
+            [self writeEventToFirebase:event];
+        }
+    } else {
+        [self writeEventToFirebase:event];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NFSyncManager sharedManager]  updateAllData];
+    });
+}
+
+- (void)deleteEventWithSetting:(NFEvent*)event {
+    if ([NFSettingManager isOnGoogleSync]) {
+        if ([NFSettingManager isOnDeleteFromGoogle]) {
+            if (event.socialType == GoogleEvent) {
+                [self deleteEventFromGoogle:event];
+            } else {
+                [self deleteEventFromFirebase:event];
+            }
+        } else {
+            [self deleteEventFromFirebase:event];
+        }
+        
+    } else {
+        [self deleteEventFromFirebase:event];
+    }
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [[NFSyncManager sharedManager]  updateAllData];
+    });
+}
 
 //Methods of downloading/uploading the data managers
-
 
 //Firebase---------
 
@@ -91,6 +148,8 @@
     
     [[NFFirebaseManager sharedManager].firebaseEventsArray removeAllObjects];
     [[NFFirebaseManager sharedManager] getDataFromFirebase];
+    [[NFFirebaseManager sharedManager] getMinSyncInterval];
+    [[NFFirebaseManager sharedManager] getMaxSyncInterval];
     //[[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:@"XXX"];
 }
 
@@ -131,9 +190,10 @@
 //GoogleCalendar---------
 
 - (void)getEventsFromGoogleCalendar {
-    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
-    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    [[NFGoogleManager sharedManager] fetchEventsWithCount:100 minDate:startDate maxDate:endDate];
+//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
+//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
+    [[NFGoogleManager sharedManager] fetchEventsWithCount:5000 minDate:[NFSettingManager getMinDate]
+                                                  maxDate:[NFSettingManager getMaxDate]];
 }
 //_______________________
 
@@ -305,6 +365,11 @@
 
 - (void)updateEventInGoogleWithEvent:(NFEvent*)event {
     [[NFGoogleManager sharedManager] updateGoogleEventWith:event];
+}
+
+- (void)deleteEventFromGoogle:(NFEvent*)event {
+    event.isDeleted = true;
+    [[NFGoogleManager sharedManager] deleteGoogleEventWithEvent:event];
 }
 
 

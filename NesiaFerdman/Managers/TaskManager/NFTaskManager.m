@@ -114,6 +114,27 @@
     return resultArray.count > 0 ? [self getObjectsFromArrayWithArrays:(NSMutableArray *)resultArray] : nil;
 }
 
+- (NSMutableArray *)getTaskForMonthWithoutValues:(NSDate*)currentDate {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
+    NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    [tempArray addObjectsFromArray:resultArray];
+    for (NSMutableArray *dayArray in resultArray) {
+        for (NFEvent* event in dayArray) {
+            if(!event.values)
+                [dayArray removeObject:event];
+        }
+    }
+    
+    for (NSArray* array in tempArray) {
+        if (array.count < 1) {
+            [tempArray removeObject:array];
+        }
+    }
+    return tempArray;
+}
+
 - (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];

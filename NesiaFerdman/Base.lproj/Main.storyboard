@@ -422,6 +422,28 @@
                         <color key="backgroundColor" red="0.93604785203933716" green="0.93807655572891235" blue="0.96081393957138062" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <color key="sectionIndexBackgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="4RL-TD-mql">
+                            <rect key="frame" x="0.0" y="466" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LY7-Yi-ZzP">
+                                    <rect key="frame" x="20" y="7" width="114" height="30"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="114" id="IDD-EA-J1h"/>
+                                        <constraint firstAttribute="height" constant="30" id="fb0-EL-yw8"/>
+                                    </constraints>
+                                    <state key="normal" title="-">
+                                        <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="0.39530714897260272" colorSpace="calibratedRGB"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="LY7-Yi-ZzP" firstAttribute="leading" secondItem="4RL-TD-mql" secondAttribute="leading" constant="20" id="KOq-jr-ISO"/>
+                                <constraint firstItem="LY7-Yi-ZzP" firstAttribute="centerY" secondItem="4RL-TD-mql" secondAttribute="centerY" id="VzU-4M-pO3"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="Zx5-3y-hAE">
                                 <cells>
@@ -697,6 +719,7 @@
                         <outlet property="collectionView" destination="JdR-yz-Vs1" id="gdp-oV-Zya"/>
                         <outlet property="compliteButton" destination="G1v-2I-4y9" id="IkT-eD-0Rm"/>
                         <outlet property="compliteLabel" destination="8XH-Gk-k57" id="QJy-od-kuW"/>
+                        <outlet property="deleteButton" destination="LY7-Yi-ZzP" id="XpK-Yn-SCs"/>
                         <outlet property="endLabel" destination="IF3-Up-s9J" id="UbJ-di-zNK"/>
                         <outlet property="endTextField" destination="Yo3-S1-nAR" id="6Fl-u2-6jI"/>
                         <outlet property="saveButton" destination="z3d-9e-eNB" id="awv-TT-hx1"/>
@@ -2742,7 +2765,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFSettingDetailControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="FJZ-GV-iZl" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="LHC-70-bVr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="LHC-70-bVr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

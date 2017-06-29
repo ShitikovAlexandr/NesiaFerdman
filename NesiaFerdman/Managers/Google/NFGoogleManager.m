@@ -21,6 +21,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
 @interface NFGoogleManager()
 @property (strong, nonatomic) UIViewController *target;
 @property (assign, nonatomic) BOOL isLastCalendar;
+@property (assign, nonatomic) NSInteger calendarCount;
 @end
 @implementation NFGoogleManager
 @synthesize service = _service;
@@ -78,6 +79,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                          GTLCalendarCalendarList *list = object;
                          NSMutableArray *calendrsID = [NSMutableArray array];
                          [calendrsID addObjectsFromArray: [list.JSON objectForKey:@"items"] ];
+                         _calendarCount = calendrsID.count;
                          for (NSDictionary *dic in calendrsID) {
                              NSLog(@"calendar id %@", [dic objectForKey:@"id"]);
                              GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:[dic objectForKey:@"id"]];
@@ -92,8 +94,8 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                              [self.service executeQuery:query
                                                delegate:self
                                       didFinishSelector:@selector(saveResultWithTicket:finishedWithObject:error:)];
+                             _calendarCount--;
                          }
-                         _isLastCalendar = YES;
                      }
                  }
              }];
@@ -188,10 +190,12 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                 [self.eventsArray addObject:[self NFEventFromGoogle:event]];
             }
         }
-        if (_isLastCalendar) {
-            _isLastCalendar = false;
-            NSNotification *notification = [NSNotification notificationWithName:GOOGLE_NOTIF object:self];
-            [[NSNotificationCenter defaultCenter]postNotification:notification];
+        if (_calendarCount == 0) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                NSNotification *notification = [NSNotification notificationWithName:GOOGLE_NOTIF object:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
+            });
             
         }
     }
@@ -266,14 +270,13 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                          if ([object isKindOfClass:[GTLCalendarEvent class]]) {
                              GTLCalendarEvent *eventGoogle = object;
                              event.socialId = [eventGoogle.JSON objectForKey:@"id"];
-                             event.socialType = GoogleEvent;
-                             [[NFSyncManager sharedManager] writeEventToFirebase:event];
                          }
                          NSLog(@"Adding Event…");
                          
                      } else {
                          NSLog(@"Event Entry Failed");
                      }
+                     [[NFSyncManager sharedManager] writeEventToFirebase:event];
                  }];
 }
 
@@ -298,7 +301,12 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                                                                            eventId:event.socialId];
     [self.service executeQuery:editQuery
              completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
-                 NSLog(@"edit complite");
+                 if (error == nil) {
+                     NSLog(@"edit complite");
+                 } else {
+                     
+                 }
+                 [[NFSyncManager sharedManager] writeEventToFirebase:event];
              }];
 }
 
@@ -308,8 +316,12 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
     [self.service executeQuery:deleteQuery
              completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                  if (error == nil) {
-                     [[NFSyncManager sharedManager] deleteEventFromFirebase:event];
+                     NSLog(@"deleted from google");
+                 } else {
+                      NSLog(@"ERROR deleted from google");
                  }
+                 [[NFSyncManager sharedManager] deleteEventFromFirebase:event];
+
              }];
 }
 

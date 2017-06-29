@@ -16,6 +16,8 @@
 #import "NFPickerView.h"
 #import "NFStyleKit.h"
 #import "NFValuesFilterView.h"
+#import "NFSettingManager.h"
+
 
 @interface NFMonthTaskController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 {
@@ -192,10 +194,12 @@
     _todayDate = [NSDate date];
     
     // Min date will be 2 month before today
-    _minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    //_minDate = [_calendarManager.dateHelper addToDate:_todayDate months:-2];
+    _minDate = [NFSettingManager getMinDate];
     
     // Max date will be 2 month after today
-    _maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:24];
+    //_maxDate = [_calendarManager.dateHelper addToDate:_todayDate months:24];
+    _maxDate = [NFSettingManager getMaxDate];
 }
 
 // Used only to have a key for _eventsByDate
