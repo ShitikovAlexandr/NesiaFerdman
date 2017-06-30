@@ -11,15 +11,12 @@
 #import "NFSettingManager.h"
 
 @interface NFSyncManager()
-//@property (strong ,nonatomic) NSMutableArray *googleEvents;
-//@property (strong, nonatomic) NSMutableArray *firebaseEvents;
-//@property (strong, nonatomic) NSMutableArray *phoneEvents;
+
 
 //Adding a flag for download managers
 @property (assign, nonatomic) BOOL googleIsFinished;
 @property (assign, nonatomic) BOOL firebaseIsFinished;
 @property (assign, nonatomic) BOOL phoneIsFinished;
-
 
 @end
 
@@ -63,7 +60,6 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(firebaseFinishedLoadData) name:FIREBASE_NOTIF object:nil];
         
 //        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(phoneFinishedLoadData) name:PHONE_NOTIF object:nil];
-
         
     }
     return self;
@@ -250,7 +246,7 @@
     [self.eventsArray addObjectsFromArray:[NFFirebaseManager sharedManager].firebaseEventsArray]; // new
     [self.eventsArray addObjectsFromArray:[self addEventWithFilterFromArray:[NFGoogleManager sharedManager].eventsArray]];
     
-    [[NFTaskManager sharedManager] addAllEventsFromArray:self.eventsArray];
+    [[NFTaskManager sharedManager] addAllEventsFromArray:[self filterDeleteEvents:self.eventsArray]];
     [[NFTaskManager sharedManager].valuesArray removeAllObjects];
     [[NFTaskManager sharedManager].resultCategoryArray removeAllObjects];
     [[NFTaskManager sharedManager].resultCategoryArray addObjectsFromArray: [self sortArray:[NFFirebaseManager sharedManager].resultCategoryArray withKey:@"resultCategoryIndex"]];
@@ -277,6 +273,8 @@
         for (NFEvent *NesiaEvent in self.eventsArray) {
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.socialId contains[c] %@", NesiaEvent.socialId];
             [equalsEvent addObjectsFromArray:[tempInputArray filteredArrayUsingPredicate:predicate]];
+            NSLog(@"equalsEvent predicate count %ld", (unsigned long)[tempInputArray filteredArrayUsingPredicate:predicate].count);
+            [self updateEvent:NesiaEvent withModifiedEvent:[[tempInputArray filteredArrayUsingPredicate:predicate] firstObject]];
         }
         for (NFEvent *event in equalsEvent) {
             [tempInputArray removeObject:event];
@@ -286,6 +284,22 @@
         }
     }
     return tempInputArray;
+}
+
+- (void)updateEvent:(NFEvent*)event withModifiedEvent:(NFEvent*)modifed {
+    if (modifed) {
+        if (![event.dateChange isEqualToString:modifed.dateChange]) {
+            event.dateChange = modifed.dateChange;
+            event.title = modifed.title;
+            event.startDate = modifed.startDate;
+            event.endDate = modifed.endDate;
+            event.createDate = modifed.createDate;
+             [[NFFirebaseManager sharedManager] writeEventToFirebase:event withUserId:[[NFGoogleManager sharedManager]  getUserId]];
+        }
+        NSLog(@"new %@", modifed.title);
+    } else {
+        NSLog(@"no");
+    }
 }
 
 - (BOOL)isFirstRunApp {
@@ -354,9 +368,19 @@
     }
     [userValues addObjectsFromArray:tempInputArray];
     return [self sortArray:userValues withKey:@"valueIndex"];
-
 }
 
+- (NSMutableArray*)filterDeleteEvents:(NSMutableArray*)array {
+    NSMutableArray* result = [NSMutableArray array];
+    [result addObjectsFromArray:array];
+    for (NFEvent* event in array) {
+        if (event.isDeleted) {
+            [result removeObject:event];
+            NSLog(@"deleted event %@ %@", event.eventId, event.title);
+        }
+    }
+    return result;
+}
 //-----------
 
 - (void)writeEventToGoogle:(NFEvent*)event {
@@ -371,6 +395,7 @@
     event.isDeleted = true;
     [[NFGoogleManager sharedManager] deleteGoogleEventWithEvent:event];
 }
+
 
 
 

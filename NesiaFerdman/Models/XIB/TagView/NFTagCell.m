@@ -29,7 +29,7 @@
 }
 
 - (void)addDataToCell:(NFValue*)value {
-    _titleLabel.text = value.valueTitle;
+    _titleLabel.text = [value valueForKey:@"valueTitle"];
 }
 
 - (void)layoutSubviews {

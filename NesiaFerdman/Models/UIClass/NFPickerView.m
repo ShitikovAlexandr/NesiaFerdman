@@ -70,7 +70,7 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.selectedIndex = [NSNumber numberWithInteger:row];
-    NSString *title = [[self.dataArray objectAtIndex:row] valueForKey:_keyTitle];
+    //NSString *title = [[self.dataArray objectAtIndex:row] valueForKey:_keyTitle];
     //self.textfield.text = title;
 }
 

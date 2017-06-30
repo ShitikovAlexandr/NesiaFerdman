@@ -13,6 +13,7 @@
 #import "NFGoogleUserInfo.h"
 #import "NotifyList.h"
 #import "NFSyncManager.h"
+#import "NFSettingManager.h"
 
 static NSString *const kKeychainItemName = @"Google Calendar API";
 static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo3m.apps.googleusercontent.com";
@@ -94,19 +95,23 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                              [self.service executeQuery:query
                                                delegate:self
                                       didFinishSelector:@selector(saveResultWithTicket:finishedWithObject:error:)];
-                             _calendarCount--;
                          }
                      }
                  }
              }];
 }
 
-
-
-
 - (void)fetchEventsWithCount:(NSInteger)count minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate {
     [self.eventsArray removeAllObjects];
-    [self getCalendarsItemsWithCount:count minDate:minDate maxDate:maxDate];
+    if ([NFSettingManager isOnGoogleSync]) {
+        [self getCalendarsItemsWithCount:count minDate:minDate maxDate:maxDate];
+    } else {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:GOOGLE_NOTIF object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        });
+           }
+    
 }
 
 // Creates the auth controller for authorizing access to Google Calendar API.
@@ -190,13 +195,12 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                 [self.eventsArray addObject:[self NFEventFromGoogle:event]];
             }
         }
+        _calendarCount--;
         if (_calendarCount == 0) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSNotification *notification = [NSNotification notificationWithName:GOOGLE_NOTIF object:nil];
                 [[NSNotificationCenter defaultCenter] postNotification:notification];
-            
             });
-            
         }
     }
 }
@@ -223,9 +227,10 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
     } else  {
         event.endDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
     }
-    
+    //updated
     event.eventType = Event;
     event.socialType = GoogleEvent;
+    event.dateChange = [googleEvent.JSON objectForKey:@"updated"];
     event.calendarId = [[googleEvent.JSON objectForKey:@"organizer"] objectForKey:@"email"];
     //event.eventId = [googleEvent.JSON objectForKey:@"id"];
     event.socialId = [googleEvent.JSON objectForKey:@"id"];
@@ -262,26 +267,25 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
     [calendarEvent.end setDateTime:endTime];
     GTLQueryCalendar *insertQuery = [GTLQueryCalendar queryForEventsInsertWithObject:calendarEvent
                                                                           calendarId:@"primary"];
-    NSLog(@"Adding Event…?????");
     
     [self.service executeQuery:insertQuery
-                 completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
-                     if (error == nil) {
-                         if ([object isKindOfClass:[GTLCalendarEvent class]]) {
-                             GTLCalendarEvent *eventGoogle = object;
-                             event.socialId = [eventGoogle.JSON objectForKey:@"id"];
-                         }
-                         NSLog(@"Adding Event…");
-                         
-                     } else {
-                         NSLog(@"Event Entry Failed");
+             completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                 if (error == nil) {
+                     if ([object isKindOfClass:[GTLCalendarEvent class]]) {
+                         GTLCalendarEvent *eventGoogle = object;
+                         event.socialId = [eventGoogle.JSON objectForKey:@"id"];
                      }
-                     [[NFSyncManager sharedManager] writeEventToFirebase:event];
-                 }];
+                     NSLog(@"Adding Event…");
+                     
+                 } else {
+                     NSLog(@"Event Entry Failed");
+                 }
+                 [[NFSyncManager sharedManager] writeEventToFirebase:event];
+             }];
 }
 
 - (void)updateGoogleEventWith:(NFEvent*)event {
-//queryForEventsUpdateWithObject
+    //queryForEventsUpdateWithObject
     GTLCalendarEvent* calendarEvent = [[GTLCalendarEvent alloc] init];
     [calendarEvent setSummary:event.title];
     [calendarEvent setDescriptionProperty:event.eventDescription];
@@ -295,7 +299,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                                                 timeZone:[NSTimeZone defaultTimeZone]];
     [calendarEvent setEnd:[GTLCalendarEventDateTime object]];
     [calendarEvent.end setDateTime:endTime];
-
+    
     GTLQueryCalendar *editQuery = [GTLQueryCalendar queryForEventsUpdateWithObject:calendarEvent
                                                                         calendarId:event.calendarId
                                                                            eventId:event.socialId];
@@ -317,11 +321,12 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
              completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
                  if (error == nil) {
                      NSLog(@"deleted from google");
+                     [[NFSyncManager sharedManager] deleteEventFromFirebase:event];
+                     
                  } else {
-                      NSLog(@"ERROR deleted from google");
+                     NSLog(@"ERROR deleted from google");
+                     [[NFSyncManager sharedManager] deleteEventFromFirebase:event];
                  }
-                 [[NFSyncManager sharedManager] deleteEventFromFirebase:event];
-
              }];
 }
 

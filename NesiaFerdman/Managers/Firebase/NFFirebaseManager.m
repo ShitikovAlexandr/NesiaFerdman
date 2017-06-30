@@ -103,11 +103,10 @@
          }
          for (NSDictionary *dic in dataArray) {
              NFEvent *event = [[NFEvent alloc] initWithDictionary:dic];
-             if (!event.isDeleted) {
+             //if (!event.isDeleted) {
                  [eventsArray addObject:event];
-             } else {
-                 NSLog(@"event set as deleted %@", event.eventId);
-             }
+          //   } else {
+           //  }
          }
          
          [self getAllValues];
@@ -520,25 +519,20 @@
     thankfulness.resultCategoryIndex = @7;
     [self addResultCategory:thankfulness];
 
-    //
-    
-    
-    
-
-    
-    
 }
 
 - (void)compliteLoading {
     if (_isValueLoaded && _isEventLoaded && _isResultCategoryLoaded && _isResultLoaded && _isBaseValueLoaded && _isManifestationsLoaded) {
-        NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
-        _isValueLoaded = NO;
-        _isEventLoaded = NO;
-        _isResultCategoryLoaded = NO;
-        _isResultLoaded = NO;
-        _isBaseValueLoaded = NO;
-        _isManifestationsLoaded = NO;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
+            [[NSNotificationCenter defaultCenter]postNotification:notification];
+            _isValueLoaded = NO;
+            _isEventLoaded = NO;
+            _isResultCategoryLoaded = NO;
+            _isResultLoaded = NO;
+            _isBaseValueLoaded = NO;
+            _isManifestationsLoaded = NO;
+        });
     }
 }
 

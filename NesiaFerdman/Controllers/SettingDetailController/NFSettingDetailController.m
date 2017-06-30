@@ -88,7 +88,7 @@
     [_googleDeleteSwitcher addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventValueChanged];
     [_updateButton addTarget:self action:@selector(updateAction) forControlEvents:UIControlEventTouchUpInside];
     
-    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    
 }
 
 - (void)changeTableViewState {
@@ -102,6 +102,10 @@
     NSLog(@"syncAction %hhd", sender.isOn);
     if (sender.isOn) {
         [NFSettingManager setOnGoogleSync];
+        _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+        [_indicator startAnimating];
+        [[NFSyncManager sharedManager] updateAllData];
+        
     } else {
         [NFSettingManager setOffGoogleSync];
     }
@@ -128,13 +132,16 @@
 
 - (void)updateAction {
     NSLog(@"updateAction");
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [_indicator startAnimating];
     [[NFSyncManager sharedManager] updateAllData];
 
 }
 
 - (void)endUpdate {
-    [_indicator endAnimating];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_indicator endAnimating];
+    });
 }
 
 
