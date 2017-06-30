@@ -16,6 +16,7 @@
 #import "NFTagCell.h"
 #import "NFActivityIndicatorView.h"
 #import "NFSettingManager.h"
+#import "NFTextField.h"
 
 
 @interface NFEditTaskController ()
@@ -30,7 +31,7 @@ UICollectionViewDelegateFlowLayout
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UILabel *valueTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *selectValueTextField;
-@property (weak, nonatomic) IBOutlet UITextField *titleOfTaskTextField;
+@property (weak, nonatomic) IBOutlet NFTextField *titleOfTaskTextField;
 @property (weak, nonatomic) IBOutlet UITextView *taskDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UITextField *starttextField;
@@ -65,6 +66,7 @@ UICollectionViewDelegateFlowLayout
     [self.collectionView reloadData];
      [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     //[self.titleOfTaskTextField addRegx:@"[{1,60}]" withMsg:@"Количество символов не должно превышать 60"];
+    [_titleOfTaskTextField validateWithTarget:self];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

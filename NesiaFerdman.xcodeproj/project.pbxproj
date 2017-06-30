@@ -171,6 +171,8 @@
 		C2D13F771EEAE33600A9A4F3 /* NFAddFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2D13F761EEAE33600A9A4F3 /* NFAddFooterView.xib */; };
 		C2D13F7A1EEAE35000A9A4F3 /* NFAddFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D13F791EEAE35000A9A4F3 /* NFAddFooterView.m */; };
 		C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D13F7B1EEAE5B700A9A4F3 /* Add.png */; };
+		C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D9C7F51F066F2000A36810 /* NFTextField.m */; };
+		C2D9C7FA1F066F5300A36810 /* NFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D9C7F91F066F5300A36810 /* NFTextView.m */; };
 		C2DDBCE21ED4597300F61F02 /* NFLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCE11ED4597300F61F02 /* NFLoginController.m */; };
 		C2DDBCE61ED45A1200F61F02 /* NFRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCE51ED45A1200F61F02 /* NFRoundView.m */; };
 		C2DDBCE91ED45A2500F61F02 /* NFCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCE81ED45A2500F61F02 /* NFCircleView.m */; };
@@ -490,6 +492,10 @@
 		C2D13F781EEAE35000A9A4F3 /* NFAddFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAddFooterView.h; sourceTree = "<group>"; };
 		C2D13F791EEAE35000A9A4F3 /* NFAddFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAddFooterView.m; sourceTree = "<group>"; };
 		C2D13F7B1EEAE5B700A9A4F3 /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add.png; sourceTree = "<group>"; };
+		C2D9C7F41F066F2000A36810 /* NFTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFTextField.h; path = ../NFTextField.h; sourceTree = "<group>"; };
+		C2D9C7F51F066F2000A36810 /* NFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFTextField.m; path = ../NFTextField.m; sourceTree = "<group>"; };
+		C2D9C7F81F066F5300A36810 /* NFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTextView.h; sourceTree = "<group>"; };
+		C2D9C7F91F066F5300A36810 /* NFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTextView.m; sourceTree = "<group>"; };
 		C2DDBCE01ED4597300F61F02 /* NFLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFLoginController.h; sourceTree = "<group>"; };
 		C2DDBCE11ED4597300F61F02 /* NFLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFLoginController.m; sourceTree = "<group>"; };
 		C2DDBCE41ED45A1200F61F02 /* NFRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRoundView.h; sourceTree = "<group>"; };
@@ -821,6 +827,7 @@
 		C22407BC1E9CB5BC004B089A /* UIClass */ = {
 			isa = PBXGroup;
 			children = (
+				C2D9C7F71F066F2D00A36810 /* text */,
 				C21B0ED01EFA934D001D85CE /* UIBarButtonItem+FHButtons.h */,
 				C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */,
 				C2DDBCF61ED470D500F61F02 /* NFLeftRoundetButton.h */,
@@ -1352,6 +1359,17 @@
 				C2D13F791EEAE35000A9A4F3 /* NFAddFooterView.m */,
 			);
 			path = AddFooterView;
+			sourceTree = "<group>";
+		};
+		C2D9C7F71F066F2D00A36810 /* text */ = {
+			isa = PBXGroup;
+			children = (
+				C2D9C7F41F066F2000A36810 /* NFTextField.h */,
+				C2D9C7F51F066F2000A36810 /* NFTextField.m */,
+				C2D9C7F81F066F5300A36810 /* NFTextView.h */,
+				C2D9C7F91F066F5300A36810 /* NFTextView.m */,
+			);
+			path = text;
 			sourceTree = "<group>";
 		};
 		C2DDBCDF1ED4595A00F61F02 /* LoginScreen */ = {
@@ -1897,6 +1915,7 @@
 				C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */,
 				C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */,
 				C235B37E1F00E42900DB9ED9 /* NFManifestationCategory.m in Sources */,
+				C2D9C7FA1F066F5300A36810 /* NFTextView.m in Sources */,
 				C23AD8CE1EFD10BB00BAFF1E /* NFAboutController.m in Sources */,
 				C2470C381EFBEA37003BA93D /* NFTaskManager.m in Sources */,
 				C2359FFC1EC9AA9800EB8FDC /* NFWeekConclusionsController.m in Sources */,
@@ -1937,6 +1956,7 @@
 				C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */,
 				C2470C361EFBEA37003BA93D /* NFSettingManager.m in Sources */,
 				C2DDBCE21ED4597300F61F02 /* NFLoginController.m in Sources */,
+				C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */,
 				C22407791E9CB351004B089A /* main.m in Sources */,
 				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,

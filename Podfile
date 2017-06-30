@@ -7,21 +7,22 @@ target 'NesiaFerdman' do
 
   # Pods for NesiaFerdman
 	pod 'GoogleAPIClient/Calendar', '~> 1.0.2'
-    	pod 'GTMOAuth2', '~> 1.1.0'
+    pod 'GTMOAuth2', '~> 1.1.0'
 	pod 'JTCalendar', '~> 2.0'
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
-        pod 'Firebase/Storage'
+    pod 'Firebase/Storage'
 	pod 'Firebase/Auth'
 	pod 'Firebase/RemoteConfig'
 	pod 'UITextView+Placeholder'
-	pod "STCollapseTableView"
+	pod 'STCollapseTableView'
 	pod 'JVFloatLabeledTextField'
 	pod 'ACFloatingTextfield-Objc', '~> 1.4'
 	pod 'TPKeyboardAvoiding'
 	pod 'DGActivityIndicatorView'
 	pod 'Fabric'
 	pod 'Crashlytics'
+    pod 'ISMessages'
 
   target 'NesiaFerdmanTests' do
     inherit! :search_paths

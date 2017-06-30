@@ -15,7 +15,7 @@ target 'NesiaFerdman' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/RemoteConfig'
    	pod 'UITextView+Placeholder'
-	pod 'AMPopTip'
+	pod 'ISMessages'
 
 
   target 'NesiaFerdmanTests' do
