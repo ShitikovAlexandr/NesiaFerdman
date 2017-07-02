@@ -22,6 +22,7 @@
 + (UIColor*)_borderDarkGrey;
 + (UIColor*)_lightGrey;
 + (UIColor*) _googleRed;
++ (UIColor*) _PLACEHOLDER_STANDART_COLOR;
 
 // Drawing Methods
 + (void)drawRoundetViewWithFrame: (CGRect)frame;

@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface NFTextView : UITextView
+@property (strong, nonatomic) NSString *placeholderText;
+
+- (void)validateWithTarget:(id)target
+           placeholderText:(NSString*)placeholderText
+                       min:(NSInteger)min
+                       max:(NSInteger)max;
+- (BOOL)isValidString;
+
+
 
 @end

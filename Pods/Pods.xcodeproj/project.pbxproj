@@ -13,10 +13,8 @@
 		03EFD78155BC92960757F803CE757F5F /* DGActivityIndicatorBallClipRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = B87C82C0E2614CA0E3602035E0448AE8 /* DGActivityIndicatorBallClipRotateAnimation.m */; };
 		05B76541BC850C3CCC367541F8A4B436 /* GPBDictionary_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = B0CA95AEF5F5A2161410B82CC2BF00AA /* GPBDictionary_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		05D1812D41DCD65F3F30269051CE5F8B /* Duration.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = A8460B86EEF7DEE15DAC82502DF7039F /* Duration.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		060BFBD7F28E71BEA6E618E59E22C41E /* isErrorIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 98AC7754C87D0789F8F5555EE19A5ED9 /* isErrorIcon@3x.png */; };
 		07196219552075F2B897C75611B8FDBC /* DGActivityIndicatorBallScaleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC5A9CCC8E1F3BBCB9F7154E2269D93 /* DGActivityIndicatorBallScaleMultipleAnimation.m */; };
 		078D9D6DE0DEBDD3071196BF9C63E5B4 /* ISMessages.h in Headers */ = {isa = PBXBuildFile; fileRef = E8FCBE9929AFD944C330EA6B484AAAD6 /* ISMessages.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		07B15EC7DB36B9A4D2A6AF9D23E99CCB /* isSuccessIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FCC4C0525D716C4C3B1CDFDF9B1D7898 /* isSuccessIcon@3x.png */; };
 		07FE30E9920E1B1D34F4D8119D476274 /* DGActivityIndicatorBallPulseSyncAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = EB805629D18D52F854A0249FC99CBBD0 /* DGActivityIndicatorBallPulseSyncAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		08D46508FF27FD645A0DA01CA4C05833 /* DGActivityIndicatorLineScalePartyAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DB648CB482279A446EF07CF152690D7 /* DGActivityIndicatorLineScalePartyAnimation.m */; };
 		098865D535ABF6174086BAB8D4B8783D /* GPBProtocolBuffers_RuntimeSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FDAEBEE37EF8FD4CC71AEA1190022CC /* GPBProtocolBuffers_RuntimeSupport.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,14 +25,16 @@
 		0CF9009CC5F6B4218ECB0A79DE8BD956 /* DGActivityIndicatorLineScaleAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ADB9339AF9193A85C38678C6244B9FC /* DGActivityIndicatorLineScaleAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D671EBC0742CC588F468856F5F0DC1F /* GTLCalendarColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CD55FF83980F1AEC39DA5FC299F315 /* GTLCalendarColors.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0D92105551AEB9CBD8484C202CAF5547 /* GTLCalendarCalendarList.m in Sources */ = {isa = PBXBuildFile; fileRef = EF9598910BD8BC3DFAEC973FC6288DF2 /* GTLCalendarCalendarList.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		0E261A1513724A9B5843118A554B1BCA /* isInfoIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36030FE7B186081F1A79F19BC0F9F57C /* isInfoIcon@3x.png */; };
 		0EAFBA0056DA86CC1BFD3ECBF6D73D69 /* GTLCalendarCalendarListEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 9D87A43D9138140BD6E882D455FB9F6D /* GTLCalendarCalendarListEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		106E7125DE8654C3DF4C2D1A4E053B6B /* JVFloatLabeledTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = B4B12B59E0DAC159FEC068A14F1E77E0 /* JVFloatLabeledTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		115FFC4B2ABCEA1F4144E460ED536305 /* isInfoIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE96AE839BF122ED1E21C028C637CDE5 /* isInfoIcon@3x.png */; };
 		11E3AF749E0ED03AAD8EB1A0BDECC78D /* DGActivityIndicatorRotatingSandglassAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = A62C443C74880239EA3084418BC45CCC /* DGActivityIndicatorRotatingSandglassAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		132BC3EA869D9BACEB8960516AB839D9 /* GTLRuntimeCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = 47E206CBC276AA894BF073C8A49986A8 /* GTLRuntimeCommon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13CB17D15E4D5DD7E7CD24CFE783B00F /* STCollapseTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = FFFE27A523DAA4BA47B37FF1EE07DBD6 /* STCollapseTableView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13D04646EC34B9CFED1D5574B87833B1 /* GTLErrorObject.h in Headers */ = {isa = PBXBuildFile; fileRef = E84E6279216F5D1FBFCF0C6425816783 /* GTLErrorObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		14C4709A2087F91E6A80B8D864E31D41 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CC30297471C3BBD29650F27FB2320E /* Security.framework */; };
 		155ACA99C8C725D7F85DE099E556EF6F /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = EECC594FD4BDD7975E8689DFC3C703EA /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		173907CD61D7167EEF371FD1835C8B4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		18627C2042B2E402781EF67D2D3199E2 /* GoogleAPIClient-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E4F402655F9DF48A4157B6A283C68E00 /* GoogleAPIClient-dummy.m */; };
 		1979CE5BD14F614C383546992E133BE9 /* Timestamp.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 3821C644FC85EBA52A6C43C691D1C173 /* Timestamp.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1991CE3CE5BF3B66D92D10FD3B7CF77F /* GTLQueryCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 51E0D0C07BDF3C0CF2CD16852F121A1A /* GTLQueryCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,8 +54,6 @@
 		1FA953F8EDCD4AB5186F1A84F5555263 /* DGActivityIndicatorBallZigZagAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B229EE798CF9F7DAABF07EB3555751 /* DGActivityIndicatorBallZigZagAnimation.m */; };
 		2265FBFE6D3001EF4A90FD318D4F9FD0 /* GPBCodedInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6C5973A3FEA63113FF4FFE6F3FA3738E /* GPBCodedInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		226B1BFF4E3FC473A1C88F2CFD77C9AF /* GTMDebugThreadValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = D1BE0730FCFAB099DB80C9ADD8E79723 /* GTMDebugThreadValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		23A5DF84A81E47553BD942230A67140D /* isWarningIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9185C1B1876F71E16EE5AC2A480881AD /* isWarningIcon@3x.png */; };
-		23B131ED74F744B0EB3E587F195294E9 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA217E4667FB5D708C2424AD40EA186 /* Security.framework */; };
 		23EA3EAA1954BDABE5CD7229604E7FE4 /* DGActivityIndicatorBallSpinFadeLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 86F11B8C329A2054D55BACD5FCA8A211 /* DGActivityIndicatorBallSpinFadeLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2556BD0C101841B48272CD70B2D63ED3 /* DGActivityIndicatorRotatingSandglassAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 90AD26D4C936D17DF16592CF9B262FF8 /* DGActivityIndicatorRotatingSandglassAnimation.m */; };
 		257233B60B2E3DB62E6AFC44B108AE0C /* JTCalendarDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C867394A2AA5504F2C73F82FA5F6C16 /* JTCalendarDayView.m */; };
@@ -66,12 +64,13 @@
 		29F3B601ADD9026E16E201EA065F4A72 /* GTMGatherInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D4BC1FC3B38889EBBED9C696AAC8088 /* GTMGatherInputStream.m */; };
 		29F407E135454C5D04C157240659CEA5 /* Type.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 9CB257B6E3C3635D0D12F12D32BDAA1F /* Type.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2B14541EB49500181EC5FF2EFEA93F39 /* GTMSessionUploadFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 95B1769F0A12E548AD78B43A09B33CA9 /* GTMSessionUploadFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2BB58A0D3E79CBE19970CA8567A3C0CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
+		2BB2ECC953E8FD707A459D045DF77B28 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		2BDF35F80A6CC561723E29753B61EB89 /* GTLCalendarEventAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = F6D688F574D27FAFA27E826868EE8BDD /* GTLCalendarEventAttachment.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C7AF3CC3F59C76C061669E9215FFF22 /* GTLObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 040DFFA7492BF68697E449F462FD5348 /* GTLObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2C873F0E478CAA9EFE371851AA7C468C /* UIScrollView+TPKeyboardAvoidingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3D8C488610899E7A645836C9CE3E478D /* UIScrollView+TPKeyboardAvoidingAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D53CAD743649E1D35A9D8E2A8FEF8B0 /* Pods-NesiaFerdman-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 36728E1E322581326F10C396557B4E25 /* Pods-NesiaFerdman-dummy.m */; };
 		2EF6A519BA3B33DD2DD58DAE4E3BEADA /* Api.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 16341817D37C2EE1AE1B0B1A990F146D /* Api.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2F81F6184D3FC000E739CF6261BD87D2 /* isSuccessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 70150E8AB4E5A191E08392D393614B97 /* isSuccessIcon.png */; };
 		301D2F9DF8760DCBEDAD6F657998E7AC /* GTMOAuth2ViewControllerTouch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D70A1489D74180747463EE94ECF73E4 /* GTMOAuth2ViewControllerTouch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3086CCBA0E6EE8025DB3F968E4C63836 /* GTLCalendarSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 074BAF7266BB27007FC62873EABDB286 /* GTLCalendarSetting.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		30C4CF70790695A22980D3772EBAEE36 /* JTVerticalCalendarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7783BE00A495A70C39696E538C93F4A1 /* JTVerticalCalendarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -84,16 +83,17 @@
 		350CEE06274259D8E9C3FA94492DC737 /* GPBUnknownField_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 151D7F885327160A48B3B3F7EB49EC62 /* GPBUnknownField_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3511450999DD6A984EA8F4E0CE11EF14 /* DGActivityIndicatorBallZigZagDeflectAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E9A68246354DC8D9484E28C08D4102B /* DGActivityIndicatorBallZigZagDeflectAnimation.m */; };
 		3670D77F7FDC3A3C262B9AA91F4AF40A /* GTMSessionFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 7300F0690949FCE1A3894B612F0CF952 /* GTMSessionFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		37E5D9E87431270130806660DBDEA2E2 /* isWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 93F44C5B30E2DB1D7B4B91309CD65B8C /* isWarningIcon.png */; };
 		380C8C0BD6D8CD0BAD4BEBF0E267CF1D /* FieldMask.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 381F5D3D74A6313243527B0C1B9F02A4 /* FieldMask.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		39064A71265BD806892D3FAF06F3EF6D /* GTLCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = CF7B3CD0DF6A358E18AD1D6A3650601B /* GTLCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3943A13F16D23E6A778394E82A0E4058 /* DGActivityIndicatorBallGridBeatAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC3814372222FE4F7C8C376A5BECA /* DGActivityIndicatorBallGridBeatAnimation.m */; };
 		39F4B0E967213D48EC6C9D9521574F8A /* GTMSessionFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 788DB48926DA0E12600AB4818F0BBE8D /* GTMSessionFetcher.m */; };
 		3AA4FB3BDD173190D80BF0E1390C5B39 /* Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 9D79AEB8B5BC6CD98F6A8AB31176B345 /* Wrappers.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		3BD8ECA6FA72B72F79C9110E8DC382C9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		41346E27BB06CB58C076D2DBEDA000A8 /* DGActivityIndicatorRotatingTrigonAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D11DE5C4E5BE40CB996BD66CCA4BC5BC /* DGActivityIndicatorRotatingTrigonAnimation.m */; };
 		41C2E026451240A5B8A2329AA0085DE3 /* GPBUnknownField.h in Headers */ = {isa = PBXBuildFile; fileRef = 37CA5BC216541D41329D97D88BBEF6DF /* GPBUnknownField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		421F7F2664CF1BC534F579843EFC41F7 /* GPBDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A035342CEE27136640A6983A136166 /* GPBDescriptor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		42F8ACE655358F87CF0ADEC12D5DF005 /* DGActivityIndicatorBallPulseAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 524314F0045DC096E406CE56C649F805 /* DGActivityIndicatorBallPulseAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		45B611204551104FF82FC9A617F97F81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */; };
 		4692B9ED4A6A3BC8183A11D711D50CA9 /* JTVerticalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = AE1E42DF28497B221372304970797E5A /* JTVerticalCalendarView.m */; };
 		46FCC42ED6DCD45030A1B7EF44209B05 /* GTMSessionFetcherService.h in Headers */ = {isa = PBXBuildFile; fileRef = 77D5117F669A6F8E49988991231DA896 /* GTMSessionFetcherService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		474F080A5622522997803C228EFFD154 /* DGActivityIndicatorBallClipRotatePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B6FDC4CCEE963B88316B20635F886F4 /* DGActivityIndicatorBallClipRotatePulseAnimation.m */; };
@@ -102,7 +102,7 @@
 		47B062261B2D22AB83B038B50985B383 /* DGActivityIndicatorDoubleBounceAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E1919FCC6BF86F46E35B29CBF090C390 /* DGActivityIndicatorDoubleBounceAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4825BC5C6256DAFD533FF77F26EEAD45 /* Api.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 7ECBB2B46D471D5E72EB5EECD25DE10B /* Api.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4835A9DB51745F43A30A3915C2774BC8 /* DGActivityIndicatorFiveDotsAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 56237E27C1A350640BE7E3AE868BBC43 /* DGActivityIndicatorFiveDotsAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		48992C8A03E295CA8504E85E48DD12E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
+		49293CA19BA8622007C115BC99E09425 /* isWarningIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F927B170E57837117C0FD8576FB17CDA /* isWarningIcon@3x.png */; };
 		49524DD7C80C2A517F6A1352B67A44E8 /* GTMNSString+URLArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = 14248D77CE406334B98C639136C332F4 /* GTMNSString+URLArguments.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		49CB5D659BC4A11BB5B0B2B582646644 /* GTLBatchResult.h in Headers */ = {isa = PBXBuildFile; fileRef = CFA40C01579F28E6165E28CA6BF6BA60 /* GTLBatchResult.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4A5DBD2B63982B7809EE452E8ADAB03A /* JVFloatLabeledTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 903B87A10EF4F0BCA5BC16599EB34F1A /* JVFloatLabeledTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -115,15 +115,14 @@
 		51C7719F5CD46D2F9BBFA09E8F68AC4D /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 921480F96A50E2AD9E1B2894B9CE37C7 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		52C9D8647B34A103AF08F1FC00B9A76D /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B5A75639D133B7C6512743C543E97C /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */; };
 		536196304F7B3EC177C210D37ADB0EFC /* JTMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = AA9656EB3A17ED2F519FCAE2F5C8E771 /* JTMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5397AE743B41DC885845FA6D0CB9C91C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		54F611603163D99E27779726BD152128 /* DGActivityIndicatorBallClipRotateMultipleAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = D41780E9EAB1485B374D26278AD58E43 /* DGActivityIndicatorBallClipRotateMultipleAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		554FBF2C7797A1645FABBDD04E04351F /* GTMGatherInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 04BE70A86F23A16DAE9F5F5B322B0384 /* GTMGatherInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		55E0AAD4B6660713B2C6D4C0B04661EF /* GTMSessionFetcherService.m in Sources */ = {isa = PBXBuildFile; fileRef = B1D2645B973FDCD72C1ED57D87BBF6D4 /* GTMSessionFetcherService.m */; };
 		55F281228E56237E4D21357DCEB37F98 /* GTLTargetNamespace.h in Headers */ = {isa = PBXBuildFile; fileRef = E0D628AE2002CB5738017D58082C371D /* GTLTargetNamespace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		582318A650A8F680E68A64F4984D7FC7 /* GTLCalendarEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 661327A29611410C6F2EA502173AAFFF /* GTLCalendarEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5854391DDBD9C498B94AB5FBC1A2E4A2 /* isWarningIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F08988822BC49C341BAE643AC4E629F5 /* isWarningIcon.png */; };
 		58C7A2F8B926F414E8C81337EBC3A368 /* DGActivityIndicatorRotatingSquaresAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1843D83D6E03ABCB4DCE69ED7DE90EA3 /* DGActivityIndicatorRotatingSquaresAnimation.m */; };
 		58EBB282B6F9A63BF81A675884695F24 /* GTLJSONParser.h in Headers */ = {isa = PBXBuildFile; fileRef = A8B650B7DEC049BCE392A0F5505227E7 /* GTLJSONParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		594D2B4D69A8D546EDA8D225E164C9A4 /* isInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2F71AB80671F03AD281CEAFB29D6E9A /* isInfoIcon@2x.png */; };
 		59B22A4207C5539E9EE1FA4222145DEA /* JTCalendarDay.h in Headers */ = {isa = PBXBuildFile; fileRef = 49F3E9162703E68894ADDA3EFD9BF906 /* JTCalendarDay.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		59C1C052E0690740E176B9D67E70BCAA /* GPBUnknownFieldSet_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DDC4701A1B9D0260666B516F7EA8E2 /* GPBUnknownFieldSet_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B8E84E2AFF997A559EDF3219FFDD3CB /* GTLCalendarFreeBusyGroup.h in Headers */ = {isa = PBXBuildFile; fileRef = C445772A22365A97212D8D97F3D4209E /* GTLCalendarFreeBusyGroup.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -131,11 +130,11 @@
 		5E255A5B5203BE00C7B9E4D2E0D3BDC7 /* GTMMethodCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B123B6B4BFF6D67FB006D529001E5BB /* GTMMethodCheck.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E32FF043AAC07AAAB18B5F364E0F929 /* GTMMIMEDocument.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F6230EDA8ACFBC56D5E3B2A4E9C829D /* GTMMIMEDocument.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5E807BE33E15E0B5CA964F69E966F3C0 /* GTLFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 64325922868E9151DCBDF5E13CE68F5D /* GTLFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		5EB8AC7DF2012A1059E9C52EF09696DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		5FB4CBBB197B79AC0D1E3C277ECC7902 /* GPBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AD50E7F185B7E9A474916D920456889 /* GPBMessage.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		5FE109F2181D5EF4346BDF6A6B7E94DE /* JTHorizontalCalendarView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7D956526E5575B24D1FC3D51598E8A7 /* JTHorizontalCalendarView.m */; };
 		5FFA57A891D9E0C557097390B0D7E266 /* SourceContext.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 823A784BE13EC6DD926281551D331D7F /* SourceContext.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6051DD09B35D8BC26270E57417291474 /* GTLBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = E2A316EA75B3628B9D547A11BDE5B5F1 /* GTLBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		60FAD4D54C2B3AF451E0E8096FD39F01 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		618BF0F9A8D6DD9D510AE62089E6F6E0 /* DGActivityIndicatorLineScalePulseOutAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3596AAE9A289218FAB045F1D08A9F102 /* DGActivityIndicatorLineScalePulseOutAnimation.m */; };
 		619ABF2DC56AD9CE296A2EF1CE27C581 /* NSString+TextDirectionality.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F85C43FDA3830FD19DA58A84AC611DC /* NSString+TextDirectionality.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61B8F4B5507FAA5CFDC7731BA2EF6787 /* JTCalendarMenuView.h in Headers */ = {isa = PBXBuildFile; fileRef = D9B91FAD15E0A39A63095FCE46D72F57 /* JTCalendarMenuView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -143,8 +142,7 @@
 		623A92EC61636021FC6663633B690BC6 /* GPBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C90B23AD1B3B8344BB40567AB6DF19AE /* GPBUtilities.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		62C7E7CB3B77F7B26617C6D2932C0030 /* GTLCalendarCalendarListEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 379317BB2526211154BF187A1801D77B /* GTLCalendarCalendarListEntry.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		62F37F1AE7A0FBAFF410A113FDCCE304 /* GTMSessionUploadFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = D0DD837523F8B0D34ADAC5A4B5A6BE37 /* GTMSessionUploadFetcher.m */; };
-		64B4F21401EE4165680EB6C3723E5E58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
-		66EA4479B303E95B27AB455AE1C68743 /* isErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8237A9F1A9CE23E6BE242A41748A43F0 /* isErrorIcon.png */; };
+		63466135BE80A9AE149F661520456FA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		675108BED8F3C4BB732B2C0A136BE630 /* DGActivityIndicatorBallBeatAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 46083B6BA9810D80BD3D1CEBFD019B8D /* DGActivityIndicatorBallBeatAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6778F1E28C9C6B40E7CB2F3E1D4E6B3B /* JTCalendar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 57DEC6DD7BCA113CD1364B93177F5AF7 /* JTCalendar-dummy.m */; };
 		67F07AFB040AC5B1CBA443E5895F0EDF /* GPBCodedInputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 61BE6AE40F716641632B003A8860E0F0 /* GPBCodedInputStream_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -161,23 +159,23 @@
 		74E44F1AAA959C44439F3ED82893C711 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = E43DB51F3C40BA4D1826434137E87CB1 /* GPBDictionary.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7511467A21C6FC7E3F441BB9631D680E /* Timestamp.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 83ECFF3D06192288FB2C420394413870 /* Timestamp.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7527A21E6E64DEB6600B1EF00FD871AB /* DGActivityIndicatorBallClipRotatePulseAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = A776B02AB79840BB3F7ED40F182FD56B /* DGActivityIndicatorBallClipRotatePulseAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		76E8B5C18B3CCE8EB365961992BE2B3F /* isSuccessIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCB6FCBDCD99E5B708F7A71DEC41229C /* isSuccessIcon@2x.png */; };
 		773046887FDC3B5F9E0C2B7B0115B7F3 /* DGActivityIndicatorBallScaleRippleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 975BF46BEE4619C80759136A7035FF06 /* DGActivityIndicatorBallScaleRippleAnimation.m */; };
 		774D086BB8D7270254B4C16AA5656663 /* JVFloatLabeledTextField-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E60782F3F020EB9740A2759BC6936C14 /* JVFloatLabeledTextField-dummy.m */; };
 		7863622C296B0ED226D6B272405F70E8 /* DGActivityIndicatorTriangleSkewSpinAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E9258823E3DDA61970146E1017961308 /* DGActivityIndicatorTriangleSkewSpinAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7874B29D77B5E3FE03A9FD0BB1E62620 /* GTLDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F848BE7F979D2CF27DA4F5A0CFAB408 /* GTLDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		788E7E66D03C7D41B67CA2C29336E2BC /* GTLCalendarFreeBusyRequestItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 4A4E57F79C5D27D8B7B25F18A0DAB824 /* GTLCalendarFreeBusyRequestItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		78E644119CB687ACA8CEE1C4507C69B2 /* GTLCalendarFreeBusyResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C6B002FDBD9679DEC86464974F61AA3 /* GTLCalendarFreeBusyResponse.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		797110EDF3E888AB9449EE9E6E02B951 /* isSuccessIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = DA1DBD20CA30C45CE8B657446904499B /* isSuccessIcon@2x.png */; };
 		79B5973D67809B981C764ABAAFD0F2A8 /* GTLCalendarCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = E14B9B5312D009188829AE7E22E68AB1 /* GTLCalendarCalendar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7B23029B9AC7264AA9E7A484FEEA60EF /* DGActivityIndicatorBallGridPulseAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 9551B2EF3FC68CB0F02F5B9E3BFD246E /* DGActivityIndicatorBallGridPulseAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7B4F65D582D63E48ADEFA24F5B3729E8 /* ISMessages.m in Sources */ = {isa = PBXBuildFile; fileRef = 417C0B1091B1F6F81B07E6C62A1731E5 /* ISMessages.m */; };
+		7B6B3B5C165F1D7F37BBD6984B9695E2 /* isErrorIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 859D6C65AEE2F0F8A6C78251176C3044 /* isErrorIcon.png */; };
 		7C25AD780E7FDF5D842DBE47A510FED8 /* JTCalendarWeekView.m in Sources */ = {isa = PBXBuildFile; fileRef = B435A1985B1E860CB0EBC7B766166651 /* JTCalendarWeekView.m */; };
 		7C5066E96C6DC7B9EC6E814F490FF30D /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5932271D6E830C7E4081B24168442F /* UIScrollView+TPKeyboardAvoidingAdditions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		7C8B5AB9027596C699D16C4AAF27E068 /* GTMOAuth2SignIn.h in Headers */ = {isa = PBXBuildFile; fileRef = 381635F25D5B555809BFB4DC26E6AADC /* GTMOAuth2SignIn.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7D85B31D1DC61FADF9452D88FE027EAB /* ACFloatingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3CD7E6D72072376E44E9E7DE7C0B2725 /* ACFloatingTextField.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		7DE264F76ACC4C21E31E5EF5B074B904 /* Pods-NesiaFerdmanTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A2AC1089E34B4D91432B3AC48148B815 /* Pods-NesiaFerdmanTests-dummy.m */; };
 		7E5CAC7A09A4F936CED71D127412CCFC /* GTLCalendarEventAttachment.h in Headers */ = {isa = PBXBuildFile; fileRef = E69855849676EB7CDE4A38C95B846DD7 /* GTLCalendarEventAttachment.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7FC3C0DDB51532443237C13E5B80F057 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */; };
 		7FFF77C23BB12132BCDB9089A5FC671C /* GTLUploadParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = D30067635CD18F533D0FF5B4B02F4224 /* GTLUploadParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80BD819CCEA408F1E772E49609FA9A70 /* GTLService.h in Headers */ = {isa = PBXBuildFile; fileRef = CE84552DE8A44B6B650A68C10E6381ED /* GTLService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8125AC4526F6D72D015B0421220115B8 /* GPBWellKnownTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 75530830CB042022E7BD1CDA8608E352 /* GPBWellKnownTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -192,9 +190,11 @@
 		86D6DEC8268BF82FB84AF740D342AB5C /* Wrappers.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D53E01EE3F160AFF1873580C5DCF176 /* Wrappers.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		88C53480820457DF5D85982A8E86714F /* GTLUploadParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C52004DFF209A4A3F742D024C15E40F /* GTLUploadParameters.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		89D585999D5C82AC2844351D2207020A /* Any.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D67C40664B59058AD1878BAE981324D /* Any.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		8B1B04DC0A2E11B054C14B09D326D75F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		8B3BDCEB4F401503CC78666796525A75 /* GPBWellKnownTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 86904C6F1C2C10AC481331A282C93711 /* GPBWellKnownTypes.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		8BA468D144B8EB98583E4D8F53B4B18D /* isErrorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 47E757B49D919B922CC41B730782ABFA /* isErrorIcon@2x.png */; };
+		8C86456137135B05704F74B71A5F8FC6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		8C929DFDA2F683BE086420DF09E828CB /* JTCalendarManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A17695D018A198E226CAEB7A7DC215B0 /* JTCalendarManager.m */; };
+		8C990255BD57162833AEA70274B3B536 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		8CB78B58C2A752E44D69EBF7E3663530 /* JTCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = FCB272A19B9B1CE2AFB58D7BB1401466 /* JTCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8CCE546BFA0633DFDBA2F2271D7F53DB /* DGActivityIndicatorLineScalePulseOutAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 62DE3D12E46863FC965B3C1D18047278 /* DGActivityIndicatorLineScalePulseOutAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8DAEF36072D28C8CEBE1217A4323B6C1 /* GPBMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = DAD4BCB14985719129452BF096F2EE5F /* GPBMessage.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -203,7 +203,6 @@
 		9257006ABCAB427B5CC3E648B570A8B9 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 239BE19318805A234E6AB5A4F3B82E1E /* DGActivityIndicatorBallScaleRippleMultipleAnimation.m */; };
 		92EC5F67F2EA627857B2B7A95DC7E7C7 /* DGActivityIndicatorDoubleBounceAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = A712D87EDE2D7EE26513E734701A46D4 /* DGActivityIndicatorDoubleBounceAnimation.m */; };
 		935F32E00010D8980F764928843EF6ED /* GTLCalendarEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = 390E9718C9437A9817426753244DABBF /* GTLCalendarEvents.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		9453787F8626EC0F3A058DF5057C5E4A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */; };
 		947980586E1A92E7588712FC3DE5D7AC /* DGActivityIndicatorBallPulseSyncAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 82F2411AFBDAD9F12AA8C55D7F30D5F6 /* DGActivityIndicatorBallPulseSyncAnimation.m */; };
 		96E9AE31FD69AFE8B30BEFD6AAE4BCD4 /* GTLCalendarTimePeriod.m in Sources */ = {isa = PBXBuildFile; fileRef = 652E8920BBFF608B1E27D3E2C45B5E94 /* GTLCalendarTimePeriod.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		97D82F1B53D4825DDF8CC7E02FEC9D58 /* GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = DB618706F52C0D555EC922E5D813F928 /* GPBDescriptor_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -229,29 +228,32 @@
 		A6DBDD1C59036BA2E4736A7778823F03 /* DGActivityIndicatorBallRotateAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 21B6AFC5284BE96D1ED8E78AACB9F881 /* DGActivityIndicatorBallRotateAnimation.m */; };
 		A7FA7803B5975CC3CABF0069D7300EE2 /* JTCalendarSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F037C547286A762CFE879ABE3F3CF9F /* JTCalendarSettings.m */; };
 		A81C61F68F0FA08497E5D0B90F416664 /* GTLCalendarColorDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 360768F9E491732638E8B243B5A64DFC /* GTLCalendarColorDefinition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A8E9E7EF139F3DC452F95D4135BE2D3E /* isSuccessIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04F144E3498945FB5DE3BAF90B4B24F8 /* isSuccessIcon@3x.png */; };
 		AB09DDE9DDF4974F76FFF4E097AA37C8 /* GTLCalendarAclRule.h in Headers */ = {isa = PBXBuildFile; fileRef = 151F6DD206102AAECDCA3D49E5195BFB /* GTLCalendarAclRule.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AD2B2586DCE67ED56064AF8E753882BD /* GTMSessionFetcherLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = 121ED58A6A7C6D166BCE9F4BBE8F1CC4 /* GTMSessionFetcherLogging.m */; };
+		AF7A387D919C7BAD587E29AB51F7B366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */; };
 		B025FD44A64AF4E7ECFEFBD00A0A09E3 /* GPBExtensionInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B8DB35D6B25845432E35C2AE06546DA /* GPBExtensionInternals.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B032C9B682B67098285F461D6E573407 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */; };
 		B0852BD9CC62064AB85D971148AD7C93 /* DGActivityIndicatorLineScalePartyAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 98E93CC5FE41F09D111257054AEB5B63 /* DGActivityIndicatorLineScalePartyAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B0D459C76CD70420C0E545C326D5F5BC /* JTContent.h in Headers */ = {isa = PBXBuildFile; fileRef = D9C6B15C5191BED4B7556B76858A8AD9 /* JTContent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B28E1BB54B8F582CD7D53AEBDCE3CC37 /* DGActivityIndicatorBallZigZagAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 37753ADD283F621D0A74DCA7806B058C /* DGActivityIndicatorBallZigZagAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B340FE5CBFF826A83CA1EF414661D429 /* DGActivityIndicatorNineDotsAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = D635DEB824EED7089180A11541F8FF7D /* DGActivityIndicatorNineDotsAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B3EF49DA660F2511CBCA82BF8ECC4028 /* JTCalendarMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7245ADAA11FD053A78F53BBD48504F8 /* JTCalendarMenuView.m */; };
+		B4B11B83479BA16F1D484A37EB2C626C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */; };
 		B4C2F167A2B1624D4C045EB44FB6FA56 /* GPBDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B486C28082C3DCC2065398759A887C4 /* GPBDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B54298D363894100C69CE42043ADA6F3 /* DGActivityIndicatorTriplePulseAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 695D84DF7117542499CB50CC42193714 /* DGActivityIndicatorTriplePulseAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7A3CA299DBF67D6EA0AA00905A33DC1 /* TPKeyboardAvoidingScrollView.h in Headers */ = {isa = PBXBuildFile; fileRef = D411701A5F4CA0DFB3857B7AB62016EC /* TPKeyboardAvoidingScrollView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B7B4A769BFCB900E0224E6B13E476C35 /* GTLCalendarEventAttendee.m in Sources */ = {isa = PBXBuildFile; fileRef = 25723E247EBAB3076D653AA0AE7E211A /* GTLCalendarEventAttendee.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		B7FBD106F2267A617C2568BD61A4A5AF /* GTLCalendarColorDefinition.h in Headers */ = {isa = PBXBuildFile; fileRef = DD5DD89B03620FC39316BE4DDA02CAC6 /* GTLCalendarColorDefinition.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B93BC1CB5B5B6C95793443C9DFD57501 /* GPBRootObject_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 86FE3595C8BF757D5D7F040C178BF1C8 /* GPBRootObject_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B9B49E00A1FED6FA7B2C1B905F06D36E /* isInfoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3C9068028FC4BA2AFD54D219AFABC0A1 /* isInfoIcon.png */; };
 		BA155CAB4BCC855C97BCF0EAB19B4A26 /* GPBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = CB11C4A1E861B5A957814B74D303AC12 /* GPBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA5C355F0C0820A012A37757B270D6B9 /* DGActivityIndicatorBallClipRotateMultipleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 445B9C967BDB32E8C23B25EC22DBE25B /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */; };
 		BA655E3F0C1A7ADB96B302AD47F8A430 /* GTLCalendarSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F8BDA06A5346C3DE094742DEE8008BD /* GTLCalendarSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BA91650AA427BC49FEA4EB56D5713A43 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		BB5E1C5C3D977B27FB151A5B3E32CB1B /* GTLServiceCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C1EC4B86A05B8E9E7EA76C57B16AF897 /* GTLServiceCalendar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB90E09B3976C96E4913CF53680C43E9 /* isInfoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1DD391D062B949936D4E85526432C364 /* isInfoIcon.png */; };
 		BDF472113B23579BCA2FAB5E268805E0 /* DGActivityIndicatorLineScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6EBA3F0EC313F5EE0DD1DEE2FBB863 /* DGActivityIndicatorLineScaleAnimation.m */; };
-		BEEFDB95EFA3DCBD14E1AE6A76D659C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		C1CE637FB30B6BA84F34493932AF99BE /* GTLCalendarNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CFAF9B7584B730B5BE409A8B1A63511 /* GTLCalendarNotification.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C306B63EACB1D2B68B3C3B288E006149 /* isErrorIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262347E1A6E2BFC7EA065711BBDD31BC /* isErrorIcon@3x.png */; };
 		C3B44B3F354A30535932F533499C4E44 /* DGActivityIndicatorBallScaleAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 339B34577257166FC7077C40C6DF8D84 /* DGActivityIndicatorBallScaleAnimation.m */; };
 		C4B2E8E7ECB802E47D752451E375CFC5 /* GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D18E1F030A5D25D7E5DAC6FED52E0B9F /* GPBCodedOutputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C4C160B59A2D33A603EFE532FEC0BC4F /* JTCalendarScrollManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E84651E169D2DEDB04B3A71DF713339 /* JTCalendarScrollManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -263,6 +265,7 @@
 		C6FE95EC54334E57AF332A31392D322B /* GPBCodedOutputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 034068E326D8F981271A15AB48FE212A /* GPBCodedOutputStream_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C71C56DBD18AFD8913227CFD8485D77A /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 4260786477854E056F454C9663E47A7C /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C870FA18301B3B836952374225EFF197 /* GPBUnknownFieldSet.h in Headers */ = {isa = PBXBuildFile; fileRef = D9088E819F170E12F9E5AA5A5159B24D /* GPBUnknownFieldSet.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C936F7E755C7582CDF05E3A54D82FF3A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0FED6DFFC96C7627CD0C653E4E0C909 /* SystemConfiguration.framework */; };
 		C94660E98F60A1B133CCB074BBEE2782 /* GTLBatchQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = E90009A72D196D60FECC8F2671FE60F2 /* GTLBatchQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C95EB6C92BF57DE33CA985A8B1442563 /* GTLQuery.h in Headers */ = {isa = PBXBuildFile; fileRef = 084721C0A9EA79CF84475412932F80E3 /* GTLQuery.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C9A1B17553255CFDAC102AA349DE7F55 /* GTLBase64.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A8925777898EBEECC05281118AC2191 /* GTLBase64.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -270,31 +273,28 @@
 		CA149CC4DCAA5DDD335A247C3C5F2CDC /* GPBCodedOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA4E3688A5ACFDDA0B6AC8AF622D6DDE /* GPBCodedOutputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CB1A9829FA1C960924DC4DB02F8B793C /* JTCalendarScrollManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C567621E4BB814A04CBB407F5633C1AC /* JTCalendarScrollManager.m */; };
 		CC3339C02AE6B0CC2764FFB693C3A334 /* GTLCalendarFreeBusyCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = AA484B0F9E8D1F56F4CDACB7B41DC665 /* GTLCalendarFreeBusyCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CCD6DFBDC2C48307C8F478D690D4BD6A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		CDDF81ACC4E760CA04F2964F771D127D /* GPBWireFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = 13A94C42ADDE5623A2808FCF80DC0472 /* GPBWireFormat.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CE111E323DD93F0C76B6A5E081930AAC /* GTLCalendarFreeBusyCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = B325FC3DD6150079C209C1E84C1F78D6 /* GTLCalendarFreeBusyCalendar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		CE5BAFD572EE40850242797E4215F8E9 /* DGActivityIndicatorTriplePulseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E62984AAA7F1452366B47DB86A37DD1 /* DGActivityIndicatorTriplePulseAnimation.m */; };
 		CEC42451F0769E6C287EDB0ED2C96EBB /* DGActivityIndicatorAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 8460E83082512AD34AC9C8AB72321FE2 /* DGActivityIndicatorAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CED767825E3F7038076E375EB426BF45 /* DGActivityIndicatorCookieTerminatorAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = F8083ABA551D5386D35D6317E58E7757 /* DGActivityIndicatorCookieTerminatorAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CEF39E46D7744CF880573F134FF2451C /* TPKeyboardAvoidingCollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8B24C60A3BECF62667818265E864887F /* TPKeyboardAvoidingCollectionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CF0606477A7BFBF1C9450E5D258B36EB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		CF8360A01B7928EBA7FB5E049AB1BE89 /* STCollapseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 30ECE582D0117540ED41911042BC83F0 /* STCollapseTableView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D00FE0A185DC6709A29A194CD152F151 /* ACFloatingTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = BE686E8A77DDCBB471BCD6C789761F84 /* ACFloatingTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D058C77F9BF7B6AB5A10053228945E18 /* GTLFramework.m in Sources */ = {isa = PBXBuildFile; fileRef = C8621B28052A37B6C15882F9D1FC22E2 /* GTLFramework.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0AA0134C1551DDCBDA3CECA27AD8CEC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
-		D0B1DF06DE0B792237796A41339CEED5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
+		D13D2E45265AB96446FD2EAEC1FF6DB0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		D1B1DE17285D7E27E70D95CACA43ED24 /* Struct.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 433A53BB23408BA6FD60C816EC41D6BF /* Struct.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1B70B439DA0390C3DF041DDB9BCDF62 /* DGActivityIndicatorTwoDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C4C09CD210C8CBFF5890890B06BE1C /* DGActivityIndicatorTwoDotsAnimation.m */; };
 		D2CE56842AC56D87E6804A40567B8634 /* JTDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2ADA5E795E2206857E70B2CB7660C3 /* JTDateHelper.m */; };
 		D35523A70C0186634447F44084D94D66 /* GTLCalendarSettings.h in Headers */ = {isa = PBXBuildFile; fileRef = E1AEB5B5A841F6E5A8BE9E2B72259418 /* GTLCalendarSettings.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D356DC5EC2D363A97146C14F4C8A5ACD /* GTLErrorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 857A9B7BBE747E106ED35B3EA9119546 /* GTLErrorObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D3E8AC41EFF225F77C2ED8DA8A309674 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 9516F306388E925BF3839ABF9320E831 /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D423B28F0C75A47CA9BF6979DE6E2113 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FA217E4667FB5D708C2424AD40EA186 /* Security.framework */; };
 		D48F29177A19E084589E056B2DC12D31 /* GTLQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = AE076CEC456E813AFA2C73ED89EA240A /* GTLQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D51B13C2E26914C39CDE28634C8B4359 /* GTLCalendarCalendarList.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BB9101187607D90576DD3B69C080DF9 /* GTLCalendarCalendarList.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D51EC09C1B16CB22D31F3F05FF4E4BDE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */; };
 		D6C8C3FBE9B808FA6D9A6EFF73D1D3DE /* JVFloatLabeledTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82710C2FA9810E020574582FD87CF70D /* JVFloatLabeledTextView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		D6D21AA517FBCF136B213FB30D41CD53 /* GTMMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = F11C1D951DB76CEB7674D1B8CB627873 /* GTMMIMEDocument.m */; };
-		D706A74F979F8580EB16B00CE723ECB9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
+		D70137AB5BC127DB6486358A2B84E927 /* isInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0AD329E0F4EAB13CF50D57C1BA8A8A53 /* isInfoIcon@2x.png */; };
 		D70FD4EC89FCA572CB547224A823D803 /* DGActivityIndicatorBallRotateAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = E327F2AB6CABD7D1923AC695DBD3283B /* DGActivityIndicatorBallRotateAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D785741CF4DD99E88BF0AF392938F4D1 /* GTLCalendarEventDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 752CBCCC6BD92E1F1A91B2AEECEC595A /* GTLCalendarEventDateTime.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D7A7AD88753B808992021989B82910A1 /* GTLCalendarColors.h in Headers */ = {isa = PBXBuildFile; fileRef = 94A0D7988B185A1E1AF74F4FB6B83463 /* GTLCalendarColors.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -309,15 +309,15 @@
 		DBB70B614371E7F8ACDA46A492D7D630 /* JTCalendarDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 615A358C0CAE41C4C8A6F43CA7347413 /* JTCalendarDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DC630B45B682EAF73098DF525A816302 /* NSString+TextDirectionality.m in Sources */ = {isa = PBXBuildFile; fileRef = 7502A43FF08B02634C8F14167D89598A /* NSString+TextDirectionality.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
 		DC817AAF0F6EC8B186ED86BFF87F92F6 /* DGActivityIndicatorBallTrianglePathAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = F893A8392B4B7FE2AAC1FB51A93CC0FC /* DGActivityIndicatorBallTrianglePathAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDA93260EBFC0C36AF527138882C8CF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		DDB3CCC75647B10D7A8C64B453BF3B37 /* GTLCalendarEventReminder.h in Headers */ = {isa = PBXBuildFile; fileRef = 815107156800C885B21E7039BFE5E57C /* GTLCalendarEventReminder.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DE8025704DD841CAFEABED9FE3517D29 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */; };
-		DF047C6F34EF781399767C7796B5FAF0 /* isSuccessIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 72033F5527B3ED1D58C36F32C8D84C1E /* isSuccessIcon.png */; };
+		DDF9F9C9F54678D9733E9D24444AE837 /* isWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 408CEAC23B8EE237BEC938C4E70C3CF4 /* isWarningIcon@2x.png */; };
 		DF487BC1ECE83B7606770CA26A16771D /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = C6EE04F61B3EC41D9BE13A033B621FB9 /* UITextView+Placeholder.m */; };
 		E138699C2AB80773AB7B90157FE48EA8 /* UITextView+Placeholder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1954F235D4C83FB26B4C975102A4E0 /* UITextView+Placeholder-dummy.m */; };
 		E1C44BEA9C6DAE9561E03383A5E81967 /* GTLRuntimeCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = E02293274B38D6729BCE0B27528B8241 /* GTLRuntimeCommon.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E1DA5C248EB3BC36B58A245D9E2DA113 /* DGActivityIndicatorAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E70BEA965DA8DD8552C491756D81C6A /* DGActivityIndicatorAnimation.m */; };
+		E48BFAB1AAF7FA9B23BB080F8FFE9A71 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9CC30297471C3BBD29650F27FB2320E /* Security.framework */; };
 		E4F085828A79ED8A0476FE3CF6D3A47A /* DGActivityIndicatorBallScaleAnimation.h in Headers */ = {isa = PBXBuildFile; fileRef = 83789EB50AFE50D8FF9F06A77A9A3EFC /* DGActivityIndicatorBallScaleAnimation.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E60B99352D1BC3665A04D80FE980FBA1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44ABC62F229A5EFF3657C7991AFD0C4D /* SystemConfiguration.framework */; };
 		E62053BAF9CB6A5228B4FF240927ED27 /* GTLCalendarChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 89CB31F230BE6A1ADD9B925E6C0AE572 /* GTLCalendarChannel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E734E7FCC0A676FCD60FF707EA113A77 /* GPBExtensionRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F62C3C6A257EBC7D02F985CF98099DB /* GPBExtensionRegistry.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E75C55F21B19DF77108B933C322F9F53 /* GPBMessage_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = F1B0C0CE7F4CCA536954A2CE6AF5D30B /* GPBMessage_PackagePrivate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -328,15 +328,18 @@
 		E94A33F2325A7F5DAFA3CA6B2AD50261 /* DGActivityIndicatorView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DEFE31FEE8A59CB9B4A1E77E7FAB69DC /* DGActivityIndicatorView-dummy.m */; };
 		E981FD3AE2C7513975DB49EAA89D2876 /* DGActivityIndicatorTriangleSkewSpinAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 8195B5E21FC8B1649BEAF37AA0E07FF5 /* DGActivityIndicatorTriangleSkewSpinAnimation.m */; };
 		EA8574B31365AC7F8DE7F7CC24616EB2 /* GTMSessionFetcherLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = 6641AD3FBAB65925435399D21F4334A9 /* GTMSessionFetcherLogging.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAE45C3A273E3372F3A860EC06062B0C /* isErrorIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2753E3478A49656E1DE2EBC7FDC780B2 /* isErrorIcon@2x.png */; };
+		EB5069C13A662BA5001EE1AD11D98F70 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		EC38A497F878E93774248293ABE3FC67 /* GPBExtensionInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = 2602749B37747AEF64BAD91D8698E529 /* GPBExtensionInternals.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		ECC8B1FD9B231429BDACB3C4B6B55E63 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		ED9C91DC56AA01CEDE41143C376B7E9B /* GTLCalendarEventAttendee.h in Headers */ = {isa = PBXBuildFile; fileRef = 07373C4EFD5A42B44A7F4E8BDCDA4DFB /* GTLCalendarEventAttendee.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EDA2507C3A3451253E19F1CB9EC85BC7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
-		EE468FFD208B6B84562703233F926271 /* isWarningIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 835C7A9684616585240C06E19C3D3DBD /* isWarningIcon@2x.png */; };
+		EEACE403CEF38A0F3A9CB568E694AAFA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		EF7722D72FCA3A27E05EC9D4A716D5FD /* GTMNSData+zlib.m in Sources */ = {isa = PBXBuildFile; fileRef = F5D78DB12BD6AE83147491EA1644CA5E /* GTMNSData+zlib.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F1B036DB7F86FA430E8CD69289CC857E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
+		F09463C701C2FF4CEEDA659D2730ABE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		F22BC70D538F17028FEEA53EB346B113 /* JTCalendarManager.h in Headers */ = {isa = PBXBuildFile; fileRef = F23AA7039162AAA9A12AAB459D7509B3 /* JTCalendarManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F25689A7060F8E38EA1692BFD3841A27 /* GTLCalendarSetting.h in Headers */ = {isa = PBXBuildFile; fileRef = F4349B90AAF945ED480CD0FBB1AA5CCD /* GTLCalendarSetting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F2810CF6D78E3868986EC881AEEE09B3 /* GPBRuntimeTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F7DE86A60A071227E9AB7F9116119A2 /* GPBRuntimeTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F3E77AA87F046EA6488343E942699FC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */; };
 		F41327DD83B27F1D29937F3BEC2F599A /* GTMReadMonitorInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = E62EEFB042CCA59B2481C5132030BB7D /* GTMReadMonitorInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F587658425BAA5833F9DD3843F4746B5 /* STCollapseTableView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B25CB4B5F7AB59A8831AFF0B2F400213 /* STCollapseTableView-dummy.m */; };
 		F5ED61EBA39A6154976AE18C31DB3688 /* GTMSessionFetcher-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2508FF00F62F3055BA94349720DAB1AE /* GTMSessionFetcher-dummy.m */; };
@@ -346,16 +349,13 @@
 		F6B7FCE2EE54276259C94649A2A52808 /* DGActivityIndicatorFiveDotsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 811FD7796E11061D0970B26B8B5FFF04 /* DGActivityIndicatorFiveDotsAnimation.m */; };
 		F7F16D1DB52BC02FEF094CD693C260DF /* GTMReadMonitorInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D236E0A62BBE34B695113672E6054EC /* GTMReadMonitorInputStream.m */; };
 		F802CF0F13B3F949A657DFF7AC10018E /* DGActivityIndicatorBallSpinFadeLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F46A47C40AA3CEF372083BB8C920682 /* DGActivityIndicatorBallSpinFadeLoader.m */; };
-		F8A3F5124E17F1629A1A61856CADCAE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		F8D902E96F164354B00D0D63DEE5388A /* DGActivityIndicatorTripleRingsAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A6C7F7BF66F703DB960B7E9B9D635D /* DGActivityIndicatorTripleRingsAnimation.m */; };
-		F95F83F6D6D0F0F1D357A7663633063F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 		F9B939EE2FBD65D69454EB55B8E8AD35 /* GPBUnknownFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = ED9FEAF1AA1A68CAC05E22D5CECF13C2 /* GPBUnknownFieldSet.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FAAD189B2C24244EE55B36A273BAAD2F /* Duration.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F231D152D524614AA3318047C46F63D /* Duration.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FB0A1F59E7B80F419EFDDE1A82B703EB /* GTLQueryCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DDE99CFFFA61A15701BCBEEFCBCEE3B /* GTLQueryCalendar.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FB4AF9FE9C5ED31352934E4CB5A0171B /* GTLCalendarAclRule.m in Sources */ = {isa = PBXBuildFile; fileRef = D0A1B0EF70B121A5EAC1EBAE1F307643 /* GTLCalendarAclRule.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FCD7864E7CD935E3B2898EBE6980773B /* DGActivityIndicatorBallTrianglePathAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1F1507299F06AD7FC3B69D2C9338BC /* DGActivityIndicatorBallTrianglePathAnimation.m */; };
 		FDD456E25F2B3DE79CAA7859A1794915 /* GPBBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = F1A5D241229B0D17A38BB77B6001AFDE /* GPBBootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		FF49343892BE9C6432D2AD6E9A2371F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -475,6 +475,7 @@
 
 /* Begin PBXFileReference section */
 		00275960DEB2342035084F5E75CB04BA /* libGoogleAPIClient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGoogleAPIClient.a; path = libGoogleAPIClient.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		030F882E887FA03C9EEF7DF87F54AECA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fabric.framework; path = iOS/Fabric.framework; sourceTree = "<group>"; };
 		034068E326D8F981271A15AB48FE212A /* GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedOutputStream_PackagePrivate.h; path = objectivec/GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
 		03CCE0F73397E5E70E4C92572A696660 /* GoogleToolboxForMac-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GoogleToolboxForMac-dummy.m"; sourceTree = "<group>"; };
@@ -484,6 +485,7 @@
 		049AD26753011970696FB3502391516D /* GTLBatchQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLBatchQuery.m; path = Source/Objects/GTLBatchQuery.m; sourceTree = "<group>"; };
 		04BE70A86F23A16DAE9F5F5B322B0384 /* GTMGatherInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMGatherInputStream.h; path = Source/GTMGatherInputStream.h; sourceTree = "<group>"; };
 		04D7A45A28ADC31833D6DD7ACDAB77CD /* DGActivityIndicatorRotatingSquaresAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorRotatingSquaresAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSquaresAnimation.h; sourceTree = "<group>"; };
+		04F144E3498945FB5DE3BAF90B4B24F8 /* isSuccessIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isSuccessIcon@3x.png"; path = "ISMessages/Assets/isSuccessIcon@3x.png"; sourceTree = "<group>"; };
 		07373C4EFD5A42B44A7F4E8BDCDA4DFB /* GTLCalendarEventAttendee.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarEventAttendee.h; path = Source/Services/Calendar/Generated/GTLCalendarEventAttendee.h; sourceTree = "<group>"; };
 		074BAF7266BB27007FC62873EABDB286 /* GTLCalendarSetting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarSetting.m; path = Source/Services/Calendar/Generated/GTLCalendarSetting.m; sourceTree = "<group>"; };
 		0756D22FAE04CF990D8EBA764FBFF080 /* CLSReport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CLSReport.h; path = iOS/Crashlytics.framework/Headers/CLSReport.h; sourceTree = "<group>"; };
@@ -491,6 +493,7 @@
 		084721C0A9EA79CF84475412932F80E3 /* GTLQuery.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLQuery.h; path = Source/Objects/GTLQuery.h; sourceTree = "<group>"; };
 		0A6427BDFFB4DCD8087829C6E7233E92 /* GTLCalendarAcl.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarAcl.h; path = Source/Services/Calendar/Generated/GTLCalendarAcl.h; sourceTree = "<group>"; };
 		0A7437B52E61F54EA6E017EA51B97A7A /* JTCalendarWeekDay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendarWeekDay.h; path = JTCalendar/Protocols/JTCalendarWeekDay.h; sourceTree = "<group>"; };
+		0AD329E0F4EAB13CF50D57C1BA8A8A53 /* isInfoIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isInfoIcon@2x.png"; path = "ISMessages/Assets/isInfoIcon@2x.png"; sourceTree = "<group>"; };
 		0B1F1507299F06AD7FC3B69D2C9338BC /* DGActivityIndicatorBallTrianglePathAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallTrianglePathAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.m; sourceTree = "<group>"; };
 		0D53E01EE3F160AFF1873580C5DCF176 /* Wrappers.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Wrappers.pbobjc.h; path = objectivec/google/protobuf/Wrappers.pbobjc.h; sourceTree = "<group>"; };
 		0F6230EDA8ACFBC56D5E3B2A4E9C829D /* GTMMIMEDocument.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMMIMEDocument.h; path = Source/GTMMIMEDocument.h; sourceTree = "<group>"; };
@@ -517,13 +520,13 @@
 		1CCA68C86BE793A634127378C2363984 /* Struct.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Struct.pbobjc.m; path = objectivec/google/protobuf/Struct.pbobjc.m; sourceTree = "<group>"; };
 		1D69D8FFBF3A0604754CF30714604DDE /* FieldMask.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FieldMask.pbobjc.m; path = objectivec/google/protobuf/FieldMask.pbobjc.m; sourceTree = "<group>"; };
 		1DC5A9CCC8E1F3BBCB9F7154E2269D93 /* DGActivityIndicatorBallScaleMultipleAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallScaleMultipleAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleMultipleAnimation.m; sourceTree = "<group>"; };
+		1DD391D062B949936D4E85526432C364 /* isInfoIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; name = isInfoIcon.png; path = ISMessages/Assets/isInfoIcon.png; sourceTree = "<group>"; };
 		1E3C7AD150B5A5853A83E92A336BA42B /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Frameworks/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		1E9A68246354DC8D9484E28C08D4102B /* DGActivityIndicatorBallZigZagDeflectAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallZigZagDeflectAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagDeflectAnimation.m; sourceTree = "<group>"; };
 		1F231D152D524614AA3318047C46F63D /* Duration.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Duration.pbobjc.h; path = objectivec/google/protobuf/Duration.pbobjc.h; sourceTree = "<group>"; };
 		1F7DE86A60A071227E9AB7F9116119A2 /* GPBRuntimeTypes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBRuntimeTypes.h; path = objectivec/GPBRuntimeTypes.h; sourceTree = "<group>"; };
 		1F848BE7F979D2CF27DA4F5A0CFAB408 /* GTLDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLDefines.h; path = Source/GTLDefines.h; sourceTree = "<group>"; };
 		1F8FFA2D52179B7847A80CBE8BF7D242 /* GPBExtensionRegistry.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBExtensionRegistry.m; path = objectivec/GPBExtensionRegistry.m; sourceTree = "<group>"; };
-		1FA217E4667FB5D708C2424AD40EA186 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		1FDAEBEE37EF8FD4CC71AEA1190022CC /* GPBProtocolBuffers_RuntimeSupport.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBProtocolBuffers_RuntimeSupport.h; path = objectivec/GPBProtocolBuffers_RuntimeSupport.h; sourceTree = "<group>"; };
 		206BE94E2A9B407ECF9466979262828F /* ACFloatingTextfield-Objc-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ACFloatingTextfield-Objc-prefix.pch"; sourceTree = "<group>"; };
 		21224071DF656FFB26F5B9B44BC4BDE7 /* GTLCalendarFreeBusyResponse.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarFreeBusyResponse.m; path = Source/Services/Calendar/Generated/GTLCalendarFreeBusyResponse.m; sourceTree = "<group>"; };
@@ -537,9 +540,11 @@
 		25723E247EBAB3076D653AA0AE7E211A /* GTLCalendarEventAttendee.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarEventAttendee.m; path = Source/Services/Calendar/Generated/GTLCalendarEventAttendee.m; sourceTree = "<group>"; };
 		25DC54EDEB4B01101A5BC1D57B70E6E6 /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMOAuth2Authentication.h; path = Source/GTMOAuth2Authentication.h; sourceTree = "<group>"; };
 		2602749B37747AEF64BAD91D8698E529 /* GPBExtensionInternals.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBExtensionInternals.m; path = objectivec/GPBExtensionInternals.m; sourceTree = "<group>"; };
+		262347E1A6E2BFC7EA065711BBDD31BC /* isErrorIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isErrorIcon@3x.png"; path = "ISMessages/Assets/isErrorIcon@3x.png"; sourceTree = "<group>"; };
 		265806D2E8425F468302421AF757A500 /* JTCalendarPageView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JTCalendarPageView.m; path = JTCalendar/Views/JTCalendarPageView.m; sourceTree = "<group>"; };
 		26B229EE798CF9F7DAABF07EB3555751 /* DGActivityIndicatorBallZigZagAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallZigZagAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallZigZagAnimation.m; sourceTree = "<group>"; };
 		26B5A75639D133B7C6512743C543E97C /* DGActivityIndicatorLineScalePulseOutRapidAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorLineScalePulseOutRapidAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.m; sourceTree = "<group>"; };
+		2753E3478A49656E1DE2EBC7FDC780B2 /* isErrorIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isErrorIcon@2x.png"; path = "ISMessages/Assets/isErrorIcon@2x.png"; sourceTree = "<group>"; };
 		28215C93554E4C7FB1A99721D02CA160 /* libPods-NesiaFerdman.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-NesiaFerdman.a"; path = "libPods-NesiaFerdman.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A6FBAD6CF8C6EA5ABD3408DE07D71AC /* DGActivityIndicatorThreeDotsAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorThreeDotsAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.h; sourceTree = "<group>"; };
 		2B486C28082C3DCC2065398759A887C4 /* GPBDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBDescriptor.h; path = objectivec/GPBDescriptor.h; sourceTree = "<group>"; };
@@ -552,6 +557,7 @@
 		34C9A530F10BAA3416E0B0DA2424B7E8 /* FABAttributes.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FABAttributes.h; path = iOS/Fabric.framework/Headers/FABAttributes.h; sourceTree = "<group>"; };
 		3596AAE9A289218FAB045F1D08A9F102 /* DGActivityIndicatorLineScalePulseOutAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorLineScalePulseOutAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutAnimation.m; sourceTree = "<group>"; };
 		35F6FEC13C459FCFD0777F42BB71DAA2 /* GTLCalendarConstants.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarConstants.m; path = Source/Services/Calendar/Generated/GTLCalendarConstants.m; sourceTree = "<group>"; };
+		36030FE7B186081F1A79F19BC0F9F57C /* isInfoIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isInfoIcon@3x.png"; path = "ISMessages/Assets/isInfoIcon@3x.png"; sourceTree = "<group>"; };
 		360768F9E491732638E8B243B5A64DFC /* GTLCalendarColorDefinition.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarColorDefinition.m; path = Source/Services/Calendar/Generated/GTLCalendarColorDefinition.m; sourceTree = "<group>"; };
 		36132BFC920D17EAA60AFF4B0D443565 /* JTCalendarDelegateManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendarDelegateManager.h; path = JTCalendar/Managers/JTCalendarDelegateManager.h; sourceTree = "<group>"; };
 		36728E1E322581326F10C396557B4E25 /* Pods-NesiaFerdman-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NesiaFerdman-dummy.m"; sourceTree = "<group>"; };
@@ -571,12 +577,12 @@
 		3B10C71D3550113A0E6242B6F6BABD1B /* DGActivityIndicatorLineScalePulseOutRapidAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorLineScalePulseOutRapidAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePulseOutRapidAnimation.h; sourceTree = "<group>"; };
 		3C136519B38E06D9803A3D88B2380276 /* Protobuf.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Protobuf.xcconfig; sourceTree = "<group>"; };
 		3C8F545B5279C0E10620741802B18DEA /* TPKeyboardAvoiding-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TPKeyboardAvoiding-prefix.pch"; sourceTree = "<group>"; };
-		3C9068028FC4BA2AFD54D219AFABC0A1 /* isInfoIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = isInfoIcon.png; path = ISMessages/Assets/isInfoIcon.png; sourceTree = "<group>"; };
 		3CD7E6D72072376E44E9E7DE7C0B2725 /* ACFloatingTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ACFloatingTextField.m; path = "Source-Objc/ACFloatingTextField.m"; sourceTree = "<group>"; };
 		3D8C488610899E7A645836C9CE3E478D /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+TPKeyboardAvoidingAdditions.h"; path = "TPKeyboardAvoiding/UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
 		3E59F9A6D96DCA5CC40BAAD421D33966 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
 		3E697AB35FA54EF18529062DC8E6B33A /* libJVFloatLabeledTextField.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libJVFloatLabeledTextField.a; path = libJVFloatLabeledTextField.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		4059DE019053750B0D8920692A90DC0E /* Pods-NesiaFerdman-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NesiaFerdman-acknowledgements.plist"; sourceTree = "<group>"; };
+		408CEAC23B8EE237BEC938C4E70C3CF4 /* isWarningIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isWarningIcon@2x.png"; path = "ISMessages/Assets/isWarningIcon@2x.png"; sourceTree = "<group>"; };
 		40B52F7398DD4455850B82AB508DA9B6 /* JTCalendarPageView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendarPageView.h; path = JTCalendar/Views/JTCalendarPageView.h; sourceTree = "<group>"; };
 		417C0B1091B1F6F81B07E6C62A1731E5 /* ISMessages.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = ISMessages.m; path = ISMessages/Classes/ISMessages.m; sourceTree = "<group>"; };
 		42161FBC32AF4B03E3EF9793FE773C3D /* GPBArray.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBArray.m; path = objectivec/GPBArray.m; sourceTree = "<group>"; };
@@ -586,11 +592,9 @@
 		43B800AC8FCFC4569EDE2919679F0F6F /* Pods-NesiaFerdman-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NesiaFerdman-frameworks.sh"; sourceTree = "<group>"; };
 		43FFA779F4C1672C5DDD2C695E4A1693 /* Pods-NesiaFerdmanUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NesiaFerdmanUITests-dummy.m"; sourceTree = "<group>"; };
 		445B9C967BDB32E8C23B25EC22DBE25B /* DGActivityIndicatorBallClipRotateMultipleAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallClipRotateMultipleAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateMultipleAnimation.m; sourceTree = "<group>"; };
-		44ABC62F229A5EFF3657C7991AFD0C4D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		46083B6BA9810D80BD3D1CEBFD019B8D /* DGActivityIndicatorBallBeatAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallBeatAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallBeatAnimation.h; sourceTree = "<group>"; };
 		475AB2C2B783FA8A9F4D48A0D8407773 /* GPBUtilities_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBUtilities_PackagePrivate.h; path = objectivec/GPBUtilities_PackagePrivate.h; sourceTree = "<group>"; };
 		47E206CBC276AA894BF073C8A49986A8 /* GTLRuntimeCommon.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLRuntimeCommon.h; path = Source/Objects/GTLRuntimeCommon.h; sourceTree = "<group>"; };
-		47E757B49D919B922CC41B730782ABFA /* isErrorIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isErrorIcon@2x.png"; path = "ISMessages/Assets/isErrorIcon@2x.png"; sourceTree = "<group>"; };
 		49F3E9162703E68894ADDA3EFD9BF906 /* JTCalendarDay.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendarDay.h; path = JTCalendar/Protocols/JTCalendarDay.h; sourceTree = "<group>"; };
 		4A4E57F79C5D27D8B7B25F18A0DAB824 /* GTLCalendarFreeBusyRequestItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarFreeBusyRequestItem.h; path = Source/Services/Calendar/Generated/GTLCalendarFreeBusyRequestItem.h; sourceTree = "<group>"; };
 		4AC0738B5D30B754D2EFB2B0A20DBC61 /* Firebase.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Firebase.h; path = Core/Sources/Firebase.h; sourceTree = "<group>"; };
@@ -645,8 +649,8 @@
 		6E1EFA5E623970F7E0CA20E86D8A739A /* GTLUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLUtilities.h; path = Source/Utilities/GTLUtilities.h; sourceTree = "<group>"; };
 		6E36BE9F8A4CA8A7483E9C175E569BA1 /* GoogleAPIClient-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GoogleAPIClient-prefix.pch"; sourceTree = "<group>"; };
 		6E62984AAA7F1452366B47DB86A37DD1 /* DGActivityIndicatorTriplePulseAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorTriplePulseAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorTriplePulseAnimation.m; sourceTree = "<group>"; };
+		70150E8AB4E5A191E08392D393614B97 /* isSuccessIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; name = isSuccessIcon.png; path = ISMessages/Assets/isSuccessIcon.png; sourceTree = "<group>"; };
 		71774FDA36FEDABEDCA7EADD93496E9D /* libISMessages.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libISMessages.a; path = libISMessages.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		72033F5527B3ED1D58C36F32C8D84C1E /* isSuccessIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = isSuccessIcon.png; path = ISMessages/Assets/isSuccessIcon.png; sourceTree = "<group>"; };
 		7287BE92E18F8DBB6E324B4367F2D97E /* UITextView+Placeholder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UITextView+Placeholder.h"; path = "Sources/UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		72E206607CB76B668C97FBD97253F292 /* TPKeyboardAvoiding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "TPKeyboardAvoiding-dummy.m"; sourceTree = "<group>"; };
 		7300F0690949FCE1A3894B612F0CF952 /* GTMSessionFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionFetcher.h; path = Source/GTMSessionFetcher.h; sourceTree = "<group>"; };
@@ -671,15 +675,14 @@
 		811FD7796E11061D0970B26B8B5FFF04 /* DGActivityIndicatorFiveDotsAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorFiveDotsAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorFiveDotsAnimation.m; sourceTree = "<group>"; };
 		815107156800C885B21E7039BFE5E57C /* GTLCalendarEventReminder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarEventReminder.h; path = Source/Services/Calendar/Generated/GTLCalendarEventReminder.h; sourceTree = "<group>"; };
 		8195B5E21FC8B1649BEAF37AA0E07FF5 /* DGActivityIndicatorTriangleSkewSpinAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorTriangleSkewSpinAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorTriangleSkewSpinAnimation.m; sourceTree = "<group>"; };
-		8237A9F1A9CE23E6BE242A41748A43F0 /* isErrorIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = isErrorIcon.png; path = ISMessages/Assets/isErrorIcon.png; sourceTree = "<group>"; };
 		823A784BE13EC6DD926281551D331D7F /* SourceContext.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SourceContext.pbobjc.h; path = objectivec/google/protobuf/SourceContext.pbobjc.h; sourceTree = "<group>"; };
 		82710C2FA9810E020574582FD87CF70D /* JVFloatLabeledTextView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextView.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextView.m; sourceTree = "<group>"; };
 		82F2411AFBDAD9F12AA8C55D7F30D5F6 /* DGActivityIndicatorBallPulseSyncAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallPulseSyncAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseSyncAnimation.m; sourceTree = "<group>"; };
-		835C7A9684616585240C06E19C3D3DBD /* isWarningIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isWarningIcon@2x.png"; path = "ISMessages/Assets/isWarningIcon@2x.png"; sourceTree = "<group>"; };
 		83789EB50AFE50D8FF9F06A77A9A3EFC /* DGActivityIndicatorBallScaleAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallScaleAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleAnimation.h; sourceTree = "<group>"; };
 		83ECFF3D06192288FB2C420394413870 /* Timestamp.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Timestamp.pbobjc.m; path = objectivec/google/protobuf/Timestamp.pbobjc.m; sourceTree = "<group>"; };
 		8460E83082512AD34AC9C8AB72321FE2 /* DGActivityIndicatorAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorAnimation.h; sourceTree = "<group>"; };
 		857A9B7BBE747E106ED35B3EA9119546 /* GTLErrorObject.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLErrorObject.m; path = Source/Objects/GTLErrorObject.m; sourceTree = "<group>"; };
+		859D6C65AEE2F0F8A6C78251176C3044 /* isErrorIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; name = isErrorIcon.png; path = ISMessages/Assets/isErrorIcon.png; sourceTree = "<group>"; };
 		86904C6F1C2C10AC481331A282C93711 /* GPBWellKnownTypes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBWellKnownTypes.m; path = objectivec/GPBWellKnownTypes.m; sourceTree = "<group>"; };
 		86F11B8C329A2054D55BACD5FCA8A211 /* DGActivityIndicatorBallSpinFadeLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallSpinFadeLoader.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallSpinFadeLoader.h; sourceTree = "<group>"; };
 		86FE3595C8BF757D5D7F040C178BF1C8 /* GPBRootObject_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBRootObject_PackagePrivate.h; path = objectivec/GPBRootObject_PackagePrivate.h; sourceTree = "<group>"; };
@@ -697,11 +700,11 @@
 		906E9F1BD124C80E1DF8F17501A7063E /* GTMNSString+URLArguments.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSString+URLArguments.h"; path = "Foundation/GTMNSString+URLArguments.h"; sourceTree = "<group>"; };
 		90AD26D4C936D17DF16592CF9B262FF8 /* DGActivityIndicatorRotatingSandglassAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorRotatingSandglassAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSandglassAnimation.m; sourceTree = "<group>"; };
 		90FB1A887085F8E633154C70B16A0E11 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Frameworks/FirebaseStorage.framework; sourceTree = "<group>"; };
-		9185C1B1876F71E16EE5AC2A480881AD /* isWarningIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isWarningIcon@3x.png"; path = "ISMessages/Assets/isWarningIcon@3x.png"; sourceTree = "<group>"; };
 		921480F96A50E2AD9E1B2894B9CE37C7 /* DGActivityIndicatorBallScaleRippleMultipleAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallScaleRippleMultipleAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleMultipleAnimation.h; sourceTree = "<group>"; };
 		92CD55FF83980F1AEC39DA5FC299F315 /* GTLCalendarColors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarColors.m; path = Source/Services/Calendar/Generated/GTLCalendarColors.m; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93C0BC3DC3EB31AEE410507A296A7161 /* libUITextView+Placeholder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libUITextView+Placeholder.a"; path = "libUITextView+Placeholder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		93F44C5B30E2DB1D7B4B91309CD65B8C /* isWarningIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; name = isWarningIcon.png; path = ISMessages/Assets/isWarningIcon.png; sourceTree = "<group>"; };
 		9444FA892CC309EAF15D1605794EB2F1 /* GTLServiceCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLServiceCalendar.h; path = Source/Services/Calendar/Generated/GTLServiceCalendar.h; sourceTree = "<group>"; };
 		94A0D7988B185A1E1AF74F4FB6B83463 /* GTLCalendarColors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarColors.h; path = Source/Services/Calendar/Generated/GTLCalendarColors.h; sourceTree = "<group>"; };
 		9516F306388E925BF3839ABF9320E831 /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2Authentication.m; path = Source/GTMOAuth2Authentication.m; sourceTree = "<group>"; };
@@ -709,7 +712,6 @@
 		95B1769F0A12E548AD78B43A09B33CA9 /* GTMSessionUploadFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTMSessionUploadFetcher.h; path = Source/GTMSessionUploadFetcher.h; sourceTree = "<group>"; };
 		9705B504CD1A7D0E7CC3457E6B67C479 /* Pods-NesiaFerdmanTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-NesiaFerdmanTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		975BF46BEE4619C80759136A7035FF06 /* DGActivityIndicatorBallScaleRippleAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallScaleRippleAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallScaleRippleAnimation.m; sourceTree = "<group>"; };
-		98AC7754C87D0789F8F5555EE19A5ED9 /* isErrorIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isErrorIcon@3x.png"; path = "ISMessages/Assets/isErrorIcon@3x.png"; sourceTree = "<group>"; };
 		98E93CC5FE41F09D111257054AEB5B63 /* DGActivityIndicatorLineScalePartyAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorLineScalePartyAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.h; sourceTree = "<group>"; };
 		9A8925777898EBEECC05281118AC2191 /* GTLBase64.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLBase64.h; path = Source/Utilities/GTLBase64.h; sourceTree = "<group>"; };
 		9B5251516D48A4BECBB428BFBDE08DE0 /* libACFloatingTextfield-Objc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libACFloatingTextfield-Objc.a"; path = "libACFloatingTextfield-Objc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -717,7 +719,6 @@
 		9C8254FEC6F41A66EF7482D121163D00 /* GTLCalendarError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarError.m; path = Source/Services/Calendar/Generated/GTLCalendarError.m; sourceTree = "<group>"; };
 		9CB257B6E3C3635D0D12F12D32BDAA1F /* Type.pbobjc.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Type.pbobjc.h; path = objectivec/google/protobuf/Type.pbobjc.h; sourceTree = "<group>"; };
 		9CD07F66D212544A55137AB34F18E91B /* GTMNSDictionary+URLArguments.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "GTMNSDictionary+URLArguments.h"; path = "Foundation/GTMNSDictionary+URLArguments.h"; sourceTree = "<group>"; };
-		9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		9D79AEB8B5BC6CD98F6A8AB31176B345 /* Wrappers.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Wrappers.pbobjc.m; path = objectivec/google/protobuf/Wrappers.pbobjc.m; sourceTree = "<group>"; };
 		9D87A43D9138140BD6E882D455FB9F6D /* GTLCalendarCalendarListEntry.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarCalendarListEntry.h; path = Source/Services/Calendar/Generated/GTLCalendarCalendarListEntry.h; sourceTree = "<group>"; };
 		9DB648CB482279A446EF07CF152690D7 /* DGActivityIndicatorLineScalePartyAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorLineScalePartyAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorLineScalePartyAnimation.m; sourceTree = "<group>"; };
@@ -727,7 +728,6 @@
 		A17695D018A198E226CAEB7A7DC215B0 /* JTCalendarManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JTCalendarManager.m; path = JTCalendar/JTCalendarManager.m; sourceTree = "<group>"; };
 		A23DEE927401AF7A35872E5A971D5BCB /* GPBDictionary.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBDictionary.h; path = objectivec/GPBDictionary.h; sourceTree = "<group>"; };
 		A2AC1089E34B4D91432B3AC48148B815 /* Pods-NesiaFerdmanTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-NesiaFerdmanTests-dummy.m"; sourceTree = "<group>"; };
-		A2F71AB80671F03AD281CEAFB29D6E9A /* isInfoIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isInfoIcon@2x.png"; path = "ISMessages/Assets/isInfoIcon@2x.png"; sourceTree = "<group>"; };
 		A411B8D4D12BC22DF5BC7C0BC50F34ED /* Pods-NesiaFerdmanTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-NesiaFerdmanTests-frameworks.sh"; sourceTree = "<group>"; };
 		A62C443C74880239EA3084418BC45CCC /* DGActivityIndicatorRotatingSandglassAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorRotatingSandglassAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorRotatingSandglassAnimation.h; sourceTree = "<group>"; };
 		A703802654B3B15B15E2BF6C7DA9453E /* DGActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorView.h; path = DGActivityIndicatorView/DGActivityIndicatorView.h; sourceTree = "<group>"; };
@@ -745,7 +745,6 @@
 		AD797D84473C1C28A927EE1E8AFAF532 /* libGoogleToolboxForMac.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libGoogleToolboxForMac.a; path = libGoogleToolboxForMac.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE076CEC456E813AFA2C73ED89EA240A /* GTLQuery.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLQuery.m; path = Source/Objects/GTLQuery.m; sourceTree = "<group>"; };
 		AE1E42DF28497B221372304970797E5A /* JTVerticalCalendarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JTVerticalCalendarView.m; path = JTCalendar/Views/JTVerticalCalendarView.m; sourceTree = "<group>"; };
-		AE96AE839BF122ED1E21C028C637CDE5 /* isInfoIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isInfoIcon@3x.png"; path = "ISMessages/Assets/isInfoIcon@3x.png"; sourceTree = "<group>"; };
 		AF1E204EC5CF1D1473554535DC400BFC /* DGActivityIndicatorBallPulseAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorBallPulseAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallPulseAnimation.m; sourceTree = "<group>"; };
 		B047886BE771776FC0654C79C1EBDF44 /* GTLCalendarNotification.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarNotification.m; path = Source/Services/Calendar/Generated/GTLCalendarNotification.m; sourceTree = "<group>"; };
 		B0CA95AEF5F5A2161410B82CC2BF00AA /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBDictionary_PackagePrivate.h; path = objectivec/GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
@@ -767,6 +766,7 @@
 		BA2E6AAF09ED4C26D67A08002C1B12EF /* Pods-NesiaFerdmanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-NesiaFerdmanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		BB81439C6ECD12902B18959653E191F2 /* DGActivityIndicatorThreeDotsAnimation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorThreeDotsAnimation.m; path = DGActivityIndicatorView/Animations/DGActivityIndicatorThreeDotsAnimation.m; sourceTree = "<group>"; };
 		BC5227376D7BB55330420BEF1357BF3C /* JVFloatLabeledTextField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = JVFloatLabeledTextField.m; path = JVFloatLabeledTextField/JVFloatLabeledTextField/JVFloatLabeledTextField.m; sourceTree = "<group>"; };
+		BCB6FCBDCD99E5B708F7A71DEC41229C /* isSuccessIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isSuccessIcon@2x.png"; path = "ISMessages/Assets/isSuccessIcon@2x.png"; sourceTree = "<group>"; };
 		BD20F2E38FF90C58FC0BE9ABA2FD6E76 /* GTLObject.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLObject.h; path = Source/Objects/GTLObject.h; sourceTree = "<group>"; };
 		BD702BD675DF2738649F7B4379CC9D46 /* GTLCalendarError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarError.h; path = Source/Services/Calendar/Generated/GTLCalendarError.h; sourceTree = "<group>"; };
 		BE1954F235D4C83FB26B4C975102A4E0 /* UITextView+Placeholder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder-dummy.m"; sourceTree = "<group>"; };
@@ -785,6 +785,7 @@
 		C8621B28052A37B6C15882F9D1FC22E2 /* GTLFramework.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLFramework.m; path = Source/Utilities/GTLFramework.m; sourceTree = "<group>"; };
 		C8858E89D1747A8A4DE6C2371EDA1196 /* SourceContext.pbobjc.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SourceContext.pbobjc.m; path = objectivec/google/protobuf/SourceContext.pbobjc.m; sourceTree = "<group>"; };
 		C90B23AD1B3B8344BB40567AB6DF19AE /* GPBUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBUtilities.m; path = objectivec/GPBUtilities.m; sourceTree = "<group>"; };
+		C9CC30297471C3BBD29650F27FB2320E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		CB11C4A1E861B5A957814B74D303AC12 /* GPBArray.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBArray.h; path = objectivec/GPBArray.h; sourceTree = "<group>"; };
 		CC9610D75257CDEA6154C0EF12BADFFD /* libProtobuf.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libProtobuf.a; path = libProtobuf.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE01EC354B47211B80E8EAF27AD9E675 /* GTLDateTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLDateTime.h; path = Source/Objects/GTLDateTime.h; sourceTree = "<group>"; };
@@ -819,7 +820,6 @@
 		D91DDFED9081DE5A0C3F597F45B12A54 /* libPods-NesiaFerdmanUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-NesiaFerdmanUITests.a"; path = "libPods-NesiaFerdmanUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9B91FAD15E0A39A63095FCE46D72F57 /* JTCalendarMenuView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendarMenuView.h; path = JTCalendar/Views/JTCalendarMenuView.h; sourceTree = "<group>"; };
 		D9C6B15C5191BED4B7556B76858A8AD9 /* JTContent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTContent.h; path = JTCalendar/Protocols/JTContent.h; sourceTree = "<group>"; };
-		DA1DBD20CA30C45CE8B657446904499B /* isSuccessIcon@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isSuccessIcon@2x.png"; path = "ISMessages/Assets/isSuccessIcon@2x.png"; sourceTree = "<group>"; };
 		DA53BF78728D4CA307662217E62E0C4A /* GTLCalendarChannel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarChannel.h; path = Source/Services/Calendar/Generated/GTLCalendarChannel.h; sourceTree = "<group>"; };
 		DA827CAA5E044AFC19DA26659FBF31E0 /* DGActivityIndicatorBallClipRotateAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallClipRotateAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallClipRotateAnimation.h; sourceTree = "<group>"; };
 		DAD4BCB14985719129452BF096F2EE5F /* GPBMessage.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBMessage.h; path = objectivec/GPBMessage.h; sourceTree = "<group>"; };
@@ -833,6 +833,7 @@
 		DFBA51818B99CBE2433FDBC73142D3E1 /* FirebaseRemoteConfig.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseRemoteConfig.framework; path = Frameworks/FirebaseRemoteConfig.framework; sourceTree = "<group>"; };
 		E02293274B38D6729BCE0B27528B8241 /* GTLRuntimeCommon.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLRuntimeCommon.m; path = Source/Objects/GTLRuntimeCommon.m; sourceTree = "<group>"; };
 		E0D628AE2002CB5738017D58082C371D /* GTLTargetNamespace.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLTargetNamespace.h; path = Source/Utilities/GTLTargetNamespace.h; sourceTree = "<group>"; };
+		E0FED6DFFC96C7627CD0C653E4E0C909 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		E14B9B5312D009188829AE7E22E68AB1 /* GTLCalendarCalendar.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarCalendar.m; path = Source/Services/Calendar/Generated/GTLCalendarCalendar.m; sourceTree = "<group>"; };
 		E1919FCC6BF86F46E35B29CBF090C390 /* DGActivityIndicatorDoubleBounceAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorDoubleBounceAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorDoubleBounceAnimation.h; sourceTree = "<group>"; };
 		E19C5FFDF40663A85F4E9B39A58D84BC /* DGActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DGActivityIndicatorView.m; path = DGActivityIndicatorView/DGActivityIndicatorView.m; sourceTree = "<group>"; };
@@ -862,8 +863,8 @@
 		ED9FEAF1AA1A68CAC05E22D5CECF13C2 /* GPBUnknownFieldSet.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GPBUnknownFieldSet.m; path = objectivec/GPBUnknownFieldSet.m; sourceTree = "<group>"; };
 		EECC594FD4BDD7975E8689DFC3C703EA /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMOAuth2SignIn.m; path = Source/GTMOAuth2SignIn.m; sourceTree = "<group>"; };
 		EF9598910BD8BC3DFAEC973FC6288DF2 /* GTLCalendarCalendarList.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarCalendarList.m; path = Source/Services/Calendar/Generated/GTLCalendarCalendarList.m; sourceTree = "<group>"; };
+		EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		F05B0854A082DC164F35E300085C0F0D /* ISMessages-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ISMessages-dummy.m"; sourceTree = "<group>"; };
-		F08988822BC49C341BAE643AC4E629F5 /* isWarningIcon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = isWarningIcon.png; path = ISMessages/Assets/isWarningIcon.png; sourceTree = "<group>"; };
 		F0B13751035FF1C2E883D2EACDC13602 /* GTLCalendarCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarCalendar.h; path = Source/Services/Calendar/Generated/GTLCalendarCalendar.h; sourceTree = "<group>"; };
 		F11C1D951DB76CEB7674D1B8CB627873 /* GTMMIMEDocument.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTMMIMEDocument.m; path = Source/GTMMIMEDocument.m; sourceTree = "<group>"; };
 		F13C7446293A83E43B577DED0A8AAF30 /* GTLCalendarEventDateTime.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarEventDateTime.h; path = Source/Services/Calendar/Generated/GTLCalendarEventDateTime.h; sourceTree = "<group>"; };
@@ -873,7 +874,6 @@
 		F26C1CE2B2CF97EA609A0F636E8FD3D6 /* GTLCalendarAcl.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarAcl.m; path = Source/Services/Calendar/Generated/GTLCalendarAcl.m; sourceTree = "<group>"; };
 		F316270D9E1667866FFA91B13DB6733C /* GoogleToolboxForMac.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GoogleToolboxForMac.xcconfig; sourceTree = "<group>"; };
 		F323E6ADBED3FBA777B5D29472CC29B0 /* GTLCalendarFreeBusyGroup.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarFreeBusyGroup.m; path = Source/Services/Calendar/Generated/GTLCalendarFreeBusyGroup.m; sourceTree = "<group>"; };
-		F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		F4349B90AAF945ED480CD0FBB1AA5CCD /* GTLCalendarSetting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GTLCalendarSetting.h; path = Source/Services/Calendar/Generated/GTLCalendarSetting.h; sourceTree = "<group>"; };
 		F5D78DB12BD6AE83147491EA1644CA5E /* GTMNSData+zlib.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "GTMNSData+zlib.m"; path = "Foundation/GTMNSData+zlib.m"; sourceTree = "<group>"; };
 		F6D688F574D27FAFA27E826868EE8BDD /* GTLCalendarEventAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarEventAttachment.m; path = Source/Services/Calendar/Generated/GTLCalendarEventAttachment.m; sourceTree = "<group>"; };
@@ -881,11 +881,11 @@
 		F7413FFD76AAAA812474C2743743779A /* libPods-NesiaFerdmanTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-NesiaFerdmanTests.a"; path = "libPods-NesiaFerdmanTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8083ABA551D5386D35D6317E58E7757 /* DGActivityIndicatorCookieTerminatorAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorCookieTerminatorAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorCookieTerminatorAnimation.h; sourceTree = "<group>"; };
 		F893A8392B4B7FE2AAC1FB51A93CC0FC /* DGActivityIndicatorBallTrianglePathAnimation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DGActivityIndicatorBallTrianglePathAnimation.h; path = DGActivityIndicatorView/Animations/DGActivityIndicatorBallTrianglePathAnimation.h; sourceTree = "<group>"; };
+		F927B170E57837117C0FD8576FB17CDA /* isWarningIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "isWarningIcon@3x.png"; path = "ISMessages/Assets/isWarningIcon@3x.png"; sourceTree = "<group>"; };
 		FA49E85AEE13F867F51B14E05AE89574 /* Crashlytics.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Crashlytics.h; path = iOS/Crashlytics.framework/Headers/Crashlytics.h; sourceTree = "<group>"; };
 		FA4E3688A5ACFDDA0B6AC8AF622D6DDE /* GPBCodedOutputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = GPBCodedOutputStream.h; path = objectivec/GPBCodedOutputStream.h; sourceTree = "<group>"; };
 		FBF50320C9808E99542669EAFB39FB88 /* GTLCalendarEvent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = GTLCalendarEvent.m; path = Source/Services/Calendar/Generated/GTLCalendarEvent.m; sourceTree = "<group>"; };
 		FCB272A19B9B1CE2AFB58D7BB1401466 /* JTCalendar.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = JTCalendar.h; path = JTCalendar/JTCalendar.h; sourceTree = "<group>"; };
-		FCC4C0525D716C4C3B1CDFDF9B1D7898 /* isSuccessIcon@3x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "isSuccessIcon@3x.png"; path = "ISMessages/Assets/isSuccessIcon@3x.png"; sourceTree = "<group>"; };
 		FECFB570AE1FB8BCF4DF2761DBA01622 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = TPKeyboardAvoiding/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FEF52B4EAC933A1C9B20357F8B43E142 /* GTMSessionFetcher-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GTMSessionFetcher-prefix.pch"; sourceTree = "<group>"; };
 		FFFE27A523DAA4BA47B37FF1EE07DBD6 /* STCollapseTableView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = STCollapseTableView.h; path = STCollapseTableView/STCollapseTableView.h; sourceTree = "<group>"; };
@@ -903,7 +903,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D706A74F979F8580EB16B00CE723ECB9 /* Foundation.framework in Frameworks */,
+				F09463C701C2FF4CEEDA659D2730ABE7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,8 +911,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BB58A0D3E79CBE19970CA8567A3C0CE /* Foundation.framework in Frameworks */,
-				9453787F8626EC0F3A058DF5057C5E4A /* UIKit.framework in Frameworks */,
+				ECC8B1FD9B231429BDACB3C4B6B55E63 /* Foundation.framework in Frameworks */,
+				45B611204551104FF82FC9A617F97F81 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,8 +920,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FF49343892BE9C6432D2AD6E9A2371F2 /* Foundation.framework in Frameworks */,
-				DE8025704DD841CAFEABED9FE3517D29 /* UIKit.framework in Frameworks */,
+				EEACE403CEF38A0F3A9CB568E694AAFA /* Foundation.framework in Frameworks */,
+				B032C9B682B67098285F461D6E573407 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -929,7 +929,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8A3F5124E17F1629A1A61856CADCAE8 /* Foundation.framework in Frameworks */,
+				5397AE743B41DC885845FA6D0CB9C91C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -937,9 +937,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48992C8A03E295CA8504E85E48DD12E2 /* Foundation.framework in Frameworks */,
-				D423B28F0C75A47CA9BF6979DE6E2113 /* Security.framework in Frameworks */,
-				E60B99352D1BC3665A04D80FE980FBA1 /* SystemConfiguration.framework in Frameworks */,
+				D13D2E45265AB96446FD2EAEC1FF6DB0 /* Foundation.framework in Frameworks */,
+				E48BFAB1AAF7FA9B23BB080F8FFE9A71 /* Security.framework in Frameworks */,
+				C936F7E755C7582CDF05E3A54D82FF3A /* SystemConfiguration.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -947,7 +947,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EB8AC7DF2012A1059E9C52EF09696DD /* Foundation.framework in Frameworks */,
+				CF0606477A7BFBF1C9450E5D258B36EB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,8 +955,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EDA2507C3A3451253E19F1CB9EC85BC7 /* Foundation.framework in Frameworks */,
-				D51EC09C1B16CB22D31F3F05FF4E4BDE /* UIKit.framework in Frameworks */,
+				2BB2ECC953E8FD707A459D045DF77B28 /* Foundation.framework in Frameworks */,
+				AF7A387D919C7BAD587E29AB51F7B366 /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -964,8 +964,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0AA0134C1551DDCBDA3CECA27AD8CEC /* Foundation.framework in Frameworks */,
-				7FC3C0DDB51532443237C13E5B80F057 /* UIKit.framework in Frameworks */,
+				63466135BE80A9AE149F661520456FA0 /* Foundation.framework in Frameworks */,
+				B4B11B83479BA16F1D484A37EB2C626C /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -973,7 +973,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BD8ECA6FA72B72F79C9110E8DC382C9 /* Foundation.framework in Frameworks */,
+				60FAD4D54C2B3AF451E0E8096FD39F01 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,7 +981,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64B4F21401EE4165680EB6C3723E5E58 /* Foundation.framework in Frameworks */,
+				8C86456137135B05704F74B71A5F8FC6 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,7 +989,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F1B036DB7F86FA430E8CD69289CC857E /* Foundation.framework in Frameworks */,
+				173907CD61D7167EEF371FD1835C8B4A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -997,8 +997,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F95F83F6D6D0F0F1D357A7663633063F /* Foundation.framework in Frameworks */,
-				23B131ED74F744B0EB3E587F195294E9 /* Security.framework in Frameworks */,
+				EB5069C13A662BA5001EE1AD11D98F70 /* Foundation.framework in Frameworks */,
+				14C4709A2087F91E6A80B8D864E31D41 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1006,7 +1006,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BA91650AA427BC49FEA4EB56D5713A43 /* Foundation.framework in Frameworks */,
+				8B1B04DC0A2E11B054C14B09D326D75F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,7 +1014,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0B1DF06DE0B792237796A41339CEED5 /* Foundation.framework in Frameworks */,
+				DDA93260EBFC0C36AF527138882C8CF7 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1022,7 +1022,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCD6DFBDC2C48307C8F478D690D4BD6A /* Foundation.framework in Frameworks */,
+				F3E77AA87F046EA6488343E942699FC2 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,7 +1030,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEEFDB95EFA3DCBD14E1AE6A76D659C5 /* Foundation.framework in Frameworks */,
+				8C990255BD57162833AEA70274B3B536 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1046,6 +1046,17 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/JVFloatLabeledTextField";
+			sourceTree = "<group>";
+		};
+		0240D125101F4E34177083595ECB5E26 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				EFD3A784A47351BB2C746C5B0FFF26D9 /* Foundation.framework */,
+				C9CC30297471C3BBD29650F27FB2320E /* Security.framework */,
+				E0FED6DFFC96C7627CD0C653E4E0C909 /* SystemConfiguration.framework */,
+				005226DDC9800B7FA0277F4094B49E4F /* UIKit.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		03EE7BF470AC561F227B0C46AC518D7E /* Support Files */ = {
@@ -1122,7 +1133,7 @@
 		14B8B9B15ECBE87983FF987239AB2D7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				932A44C505ADE3D1E383D7E1A18B98B2 /* iOS */,
+				0240D125101F4E34177083595ECB5E26 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1134,25 +1145,6 @@
 			);
 			name = FirebaseRemoteConfig;
 			path = FirebaseRemoteConfig;
-			sourceTree = "<group>";
-		};
-		1EEDFE820A0D29AC017007D1763DDA2B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8237A9F1A9CE23E6BE242A41748A43F0 /* isErrorIcon.png */,
-				47E757B49D919B922CC41B730782ABFA /* isErrorIcon@2x.png */,
-				98AC7754C87D0789F8F5555EE19A5ED9 /* isErrorIcon@3x.png */,
-				3C9068028FC4BA2AFD54D219AFABC0A1 /* isInfoIcon.png */,
-				A2F71AB80671F03AD281CEAFB29D6E9A /* isInfoIcon@2x.png */,
-				AE96AE839BF122ED1E21C028C637CDE5 /* isInfoIcon@3x.png */,
-				72033F5527B3ED1D58C36F32C8D84C1E /* isSuccessIcon.png */,
-				DA1DBD20CA30C45CE8B657446904499B /* isSuccessIcon@2x.png */,
-				FCC4C0525D716C4C3B1CDFDF9B1D7898 /* isSuccessIcon@3x.png */,
-				F08988822BC49C341BAE643AC4E629F5 /* isWarningIcon.png */,
-				835C7A9684616585240C06E19C3D3DBD /* isWarningIcon@2x.png */,
-				9185C1B1876F71E16EE5AC2A480881AD /* isWarningIcon@3x.png */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		1EFC4C6A9B504097FFE3E7860747DE29 /* JTCalendar */ = {
@@ -1384,7 +1376,7 @@
 			children = (
 				E8FCBE9929AFD944C330EA6B484AAAD6 /* ISMessages.h */,
 				417C0B1091B1F6F81B07E6C62A1731E5 /* ISMessages.m */,
-				1EEDFE820A0D29AC017007D1763DDA2B /* Resources */,
+				BC85C7584241B99AE2207588DBB89C09 /* Resources */,
 				3E5DBFB0490C2E2A3855DD48B3D7102F /* Support Files */,
 			);
 			name = ISMessages;
@@ -1591,17 +1583,6 @@
 			name = Defines;
 			sourceTree = "<group>";
 		};
-		932A44C505ADE3D1E383D7E1A18B98B2 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				9D70C794034DF85F0000B94E85F5BEF3 /* Foundation.framework */,
-				1FA217E4667FB5D708C2424AD40EA186 /* Security.framework */,
-				44ABC62F229A5EFF3657C7991AFD0C4D /* SystemConfiguration.framework */,
-				F32B3B2C1F0C4F5F1A27AF52F9CC9516 /* UIKit.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		A3EA3CBF40FADA6CB5404B67521A556D /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1774,6 +1755,25 @@
 				8D236E0A62BBE34B695113672E6054EC /* GTMReadMonitorInputStream.m */,
 			);
 			name = Full;
+			sourceTree = "<group>";
+		};
+		BC85C7584241B99AE2207588DBB89C09 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				859D6C65AEE2F0F8A6C78251176C3044 /* isErrorIcon.png */,
+				2753E3478A49656E1DE2EBC7FDC780B2 /* isErrorIcon@2x.png */,
+				262347E1A6E2BFC7EA065711BBDD31BC /* isErrorIcon@3x.png */,
+				1DD391D062B949936D4E85526432C364 /* isInfoIcon.png */,
+				0AD329E0F4EAB13CF50D57C1BA8A8A53 /* isInfoIcon@2x.png */,
+				36030FE7B186081F1A79F19BC0F9F57C /* isInfoIcon@3x.png */,
+				70150E8AB4E5A191E08392D393614B97 /* isSuccessIcon.png */,
+				BCB6FCBDCD99E5B708F7A71DEC41229C /* isSuccessIcon@2x.png */,
+				04F144E3498945FB5DE3BAF90B4B24F8 /* isSuccessIcon@3x.png */,
+				93F44C5B30E2DB1D7B4B91309CD65B8C /* isWarningIcon.png */,
+				408CEAC23B8EE237BEC938C4E70C3CF4 /* isWarningIcon@2x.png */,
+				F927B170E57837117C0FD8576FB17CDA /* isWarningIcon@3x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		C82EED7FA4463CBC37FCD9D477B77259 /* NSData+zlib */ = {
@@ -2385,7 +2385,7 @@
 			buildPhases = (
 				561FC3B11AA2F500EC9DC56A34DAE7F8 /* Sources */,
 				0541EA59A3B67EB8AD1B0482EA2989A1 /* Frameworks */,
-				EF1DCC2DBEE52B5AF2D9C3BB7B625F3C /* Resources */,
+				BC784E15F48FDC3A9582862AAB524E08 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -2586,7 +2586,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -2623,22 +2623,22 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		EF1DCC2DBEE52B5AF2D9C3BB7B625F3C /* Resources */ = {
+		BC784E15F48FDC3A9582862AAB524E08 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66EA4479B303E95B27AB455AE1C68743 /* isErrorIcon.png in Resources */,
-				8BA468D144B8EB98583E4D8F53B4B18D /* isErrorIcon@2x.png in Resources */,
-				060BFBD7F28E71BEA6E618E59E22C41E /* isErrorIcon@3x.png in Resources */,
-				B9B49E00A1FED6FA7B2C1B905F06D36E /* isInfoIcon.png in Resources */,
-				594D2B4D69A8D546EDA8D225E164C9A4 /* isInfoIcon@2x.png in Resources */,
-				115FFC4B2ABCEA1F4144E460ED536305 /* isInfoIcon@3x.png in Resources */,
-				DF047C6F34EF781399767C7796B5FAF0 /* isSuccessIcon.png in Resources */,
-				797110EDF3E888AB9449EE9E6E02B951 /* isSuccessIcon@2x.png in Resources */,
-				07B15EC7DB36B9A4D2A6AF9D23E99CCB /* isSuccessIcon@3x.png in Resources */,
-				5854391DDBD9C498B94AB5FBC1A2E4A2 /* isWarningIcon.png in Resources */,
-				EE468FFD208B6B84562703233F926271 /* isWarningIcon@2x.png in Resources */,
-				23A5DF84A81E47553BD942230A67140D /* isWarningIcon@3x.png in Resources */,
+				7B6B3B5C165F1D7F37BBD6984B9695E2 /* isErrorIcon.png in Resources */,
+				EAE45C3A273E3372F3A860EC06062B0C /* isErrorIcon@2x.png in Resources */,
+				C306B63EACB1D2B68B3C3B288E006149 /* isErrorIcon@3x.png in Resources */,
+				BB90E09B3976C96E4913CF53680C43E9 /* isInfoIcon.png in Resources */,
+				D70137AB5BC127DB6486358A2B84E927 /* isInfoIcon@2x.png in Resources */,
+				0E261A1513724A9B5843118A554B1BCA /* isInfoIcon@3x.png in Resources */,
+				2F81F6184D3FC000E739CF6261BD87D2 /* isSuccessIcon.png in Resources */,
+				76E8B5C18B3CCE8EB365961992BE2B3F /* isSuccessIcon@2x.png in Resources */,
+				A8E9E7EF139F3DC452F95D4135BE2D3E /* isSuccessIcon@3x.png in Resources */,
+				37E5D9E87431270130806660DBDEA2E2 /* isWarningIcon.png in Resources */,
+				DDF9F9C9F54678D9733E9D24444AE837 /* isWarningIcon@2x.png in Resources */,
+				49293CA19BA8622007C115BC99E09425 /* isWarningIcon@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3355,12 +3355,34 @@
 			};
 			name = Release;
 		};
-		4E487F173E6C9664F4E9E26B9635D23C /* Debug */ = {
+		58E889FFD4E778C301C7293BB0AAB1B4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 574641290576CC17EEEB0AC932CD6C6A /* GTMOAuth2.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GTMOAuth2/GTMOAuth2-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3368,13 +3390,10 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
@@ -3400,29 +3419,6 @@
 				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Debug;
-		};
-		58E889FFD4E778C301C7293BB0AAB1B4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 574641290576CC17EEEB0AC932CD6C6A /* GTMOAuth2.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GTMOAuth2/GTMOAuth2-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -3610,12 +3606,11 @@
 			};
 			name = Release;
 		};
-		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
+		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -3623,13 +3618,10 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
@@ -3929,8 +3921,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				4E487F173E6C9664F4E9E26B9635D23C /* Debug */,
-				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
+				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
+				B7324857C38B065FEB1EEE3105C2367A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -7,6 +7,17 @@
 //
 
 #import "NFTextView.h"
+#import <ISMessages/ISMessages.h>
+#import "NFStyleKit.h"
+#import <UITextView+Placeholder.h>
+
+@interface NFTextView ()
+@property (strong, nonatomic) id target;
+@property (assign, nonatomic) BOOL isShowAlert;
+@property (assign, nonatomic) BOOL isValid;
+@property (assign, nonatomic) NSInteger minValue;
+@property (assign, nonatomic) NSInteger maxValue;
+@end
 
 @implementation NFTextView
 
@@ -14,8 +25,100 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-    // Drawing code
+    // Drawing code UITextViewTextDidChangeNotification
 }
 */
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        _isValid = false;
+    }
+    return self;
+}
+
+- (void)validateWithTarget:(id)target
+           placeholderText:(NSString*)placeholderText
+                       min:(NSInteger)min
+                       max:(NSInteger)max {
+    self.target = target;
+    self.placeholderText = placeholderText;
+    self.minValue = min;
+    self.maxValue = max;
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingValidation) name:UITextFieldTextDidEndEditingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(validateText) name:UITextViewTextDidChangeNotification object:nil];
+}
+
+- (BOOL)isValidString {
+    if (_minValue > 0) {
+        [self endEditingValidation];
+    }
+    return _isValid;
+    
+}
+- (void)validateText {
+    NSString *massage = @"";
+    if (self.text.length > _maxValue) {
+        [self setText:[self.text substringToIndex:_maxValue]];
+        if (!_isShowAlert) {
+            massage = [NSString stringWithFormat:@"Количество символов не должно превышать %i", _maxValue];
+            [self showAlertWithMasssage:massage];
+            self.isShowAlert = true;
+        }
+        self.textColor = [UIColor redColor];
+        _isValid = true;
+    } else {
+        [self setValidAtributeString];
+        self.textColor = [UIColor blackColor];
+        _isShowAlert = false;
+    }
+}
+
+- (void)endEditingValidation {
+    [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    NSString *massage = @"";
+    if (self.text.length < 1) {
+        massage = @"Строка не должна быть пустой";
+        [self setErrorAtributeString];
+        [self showAlertWithMasssage:massage];
+        _isValid = false;
+    }
+    else {
+        self.textColor = [UIColor blackColor];
+        [self setValidAtributeString];
+        _isValid = true;
+    }
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+}
+
+- (void)showAlertWithMasssage:(NSString*)massage {
+    
+    [ISMessages showCardAlertWithTitle:massage
+                               message:nil
+                              duration:3.f
+                           hideOnSwipe:YES
+                             hideOnTap:YES
+                             alertType:ISAlertTypeError
+                         alertPosition:ISAlertPositionTop
+                               didHide:^(BOOL finished) {
+                                   _isShowAlert = false;
+                                   self.textColor = [UIColor blackColor];
+                               }];
+}
+
+- (void)setErrorAtributeString {
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:_placeholderText attributes:@{ NSForegroundColorAttributeName : [UIColor redColor]}];
+    self.attributedPlaceholder = str;
+}
+
+- (void)setValidAtributeString {
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:_placeholderText attributes:@{ NSForegroundColorAttributeName : [NFStyleKit _PLACEHOLDER_STANDART_COLOR]}];
+    self.attributedPlaceholder = str;
+}
+
+
 
 @end

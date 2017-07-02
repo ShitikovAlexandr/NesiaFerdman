@@ -17,6 +17,7 @@
 #import "NFActivityIndicatorView.h"
 #import "NFSettingManager.h"
 #import "NFTextField.h"
+#import "NFTextView.h"
 
 
 @interface NFEditTaskController ()
@@ -32,7 +33,7 @@ UICollectionViewDelegateFlowLayout
 @property (weak, nonatomic) IBOutlet UILabel *valueTitleLabel;
 @property (weak, nonatomic) IBOutlet UITextField *selectValueTextField;
 @property (weak, nonatomic) IBOutlet NFTextField *titleOfTaskTextField;
-@property (weak, nonatomic) IBOutlet UITextView *taskDescriptionTextView;
+@property (weak, nonatomic) IBOutlet NFTextView *taskDescriptionTextView;
 @property (weak, nonatomic) IBOutlet UILabel *startLabel;
 @property (weak, nonatomic) IBOutlet UITextField *starttextField;
 @property (weak, nonatomic) IBOutlet UILabel *endLabel;
@@ -56,7 +57,7 @@ UICollectionViewDelegateFlowLayout
     [super viewDidLoad];
     self.title = @"Задача";
     self.selectedTags = [NSMutableArray array];
-//    self.tableView.tableFooterView = [UIView new];
+    //    self.tableView.tableFooterView = [UIView new];
     self.tableView.estimatedRowHeight = 90;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self setStartDataToDisplay];
@@ -64,9 +65,11 @@ UICollectionViewDelegateFlowLayout
     [self.compliteButton addTarget:self action:@selector(compliteTaskAction) forControlEvents:UIControlEventTouchDown];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTagCell" bundle:nil] forCellWithReuseIdentifier:@"NFTagCell"];
     [self.collectionView reloadData];
-     [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     //[self.titleOfTaskTextField addRegx:@"[{1,60}]" withMsg:@"Количество символов не должно превышать 60"];
-    [_titleOfTaskTextField validateWithTarget:self];
+    [_titleOfTaskTextField validateWithTarget:self placeholderText:@"Заглавие"];
+    [_taskDescriptionTextView validateWithTarget:self
+                                 placeholderText:@"Описание" min:0 max:300];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -168,7 +171,7 @@ UICollectionViewDelegateFlowLayout
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
-       
+        
     }
 }
 
@@ -254,30 +257,35 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)saveChanges {
-    [_indicator startAnimating];
-    BOOL newEvent = false;
-    if (!_event) {
-        _event = [[NFEvent alloc] init];
-        newEvent = true;
+    if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString]) {
+        
+        [_indicator startAnimating];
+        BOOL newEvent = false;
+        if (!_event) {
+            _event = [[NFEvent alloc] init];
+            newEvent = true;
+        }
+        [_event.values removeAllObjects];
+        _event.values = [NSMutableArray array];
+        _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
+        _event.title = _titleOfTaskTextField.text;
+        _event.eventDescription = _taskDescriptionTextView.text;
+        _event.isDone = _compliteButton.selected;
+        _event.startDate = [self stringDate:_starttextField.text
+                                 withFormat:@"LLLL, dd, yyyy HH:mm"
+                         dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        _event.endDate = [self stringDate:_endTextField.text
+                               withFormat:@"LLLL, dd, yyyy HH:mm"
+                       dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+        
+        if (newEvent) {
+            [[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
+        } else {
+            [[NFSyncManager sharedManager] editEventWithSetting:_event];
+        }
+        
     }
-    [_event.values removeAllObjects];
-    _event.values = [NSMutableArray array];
-    _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
-    _event.title = _titleOfTaskTextField.text;
-    _event.eventDescription = _taskDescriptionTextView.text;
-    _event.isDone = _compliteButton.selected;
-    _event.startDate = [self stringDate:_starttextField.text
-                             withFormat:@"LLLL, dd, yyyy HH:mm"
-                     dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
-    _event.endDate = [self stringDate:_endTextField.text
-                           withFormat:@"LLLL, dd, yyyy HH:mm"
-                   dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
     
-    if (newEvent) {
-        [[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
-    } else {
-        [[NFSyncManager sharedManager] editEventWithSetting:_event];
-    }
 }
 
 - (void)endUpdate {

@@ -8,22 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, TextFieldType)
-{
-    Title,
-    Description,
-    Email
-};
-
 @interface NFTextField : UITextField 
-@property (assign, nonatomic) BOOL isValid;
+@property (strong, nonatomic) NSString *placeholderText;
 
-- (void)validateWithTarget:(id)target;
-
-//@property (assign, nonatomic) NSInteger minLenght;
-//@property (assign, nonatomic) NSInteger maxLenght;
-//@property (assign, nonatomic) TextFieldType type;
-
-
+- (void)validateWithTarget:(id)target placeholderText:(NSString*)placeholderText;
+- (BOOL)isValidString;
 
 @end

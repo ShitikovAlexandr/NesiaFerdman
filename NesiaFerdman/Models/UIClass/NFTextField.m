@@ -8,21 +8,16 @@
 
 #import "NFTextField.h"
 #import <ISMessages/ISMessages.h>
-
+#import "NFStyleKit.h"
 
 @interface NFTextField()
 @property (strong, nonatomic) id target;
 @property (assign, nonatomic) BOOL isShowAlert;
-
+@property (assign, nonatomic) BOOL isValid;
 @end
-
 
 @implementation NFTextField
 
-- (void)drawRect:(CGRect)rect {
-    [super drawRect:rect];
-    
-}
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -31,9 +26,10 @@
     return self;
 }
 
-- (void)validateWithTarget:(id)target {
+- (void)validateWithTarget:(id)target placeholderText:(NSString*)placeholderText{
     self.target = target;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingValidation) name:UITextFieldTextDidEndEditingNotification object:nil];
+    self.placeholderText = placeholderText;
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endEditingValidation) name:UITextFieldTextDidEndEditingNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(validateText) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
@@ -54,10 +50,10 @@
         self.textColor = [UIColor redColor];
         _isValid = false;
     } else {
+        [self setValidAtributeString];
         self.textColor = [UIColor blackColor];
         _isShowAlert = false;
     }
-    NSLog(@"validate");
 }
 
 - (void)endEditingValidation {
@@ -65,24 +61,19 @@
     NSString *massage = @"";
     if (self.text.length < 1) {
         massage = @"Строка не должна быть пустой";
-        self.textColor = [UIColor redColor];
+        [self setErrorAtributeString];
         [self showAlertWithMasssage:massage];
         _isValid = false;
-    } else if (self.text.length > 80) {
-        [self setText:[self.text substringToIndex:79]];
-        self.textColor = [UIColor redColor];
-        _isValid = false;
-        massage = @"Количество символов не должно превышать 80";
-        [self showAlertWithMasssage:massage];
-
-    } else {
+    }
+    else {
         self.textColor = [UIColor blackColor];
+        [self setValidAtributeString];
         _isValid = true;
     }
 }
 
 - (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidEndEditingNotification object:nil];
      [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 
 }
@@ -100,6 +91,16 @@
                                   _isShowAlert = false;
                                    self.textColor = [UIColor blackColor];
                                }];
+}
+
+- (void)setErrorAtributeString {
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:_placeholderText attributes:@{ NSForegroundColorAttributeName : [UIColor redColor]}];
+    self.attributedPlaceholder = str;
+}
+
+- (void)setValidAtributeString {
+    NSAttributedString *str = [[NSAttributedString alloc] initWithString:_placeholderText attributes:@{ NSForegroundColorAttributeName : [NFStyleKit _PLACEHOLDER_STANDART_COLOR]}];
+    self.attributedPlaceholder = str;
 }
 
 @end
