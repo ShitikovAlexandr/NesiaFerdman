@@ -179,7 +179,7 @@ UICollectionViewDelegateFlowLayout
     _datePickerStart = [[NFDatePicker alloc] initWithTextField:_starttextField];
     _datePickerStart.minimumDate = [NSDate date];
     _datePickerEnd = [[NFDatePicker alloc] initWithTextField:_endTextField];
-    _datePickerEnd.minimumDate = [NSDate date];
+    _datePickerEnd.minimumDate = _datePickerStart.minimumDate;
     
     _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
     //self.selectValueTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
