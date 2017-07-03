@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NFValue.h"
+#import "NFViewController.h"
 
-@interface NFStatisticDetailController : UIViewController
+@interface NFStatisticDetailController : NFViewController
 @property (strong, nonatomic) NFValue *value;
 @property (strong, nonatomic) NSDate *selectedDate;
 

@@ -42,6 +42,7 @@
     self.doneTaskTitle.text = @"выполненных\nзадач";
     self.allTaskTitle.text = @"поставленных\nзадач";
     self.dataArray = [NSMutableArray array];
+    self.tableView.tableFooterView = [UIView new];
     [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
 //    [self.tableView openSection:0 animated:NO];
     [self.navButton addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchUpInside];
@@ -79,8 +80,19 @@
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (eventCell.event) {
+        [self navigateToEditTaskScreenWithEvent:eventCell.event];
+    }
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return [NFHeaderForTaskSection headerSize];
+    if (_dataArray.count > 0) {
+        return [NFHeaderForTaskSection headerSize];
+    } else {
+        return 0;
+    }
 }
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -100,12 +112,17 @@
     if (_value) {
         [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonth:_selectedDate withValue:_value]];
         self.screenTitle.text = self.value.valueTitle;
-        [self.tableView reloadData];
-        [self setCountTasksWithArray:_dataArray];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.progressView.progressLayer.strokeEnd =  [self setProgressValueWithData:_dataArray];
-        });
+    } else {
+        NSLog(@"No value");
+        self.screenTitle.text = @"Другое";
+        [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
     }
+    [self.tableView reloadData];
+    [self setCountTasksWithArray:_dataArray];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.progressView.progressLayer.strokeEnd =  [self setProgressValueWithData:_dataArray];
+    });
+
    
 }
 
@@ -134,34 +151,41 @@
     return [dateFormatter stringFromDate:date];
 }
 
-
 - (CGFloat)setProgressValueWithData:(NSMutableArray*)dataArray; {
     int doneCount = 0;
     int taskCount = 0;
-    for (NSArray *dayArray in dataArray) {
-        for (NFEvent *event in dayArray) {
-            taskCount++;
-            if (event.isDone) {
-                doneCount++;
+    if (_dataArray.count > 0) {
+        for (NSArray *dayArray in dataArray) {
+            for (NFEvent *event in dayArray) {
+                taskCount++;
+                if (event.isDone) {
+                    doneCount++;
+                }
             }
         }
+        return (1.0/(CGFloat)taskCount) * doneCount;
+    } else {
+        return 0;
     }
-    return (1.0/(CGFloat)taskCount) * doneCount;
 }
 
 - (void)setCountTasksWithArray:(NSMutableArray*)dataArray {
-    int doneCount = 0;
-    int taskCount = 0;
-    for (NSArray *dayArray in dataArray) {
-        for (NFEvent *event in dayArray) {
-            taskCount++;
-            if (event.isDone) {
-                doneCount++;
+    if (dataArray.count > 0) {
+        
+        int doneCount = 0;
+        int taskCount = 0;
+        for (NSArray *dayArray in dataArray) {
+            for (NFEvent *event in dayArray) {
+                taskCount++;
+                if (event.isDone) {
+                    doneCount++;
+                }
             }
         }
+        self.doneTaskCount.text = [NSString stringWithFormat:@"%i", doneCount];
+        self.allTaskCount.text = [NSString stringWithFormat:@"%i", taskCount];
     }
-    self.doneTaskCount.text = [NSString stringWithFormat:@"%i", doneCount];
-    self.allTaskCount.text = [NSString stringWithFormat:@"%i", taskCount];
 }
+
 
 @end

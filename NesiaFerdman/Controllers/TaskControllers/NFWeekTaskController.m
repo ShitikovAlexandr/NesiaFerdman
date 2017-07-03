@@ -115,8 +115,6 @@
 }
 
 
-
-
 #pragma mark - Helpers
 
 - (void)addDataToDisplay {
