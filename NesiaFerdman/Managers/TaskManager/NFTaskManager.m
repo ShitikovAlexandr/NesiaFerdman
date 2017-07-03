@@ -119,17 +119,22 @@
     NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
     NSMutableArray *tempArray = [NSMutableArray array];
-    [tempArray addObjectsFromArray:resultArray];
-    for (NSMutableArray *dayArray in resultArray) {
-        for (NFEvent* event in dayArray) {
-            if(!event.values)
-                [dayArray removeObject:event];
-        }
-    }
+    NSMutableArray *tempDay;
     
-    for (NSArray* array in tempArray) {
-        if (array.count < 1) {
-            [tempArray removeObject:array];
+    //[tempArray addObjectsFromArray:resultArray];
+    for (NSMutableArray *dayArray in resultArray) {
+        //[tempDay removeAllObjects];
+        tempDay = [NSMutableArray arrayWithArray:dayArray];
+        
+        for (NFEvent* event in dayArray) {
+            if(event.values) {
+                [tempDay removeObject:event];
+            }
+        }
+        if (tempDay.count > 0) {
+            [tempArray addObject:tempDay];
+        } else {
+            NSLog(@"no events");
         }
     }
     return tempArray;
