@@ -11,6 +11,11 @@
 
 @implementation NFEvent
 
+- (id)copyWithZone:(nullable NSZone *)zone {
+    
+    return self;
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {

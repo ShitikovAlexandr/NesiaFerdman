@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, SocialType)
 };
 
 
-@interface NFEvent : NSObject
+@interface NFEvent : NSObject <NSCopying>
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *eventDescription;

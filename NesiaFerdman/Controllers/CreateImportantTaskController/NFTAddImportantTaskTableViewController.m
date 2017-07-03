@@ -14,13 +14,15 @@
 #import <UITextView+Placeholder.h>
 #import "NFChackBox.h"
 #import "NotifyList.h"
+#import "NFTextField.h"
+#import "NFTextView.h"
 
 @interface NFTAddImportantTaskTableViewController () <UITextViewDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (assign, nonatomic) CGRect textFrame;
-@property (weak, nonatomic) IBOutlet UITextField *titleTask;
-@property (weak, nonatomic) IBOutlet UITextView *descriptionTask;
+@property (weak, nonatomic) IBOutlet NFTextField *titleTask;
+@property (weak, nonatomic) IBOutlet NFTextView *descriptionTask;
 @property (strong, nonatomic) IBOutlet UITextField *dateTextField;
 @property (strong, nonatomic) NFDatePicker *datePicker;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
@@ -39,6 +41,8 @@
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     self.dateTextField.text = [self stringFromDate:[NSDate date]];
     _datePicker = [[NFDatePicker alloc] initWithTextField:_dateTextField];
+    [_titleTask validateWithTarget:self placeholderText:@"Заглавие"];
+    [_descriptionTask validateWithTarget:self placeholderText:@"Описание" min:0 max:300];
     _datePicker.minimumDate = [NSDate date];
     [self setStartDataToDisplay];
 }
@@ -80,6 +84,24 @@
         } else if (indexPath.item == 1) {
         }
     }
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Helpers
@@ -152,6 +174,7 @@
 }
 
 - (void)saveChanges {
+    if ([_titleTask isValidString]) {
     [_indicator startAnimating];
     if (!_event) {
         _event = [[NFEvent alloc] init];
@@ -166,6 +189,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NFSyncManager sharedManager]  updateAllData];
     });
+    }
 }
 
 @end

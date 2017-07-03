@@ -66,7 +66,6 @@ UICollectionViewDelegateFlowLayout
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTagCell" bundle:nil] forCellWithReuseIdentifier:@"NFTagCell"];
     [self.collectionView reloadData];
     [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
-    //[self.titleOfTaskTextField addRegx:@"[{1,60}]" withMsg:@"Количество символов не должно превышать 60"];
     [_titleOfTaskTextField validateWithTarget:self placeholderText:@"Заглавие"];
     [_taskDescriptionTextView validateWithTarget:self
                                  placeholderText:@"Описание" min:0 max:300];
@@ -110,6 +109,25 @@ UICollectionViewDelegateFlowLayout
         [textView becomeFirstResponder];
     }
 }
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    
+    if([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+
 
 #pragma mark - Actions
 

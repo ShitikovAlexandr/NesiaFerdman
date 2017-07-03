@@ -46,12 +46,14 @@
             massage = @"Количество символов не должно превышать 80";
             [self showAlertWithMasssage:massage];
             self.isShowAlert = true;
+            
         }
         self.textColor = [UIColor redColor];
         _isValid = false;
     } else {
         [self setValidAtributeString];
         self.textColor = [UIColor blackColor];
+        self.isValid = true;
         _isShowAlert = false;
     }
 }

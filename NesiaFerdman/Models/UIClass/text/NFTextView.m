@@ -21,18 +21,10 @@
 
 @implementation NFTextView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code UITextViewTextDidChangeNotification
-}
-*/
-
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        _isValid = false;
+        _isValid = true;
     }
     return self;
 }
@@ -61,7 +53,7 @@
     if (self.text.length > _maxValue) {
         [self setText:[self.text substringToIndex:_maxValue]];
         if (!_isShowAlert) {
-            massage = [NSString stringWithFormat:@"Количество символов не должно превышать %i", _maxValue];
+            massage = [NSString stringWithFormat:@"Количество символов не должно превышать %li", (long)_maxValue];
             [self showAlertWithMasssage:massage];
             self.isShowAlert = true;
         }
@@ -71,6 +63,7 @@
         [self setValidAtributeString];
         self.textColor = [UIColor blackColor];
         _isShowAlert = false;
+        _isValid = true;
     }
 }
 
@@ -118,7 +111,5 @@
     NSAttributedString *str = [[NSAttributedString alloc] initWithString:_placeholderText attributes:@{ NSForegroundColorAttributeName : [NFStyleKit _PLACEHOLDER_STANDART_COLOR]}];
     self.attributedPlaceholder = str;
 }
-
-
 
 @end

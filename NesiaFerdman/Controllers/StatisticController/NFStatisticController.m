@@ -121,7 +121,6 @@
         
         dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;
         dateFormatter.timeZone = _calendarManager.dateHelper.calendar.timeZone;
-        //self.calendarMenuView.backgroundColor = [UIColor colorWithRed:240/255.0 green:239/255.0 blue:245/255.0 alpha:1];
     }
     menuItemView.text = [dateFormatter stringFromDate:date].uppercaseString;
 }
