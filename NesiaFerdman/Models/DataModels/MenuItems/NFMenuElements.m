@@ -127,13 +127,13 @@ typedef NS_ENUM(NSInteger, MenuItem)
     NFMenuItem *results = [NFMenuItem new];
     results.title = @"Итоги недели";
     results.index = 1;
-    results.imageName = @"result_icon.png";
+    results.imageName = @"result_NEW_icon.png";
     [_itemsArray addObject:results];
     
     NFMenuItem *statistic = [NFMenuItem new];
     statistic.title = @"Статистика";
     statistic.index = 2;
-    statistic.imageName = @"result_icon.png";
+    statistic.imageName = @"statistic_NEW_icon.png";
     [_itemsArray addObject:statistic];
     
     NFMenuItem *myValues = [NFMenuItem new];

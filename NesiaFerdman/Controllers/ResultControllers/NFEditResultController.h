@@ -13,6 +13,7 @@
 @interface NFEditResultController : UIViewController
 @property (strong, nonatomic) NFResultCategory *category;
 @property (strong, nonatomic) NFResult *resultItem;
+@property (strong, nonatomic) NSDate *selectedDate;
 
 
 @end

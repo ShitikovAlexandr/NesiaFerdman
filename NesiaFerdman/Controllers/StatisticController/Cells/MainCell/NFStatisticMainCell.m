@@ -54,14 +54,14 @@
     if (indexPath.section == dataArray.count) {
         key = @"other";
         self.valueTitle.text = @"Другое";
-        [_valieImage setImage:[UIImage imageNamed:@"response-value45.png"]];
+        [_valieImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
     } else {
         NFValue *value = [dataArray objectAtIndex:indexPath.section];
         self.value = value;
         if (value.valueImage) {
             [_valieImage setImage:[UIImage imageNamed:value.valueImage]];
         } else {
-            [_valieImage setImage:[UIImage imageNamed:@"response-value45.png"]];
+            [_valieImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
         }
         key = value.valueTitle;
         self.valueTitle.text = key;

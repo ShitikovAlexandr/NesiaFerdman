@@ -17,6 +17,10 @@
 		C207EF561EA89BB900BFF383 /* NFWeekTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C207EF551EA89BB900BFF383 /* NFWeekTaskCell.xib */; };
 		C20876701ED83144005FF719 /* NFLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C208766F1ED83144005FF719 /* NFLogin.storyboard */; };
 		C209AF891F0A2F7F0036A592 /* NFPop.m in Sources */ = {isa = PBXBuildFile; fileRef = C209AF881F0A2F7F0036A592 /* NFPop.m */; };
+		C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8A1F0A6FDD0036A592 /* defaultValue.png */; };
+		C209AF8E1F0A70890036A592 /* result_NEW_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8C1F0A70890036A592 /* result_NEW_icon.png */; };
+		C209AF8F1F0A70890036A592 /* statistic_NEW_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */; };
+		C209AF921F0A7DD30036A592 /* NFResultMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C209AF911F0A7DD30036A592 /* NFResultMenuCell.m */; };
 		C20AF3231EA9E34C00637A49 /* NFSittingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20AF3221EA9E34C00637A49 /* NFSittingsController.m */; };
 		C20AF32A1EAA471100637A49 /* NFQuoteDayRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20AF3291EAA471100637A49 /* NFQuoteDayRoundView.m */; };
 		C20EBA031EA8A93C0074C0AF /* NFWeekDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EBA021EA8A93C0074C0AF /* NFWeekDayView.m */; };
@@ -246,6 +250,11 @@
 		C208766F1ED83144005FF719 /* NFLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NFLogin.storyboard; sourceTree = "<group>"; };
 		C209AF871F0A2F7F0036A592 /* NFPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPop.h; sourceTree = "<group>"; };
 		C209AF881F0A2F7F0036A592 /* NFPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPop.m; sourceTree = "<group>"; };
+		C209AF8A1F0A6FDD0036A592 /* defaultValue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultValue.png; sourceTree = "<group>"; };
+		C209AF8C1F0A70890036A592 /* result_NEW_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result_NEW_icon.png; sourceTree = "<group>"; };
+		C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistic_NEW_icon.png; sourceTree = "<group>"; };
+		C209AF901F0A7DD30036A592 /* NFResultMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultMenuCell.h; sourceTree = "<group>"; };
+		C209AF911F0A7DD30036A592 /* NFResultMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultMenuCell.m; sourceTree = "<group>"; };
 		C20AF3211EA9E34C00637A49 /* NFSittingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFSittingsController.h; sourceTree = "<group>"; };
 		C20AF3221EA9E34C00637A49 /* NFSittingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSittingsController.m; sourceTree = "<group>"; };
 		C20AF3281EAA471100637A49 /* NFQuoteDayRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFQuoteDayRoundView.h; sourceTree = "<group>"; };
@@ -705,6 +714,8 @@
 			children = (
 				C21B0ED71EFABE7F001D85CE /* NFResultCell.h */,
 				C21B0ED81EFABE7F001D85CE /* NFResultCell.m */,
+				C209AF901F0A7DD30036A592 /* NFResultMenuCell.h */,
+				C209AF911F0A7DD30036A592 /* NFResultMenuCell.m */,
 			);
 			path = ResultCell;
 			sourceTree = "<group>";
@@ -1288,6 +1299,8 @@
 		C2C22D941EE9827B006BD83A /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				C209AF8C1F0A70890036A592 /* result_NEW_icon.png */,
+				C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */,
 				C2CD10991EF8212B00546566 /* menu_green.png */,
 				C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */,
 				C2C22DBE1EE99420006BD83A /* ChevronMediumBack@2x.png */,
@@ -1319,6 +1332,7 @@
 		C2C22DC01EE99744006BD83A /* value */ = {
 			isa = PBXGroup;
 			children = (
+				C209AF8A1F0A6FDD0036A592 /* defaultValue.png */,
 				C2D13F6D1EEA7CB200A9A4F3 /* Home_life_value_icon.png */,
 				C2C22D991EE98283006BD83A /* famely_value_icon.png */,
 				C2C22D9A1EE98283006BD83A /* heart_value_icon.png */,
@@ -1684,6 +1698,7 @@
 				C22407871E9CB351004B089A /* Assets.xcassets in Resources */,
 				C2FCC6FC1EEEC918009D47B5 /* taskFill@2x.png in Resources */,
 				C20595721EF2C39E00BF3BFD /* Right_arrow_label.png in Resources */,
+				C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */,
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
 				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
 				C2C22DA71EE98283006BD83A /* add_icon.png in Resources */,
@@ -1715,12 +1730,14 @@
 				C235A0011EC9C74800EB8FDC /* chevron_down.png in Resources */,
 				C2C22DB01EE98283006BD83A /* relations_value_icon.png in Resources */,
 				C207EF561EA89BB900BFF383 /* NFWeekTaskCell.xib in Resources */,
+				C209AF8F1F0A70890036A592 /* statistic_NEW_icon.png in Resources */,
 				C20876701ED83144005FF719 /* NFLogin.storyboard in Resources */,
 				C2AA72131F02A0B2007DB785 /* uodate_icon.png in Resources */,
 				C2C22DA81EE98283006BD83A /* Back_standart.png in Resources */,
 				C205956D1EF2875E00BF3BFD /* Right_arr_header.png in Resources */,
 				C2D13F6E1EEA7CB200A9A4F3 /* Home_life_value_icon.png in Resources */,
 				C2C22DB41EE98283006BD83A /* upgrate_value_icon.png in Resources */,
+				C209AF8E1F0A70890036A592 /* result_NEW_icon.png in Resources */,
 				C2FCC6FB1EEEC918009D47B5 /* taskFill@3x.png in Resources */,
 				C2C6A4E61EDC5D1B00E70BDD /* NFValuesFilterView.xib in Resources */,
 				C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */,
@@ -1982,6 +1999,7 @@
 				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
+				C209AF921F0A7DD30036A592 /* NFResultMenuCell.m in Sources */,
 				C2AA72111F029253007DB785 /* NFSettingItem.m in Sources */,
 				C20595701EF2A1F400BF3BFD /* NFViewWithDownBorder.m in Sources */,
 				C21321021EA65BAA00CE2B5D /* NFPageTaskController.m in Sources */,

@@ -66,6 +66,7 @@
     if (!_resultItem) {
         _resultItem = [[NFResult alloc]  init];
         _resultItem.resultCategoryId = _category.resultCategoryId;
+        //_resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
     }
     _resultItem.resultDescription = self.textView.text;
     [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];

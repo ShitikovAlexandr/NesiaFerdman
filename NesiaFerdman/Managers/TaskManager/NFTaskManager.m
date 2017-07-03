@@ -67,11 +67,13 @@
         }
     }
     NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
-    [self convertToDictionary:resultDic array:tempArray];
+    [self convertResultToDictionary:resultDic array:tempArray]; // change
     NSMutableArray *result = [NSMutableArray array];
     [result addObjectsFromArray:[resultDic objectForKey:[self stringFromDate:date]]];
     return result;
 }
+
+
 
 - (NSMutableArray *)getTaskForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray {
     NSMutableArray *result = [NSMutableArray array];
@@ -183,6 +185,7 @@
     return resultArray;
 }
 
+
 - (NSString *)stringDate:(NSString *)stringInput
               withFormat:(NSString *)inputFormat
       dateStringToFromat:(NSString*)outputFormat {
@@ -215,6 +218,21 @@
         }
     }
 }
+
+- (void)convertResultToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
+    
+    if (array.count > 0) {
+        for (NFResult *event in array) {
+            NSString *eventKey = [event.startDate substringToIndex:10];
+            if(!dic[eventKey]){
+                dic[eventKey] = [NSMutableArray new];
+            }
+            [dic[eventKey] addObject:event];
+        }
+    }
+}
+
+
 
 - (void)clearAllData {
     
@@ -290,7 +308,7 @@
     [self.inputConclusionsEventsArray addObjectsFromArray:eventsConclusions];
     [self convertToDictionary:_eventConclusionsDictionary array:_inputConclusionsEventsArray];
     
-    [self convertToDictionary:self.resultsDictionary array:self.resultsArray];
+    [self convertResultToDictionary:self.resultsDictionary array:self.resultsArray]; // change
 }
 
 - (NSMutableArray*)sortArray:(NSMutableArray *)array withKey:(NSString*)key {

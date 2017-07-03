@@ -43,7 +43,6 @@
     self.allTaskTitle.text = @"поставленных\nзадач";
     self.dataArray = [NSMutableArray array];
     self.tableView.tableFooterView = [UIView new];
-    [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
 //    [self.tableView openSection:0 animated:NO];
     [self.navButton addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -112,9 +111,11 @@
     if (_value) {
         [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonth:_selectedDate withValue:_value]];
         self.screenTitle.text = self.value.valueTitle;
+        [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
     } else {
         NSLog(@"No value");
         self.screenTitle.text = @"Другое";
+        [self.valueImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
         [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
     }
     [self.tableView reloadData];

@@ -45,38 +45,39 @@
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    if (self.dataArray.count > 0) {
-        return [NFHeaderForTaskSection headerSize];
-    } else {
-        return 0.0001;
-    }
-}
-
-- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    [self.view removeGestureRecognizer:[[UIGestureRecognizer alloc] init]];
-    if (self.dataArray.count > 0) {
-        NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
-        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
-        NSArray *eventDayArray = [_dataArray objectAtIndex:section];
-        NFResult *event = [eventDayArray firstObject];
-        [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
-        return headerView;
-    } else {
-        UIView *headerView = [[UIView alloc] init];
-        return headerView;
-    }
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//    if (self.dataArray.count > 0) {
+//        return [NFHeaderForTaskSection headerSize];
+//    } else {
+//        return 0.0001;
+//    }
+//}
+//
+//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//    [self.view removeGestureRecognizer:[[UIGestureRecognizer alloc] init]];
+//    if (self.dataArray.count > 0) {
+//        NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
+//        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
+//        NSArray *eventDayArray = [_dataArray objectAtIndex:section];
+//        NFResult *event = [eventDayArray firstObject];
+//        [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
+//        return headerView;
+//    } else {
+//        UIView *headerView = [[UIView alloc] init];
+//        return headerView;
+//    }
+//}
 
 #pragma mark - UITableViewDataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return _dataArray.count > 0 ? _dataArray.count : 1;;
-}
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+//    return _dataArray.count > 0 ? _dataArray.count : 1;;
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
-    return sectionData.count > 0 ? sectionData.count : 1;
+//    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
+//    return sectionData.count > 0 ? sectionData.count : 1;
+    return _dataArray.count > 0 ? _dataArray.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -85,8 +86,9 @@
         cell = [[NFResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     if (self.dataArray.count > 0) {
-        NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
-        NFResult *event = [eventDayArray objectAtIndex:indexPath.row];
+//        NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
+//        NFResult *event = [eventDayArray objectAtIndex:indexPath.row];
+        NFResult *event = [_dataArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
         [cell addData:nil];
@@ -103,13 +105,14 @@
         NSMutableArray *dayArray = [NSMutableArray array];
         [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forDay:dayDate]];
         if (dayArray.count > 0) {
-            [self.dataArray addObject:dayArray];
+            //[self.dataArray addObject:dayArray];
+            [self.dataArray addObjectsFromArray:dayArray];
         }
     }
     [self.tableView reloadData];
-    NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
-    NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
-    [self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
+    //NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
+    //NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
+    //[self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (void)navigateToEditScreenWithItem:(NFResult*)result {
@@ -132,6 +135,7 @@
  NFEditResultController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditResultController"];
     viewController.category = self.selectedCategory;
     viewController.resultItem = nil;
+    viewController.selectedDate = _week.startDate;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

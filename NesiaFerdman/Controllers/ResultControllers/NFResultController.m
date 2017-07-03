@@ -14,6 +14,8 @@
 #import "UIBarButtonItem+FHButtons.h"
 #import "NFWeekDateModel.h"
 #import "NFSettingManager.h"
+#import "NFResultMenuCell.h"
+
 
 
 @interface NFResultController () <UITableViewDelegate, UITableViewDataSource>
@@ -59,15 +61,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
      NSString *const identifier = @"Cell";
     
-    UITableViewCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        cell = [[NFResultMenuCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
     }
-    [self animateLabel:cell.detailTextLabel];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%i",arc4random_uniform(100)];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = category.resultCategoryTitle;
+    [cell addDataToCell:category date:[self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
     return cell;
 }
 
@@ -82,7 +81,7 @@
 
 - (void) addDataToDisplay {
     [_dataArray removeAllObjects];
-    [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
+    //[_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
     [self.tableView reloadData];
 //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
@@ -96,17 +95,9 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)animateLabel:(UILabel*)label {
-    CATransition *animation = [CATransition animation];
-    animation.duration = 0.6;
-    animation.type = kCATransitionReveal;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    [label.layer addAnimation:animation forKey:@"changeTextTransition"];
-}
-
 - (void)navigateToDitailCategory:(NFResultCategory*)category {
     NFResultDetailController *viewCotroller = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
-    viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
+    //viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
     viewCotroller.selectedCategory = category;
     [self.navigationController pushViewController:viewCotroller animated:YES];
 }

@@ -28,7 +28,7 @@
         if (value.valueImage) {
             [_vaueIcon setImage:[UIImage imageNamed:value.valueImage]];
         } else {
-            [_vaueIcon setImage:[UIImage imageNamed:@"response-value45.png"]];
+            [_vaueIcon setImage:[UIImage imageNamed:@"defaultValue.png"]];
         }
     }
 }

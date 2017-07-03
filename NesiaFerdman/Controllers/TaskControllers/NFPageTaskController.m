@@ -165,7 +165,7 @@
     addButton.tintColor = [UIColor whiteColor];
 //    self.navigationItem.rightBarButtonItem = addButton;
     
-    UIBarButtonItem *resultButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"result_nav_bar_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(resultButtonAction)];
+    UIBarButtonItem *resultButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"statistic_NEW_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(resultButtonAction)];
     
     [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton, resultButton, nil]];
 }
