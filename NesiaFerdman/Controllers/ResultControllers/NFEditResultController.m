@@ -13,6 +13,9 @@
 #import <UITextView+Placeholder.h>
 #import "NFSyncManager.h"
 #import "NotifyList.h"
+#import "NFTextView.h"
+
+
 
 @interface NFEditResultController ()
 @property (weak, nonatomic) IBOutlet NFViewWithDownBorder *mainView;
@@ -63,6 +66,7 @@
 }
 
 - (void)saveChanges {
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [_indicator startAnimating];
     if (!_resultItem) {
         _resultItem = [[NFResult alloc]  init];
