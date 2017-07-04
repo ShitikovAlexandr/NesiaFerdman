@@ -41,7 +41,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NFResultCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
-    [self navigateToEditScreenWithItem:eventCell.event];
+    if (eventCell.event) {
+        [self navigateToEditScreenWithItem:eventCell.event];
+    } else {
+        [self createNewItem];
+    }
+    
     
 }
 
@@ -125,7 +130,7 @@
 - (NSDate *)stringDate:(NSString *)stringInput
             withFormat:(NSString *)inputFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
     return dateFromString;
@@ -135,7 +140,7 @@
  NFEditResultController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditResultController"];
     viewController.category = self.selectedCategory;
     viewController.resultItem = nil;
-    viewController.selectedDate = _week.startDate;
+    viewController.selectedDate = _week.startOfWeek;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 

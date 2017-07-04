@@ -79,7 +79,7 @@
 }
 
 - (NSString *)dateToString:(NSDate *)inputDate {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss Z"];
     NSString* newDate = [dateFormatter stringFromDate:inputDate];
     return newDate;

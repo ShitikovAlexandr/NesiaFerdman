@@ -74,7 +74,7 @@
 }
 
 - (NSString *)stringFromDate:(NSDate *)currentDate withFormat:(NSString*)format {
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:format];
     dateFormatter1.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
     NSString* newDate = [dateFormatter1 stringFromDate:currentDate];

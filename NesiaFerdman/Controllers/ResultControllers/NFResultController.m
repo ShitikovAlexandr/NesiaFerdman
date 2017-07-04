@@ -81,7 +81,7 @@
 
 - (void) addDataToDisplay {
     [_dataArray removeAllObjects];
-    //[_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
+    [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
     [self.tableView reloadData];
 //    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
@@ -97,7 +97,7 @@
 
 - (void)navigateToDitailCategory:(NFResultCategory*)category {
     NFResultDetailController *viewCotroller = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
-    //viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
+    viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
     viewCotroller.selectedCategory = category;
     [self.navigationController pushViewController:viewCotroller animated:YES];
 }

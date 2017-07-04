@@ -333,7 +333,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
 #pragma mark - Helpers
 
 - (NSDate *)dateFromString:(NSString*)dateString {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
     NSDate *dateFromString = [dateFormatter dateFromString:dateString];
     return dateFromString;

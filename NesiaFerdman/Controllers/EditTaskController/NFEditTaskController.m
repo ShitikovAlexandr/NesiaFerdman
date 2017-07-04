@@ -142,7 +142,7 @@ UICollectionViewDelegateFlowLayout
 #pragma mark - Helpers
 
 - (NSString *)stringFromDate:(NSDate *)date {
-    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
     [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
     return [dateFormater stringFromDate:date];
 }
@@ -154,10 +154,10 @@ UICollectionViewDelegateFlowLayout
               withFormat:(NSString *)inputFormat
       dateStringToFromat:(NSString*)outputFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:stringInput];
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:outputFormat];
     NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
     return newDate;

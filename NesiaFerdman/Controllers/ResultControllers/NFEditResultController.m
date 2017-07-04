@@ -46,7 +46,7 @@
 #pragma mark - Helpers
 
 - (NSString *)stringFromDate:(NSDate *)date {
-    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
     [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
     return [dateFormater stringFromDate:date];
 }
@@ -56,6 +56,7 @@
     if (_resultItem) {
         self.textView.text = self.resultItem.resultDescription;
         self.title = self.category.resultCategoryTitle;
+        
     } else {
         self.title = @"Создание";
     }
@@ -66,7 +67,7 @@
     if (!_resultItem) {
         _resultItem = [[NFResult alloc]  init];
         _resultItem.resultCategoryId = _category.resultCategoryId;
-        //_resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
+        _resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
     }
     _resultItem.resultDescription = self.textView.text;
     [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];

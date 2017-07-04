@@ -329,7 +329,7 @@
 }
 
 - (NSString *)stringFromDate:(NSDate *)currentDate  {
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
     NSString* newDate = [dateFormatter1 stringFromDate:currentDate];
     return newDate;

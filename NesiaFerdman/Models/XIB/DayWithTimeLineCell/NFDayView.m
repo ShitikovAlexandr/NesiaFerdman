@@ -61,7 +61,7 @@
 
 - (void) addTimeLineWithIndexPath:(NSIndexPath *)index {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"H"];
      //[dateFormatter stringFromDate:date];
     NSString *time = [NSString stringWithFormat:@"%ld", (long)index.row];

@@ -56,7 +56,7 @@
 }
 
 - (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString*)formar {
-    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
     [dateFormater setDateFormat:formar];
     return [dateFormater stringFromDate:date];
 }

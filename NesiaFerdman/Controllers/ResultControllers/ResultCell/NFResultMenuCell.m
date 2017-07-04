@@ -42,7 +42,7 @@
 - (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate {
     [self animateLabel:self.detailTextLabel];
     self.textLabel.text = category.resultCategoryTitle;
-    self.detailTextLabel.text = [NSString stringWithFormat:@"%i", [self getCategoryCountForWeek:currentDate category:category]];
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForWeek:currentDate category:category]];
 
 }
 

@@ -68,7 +68,7 @@
     }
     NSMutableArray *taskArray = [NSMutableArray array];
     [taskArray  addObjectsFromArray:[inputDic valueForKey:key]];
-    _realTaskCount.text = [NSString stringWithFormat:@"%ld", taskArray.count];
+    _realTaskCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)taskArray.count];
     if (!taskArray.count) {
         [self setAlltaskToZero];
     } else {
@@ -98,7 +98,7 @@
 }
 
 -(void)setDoneCountWithValue:(NSInteger)val {
-    self.doneTaskCount.text = [NSString stringWithFormat:@"%ld", val];
+    self.doneTaskCount.text = [NSString stringWithFormat:@"%ld", (long)val];
 }
 
 - (CGFloat)doneValueWithTaskArray:(NSMutableArray*)taskArray {

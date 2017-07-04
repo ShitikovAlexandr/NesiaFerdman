@@ -53,7 +53,7 @@
 }
 
 - (NSString *)stringFromDate:(NSDate *)date {
-    NSDateFormatter *dateFormater = [NSDateFormatter new];
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
     [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
     return [dateFormater stringFromDate:date];
 }

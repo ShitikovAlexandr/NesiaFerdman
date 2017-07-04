@@ -94,10 +94,10 @@
 }
 
 - (NSString *)dateFormater:(NSString *)dateString {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
     NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:8]];
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
     NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
     return newDate;

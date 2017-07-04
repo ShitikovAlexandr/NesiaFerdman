@@ -114,9 +114,9 @@
 
 - (void)calendar:(JTCalendarManager *)calendar prepareMenuItemView:(UILabel *)menuItemView date:(NSDate *)date
 {
-    static NSDateFormatter *dateFormatter;
+    static NFDateFormatter *dateFormatter;
     if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
+        dateFormatter = [NFDateFormatter new];
         dateFormatter.dateFormat = @"LLLL yyyy";
         
         dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;

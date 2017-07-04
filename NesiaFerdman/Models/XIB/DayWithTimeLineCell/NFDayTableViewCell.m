@@ -99,7 +99,7 @@
     
     if (index.row == 0) {
         self.timeLabel.hidden = false;
-        NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+        NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
         [dateFormatter1 setDateFormat:@"HH"];
         NSString* newTime = [dateFormatter1 stringFromDate:[NSDate date]];
         NSString *currentTime = [NSString stringWithFormat:@"%02ld", (long)index.section];
@@ -109,7 +109,7 @@
             _isCurrentTime = true;
         }
     }
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:@"HH"];
     NSString* newTime = [dateFormatter1 stringFromDate:[NSDate date]];
     NSString *currentTime = [NSString stringWithFormat:@"%02ld", (long)index.section];
@@ -144,10 +144,10 @@
 
 
 - (NSString *)dateFormater:(NSString *)dateString {
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
     NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:16]];
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
     [dateFormatter1 setDateFormat:@"HH:mm"];
     NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
     return newDate;

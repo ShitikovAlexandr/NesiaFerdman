@@ -124,7 +124,7 @@
 - (NSDate *)stringDate:(NSString *)stringInput
             withFormat:(NSString *)inputFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
     return dateFromString;

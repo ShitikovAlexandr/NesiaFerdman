@@ -99,7 +99,6 @@
 #pragma mark - Actions
 
 - (void)syncAction:(UISwitch*)sender {
-    NSLog(@"syncAction %hhd", sender.isOn);
     if (sender.isOn) {
         [NFSettingManager setOnGoogleSync];
         _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
@@ -113,7 +112,6 @@
 }
 
 - (void)writeAction:(UISwitch*)sender {
-    NSLog(@"writeAction %hhd", sender.isOn);
     if (sender.isOn) {
         [NFSettingManager setOnWriteToGoogle];
     } else {
@@ -122,7 +120,6 @@
 }
 
 - (void)deleteAction:(UISwitch*)sender {
-    NSLog(@"deleteAction  %hhd", sender.isOn);
     if (sender.isOn) {
         [NFSettingManager setOnDeleteFromGoogle];
     } else {
@@ -131,7 +128,6 @@
 }
 
 - (void)updateAction {
-    NSLog(@"updateAction");
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [_indicator startAnimating];
     [[NFSyncManager sharedManager] updateAllData];

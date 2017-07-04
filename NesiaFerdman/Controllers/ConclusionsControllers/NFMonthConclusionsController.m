@@ -105,11 +105,11 @@
 }
 
 // Used only to have a key for _eventsByDate
-- (NSDateFormatter *)dateFormatter
+- (NFDateFormatter *)dateFormatter
 {
-    static NSDateFormatter *dateFormatter;
+    static NFDateFormatter *dateFormatter;
     if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
+        dateFormatter = [NFDateFormatter new];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
     }
     return dateFormatter;
@@ -127,9 +127,9 @@
 
 - (void)calendar:(JTCalendarManager *)calendar prepareMenuItemView:(UILabel *)menuItemView date:(NSDate *)date
 {
-    static NSDateFormatter *dateFormatter;
+    static NFDateFormatter *dateFormatter;
     if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
+        dateFormatter = [NFDateFormatter new];
         dateFormatter.dateFormat = @"LLLL yyyy";
         
         dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;
@@ -206,7 +206,7 @@
 - (NSDate *)stringDate:(NSString *)stringInput
             withFormat:(NSString *)inputFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
     return dateFromString;

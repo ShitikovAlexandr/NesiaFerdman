@@ -29,11 +29,11 @@
 //            self.mainView.layer.shadowOpacity = 0.2;
             
             //set current date
-            NSDateFormatter *dateFormatterDay = [[NSDateFormatter alloc] init];
+            NFDateFormatter *dateFormatterDay = [[NFDateFormatter alloc] init];
             [dateFormatterDay setDateFormat:@"dd"];
             NSString* day = [dateFormatterDay stringFromDate:[NSDate date]];
             
-            NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
+            NFDateFormatter *dateFormatterMonth = [[NFDateFormatter alloc] init];
             [dateFormatterMonth setDateFormat:@"MMMM"];
             NSString* month = [dateFormatterMonth stringFromDate:[NSDate date]];
             

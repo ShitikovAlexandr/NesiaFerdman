@@ -136,7 +136,7 @@
 - (NSDate *)stringDate:(NSString *)stringInput
             withFormat:(NSString *)inputFormat {
     
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
     return dateFromString;
@@ -184,7 +184,7 @@
 //}
 
 //- (void)setCurrentCellVisible {
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+//    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
 //    [dateFormatter setDateFormat:@"H"];
 //    NSInteger row =  [[dateFormatter stringFromDate:[NSDate date]] integerValue];
 //    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
