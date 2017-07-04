@@ -28,8 +28,6 @@
     [self setNFStyleAndColors];
     [Fabric with:@[[Crashlytics class]]];
     [FIRApp configure];
-    
-    
     return YES;
 }
 

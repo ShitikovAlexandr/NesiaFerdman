@@ -39,6 +39,7 @@
 		C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8AA1EB1D64A001D1006 /* NFWeekTask.m */; };
 		C216D8AE1EB1D674001D1006 /* NFMonthTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8AD1EB1D674001D1006 /* NFMonthTask.m */; };
 		C216D8B11EB1D6CF001D1006 /* NFYearTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8B01EB1D6CF001D1006 /* NFYearTask.m */; };
+		C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */; };
 		C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */ = {isa = PBXBuildFile; fileRef = C21B0ECD1EFA642C001D85CE /* quote_img.png */; };
 		C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */; };
 		C21B0ED51EFAAD84001D85CE /* NFEditResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED41EFAAD84001D85CE /* NFEditResultController.m */; };
@@ -291,6 +292,9 @@
 		C216D8AD1EB1D674001D1006 /* NFMonthTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFMonthTask.m; sourceTree = "<group>"; };
 		C216D8AF1EB1D6CF001D1006 /* NFYearTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFYearTask.h; sourceTree = "<group>"; };
 		C216D8B01EB1D6CF001D1006 /* NFYearTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFYearTask.m; sourceTree = "<group>"; };
+		C2176C9D1F0B7DB700748C64 /* NFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDateFormatter.h; sourceTree = "<group>"; };
+		C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDateFormatter.m; sourceTree = "<group>"; };
+		C2176CA11F0B842C00748C64 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C21B0ECD1EFA642C001D85CE /* quote_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote_img.png; sourceTree = "<group>"; };
 		C21B0ED01EFA934D001D85CE /* UIBarButtonItem+FHButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FHButtons.h"; sourceTree = "<group>"; };
 		C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FHButtons.m"; sourceTree = "<group>"; };
@@ -751,6 +755,7 @@
 				C22407B61E9CB4F5004B089A /* Models */,
 				C22407B51E9CB4E8004B089A /* Controllers */,
 				C22407771E9CB351004B089A /* Supporting Files */,
+				C2176CA11F0B842C00748C64 /* PrefixHeader.pch */,
 			);
 			path = NesiaFerdman;
 			sourceTree = "<group>";
@@ -1462,6 +1467,8 @@
 				FA9966091EFFB104003CF84A /* NFManifestation.m */,
 				C235B37C1F00E42900DB9ED9 /* NFManifestationCategory.h */,
 				C235B37D1F00E42900DB9ED9 /* NFManifestationCategory.m */,
+				C2176C9D1F0B7DB700748C64 /* NFDateFormatter.h */,
+				C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -1964,6 +1971,7 @@
 				C24AA5191EBB4FAA00ABA92C /* NFPageImportantController.m in Sources */,
 				C2359FF61EC9AA6700EB8FDC /* NFPageConclusionsController.m in Sources */,
 				C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */,
+				C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */,
 				C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */,
 				C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */,
 				C2DDBCEC1ED45A4300F61F02 /* NFLogoView.m in Sources */,
@@ -2189,6 +2197,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D7BCEBCF9Z;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRC_ROOT)NesiaFerdman/PrefixHeader.pch";
 				INFOPLIST_FILE = NesiaFerdman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2205,6 +2215,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = D7BCEBCF9Z;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRC_ROOT)NesiaFerdman/PrefixHeader.pch";
 				INFOPLIST_FILE = NesiaFerdman/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
