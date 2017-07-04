@@ -52,7 +52,7 @@
 - (NSMutableArray *)getWeeksFrom:(NSDate *)from to:(NSDate *)to {
     
     NSMutableArray *weeksArray = [NSMutableArray array];
-    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];;
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 //    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [cal setFirstWeekday:2];
     

@@ -67,6 +67,7 @@
     
     [self createMinAndMaxDate];
     _calendarManager.dateHelper.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
+    [_calendarManager.dateHelper.calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     [_calendarManager.dateHelper.calendar setFirstWeekday:1];
     
     [_calendarManager setMenuView:_calendarMenuView];
