@@ -47,8 +47,9 @@
             
             CATransition *animation = [CATransition animation];
             animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-            animation.type = kCATransitionReveal;
-            animation.duration = 0.5;
+            animation.type = kCATransitionPush;
+            animation.subtype = kCATransitionFromTop;
+            animation.duration = 0.3;
             [self.layer addAnimation:animation forKey:@"kCATransitionReveal"];
             [self addSubview:subview];
             self.taskCountLabel.text = @"";

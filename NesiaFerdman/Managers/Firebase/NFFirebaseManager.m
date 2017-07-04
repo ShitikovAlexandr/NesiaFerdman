@@ -69,7 +69,13 @@
         [event.values addObjectsFromArray:tempValues];
     }
     eventlDictionary = (NSMutableDictionary*)[event convertToDictionary];
-    [[[[[self.ref child:@"Users"] child:userId] child:@"Events"]child:event.eventId] updateChildValues:eventlDictionary];
+    [[[[[self.ref child:@"Users"] child:userId] child:@"Events"]child:event.eventId] updateChildValues:eventlDictionary
+                                                                                   withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref)
+    {
+        if (error) {
+            NSLog(@"error write to firebase %@", error);
+        }
+    }];
 }
 
 - (void)deleteEventFromFirebase:(NFEvent *)event withUserId:(NSString *)userId {

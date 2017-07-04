@@ -10,4 +10,6 @@
 
 @interface NFPop : ISMessages
 
++ (void)startAlertWithMassage:(NSString *)massage;
+
 @end

@@ -34,7 +34,5 @@
 - (void)updateGoogleEventWith:(NFEvent*)event;
 - (void)deleteGoogleEventWithEvent:(NFEvent*)event;
 
-- (NFEvent *)NFEventFromGoogle:(GTLCalendarEvent *)googleEvent;
-
 
 @end

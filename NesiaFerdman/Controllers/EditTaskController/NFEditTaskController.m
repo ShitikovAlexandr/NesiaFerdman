@@ -18,6 +18,8 @@
 #import "NFSettingManager.h"
 #import "NFTextField.h"
 #import "NFTextView.h"
+#import "UIBarButtonItem+FHButtons.h"
+
 
 
 @interface NFEditTaskController ()
@@ -49,15 +51,17 @@ UICollectionViewDelegateFlowLayout
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
+@property (assign, nonatomic) BOOL isEditing;
+@property (assign, nonatomic) CGFloat standartSize;
 @end
 
 @implementation NFEditTaskController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Задача";
+    _standartSize = 44.0;
+    _isEditing = false;
     self.selectedTags = [NSMutableArray array];
-    //    self.tableView.tableFooterView = [UIView new];
     self.tableView.estimatedRowHeight = 90;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self setStartDataToDisplay];
@@ -69,6 +73,12 @@ UICollectionViewDelegateFlowLayout
     [_titleOfTaskTextField validateWithTarget:self placeholderText:@"Заглавие"];
     [_taskDescriptionTextView validateWithTarget:self
                                  placeholderText:@"Описание" min:0 max:300];
+    if (_event) {
+        [self setPreviewOptions];
+    } else {
+        [self setEditOptions];
+    }
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -90,6 +100,12 @@ UICollectionViewDelegateFlowLayout
         return _textFrame.size.height < 90.f ? 90 : _textFrame.size.height;
     } else if (indexPath.row == 2) {
         return 62.0;
+    } else  if (indexPath.row == 0 || indexPath.row == 1) {
+        if (!_isEditing) {
+            return 0;
+        } else {
+            return _standartSize;
+        }
     } else {
         return UITableViewAutomaticDimension;
     }
@@ -167,6 +183,7 @@ UICollectionViewDelegateFlowLayout
     self.taskDescriptionTextView.placeholder = @"Описание";
     [self.deleteButton setTitle:@"Удалить задачу" forState:UIControlStateNormal];
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    [_selectedTags removeAllObjects];
     [_selectedTags addObjectsFromArray:_event.values];
     if (_event) {
         self.deleteButton.hidden = NO;
@@ -185,12 +202,13 @@ UICollectionViewDelegateFlowLayout
         self.compliteButton.selected = _event.isDone;
     } else {
         self.deleteButton.hidden = YES;
-        [self.saveButton setTitle:@"Сохранить"];
+//        [self.saveButton setTitle:@"Сохранить"];
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
         
     }
+    [self.collectionView reloadData];
 }
 
 - (void)configurePickers {
@@ -242,7 +260,7 @@ UICollectionViewDelegateFlowLayout
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFTagCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NFTagCell" forIndexPath:indexPath];
     NFValue *val = [self.selectedTags objectAtIndex:indexPath.item];
-    [cell addDataToCell:val];
+    [cell addDataToCell:val isEditMode:_isEditing];
     return cell;
 }
 
@@ -260,7 +278,7 @@ UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFValue *val = [self.selectedTags objectAtIndex:indexPath.item];
-    return [NFTagCell calculateSizeWithValue:val];
+    return [NFTagCell calculateSizeWithValue:val isEditMode:_isEditing];
 }
 
 - (CATransition *)swipeTransitionToLeftSide:(BOOL)leftSide
@@ -268,8 +286,8 @@ UICollectionViewDelegateFlowLayout
     CATransition* transition = [CATransition animation];
     transition.startProgress = 0;
     transition.endProgress = 1.0;
-    transition.type = kCATransitionPush;
-    transition.subtype = leftSide ? kCATransitionFromRight : kCATransitionFromLeft;
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = leftSide ? kCATransitionFromRight : kCATransitionFromTop;
     transition.duration = 0.3;
     return transition;
 }
@@ -301,14 +319,60 @@ UICollectionViewDelegateFlowLayout
         } else {
             [[NFSyncManager sharedManager] editEventWithSetting:_event];
         }
-        
     }
-    
 }
 
 - (void)endUpdate {
     [_indicator endAnimating];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self setPreviewOptions];
+    //[self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)setPreviewOptions {
+    [self setStartDataToDisplay];
+    self.isEditing = false;
+    self.title = @"Задача";
+    UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:@"Изменить" style:UIBarButtonItemStylePlain target:self action:@selector (setEditOptions)];
+    self.navigationItem.rightBarButtonItem = rigtButton;
+    [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    self.titleOfTaskTextField.userInteractionEnabled = false;
+    self.taskDescriptionTextView.userInteractionEnabled = false;
+    self.starttextField.userInteractionEnabled = false;
+    self.endTextField.userInteractionEnabled = false;
+    self.collectionView.userInteractionEnabled = false;
+    [self.collectionView.layer addAnimation:[self swipeTransitionToLeftSide:YES ] forKey:nil];
+    [self.collectionView reloadData];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+    
+}
+
+- (void)setEditOptions {
+    self.isEditing = true;
+    if (_event) {
+        self.title = @"Редактирование";
+        UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Отмена" style:UIBarButtonItemStylePlain target:self action:@selector (setPreviewOptions)];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
+    } else {
+        [self setStartDataToDisplay];
+        [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    }
+    
+    UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:@"Сохранить" style:UIBarButtonItemStylePlain target:self action:@selector (saveChanges)];
+    self.navigationItem.rightBarButtonItem = rigtButton;
+    
+    self.titleOfTaskTextField.userInteractionEnabled = true;
+    self.taskDescriptionTextView.userInteractionEnabled = true;
+    self.starttextField.userInteractionEnabled = true;
+    self.endTextField.userInteractionEnabled = true;
+    self.collectionView.userInteractionEnabled = true;
+    [self.collectionView.layer addAnimation:[self swipeTransitionToLeftSide:YES] forKey:nil];
+    [self.collectionView reloadData];
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+}
+
+
+
 
 @end

@@ -15,8 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
-+ (CGSize)calculateSizeWithValue:(NFValue*)value;
-
-- (void)addDataToCell:(NFValue*)value;
++ (CGSize)calculateSizeWithValue:(NFValue*)value isEditMode:(BOOL)mode;
+- (void)addDataToCell:(NFValue*)value isEditMode:(BOOL)editMode;
 
 @end

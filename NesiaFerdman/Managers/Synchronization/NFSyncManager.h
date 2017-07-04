@@ -44,6 +44,8 @@
 - (void)updateEventInGoogleWithEvent:(NFEvent*)event;
 - (void)deleteEventFromGoogle:(NFEvent*)event;
 
++ (BOOL)connectedInternet;
+
 
 
 

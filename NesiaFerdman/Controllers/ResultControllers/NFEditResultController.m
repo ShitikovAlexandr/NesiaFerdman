@@ -19,7 +19,7 @@
 
 @interface NFEditResultController ()
 @property (weak, nonatomic) IBOutlet NFViewWithDownBorder *mainView;
-@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet NFTextView *textView;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 
 @end
@@ -34,6 +34,7 @@
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Сохранить" style:UIBarButtonItemStylePlain target:self action:@selector(saveChanges)];
     self.navigationItem.rightBarButtonItem = item;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    [self.textView validateWithTarget:self placeholderText:@"Описание" min:1 max:300];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,18 +67,21 @@
 }
 
 - (void)saveChanges {
-    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
-    [_indicator startAnimating];
-    if (!_resultItem) {
-        _resultItem = [[NFResult alloc]  init];
-        _resultItem.resultCategoryId = _category.resultCategoryId;
-        _resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
+    if ([_textView isValidString]) {
+        
+        _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+        [_indicator startAnimating];
+        if (!_resultItem) {
+            _resultItem = [[NFResult alloc]  init];
+            _resultItem.resultCategoryId = _category.resultCategoryId;
+            _resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
+        }
+        _resultItem.resultDescription = self.textView.text;
+        [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[NFSyncManager sharedManager]  updateAllData];
+        });
     }
-    _resultItem.resultDescription = self.textView.text;
-    [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [[NFSyncManager sharedManager]  updateAllData];
-    });
 }
 
 - (void)endUpdate {

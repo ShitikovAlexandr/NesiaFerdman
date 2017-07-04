@@ -277,8 +277,10 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                      }
                      NSLog(@"Adding Event…");
                      
+                     
                  } else {
                      NSLog(@"Event Entry Failed");
+                     [NFPop startAlertWithMassage:@"Ошибка добавления в Google"];
                  }
                  [[NFSyncManager sharedManager] writeEventToFirebase:event];
              }];

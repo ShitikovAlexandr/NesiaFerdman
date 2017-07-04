@@ -9,6 +9,11 @@
 #import "NFSyncManager.h"
 #import "NotifyList.h"
 #import "NFSettingManager.h"
+#import <SystemConfiguration/SystemConfiguration.h>
+#import "Reachability.h"
+
+
+
 
 @interface NFSyncManager()
 
@@ -65,6 +70,13 @@
     return self;
 }
 
++ (BOOL)connectedInternet
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return networkStatus != NotReachable;
+}
+
 - (void)addStandartListOfValue {
     [[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:_userId];
 }
@@ -78,6 +90,10 @@
 }
 
 - (void)writeNewEventWithSetting:(NFEvent*)event {
+    if (![NFSyncManager connectedInternet]) {
+        [NFPop startAlertWithMassage:@"Проверте интернет соединение!!!"];
+    }
+    
     if ([NFSettingManager isOnGoogleSync]) {
         if ([NFSettingManager isOnWriteToGoogle]) {
             event.socialType = GoogleEvent;

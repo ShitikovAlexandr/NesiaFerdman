@@ -16,20 +16,33 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.cancelButton.layer.cornerRadius = self.cancelButton.frame.size.height/2.0;
+    self.cancelButton.userInteractionEnabled = false;
     self.layer.masksToBounds = true;
+    
     
 }
 
 
-+ (CGSize)calculateSizeWithValue:(NFValue*)value {
++ (CGSize)calculateSizeWithValue:(NFValue*)value isEditMode:(BOOL)editMode {
     UILabel *label = [[UILabel alloc] init];
     label.text = [value valueForKey:@"valueTitle"];
     [label sizeToFit];
-    return CGSizeMake(label.frame.size.width + 60.f, 45.f);
+    if (editMode) {
+        return CGSizeMake(label.frame.size.width + 60.f, 45.f);
+    } else {
+        return CGSizeMake(label.frame.size.width + 25.f, 45.f);
+    }
+    
 }
 
-- (void)addDataToCell:(NFValue*)value {
+- (void)addDataToCell:(NFValue*)value isEditMode:(BOOL)editMode {
     _titleLabel.text = [value valueForKey:@"valueTitle"];
+    if (editMode) {
+        self.cancelButton.hidden = NO;
+    } else {
+        self.cancelButton.hidden = YES;
+
+    }
 }
 
 - (void)layoutSubviews {

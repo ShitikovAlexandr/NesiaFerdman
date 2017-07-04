@@ -40,6 +40,8 @@
 		C216D8AE1EB1D674001D1006 /* NFMonthTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8AD1EB1D674001D1006 /* NFMonthTask.m */; };
 		C216D8B11EB1D6CF001D1006 /* NFYearTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8B01EB1D6CF001D1006 /* NFYearTask.m */; };
 		C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */; };
+		C2176CA31F0BE9CC00748C64 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2176CA21F0BE9CC00748C64 /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		C2176CA71F0BEB5100748C64 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C2176CA61F0BEB5100748C64 /* Reachability.m */; };
 		C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */ = {isa = PBXBuildFile; fileRef = C21B0ECD1EFA642C001D85CE /* quote_img.png */; };
 		C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */; };
 		C21B0ED51EFAAD84001D85CE /* NFEditResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED41EFAAD84001D85CE /* NFEditResultController.m */; };
@@ -295,6 +297,9 @@
 		C2176C9D1F0B7DB700748C64 /* NFDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDateFormatter.h; sourceTree = "<group>"; };
 		C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDateFormatter.m; sourceTree = "<group>"; };
 		C2176CA11F0B842C00748C64 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C2176CA21F0BE9CC00748C64 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C2176CA51F0BEB5100748C64 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C2176CA61F0BEB5100748C64 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C21B0ECD1EFA642C001D85CE /* quote_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote_img.png; sourceTree = "<group>"; };
 		C21B0ED01EFA934D001D85CE /* UIBarButtonItem+FHButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+FHButtons.h"; sourceTree = "<group>"; };
 		C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+FHButtons.m"; sourceTree = "<group>"; };
@@ -573,6 +578,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2176CA31F0BE9CC00748C64 /* SystemConfiguration.framework in Frameworks */,
 				C25CBA771ECC543E00026855 /* EventKit.framework in Frameworks */,
 				D0D88CE4E2655892A0D39FFA /* libPods-NesiaFerdman.a in Frameworks */,
 			);
@@ -711,6 +717,15 @@
 				C216D8B01EB1D6CF001D1006 /* NFYearTask.m */,
 			);
 			path = TaskManagerModels;
+			sourceTree = "<group>";
+		};
+		C2176CA41F0BEB4400748C64 /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				C2176CA51F0BEB5100748C64 /* Reachability.h */,
+				C2176CA61F0BEB5100748C64 /* Reachability.m */,
+			);
+			path = Reachability;
 			sourceTree = "<group>";
 		};
 		C21B0ED61EFABE6C001D85CE /* ResultCell */ = {
@@ -1537,6 +1552,8 @@
 		EFCBC921D59AEB1D5C14CF63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C2176CA41F0BEB4400748C64 /* Reachability */,
+				C2176CA21F0BE9CC00748C64 /* SystemConfiguration.framework */,
 				C23AD8C41EFCF26300BAFF1E /* TextFieldValidator */,
 				C25CBA761ECC543E00026855 /* EventKit.framework */,
 				4D91AA015C04563F622F9B93 /* libPods-NesiaFerdman.a */,
@@ -1949,6 +1966,7 @@
 				C20595751EF2C59300BF3BFD /* NFStatisticDetailController.m in Sources */,
 				C21B0ED51EFAAD84001D85CE /* NFEditResultController.m in Sources */,
 				C2FE1C631E9F541E00B4E03A /* NFSegmentedControl.m in Sources */,
+				C2176CA71F0BEB5100748C64 /* Reachability.m in Sources */,
 				C216D8AE1EB1D674001D1006 /* NFMonthTask.m in Sources */,
 				C2B3D97A1EDF194200A0A44E /* NFEditTaskController.m in Sources */,
 				C2B3C8AC1EE935FA000B917D /* NFValueController.m in Sources */,

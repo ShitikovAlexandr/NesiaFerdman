@@ -53,17 +53,9 @@
     self.filterTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_filterTextField   keyTitle:@"valueTitle"];
     self.tableView.tableFooterView = [UIView new];
-    
-//    [NFStyleKit drawDownBorderWithView:self.headerMainView];
-    
-//    [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
-//    self.headerMainView.backgroundColor = [UIColor colorWithRed:240/255.0 green:239/255.0 blue:245/255.0 alpha:1];
     self.dataArray = [NSMutableArray array];
     _calendarManager = [JTCalendarManager new];
     _calendarManager.delegate = self;
-    
-    //_eventsByDate = [NFTaskManager sharedManager].eventTaskDictionary;
-    
     
     [self createMinAndMaxDate];
     _calendarManager.dateHelper.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
@@ -85,7 +77,6 @@
 }
 
 - (void)addDataToDisplay {
-//    [_eventsByDate removeAllObjects];
     _eventsByDate = [NSMutableDictionary dictionary];
 
     _eventsByDate = [[NFTaskManager sharedManager] getAllTaskDictionaryWithFilter];
@@ -352,7 +343,7 @@
     [self.dataArray removeAllObjects];
     self.dataArray = [[NFTaskManager sharedManager] getTasksForDay:date];
     [self.tableView reloadData];
-    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 
