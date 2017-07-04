@@ -21,7 +21,7 @@
         _startDate = start;
         _endDate = end;
         _currentDate = [NSDate date];
-        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"dd/MM/yyyy"];
         _currentDateString = [dateFormatter stringFromDate:[NSDate date]];
         self.fromToDateArray = [NSMutableArray array];
@@ -35,7 +35,8 @@
 - (NSMutableArray *)getDateListFrom:(NSDate *)from to:(NSDate *)to {
     
     NSMutableArray *dateList = [NSMutableArray array];
-    NSCalendar *currentCalendar = [NSCalendar currentCalendar];
+    NSCalendar *currentCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [currentCalendar setFirstWeekday:2];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];
     [dateList addObject: from];
@@ -51,7 +52,10 @@
 - (NSMutableArray *)getWeeksFrom:(NSDate *)from to:(NSDate *)to {
     
     NSMutableArray *weeksArray = [NSMutableArray array];
-    NSCalendar *cal = [NSCalendar currentCalendar];
+    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];;
+//    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [cal setFirstWeekday:2];
+    
     NSDate *now = from;
     NSDate *startOfTheWeek;
     NSDate *endOfWeek;

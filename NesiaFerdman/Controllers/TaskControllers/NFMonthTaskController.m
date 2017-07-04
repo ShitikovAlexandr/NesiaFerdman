@@ -67,6 +67,7 @@
     
     [self createMinAndMaxDate];
     _calendarManager.dateHelper.calendar.locale = [NSLocale localeWithLocaleIdentifier:@"ru_RU"];
+    [_calendarManager.dateHelper.calendar setFirstWeekday:1];
     
     [_calendarManager setMenuView:_calendarMenuView];
     [_calendarManager setContentView:_calendarContentView];
@@ -203,11 +204,11 @@
 }
 
 // Used only to have a key for _eventsByDate
-- (NSDateFormatter *)dateFormatter
+- (NFDateFormatter *)dateFormatter
 {
-    static NSDateFormatter *dateFormatter;
+    static NFDateFormatter *dateFormatter;
     if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
+        dateFormatter = [NFDateFormatter new];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
     }
     
@@ -226,9 +227,9 @@
 
 - (void)calendar:(JTCalendarManager *)calendar prepareMenuItemView:(UILabel *)menuItemView date:(NSDate *)date
 {
-    static NSDateFormatter *dateFormatter;
+    static NFDateFormatter *dateFormatter;
     if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
+        dateFormatter = [NFDateFormatter new];
         dateFormatter.dateFormat = @"LLLL yyyy";
         
         dateFormatter.locale = _calendarManager.dateHelper.calendar.locale;
