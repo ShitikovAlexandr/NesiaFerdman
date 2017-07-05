@@ -53,6 +53,7 @@
 
 - (NSDictionary *)convertToDictionary {
     
+    
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:count];

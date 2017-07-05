@@ -8,11 +8,16 @@
 
 #import "NFPop.h"
 
-@interface NFPop ()
+static BOOL isShowAlert = false;
 
+@interface NFPop ()
+@property (assign, nonatomic) BOOL isShowAlert;
 @end
 
 @implementation NFPop
+
+@synthesize isShowAlert;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,16 +31,21 @@
 
 
 + (void)startAlertWithMassage:(NSString *)massage {
+    if (!isShowAlert) {
+        isShowAlert = true;
     [NFPop showCardAlertWithTitle:@""
                                message:massage
                               duration:3.f
                            hideOnSwipe:YES
                              hideOnTap:YES
-                             alertType:ISAlertTypeSuccess
+                             alertType:ISAlertTypeWarning
                          alertPosition:ISAlertPositionTop
                                didHide:^(BOOL finished) {
                                    NSLog(@"Alert did hide.");
+                                   isShowAlert = false;
                                }];
+    }
+
 }
 
 @end

@@ -33,6 +33,9 @@
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
     });
+    if (![self connectedInternet]) {
+        [NFPop startAlertWithMassage:kErrorInternetconnection];
+    }
     return manager;
 }
 
@@ -78,6 +81,7 @@
 }
 
 - (void)addStandartListOfValue {
+    
     [[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:_userId];
 }
 
@@ -90,9 +94,6 @@
 }
 
 - (void)writeNewEventWithSetting:(NFEvent*)event {
-    if (![NFSyncManager connectedInternet]) {
-        [NFPop startAlertWithMassage:@"Проверте интернет соединение!!!"];
-    }
     
     if ([NFSettingManager isOnGoogleSync]) {
         if ([NFSettingManager isOnWriteToGoogle]) {
@@ -108,7 +109,7 @@
         event.socialType = NesiaEvent;
         [self writeEventToFirebase:event];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NFSyncManager sharedManager]  updateAllData];
     });
 }
@@ -127,7 +128,7 @@
     } else {
         [self writeEventToFirebase:event];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NFSyncManager sharedManager]  updateAllData];
     });
 }
@@ -147,7 +148,7 @@
     } else {
         [self deleteEventFromFirebase:event];
     }
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [[NFSyncManager sharedManager]  updateAllData];
     });
 }

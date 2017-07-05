@@ -71,7 +71,18 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
     }
 }
 
+- (void)createCalendarWithTitle:(NSString*)title {
+    GTLCalendarCalendar *new = [[GTLCalendarCalendar alloc] init];
+    new.summary = title;
+    GTLQueryCalendar *query = [GTLQueryCalendar queryForCalendarsInsertWithObject:new];
+    [self.service executeQuery:query
+             completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                 NSLog(@"new calendar %@", object);
+             }];
+}
+
 - (void)getCalendarsItemsWithCount:(NSInteger)count minDate:(NSDate *)minDate maxDate:(NSDate *)maxDate {
+    //[self createCalendarWithTitle:@"Коуч ежедневник"];
     GTLQueryCalendar *query = [GTLQueryCalendar queryForCalendarListList];
     [self.service executeQuery:query
              completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {

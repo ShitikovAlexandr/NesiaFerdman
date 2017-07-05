@@ -8,7 +8,16 @@
 
 #import <ISMessages/ISMessages.h>
 
+#define kGoogleWriteError           @"Ошибка записи в Google"
+#define kGoogleReadError            @"Ошибка чтения с Google"
+#define kFirebaseWriteError         @"Ошибка записи в базу данных"
+#define kFirebaseReadError          @"Ошибка чтения с базы данных"
+#define kErrorInternetconnection    @"Проверте интернет соединение"
+
 @interface NFPop : ISMessages
+
+
+
 
 + (void)startAlertWithMassage:(NSString *)massage;
 
