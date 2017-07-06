@@ -31,6 +31,15 @@
         self.valueIndex = [dictionary objectForKey:@"valueIndex"];
         self.valueImage = [dictionary objectForKey:@"valueImage"] ? [dictionary objectForKey:@"valueImage"] : @"defaultValue.png";
         self.isDeleted = [[dictionary objectForKey:@"isDeleted"] boolValue];
+        self.manifestations = [NSMutableArray array];
+        if ([dictionary objectForKey:@"manifestations"]) {
+            NSMutableArray *dicArray = [NSMutableArray array];
+            [dicArray addObjectsFromArray:[[dictionary objectForKey:@"manifestations"] allValues]];
+            for (NSDictionary *dic in dicArray) {
+                NFManifestation *item = [[NFManifestation alloc] initWithDictionary:dic];
+                [self.manifestations addObject:item];
+            }
+        }
     }
     return self;
 }

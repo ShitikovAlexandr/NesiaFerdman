@@ -85,6 +85,16 @@
     [[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:_userId];
 }
 
+- (void)addMainifestation:(NFManifestation*)manifestation toValue:(NFValue*)value {
+    [[NFFirebaseManager sharedManager] addManifestation:manifestation toValue:value userId:_userId];
+}
+
+- (NSMutableArray*)getListOfManifestationFromValue:(NFValue*)value {
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObjectsFromArray:[[NFFirebaseManager sharedManager] getAllManifestationsForValue:value userId:_userId]];
+    return array;
+}
+
 - (void)addStandartListOfMainifestations {
     [[NFFirebaseManager sharedManager] addSatndartListOfManifestations];
 }

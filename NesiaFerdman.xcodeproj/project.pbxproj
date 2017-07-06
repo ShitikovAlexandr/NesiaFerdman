@@ -56,6 +56,10 @@
 		C22407A01E9CB352004B089A /* NesiaFerdmanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C224079F1E9CB352004B089A /* NesiaFerdmanUITests.m */; };
 		C22407BF1E9CB78E004B089A /* NFRoundetView.m in Sources */ = {isa = PBXBuildFile; fileRef = C22407BE1E9CB78E004B089A /* NFRoundetView.m */; };
 		C22407C21E9CB7B5004B089A /* NFSplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22407C11E9CB7B5004B089A /* NFSplashViewController.m */; };
+		C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2249D0A1F0E3C5200E7269E /* NewMain.storyboard */; };
+		C2249D0E1F0E3CC200E7269E /* NFValueDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D0D1F0E3CC200E7269E /* NFValueDetailController.m */; };
+		C2249D111F0E3CE800E7269E /* NFAddValueCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D101F0E3CE800E7269E /* NFAddValueCategoryController.m */; };
+		C2249D151F0E7BC100E7269E /* NFValueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */; };
 		C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */; };
 		C2359FF61EC9AA6700EB8FDC /* NFPageConclusionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2359FF51EC9AA6700EB8FDC /* NFPageConclusionsController.m */; };
 		C2359FF91EC9AA8800EB8FDC /* NFDayConclusionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2359FF81EC9AA8800EB8FDC /* NFDayConclusionsController.m */; };
@@ -326,6 +330,13 @@
 		C22407BE1E9CB78E004B089A /* NFRoundetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRoundetView.m; sourceTree = "<group>"; };
 		C22407C01E9CB7B5004B089A /* NFSplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFSplashViewController.h; path = ../NFSplashViewController.h; sourceTree = "<group>"; };
 		C22407C11E9CB7B5004B089A /* NFSplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFSplashViewController.m; path = ../NFSplashViewController.m; sourceTree = "<group>"; };
+		C2249D0A1F0E3C5200E7269E /* NewMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NewMain.storyboard; sourceTree = "<group>"; };
+		C2249D0C1F0E3CC200E7269E /* NFValueDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueDetailController.h; sourceTree = "<group>"; };
+		C2249D0D1F0E3CC200E7269E /* NFValueDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValueDetailController.m; sourceTree = "<group>"; };
+		C2249D0F1F0E3CE800E7269E /* NFAddValueCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAddValueCategoryController.h; sourceTree = "<group>"; };
+		C2249D101F0E3CE800E7269E /* NFAddValueCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAddValueCategoryController.m; sourceTree = "<group>"; };
+		C2249D131F0E7BC100E7269E /* NFValueDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueDetailCell.h; sourceTree = "<group>"; };
+		C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValueDetailCell.m; sourceTree = "<group>"; };
 		C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "result_nav_bar_icon@2x.png"; sourceTree = "<group>"; };
 		C2359FF41EC9AA6700EB8FDC /* NFPageConclusionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPageConclusionsController.h; sourceTree = "<group>"; };
 		C2359FF51EC9AA6700EB8FDC /* NFPageConclusionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPageConclusionsController.m; sourceTree = "<group>"; };
@@ -781,6 +792,8 @@
 				C224077A1E9CB351004B089A /* AppDelegate.h */,
 				C224077B1E9CB351004B089A /* AppDelegate.m */,
 				C22407801E9CB351004B089A /* Main.storyboard */,
+				C2249D0A1F0E3C5200E7269E /* NewMain.storyboard */,
+				C208766F1ED83144005FF719 /* NFLogin.storyboard */,
 				C22407861E9CB351004B089A /* Assets.xcassets */,
 				C22407881E9CB351004B089A /* LaunchScreen.storyboard */,
 				C224078B1E9CB351004B089A /* Info.plist */,
@@ -788,7 +801,6 @@
 				C22407831E9CB351004B089A /* NesiaFerdman.xcdatamodeld */,
 				C22407781E9CB351004B089A /* main.m */,
 				C257375A1E9CFBD200C4A4EA /* NFColors.h */,
-				C208766F1ED83144005FF719 /* NFLogin.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -918,6 +930,15 @@
 				C2470BFD1EFBA929003BA93D /* NFTableViewCell.m */,
 			);
 			path = UIClass;
+			sourceTree = "<group>";
+		};
+		C2249D121F0E7BA500E7269E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2249D131F0E7BC100E7269E /* NFValueDetailCell.h */,
+				C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C22531851EEFFB120050BB24 /* DayTaskCell */ = {
@@ -1246,8 +1267,13 @@
 		C2B3C8A91EE9355A000B917D /* ValueController */ = {
 			isa = PBXGroup;
 			children = (
+				C2249D121F0E7BA500E7269E /* Cell */,
 				C2B3C8AA1EE935FA000B917D /* NFValueController.h */,
 				C2B3C8AB1EE935FA000B917D /* NFValueController.m */,
+				C2249D0C1F0E3CC200E7269E /* NFValueDetailController.h */,
+				C2249D0D1F0E3CC200E7269E /* NFValueDetailController.m */,
+				C2249D0F1F0E3CE800E7269E /* NFAddValueCategoryController.h */,
+				C2249D101F0E3CE800E7269E /* NFAddValueCategoryController.m */,
 			);
 			path = ValueController;
 			sourceTree = "<group>";
@@ -1694,6 +1720,7 @@
 				C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */,
 				C249718E1EAE2F7300A2CAD1 /* GoogleService-Info.plist in Resources */,
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
+				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
 				C2C0D6071EC5F42C003C7741 /* importantIcon@3x.png in Resources */,
 				C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */,
@@ -1955,6 +1982,7 @@
 				C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */,
 				C2470C341EFBEA37003BA93D /* NFFirebaseManager.m in Sources */,
 				C2470BFE1EFBA929003BA93D /* NFTableViewCell.m in Sources */,
+				C2249D0E1F0E3CC200E7269E /* NFValueDetailController.m in Sources */,
 				C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */,
 				C2AA72061F028FD4007DB785 /* NFMenuSwitcherCell.m in Sources */,
 				C28190061EAF40C100EE13AB /* NFGoogleUserInfo.m in Sources */,
@@ -1969,6 +1997,7 @@
 				C2176CA71F0BEB5100748C64 /* Reachability.m in Sources */,
 				C216D8AE1EB1D674001D1006 /* NFMonthTask.m in Sources */,
 				C2B3D97A1EDF194200A0A44E /* NFEditTaskController.m in Sources */,
+				C2249D151F0E7BC100E7269E /* NFValueDetailCell.m in Sources */,
 				C2B3C8AC1EE935FA000B917D /* NFValueController.m in Sources */,
 				C286D6041EA613EC007C2395 /* NFDayView.m in Sources */,
 				C28DD0C31EF430CD004E0C7E /* NFAnimatedLabel.m in Sources */,
@@ -1990,6 +2019,7 @@
 				C2359FF61EC9AA6700EB8FDC /* NFPageConclusionsController.m in Sources */,
 				C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */,
 				C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */,
+				C2249D111F0E3CE800E7269E /* NFAddValueCategoryController.m in Sources */,
 				C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */,
 				C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */,
 				C2DDBCEC1ED45A4300F61F02 /* NFLogoView.m in Sources */,

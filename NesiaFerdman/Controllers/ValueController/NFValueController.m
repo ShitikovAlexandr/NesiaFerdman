@@ -14,6 +14,7 @@
 #import "NFStyleKit.h"
 #import "NFActivityIndicatorView.h"
 #import "TPKeyboardAvoidingTableView.h"
+#import "NFValueDetailController.h"
 
 
 @interface NFValueController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
@@ -67,6 +68,10 @@
 
 #pragma mark - UITableViewDelegate
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NFValue *value = [_dataArray objectAtIndex:indexPath.row];
+    [self navigateToDetailWithValue:value];
+}
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
@@ -219,6 +224,16 @@
             [[NFSyncManager sharedManager]  updateAllData];
         });
     }
+}
+
+- (void)navigateToDetailWithValue:(NFValue*)value {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"NewMain" bundle:nil];
+    NFValueDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFValueDetailController class])];
+    viewController.value = value;
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFValueDetailControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
+
 }
 
 - (void)addValueCancelAction {

@@ -46,6 +46,8 @@
 
 + (BOOL)connectedInternet;
 
+- (NSMutableArray*)getListOfManifestationFromValue:(NFValue*)value;
+- (void)addMainifestation:(NFManifestation*)manifestation toValue:(NFValue*)value;
 
 
 

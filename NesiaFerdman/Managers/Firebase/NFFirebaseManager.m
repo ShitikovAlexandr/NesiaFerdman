@@ -361,6 +361,50 @@
     [[[[self.ref child:@"Manifestations"]  child:manifestation.categoryKey] child:manifestation.manifestationId] updateChildValues:[manifestation convertToDictionary]];
 }
 
+- (void)addManifestation:(NFManifestation*)manifestation toValue:(NFValue*)value userId:(NSString*)userId {
+    [[[[[[[self.ref child:@"Users"] child:userId]
+         child:@"Values"]
+        child:value.valueId]
+       child:@"manifestations"]
+      child:manifestation.manifestationId]
+     updateChildValues:[manifestation convertToDictionary]];
+}
+
+- (NSMutableArray*)getAllManifestationsForValue:(NFValue*)value userId:(NSString*)userId {
+    NSMutableArray* resultArray = [NSMutableArray new];
+
+    [[[[[[self.ref child:@"Users"] child:userId]
+        child:@"Values"]
+       child:value.valueId]
+      child:@"manifestations"]
+     observeEventType:FIRDataEventTypeValue
+     withBlock:^(FIRDataSnapshot *snapshot) {
+         
+         // Loop over children
+         NSMutableArray *dataArray = [NSMutableArray array];
+         NSEnumerator *children = [snapshot children];
+         FIRDataSnapshot *child;
+         while (child = [children nextObject]) {
+             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+             [dataArray addObject:[value allValues]];
+             NSLog(@"Manifestations");
+         }
+         for (NSDictionary *dic in dataArray) {
+             NSMutableArray *tempArray = [NSMutableArray new];
+             NSMutableArray *list = [NSMutableArray new];
+             [tempArray addObjectsFromArray:[dic allValues]];
+             for (NSDictionary *dicM in tempArray) {
+                 NFManifestation *item = [[NFManifestation alloc] initWithDictionary:dicM];
+                 [list addObject:item];
+             }
+             if (list.count > 0) {
+                 [resultArray addObject:list];
+             }
+         }
+        }];
+    return resultArray;
+}
+
 - (void)addStandartValue:(NFValue *)value withUserId:(NSString *)userId {
     [[[self.ref child:@"Values"]  child:value.valueId] updateChildValues:[value convertToDictionary]];
 }

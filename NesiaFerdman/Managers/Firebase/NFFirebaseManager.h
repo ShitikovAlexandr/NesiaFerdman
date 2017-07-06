@@ -62,5 +62,8 @@
 - (void)getMinSyncInterval;
 - (void)getMaxSyncInterval;
 
+- (NSMutableArray*)getAllManifestationsForValue:(NFValue*)value userId:(NSString*)userId;
+- (void)addManifestation:(NFManifestation*)manifestation toValue:(NFValue*)value userId:(NSString*)userId;
+
 
 @end
