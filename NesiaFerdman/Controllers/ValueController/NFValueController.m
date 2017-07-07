@@ -23,7 +23,6 @@
 @property (strong, nonatomic) NSMutableArray *deletedValues;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 
-
 @end
 
 @implementation NFValueController
@@ -32,7 +31,6 @@
     [super viewDidLoad];
     _deletedValues = [NSMutableArray array];
     self.title = @"Мои ценности";
-    [self addNavigationButtons];
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFValueCell" bundle:nil] forCellReuseIdentifier:@"NFValueCell"];
     [NFStyleKit foterViewWithAddTextFieldtoTableView:_tableView withTarget:self];
@@ -41,7 +39,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
-
+    [self addNavigationButtons];
     [self addDataToDisplay];
 }
 

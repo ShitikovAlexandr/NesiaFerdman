@@ -45,6 +45,7 @@
     if (_minValue > 0) {
         [self endEditingValidation];
     }
+    [self setText: [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     return _isValid;
     
 }
@@ -68,15 +69,16 @@
 }
 
 - (void)endEditingValidation {
-    [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *massage = @"";
+    [self setText: [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];    NSString *massage = @"";
     if (self.text.length < 1) {
+        [self setText:@""];
         massage = @"Строка не должна быть пустой";
         [self setErrorAtributeString];
         [self showAlertWithMasssage:massage];
         _isValid = false;
     }
     else {
+//        [self setText: [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
         self.textColor = [UIColor blackColor];
         [self setValidAtributeString];
         _isValid = true;

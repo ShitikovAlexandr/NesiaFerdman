@@ -279,6 +279,25 @@
 }
 
 - (void)addValue:(NFValue *)value withUserId:(NSString *)userId {
+    
+//    NFValue *val = [[NFValue alloc] init];
+//    val = [value copy];
+//    NSMutableArray *dicItems = [NSMutableArray array];
+//   
+//
+//    for (NFManifestation *item in val.manifestations) {
+//         NSMutableDictionary *temp = [NSMutableDictionary dictionary];
+//        if ([item isKindOfClass:[NFManifestation class]]) {
+//            [temp setValue:[item convertToDictionary] forKey:item.manifestationId];
+//            [dicItems addObject:temp];
+//        } else if ([item isKindOfClass:[NSDictionary class]]) {
+//            [dicItems addObject:item];
+//        }
+//    }
+//    NSLog(@"[val convertToDictionary] %@", [val convertToDictionary]);
+//    [val.manifestations removeAllObjects];
+//    [val.manifestations addObjectsFromArray:dicItems];
+    
     [[[[[self.ref child:@"Users"] child:userId] child:@"Values"] child:value.valueId] updateChildValues:[value convertToDictionary]];
 }
 

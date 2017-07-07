@@ -35,8 +35,8 @@
 
 - (BOOL)isValidString {
     [self endEditingValidation];
+    [self setText: [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     return _isValid;
-    
 }
 - (void)validateText {
     NSString *massage = @"";
@@ -59,7 +59,7 @@
 }
 
 - (void)endEditingValidation {
-    [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    [self setText: [self.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     NSString *massage = @"";
     if (self.text.length < 1) {
         massage = @"Строка не должна быть пустой";

@@ -21,5 +21,6 @@
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (NSDictionary *)convertToDictionary;
+- (id) copyWithZone: (NSZone *) zone;
 
 @end

@@ -9,6 +9,10 @@
 #import "NFValue.h"
 #import <objc/runtime.h>
 
+@interface NFValue() <NSCopying>
+
+@end
+
 
 @implementation NFValue
 
@@ -45,18 +49,32 @@
 }
 
 - (NSDictionary *)convertToDictionary {
-    
     unsigned int count = 0;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     NSMutableDictionary *dictionary = [[NSMutableDictionary alloc] initWithCapacity:count];
     for (int i = 0; i < count; i++) {
         NSString *key = [NSString stringWithUTF8String:property_getName(properties[i])];
         NSString *value = [self valueForKey:key];
-        if (value)
+        if ([value isKindOfClass:[NSArray class]]) {
+            //NSLog(@"array %@", value);
+        }
+        else if (value) {
             [dictionary setObject:value forKey:key];
+        }
     }
     free(properties);
     return dictionary;
+}
+
+- (id) copyWithZone:(NSZone *)zone {
+    NFValue *copyValue = [[NFValue allocWithZone:zone] init];
+    [copyValue setValueTitle:self.valueTitle];
+    [copyValue setValueId:self.valueId];
+    [copyValue setValueIndex:self.valueIndex];
+    [copyValue setValueImage:self.valueImage];
+    [copyValue setIsDeleted:self.isDeleted];
+    [copyValue setManifestations:[NSMutableArray arrayWithArray:self.manifestations]];
+    return copyValue;
 }
 
 
