@@ -1,34 +1,31 @@
 //
-//  NFPageTaskController.m
+//  NFRsultPageController.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/18/17.
+//  Created by Alex_Shitikov on 7/7/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
-#import "NFPageTaskController.h"
-#import "NFDayTaskController.h"
-#import "NFWeekTaskController.h"
-#import "NFMonthTaskController.h"
+#import "NFRsultPageController.h"
+#import "NFResultDayController.h"
+#import "NFResultController.h" //week
+#import "NFResultMonthController.h"
 #import "NFSegmentedControl.h"
-#import "NFGoogleCalendarController.h"
-#import "NFEditTaskController.h"
-#import "NFStatisticController.h"
 
 
-@interface NFPageTaskController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
+@interface NFRsultPageController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (strong, nonatomic) NSArray *viewControllersArray;
 @property (strong, nonatomic) NFSegmentedControl *segmentedControl;
 @end
 
-@implementation NFPageTaskController
+@implementation NFRsultPageController
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.delegate = self;
     self.dataSource = self;
-    self.navigationItem.title = @"Задачи";
+    self.navigationItem.title = @"Итоги";
     [self addMaskViewNavigationBar];
-    
     
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
@@ -38,18 +35,16 @@
     _segmentedControl.center = self.navigationController.navigationBar.center;
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
     
-    [self setNavigationbarButtons];
-    
-    NFDayTaskController *dayController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFDayTaskController"];
-    NFWeekTaskController *weekController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFWeekTaskController"];
-    NFMonthTaskController *monthController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFMonthTaskController"];
+    NFResultDayController *dayController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDayController"];
+    NFResultController *weekController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultController"];
+    NFResultMonthController *monthController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultMonthController"];
     
     _viewControllersArray = [NSArray arrayWithObjects:dayController, weekController, monthController, nil];
     [self setViewControllers:@[dayController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    
 }
-
 
 #pragma mark - UIPageViewControllerDelegate, UIPageViewControllerDataSource -
 
@@ -107,8 +102,9 @@
     return 0;
 }
 
+#pragma mark - Actions
+
 - (IBAction)pressSegment:(NFSegmentedControl *)sender {
-    //NSLog(@"press segment at index %ld", sender.selectedSegmentIndex);
     UIViewController *currentVC = self.viewControllers[0];
     NSUInteger currentIndex = [_viewControllersArray indexOfObject:currentVC];
     if (currentIndex < self.segmentedControl.selectedSegmentIndex) {
@@ -122,56 +118,15 @@
     }
 }
 
-- (void) addButtonAction {
-    //[self navigateToGoogleCalendarScreen];
-    [self navigateToEditTaskScreenWithEvent:nil];
-}
-
-- (void)resultButtonAction {
-    [self navigateToResultWeekScreen];
-}
-
-- (void)navigateToGoogleCalendarScreen {
-    
-    NFGoogleCalendarController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFGoogleCalendarController"];
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFGoogleCalendarNav"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
-- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
-    //NFEditTaskNavController
-    
-    NFEditTaskController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskController"];
-    viewController.event = event;
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskNavController"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
-- (void)navigateToResultWeekScreen {
-    NFStatisticController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-    
-}
-
-- (void)setNavigationbarButtons {
-    
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonAction)];
-    addButton.tintColor = [UIColor whiteColor];
-    //    self.navigationItem.rightBarButtonItem = addButton;
-    
-    UIBarButtonItem *resultButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"statistic_NEW_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(resultButtonAction)];
-    
-    [self.navigationItem setRightBarButtonItems:[NSArray arrayWithObjects:addButton, resultButton, nil]];
-}
+#pragma mark - Helpers
 
 - (void)addMaskViewNavigationBar {
     UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 42, self.view.frame.size.width, 52.0)];
     maskView.backgroundColor = [UIColor clearColor];
     [self.navigationController.navigationBar addSubview:maskView];
 }
+
+
+
 
 @end

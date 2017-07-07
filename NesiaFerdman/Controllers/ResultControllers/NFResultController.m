@@ -16,6 +16,8 @@
 #import "NFSettingManager.h"
 #import "NFResultMenuCell.h"
 
+NSString *const identifierCell = @"Cell";
+
 
 
 @interface NFResultController () <UITableViewDelegate, UITableViewDataSource>
@@ -32,8 +34,6 @@
     self.title = @"Итоги";
     self.tableView.tableFooterView = [UIView new];
     self.dataArray = [NSMutableArray array];
-//    NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-//    NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
                                                              endDate:[NFSettingManager getMaxDate]];
     [self.headerView addNFDateModel:dateLimits weeks:YES];
@@ -59,11 +59,9 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-     NSString *const identifier = @"Cell";
-    
-    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifierCell];
     if (!cell) {
-        cell = [[NFResultMenuCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        cell = [[NFResultMenuCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifierCell];
     }
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [cell addDataToCell:category date:[self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
@@ -83,7 +81,6 @@
     [_dataArray removeAllObjects];
     [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
     [self.tableView reloadData];
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
 }
 
 - (void)addNavigationButton {
