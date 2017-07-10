@@ -16,10 +16,6 @@
 #import "NFSettingManager.h"
 #import "NFResultMenuCell.h"
 
-NSString *const identifierCell = @"Cell";
-
-
-
 @interface NFResultController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -59,9 +55,9 @@ NSString *const identifierCell = @"Cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifierCell];
+    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
-        cell = [[NFResultMenuCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifierCell];
+        cell = [[NFResultMenuCell alloc] initWithDefaultStyle];
     }
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [cell addDataToCell:category date:[self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
@@ -93,10 +89,13 @@ NSString *const identifierCell = @"Cell";
 }
 
 - (void)navigateToDitailCategory:(NFResultCategory*)category {
-    NFResultDetailController *viewCotroller = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
-    viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
-    viewCotroller.selectedCategory = category;
-    [self.navigationController pushViewController:viewCotroller animated:YES];
+    NFResultDetailController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
+    viewController.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
+    viewController.selectedCategory = category;
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
+
 }
 
 @end

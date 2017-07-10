@@ -13,5 +13,8 @@
 @interface NFResultMenuCell : UITableViewCell
 
 - (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate;
+- (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate;
+
+- (instancetype)initWithDefaultStyle;
 
 @end

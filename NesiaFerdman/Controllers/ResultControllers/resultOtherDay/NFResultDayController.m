@@ -11,8 +11,10 @@
 #import "NFResultMenuCell.h"
 #import "NFResultDetailController.h"
 #import "NFTaskManager.h"
-
-NSString *const identifier = @"Cell";
+#import "NFDateModel.h"
+#import "NFSettingManager.h"
+#import "NotifyList.h"
+#import "UIBarButtonItem+FHButtons.h"
 
 @interface NFResultDayController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
@@ -24,7 +26,23 @@ NSString *const identifier = @"Cell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"Итоги";
+    _dataArray = [NSMutableArray array];
+    _tableView.tableFooterView = [UIView new];
+    NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
+                                                             endDate:[NFSettingManager getMaxDate]];
+    [self.headerView addNFDateModel:dateLimits weeks:NO];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self addDataToDisplay];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDataToDisplay) name:HEADER_NOTIF object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_NOTIF object:nil];
 }
 
 #pragma mark - UITableViewDataSource
@@ -34,23 +52,21 @@ NSString *const identifier = @"Cell";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:identifier];
+    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     if (!cell) {
-        cell = [[NFResultMenuCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:identifier];
+        cell = [[NFResultMenuCell alloc] initWithDefaultStyle];
     }
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
-    [cell addDataToCell:category date:[self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
+    [cell addDataToDayCell:category date:self.headerView.selectetDate];
     return cell;
-
 }
-
 
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
-    [self navigateToDitailCategory:category];
+    [self navigateToDetailCategory:category];
 }
 
 #pragma mark - Helpers
@@ -61,15 +77,13 @@ NSString *const identifier = @"Cell";
     [self.tableView reloadData];
 }
 
-
-- (void)navigateToDitailCategory:(NFResultCategory*)category {
-    NFResultDetailController *viewCotroller = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
-    viewCotroller.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
-    viewCotroller.selectedCategory = category;
-    [self.navigationController pushViewController:viewCotroller animated:YES];
+- (void)navigateToDetailCategory:(NFResultCategory*)category {
+    NFResultDetailController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
+    viewController.week = [self.headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex];
+    viewController.selectedCategory = category;
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
 }
-
-
-
 
 @end

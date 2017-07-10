@@ -8,7 +8,7 @@
 
 #import "NFRsultPageController.h"
 #import "NFResultDayController.h"
-#import "NFResultController.h" //week
+#import "NFResultController.h" 
 #import "NFResultMonthController.h"
 #import "NFSegmentedControl.h"
 
@@ -25,6 +25,7 @@
     self.delegate = self;
     self.dataSource = self;
     self.navigationItem.title = @"Итоги";
+    self.tabBarItem.title = @"Итоги";
     [self addMaskViewNavigationBar];
     
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
@@ -43,7 +44,6 @@
     [self setViewControllers:@[dayController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
-    
 }
 
 #pragma mark - UIPageViewControllerDelegate, UIPageViewControllerDataSource -

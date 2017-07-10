@@ -46,6 +46,11 @@
 
 }
 
+- (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate {
+    [self animateLabel:self.detailTextLabel];
+    self.textLabel.text = category.resultCategoryTitle;
+}
+
 
 - (NSInteger)getCategoryCountForWeek:(NFWeekDateModel*)week category:(NFResultCategory*)category {
     NSInteger count = 0;

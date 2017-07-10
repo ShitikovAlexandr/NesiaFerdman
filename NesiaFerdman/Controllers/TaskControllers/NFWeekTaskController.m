@@ -37,8 +37,6 @@
     self.dataArray = [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
     self.tableView.tableFooterView = [UIView new];
-   // NSDate *startDate = [NSDate dateWithTimeIntervalSinceNow:-8000000];
-    //NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:8000000];
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
                                                              endDate:[NFSettingManager getMaxDate]];
     [self.header addNFDateModel:dateLimits weeks:YES];

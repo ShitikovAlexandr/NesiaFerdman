@@ -11,7 +11,6 @@
 #import "NFEditResultController.h"
 #import "NFResultCell.h"
 #import "NFHeaderForTaskSection.h"
-#import "NFWeekDateModel.h"
 #import "NFTaskManager.h"
 
 @interface NFResultDetailController () <UITableViewDelegate, UITableViewDataSource>
