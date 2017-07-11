@@ -12,6 +12,8 @@
 
 
 #define HEADER_NOTIF  @"kHederChange"
+#define HEADER_MONTH @"kHeaderChangeMonth"
+
 #define LONG_CELL_PRESS @"kCellLongPress"
 #define VALUE_FILTER_PRESS @"kValueViewPress"
 #define PICKER_VIEW_IS_PRESSED @"kPickerIsPressed"
