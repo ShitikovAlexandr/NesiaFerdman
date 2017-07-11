@@ -109,7 +109,11 @@
 		C25737A81E9D2B8700C4A4EA /* NFQuoteDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25737A71E9D2B8700C4A4EA /* NFQuoteDayView.m */; };
 		C25CBA771ECC543E00026855 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25CBA761ECC543E00026855 /* EventKit.framework */; };
 		C25E4CC11ECDD619003C100D /* NFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E4CC01ECDD619003C100D /* NFTableView.m */; };
+		C26887EC1F14B48B004E1ED9 /* NFResultDayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */; };
 		C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2697EEB1EDD578E00E1F6C5 /* NFFilterLabel.m */; };
+		C26BA32D1F14D7B30053A138 /* NFResultWeekDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */; };
+		C26BA3301F14E9A00053A138 /* NFResultMonthDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32F1F14E9A00053A138 /* NFResultMonthDataSource.m */; };
+		C26BA3331F14FA2E0053A138 /* NFHeaderMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */; };
 		C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26F333D1EF3BF6000A8E0F3 /* NFRoundProgressView.m */; };
 		C27C82B31F0FCDE3007AD793 /* NFResultDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B21F0FCDE3007AD793 /* NFResultDayController.m */; };
 		C27C82B91F0FCE16007AD793 /* NFRsultPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B81F0FCE16007AD793 /* NFRsultPageController.m */; };
@@ -425,8 +429,16 @@
 		C25CBA761ECC543E00026855 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		C25E4CBF1ECDD619003C100D /* NFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTableView.h; sourceTree = "<group>"; };
 		C25E4CC01ECDD619003C100D /* NFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTableView.m; sourceTree = "<group>"; };
+		C26887EA1F14B48B004E1ED9 /* NFResultDayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDayDataSource.h; sourceTree = "<group>"; };
+		C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultDayDataSource.m; sourceTree = "<group>"; };
 		C2697EEA1EDD578E00E1F6C5 /* NFFilterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFFilterLabel.h; sourceTree = "<group>"; };
 		C2697EEB1EDD578E00E1F6C5 /* NFFilterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFFilterLabel.m; sourceTree = "<group>"; };
+		C26BA32B1F14D7B30053A138 /* NFResultWeekDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultWeekDataSource.h; sourceTree = "<group>"; };
+		C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultWeekDataSource.m; sourceTree = "<group>"; };
+		C26BA32E1F14E9A00053A138 /* NFResultMonthDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultMonthDataSource.h; sourceTree = "<group>"; };
+		C26BA32F1F14E9A00053A138 /* NFResultMonthDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultMonthDataSource.m; sourceTree = "<group>"; };
+		C26BA3311F14FA2E0053A138 /* NFHeaderMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHeaderMonthView.h; sourceTree = "<group>"; };
+		C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderMonthView.m; sourceTree = "<group>"; };
 		C26F333C1EF3BF6000A8E0F3 /* NFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRoundProgressView.h; sourceTree = "<group>"; };
 		C26F333D1EF3BF6000A8E0F3 /* NFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRoundProgressView.m; sourceTree = "<group>"; };
 		C27C82B11F0FCDE3007AD793 /* NFResultDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDayController.h; sourceTree = "<group>"; };
@@ -1204,6 +1216,8 @@
 			children = (
 				C27C82BA1F0FCE8E007AD793 /* NFResultMonthController.h */,
 				C27C82BB1F0FCE8E007AD793 /* NFResultMonthController.m */,
+				C26BA32E1F14E9A00053A138 /* NFResultMonthDataSource.h */,
+				C26BA32F1F14E9A00053A138 /* NFResultMonthDataSource.m */,
 			);
 			path = resultMonth;
 			sourceTree = "<group>";
@@ -1213,6 +1227,8 @@
 			children = (
 				C24DF74D1EF943F2003FCF5C /* NFResultController.h */,
 				C24DF74E1EF943F2003FCF5C /* NFResultController.m */,
+				C26BA32B1F14D7B30053A138 /* NFResultWeekDataSource.h */,
+				C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */,
 			);
 			path = resultWeek;
 			sourceTree = "<group>";
@@ -1222,6 +1238,8 @@
 			children = (
 				C27C82B11F0FCDE3007AD793 /* NFResultDayController.h */,
 				C27C82B21F0FCDE3007AD793 /* NFResultDayController.m */,
+				C26887EA1F14B48B004E1ED9 /* NFResultDayDataSource.h */,
+				C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */,
 			);
 			path = resultOtherDay;
 			sourceTree = "<group>";
@@ -1465,6 +1483,8 @@
 			children = (
 				C2CB58A21EA109390023ADAA /* NFHeaderView.h */,
 				C2CB58A31EA109390023ADAA /* NFHeaderView.m */,
+				C26BA3311F14FA2E0053A138 /* NFHeaderMonthView.h */,
+				C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */,
 			);
 			path = HeaderCollectionView;
 			sourceTree = "<group>";
@@ -2020,6 +2040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C26887EC1F14B48B004E1ED9 /* NFResultDayDataSource.m in Sources */,
 				C28C9BB51EC06B80002D74C0 /* NFValue.m in Sources */,
 				C212DEF21EF130570082EF38 /* NFProgressShapeLayer.m in Sources */,
 				C2FA69091EE1436500D58D18 /* NFTagView.m in Sources */,
@@ -2063,6 +2084,7 @@
 				C25737521E9CD11D00C4A4EA /* NFCircle.m in Sources */,
 				C20EBA031EA8A93C0074C0AF /* NFWeekDayView.m in Sources */,
 				C24AA5191EBB4FAA00ABA92C /* NFPageImportantController.m in Sources */,
+				C26BA3331F14FA2E0053A138 /* NFHeaderMonthView.m in Sources */,
 				C2359FF61EC9AA6700EB8FDC /* NFPageConclusionsController.m in Sources */,
 				C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */,
 				C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */,
@@ -2091,6 +2113,7 @@
 				C2FE1C671E9F610500B4E03A /* NFDayTaskController.m in Sources */,
 				C24552621EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m in Sources */,
 				C2359FF91EC9AA8800EB8FDC /* NFDayConclusionsController.m in Sources */,
+				C26BA3301F14E9A00053A138 /* NFResultMonthDataSource.m in Sources */,
 				C2DDBCFE1ED4732F00F61F02 /* NFLogInButton.m in Sources */,
 				C245526B1EBCC912003EBB11 /* NFToolbar.m in Sources */,
 				C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */,
@@ -2140,6 +2163,7 @@
 				C2CB58A01EA0E8AB0023ADAA /* NFHeaderCell.m in Sources */,
 				C24AA5131EBB281500ABA92C /* NFTaskSimpleCell.m in Sources */,
 				C2D13F7A1EEAE35000A9A4F3 /* NFAddFooterView.m in Sources */,
+				C26BA32D1F14D7B30053A138 /* NFResultWeekDataSource.m in Sources */,
 				C2E334871E9E13070086FDDC /* NFQuoteDay.m in Sources */,
 				C23AD8D11EFD10CB00BAFF1E /* NFTutorialController.m in Sources */,
 				C2FA69101EE164BC00D58D18 /* NFChackBox.m in Sources */,

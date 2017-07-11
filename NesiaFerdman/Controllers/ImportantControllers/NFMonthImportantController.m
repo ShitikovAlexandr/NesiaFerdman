@@ -38,7 +38,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataArray = [NSMutableArray array];
     
     self.dataArray = [NSMutableArray array];
     self.tableView.tableFooterView = [UIView new];
