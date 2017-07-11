@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NFResultMonthController : UIPageViewController
+@interface NFResultMonthController : UIViewController
+
+
 
 @end
