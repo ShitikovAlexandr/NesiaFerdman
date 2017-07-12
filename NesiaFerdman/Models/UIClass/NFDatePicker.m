@@ -29,6 +29,8 @@
         self.layer.shadowRadius = 3;
         self.layer.shadowOpacity = 3;
         self.layer.masksToBounds = NO;
+
+
         
         self.selectedDate = [NSDate date];
         //[self setLocale:[NSLocale systemLocale]];

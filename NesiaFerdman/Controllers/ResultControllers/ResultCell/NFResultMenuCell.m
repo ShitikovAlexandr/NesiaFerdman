@@ -22,6 +22,8 @@
     // Configure the view for the selected state
 }
 
+#pragma mark - init methods
+
 - (instancetype)initWithDefaultStyle {
     self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
     if (self) {
@@ -39,6 +41,8 @@
     [label.layer addAnimation:animation forKey:@"changeTextTransition"];
 }
 
+#pragma mark - parse data to cell methods
+
 - (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate {
     [self animateLabel:self.detailTextLabel];
     self.textLabel.text = category.resultCategoryTitle;
@@ -49,8 +53,22 @@
 - (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate {
     [self animateLabel:self.detailTextLabel];
     self.textLabel.text = category.resultCategoryTitle;
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForDay:currentDate category:category]];
 }
 
+- (void)addDataToMonthCell:(NFResultCategory*)category date:(NSDate*)currentDate {
+    [self animateLabel:self.detailTextLabel];
+    self.textLabel.text = category.resultCategoryTitle;
+    self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForMonth:currentDate category:category]];
+}
+
+#pragma mark - Result count methods
+
+- (NSInteger)getCategoryCountForDay:(NSDate*)day category:(NFResultCategory*)category {
+    NSMutableArray *dayArray = [NSMutableArray array];
+    [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:category forDay:day]];
+    return dayArray.count;
+}
 
 - (NSInteger)getCategoryCountForWeek:(NFWeekDateModel*)week category:(NFResultCategory*)category {
     NSInteger count = 0;
@@ -63,6 +81,20 @@
     }
     return count;
 }
+
+- (NSInteger)getCategoryCountForMonth:(NSDate*)monthDate category:(NFResultCategory*)category {
+    NSInteger count = 0;
+    NSMutableArray *monthArray = [NSMutableArray array];
+    [monthArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:category forMonth:monthDate]];
+    if (monthArray.count > 0) {
+        for (NSArray *dayArray in monthArray ) {
+            count+=dayArray.count;
+        }
+    }
+    return count;
+  }
+
+
 
 
 @end

@@ -14,5 +14,6 @@
 @property (strong, nonatomic) NFResultCategory *selectedCategory;
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NFWeekDateModel *week;
+@property (strong, nonatomic) NSDate* monthDate;
 
 @end

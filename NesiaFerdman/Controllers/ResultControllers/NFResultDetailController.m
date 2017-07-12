@@ -49,39 +49,39 @@
     
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//    if (self.dataArray.count > 0) {
-//        return [NFHeaderForTaskSection headerSize];
-//    } else {
-//        return 0.0001;
-//    }
-//}
-//
-//- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    [self.view removeGestureRecognizer:[[UIGestureRecognizer alloc] init]];
-//    if (self.dataArray.count > 0) {
-//        NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
-//        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
-//        NSArray *eventDayArray = [_dataArray objectAtIndex:section];
-//        NFResult *event = [eventDayArray firstObject];
-//        [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
-//        return headerView;
-//    } else {
-//        UIView *headerView = [[UIView alloc] init];
-//        return headerView;
-//    }
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (self.dataArray.count > 0) {
+        return [NFHeaderForTaskSection headerSize];
+    } else {
+        return 0.0001;
+    }
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    [self.view removeGestureRecognizer:[[UIGestureRecognizer alloc] init]];
+    if (self.dataArray.count > 0) {
+        NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
+        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
+        NSArray *eventDayArray = [_dataArray objectAtIndex:section];
+        NFResult *event = [eventDayArray firstObject];
+        [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
+        return headerView;
+    } else {
+        UIView *headerView = [[UIView alloc] init];
+        return headerView;
+    }
+}
 
 #pragma mark - UITableViewDataSource
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    return _dataArray.count > 0 ? _dataArray.count : 1;;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _dataArray.count > 0 ? _dataArray.count : 1;;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
-//    return sectionData.count > 0 ? sectionData.count : 1;
-    return _dataArray.count > 0 ? _dataArray.count : 1;
+    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
+    return sectionData.count > 0 ? sectionData.count : 1;
+    //return _dataArray.count > 0 ? _dataArray.count : 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -90,9 +90,9 @@
         cell = [[NFResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     if (self.dataArray.count > 0) {
-//        NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
-//        NFResult *event = [eventDayArray objectAtIndex:indexPath.row];
-        NFResult *event = [_dataArray objectAtIndex:indexPath.row];
+        NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
+        NFResult *event = [eventDayArray objectAtIndex:indexPath.row];
+       // NFResult *event = [_dataArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
         [cell addData:nil];
@@ -104,19 +104,31 @@
 
 - (void)addDataToDisplay {
     [self.dataArray removeAllObjects];
-    NFWeekDateModel *week = _week;
-    for (NSDate *dayDate in week.allDateOfWeek) {
-        NSMutableArray *dayArray = [NSMutableArray array];
-        [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forDay:dayDate]];
-        if (dayArray.count > 0) {
-            //[self.dataArray addObject:dayArray];
-            [self.dataArray addObjectsFromArray:dayArray];
+    if (_week) {
+        NFWeekDateModel *week = _week;
+        for (NSDate *dayDate in week.allDateOfWeek) {
+            [self.dataArray addObjectsFromArray:[self getResultForDay:dayDate]];
         }
+    } else if (_selectedDate) {
+         [self.dataArray addObjectsFromArray:[self getResultForDay:_selectedDate]];
+    } else if (_monthDate) {
+        NSLog(@"select month detail");
+        [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forMonth:_monthDate]];
     }
     [self.tableView reloadData];
     //NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
     //NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
     //[self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (NSMutableArray*)getResultForDay:(NSDate*)day {
+    NSMutableArray *result = [NSMutableArray array];
+    NSMutableArray *dayArray = [NSMutableArray array];
+    [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forDay:day]];
+    if (dayArray.count > 0) {
+        [result addObject:dayArray];
+    }
+    return result;
 }
 
 - (void)navigateToEditScreenWithItem:(NFResult*)result {
@@ -128,7 +140,6 @@
 
 - (NSDate *)stringDate:(NSString *)stringInput
             withFormat:(NSString *)inputFormat {
-    
     NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:inputFormat];
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];

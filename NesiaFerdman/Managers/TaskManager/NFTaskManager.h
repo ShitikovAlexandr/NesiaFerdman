@@ -54,9 +54,11 @@
 
 - (NSMutableArray *)getAllValues;
 - (NSMutableArray*) getAllManifestations;
+
 - (NSMutableArray*)getAllResultCategory;
 - (NSMutableArray*)getAllResult;
 - (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forDay:(NSDate*)date;
+- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forMonth:(NSDate*)date;
 
 - (void)clearAllData;
 - (void)addAllEventsFromArray:(NSMutableArray *)array;

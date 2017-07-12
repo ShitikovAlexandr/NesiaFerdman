@@ -58,13 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NesiaFerdman/Models/XIB/HeaderCollectionView/NFHeaderMonthView.m"
-            timestampString = "521479561.200082"
+            timestampString = "521536979.999065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
-            landmarkName = "-scrollToCurrentDate"
-            landmarkType = "7">
+            startingLineNumber = "251"
+            endingLineNumber = "251">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NesiaFerdman/Models/XIB/HeaderCollectionView/NFHeaderMonthView.m"
-            timestampString = "521479216.430851"
+            timestampString = "521536979.999065"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "-scrollToCurrentDate"
-            landmarkType = "7">
+            startingLineNumber = "246"
+            endingLineNumber = "246">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

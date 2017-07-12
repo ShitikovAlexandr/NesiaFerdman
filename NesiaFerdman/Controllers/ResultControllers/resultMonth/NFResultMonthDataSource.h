@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "NFDateModel.h"
 
 @interface NFResultMonthDataSource : NSObject
+
+- (instancetype)initWithTableView:(UITableView*)tableView target:(id)target;
+
+- (void)setSelectedDate:(NSDate*)date;
 
 @end

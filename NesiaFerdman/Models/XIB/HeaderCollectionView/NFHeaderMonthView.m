@@ -51,6 +51,7 @@
         [self addSubview:self.collectionView];
         [self.collectionView registerNib:[UINib nibWithNibName:@"NFHeaderCell" bundle:nil] forCellWithReuseIdentifier:@"NFHeaderCell"];
         self.sourseArray = [NSMutableArray array];
+        self.selectetDate = [NSDate date];
     }
     return self;
 }
@@ -60,8 +61,11 @@
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:_selectedIndex - 1 inSection:0];
         _selectedIndex = newIndexPath.item;
         _currentIndex = newIndexPath.item;
+        self.selectetDate = [self.sourseArray objectAtIndex:newIndexPath.item];
 
         [_collectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
     }
 }
 
@@ -70,7 +74,10 @@
         NSIndexPath *newIndexPath = [NSIndexPath indexPathForItem:_selectedIndex + 1 inSection:0];
         _selectedIndex = newIndexPath.item;
         _currentIndex = newIndexPath.item;
+        self.selectetDate = [self.sourseArray objectAtIndex:newIndexPath.item];
         [_collectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
+        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
     }
 }
 

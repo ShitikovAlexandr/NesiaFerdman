@@ -14,6 +14,7 @@
 
 - (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate;
 - (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate;
+- (void)addDataToMonthCell:(NFResultCategory*)category date:(NSDate*)currentDate;
 
 - (instancetype)initWithDefaultStyle;
 

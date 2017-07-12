@@ -73,6 +73,25 @@
     return result;
 }
 
+- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forMonth:(NSDate*)date {
+    NSMutableArray *tempArray = [NSMutableArray array];
+    for (NFResult *result in _resultsArray) {
+        if ([result.resultCategoryId isEqualToString:resultCategory.resultCategoryId]) {
+            [tempArray addObject:result];
+        }
+    }
+    NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
+    [self convertResultToDictionary:resultDic array:tempArray]; // change
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:date]  substringToIndex:7]];
+    NSArray *filtered = [[[resultDic allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    NSArray *resultArray = [resultDic objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    return (NSMutableArray*)resultArray;
+
+
+    
+    return nil;
+}
+
 
 
 - (NSMutableArray *)getTaskForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray {

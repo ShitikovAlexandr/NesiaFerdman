@@ -14,13 +14,15 @@
 #import "NFSyncManager.h"
 #import "NotifyList.h"
 #import "NFTextView.h"
-
-
+#import "NFDatePicker.h"
 
 @interface NFEditResultController ()
 @property (weak, nonatomic) IBOutlet NFViewWithDownBorder *mainView;
 @property (weak, nonatomic) IBOutlet NFTextView *textView;
+@property (weak, nonatomic) IBOutlet UITextField *dateTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateTitleLabel;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
+@property (strong, nonatomic) NFDatePicker *datePickerStart;
 
 @end
 
@@ -35,6 +37,8 @@
     self.navigationItem.rightBarButtonItem = item;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     [self.textView validateWithTarget:self placeholderText:@"Описание" min:1 max:300];
+    _datePickerStart = [[NFDatePicker alloc] initWithTextField:_dateTextField];
+    _datePickerStart.datePickerMode = UIDatePickerModeDate;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,11 +55,12 @@
 
 - (NSString *)stringFromDate:(NSDate *)date {
     NFDateFormatter *dateFormater = [NFDateFormatter new];
-    [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
+    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
     return [dateFormater stringFromDate:date];
 }
 
 - (void)setStartDataToDisplay {
+    self.dateTitleLabel.text = @"Дата";
     self.textView.placeholder = @"Описание";
     if (_resultItem) {
         self.textView.text = self.resultItem.resultDescription;
@@ -63,6 +68,7 @@
         
     } else {
         self.title = @"Создание";
+        self.dateTextField.text = [self stringFromDate:[NSDate date]];
     }
 }
 
@@ -74,7 +80,7 @@
         if (!_resultItem) {
             _resultItem = [[NFResult alloc]  init];
             _resultItem.resultCategoryId = _category.resultCategoryId;
-            _resultItem.startDate = [NSString stringWithFormat:@"%@", _selectedDate];
+            _resultItem.startDate = [NSString stringWithFormat:@"%@", [self stringFromDate:_selectedDate]];
         }
         _resultItem.resultDescription = self.textView.text;
         [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];

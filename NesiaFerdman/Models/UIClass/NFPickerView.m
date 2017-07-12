@@ -25,7 +25,7 @@
     self = [super init];
     if (self) {
         self.dataArray = [NSMutableArray array];
-        [self.dataArray addObjectsFromArray:array]; 
+        [self.dataArray addObjectsFromArray:array];
         self.delegate = self;
         self.dataSource = self;
         self.keyTitle = keyForTitle;
@@ -65,20 +65,16 @@
     return title;
 }
 
-
 #pragma mark - UIPickerViewDelegate
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     self.selectedIndex = [NSNumber numberWithInteger:row];
-    //NSString *title = [[self.dataArray objectAtIndex:row] valueForKey:_keyTitle];
-    //self.textfield.text = title;
 }
-
 
 #pragma mark - Helpers
 
 - (void)doneButtonPressed:(id)sender {
-    _lastSelectedItem= [self.dataArray objectAtIndex:[self.selectedIndex integerValue]];
+    _lastSelectedItem = [self.dataArray objectAtIndex:[self.selectedIndex integerValue]];
     [self.textfield resignFirstResponder];
     NSNotification *notification = [NSNotification notificationWithName:PICKER_VIEW_IS_PRESSED object:self];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
