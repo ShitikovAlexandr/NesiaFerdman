@@ -222,18 +222,48 @@
     return newDate;
 }
 
-- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {//
+//- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {//
+//    
+//    if (array.count > 0) {
+//        for (NFEvent *event in array) {
+//            NSString *eventKey = [event.startDate substringToIndex:10];
+//            if(!dic[eventKey]){
+//                dic[eventKey] = [NSMutableArray new];
+//            }
+//            [dic[eventKey] addObject:event];
+//        }
+//    }
+//}
+
+- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     
     if (array.count > 0) {
         for (NFEvent *event in array) {
-            NSString *eventKey = [event.startDate substringToIndex:10];
-            if(!dic[eventKey]){
-                dic[eventKey] = [NSMutableArray new];
+            NSDate *start = [self datefromString:event.startDate];
+            NSDate *end = [self datefromString:event.endDate];
+            
+            if (![[NSCalendar currentCalendar] isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
+                NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
+        
+            } else {
+                NSString *eventKey = [event.startDate substringToIndex:10];
+                if(!dic[eventKey]){
+                    dic[eventKey] = [NSMutableArray new];
+                }
+                [dic[eventKey] addObject:event];
             }
-            [dic[eventKey] addObject:event];
+           
         }
     }
 }
+
+- (NSDate*)datefromString:(NSString*)dateString {
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
+    NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:16]];
+    return dateFromString;
+}
+
 
 - (void)convertResultToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     
@@ -332,6 +362,14 @@
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:YES];
     NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     return (NSMutableArray*)[array sortedArrayUsingDescriptors:sortDescriptors];
+}
+
+- (NSDate*) dateWithNoTime:(NSDate*)date {
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    NSDateComponents* components = [calendar components:flags fromDate:date];
+    NSDate* dateOnly = [calendar dateFromComponents:components];
+    return dateOnly;
 }
 
 
