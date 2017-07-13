@@ -16,6 +16,7 @@
 @interface NFResultDetailController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSDate *dateForNewItem;
 @end
 
 @implementation NFResultDetailController
@@ -105,13 +106,16 @@
 - (void)addDataToDisplay {
     [self.dataArray removeAllObjects];
     if (_week) {
+        _dateForNewItem = [_week.allDateOfWeek firstObject];
         NFWeekDateModel *week = _week;
         for (NSDate *dayDate in week.allDateOfWeek) {
             [self.dataArray addObjectsFromArray:[self getResultForDay:dayDate]];
         }
     } else if (_selectedDate) {
+        _dateForNewItem = _selectedDate;
          [self.dataArray addObjectsFromArray:[self getResultForDay:_selectedDate]];
     } else if (_monthDate) {
+        _dateForNewItem = [self getFirsDayOfMonthWithDate:_monthDate];
         NSLog(@"select month detail");
         [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forMonth:_monthDate]];
     }
@@ -150,8 +154,16 @@
  NFEditResultController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditResultController"];
     viewController.category = self.selectedCategory;
     viewController.resultItem = nil;
-    viewController.selectedDate = _week.startOfWeek;
+    viewController.selectedDate = _dateForNewItem;
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (NSDate*)getFirsDayOfMonthWithDate:(NSDate*)currentDate {
+    NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
+                                                                   fromDate:currentDate];
+    components.day = 2;
+    NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: components];
+    return firstDayOfMonthDate;
 }
 
 @end

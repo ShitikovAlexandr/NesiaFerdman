@@ -23,6 +23,7 @@
     self.sourseArray = [NSMutableArray array];
     self.displayWeeks = weeks;
     self.dateSourse = model;
+    self.selectetDate = [NSDate date];
     [self setDataToSourse];
 }
 

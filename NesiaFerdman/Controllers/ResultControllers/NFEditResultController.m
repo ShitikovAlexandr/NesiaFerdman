@@ -38,6 +38,7 @@
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     [self.textView validateWithTarget:self placeholderText:@"Описание" min:1 max:300];
     _datePickerStart = [[NFDatePicker alloc] initWithTextField:_dateTextField];
+    _datePickerStart.onlyDate = true;
     _datePickerStart.datePickerMode = UIDatePickerModeDate;
 }
 
@@ -53,22 +54,16 @@
 
 #pragma mark - Helpers
 
-- (NSString *)stringFromDate:(NSDate *)date {
-    NFDateFormatter *dateFormater = [NFDateFormatter new];
-    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
-    return [dateFormater stringFromDate:date];
-}
-
 - (void)setStartDataToDisplay {
     self.dateTitleLabel.text = @"Дата";
     self.textView.placeholder = @"Описание";
     if (_resultItem) {
         self.textView.text = self.resultItem.resultDescription;
         self.title = self.category.resultCategoryTitle;
-        
+        self.dateTextField.text = [self stringDate:_resultItem.startDate withFormat:@"yyyy-MM-dd'T'HH:mm:ss" dateStringToFromat:@"LLLL, dd, yyyy"];
     } else {
         self.title = @"Создание";
-        self.dateTextField.text = [self stringFromDate:[NSDate date]];
+        self.dateTextField.text = [self stringFromDate:_selectedDate];
     }
 }
 
@@ -80,8 +75,8 @@
         if (!_resultItem) {
             _resultItem = [[NFResult alloc]  init];
             _resultItem.resultCategoryId = _category.resultCategoryId;
-            _resultItem.startDate = [NSString stringWithFormat:@"%@", [self stringFromDate:_selectedDate]];
         }
+        _resultItem.startDate = [self stringDate:_dateTextField.text withFormat:@"LLLL, dd, yyyy" dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
         _resultItem.resultDescription = self.textView.text;
         [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -94,6 +89,41 @@
     [_indicator endAnimating];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+//- (NSString*)convertStringDateToStringCurrentFormat:(NSString*)inputString {
+//    NSDate *newDate = [self dateFromString:inputString];
+//    NFDateFormatter *dateFormater = [NFDateFormatter new];
+//    [dateFormater setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+//    return [dateFormater stringFromDate:newDate];
+//}
+
+- (NSString *)stringFromDate:(NSDate *)date {
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
+    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
+    return [dateFormater stringFromDate:date];
+}
+
+- (NSDate*)dateFromString:(NSString*)stringDate {
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
+    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
+    
+    return [dateFormater dateFromString:[stringDate substringToIndex:7]];
+}
+
+- (NSString *)stringDate:(NSString *)stringInput
+              withFormat:(NSString *)inputFormat
+      dateStringToFromat:(NSString*)outputFormat {
+    
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setDateFormat:inputFormat];
+    NSDate *dateFromString = [dateFormatter dateFromString:stringInput];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:outputFormat];
+    NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
+    return newDate;
+}
+
+
 
 
 @end

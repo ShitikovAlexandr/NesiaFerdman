@@ -87,11 +87,8 @@
     NSArray *resultArray = [resultDic objectsForKeys:filtered notFoundMarker:[NSNull null]];
     return (NSMutableArray*)resultArray;
 
-
-    
     return nil;
 }
-
 
 
 - (NSMutableArray *)getTaskForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray {
@@ -225,7 +222,7 @@
     return newDate;
 }
 
-- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
+- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {//
     
     if (array.count > 0) {
         for (NFEvent *event in array) {

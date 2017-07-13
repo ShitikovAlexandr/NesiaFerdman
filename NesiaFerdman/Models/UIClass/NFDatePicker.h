@@ -10,6 +10,7 @@
 
 @interface NFDatePicker : UIDatePicker
 @property (strong, nonatomic) NSDate *selectedDate;
+@property (assign, nonatomic) BOOL onlyDate;
 
 - (instancetype)initWithTextField:(UITextField *)textField;
 

@@ -2722,7 +2722,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLl-8W-BGS">
-                                <rect key="frame" x="0.0" y="269" width="414" height="46"/>
+                                <rect key="frame" x="0.0" y="282" width="414" height="46"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="of0-af-w2W">
                                         <rect key="frame" x="206" y="8" width="200" height="30"/>
@@ -2740,7 +2740,7 @@
                                             <constraint firstAttribute="width" constant="123" id="8cU-lE-Np3"/>
                                             <constraint firstAttribute="height" constant="30" id="c8s-dN-z5E"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -2758,7 +2758,7 @@
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="QLl-8W-BGS" firstAttribute="leading" secondItem="WEn-3P-Mhm" secondAttribute="leading" id="9vK-gH-MD0"/>
-                            <constraint firstItem="QLl-8W-BGS" firstAttribute="top" secondItem="whr-Wk-l0M" secondAttribute="bottom" constant="31" id="JAc-X9-6f4"/>
+                            <constraint firstItem="QLl-8W-BGS" firstAttribute="top" secondItem="whr-Wk-l0M" secondAttribute="bottom" constant="44" id="JAc-X9-6f4"/>
                             <constraint firstItem="whr-Wk-l0M" firstAttribute="top" secondItem="VR9-K9-dCV" secondAttribute="bottom" constant="46" id="cvF-dm-0g0"/>
                             <constraint firstItem="whr-Wk-l0M" firstAttribute="leading" secondItem="WEn-3P-Mhm" secondAttribute="leading" id="e94-O3-BAo"/>
                             <constraint firstAttribute="trailing" secondItem="QLl-8W-BGS" secondAttribute="trailing" id="rtY-mw-b7o"/>

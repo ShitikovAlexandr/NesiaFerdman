@@ -60,8 +60,18 @@
     return [dateFormater stringFromDate:date];
 }
 
+- (NSString *)stringFromDateOnly:(NSDate *)date {
+    NFDateFormatter *dateFormater = [NFDateFormatter new];
+    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
+    return [dateFormater stringFromDate:date];
+}
+
 - (void)textFieldDidChange:(UIDatePicker*) datePicker {
-    self.textfield.text = [self stringFromDate:self.date];
+    if (_onlyDate) {
+         self.textfield.text = [self stringFromDateOnly:self.date];
+    } else {
+        self.textfield.text = [self stringFromDate:self.date];
+    }
     self.selectedDate = self.date;
 }
 
