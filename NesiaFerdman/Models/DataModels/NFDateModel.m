@@ -36,6 +36,7 @@
     
     NSMutableArray *dateList = [NSMutableArray array];
     NSCalendar *currentCalendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [currentCalendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     [currentCalendar setFirstWeekday:2];
     NSDateComponents *comps = [[NSDateComponents alloc] init];
     [comps setDay:1];

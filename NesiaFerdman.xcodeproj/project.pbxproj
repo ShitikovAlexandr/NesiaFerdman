@@ -75,6 +75,7 @@
 		C23AD8D51EFD159300BAFF1E /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8D31EFD159300BAFF1E /* Screen2.png */; };
 		C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8D81EFD18B300BAFF1E /* NFTutorialCell.m */; };
 		C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */; };
+		C24422E21F18A5980008CF49 /* NFCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422E11F18A5980008CF49 /* NFCalendar.m */; };
 		C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = C245525E1EBC5EA0003EBB11 /* plus-symbol.png */; };
 		C24552621EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24552611EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m */; };
 		C24552651EBC9677003EBB11 /* NFPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24552641EBC9677003EBB11 /* NFPickerView.m */; };
@@ -368,6 +369,8 @@
 		C23AD8D71EFD18B300BAFF1E /* NFTutorialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTutorialCell.h; sourceTree = "<group>"; };
 		C23AD8D81EFD18B300BAFF1E /* NFTutorialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTutorialCell.m; sourceTree = "<group>"; };
 		C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTutorialCell.xib; sourceTree = "<group>"; };
+		C24422E01F18A5980008CF49 /* NFCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCalendar.h; sourceTree = "<group>"; };
+		C24422E11F18A5980008CF49 /* NFCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCalendar.m; sourceTree = "<group>"; };
 		C245525E1EBC5EA0003EBB11 /* plus-symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-symbol.png"; sourceTree = "<group>"; };
 		C24552601EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTAddImportantTaskTableViewController.h; sourceTree = "<group>"; };
 		C24552611EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTAddImportantTaskTableViewController.m; sourceTree = "<group>"; };
@@ -1577,6 +1580,8 @@
 				C235B37D1F00E42900DB9ED9 /* NFManifestationCategory.m */,
 				C2176C9D1F0B7DB700748C64 /* NFDateFormatter.h */,
 				C2176C9E1F0B7DB700748C64 /* NFDateFormatter.m */,
+				C24422E01F18A5980008CF49 /* NFCalendar.h */,
+				C24422E11F18A5980008CF49 /* NFCalendar.m */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -2120,6 +2125,7 @@
 				C22407851E9CB351004B089A /* NesiaFerdman.xcdatamodeld in Sources */,
 				C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */,
 				C2470C361EFBEA37003BA93D /* NFSettingManager.m in Sources */,
+				C24422E21F18A5980008CF49 /* NFCalendar.m in Sources */,
 				C2DDBCE21ED4597300F61F02 /* NFLoginController.m in Sources */,
 				C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */,
 				C22407791E9CB351004B089A /* main.m in Sources */,

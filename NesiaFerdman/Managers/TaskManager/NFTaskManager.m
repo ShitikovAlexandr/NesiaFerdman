@@ -241,10 +241,18 @@
         for (NFEvent *event in array) {
             NSDate *start = [self datefromString:event.startDate];
             NSDate *end = [self datefromString:event.endDate];
-            
-            if (![[NSCalendar currentCalendar] isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
+            NSCalendar *calendar = [NSCalendar currentCalendar];
+            [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+            if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
                 NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
-        
+                NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
+                for (NSDate *date in [self getListOfDateWithStart:start end:end]) {
+                    NSString *eventKey = [self stringFromDate:date];
+                    if(!dic[eventKey]){
+                        dic[eventKey] = [NSMutableArray new];
+                    }
+                    [dic[eventKey] addObject:event];
+                }
             } else {
                 NSString *eventKey = [event.startDate substringToIndex:10];
                 if(!dic[eventKey]){
@@ -252,7 +260,6 @@
                 }
                 [dic[eventKey] addObject:event];
             }
-           
         }
     }
 }
@@ -263,6 +270,12 @@
     NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:16]];
     return dateFromString;
 }
+
+//- (NSString*)stringFromDate:(NSDate*)date {
+//    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+//    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
+//    return [dateFormatter stringFromDate:date];
+//}
 
 
 - (void)convertResultToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
@@ -333,6 +346,28 @@
     return result;
 }
 
+- (NSMutableArray*)getListOfDateWithStart:(NSDate*)start end:(NSDate*)end {
+    NSMutableArray *result = [NSMutableArray new];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay
+                                               fromDate:start
+                                                 toDate:end
+                                                options:0];
+    NSInteger numberOfDays = components.day;
+    
+    NSDateComponents *offset = [[NSDateComponents alloc] init];
+    [result addObject:start];
+    
+    for (int i = 1; i <= numberOfDays; i++) {
+        [offset setDay:i];
+        NSDate *nextDay = [calendar dateByAddingComponents:offset toDate:start options:0];
+        [result addObject:nextDay];
+    }
+    return result;
+}
+
+
 - (void)addAllEventsFromArray:(NSMutableArray *)array {
     [self clearAllData];
     
@@ -367,6 +402,7 @@
 - (NSDate*) dateWithNoTime:(NSDate*)date {
     unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
     NSCalendar* calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     NSDateComponents* components = [calendar components:flags fromDate:date];
     NSDate* dateOnly = [calendar dateFromComponents:components];
     return dateOnly;

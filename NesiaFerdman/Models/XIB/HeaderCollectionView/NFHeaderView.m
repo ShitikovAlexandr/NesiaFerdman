@@ -220,7 +220,9 @@
     if (_displayWeeks) {
         for (NFWeekDateModel* week in self.dateSourse.weekArray) {
             for (NSDate *current in week.allDateOfWeek) {
-                if ([[NSCalendar currentCalendar] isDate:[NSDate date] inSameDayAsDate:current]) {
+                NSCalendar *calendar = [NSCalendar currentCalendar];
+                [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+                if ([calendar isDate:[NSDate date] inSameDayAsDate:current]) {
                     NSInteger currentIndex = [self.dateSourse.weekArray indexOfObject:week];
                     NSIndexPath *centerCellIndexPath = [NSIndexPath indexPathForRow:currentIndex inSection:0];
                     self.selectetDate = [self.dateSourse.fromToDateArray objectAtIndex:centerCellIndexPath.item];
