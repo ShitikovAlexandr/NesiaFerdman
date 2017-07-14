@@ -26,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (weak, nonatomic) IBOutlet NFValuesFilterView *ValuesFilterView;
+@property (strong, nonatomic) NSMutableArray *keyArray;
 
 @end
 
@@ -35,6 +36,7 @@
     [super viewDidLoad];
     
     self.dataArray = [NSMutableArray array];
+    self.keyArray = [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
     self.tableView.tableFooterView = [UIView new];
     NFDateModel *dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
@@ -123,6 +125,7 @@
         dayArray = [[NFTaskManager sharedManager] getTasksForDay:dayDate];
         if (dayArray.count > 0) {
             [self.dataArray addObject:dayArray];
+            [self.keyArray addObject:dayDate];
         }
     }
     [self.tableView reloadData];
@@ -139,64 +142,6 @@
     NSDate *dateFromString = [dateFormatter dateFromString:[stringInput substringToIndex:10]];
     return dateFromString;
 }
-
-//- (void)cellSendLongTouch {
-//    if (_dataArray.count > 0 && !_tableView.editing ) {
-//        [_tableView setEditing:YES animated:YES];
-//        NSLog(@"edit");
-//    }
-//}
-
-
-//#pragma mark - UITableViewDataSource -
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return 24;
-//}
-//
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NFWeekTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NFWeekTaskCell"];
-//    cell.timeLabel.text = [NSString stringWithFormat:@"%02ld", (long)indexPath.row];
-//    [cell addDataWithEventsArray:_dataArray indexPath:indexPath];
-//    
-//    return cell;
-//}
-//
-//#pragma mark - UITableViewDelegate -
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    return 80;
-//}
-//
-//- (void)addDataToDisplay {
-//    [self.dataArray removeAllObjects];
-//        NFWeekDateModel *week = [self.header.dateSourse.weekArray objectAtIndex:_header.selectedIndex];
-//        for (NSDate *dayDate in week.allDateOfWeek) {
-//            NSMutableArray *dayArray = [NSMutableArray array];
-//            dayArray = [[NFTaskManager sharedManager] getTasksForDay:dayDate];
-//            [self.dataArray addObject:dayArray];
-//        }
-////    [self updateWeekHeader];
-//    
-//    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationTop];
-//}
-
-//- (void)setCurrentCellVisible {
-//    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"H"];
-//    NSInteger row =  [[dateFormatter stringFromDate:[NSDate date]] integerValue];
-//    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-//    [self.tableView scrollToRowAtIndexPath:indexPath
-//                          atScrollPosition:UITableViewScrollPositionTop
-//                                  animated:YES];
-//}
-
-//- (void)updateWeekHeader {
-//    NFWeekDateModel *week = [self.header.dateSourse.weekArray objectAtIndex:_header.selectedIndex];
-//    for (int i = 0; i < self.headerWeek.daysHeaderViews.count; i++) {
-//        [((NFHeaderDayOfWeek*)[self.headerWeek.daysHeaderViews objectAtIndex:i]) setDate:[week.allDateOfWeek objectAtIndex:i]];
-//    }
-//}
 
 - (void)filterAction {
     [super filterAction];

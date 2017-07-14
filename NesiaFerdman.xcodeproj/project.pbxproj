@@ -76,6 +76,12 @@
 		C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8D81EFD18B300BAFF1E /* NFTutorialCell.m */; };
 		C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */; };
 		C24422E21F18A5980008CF49 /* NFCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422E11F18A5980008CF49 /* NFCalendar.m */; };
+		C24422EB1F18EB580008CF49 /* NFStatisticPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422EA1F18EB580008CF49 /* NFStatisticPageController.m */; };
+		C24422EE1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422ED1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m */; };
+		C24422F11F18EC200008CF49 /* NFStatisticDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422F01F18EC200008CF49 /* NFStatisticDayController.m */; };
+		C24422F41F18ED4F0008CF49 /* NFStatisticWeekController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422F31F18ED4F0008CF49 /* NFStatisticWeekController.m */; };
+		C24422F71F18EE0E0008CF49 /* NFStatisticMonthController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422F61F18EE0E0008CF49 /* NFStatisticMonthController.m */; };
+		C24422FA1F190A290008CF49 /* NFStatisticDayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422F91F190A290008CF49 /* NFStatisticDayDataSource.m */; };
 		C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */ = {isa = PBXBuildFile; fileRef = C245525E1EBC5EA0003EBB11 /* plus-symbol.png */; };
 		C24552621EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24552611EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m */; };
 		C24552651EBC9677003EBB11 /* NFPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = C24552641EBC9677003EBB11 /* NFPickerView.m */; };
@@ -257,8 +263,8 @@
 		C205956E1EF2A1F400BF3BFD /* NFViewWithDownBorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFViewWithDownBorder.h; sourceTree = "<group>"; };
 		C205956F1EF2A1F400BF3BFD /* NFViewWithDownBorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFViewWithDownBorder.m; sourceTree = "<group>"; };
 		C20595711EF2C39E00BF3BFD /* Right_arrow_label.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Right_arrow_label.png; sourceTree = "<group>"; };
-		C20595731EF2C59300BF3BFD /* NFStatisticDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticDetailController.h; sourceTree = "<group>"; };
-		C20595741EF2C59300BF3BFD /* NFStatisticDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticDetailController.m; sourceTree = "<group>"; };
+		C20595731EF2C59300BF3BFD /* NFStatisticDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFStatisticDetailController.h; path = ../NFStatisticDetailController.h; sourceTree = "<group>"; };
+		C20595741EF2C59300BF3BFD /* NFStatisticDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFStatisticDetailController.m; path = ../NFStatisticDetailController.m; sourceTree = "<group>"; };
 		C207EF521EA89BAD00BFF383 /* NFWeekTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFWeekTaskCell.h; sourceTree = "<group>"; };
 		C207EF531EA89BAD00BFF383 /* NFWeekTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekTaskCell.m; sourceTree = "<group>"; };
 		C207EF551EA89BB900BFF383 /* NFWeekTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFWeekTaskCell.xib; sourceTree = "<group>"; };
@@ -280,8 +286,8 @@
 		C20EBA111EA8F97E0074C0AF /* NFDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDateModel.m; sourceTree = "<group>"; };
 		C20EBA131EA8FA9C0074C0AF /* NFWeekDateModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFWeekDateModel.h; sourceTree = "<group>"; };
 		C20EBA141EA8FA9C0074C0AF /* NFWeekDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekDateModel.m; sourceTree = "<group>"; };
-		C212DEE31EF1196A0082EF38 /* NFStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticController.h; sourceTree = "<group>"; };
-		C212DEE41EF1196A0082EF38 /* NFStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticController.m; sourceTree = "<group>"; };
+		C212DEE31EF1196A0082EF38 /* NFStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFStatisticController.h; path = ../NFStatisticController.h; sourceTree = "<group>"; };
+		C212DEE41EF1196A0082EF38 /* NFStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFStatisticController.m; path = ../NFStatisticController.m; sourceTree = "<group>"; };
 		C212DEE81EF11BD20082EF38 /* NFStatisticMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticMainCell.h; sourceTree = "<group>"; };
 		C212DEE91EF11BD20082EF38 /* NFStatisticMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticMainCell.m; sourceTree = "<group>"; };
 		C212DEEB1EF11BE80082EF38 /* NFStatisticMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFStatisticMainCell.xib; sourceTree = "<group>"; };
@@ -371,6 +377,18 @@
 		C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTutorialCell.xib; sourceTree = "<group>"; };
 		C24422E01F18A5980008CF49 /* NFCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCalendar.h; sourceTree = "<group>"; };
 		C24422E11F18A5980008CF49 /* NFCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCalendar.m; sourceTree = "<group>"; };
+		C24422E91F18EB580008CF49 /* NFStatisticPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticPageController.h; sourceTree = "<group>"; };
+		C24422EA1F18EB580008CF49 /* NFStatisticPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticPageController.m; sourceTree = "<group>"; };
+		C24422EC1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticRandomPeriodController.h; sourceTree = "<group>"; };
+		C24422ED1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticRandomPeriodController.m; sourceTree = "<group>"; };
+		C24422EF1F18EC200008CF49 /* NFStatisticDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticDayController.h; sourceTree = "<group>"; };
+		C24422F01F18EC200008CF49 /* NFStatisticDayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticDayController.m; sourceTree = "<group>"; };
+		C24422F21F18ED4F0008CF49 /* NFStatisticWeekController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticWeekController.h; sourceTree = "<group>"; };
+		C24422F31F18ED4F0008CF49 /* NFStatisticWeekController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticWeekController.m; sourceTree = "<group>"; };
+		C24422F51F18EE0E0008CF49 /* NFStatisticMonthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticMonthController.h; sourceTree = "<group>"; };
+		C24422F61F18EE0E0008CF49 /* NFStatisticMonthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticMonthController.m; sourceTree = "<group>"; };
+		C24422F81F190A290008CF49 /* NFStatisticDayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticDayDataSource.h; sourceTree = "<group>"; };
+		C24422F91F190A290008CF49 /* NFStatisticDayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticDayDataSource.m; sourceTree = "<group>"; };
 		C245525E1EBC5EA0003EBB11 /* plus-symbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "plus-symbol.png"; sourceTree = "<group>"; };
 		C24552601EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTAddImportantTaskTableViewController.h; sourceTree = "<group>"; };
 		C24552611EBC7502003EBB11 /* NFTAddImportantTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTAddImportantTaskTableViewController.m; sourceTree = "<group>"; };
@@ -704,11 +722,13 @@
 		C212DEE21EF119530082EF38 /* StatisticController */ = {
 			isa = PBXGroup;
 			children = (
+				C24422E81F18BD0B0008CF49 /* PageStatisticController */,
+				C24422E71F18BCED0008CF49 /* Detail */,
+				C24422E61F18BCC30008CF49 /* OtherPeriod */,
+				C24422E51F18BCB40008CF49 /* Day */,
+				C24422E41F18BCA40008CF49 /* Week */,
+				C24422E31F18BC9B0008CF49 /* Month */,
 				C212DEE61EF11B9D0082EF38 /* Cells */,
-				C212DEE31EF1196A0082EF38 /* NFStatisticController.h */,
-				C212DEE41EF1196A0082EF38 /* NFStatisticController.m */,
-				C20595731EF2C59300BF3BFD /* NFStatisticDetailController.h */,
-				C20595741EF2C59300BF3BFD /* NFStatisticDetailController.m */,
 			);
 			path = StatisticController;
 			sourceTree = "<group>";
@@ -1024,6 +1044,64 @@
 				C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */,
 			);
 			path = TutorialCell;
+			sourceTree = "<group>";
+		};
+		C24422E31F18BC9B0008CF49 /* Month */ = {
+			isa = PBXGroup;
+			children = (
+				C212DEE31EF1196A0082EF38 /* NFStatisticController.h */,
+				C212DEE41EF1196A0082EF38 /* NFStatisticController.m */,
+				C24422F51F18EE0E0008CF49 /* NFStatisticMonthController.h */,
+				C24422F61F18EE0E0008CF49 /* NFStatisticMonthController.m */,
+			);
+			path = Month;
+			sourceTree = "<group>";
+		};
+		C24422E41F18BCA40008CF49 /* Week */ = {
+			isa = PBXGroup;
+			children = (
+				C24422F21F18ED4F0008CF49 /* NFStatisticWeekController.h */,
+				C24422F31F18ED4F0008CF49 /* NFStatisticWeekController.m */,
+			);
+			path = Week;
+			sourceTree = "<group>";
+		};
+		C24422E51F18BCB40008CF49 /* Day */ = {
+			isa = PBXGroup;
+			children = (
+				C24422EF1F18EC200008CF49 /* NFStatisticDayController.h */,
+				C24422F01F18EC200008CF49 /* NFStatisticDayController.m */,
+				C24422F81F190A290008CF49 /* NFStatisticDayDataSource.h */,
+				C24422F91F190A290008CF49 /* NFStatisticDayDataSource.m */,
+			);
+			path = Day;
+			sourceTree = "<group>";
+		};
+		C24422E61F18BCC30008CF49 /* OtherPeriod */ = {
+			isa = PBXGroup;
+			children = (
+				C24422EC1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.h */,
+				C24422ED1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m */,
+			);
+			path = OtherPeriod;
+			sourceTree = "<group>";
+		};
+		C24422E71F18BCED0008CF49 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C20595731EF2C59300BF3BFD /* NFStatisticDetailController.h */,
+				C20595741EF2C59300BF3BFD /* NFStatisticDetailController.m */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		C24422E81F18BD0B0008CF49 /* PageStatisticController */ = {
+			isa = PBXGroup;
+			children = (
+				C24422E91F18EB580008CF49 /* NFStatisticPageController.h */,
+				C24422EA1F18EB580008CF49 /* NFStatisticPageController.m */,
+			);
+			path = PageStatisticController;
 			sourceTree = "<group>";
 		};
 		C2470C1F1EFBEA36003BA93D /* Managers */ = {
@@ -2048,6 +2126,7 @@
 				C26887EC1F14B48B004E1ED9 /* NFResultDayDataSource.m in Sources */,
 				C28C9BB51EC06B80002D74C0 /* NFValue.m in Sources */,
 				C212DEF21EF130570082EF38 /* NFProgressShapeLayer.m in Sources */,
+				C24422F11F18EC200008CF49 /* NFStatisticDayController.m in Sources */,
 				C2FA69091EE1436500D58D18 /* NFTagView.m in Sources */,
 				C2E334961E9E796D0086FDDC /* NFNavigationController.m in Sources */,
 				C24AA50B1EBB11B400ABA92C /* NFHeaderForTaskSection.m in Sources */,
@@ -2055,6 +2134,7 @@
 				C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */,
 				C2470C341EFBEA37003BA93D /* NFFirebaseManager.m in Sources */,
 				C2470BFE1EFBA929003BA93D /* NFTableViewCell.m in Sources */,
+				C24422FA1F190A290008CF49 /* NFStatisticDayDataSource.m in Sources */,
 				C2249D0E1F0E3CC200E7269E /* NFValueDetailController.m in Sources */,
 				C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */,
 				C2AA72061F028FD4007DB785 /* NFMenuSwitcherCell.m in Sources */,
@@ -2075,10 +2155,12 @@
 				C286D6041EA613EC007C2395 /* NFDayView.m in Sources */,
 				C28DD0C31EF430CD004E0C7E /* NFAnimatedLabel.m in Sources */,
 				C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */,
+				C24422F71F18EE0E0008CF49 /* NFStatisticMonthController.m in Sources */,
 				FA9966071EFFAF24003CF84A /* NFManifestationsController.m in Sources */,
 				C2359FFF1EC9AAB300EB8FDC /* NFMonthConclusionsController.m in Sources */,
 				C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */,
 				C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */,
+				C24422EE1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m in Sources */,
 				C235B37E1F00E42900DB9ED9 /* NFManifestationCategory.m in Sources */,
 				C2D9C7FA1F066F5300A36810 /* NFTextView.m in Sources */,
 				C23AD8CE1EFD10BB00BAFF1E /* NFAboutController.m in Sources */,
@@ -2147,6 +2229,7 @@
 				C20EBA121EA8F97E0074C0AF /* NFDateModel.m in Sources */,
 				C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */,
 				C212DEEF1EF12F9E0082EF38 /* NFProgressView.m in Sources */,
+				C24422F41F18ED4F0008CF49 /* NFStatisticWeekController.m in Sources */,
 				C2DDBCE91ED45A2500F61F02 /* NFCircleView.m in Sources */,
 				C2B3D9721EDEB73800A0A44E /* NFValueFilterCell.m in Sources */,
 				C2DDBCFA1ED470D500F61F02 /* NFLeftRoundetButton.m in Sources */,
@@ -2162,6 +2245,7 @@
 				C2470C331EFBEA37003BA93D /* NFStyleKit.m in Sources */,
 				C212DEEA1EF11BD20082EF38 /* NFStatisticMainCell.m in Sources */,
 				C2A77B6F1EAF66D6005FE7A4 /* NFEvent.m in Sources */,
+				C24422EB1F18EB580008CF49 /* NFStatisticPageController.m in Sources */,
 				C27C82B91F0FCE16007AD793 /* NFRsultPageController.m in Sources */,
 				C21320FC1EA65B3800CE2B5D /* NFWeekTaskController.m in Sources */,
 				C2DDBCFB1ED470D500F61F02 /* NFRightRoundetButton.m in Sources */,

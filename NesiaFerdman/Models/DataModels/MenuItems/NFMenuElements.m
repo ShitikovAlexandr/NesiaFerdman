@@ -17,6 +17,7 @@
 #import "NFTutorialController.h"
 #import "NFManifestationsController.h"
 #import "NFSettingDetailController.h"
+#import "NFStatisticPageController.h"
 
 
 
@@ -58,8 +59,9 @@ typedef NS_ENUM(NSInteger, MenuItem)
         }
         case Statistic:
         {
-            NFStatisticController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
-            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
+            //NFStatisticController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
+            NFStatisticPageController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
             [navController setViewControllers:@[viewController]];
             [target presentViewController:navController animated:YES completion:nil];
             break;
