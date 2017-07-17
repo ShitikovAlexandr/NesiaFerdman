@@ -1,29 +1,29 @@
 //
-//  NFStatisticDayDataSource.m
+//  NFStatisticWeekDataSource.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/14/17.
+//  Created by Alex_Shitikov on 7/17/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
-#import "NFStatisticDayDataSource.h"
+#import "NFStatisticWeekDataSource.h"
 #import "NFSettingManager.h"
 #import "NFStatisticMainCell.h"
 #import "NFValuesFilterView.h"
 #import "NFTaskManager.h"
 #import "NFStatisticDetailController.h"
 
-@interface NFStatisticDayDataSource() <UITableViewDelegate, UITableViewDataSource>
+@interface NFStatisticWeekDataSource() <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
-@property (strong, nonatomic) NSDate *selectedDate;
+@property (strong, nonatomic) NFWeekDateModel *selectedWeek;
 @property (strong, nonatomic) NFDateModel *dateLimits;
 @property (strong, nonatomic) id target;
 @property (strong, nonnull) NSMutableDictionary *dataDictionary;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 @end
 
-@implementation NFStatisticDayDataSource
+@implementation NFStatisticWeekDataSource
 
 #pragma mark - UITableViewDataSource
 
@@ -69,13 +69,12 @@
         _dataArray = [NSMutableArray array];
         _dataDictionary = [NSMutableDictionary dictionary];
         [self.tableView registerNib:[UINib nibWithNibName:@"NFStatisticMainCell" bundle:nil] forCellReuseIdentifier:@"NFStatisticMainCell"];
-
     }
     return self;
 }
 
-- (void)setSelectedDate:(NSDate*)date {
-    _selectedDate = date;
+- (void)setSelectedDate:(NFWeekDateModel*)week {
+    _selectedWeek = week;
     [self addDataToDisplay];
 }
 
@@ -86,10 +85,12 @@
 - (void)addDataToDisplay {
     [self.dataDictionary removeAllObjects];
     NSMutableArray* eventsArray = [NSMutableArray array];
-    [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:_selectedDate]];
+    for (NSDate *day in _selectedWeek.allDateOfWeek) {
+        [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:day]];
+    }
     [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
-
+    
 }
 
 #pragma mark - navigation
@@ -98,12 +99,11 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NFStatisticMainCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NFStatisticDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticDetailController"];
-    viewController.selectedDate = _selectedDate;
+    viewController.selectedWeek = _selectedWeek;
     viewController.value = cell.value;
-    viewController.type = DayStatistic;
+    viewController.type = WeekStatistic;
     [_target presentViewController:viewController animated:YES completion:nil];
 }
-
 
 
 @end

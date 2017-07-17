@@ -42,8 +42,13 @@
 - (NSMutableArray *)getTasksForDay:(NSDate*)currentDate;
 - (NSMutableArray *)getTaskForMonth:(NSDate*)currentDate;
 - (NSMutableDictionary*)getAllTaskDictionaryWithFilter;
+
 - (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFValue*)value;
+- (NSMutableDictionary*)getTaskForMonthDictionary:(NSDate*)currentDate withValue:(NFValue*)value;
+- (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFValue*)value;
+
 - (NSMutableArray *)getTaskForMonthWithoutValues:(NSDate*)currentDate;
+- (NSMutableArray *)getTaskForDayWithoutValues:(NSDate*)currentDate;
 
 - (NSMutableArray *)getImportantForDay:(NSDate*)currentDate;
 - (NSMutableArray *)getImportantForMonth:(NSDate*)currentDate;

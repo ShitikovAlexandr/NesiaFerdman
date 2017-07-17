@@ -1,19 +1,19 @@
 //
-//  NFStatisticDayDataSource.m
+//  NFStatisticMonthDataSource.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/14/17.
+//  Created by Alex_Shitikov on 7/17/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
-#import "NFStatisticDayDataSource.h"
+#import "NFStatisticMonthDataSource.h"
 #import "NFSettingManager.h"
 #import "NFStatisticMainCell.h"
 #import "NFValuesFilterView.h"
 #import "NFTaskManager.h"
 #import "NFStatisticDetailController.h"
 
-@interface NFStatisticDayDataSource() <UITableViewDelegate, UITableViewDataSource>
+@interface NFStatisticMonthDataSource() <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSDate *selectedDate;
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 @end
 
-@implementation NFStatisticDayDataSource
+@implementation NFStatisticMonthDataSource
 
 #pragma mark - UITableViewDataSource
 
@@ -69,7 +69,6 @@
         _dataArray = [NSMutableArray array];
         _dataDictionary = [NSMutableDictionary dictionary];
         [self.tableView registerNib:[UINib nibWithNibName:@"NFStatisticMainCell" bundle:nil] forCellReuseIdentifier:@"NFStatisticMainCell"];
-
     }
     return self;
 }
@@ -79,17 +78,12 @@
     [self addDataToDisplay];
 }
 
-- (NFDateModel*)getDateLimits {
-    return _dateLimits;
-}
-
 - (void)addDataToDisplay {
     [self.dataDictionary removeAllObjects];
     NSMutableArray* eventsArray = [NSMutableArray array];
-    [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:_selectedDate]];
+    [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTaskForMonth:_selectedDate]];
     [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
-
 }
 
 #pragma mark - navigation
@@ -100,9 +94,11 @@
     NFStatisticDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticDetailController"];
     viewController.selectedDate = _selectedDate;
     viewController.value = cell.value;
-    viewController.type = DayStatistic;
+    viewController.type = MonthStatistic;
     [_target presentViewController:viewController animated:YES completion:nil];
 }
+
+
 
 
 

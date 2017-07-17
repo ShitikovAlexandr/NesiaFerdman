@@ -6,8 +6,8 @@
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "NFViewController.h"
 
-@interface NFStatisticDayController : UIViewController
+@interface NFStatisticDayController : NFViewController
 
 @end

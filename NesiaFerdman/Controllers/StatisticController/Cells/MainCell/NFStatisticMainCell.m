@@ -75,8 +75,6 @@
         [self setRealLevelToMax];
         [self setDoneLevelWithValue:[self doneValueWithTaskArray:taskArray]];
     }
-    
-    
 }
 
 - (void)setDoneLevelWithValue:(CGFloat)value {
@@ -94,7 +92,6 @@
     self.doneTaskProgressView.progressLayer.strokeEnd = 0;
     self.doneTaskCount.text = @"0";
     self.realTaskCount.text = @"0";
-    
 }
 
 -(void)setDoneCountWithValue:(NSInteger)val {

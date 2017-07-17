@@ -46,7 +46,6 @@
     [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
     [_dataSource setSelectedDate:_headerView.selectetDate];
 }
-//self.header.selectetDate
 
 
 @end

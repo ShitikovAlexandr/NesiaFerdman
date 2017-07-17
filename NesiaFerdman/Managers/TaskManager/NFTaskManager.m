@@ -120,12 +120,16 @@
     return equalsEvent;
 }
 
+
 - (NSMutableArray *)getTaskForMonth:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
     NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
     return resultArray.count > 0 ? [self getObjectsFromArrayWithArrays:(NSMutableArray *)resultArray] : nil;
 }
+
+
+
 
 - (NSMutableArray *)getTaskForMonthWithoutValues:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
@@ -152,10 +156,61 @@
     return tempArray;
 }
 
+- (NSMutableArray *)getTaskForDayWithoutValues:(NSDate*)currentDate {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
+    NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    NSMutableArray *tempArray = [NSMutableArray array];
+    NSMutableArray *tempDay;
+    
+    for (NSMutableArray *dayArray in resultArray) {
+        //[tempDay removeAllObjects];
+        tempDay = [NSMutableArray arrayWithArray:dayArray];
+        
+        for (NFEvent* event in dayArray) {
+            if(event.values) {
+                [tempDay removeObject:event];
+            }
+        }
+        if (tempDay.count > 0) {
+            [tempArray addObject:tempDay];
+        } else {
+            NSLog(@"no events");
+        }
+    }
+    return tempArray;
+}
+
+
+
+
 - (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
+    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    return (NSMutableArray*)resultArray;
+}
+
+- (NSMutableDictionary*)getTaskForMonthDictionary:(NSDate*)currentDate withValue:(NFValue*)value {
+    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
+    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
+    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    //NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
+    for (NSString *key in filtered) {
+        [resultDic setValue:[monthTaskaWithValue objectForKey:key] forKey:key];
+    }
+    return resultDic;
+}
+
+
+- (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFValue*)value {
+    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
+    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
     NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
     return (NSMutableArray*)resultArray;
@@ -329,7 +384,7 @@
     NSMutableArray *result = [NSMutableArray new];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-
+    
     
     NSDateComponents *components = [calendar components:NSCalendarUnitDay
                                                fromDate:start

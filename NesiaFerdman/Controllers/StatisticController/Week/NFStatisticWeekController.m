@@ -7,8 +7,17 @@
 //
 
 #import "NFStatisticWeekController.h"
+#import "NFHeaderView.h"
+#import "NFValuesFilterView.h"
+#import "NFStatisticWeekDataSource.h"
+#import "NotifyList.h"
+#import "NFTaskManager.h"
 
 @interface NFStatisticWeekController ()
+@property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
+@property (weak, nonatomic) IBOutlet NFValuesFilterView *filterView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NFStatisticWeekDataSource *dataSource;
 
 @end
 
@@ -16,22 +25,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    _dataSource = [[NFStatisticWeekDataSource alloc] initWithTableView:_tableView target:self];
+    self.tableView.tableFooterView = [UIView new];
+    [_headerView addNFDateModel:[_dataSource getDateLimits] weeks:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:HEADER_NOTIF object:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_NOTIF object:nil];
 }
-*/
+
+
+- (void)updateData {
+    [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    [_dataSource setSelectedDate:[_headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
+}
+
+
 
 @end

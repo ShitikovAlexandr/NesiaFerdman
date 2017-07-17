@@ -7,31 +7,43 @@
 //
 
 #import "NFStatisticMonthController.h"
+#import "NFHeaderMonthView.h"
+#import "NFValuesFilterView.h"
+#import "NFStatisticMonthDataSource.h"
+#import "NotifyList.h"
+#import "NFTaskManager.h"
+#import "NFSettingManager.h"
+
 
 @interface NFStatisticMonthController ()
-
+@property (weak, nonatomic) IBOutlet NFHeaderMonthView *headerView;
+@property (weak, nonatomic) IBOutlet NFValuesFilterView *filterView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NFStatisticMonthDataSource *dataSource;
 @end
 
 @implementation NFStatisticMonthController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [_headerView setListOfDateWithStart:[NFSettingManager getMinDate] end:[NFSettingManager getMaxDate]];
+    _dataSource = [[NFStatisticMonthDataSource alloc] initWithTableView:_tableView target:self];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self updateData];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:HEADER_MONTH object:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_MONTH object:nil];
 }
-*/
+
+- (void)updateData {
+     [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    [_dataSource setSelectedDate:_headerView.selectetDate];
+}
 
 @end

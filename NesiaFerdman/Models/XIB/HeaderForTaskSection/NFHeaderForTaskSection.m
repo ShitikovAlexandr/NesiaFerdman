@@ -50,7 +50,7 @@
             animation.type = kCATransitionPush;
             animation.subtype = kCATransitionFromTop;
             animation.duration = 0.3;
-            [self.layer addAnimation:animation forKey:@"kCATransitionReveal"];
+            //[self.layer addAnimation:animation forKey:@"kCATransitionReveal"];
             [self addSubview:subview];
             self.taskCountLabel.text = @"";
             [NFStyleKit drawDownBorderWithView:subview];

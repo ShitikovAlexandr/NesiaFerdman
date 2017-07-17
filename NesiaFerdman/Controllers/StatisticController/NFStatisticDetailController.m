@@ -16,6 +16,8 @@
 #import "NFRoundProgressView.h"
 #import "NFAnimatedLabel.h"
 
+
+
 @interface NFStatisticDetailController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UIButton *navButton;
@@ -31,6 +33,8 @@
 @property (weak, nonatomic) IBOutlet NFAnimatedLabel *allTaskCount;
 @property (weak, nonatomic) IBOutlet NFAnimatedLabel *doneTaskCount;
 @property (weak, nonatomic) IBOutlet UILabel *doneTaskTitle;
+@property (strong, nonatomic) NSMutableArray *dateForTitleSection;
+
 
 @end
 
@@ -38,6 +42,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dateForTitleSection = [NSMutableArray array];
     self.monthLabel.text = [[self dateToString:_selectedDate] uppercaseString];
     self.doneTaskTitle.text = @"выполненных\nзадач";
     self.allTaskTitle.text = @"поставленных\nзадач";
@@ -96,35 +101,93 @@
 
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
-    NSArray *eventDayArray = [_dataArray objectAtIndex:section];
-    NFEvent *event = [eventDayArray firstObject];
-    [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
-    [headerView setTaskCount:eventDayArray];
+   // NSArray *eventDayArray = [_dataArray objectAtIndex:section];
+    if ([[_dateForTitleSection objectAtIndex:section] isKindOfClass:[NSDate class]]) {
+        [headerView setCurrentDate:[_dateForTitleSection objectAtIndex:section]];
+    }
+//    else if ([[_dateForTitleSection objectAtIndex:section] isKindOfClass:[NSString class]]) {
+//        [headerView setCurrentDate:[ self keyStringToDate:[_dateForTitleSection objectAtIndex:section]]];
+//    }
+    //[headerView setTaskCount:eventDayArray];
     return headerView;
 }
 
 #pragma mark - Helpers
 
 - (void)loadEvents {
+    [self updateDataStatistic];
+}
+
+- (void)updateDataStatistic {
     [_dataArray removeAllObjects];
-    
     if (_value) {
-        [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonth:_selectedDate withValue:_value]];
         self.screenTitle.text = self.value.valueTitle;
         [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
     } else {
-        NSLog(@"No value");
         self.screenTitle.text = @"Другое";
         [self.valueImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
-        [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
+    }
+    
+    switch (_type) {
+        case DayStatistic: {
+            [_dateForTitleSection addObject:_selectedDate];
+            if (_value) {
+                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDay:_selectedDate withValue:_value]];
+            } else {
+                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDayWithoutValues:_selectedDate]];
+            }
+            break;
+        }
+        case WeekStatistic: {
+            if (_value) {
+                for (NSDate* day in _selectedWeek.allDateOfWeek) {
+                    NSMutableArray *tempArray = [NSMutableArray array];
+                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDay:day withValue:_value]];
+                    if (tempArray.count > 0) {
+                        [_dateForTitleSection addObject:day];
+                        [_dataArray addObjectsFromArray:tempArray];
+                    }
+                }
+            } else {
+                for (NSDate* day in _selectedWeek.allDateOfWeek) {
+                    NSMutableArray *tempArray = [NSMutableArray array];
+                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDayWithoutValues:day]];
+                    if (tempArray.count > 0) {
+                        [_dateForTitleSection addObject:day];
+                        [_dataArray addObjectsFromArray:tempArray];
+                    }
+                }
+
+            }
+            
+            break;
+        }
+        case MonthStatistic: {
+            if (_value) {
+                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFTaskManager sharedManager] getTaskForMonthDictionary:_selectedDate withValue:_value]];
+                NSArray *filtered = [[tempDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                for (NSString *key in filtered) {
+                    [_dataArray addObject:[tempDictionary objectForKey:key]];
+                    [_dateForTitleSection addObject:[self keyStringToDate:key]];
+                }
+            } else {
+                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
+            }
+            break;
+        }
+        case OtherStatistic: {
+            
+            break;
+        }
+        default:
+            break;
     }
     [self.tableView reloadData];
     [self setCountTasksWithArray:_dataArray];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.progressView.progressLayer.strokeEnd =  [self setProgressValueWithData:_dataArray];
     });
-
-   
+    
 }
 
 - (void)exitAction {
@@ -186,6 +249,12 @@
         self.doneTaskCount.text = [NSString stringWithFormat:@"%i", doneCount];
         self.allTaskCount.text = [NSString stringWithFormat:@"%i", taskCount];
     }
+}
+
+- (NSDate*)keyStringToDate:(NSString*)key {
+    NFDateFormatter *formatter = [[NFDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd"];
+    return [formatter dateFromString:key];
 }
 
 
