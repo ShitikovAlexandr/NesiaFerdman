@@ -13,6 +13,7 @@
 
 #define HEADER_NOTIF  @"kHederChange"
 #define HEADER_MONTH @"kHeaderChangeMonth"
+#define HEADER_RANDOM_PERIOD @"kHeaderRandomPerionChange"
 
 #define LONG_CELL_PRESS @"kCellLongPress"
 #define VALUE_FILTER_PRESS @"kValueViewPress"

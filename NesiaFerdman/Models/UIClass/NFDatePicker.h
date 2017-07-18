@@ -14,4 +14,6 @@
 
 - (instancetype)initWithTextField:(UITextField *)textField;
 
+- (NSString *)stringFromDateOnly:(NSDate *)date;
+
 @end

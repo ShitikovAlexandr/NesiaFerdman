@@ -7,6 +7,7 @@
 //
 
 #import "NFDatePicker.h"
+#import "NFSettingManager.h"
 
 @interface NFDatePicker()
 @property (strong, nonatomic) UITextField *textfield;
@@ -29,12 +30,14 @@
         self.layer.shadowRadius = 3;
         self.layer.shadowOpacity = 3;
         self.layer.masksToBounds = NO;
-
-
+        
+        [self setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        NSLocale *loc = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+        [self setLocale: loc];
+//        self.maximumDate = [NFSettingManager getMaxDate];
+//        self.minimumDate = [NFSettingManager getMinDate];
         
         self.selectedDate = [NSDate date];
-        //[self setLocale:[NSLocale systemLocale]];
-        
         UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
         UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
         self.toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
@@ -62,7 +65,7 @@
 
 - (NSString *)stringFromDateOnly:(NSDate *)date {
     NFDateFormatter *dateFormater = [NFDateFormatter new];
-    [dateFormater setDateFormat:@"LLLL, dd, yyyy"];
+    [dateFormater setDateFormat:@"dd MMMM yyyy"];
     return [dateFormater stringFromDate:date];
 }
 

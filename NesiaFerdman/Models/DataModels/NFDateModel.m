@@ -54,8 +54,8 @@
     
     NSMutableArray *weeksArray = [NSMutableArray array];
     NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    NSCalendar *cal = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    [cal setFirstWeekday:2];
+     [cal setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [cal setFirstWeekday:1];
     
     NSDate *now = from;
     NSDate *startOfTheWeek;

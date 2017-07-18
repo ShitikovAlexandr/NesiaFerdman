@@ -8,6 +8,7 @@
 
 #import "NFPop.h"
 
+
 static BOOL isShowAlert = false;
 
 @interface NFPop ()
@@ -31,6 +32,7 @@ static BOOL isShowAlert = false;
 
 
 + (void)startAlertWithMassage:(NSString *)massage {
+    
     if (!isShowAlert) {
         isShowAlert = true;
     [NFPop showCardAlertWithTitle:@""

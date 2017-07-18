@@ -16,6 +16,9 @@
 		C207EF541EA89BAD00BFF383 /* NFWeekTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C207EF531EA89BAD00BFF383 /* NFWeekTaskCell.m */; };
 		C207EF561EA89BB900BFF383 /* NFWeekTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C207EF551EA89BB900BFF383 /* NFWeekTaskCell.xib */; };
 		C20876701ED83144005FF719 /* NFLogin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C208766F1ED83144005FF719 /* NFLogin.storyboard */; };
+		C2091B0F1F1DF77900BAA524 /* NFPeriodFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2091B0E1F1DF77900BAA524 /* NFPeriodFilterView.m */; };
+		C2091B111F1DF78F00BAA524 /* NFPeriodFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2091B101F1DF78F00BAA524 /* NFPeriodFilterView.xib */; };
+		C2091B141F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C2091B131F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m */; };
 		C209AF891F0A2F7F0036A592 /* NFPop.m in Sources */ = {isa = PBXBuildFile; fileRef = C209AF881F0A2F7F0036A592 /* NFPop.m */; };
 		C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8A1F0A6FDD0036A592 /* defaultValue.png */; };
 		C209AF8E1F0A70890036A592 /* result_NEW_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8C1F0A70890036A592 /* result_NEW_icon.png */; };
@@ -271,6 +274,11 @@
 		C207EF531EA89BAD00BFF383 /* NFWeekTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekTaskCell.m; sourceTree = "<group>"; };
 		C207EF551EA89BB900BFF383 /* NFWeekTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFWeekTaskCell.xib; sourceTree = "<group>"; };
 		C208766F1ED83144005FF719 /* NFLogin.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NFLogin.storyboard; sourceTree = "<group>"; };
+		C2091B0D1F1DF77900BAA524 /* NFPeriodFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPeriodFilterView.h; sourceTree = "<group>"; };
+		C2091B0E1F1DF77900BAA524 /* NFPeriodFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPeriodFilterView.m; sourceTree = "<group>"; };
+		C2091B101F1DF78F00BAA524 /* NFPeriodFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFPeriodFilterView.xib; sourceTree = "<group>"; };
+		C2091B121F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticRandomPeriodDataSource.h; sourceTree = "<group>"; };
+		C2091B131F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFStatisticRandomPeriodDataSource.m; sourceTree = "<group>"; };
 		C209AF871F0A2F7F0036A592 /* NFPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPop.h; sourceTree = "<group>"; };
 		C209AF881F0A2F7F0036A592 /* NFPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPop.m; sourceTree = "<group>"; };
 		C209AF8A1F0A6FDD0036A592 /* defaultValue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultValue.png; sourceTree = "<group>"; };
@@ -698,6 +706,16 @@
 			path = "Task models";
 			sourceTree = "<group>";
 		};
+		C2091B0C1F1DF75C00BAA524 /* PeriodFilterView */ = {
+			isa = PBXGroup;
+			children = (
+				C2091B0D1F1DF77900BAA524 /* NFPeriodFilterView.h */,
+				C2091B0E1F1DF77900BAA524 /* NFPeriodFilterView.m */,
+				C2091B101F1DF78F00BAA524 /* NFPeriodFilterView.xib */,
+			);
+			path = PeriodFilterView;
+			sourceTree = "<group>";
+		};
 		C209AF851F0A2F420036A592 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,6 +1110,8 @@
 			children = (
 				C24422EC1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.h */,
 				C24422ED1F18EC0B0008CF49 /* NFStatisticRandomPeriodController.m */,
+				C2091B121F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.h */,
+				C2091B131F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m */,
 			);
 			path = OtherPeriod;
 			sourceTree = "<group>";
@@ -1271,6 +1291,7 @@
 		C25737A21E9D2B2200C4A4EA /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				C2091B0C1F1DF75C00BAA524 /* PeriodFilterView */,
 				C22531851EEFFB120050BB24 /* DayTaskCell */,
 				C2D13F751EEAE32400A9A4F3 /* AddFooterView */,
 				C2D13F6F1EEA992B00A9A4F3 /* valueCell */,
@@ -1903,6 +1924,7 @@
 				C24AA50D1EBB160100ABA92C /* List_Document@2x.png in Resources */,
 				C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */,
 				C2C22DB31EE98283006BD83A /* setting_icon.png in Resources */,
+				C2091B111F1DF78F00BAA524 /* NFPeriodFilterView.xib in Resources */,
 				C2C22DBD1EE98A25006BD83A /* NFMenuCell.xib in Resources */,
 				C2C22DB11EE98283006BD83A /* relax_value_icon.png in Resources */,
 				C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */,
@@ -2138,6 +2160,7 @@
 				C212DEF21EF130570082EF38 /* NFProgressShapeLayer.m in Sources */,
 				C24422F11F18EC200008CF49 /* NFStatisticDayController.m in Sources */,
 				C2FA69091EE1436500D58D18 /* NFTagView.m in Sources */,
+				C2091B0F1F1DF77900BAA524 /* NFPeriodFilterView.m in Sources */,
 				C2E334961E9E796D0086FDDC /* NFNavigationController.m in Sources */,
 				C24AA50B1EBB11B400ABA92C /* NFHeaderForTaskSection.m in Sources */,
 				C2AA72091F028FE8007DB785 /* NFMenuUpdateCell.m in Sources */,
@@ -2213,6 +2236,7 @@
 				C2359FF91EC9AA8800EB8FDC /* NFDayConclusionsController.m in Sources */,
 				C26BA3301F14E9A00053A138 /* NFResultMonthDataSource.m in Sources */,
 				C2DDBCFE1ED4732F00F61F02 /* NFLogInButton.m in Sources */,
+				C2091B141F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m in Sources */,
 				C245526B1EBCC912003EBB11 /* NFToolbar.m in Sources */,
 				C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */,
 				C22407851E9CB351004B089A /* NesiaFerdman.xcdatamodeld in Sources */,

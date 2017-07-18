@@ -23,6 +23,7 @@ typedef NS_ENUM(NSUInteger, StatisticDetailType)
 @property (strong, nonatomic) NFValue *value;
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NFWeekDateModel *selectedWeek;
+@property (strong, nonatomic) NSMutableArray *selectedDateArray;
 @property (assign, nonatomic) StatisticDetailType type;
 
 @end

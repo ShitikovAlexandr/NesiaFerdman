@@ -13,6 +13,7 @@
 #define kFirebaseWriteError         @"Ошибка записи в базу данных"
 #define kFirebaseReadError          @"Ошибка чтения с базы данных"
 #define kErrorInternetconnection    @"Проверте интернет соединение"
+#define kWrongDatesPerion           @"Дата окончания не должна быть меньше даты начала"
 
 @interface NFPop : ISMessages
 

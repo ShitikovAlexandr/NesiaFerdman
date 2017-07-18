@@ -70,4 +70,6 @@
 
 - (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array;
 
+- (NSMutableArray*)getListOfDateWithStart:(NSDate*)start end:(NSDate*)end;
+
 @end
