@@ -8,12 +8,16 @@
 
 #import "NFSettingManager.h"
 
+#define ALL_AVALIBLE_CALENDARS @"kAllAvalibleCalendars"
+#define ALL_ENABLE_CALENDARS   @"kAllEnabledCalendars"
+
 #define GOOGLE_SYNC @"kGoogleSync"
 #define WRITE_TO_GOOGLE @"kWriteToGoogle"
 #define DELETE_FROM_GOOGLE @"kDeleteFromGoogle"
 
 #define MIN_PERIOD @"kMinPeriod"
 #define MAX_PERIOD @"kMaxPeriod"
+
 
 @implementation NFSettingManager
 
@@ -105,6 +109,23 @@
     NSDate *endDate = [NSDate dateWithTimeIntervalSinceNow:86400 * [self getMaxPerionOfSync]];
     return endDate;
 }
+
++ (NSArray*)getAllAvalibleCalendars {
+    return nil;
+}
+
++ (NSArray*)getAllEnabledCalendars {
+    return nil;
+}
+
++ (void)setAllAvalibleCalendars:(NSArray*)calendarList {
+    
+}
+
++ (void)setAllEnabledCalendars:(NSArray*)calendarList {
+    
+}
+
 
 
 @end

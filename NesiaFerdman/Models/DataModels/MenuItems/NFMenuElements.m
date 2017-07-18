@@ -23,7 +23,7 @@
 
 typedef NS_ENUM(NSInteger, MenuItem)
 {
-    Results,
+   // Results,
     Statistic,
     Values,
     Manifestations,
@@ -48,15 +48,15 @@ typedef NS_ENUM(NSInteger, MenuItem)
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
                                     @"Main" bundle:[NSBundle mainBundle]];
     switch (index) {
-        case Results:
-        {
-            NFResultController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFResultController class])];
-            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultControllerNav"];
-            [navController setViewControllers:@[viewController]];
-            [target presentViewController:navController animated:YES completion:nil];
-            
-            break;
-        }
+//        case Results:
+//        {
+//            NFResultController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFResultController class])];
+//            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultControllerNav"];
+//            [navController setViewControllers:@[viewController]];
+//            [target presentViewController:navController animated:YES completion:nil];
+//            
+//            break;
+//        }
         case Statistic:
         {
             //NFStatisticController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
@@ -126,11 +126,11 @@ typedef NS_ENUM(NSInteger, MenuItem)
 //    calendar.title = @"Календарь";
 //    calendar.index = 0;
     
-    NFMenuItem *results = [NFMenuItem new];
-    results.title = @"Итоги недели";
-    results.index = 1;
-    results.imageName = @"result_NEW_icon.png";
-    [_itemsArray addObject:results];
+//    NFMenuItem *results = [NFMenuItem new];
+//    results.title = @"Итоги недели";
+//    results.index = 1;
+//    results.imageName = @"result_NEW_icon.png";
+//    [_itemsArray addObject:results];
     
     NFMenuItem *statistic = [NFMenuItem new];
     statistic.title = @"Статистика";

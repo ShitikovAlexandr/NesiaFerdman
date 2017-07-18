@@ -287,7 +287,7 @@
         
     } else {
         NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
-        [headerView.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
+        [headerView.iconImage setImage:[UIImage imageNamed:@"task_section_icon.png"]];
         [headerView setCurrentDate:_dateSelected?_dateSelected:_todayDate];
         return headerView;
     }

@@ -54,7 +54,7 @@
             [self addSubview:subview];
             self.taskCountLabel.text = @"";
             [NFStyleKit drawDownBorderWithView:subview];
-            [self.iconImage setImage:[UIImage imageNamed:@"List_Document@2x.png"]];
+            [self.iconImage setImage:[UIImage imageNamed:@"task_section_icon.png"]];
         }
     }
     return self;
