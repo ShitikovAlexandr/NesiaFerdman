@@ -120,7 +120,6 @@
     return equalsEvent;
 }
 
-
 - (NSMutableArray *)getTaskForMonth:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
     NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
@@ -128,32 +127,24 @@
     return resultArray.count > 0 ? [self getObjectsFromArrayWithArrays:(NSMutableArray *)resultArray] : nil;
 }
 
-
-
-
-- (NSMutableArray *)getTaskForMonthWithoutValues:(NSDate*)currentDate {
+- (NSMutableDictionary*)getTaskForMonthWithoutValues:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
     NSArray *filtered = [[[_eventTaskDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
-    NSArray *resultArray = [_eventTaskDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    NSMutableArray *tempArray = [NSMutableArray array];
-    NSMutableArray *tempDay;
     
-    for (NSMutableArray *dayArray in resultArray) {
-        //[tempDay removeAllObjects];
-        tempDay = [NSMutableArray arrayWithArray:dayArray];
-        
-        for (NFEvent* event in dayArray) {
-            if(event.values) {
-                [tempDay removeObject:event];
+    NSMutableDictionary *resultDic = [NSMutableDictionary dictionary];
+    for (NSString *key in filtered) {
+        NSMutableArray *tempDayArray = [NSMutableArray array];
+        [tempDayArray addObjectsFromArray:[_eventTaskDictionary objectForKey:key]];
+        for (NFEvent *event in [_eventTaskDictionary objectForKey:key]) {
+            if (event.values) {
+                [tempDayArray removeObject:event];
             }
         }
-        if (tempDay.count > 0) {
-            [tempArray addObject:tempDay];
-        } else {
-            NSLog(@"no events");
+        if (tempDayArray.count > 0) {
+            [resultDic setObject:tempDayArray forKey:key];
         }
     }
-    return tempArray;
+    return resultDic;
 }
 
 - (NSMutableArray *)getTaskForDayWithoutValues:(NSDate*)currentDate {
@@ -181,9 +172,6 @@
     return tempArray;
 }
 
-
-
-
 - (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
@@ -205,7 +193,6 @@
     }
     return resultDic;
 }
-
 
 - (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
@@ -268,21 +255,7 @@
     return newDate;
 }
 
-//- (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {//
-//
-//    if (array.count > 0) {
-//        for (NFEvent *event in array) {
-//            NSString *eventKey = [event.startDate substringToIndex:10];
-//            if(!dic[eventKey]){
-//                dic[eventKey] = [NSMutableArray new];
-//            }
-//            [dic[eventKey] addObject:event];
-//        }
-//    }
-//}
-
 - (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
-    
     if (array.count > 0) {
         for (NFEvent *event in array) {
             NSDate *start = [self datefromString:event.startDate];
@@ -384,7 +357,6 @@
     NSMutableArray *result = [NSMutableArray new];
     NSCalendar *calendar = [NSCalendar currentCalendar];
     [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-    
     
     NSDateComponents *components = [calendar components:NSCalendarUnitDay
                                                fromDate:start

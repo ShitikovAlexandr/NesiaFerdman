@@ -171,7 +171,12 @@
                     [_dateForTitleSection addObject:[self keyStringToDate:key]];
                 }
             } else {
-                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
+                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
+                NSArray *filtered = [[tempDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+                for (NSString *key in filtered) {
+                    [_dataArray addObject:[tempDictionary objectForKey:key]];
+                    [_dateForTitleSection addObject:[self keyStringToDate:key]];
+                }
             }
             break;
         }
