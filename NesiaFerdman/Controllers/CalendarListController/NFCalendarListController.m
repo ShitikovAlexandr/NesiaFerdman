@@ -7,9 +7,12 @@
 //
 
 #import "NFCalendarListController.h"
-#import "NFSettingManager.h"
+#import "NFCalendarListDataSource.h"
+#import "UIBarButtonItem+FHButtons.h"
 
 @interface NFCalendarListController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NFCalendarListDataSource *dataSource;
 
 @end
 
@@ -17,14 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [NFSettingManager getAllAvalibleCalendars];
+    self.title = @"Список календарей";
+    _tableView.tableFooterView = [UIView new];
+    [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    _dataSource = [[NFCalendarListDataSource alloc] initWithTableView:_tableView target:self];
+    [_dataSource updateData];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 @end

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NFTCalendarListCell" id="wm1-1w-ISv" customClass="NFTCalendarListCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wm1-1w-ISv" id="GdV-3e-Qck">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALb-gj-HRw">
+                        <rect key="frame" x="22" y="11" width="276" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="IF4-QM-J8N"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="3Ty-tN-7MQ">
+                        <rect key="frame" x="312" y="6" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="oTg-Ir-uKN"/>
+                            <constraint firstAttribute="height" constant="31" id="yoI-RM-JUg"/>
+                        </constraints>
+                    </switch>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ALb-gj-HRw" firstAttribute="centerY" secondItem="GdV-3e-Qck" secondAttribute="centerY" id="0Q1-v6-gvp"/>
+                    <constraint firstItem="3Ty-tN-7MQ" firstAttribute="centerY" secondItem="GdV-3e-Qck" secondAttribute="centerY" id="mpd-gS-6xQ"/>
+                    <constraint firstAttribute="trailing" secondItem="3Ty-tN-7MQ" secondAttribute="trailing" constant="14" id="raT-Mb-XfQ"/>
+                    <constraint firstItem="3Ty-tN-7MQ" firstAttribute="leading" secondItem="ALb-gj-HRw" secondAttribute="trailing" constant="14" id="yOl-YU-szy"/>
+                    <constraint firstItem="ALb-gj-HRw" firstAttribute="leading" secondItem="GdV-3e-Qck" secondAttribute="leadingMargin" constant="14" id="zij-gc-2po"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="calendarSwitcher" destination="3Ty-tN-7MQ" id="LGn-1a-tkJ"/>
+                <outlet property="calendarTitleLabel" destination="ALb-gj-HRw" id="EbP-N0-XBq"/>
+            </connections>
+            <point key="canvasLocation" x="87.5" y="49"/>
+        </tableViewCell>
+    </objects>
+</document>

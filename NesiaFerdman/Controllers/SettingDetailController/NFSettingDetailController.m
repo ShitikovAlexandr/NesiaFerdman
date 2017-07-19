@@ -12,6 +12,7 @@
 #import "NFSyncManager.h"
 #import "NFActivityIndicatorView.h"
 #import "NotifyList.h"
+#import "NFCalendarListController.h"
 
 
 
@@ -23,6 +24,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *googleWriteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *googleDeleteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *updateLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *GoogleCalendarListLabel;
+
 
 @property (weak, nonatomic) IBOutlet UISwitch *googleSyncSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleWriteSwitcher;
@@ -61,8 +65,16 @@
         return 0;
     } else if (!_googleSyncSwitcher.isOn && indexPath.row == 2) {
         return 0;
+    } else if (!_googleSyncSwitcher.isOn && indexPath.row == 3) {
+        return 0;
     } else {
         return 44;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 3) {
+        [self navigateToCalendarList];
     }
 }
 
@@ -73,10 +85,7 @@
     _googleWriteLabel.text = @"Запись в Google";
     _googleDeleteLabel.text = @"Удаление с Google";
     _updateLabel.text = @"Обновить";
-    
-//    _googleSyncSwitcher.selected = [NFSettingManager isOnGoogleSync];
-//    _googleWriteSwitcher.selected = [NFSettingManager isOnWriteToGoogle];
-//    _googleDeleteSwitcher.selected = [NFSettingManager isOnDeleteFromGoogle];
+    _GoogleCalendarListLabel.text = @"Список доступных календарей";
     
     [_googleSyncSwitcher setOn:[NFSettingManager isOnGoogleSync]];
     [_googleWriteSwitcher setOn:[NFSettingManager isOnWriteToGoogle]];
@@ -138,6 +147,15 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_indicator endAnimating];
     });
+}
+
+- (void)navigateToCalendarList {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"NewMain" bundle:[NSBundle mainBundle]];
+    NFCalendarListController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 

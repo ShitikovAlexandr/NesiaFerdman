@@ -10,4 +10,7 @@
 
 @interface NFCalendarListDataSource : NSObject
 
+- (instancetype)initWithTableView:(UITableView*)tableView target:(id)target;
+- (void)updateData;
+
 @end
