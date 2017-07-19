@@ -11,12 +11,17 @@
 #import "NotifyList.h"
 #import "NFValue.h"
 #import "NFResult.h"
+#import "NFGoogleCalendar.h"
+
 
 @import Firebase;
 
 
 
 @interface NFFirebaseManager : NSObject
+@property (strong, nonatomic) FIRDatabaseReference *ref;
+
+
 @property (strong, nonatomic) NSMutableArray *firebaseEventsArray;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 @property (strong, nonatomic) NSMutableArray *baseValuesArray;
@@ -24,6 +29,7 @@
 @property (strong, nonatomic) NSMutableArray *resultCategoryArray;
 @property (strong, nonatomic) NSMutableArray *manifestationsArray;
 @property (strong, nonatomic) NSMutableArray *resultsArray;
+@property (strong, nonatomic) NSMutableArray *calendarsList;
 
 + (NFFirebaseManager *)sharedManager;
 
@@ -64,6 +70,14 @@
 
 - (NSMutableArray*)getAllManifestationsForValue:(NFValue*)value userId:(NSString*)userId;
 - (void)addManifestation:(NFManifestation*)manifestation toValue:(NFValue*)value userId:(NSString*)userId;
+
+//******
+
+/** Write users Google Calendar to Firebase*/
+- (void)saveCalendar:(NFGoogleCalendar *)calendar withUserId:(NSString *)userId;
+
+/** Return list of Google calendars from Firebase  to _calendarsList property*/
+- (void)getCalendarsList;
 
 
 @end

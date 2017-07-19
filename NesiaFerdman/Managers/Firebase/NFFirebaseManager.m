@@ -15,7 +15,7 @@
 @import FirebaseAuth;
 
 @interface NFFirebaseManager()
-@property (strong, nonatomic) FIRDatabaseReference *ref;
+
 @property (strong, nonatomic) FIRRemoteConfig *remoteConfig;
 
 @property (assign, nonatomic) BOOL isValueLoaded;
@@ -48,8 +48,34 @@
         self.resultCategoryArray = [NSMutableArray array];
         self.resultsArray = [NSMutableArray array];
         self.manifestationsArray = [NSMutableArray array];
+        self.calendarsList = [NSMutableArray array];
             }
     return self;
+}
+
+- (void)saveCalendar:(NFGoogleCalendar *)calendar withUserId:(NSString *)userId {
+    [[[[[_ref child:@"Users"] child:userId] child:@"CalendarsList"] child:calendar.appId] updateChildValues:[[calendar copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"comlite write calendar");
+    }];
+}
+
+- (void)getCalendarsList {
+    [_calendarsList removeAllObjects];
+    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"CalendarsList"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        // Loop over children
+        NSMutableArray *dataArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *calendarDic = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [dataArray addObject:calendarDic];
+        }
+        [_calendarsList removeAllObjects];
+        for (NSDictionary *dic in dataArray) {
+            NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+            [_calendarsList addObject:calendar];
+        }
+    }];
 }
 
 - (void)writeEventToFirebase:(NFEvent *)event withUserId:(NSString *)userId {
@@ -89,7 +115,6 @@
      }];
 }
 
-
 - (void)getDataFromFirebase {
     
     [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"Events"]
@@ -109,10 +134,7 @@
          }
          for (NSDictionary *dic in dataArray) {
              NFEvent *event = [[NFEvent alloc] initWithDictionary:dic];
-             //if (!event.isDeleted) {
                  [eventsArray addObject:event];
-          //   } else {
-           //  }
          }
          
          [self getAllValues];

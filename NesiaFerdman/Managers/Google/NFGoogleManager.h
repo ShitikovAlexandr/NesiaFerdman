@@ -10,6 +10,8 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "GTLCalendar.h"
 #import "NFEvent.h"
+@import Firebase;
+
 
 @interface NFGoogleManager : NSObject
 

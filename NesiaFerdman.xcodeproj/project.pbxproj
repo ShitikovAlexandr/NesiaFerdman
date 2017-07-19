@@ -67,6 +67,10 @@
 		C2249D111F0E3CE800E7269E /* NFAddValueCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D101F0E3CE800E7269E /* NFAddValueCategoryController.m */; };
 		C2249D151F0E7BC100E7269E /* NFValueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */; };
 		C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */; };
+		C2308B2E1F1F4AB2006F6E87 /* NFDefaultReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B2B1F1F4AB2006F6E87 /* NFDefaultReminder.m */; };
+		C2308B2F1F1F4AB2006F6E87 /* NFGoogleCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B2D1F1F4AB2006F6E87 /* NFGoogleCalendar.m */; };
+		C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B321F1F70D4006F6E87 /* NFTCalendarListCell.m */; };
+		C2308B351F1F70E1006F6E87 /* NFTCalendarListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2308B341F1F70E1006F6E87 /* NFTCalendarListCell.xib */; };
 		C2359FF61EC9AA6700EB8FDC /* NFPageConclusionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2359FF51EC9AA6700EB8FDC /* NFPageConclusionsController.m */; };
 		C2359FF91EC9AA8800EB8FDC /* NFDayConclusionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2359FF81EC9AA8800EB8FDC /* NFDayConclusionsController.m */; };
 		C2359FFC1EC9AA9800EB8FDC /* NFWeekConclusionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2359FFB1EC9AA9800EB8FDC /* NFWeekConclusionsController.m */; };
@@ -370,6 +374,13 @@
 		C2249D131F0E7BC100E7269E /* NFValueDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueDetailCell.h; sourceTree = "<group>"; };
 		C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValueDetailCell.m; sourceTree = "<group>"; };
 		C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "result_nav_bar_icon@2x.png"; sourceTree = "<group>"; };
+		C2308B2A1F1F4AB2006F6E87 /* NFDefaultReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDefaultReminder.h; sourceTree = "<group>"; };
+		C2308B2B1F1F4AB2006F6E87 /* NFDefaultReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDefaultReminder.m; sourceTree = "<group>"; };
+		C2308B2C1F1F4AB2006F6E87 /* NFGoogleCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleCalendar.h; sourceTree = "<group>"; };
+		C2308B2D1F1F4AB2006F6E87 /* NFGoogleCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFGoogleCalendar.m; sourceTree = "<group>"; };
+		C2308B311F1F70D4006F6E87 /* NFTCalendarListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTCalendarListCell.h; sourceTree = "<group>"; };
+		C2308B321F1F70D4006F6E87 /* NFTCalendarListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTCalendarListCell.m; sourceTree = "<group>"; };
+		C2308B341F1F70E1006F6E87 /* NFTCalendarListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTCalendarListCell.xib; sourceTree = "<group>"; };
 		C2359FF41EC9AA6700EB8FDC /* NFPageConclusionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPageConclusionsController.h; sourceTree = "<group>"; };
 		C2359FF51EC9AA6700EB8FDC /* NFPageConclusionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPageConclusionsController.m; sourceTree = "<group>"; };
 		C2359FF71EC9AA8800EB8FDC /* NFDayConclusionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayConclusionsController.h; sourceTree = "<group>"; };
@@ -727,6 +738,7 @@
 		C2091B171F1E40F200BAA524 /* CalendarListController */ = {
 			isa = PBXGroup;
 			children = (
+				C2308B301F1F70AE006F6E87 /* Cell */,
 				C2091B181F1E410D00BAA524 /* NFCalendarListController.h */,
 				C2091B191F1E410D00BAA524 /* NFCalendarListController.m */,
 				C2091B1B1F1E416F00BAA524 /* NFCalendarListDataSource.h */,
@@ -939,6 +951,7 @@
 		C22407B61E9CB4F5004B089A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C2308B191F1F43FA006F6E87 /* GoogleModels */,
 				C2E334931E9E79510086FDDC /* Controllers */,
 				C2E334841E9E12920086FDDC /* DataModels */,
 				C25737A21E9D2B2200C4A4EA /* ViewModels */,
@@ -1035,6 +1048,35 @@
 			children = (
 			);
 			path = DayTaskCell;
+			sourceTree = "<group>";
+		};
+		C2308B191F1F43FA006F6E87 /* GoogleModels */ = {
+			isa = PBXGroup;
+			children = (
+				C2308B291F1F4AB2006F6E87 /* CalendarList */,
+			);
+			path = GoogleModels;
+			sourceTree = "<group>";
+		};
+		C2308B291F1F4AB2006F6E87 /* CalendarList */ = {
+			isa = PBXGroup;
+			children = (
+				C2308B2A1F1F4AB2006F6E87 /* NFDefaultReminder.h */,
+				C2308B2B1F1F4AB2006F6E87 /* NFDefaultReminder.m */,
+				C2308B2C1F1F4AB2006F6E87 /* NFGoogleCalendar.h */,
+				C2308B2D1F1F4AB2006F6E87 /* NFGoogleCalendar.m */,
+			);
+			path = CalendarList;
+			sourceTree = "<group>";
+		};
+		C2308B301F1F70AE006F6E87 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C2308B311F1F70D4006F6E87 /* NFTCalendarListCell.h */,
+				C2308B321F1F70D4006F6E87 /* NFTCalendarListCell.m */,
+				C2308B341F1F70E1006F6E87 /* NFTCalendarListCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		C2359FF31EC9A9CB00EB8FDC /* ConclusionsControllers */ = {
@@ -1945,6 +1987,7 @@
 				C24AA50D1EBB160100ABA92C /* List_Document@2x.png in Resources */,
 				C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */,
 				C2C22DB31EE98283006BD83A /* setting_icon.png in Resources */,
+				C2308B351F1F70E1006F6E87 /* NFTCalendarListCell.xib in Resources */,
 				C2091B111F1DF78F00BAA524 /* NFPeriodFilterView.xib in Resources */,
 				C2C22DBD1EE98A25006BD83A /* NFMenuCell.xib in Resources */,
 				C2C22DB11EE98283006BD83A /* relax_value_icon.png in Resources */,
@@ -2271,6 +2314,7 @@
 				C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */,
 				C22407791E9CB351004B089A /* main.m in Sources */,
 				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
+				C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
 				C2FC126F1F1CDE8000EC7FD1 /* NFStatisticMonthDataSource.m in Sources */,
@@ -2292,6 +2336,7 @@
 				C24422F41F18ED4F0008CF49 /* NFStatisticWeekController.m in Sources */,
 				C2DDBCE91ED45A2500F61F02 /* NFCircleView.m in Sources */,
 				C2B3D9721EDEB73800A0A44E /* NFValueFilterCell.m in Sources */,
+				C2308B2F1F1F4AB2006F6E87 /* NFGoogleCalendar.m in Sources */,
 				C2DDBCFA1ED470D500F61F02 /* NFLeftRoundetButton.m in Sources */,
 				C2F7BC7C1EE6ED910016AC0B /* NFLoginSimpleController.m in Sources */,
 				C2C0D6161EC60233003C7741 /* NFMenuItem.m in Sources */,
@@ -2308,6 +2353,7 @@
 				C24422EB1F18EB580008CF49 /* NFStatisticPageController.m in Sources */,
 				C27C82B91F0FCE16007AD793 /* NFRsultPageController.m in Sources */,
 				C21320FC1EA65B3800CE2B5D /* NFWeekTaskController.m in Sources */,
+				C2308B2E1F1F4AB2006F6E87 /* NFDefaultReminder.m in Sources */,
 				C2DDBCFB1ED470D500F61F02 /* NFRightRoundetButton.m in Sources */,
 				C25E4CC11ECDD619003C100D /* NFTableView.m in Sources */,
 				C2CB58A01EA0E8AB0023ADAA /* NFHeaderCell.m in Sources */,

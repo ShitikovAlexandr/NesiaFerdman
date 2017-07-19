@@ -12,6 +12,7 @@
 #import "NFTaskManager.h"
 #import "NotifyList.h"
 #import "NFValue.h"
+#import "NFGoogleCalendar.h"
 
 @interface NFSyncManager : NSObject
 
@@ -43,6 +44,12 @@
 - (void)writeEventToGoogle:(NFEvent*)event;
 - (void)updateEventInGoogleWithEvent:(NFEvent*)event;
 - (void)deleteEventFromGoogle:(NFEvent*)event;
+
+/** Return the list of calendars available to the user */
+- (NSMutableArray*)getGoogleCalendarsList;
+
+/** Save Google calendar to Firebase */
+- (void)saveGoogleCalendar:(NFGoogleCalendar*)calendar;
 
 + (BOOL)connectedInternet;
 

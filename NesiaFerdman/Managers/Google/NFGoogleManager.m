@@ -14,6 +14,8 @@
 #import "NotifyList.h"
 #import "NFSyncManager.h"
 #import "NFSettingManager.h"
+#import "NFGoogleCalendar.h"
+
 
 static NSString *const kKeychainItemName = @"Google Calendar API";
 static NSString *const kClientID = @"270949290072-8d4197i3nk6hvk1774a1heghuskugo3m.apps.googleusercontent.com";
@@ -23,6 +25,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
 @property (strong, nonatomic) UIViewController *target;
 @property (assign, nonatomic) BOOL isLastCalendar;
 @property (assign, nonatomic) NSInteger calendarCount;
+@property (strong, nonatomic) NSMutableArray *inputGoogleCalendarList;
 @end
 @implementation NFGoogleManager
 @synthesize service = _service;
@@ -45,6 +48,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
 }
 
 - (BOOL)isLoginWithTarget:(id)target {
+    self.inputGoogleCalendarList = [NSMutableArray array];
     self.target = target;
     self.service = [[GTLServiceCalendar alloc] init];
     self.service.authorizer =
@@ -93,7 +97,10 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                          [calendrsID addObjectsFromArray: [list.JSON objectForKey:@"items"] ];
                          _calendarCount = calendrsID.count;
                          for (NSDictionary *dic in calendrsID) {
-                             NSLog(@"calendar id %@", [dic objectForKey:@"id"]);
+                             NSLog(@"calendars  %@", dic );
+                             NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+                             [_inputGoogleCalendarList addObject:calendar];
+                             
                              GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:[dic objectForKey:@"id"]];
                              query.maxResults = count;
                              query.timeMin = [GTLDateTime dateTimeWithDate:minDate
@@ -156,6 +163,11 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
     }
     else {
         self.service.authorizer = authResult;
+        //FIRAuth *credential = [FIRAuth  ] ;
+        //let credential = FIRGoogleAuthProvider.credentialWithIDToken(authentication.idToken, accessToken: authentication.accessToken)
+       // [[FIRAuth auth] signInAndRetrieveDataWithCredential:(nonnull FIRAuthCredential *) completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+            
+        //}]
         [NFSyncManager sharedManager].userId = [self getUserId];
         [self.target dismissViewControllerAnimated:YES completion:nil];
     }

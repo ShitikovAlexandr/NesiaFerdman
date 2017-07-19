@@ -173,6 +173,7 @@
     [[NFFirebaseManager sharedManager] getDataFromFirebase];
     [[NFFirebaseManager sharedManager] getMinSyncInterval];
     [[NFFirebaseManager sharedManager] getMaxSyncInterval];
+    [[NFFirebaseManager sharedManager] getCalendarsList];
     //[[NFFirebaseManager sharedManager] addStandartListOfValuesToDateBaseWithUserId:@"XXX"];
 }
 
@@ -423,6 +424,16 @@
     [[NFGoogleManager sharedManager] deleteGoogleEventWithEvent:event];
 }
 
+//------------
+
+- (void)saveGoogleCalendar:(NFGoogleCalendar*)calendar {
+    [[NFFirebaseManager sharedManager] saveCalendar:calendar withUserId:_userId];
+}
+
+- (NSMutableArray*)getGoogleCalendarsList {
+    NSLog(@"calendar list %@", [NFFirebaseManager sharedManager].calendarsList);
+    return [NFFirebaseManager sharedManager].calendarsList;
+}
 
 
 
