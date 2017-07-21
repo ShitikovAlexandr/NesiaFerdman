@@ -239,6 +239,7 @@
 		C2FE1C601E9F534A00B4E03A /* NFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE1C5F1E9F534A00B4E03A /* NFViewController.m */; };
 		C2FE1C631E9F541E00B4E03A /* NFSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE1C621E9F541E00B4E03A /* NFSegmentedControl.m */; };
 		C2FE1C671E9F610500B4E03A /* NFDayTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE1C661E9F610500B4E03A /* NFDayTaskController.m */; };
+		C2FEBC591F208F7D00440B24 /* NFGoogleSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FEBC581F208F7D00440B24 /* NFGoogleSyncManager.m */; };
 		D0D88CE4E2655892A0D39FFA /* libPods-NesiaFerdman.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D91AA015C04563F622F9B93 /* libPods-NesiaFerdman.a */; };
 		F605BACD2B4A0A32B8DB0582 /* libPods-NesiaFerdmanUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB48DE7B3CA095E48E7600E1 /* libPods-NesiaFerdmanUITests.a */; };
 		FA9966071EFFAF24003CF84A /* NFManifestationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9966061EFFAF24003CF84A /* NFManifestationsController.m */; };
@@ -651,6 +652,8 @@
 		C2FE1C621E9F541E00B4E03A /* NFSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSegmentedControl.m; sourceTree = "<group>"; };
 		C2FE1C651E9F610500B4E03A /* NFDayTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayTaskController.h; sourceTree = "<group>"; };
 		C2FE1C661E9F610500B4E03A /* NFDayTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDayTaskController.m; sourceTree = "<group>"; };
+		C2FEBC571F208F7D00440B24 /* NFGoogleSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleSyncManager.h; sourceTree = "<group>"; };
+		C2FEBC581F208F7D00440B24 /* NFGoogleSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFGoogleSyncManager.m; sourceTree = "<group>"; };
 		D5255076F5DCD1666D4F6E56 /* Pods-NesiaFerdman.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NesiaFerdman.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NesiaFerdman/Pods-NesiaFerdman.debug.xcconfig"; sourceTree = "<group>"; };
 		DF2B5860071CF37E9123FE31 /* Pods-NesiaFerdman.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NesiaFerdman.release.xcconfig"; path = "Pods/Target Support Files/Pods-NesiaFerdman/Pods-NesiaFerdman.release.xcconfig"; sourceTree = "<group>"; };
 		FA9966051EFFAF24003CF84A /* NFManifestationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFManifestationsController.h; sourceTree = "<group>"; };
@@ -1053,6 +1056,7 @@
 		C2308B191F1F43FA006F6E87 /* GoogleModels */ = {
 			isa = PBXGroup;
 			children = (
+				C2CED6241F21D1BE00805406 /* GoogleEvent */,
 				C2308B291F1F4AB2006F6E87 /* CalendarList */,
 			);
 			path = GoogleModels;
@@ -1234,6 +1238,8 @@
 			children = (
 				C2470C271EFBEA37003BA93D /* NFGoogleManager.h */,
 				C2470C281EFBEA37003BA93D /* NFGoogleManager.m */,
+				C2FEBC571F208F7D00440B24 /* NFGoogleSyncManager.h */,
+				C2FEBC581F208F7D00440B24 /* NFGoogleSyncManager.m */,
 			);
 			path = Google;
 			sourceTree = "<group>";
@@ -1662,6 +1668,13 @@
 				C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */,
 			);
 			path = HeaderCollectionView;
+			sourceTree = "<group>";
+		};
+		C2CED6241F21D1BE00805406 /* GoogleEvent */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GoogleEvent;
 			sourceTree = "<group>";
 		};
 		C2D13F6F1EEA992B00A9A4F3 /* valueCell */ = {
@@ -2333,6 +2346,7 @@
 				C20EBA121EA8F97E0074C0AF /* NFDateModel.m in Sources */,
 				C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */,
 				C212DEEF1EF12F9E0082EF38 /* NFProgressView.m in Sources */,
+				C2FEBC591F208F7D00440B24 /* NFGoogleSyncManager.m in Sources */,
 				C24422F41F18ED4F0008CF49 /* NFStatisticWeekController.m in Sources */,
 				C2DDBCE91ED45A2500F61F02 /* NFCircleView.m in Sources */,
 				C2B3D9721EDEB73800A0A44E /* NFValueFilterCell.m in Sources */,

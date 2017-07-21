@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3CE7E102CC99EC88DD7B3A9D044B634E'
+               BlueprintIdentifier = '40516E43DC0474ED6006F6F9996980B0'
                BlueprintName = 'STCollapseTableView'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSTCollapseTableView.a'>

@@ -29,6 +29,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleAPIClientForREST.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,12 +107,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>284058BB6A9AE221D411833593068D44</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>37B7CB84E966BFD8CAE7A4DAE7BA4DC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3CE7E102CC99EC88DD7B3A9D044B634E</key>
+		<key>40516E43DC0474ED6006F6F9996980B0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +137,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7CFA6B03258DF10B529A31433096A369</key>
+		<key>728DAEAC386371A489E70D9F5C3B0ED7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>80AF939B47AD058B568ED942E50F8E2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,12 +157,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0437A78A07A86B73EC5D04BD528D182</key>
+		<key>B5C216C18C397FA3489DF1BABE788A6D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CEBC5F7DEEC21784D26FCCBDA9AA1E0C</key>
+		<key>B932C198B2811DE34F4FE4DD2668AC2C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -163,11 +178,6 @@
 			<true/>
 		</dict>
 		<key>EAE45C123C22F83F258F201FDFBA835E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB35D5ABD849AE559C2BFAAB02887C1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

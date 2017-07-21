@@ -18,6 +18,9 @@ case "${TARGETED_DEVICE_FAMILY}" in
   2)
     TARGET_DEVICE_ARGS="--target-device ipad"
     ;;
+  3)
+    TARGET_DEVICE_ARGS="--target-device tv"
+    ;;
   *)
     TARGET_DEVICE_ARGS="--target-device mac"
     ;;
@@ -75,10 +78,12 @@ EOM
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/ISMessages/ISMessages.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_resource "GTMOAuth2/Source/Touch/GTMOAuth2ViewTouch.xib"
+  install_resource "GoogleSignIn/Resources/GoogleSignIn.bundle"
   install_resource "$PODS_CONFIGURATION_BUILD_DIR/ISMessages/ISMessages.bundle"
 fi
 

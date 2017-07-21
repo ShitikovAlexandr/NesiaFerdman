@@ -435,6 +435,10 @@
     return [NFFirebaseManager sharedManager].calendarsList;
 }
 
+// new methods
 
+- (void)updateDataFromSources {
+    
+}
 
 @end

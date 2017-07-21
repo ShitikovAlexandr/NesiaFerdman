@@ -8,6 +8,8 @@ target 'NesiaFerdman' do
   # Pods for NesiaFerdman
 	pod 'GoogleAPIClient/Calendar', '~> 1.0.2'
     pod 'GTMOAuth2', '~> 1.1.0'
+    pod 'Google/SignIn'
+    pod 'GoogleAPIClientForREST/Calendar', '~> 1.2.1'
 	pod 'JTCalendar', '~> 2.0'
 	pod 'Firebase/Core'
 	pod 'Firebase/Database'
