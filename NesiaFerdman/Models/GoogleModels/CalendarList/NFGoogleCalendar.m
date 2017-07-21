@@ -24,7 +24,6 @@ NSString *const kNFGoogleCalendarTimeZone = @"timeZone";
 @end
 @implementation NFGoogleCalendar
 
-
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
  */

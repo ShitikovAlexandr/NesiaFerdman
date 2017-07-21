@@ -51,6 +51,40 @@
     return self;
 }
 
+- (instancetype)initWithGoogleEventDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        self.title = [dictionary objectForKey:@"summary"];
+        self.eventDescription = [dictionary objectForKey:@"description"];
+        self.createDate = [[dictionary objectForKey:@"created"] substringToIndex:19];
+        if ([[dictionary objectForKey:@"start"] objectForKey:@"dateTime"]) {
+            self.startDate = [[[dictionary objectForKey:@"start"] objectForKey:@"dateTime"] substringToIndex:19];
+        } else if ([[dictionary objectForKey:@"start"] objectForKey:@"date"]) {
+            self.startDate = [NSString stringWithFormat:@"%@T00:01:00",[[dictionary objectForKey:@"start"] objectForKey:@"date"] ];
+        } else {
+            self.startDate = [[dictionary objectForKey:@"created"] substringToIndex:19];
+        }
+        if ([[dictionary objectForKey:@"end"] objectForKey:@"dateTime"]) {
+            self.endDate = [[[dictionary objectForKey:@"end"] objectForKey:@"dateTime"] substringToIndex:19];
+        } else if ([[dictionary objectForKey:@"end"] objectForKey:@"date"]) {
+            self.endDate =  [NSString stringWithFormat:@"%@T00:01:00",[[dictionary objectForKey:@"end"] objectForKey:@"date"]];
+        } else  {
+            self.endDate = [[dictionary objectForKey:@"created"] substringToIndex:19];
+        }
+        
+        self.eventType = Event;
+        self.socialType = GoogleEvent;
+        self.dateChange = [dictionary objectForKey:@"updated"];
+        self.calendarId = [[dictionary objectForKey:@"organizer"] objectForKey:@"email"];
+        self.socialId = [dictionary objectForKey:@"id"];
+        
+    }
+    return self;
+}
+
+
+
+
 - (NSDictionary *)convertToDictionary {
     
     

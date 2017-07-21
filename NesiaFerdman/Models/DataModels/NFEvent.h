@@ -34,7 +34,6 @@ typedef NS_ENUM(NSUInteger, SocialType)
 @property (strong, nonatomic) NSString *endDate;
 @property (assign, nonatomic) BOOL isRepeat;
 @property (strong, nonatomic) NSMutableArray *values;
-//@property (strong, nonatomic) NSDictionary *value;
 @property (assign, nonatomic) SocialType socialType;
 @property (assign, nonatomic) EventType eventType;
 @property (strong, nonatomic) NSString *eventId;
@@ -49,6 +48,7 @@ typedef NS_ENUM(NSUInteger, SocialType)
 - (NSDictionary *)convertToDictionary;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithGoogleEventDictionary:(NSDictionary *)dictionary;
 
 - (NSString *)dateToString:(NSDate *)inputDate;
 

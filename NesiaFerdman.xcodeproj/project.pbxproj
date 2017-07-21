@@ -67,6 +67,7 @@
 		C2249D111F0E3CE800E7269E /* NFAddValueCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D101F0E3CE800E7269E /* NFAddValueCategoryController.m */; };
 		C2249D151F0E7BC100E7269E /* NFValueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */; };
 		C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */; };
+		C226616C1F2223BA00688DA9 /* NFFirebaseSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C226616B1F2223BA00688DA9 /* NFFirebaseSyncManager.m */; };
 		C2308B2E1F1F4AB2006F6E87 /* NFDefaultReminder.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B2B1F1F4AB2006F6E87 /* NFDefaultReminder.m */; };
 		C2308B2F1F1F4AB2006F6E87 /* NFGoogleCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B2D1F1F4AB2006F6E87 /* NFGoogleCalendar.m */; };
 		C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2308B321F1F70D4006F6E87 /* NFTCalendarListCell.m */; };
@@ -375,6 +376,8 @@
 		C2249D131F0E7BC100E7269E /* NFValueDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValueDetailCell.h; sourceTree = "<group>"; };
 		C2249D141F0E7BC100E7269E /* NFValueDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValueDetailCell.m; sourceTree = "<group>"; };
 		C22531861EF01C950050BB24 /* result_nav_bar_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "result_nav_bar_icon@2x.png"; sourceTree = "<group>"; };
+		C226616A1F2223BA00688DA9 /* NFFirebaseSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFFirebaseSyncManager.h; sourceTree = "<group>"; };
+		C226616B1F2223BA00688DA9 /* NFFirebaseSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFFirebaseSyncManager.m; sourceTree = "<group>"; };
 		C2308B2A1F1F4AB2006F6E87 /* NFDefaultReminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDefaultReminder.h; sourceTree = "<group>"; };
 		C2308B2B1F1F4AB2006F6E87 /* NFDefaultReminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDefaultReminder.m; sourceTree = "<group>"; };
 		C2308B2C1F1F4AB2006F6E87 /* NFGoogleCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleCalendar.h; sourceTree = "<group>"; };
@@ -1229,6 +1232,8 @@
 			children = (
 				C2470C241EFBEA37003BA93D /* NFFirebaseManager.h */,
 				C2470C251EFBEA37003BA93D /* NFFirebaseManager.m */,
+				C226616A1F2223BA00688DA9 /* NFFirebaseSyncManager.h */,
+				C226616B1F2223BA00688DA9 /* NFFirebaseSyncManager.m */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -2344,6 +2349,7 @@
 				C24AA51C1EBB4FD100ABA92C /* NFDayImportantController.m in Sources */,
 				C2CB58A41EA109390023ADAA /* NFHeaderView.m in Sources */,
 				C20EBA121EA8F97E0074C0AF /* NFDateModel.m in Sources */,
+				C226616C1F2223BA00688DA9 /* NFFirebaseSyncManager.m in Sources */,
 				C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */,
 				C212DEEF1EF12F9E0082EF38 /* NFProgressView.m in Sources */,
 				C2FEBC591F208F7D00440B24 /* NFGoogleSyncManager.m in Sources */,

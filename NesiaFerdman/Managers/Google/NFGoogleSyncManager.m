@@ -7,6 +7,8 @@
 //
 
 #import "NFGoogleSyncManager.h"
+#import "NFGoogleCalendar.h"
+#import "NFSettingManager.h"
 
 
 @interface NFGoogleSyncManager () <GIDSignInDelegate, GIDSignInUIDelegate>
@@ -116,31 +118,43 @@
 
 - (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array {
     [_googleEventsArray removeAllObjects];
-#warning loadGoogleEventsListWithCalendarsArray bad params for request
-    GTLRCalendarQuery_EventsList *query =
-    [GTLRCalendarQuery_EventsList queryWithCalendarId:@"primary"];
-    query.maxResults = 1000;
-    query.timeMin = [GTLRDateTime dateTimeWithDate:[[NSDate date] dateByAddingTimeInterval:-80000]];
-    query.singleEvents = YES;
-    query.orderBy = kGTLRCalendarOrderByStartTime;
     
-    [self.service executeQuery:query
-             completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
-                 NSLog(@"Events list %@", object);
-             }];
-
-    
+    for (NFGoogleCalendar *calendar in array) {
+        GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
+        query.maxResults = 1000;
+        query.timeMin = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMinDate]];
+        query.timeMax = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMaxDate]];
+        query.singleEvents = YES;
+        query.orderBy = kGTLRCalendarOrderByStartTime;
+        [self.service executeQuery:query
+                 completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+                     NSLog(@"Events list %@", object);
+                     GTLRCalendar_Event *googleEvent = object;
+                     NFEvent *event = [[NFEvent alloc] initWithGoogleEventDictionary:googleEvent.JSON];
+                     [_googleEventsArray addObject:event];
+                 }];
+    }
 }
 
 - (void)loadGoogleCalendarList {
     [_googleCalendarsArray removeAllObjects];
-#warning loadGoogleCalendarList method not save data
     GTLRCalendarQuery_CalendarListList *query = [GTLRCalendarQuery_CalendarListList query];
     [self.service executeQuery:query
              completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
-                 NSLog(@"Calendars list %@", object);
-             }];
+                 if (callbackError == nil) {
+                     if([object isKindOfClass:[GTLRCalendar_CalendarList class]]) {
+                         GTLRCalendar_CalendarList *list = object;
+                         NSMutableArray *calendrsID = [NSMutableArray array];
+                         [calendrsID addObjectsFromArray: [list.JSON objectForKey:@"items"] ];
+                         //_calendarCount = calendrsID.count;
+                         for (NSDictionary *dic in calendrsID) {
+                             NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+                             [_googleCalendarsArray addObject:calendar];
+                         }
+                     }
+                 }
 
+             }];
 }
 
 
