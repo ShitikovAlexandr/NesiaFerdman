@@ -12,6 +12,9 @@
 #import "NFEvent.h"
 @import Firebase;
 
+#define NOTIFYCATIN_CALENDAR_LIST_LOAD @"kCalendarListIsLoaded"
+#define NOTIFYCATIN_EVENT_LOAD @"kEventListIsLoaded"
+
 @interface NFGoogleSyncManager : NSObject
 
 
@@ -39,5 +42,6 @@
 - (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array;
 /** load a list of all the available calendars for the user */
 - (void)loadGoogleCalendarList;
+
 
 @end

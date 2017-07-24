@@ -9,6 +9,14 @@
 #import "NFGoogleSyncManager.h"
 #import "NFGoogleCalendar.h"
 #import "NFSettingManager.h"
+#import "NFNSyncManager.h"
+#import "NFFirebaseSyncManager.h"
+
+#import "NFNEvent.h"
+#import "NFNGoogleEvent.h"
+
+
+#define ITEMS_KEY @"items"
 
 
 @interface NFGoogleSyncManager () <GIDSignInDelegate, GIDSignInUIDelegate>
@@ -20,6 +28,7 @@
 
 @property (nonatomic, strong) GTLRCalendarService *service;
 @property (strong, nonatomic) GIDSignIn* signIn;
+@property (assign, nonatomic) NSInteger calendarsRequestCount;
 
 @end
 
@@ -68,7 +77,12 @@
         [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
                                          accessToken:authentication.accessToken];
         [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-            NSLog(@"singin to firebase");
+            if (error == nil) {
+                NSLog(@"singin to firebase");
+
+            } else {
+                NSLog(@"not login to firebase");
+            }
         }];
     }
 }
@@ -87,14 +101,15 @@
 }
 
 - (BOOL)isLogin {
-    return false;
-#warning isLogin method empty
+    return [[GIDSignIn sharedInstance] hasAuthInKeychain];
 }
 
 - (NSString*)getUserId {
     return @"";
 #warning getUserId method is empty
 }
+
+
 
 #pragma mark - google api
 
@@ -118,6 +133,7 @@
 
 - (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array {
     [_googleEventsArray removeAllObjects];
+    _calendarsRequestCount = array.count;
     
     for (NFGoogleCalendar *calendar in array) {
         GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
@@ -129,9 +145,21 @@
         [self.service executeQuery:query
                  completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
                      NSLog(@"Events list %@", object);
-                     GTLRCalendar_Event *googleEvent = object;
-                     NFEvent *event = [[NFEvent alloc] initWithGoogleEventDictionary:googleEvent.JSON];
-                     [_googleEventsArray addObject:event];
+                     GTLRCalendar_Events *eventsList = object;
+                     
+                     NSMutableArray *itemsDic = [NSMutableArray new];
+                     [itemsDic addObjectsFromArray: [[eventsList.JSON objectForKey:ITEMS_KEY] allObjects]];
+                     for (NSDictionary *dic in itemsDic) {
+                         NFNEvent *nesiaEvent = [[NFNEvent alloc] initWithGoogleEvent:[[NFNGoogleEvent alloc] initWithDictionary:dic]];
+                         [_googleEventsArray addObject:nesiaEvent];
+                     }
+                     _calendarsRequestCount --;
+                     if (_calendarsRequestCount == 0) {
+                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                             NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
+                             [[NSNotificationCenter defaultCenter] postNotification:notification];
+                         });
+                     }
                  }];
     }
 }
@@ -145,17 +173,25 @@
                      if([object isKindOfClass:[GTLRCalendar_CalendarList class]]) {
                          GTLRCalendar_CalendarList *list = object;
                          NSMutableArray *calendrsID = [NSMutableArray array];
-                         [calendrsID addObjectsFromArray: [list.JSON objectForKey:@"items"] ];
-                         //_calendarCount = calendrsID.count;
+                         [calendrsID addObjectsFromArray: [list.JSON objectForKey:ITEMS_KEY]];
+                         
                          for (NSDictionary *dic in calendrsID) {
                              NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+                             NSLog(@"google Calendar %@", calendar.summary);
                              [_googleCalendarsArray addObject:calendar];
                          }
+                         [self loadGoogleEventsListWithCalendarsArray:_googleCalendarsArray];
+                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                             NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
+                             [[NSNotificationCenter defaultCenter] postNotification:notification];
+                         });
                      }
                  }
-
+                 
              }];
 }
+
+
 
 
 @end

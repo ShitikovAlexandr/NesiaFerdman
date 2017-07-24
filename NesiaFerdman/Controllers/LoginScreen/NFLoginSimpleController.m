@@ -10,11 +10,16 @@
 #import "NFRoundView.h"
 #import "NFCircleView.h"
 #import "NFLogoView.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
 #import "NFStyleKit.h"
 #import "NotifyList.h"
 #import "NFSyncManager.h"
 #import "NFActivityIndicatorView.h"
+
+#import "NFGoogleSyncManager.h"
+#import "NFNSyncManager.h"
+#warning lock at Google manager in this class
+
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.12
 
@@ -59,7 +64,9 @@ static NFLoginSimpleController *sharedController;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endLoadData) name:END_UPDATE_DATA object:nil];
-    [self chackLoginState];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self chackLoginState];
+    });
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -126,8 +133,9 @@ static NFLoginSimpleController *sharedController;
 }
 
 - (void)chackLoginState {
+    NSLog(@"New manager stata is login %d", [[NFGoogleSyncManager sharedManager] isLogin]);
     
-    if ([[NFGoogleManager sharedManager] isLoginWithTarget:self] ) {
+    if (![[NFGoogleSyncManager sharedManager] isLogin]) {
         NSLog(@"not login");
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self transformToLogin];
@@ -137,27 +145,32 @@ static NFLoginSimpleController *sharedController;
         NSLog(@"login");
         _loginButton.userInteractionEnabled = false;
         _loginButton.alpha = 0;
-        [_indicator startAnimating];
-        //[[NFSyncManager sharedManager] addStandartListOfResultCategory];
-        if ([[NFSyncManager sharedManager] isFirstRunApp]) {
-            [[NFSyncManager sharedManager] addStandartListOfValue];
-        }
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-             [[NFSyncManager sharedManager] updateAllData];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[NFNSyncManager sharedManager] updateData];
+            
+            [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
         });
-       
+//        //[[NFSyncManager sharedManager] addStandartListOfResultCategory];
+//        if ([[NFSyncManager sharedManager] isFirstRunApp]) {
+//            [[NFSyncManager sharedManager] addStandartListOfValue];
+//        }
+//        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//             [[NFSyncManager sharedManager] updateAllData];
+//        });
+//       
+//    }
+//
     }
-    
 }
 
 - (void)loginAction {
-    [[NFGoogleManager sharedManager] loginWithGoogleWithTarget:self];
+    [[NFGoogleSyncManager sharedManager] loginActionWithTarget:self];
 }
 
 - (void)logout {
-    [[NFGoogleManager sharedManager] logOutWithTarget:self];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[[NFGoogleManager sharedManager] logOutWithTarget:self];
+    //[self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)endLoadData {

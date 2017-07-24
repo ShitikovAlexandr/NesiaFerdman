@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NFFirebaseManager.h"
-#import "NFGoogleManager.h"
+//#import "NFFirebaseManager.h"
+//#import "NFGoogleManager.h"
 #import "NFTaskManager.h"
 #import "NotifyList.h"
 #import "NFValue.h"
 #import "NFGoogleCalendar.h"
+#warning lock at Google manager in this class
+
 
 @interface NFSyncManager : NSObject
 

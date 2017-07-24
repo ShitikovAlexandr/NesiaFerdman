@@ -7,10 +7,13 @@
 //
 
 #import "NFFirebaseManager.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
 #import "NFResultCategory.h"
 #import "NFManifestation.h"
 #import "NFSettingManager.h"
+
+#warning lock at Google manager in this class
+
 
 @import FirebaseAuth;
 
@@ -60,22 +63,22 @@
 }
 
 - (void)getCalendarsList {
-    [_calendarsList removeAllObjects];
-    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"CalendarsList"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        // Loop over children
-        NSMutableArray *dataArray = [NSMutableArray array];
-        NSEnumerator *children = [snapshot children];
-        FIRDataSnapshot *child;
-        while (child = [children nextObject]) {
-            NSDictionary *calendarDic = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
-            [dataArray addObject:calendarDic];
-        }
-        [_calendarsList removeAllObjects];
-        for (NSDictionary *dic in dataArray) {
-            NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
-            [_calendarsList addObject:calendar];
-        }
-    }];
+//    [_calendarsList removeAllObjects];
+//    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"CalendarsList"] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+//        // Loop over children
+//        NSMutableArray *dataArray = [NSMutableArray array];
+//        NSEnumerator *children = [snapshot children];
+//        FIRDataSnapshot *child;
+//        while (child = [children nextObject]) {
+//            NSDictionary *calendarDic = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+//            [dataArray addObject:calendarDic];
+//        }
+//        [_calendarsList removeAllObjects];
+//        for (NSDictionary *dic in dataArray) {
+//            NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+//            [_calendarsList addObject:calendar];
+//        }
+//    }];
 }
 
 - (void)writeEventToFirebase:(NFEvent *)event withUserId:(NSString *)userId {
@@ -116,69 +119,69 @@
 }
 
 - (void)getDataFromFirebase {
-    
-    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"Events"]
-     observeEventType:FIRDataEventTypeValue
-     withBlock:^(FIRDataSnapshot *snapshot) {
-         NSMutableArray *eventsArray = [NSMutableArray array];
-
-         // Loop over children
-         NSMutableArray *dataArray = [NSMutableArray array];
-         NSEnumerator *children = [snapshot children];
-         //NSLog(@"children %@", children);
-         FIRDataSnapshot *child;
-         while (child = [children nextObject]) {
-             NSDictionary *event = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
-             [dataArray addObject:event];
-             //NSLog(@"events form firebase->>> %@", event);
-         }
-         for (NSDictionary *dic in dataArray) {
-             NFEvent *event = [[NFEvent alloc] initWithDictionary:dic];
-                 [eventsArray addObject:event];
-         }
-         
-         [self getAllValues];
-         [self getAllBaseValues];
-         [self getAllResultCategory];
-         [self getAllManifestations];
-         [self getAllResultsWithUserId:[[NFGoogleManager sharedManager] getUserId]];
-         
-         [self.firebaseEventsArray removeAllObjects];
-         [self.firebaseEventsArray addObjectsFromArray:eventsArray];
-         _isEventLoaded = YES;
-//         NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
-//         [[NSNotificationCenter defaultCenter]postNotification:notification];
-         [self compliteLoading];
-     }];
+//    
+//    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"Events"]
+//     observeEventType:FIRDataEventTypeValue
+//     withBlock:^(FIRDataSnapshot *snapshot) {
+//         NSMutableArray *eventsArray = [NSMutableArray array];
+//
+//         // Loop over children
+//         NSMutableArray *dataArray = [NSMutableArray array];
+//         NSEnumerator *children = [snapshot children];
+//         //NSLog(@"children %@", children);
+//         FIRDataSnapshot *child;
+//         while (child = [children nextObject]) {
+//             NSDictionary *event = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+//             [dataArray addObject:event];
+//             //NSLog(@"events form firebase->>> %@", event);
+//         }
+//         for (NSDictionary *dic in dataArray) {
+//             NFEvent *event = [[NFEvent alloc] initWithDictionary:dic];
+//                 [eventsArray addObject:event];
+//         }
+//         
+//         [self getAllValues];
+//         [self getAllBaseValues];
+//         [self getAllResultCategory];
+//         [self getAllManifestations];
+//         [self getAllResultsWithUserId:[[NFGoogleManager sharedManager] getUserId]];
+//         
+//         [self.firebaseEventsArray removeAllObjects];
+//         [self.firebaseEventsArray addObjectsFromArray:eventsArray];
+//         _isEventLoaded = YES;
+////         NSNotification *notification = [NSNotification notificationWithName:FIREBASE_NOTIF object:self];
+////         [[NSNotificationCenter defaultCenter]postNotification:notification];
+//         [self compliteLoading];
+//     }];
 }
 
 #pragma mark - Values
 
 - (void)getAllValues {
-    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"Values"]
-     observeEventType:FIRDataEventTypeValue
-     withBlock:^(FIRDataSnapshot *snapshot) {
-         NSMutableArray *valuesArray = [NSMutableArray array];
-         
-         // Loop over children
-         NSMutableArray *dataArray = [NSMutableArray array];
-         NSEnumerator *children = [snapshot children];
-         //NSLog(@"children %@", children);
-         FIRDataSnapshot *child;
-         while (child = [children nextObject]) {
-             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
-             [dataArray addObject:value];
-             //NSLog(@"events form firebase->>> %@", event);
-         }
-         for (NSDictionary *dic in dataArray) {
-             NFValue *val = [[NFValue alloc] initWithDictionary:dic];
-             [valuesArray addObject:val];
-         }
-         [self.valuesArray removeAllObjects];
-         [self.valuesArray addObjectsFromArray:valuesArray];
-         _isValueLoaded = YES;
-         [self compliteLoading];
-     }];
+//    [[[[self.ref child:@"Users"] child:[[NFGoogleManager sharedManager] getUserId]] child:@"Values"]
+//     observeEventType:FIRDataEventTypeValue
+//     withBlock:^(FIRDataSnapshot *snapshot) {
+//         NSMutableArray *valuesArray = [NSMutableArray array];
+//         
+//         // Loop over children
+//         NSMutableArray *dataArray = [NSMutableArray array];
+//         NSEnumerator *children = [snapshot children];
+//         //NSLog(@"children %@", children);
+//         FIRDataSnapshot *child;
+//         while (child = [children nextObject]) {
+//             NSDictionary *value = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+//             [dataArray addObject:value];
+//             //NSLog(@"events form firebase->>> %@", event);
+//         }
+//         for (NSDictionary *dic in dataArray) {
+//             NFValue *val = [[NFValue alloc] initWithDictionary:dic];
+//             [valuesArray addObject:val];
+//         }
+//         [self.valuesArray removeAllObjects];
+//         [self.valuesArray addObjectsFromArray:valuesArray];
+//         _isValueLoaded = YES;
+//         [self compliteLoading];
+//     }];
 }
 
 - (void)getAllBaseValues {

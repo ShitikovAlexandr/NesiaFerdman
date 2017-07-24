@@ -13,12 +13,15 @@
 #import "NFSegmentedControl.h"
 #import "NFDateModel.h"
 #import "NFWeekDateModel.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
 #import "NotifyList.h"
 #import "NFSyncManager.h"
 #import "NFValuesFilterView.h"
 #import "NFStyleKit.h"
 #import "NFSettingManager.h"
+
+#warning lock at Google manager in this class
+
 
 @interface NFDayTaskController () <UITableViewDelegate, UITableViewDataSource, NFHeaderViewProtocol>
 

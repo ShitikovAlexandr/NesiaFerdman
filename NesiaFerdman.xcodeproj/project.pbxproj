@@ -105,7 +105,6 @@
 		C2470C361EFBEA37003BA93D /* NFSettingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2470C2C1EFBEA37003BA93D /* NFSettingManager.m */; };
 		C2470C371EFBEA37003BA93D /* NFSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2470C2F1EFBEA37003BA93D /* NFSyncManager.m */; };
 		C2470C381EFBEA37003BA93D /* NFTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2470C321EFBEA37003BA93D /* NFTaskManager.m */; };
-		C249718E1EAE2F7300A2CAD1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C249718D1EAE2F7300A2CAD1 /* GoogleService-Info.plist */; };
 		C24AA5081EBB11A400ABA92C /* NFHeaderForTaskSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24AA5071EBB11A400ABA92C /* NFHeaderForTaskSection.xib */; };
 		C24AA50B1EBB11B400ABA92C /* NFHeaderForTaskSection.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA50A1EBB11B400ABA92C /* NFHeaderForTaskSection.m */; };
 		C24AA50D1EBB160100ABA92C /* List_Document@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AA50C1EBB160100ABA92C /* List_Document@2x.png */; };
@@ -115,6 +114,15 @@
 		C24AA51C1EBB4FD100ABA92C /* NFDayImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA51B1EBB4FD100ABA92C /* NFDayImportantController.m */; };
 		C24AA51F1EBB4FE900ABA92C /* NFWeekImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA51E1EBB4FE900ABA92C /* NFWeekImportantController.m */; };
 		C24AA5221EBB4FFC00ABA92C /* NFMonthImportantController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA5211EBB4FFC00ABA92C /* NFMonthImportantController.m */; };
+		C24B29D01F25D2AF0069C160 /* NFNSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */; };
+		C24B29D61F25E4AC0069C160 /* NFNEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D31F25E4AC0069C160 /* NFNEvent.m */; };
+		C24B29D71F25E4AC0069C160 /* NFNValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D51F25E4AC0069C160 /* NFNValue.m */; };
+		C24B29DA1F25EDBF0069C160 /* NFNGoogleEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D91F25EDBF0069C160 /* NFNGoogleEvent.m */; };
+		C24B29DE1F260E330069C160 /* NFNRsultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29DD1F260E330069C160 /* NFNRsultCategory.m */; };
+		C24B29E21F2610220069C160 /* NFNRsult.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29E11F2610220069C160 /* NFNRsult.m */; };
+		C24B29E51F261CE80069C160 /* NFNManifestation.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29E41F261CE80069C160 /* NFNManifestation.m */; };
+		C24B29E71F2622060069C160 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C24B29E61F2622060069C160 /* GoogleService-Info.plist */; };
+		C24B29EB1F262E530069C160 /* NFAdminManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29EA1F262E530069C160 /* NFAdminManager.m */; };
 		C24DF7481EF914FF003FCF5C /* NFResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF7471EF914FF003FCF5C /* NFResult.m */; };
 		C24DF74B1EF916E0003FCF5C /* NFResultCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF74A1EF916E0003FCF5C /* NFResultCategory.m */; };
 		C24DF74F1EF943F2003FCF5C /* NFResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C24DF74E1EF943F2003FCF5C /* NFResultController.m */; };
@@ -445,7 +453,6 @@
 		C2470C2F1EFBEA37003BA93D /* NFSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFSyncManager.m; sourceTree = "<group>"; };
 		C2470C311EFBEA37003BA93D /* NFTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTaskManager.h; sourceTree = "<group>"; };
 		C2470C321EFBEA37003BA93D /* NFTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTaskManager.m; sourceTree = "<group>"; };
-		C249718D1EAE2F7300A2CAD1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C24AA5071EBB11A400ABA92C /* NFHeaderForTaskSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFHeaderForTaskSection.xib; sourceTree = "<group>"; };
 		C24AA5091EBB11B400ABA92C /* NFHeaderForTaskSection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHeaderForTaskSection.h; sourceTree = "<group>"; };
 		C24AA50A1EBB11B400ABA92C /* NFHeaderForTaskSection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderForTaskSection.m; sourceTree = "<group>"; };
@@ -461,6 +468,23 @@
 		C24AA51E1EBB4FE900ABA92C /* NFWeekImportantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekImportantController.m; sourceTree = "<group>"; };
 		C24AA5201EBB4FFC00ABA92C /* NFMonthImportantController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFMonthImportantController.h; sourceTree = "<group>"; };
 		C24AA5211EBB4FFC00ABA92C /* NFMonthImportantController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFMonthImportantController.m; sourceTree = "<group>"; };
+		C24B29CE1F25D2AF0069C160 /* NFNSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNSyncManager.h; sourceTree = "<group>"; };
+		C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNSyncManager.m; sourceTree = "<group>"; };
+		C24B29D21F25E4AC0069C160 /* NFNEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNEvent.h; sourceTree = "<group>"; };
+		C24B29D31F25E4AC0069C160 /* NFNEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNEvent.m; sourceTree = "<group>"; };
+		C24B29D41F25E4AC0069C160 /* NFNValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNValue.h; sourceTree = "<group>"; };
+		C24B29D51F25E4AC0069C160 /* NFNValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNValue.m; sourceTree = "<group>"; };
+		C24B29D81F25EDBF0069C160 /* NFNGoogleEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNGoogleEvent.h; sourceTree = "<group>"; };
+		C24B29D91F25EDBF0069C160 /* NFNGoogleEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNGoogleEvent.m; sourceTree = "<group>"; };
+		C24B29DC1F260E330069C160 /* NFNRsultCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNRsultCategory.h; sourceTree = "<group>"; };
+		C24B29DD1F260E330069C160 /* NFNRsultCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNRsultCategory.m; sourceTree = "<group>"; };
+		C24B29E01F2610220069C160 /* NFNRsult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNRsult.h; sourceTree = "<group>"; };
+		C24B29E11F2610220069C160 /* NFNRsult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNRsult.m; sourceTree = "<group>"; };
+		C24B29E31F261CE80069C160 /* NFNManifestation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNManifestation.h; sourceTree = "<group>"; };
+		C24B29E41F261CE80069C160 /* NFNManifestation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNManifestation.m; sourceTree = "<group>"; };
+		C24B29E61F2622060069C160 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C24B29E91F262E530069C160 /* NFAdminManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAdminManager.h; sourceTree = "<group>"; };
+		C24B29EA1F262E530069C160 /* NFAdminManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAdminManager.m; sourceTree = "<group>"; };
 		C24DF7461EF914FF003FCF5C /* NFResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResult.h; sourceTree = "<group>"; };
 		C24DF7471EF914FF003FCF5C /* NFResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResult.m; sourceTree = "<group>"; };
 		C24DF7491EF916E0003FCF5C /* NFResultCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFResultCategory.h; path = ../NFResultCategory.h; sourceTree = "<group>"; };
@@ -902,7 +926,7 @@
 				C22407861E9CB351004B089A /* Assets.xcassets */,
 				C22407881E9CB351004B089A /* LaunchScreen.storyboard */,
 				C224078B1E9CB351004B089A /* Info.plist */,
-				C249718D1EAE2F7300A2CAD1 /* GoogleService-Info.plist */,
+				C24B29E61F2622060069C160 /* GoogleService-Info.plist */,
 				C22407831E9CB351004B089A /* NesiaFerdman.xcdatamodeld */,
 				C22407781E9CB351004B089A /* main.m */,
 				C257375A1E9CFBD200C4A4EA /* NFColors.h */,
@@ -1059,6 +1083,9 @@
 		C2308B191F1F43FA006F6E87 /* GoogleModels */ = {
 			isa = PBXGroup;
 			children = (
+				C24B29DF1F260EEE0069C160 /* Result */,
+				C24B29DB1F260E120069C160 /* ResultCategory */,
+				C24B29D11F25E49C0069C160 /* Event+Value */,
 				C2CED6241F21D1BE00805406 /* GoogleEvent */,
 				C2308B291F1F4AB2006F6E87 /* CalendarList */,
 			);
@@ -1207,6 +1234,7 @@
 		C2470C1F1EFBEA36003BA93D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				C24B29E81F262E3A0069C160 /* AdminManager */,
 				C2470C201EFBEA37003BA93D /* DrawManager */,
 				C2470C231EFBEA37003BA93D /* Firebase */,
 				C2470C261EFBEA37003BA93D /* Google */,
@@ -1270,6 +1298,8 @@
 			children = (
 				C2470C2E1EFBEA37003BA93D /* NFSyncManager.h */,
 				C2470C2F1EFBEA37003BA93D /* NFSyncManager.m */,
+				C24B29CE1F25D2AF0069C160 /* NFNSyncManager.h */,
+				C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */,
 			);
 			path = Synchronization;
 			sourceTree = "<group>";
@@ -1326,6 +1356,46 @@
 			);
 			name = AddImportantTaskController;
 			path = CreateImportantTaskController;
+			sourceTree = "<group>";
+		};
+		C24B29D11F25E49C0069C160 /* Event+Value */ = {
+			isa = PBXGroup;
+			children = (
+				C24B29E31F261CE80069C160 /* NFNManifestation.h */,
+				C24B29E41F261CE80069C160 /* NFNManifestation.m */,
+				C24B29D21F25E4AC0069C160 /* NFNEvent.h */,
+				C24B29D31F25E4AC0069C160 /* NFNEvent.m */,
+				C24B29D41F25E4AC0069C160 /* NFNValue.h */,
+				C24B29D51F25E4AC0069C160 /* NFNValue.m */,
+			);
+			path = "Event+Value";
+			sourceTree = "<group>";
+		};
+		C24B29DB1F260E120069C160 /* ResultCategory */ = {
+			isa = PBXGroup;
+			children = (
+				C24B29DC1F260E330069C160 /* NFNRsultCategory.h */,
+				C24B29DD1F260E330069C160 /* NFNRsultCategory.m */,
+			);
+			path = ResultCategory;
+			sourceTree = "<group>";
+		};
+		C24B29DF1F260EEE0069C160 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				C24B29E01F2610220069C160 /* NFNRsult.h */,
+				C24B29E11F2610220069C160 /* NFNRsult.m */,
+			);
+			path = Result;
+			sourceTree = "<group>";
+		};
+		C24B29E81F262E3A0069C160 /* AdminManager */ = {
+			isa = PBXGroup;
+			children = (
+				C24B29E91F262E530069C160 /* NFAdminManager.h */,
+				C24B29EA1F262E530069C160 /* NFAdminManager.m */,
+			);
+			path = AdminManager;
 			sourceTree = "<group>";
 		};
 		C24DF74C1EF943D6003FCF5C /* ResultControllers */ = {
@@ -1678,6 +1748,8 @@
 		C2CED6241F21D1BE00805406 /* GoogleEvent */ = {
 			isa = PBXGroup;
 			children = (
+				C24B29D81F25EDBF0069C160 /* NFNGoogleEvent.h */,
+				C24B29D91F25EDBF0069C160 /* NFNGoogleEvent.m */,
 			);
 			path = GoogleEvent;
 			sourceTree = "<group>";
@@ -1980,7 +2052,6 @@
 			files = (
 				C23AD8D51EFD159300BAFF1E /* Screen2.png in Resources */,
 				C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */,
-				C249718E1EAE2F7300A2CAD1 /* GoogleService-Info.plist in Resources */,
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
@@ -1991,6 +2062,7 @@
 				C2C0D60B1EC5F72D003C7741 /* conclusionsIcon@3x.png in Resources */,
 				C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */,
 				C224078A1E9CB351004B089A /* LaunchScreen.storyboard in Resources */,
+				C24B29E71F2622060069C160 /* GoogleService-Info.plist in Resources */,
 				C2C22DB51EE98283006BD83A /* user_icon.png in Resources */,
 				C2C22DAD1EE98283006BD83A /* manifestations_icon.png in Resources */,
 				C2C0D60A1EC5F72D003C7741 /* conclusionsIcon@2x.png in Resources */,
@@ -2285,8 +2357,11 @@
 				C2470C381EFBEA37003BA93D /* NFTaskManager.m in Sources */,
 				C2359FFC1EC9AA9800EB8FDC /* NFWeekConclusionsController.m in Sources */,
 				C2C22DBB1EE984E6006BD83A /* NFMenuCell.m in Sources */,
+				C24B29DE1F260E330069C160 /* NFNRsultCategory.m in Sources */,
 				C2470C351EFBEA37003BA93D /* NFGoogleManager.m in Sources */,
 				C25737521E9CD11D00C4A4EA /* NFCircle.m in Sources */,
+				C24B29E51F261CE80069C160 /* NFNManifestation.m in Sources */,
+				C24B29EB1F262E530069C160 /* NFAdminManager.m in Sources */,
 				C20EBA031EA8A93C0074C0AF /* NFWeekDayView.m in Sources */,
 				C24AA5191EBB4FAA00ABA92C /* NFPageImportantController.m in Sources */,
 				C26BA3331F14FA2E0053A138 /* NFHeaderMonthView.m in Sources */,
@@ -2294,9 +2369,11 @@
 				C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */,
 				C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */,
 				C2249D111F0E3CE800E7269E /* NFAddValueCategoryController.m in Sources */,
+				C24B29E21F2610220069C160 /* NFNRsult.m in Sources */,
 				C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */,
 				C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */,
 				C2DDBCEC1ED45A4300F61F02 /* NFLogoView.m in Sources */,
+				C24B29D01F25D2AF0069C160 /* NFNSyncManager.m in Sources */,
 				C216D8A51EB1D5EE001D1006 /* NFDayTask.m in Sources */,
 				C2470C371EFBEA37003BA93D /* NFSyncManager.m in Sources */,
 				C207EF541EA89BAD00BFF383 /* NFWeekTaskCell.m in Sources */,
@@ -2310,6 +2387,7 @@
 				C224077C1E9CB351004B089A /* AppDelegate.m in Sources */,
 				C25737A11E9D292200C4A4EA /* NFQuoteDayViewController.m in Sources */,
 				C24AA51F1EBB4FE900ABA92C /* NFWeekImportantController.m in Sources */,
+				C24B29D71F25E4AC0069C160 /* NFNValue.m in Sources */,
 				C24552681EBC9F6A003EBB11 /* NFDatePicker.m in Sources */,
 				C21B0ED91EFABE7F001D85CE /* NFResultCell.m in Sources */,
 				C27C82B31F0FCDE3007AD793 /* NFResultDayController.m in Sources */,
@@ -2326,11 +2404,13 @@
 				C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */,
 				C22407851E9CB351004B089A /* NesiaFerdman.xcdatamodeld in Sources */,
 				C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */,
+				C24B29D61F25E4AC0069C160 /* NFNEvent.m in Sources */,
 				C2470C361EFBEA37003BA93D /* NFSettingManager.m in Sources */,
 				C24422E21F18A5980008CF49 /* NFCalendar.m in Sources */,
 				C2DDBCE21ED4597300F61F02 /* NFLoginController.m in Sources */,
 				C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */,
 				C22407791E9CB351004B089A /* main.m in Sources */,
+				C24B29DA1F25EDBF0069C160 /* NFNGoogleEvent.m in Sources */,
 				C24DF7521EF9440A003FCF5C /* NFResultDetailController.m in Sources */,
 				C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,

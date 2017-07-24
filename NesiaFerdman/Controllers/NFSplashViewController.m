@@ -9,9 +9,12 @@
 #import "NFSplashViewController.h"
 #import "NFRoundButton.h"
 #import "NFRoundetView.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
 #import "NFQuoteDayViewController.h"
 #import "NFConstants.h"
+
+#warning lock at Google manager in this class
+
 
 @interface NFSplashViewController ()
 @property (weak, nonatomic) IBOutlet NFRoundButton *continueButton;
@@ -54,19 +57,19 @@
 }
 
 - (void)chackLoginAndSignIn {
-    self.continueButton.hidden = YES;
-    if ([[NFGoogleManager sharedManager] isLoginWithTarget:self] ) {
-        NSLog(@"not login");
-        self.continueButton.hidden = NO;
-        if (self.nextButtonIsPressed) {
-            [[NFGoogleManager sharedManager] loginWithGoogleWithTarget:self];
-        }
-    } else {
-        NSLog(@" login");
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
-        });
-    }
+//    self.continueButton.hidden = YES;
+//    if ([[NFGoogleManager sharedManager] isLoginWithTarget:self] ) {
+//        NSLog(@"not login");
+//        self.continueButton.hidden = NO;
+//        if (self.nextButtonIsPressed) {
+//            [[NFGoogleManager sharedManager] loginWithGoogleWithTarget:self];
+//        }
+//    } else {
+//        NSLog(@" login");
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
+//        });
+//    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

@@ -101,6 +101,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
                              NFGoogleCalendar *calendar = [[NFGoogleCalendar alloc] initWithDictionary:dic];
                              [_inputGoogleCalendarList addObject:calendar];
                              
+                             
                              GTLQueryCalendar *query = [GTLQueryCalendar queryForEventsListWithCalendarId:[dic objectForKey:@"id"]];
                              query.maxResults = count;
                              query.timeMin = [GTLDateTime dateTimeWithDate:minDate

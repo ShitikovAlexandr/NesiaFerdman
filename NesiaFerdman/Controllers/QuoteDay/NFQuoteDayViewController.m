@@ -10,8 +10,8 @@
 #import "NFQuoteDay.h"
 #import "NFQuoteDayView.h"
 #import "NFRoundButton.h"
-#import "NFGoogleManager.h"
-#import "NFFirebaseManager.h"
+//#import "NFGoogleManager.h"
+//#import "NFFirebaseManager.h"
 #import "NFEvent.h"
 #import "NFSyncManager.h"
 

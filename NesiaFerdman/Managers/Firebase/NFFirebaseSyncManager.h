@@ -7,14 +7,24 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NFEvent.h"
-#import "NotifyList.h"
-#import "NFValue.h"
-#import "NFResult.h"
+#import "NFNEvent.h"
+#import "NFNValue.h"
+#import "NFNRsultCategory.h"
+#import "NFNRsult.h"
+#import "NFNManifestation.h"
 #import "NFGoogleCalendar.h"
 @import Firebase;
 
 
 @interface NFFirebaseSyncManager : NSObject
+
++ (NFFirebaseSyncManager*)sharedManager;
+
+- (BOOL)isLogin;
+
+- (void)loadAllData;
+
+- (void)writeEvent:(NFNEvent*)event;
+- (void)writeCalendar:(NFGoogleCalendar*)calendar;
 
 @end

@@ -22,7 +22,7 @@
 #import "NFLogInButton.h"
 #import "NFLabel.h"
 #import "NFRegisterTextField.h"
-#import "NFFirebaseManager.h"
+//#import "NFFirebaseManager.h"
 
 typedef NS_ENUM(NSUInteger, ScreenState)
 {
@@ -91,17 +91,17 @@ typedef NS_ENUM(NSUInteger, ScreenState)
 }
 
 - (void)loginWithFirebase {
-    [_emailTextField resignFirstResponder];
-    [_passwordTextField resignFirstResponder];
-    [_confirmPasswordTextField resignFirstResponder];
-    if (_screenState  == Login) {
-        [[NFFirebaseManager sharedManager] sinInWithEmail:_emailTextField.text
-                                                 password:_passwordTextField.text];
-        
-    } else if (_screenState == Registration) {
-        [[NFFirebaseManager sharedManager] registratinOfNewUserWithEmail:_emailTextField.text
-                                                                password:_passwordTextField.text];
-    }
+//    [_emailTextField resignFirstResponder];
+//    [_passwordTextField resignFirstResponder];
+//    [_confirmPasswordTextField resignFirstResponder];
+//    if (_screenState  == Login) {
+//        [[NFFirebaseManager sharedManager] sinInWithEmail:_emailTextField.text
+//                                                 password:_passwordTextField.text];
+//        
+//    } else if (_screenState == Registration) {
+//        [[NFFirebaseManager sharedManager] registratinOfNewUserWithEmail:_emailTextField.text
+//                                                                password:_passwordTextField.text];
+//    }
 }
 
 - (void)transformToState:(ScreenState)state {

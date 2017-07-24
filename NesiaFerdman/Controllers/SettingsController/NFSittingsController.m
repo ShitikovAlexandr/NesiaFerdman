@@ -10,8 +10,10 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "NFMenuItem.h"
 #import "NFMenuElements.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
 #import "NFMenuCell.h"
+#warning lock at Google manager in this class
+
 
 @interface NFSittingsController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -70,8 +72,8 @@
 }
 
 - (void)setUserInfo {
-     GTMOAuth2Authentication *user = [NFGoogleManager sharedManager].service.authorizer;
-    self.email.text = [user.parameters objectForKey:@"email"];
+    // GTMOAuth2Authentication *user = [NFGoogleManager sharedManager].service.authorizer;
+   // self.email.text = [user.parameters objectForKey:@"email"];
 }
 
 @end

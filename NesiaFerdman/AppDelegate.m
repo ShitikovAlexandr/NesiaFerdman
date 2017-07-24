@@ -8,11 +8,12 @@
 
 #import "AppDelegate.h"
 #import "NFStyleKit.h"
-#import "NFGoogleManager.h"
+//#import "NFGoogleManager.h"
+#import "NFGoogleSyncManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 @import Firebase;
-
+#warning lock at Google manager in this class
 
 @interface AppDelegate () 
 @end
@@ -21,15 +22,27 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [NFGoogleManager sharedManager];
-    NSString *userAgent = @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/603.1.23 (KHTML, like Gecko) Version/10.0 Mobile/14E5239e Safari/602";
-    NSDictionary *dictionary = [[NSDictionary alloc]initWithObjectsAndKeys:userAgent,@"UserAgent", nil];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:(dictionary)];
-    [self setNFStyleAndColors];
+    NSError* configureError;
+    [[GGLContext sharedInstance] configureWithError: &configureError];
+    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
     [Fabric with:@[[Crashlytics class]]];
     [FIRApp configure];
+    
+    [self setNFStyleAndColors];
+    [NFGoogleSyncManager sharedManager];
+
     return YES;
 }
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [[GIDSignIn sharedInstance] handleURL:url
+                               sourceApplication:sourceApplication
+                                      annotation:annotation];
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
