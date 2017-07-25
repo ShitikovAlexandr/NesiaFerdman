@@ -17,10 +17,7 @@
 
 @interface NFGoogleSyncManager : NSObject
 
-
-
 + (NFGoogleSyncManager *)sharedManager;
-
 
 /** Load web login for Google */
 - (void)loginActionWithTarget:(id)target;
@@ -28,8 +25,6 @@
 - (void)logOutAction;
 /** return true if user is logged in */
 - (BOOL)isLogin ;
-/** retur user id (NSString) */
-- (NSString*)getUserId;
 
 /** Adds a new event to google calendar */
 - (void)addNewEvent:(NFEvent*)event;
@@ -42,6 +37,5 @@
 - (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array;
 /** load a list of all the available calendars for the user */
 - (void)loadGoogleCalendarList;
-
 
 @end

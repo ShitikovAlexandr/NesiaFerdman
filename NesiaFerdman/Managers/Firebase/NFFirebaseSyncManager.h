@@ -15,6 +15,18 @@
 #import "NFGoogleCalendar.h"
 @import Firebase;
 
+#define DATA_BASE_EVENT_LIST_DOWNLOADED                 @"kNotificationDataBaseCompliteLoadEventsList"
+#define DATA_BASE_CALENDAR_LIST_DOWNLOADED              @"kNotificationDataBaseCompliteLoadCalendarsList"
+#define DATA_BASE_USER_VALUE_LIST_DOWNLOADED            @"kNotificationDataBaseCompliteLoadUserValueList"
+#define DATA_BASE_USER_MANIFESTATION_LIST_DOWNLOADED    @"kNotificationDataBaseCompliteLoadUserManifestationList"
+
+#define DATA_BASE_APP_MANIFESTATION_LIST_DOWNLOADED     @"kNotificationDataBaseCompliteLoadAppManifestationList"
+#define DATA_BASE_APP_RESULT_CATEGORY_LIST_DOWNLOADED   @"kNotificationDataBaseCompliteLoadResultCategoryList"
+#define DATA_BASE_APP_VALUE_LIST_DOWNLOADED             @"kNotificationDataBaseCompliteLoadAppValueList"
+
+#define DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA          @"kNotificationDataBaseCompliteLoadAllData"
+
+
 
 @interface NFFirebaseSyncManager : NSObject
 
@@ -22,9 +34,19 @@
 
 - (BOOL)isLogin;
 
-- (void)loadAllData;
+- (void)downloadAllData;
 
 - (void)writeEvent:(NFNEvent*)event;
+- (void)writeValue:(NFNValue*)value;
+- (void)writeManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value;
+- (void)writeResult:(NFNRsult*)result;
 - (void)writeCalendar:(NFGoogleCalendar*)calendar;
+
+
+//admin part
+
+- (void)writAppValueToDataBase:(NFNValue*)value;
+- (void)writeAppResultCategoryToDataBase:(NFNRsultCategory*)resultCategory;
+- (void)writeAppManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value;
 
 @end

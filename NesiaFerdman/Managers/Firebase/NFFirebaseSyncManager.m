@@ -6,20 +6,26 @@
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
+
+
+
+
 #import "NFFirebaseSyncManager.h"
+#import "NFAdminManager.h"
 
 
 //ref keys
 #define USER_UID [[[FIRAuth auth] currentUser] uid]
-#define USERS_DIRECTORY @"Users"
-#define EVENT_DIRECTORY @"Events"
-#define VALUE_DIRECTORY @"Values"
-#define RESULT_DIRECTORY @"Results"
-#define RESULT_ITEM @"ResultItems"
-#define RESULT_CATEGORY @"ResultsCategory"
-#define CALENDAR_LIST @"Calendars"
+#define USERS_DIRECTORY             @"Users"
+#define EVENT_DIRECTORY             @"Events"
+#define VALUE_DIRECTORY             @"Values"
+#define MANIFESTATION_DIRECTORY     @"Manifestations"
+#define RESULT_DIRECTORY            @"Results"
+#define RESULT_ITEM                 @"ResultItems"
+#define RESULT_CATEGORY             @"ResultsCategory"
+#define CALENDAR_LIST               @"Calendars"
 //notify keys
-#define FIREBASE_COMPLITE_LOAD @"kFireDownlownComplite"
+//#define FIREBASE_COMPLITE_LOAD      @"kFireDownlownComplite"
 
 
 @interface NFFirebaseSyncManager ()
@@ -36,16 +42,22 @@
 @property (strong, nonatomic) NSMutableArray *appValuesArray;
 @property (strong, nonatomic) NSMutableArray *appResultsArray;
 
-// is user data end loaded
-@property (assign, nonatomic) BOOL isDownloadEvents;
-@property (assign, nonatomic) BOOL isDownloadValues;
-@property (assign, nonatomic) BOOL isDownloadvaluesManifestations;
-@property (assign, nonatomic) BOOL isDownloadResults;
-@property (assign, nonatomic) BOOL isDownloadGoogleCalendars;
+@property (strong, nonatomic) NSMutableArray *appManifestationArray;
 
-// is app data end loaded
-@property (assign, nonatomic) BOOL isDownloadAppResults;
-@property (assign, nonatomic) BOOL isDownloadAppValues;
+
+@property (assign, nonatomic) BOOL isEventsList;
+@property (assign, nonatomic) BOOL isValueList;
+@property (assign, nonatomic) BOOL isValuesManifestations;
+@property (assign, nonatomic) BOOL isResult;
+@property (assign, nonatomic) BOOL isCalendarList;
+
+@property (assign, nonatomic) BOOL isAppValueList;
+@property (assign, nonatomic) BOOL isAppResultCategory;
+@property (assign, nonatomic) BOOL isAppManifestatioms;
+
+
+
+
 
 @end
 
@@ -73,78 +85,261 @@
         _googleCalendarsArray = [NSMutableArray new];
         _appValuesArray = [NSMutableArray new];
         _appResultsArray = [NSMutableArray new];
+        _appManifestationArray = [NSMutableArray new];
     }
     return self;
 }
 
+
+
+
 #pragma mark - get methods
 
-- (void)loadAllData {
+- (void)downloadAllData {
     if ([self isLogin]) {
-        NSLog(@"load all data from firebase");
+        [self downloadEvensList];
+        [self downloadCalendarList];
+        [self downloadValueList];
+        [self downloadManifestationList];
+        
+        [self downloadAppValueList];
+        [self downloadAppResultCategory];
+        [self downloadAppManifestationList];
     } else {
-        NSLog(@"not login in firebase");
+        NSLog(@"not login firebase");
     }
 }
 
-- (void)getEvensList {
-    
+- (void)downloadEvensList {
+    [[self eventRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNEvent *newObject = [[NFNEvent alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_eventsArray removeAllObjects];
+        [_eventsArray addObjectsFromArray:resultArray];
+        _isEventsList = true;
+        [self downloadComplite];
+       
+    }];
 }
 
-- (void)getValuesList {
-    
+- (void)downloadResiltList {
+    [[self userResultRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNRsult *newObject = [[NFNRsult alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_resultsArray removeAllObjects];
+        [_resultsArray addObjectsFromArray:resultArray];
+        _isResult = true;
+        [self downloadComplite];
+        
+    }];
+
 }
 
-- (void)getValuesManifestationsList {
-    
+- (void)downloadCalendarList {
+    [[self userCalendarsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFGoogleCalendar *newObject = [[NFGoogleCalendar alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_googleCalendarsArray removeAllObjects];
+        [_googleCalendarsArray addObjectsFromArray:resultArray];
+        _isCalendarList = true;
+        [self downloadComplite];
+    }];
 }
 
-- (void)getResultsList {
-    
+- (void)downloadValueList {
+    [[self userValueRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNValue *newObject = [[NFNValue alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_valueArray removeAllObjects];
+        [_valueArray addObjectsFromArray:resultArray];
+        _isValueList = true;
+        [self downloadComplite];
+    }];
 }
 
-- (void)getGoogleCalendarList {
-    
+- (void)downloadManifestationList {
+    [[self userValueManifestationsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNManifestation *newObject = [[NFNManifestation alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_valuesManifestationsArray removeAllObjects];
+        [_valuesManifestationsArray addObjectsFromArray:resultArray];
+        _isValuesManifestations = true;
+        [self downloadComplite];
+    }];
 }
 
-- (void)getAppValuesList {
-    
+
+#pragma mark - app data
+
+- (void)downloadAppValueList {
+    [[self appValuesRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNValue *newObject = [[NFNValue alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_appValuesArray removeAllObjects];
+        [_appValuesArray addObjectsFromArray:resultArray];
+        _isAppValueList = true;
+        [self downloadComplite];
+    }];
 }
 
-- (void)getAppResultsList {
-    
+- (void)downloadAppManifestationList {
+    [[self appValueManifestationsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNManifestation *newObject = [[NFNManifestation alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_appManifestationArray removeAllObjects];
+        [_appManifestationArray addObjectsFromArray:resultArray];
+        _isAppManifestatioms = true;
+        [self downloadComplite];
+    }];
+}
+
+- (void)downloadAppResultCategory {
+    [[self appResultCategoryRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNRsultCategory *newObject = [[NFNRsultCategory alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_appResultsArray removeAllObjects];
+        [_appResultsArray addObjectsFromArray:resultArray];
+        _isAppResultCategory = true;
+        [self downloadComplite];
+    }];
+
 }
 
 
 #pragma mark - write methods
 
 - (void)writeEvent:(NFNEvent*)event {
-    [[[self eventRef] child:event.eventId] updateChildValues:[event toDictionary]];
+    [[[self eventRef] child:event.eventId] updateChildValues:[[event copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"Complite write event");
+    }];
     
 }
 
-- (void)writeValue:(id)value {
+- (void)writeValue:(NFNValue*)value {
+    [[[self userValueRef] child:value.valueId] updateChildValues:[[value copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"Complite write user value");
+    }];
     
 }
 
-- (void)writeManifestation {
-    
+- (void)writeManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value {
+    manifestation.parentId = value.valueId;
+    [[[self userValueManifestationsRef] child:value.valueId] updateChildValues:[[manifestation copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"Complite write manifestation");
+    }];
 }
 
-- (void)writeResult:(id)result {
-    
+- (void)writeResult:(NFNRsult*)result {
+    [[[self userResultRef] child:result.idField] updateChildValues:[[result copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        NSLog(@"Complite write result");
+    }];
 }
 
 - (void)writeCalendar:(NFGoogleCalendar*)calendar {
-    [[[self userCalendarsRef] child:calendar.appId] updateChildValues:[calendar toDictionary]];
+    [[[self userCalendarsRef] child:calendar.appId] updateChildValues:[[calendar copy] toDictionary]];
 }
 
 #pragma mark - helpers
 
-- (void)cmpliteLoadAllData {
-    // set observer
+- (void)downloadComplite {
+    NSLog(@"complite download FIR");
+    if (_isEventsList && _isValueList && _isValuesManifestations && _isResult && _isCalendarList ) {
+        if (_isAppValueList && _isAppResultCategory && _isAppManifestatioms) {
+            
+        }
+    }
 }
 
+- (void)resetFlags {
+    _isEventsList = false;
+    _isValueList = false;
+    _isValuesManifestations = false;
+    _isResult = false;
+    _isCalendarList = false;
+    _isAppValueList = false;
+    _isAppResultCategory = false;
+    _isAppManifestatioms = false;
+}
 
 
 #pragma mark - FIR Data Reference
@@ -159,11 +354,11 @@
 }
 
 - (FIRDatabaseReference*)userResultRef {
-    return [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:VALUE_DIRECTORY];
+    return [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:RESULT_DIRECTORY];
 }
 
 - (FIRDatabaseReference*)userValueManifestationsRef {
-    return [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:VALUE_DIRECTORY];
+    return [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:MANIFESTATION_DIRECTORY];
 }
 
 - (FIRDatabaseReference*)userCalendarsRef {
@@ -183,12 +378,31 @@
     return [[self ref] child:RESULT_CATEGORY];
 }
 
+- (FIRDatabaseReference*)appValueManifestationsRef {
+    return [[self ref] child:MANIFESTATION_DIRECTORY];
+}
+
 - (BOOL)isLogin {
     if ([FIRAuth auth].currentUser != nil) {
         return true;
     } else {
         return false;
     }
+}
+
+#pragma mark - admin
+
+- (void)writAppValueToDataBase:(NFNValue*)value {
+    [[[self appValuesRef] child:value.valueId] updateChildValues:[value toDictionary]];
+}
+
+- (void)writeAppResultCategoryToDataBase:(NFNRsultCategory*)resultCategory {
+    [[[self appResultCategoryRef] child:resultCategory.idField] updateChildValues:[resultCategory toDictionary]];
+}
+
+- (void)writeAppManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value {
+    manifestation.parentId = value.valueId;
+    [[[self appValueManifestationsRef] child:manifestation.idField] updateChildValues:[manifestation toDictionary]];
 }
 
 

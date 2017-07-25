@@ -16,6 +16,14 @@ NSString *const kNFNManifestationTitle = @"title";
 @end
 @implementation NFNManifestation
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.idField = [[NSUUID UUID] UUIDString];
+    }
+    return self;
+}
+
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
  */

@@ -7,7 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NFNEvent.h"
+#import "NFNValue.h"
+#import "NFNRsultCategory.h"
 
 @interface NFAdminManager : NSObject
+
+
+/** write standart list of value to db*/
++ (void)writeAppStandartListOfValueToDataBase;
+
+/** write standart list of result category to db*/
++ (void)writeAppStandartListOfResultCategoryToDataBase;
+
++ (void)writeStandartManifestationsToDataBase;
 
 @end

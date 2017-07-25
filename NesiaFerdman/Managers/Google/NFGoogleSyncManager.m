@@ -104,10 +104,7 @@
     return [[GIDSignIn sharedInstance] hasAuthInKeychain];
 }
 
-- (NSString*)getUserId {
-    return @"";
-#warning getUserId method is empty
-}
+
 
 
 
@@ -136,6 +133,7 @@
     _calendarsRequestCount = array.count;
     
     for (NFGoogleCalendar *calendar in array) {
+        NSString *calendarColor = calendar.backgroundColor;
         GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
         query.maxResults = 1000;
         query.timeMin = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMinDate]];
@@ -151,6 +149,7 @@
                      [itemsDic addObjectsFromArray: [[eventsList.JSON objectForKey:ITEMS_KEY] allObjects]];
                      for (NSDictionary *dic in itemsDic) {
                          NFNEvent *nesiaEvent = [[NFNEvent alloc] initWithGoogleEvent:[[NFNGoogleEvent alloc] initWithDictionary:dic]];
+                         nesiaEvent.calendarColor = calendarColor;
                          [_googleEventsArray addObject:nesiaEvent];
                      }
                      _calendarsRequestCount --;
@@ -180,7 +179,6 @@
                              NSLog(@"google Calendar %@", calendar.summary);
                              [_googleCalendarsArray addObject:calendar];
                          }
-                         [self loadGoogleEventsListWithCalendarsArray:_googleCalendarsArray];
                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                              NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
                              [[NSNotificationCenter defaultCenter] postNotification:notification];

@@ -27,19 +27,23 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotyficatin) name:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getNotyficatin) name:NOTIFYCATIN_EVENT_LOAD object:nil];
+        //Googlle
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:NOTIFYCATIN_EVENT_LOAD object:nil];
+        //firebase
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
     }
     return self;
 }
 
 - (void)loadDataFromDataBase {
     NSLog(@"get data from firebase");
-    [[NFFirebaseSyncManager sharedManager] loadAllData];
+    [[NFFirebaseSyncManager sharedManager] downloadAllData];
 }
 
 - (void)loadDataFromGoogle {
     [[NFGoogleSyncManager sharedManager] loadGoogleCalendarList];
+    
 }
 
 - (void)updateData {
@@ -47,18 +51,39 @@
     [self loadDataFromGoogle];
 }
 
+
+#pragma mark - sync methods
+
+- (void)googleCalendarListIsDownloaded {
+}
+
+
+
 #pragma mark - data base methods
 
 - (void)writeEventToDataBase:(NFNEvent*)event {
     [[NFFirebaseSyncManager sharedManager] writeEvent:event];
 }
 
+- (void)writeValueToDataBase:(NFNValue*)value {
+    [[NFFirebaseSyncManager sharedManager] writeValue:value];
+}
+
+- (void)writeManifestationToDataBase:(NFNManifestation*)manifestation toValue:(NFNValue*)value {
+    [[NFFirebaseSyncManager sharedManager] writeManifestation:manifestation toValue:value];
+}
+
+- (void)writeResult:(NFNRsult*)resulte {
+    [[NFFirebaseSyncManager sharedManager] writeResult:resulte];
+}
+
 - (void)writeCalendarToDataBase:(NFGoogleCalendar*)calendar {
     [[NFFirebaseSyncManager sharedManager] writeCalendar:calendar];
 }
 
-- (void)getNotyficatin {
-    
+
+- (void)endDownloadData {
+    NSLog(@"endDownloadData");
 }
 
 

@@ -10,16 +10,19 @@
 #import "NFAdminManager.h"
 #import "NFNEvent.h"
 #import "NFGoogleCalendar.h"
+#import "NFNManifestation.h"
+#import "NFNRsult.h"
+
 @interface NFNSyncManager : NSObject
 
 + (NFNSyncManager *)sharedManager;
 
-//- (void)loadDataFromDataBase;
-//- (void)loadDataFromGoogle;
-
 - (void)updateData;
 
 - (void)writeEventToDataBase:(NFNEvent*)event;
+- (void)writeValueToDataBase:(NFNValue*)value;
+- (void)writeManifestationToDataBase:(NFNManifestation*)manifestation toValue:(NFNValue*)value;
+- (void)writeResult:(NFNRsult*)resulte;
 - (void)writeCalendarToDataBase:(NFGoogleCalendar*)calendar;
 
 @end
