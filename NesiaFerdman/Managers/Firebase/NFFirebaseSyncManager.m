@@ -24,9 +24,6 @@
 #define RESULT_ITEM                 @"ResultItems"
 #define RESULT_CATEGORY             @"ResultsCategory"
 #define CALENDAR_LIST               @"Calendars"
-//notify keys
-//#define FIREBASE_COMPLITE_LOAD      @"kFireDownlownComplite"
-
 
 @interface NFFirebaseSyncManager ()
 @property (strong, nonatomic) FIRDatabaseReference *ref;
@@ -101,6 +98,7 @@
         [self downloadCalendarList];
         [self downloadValueList];
         [self downloadManifestationList];
+        [self downloadResiltList];
         
         [self downloadAppValueList];
         [self downloadAppResultCategory];
@@ -109,6 +107,84 @@
         NSLog(@"not login firebase");
     }
 }
+
+- (NSMutableArray*)getEvensList {
+    return _eventsArray;
+}
+
+- (NSMutableArray*)getValueList {
+    return _valueArray;
+}
+
+- (NSMutableArray*)getUseManifestationList {
+    return _valuesManifestationsArray;
+}
+
+- (NSMutableArray*)getResultList {
+    return _resultsArray;
+}
+
+- (NSMutableArray*)getCalendarList {
+    return _googleCalendarsArray;
+}
+
+- (NSMutableArray*)getAppValueList {
+    return _appValuesArray;
+}
+
+- (NSMutableArray*)getResultCategoryList {
+    return _appResultsArray;
+}
+
+- (NSMutableArray*)getAppManifestationList {
+    return _appManifestationArray;
+}
+
+//************************************************************************
+
+- (void)addCalendarToManager:(NFGoogleCalendar*)calendar {
+    [_googleCalendarsArray addObject:calendar];
+}
+
+- (void)addEventToManager:(NFNEvent*)event {
+    [_eventsArray addObject:event];
+}
+
+- (void)addValueToManager:(NFNValue*)value {
+    [_valueArray addObject:value];
+}
+
+- (void)addManifestationToManager:(NFNManifestation*)manifestation {
+    [_valuesManifestationsArray addObject:manifestation];
+}
+
+- (void)addResultToManager:(NFNRsult*)result {
+    [_resultsArray addObject:result];
+}
+
+//************************************************************************
+
+- (void)removeCalendarFromManager:(NFGoogleCalendar*)calendar {
+    [_googleCalendarsArray removeObject:calendar];
+}
+
+- (void)removeEventFromManager:(NFNEvent*)event {
+    [_eventsArray removeObject:event];
+}
+
+- (void)removeValueFromManager:(NFNValue*)value {
+    [_valueArray removeObject:value];
+}
+
+- (void)removeManifestationFromManager:(NFNManifestation*)manifestation {
+    [_valuesManifestationsArray removeObject:manifestation];
+}
+
+- (void)removeResultFromManager:(NFNRsult*)result {
+    [_resultsArray removeObject:result];
+}
+
+//************************************************************************
 
 - (void)downloadEvensList {
     [[self eventRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
@@ -319,13 +395,39 @@
     [[[self userCalendarsRef] child:calendar.appId] updateChildValues:[[calendar copy] toDictionary]];
 }
 
+#pragma mark - delete methods
+
+- (void)deleteEvent:(NFNEvent*)event {
+    event.isDeleted = true;
+    [self writeEvent:event];
+}
+
+- (void)deleteValue:(NFNValue*)value {
+    value.isDeleted = true;
+    [self writeValue:value];
+}
+
+- (void)deleteManifestation:(NFNManifestation*)manifestation {
+    [[[self userValueManifestationsRef] child:manifestation.idField] removeValue];
+}
+
+- (void)deleteResult:(NFNRsult*)result {
+    [[[self userResultRef] child:result.idField] removeValue];
+}
+
+- (void)deleteCalendar:(NFGoogleCalendar*)calendar {
+    [[[self userCalendarsRef] child:calendar.appId] removeValue];
+}
+
 #pragma mark - helpers
 
 - (void)downloadComplite {
     NSLog(@"complite download FIR");
     if (_isEventsList && _isValueList && _isValuesManifestations && _isResult && _isCalendarList ) {
         if (_isAppValueList && _isAppResultCategory && _isAppManifestatioms) {
-            
+            [self resetFlags];
+            NSNotification *notification = [NSNotification notificationWithName:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
         }
     }
 }

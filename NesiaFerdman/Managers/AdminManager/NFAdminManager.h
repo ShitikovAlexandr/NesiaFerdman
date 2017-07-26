@@ -14,6 +14,7 @@
 @interface NFAdminManager : NSObject
 
 
+
 /** write standart list of value to db*/
 + (void)writeAppStandartListOfValueToDataBase;
 

@@ -15,11 +15,12 @@
 #import "NFGoogleCalendar.h"
 @import Firebase;
 
+//notification keys
+
 #define DATA_BASE_EVENT_LIST_DOWNLOADED                 @"kNotificationDataBaseCompliteLoadEventsList"
 #define DATA_BASE_CALENDAR_LIST_DOWNLOADED              @"kNotificationDataBaseCompliteLoadCalendarsList"
 #define DATA_BASE_USER_VALUE_LIST_DOWNLOADED            @"kNotificationDataBaseCompliteLoadUserValueList"
 #define DATA_BASE_USER_MANIFESTATION_LIST_DOWNLOADED    @"kNotificationDataBaseCompliteLoadUserManifestationList"
-
 #define DATA_BASE_APP_MANIFESTATION_LIST_DOWNLOADED     @"kNotificationDataBaseCompliteLoadAppManifestationList"
 #define DATA_BASE_APP_RESULT_CATEGORY_LIST_DOWNLOADED   @"kNotificationDataBaseCompliteLoadResultCategoryList"
 #define DATA_BASE_APP_VALUE_LIST_DOWNLOADED             @"kNotificationDataBaseCompliteLoadAppValueList"
@@ -27,10 +28,36 @@
 #define DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA          @"kNotificationDataBaseCompliteLoadAllData"
 
 
-
 @interface NFFirebaseSyncManager : NSObject
 
 + (NFFirebaseSyncManager*)sharedManager;
+
+/** return an array of Events */
+- (NSMutableArray<NFNEvent*>*)getEvensList;
+
+/** return an array of Values */
+- (NSMutableArray<NFNValue*>*)getValueList;
+
+/** return an array of Manifestations */
+- (NSMutableArray<NFNManifestation*>*)getUseManifestationList;
+
+/** return an array of Results */
+- (NSMutableArray<NFNRsult*>*)getResultList;
+
+/** return an array of Calendars */
+- (NSMutableArray<NFGoogleCalendar*>*)getCalendarList;
+
+/** return an array of standart app Values */
+- (NSMutableArray<NFNValue*>*)getAppValueList;
+
+/** return an array of standart app result category */
+- (NSMutableArray<NFNRsultCategory*>*)getResultCategoryList;
+
+/** return an array of standart app Manifestations */
+- (NSMutableArray<NFNManifestation*>*)getAppManifestationList;
+
+
+//*********************
 
 - (BOOL)isLogin;
 
@@ -42,6 +69,27 @@
 - (void)writeResult:(NFNRsult*)result;
 - (void)writeCalendar:(NFGoogleCalendar*)calendar;
 
+- (void)deleteEvent:(NFNEvent*)event;
+- (void)deleteValue:(NFNValue*)value;
+- (void)deleteManifestation:(NFNManifestation*)manifestation;
+- (void)deleteResult:(NFNRsult*)result;
+- (void)deleteCalendar:(NFGoogleCalendar*)calendar;
+
+//*********************
+
+- (void)addCalendarToManager:(NFGoogleCalendar*)calendar;
+- (void)addEventToManager:(NFNEvent*)event;
+- (void)addValueToManager:(NFNValue*)value;
+- (void)addManifestationToManager:(NFNManifestation*)manifestation;
+- (void)addResultToManager:(NFNRsult*)result;
+
+//*********************
+
+- (void)removeCalendarFromManager:(NFGoogleCalendar*)calendar;
+- (void)removeEventFromManager:(NFNEvent*)event;
+- (void)removeValueFromManager:(NFNValue*)value;
+- (void)removeManifestationFromManager:(NFNManifestation*)manifestation;
+- (void)removeResultFromManager:(NFNRsult*)result;
 
 //admin part
 

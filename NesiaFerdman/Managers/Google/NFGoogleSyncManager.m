@@ -7,13 +7,10 @@
 //
 
 #import "NFGoogleSyncManager.h"
-#import "NFGoogleCalendar.h"
 #import "NFSettingManager.h"
 #import "NFNSyncManager.h"
 #import "NFFirebaseSyncManager.h"
 
-#import "NFNEvent.h"
-#import "NFNGoogleEvent.h"
 
 
 #define ITEMS_KEY @"items"
@@ -62,6 +59,18 @@
     return self;
 }
 
+
+#pragma mark - get methods
+
+- (NSMutableArray<NFGoogleCalendar*>*)getCalendarList {
+    return _googleCalendarsArray;
+}
+
+- (NSMutableArray<NFNEvent*>*)getEventList {
+    return _googleEventsArray;
+}
+
+
 #pragma mark - GIDSignInDelegate
 
 - (void)signIn:(GIDSignIn *)signIn didSignInForUser:(GIDGoogleUser *)user withError:(NSError *)error {
@@ -79,7 +88,7 @@
         [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
             if (error == nil) {
                 NSLog(@"singin to firebase");
-
+                
             } else {
                 NSLog(@"not login to firebase");
             }
@@ -104,13 +113,9 @@
     return [[GIDSignIn sharedInstance] hasAuthInKeychain];
 }
 
-
-
-
-
 #pragma mark - google api
 
-- (void)addNewEvent:(NFEvent*)event {
+- (void)addNewEvent:(NFNEvent*)event {
     GTLRCalendar_Event *googleEvent = [[GTLRCalendar_Event alloc] init];
 #warning set current event
     GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:googleEvent calendarId:@"primary"];
@@ -120,15 +125,15 @@
              }];
 }
 
-- (void)updateEvent:(NFEvent*)event {
+- (void)updateEvent:(NFNEvent*)event {
     
 }
 
-- (void)deleteEvent:(NFEvent*)event {
+- (void)deleteEvent:(NFNEvent*)event {
     
 }
 
-- (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array {
+- (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array {
     [_googleEventsArray removeAllObjects];
     _calendarsRequestCount = array.count;
     
@@ -142,9 +147,7 @@
         query.orderBy = kGTLRCalendarOrderByStartTime;
         [self.service executeQuery:query
                  completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
-                     NSLog(@"Events list %@", object);
                      GTLRCalendar_Events *eventsList = object;
-                     
                      NSMutableArray *itemsDic = [NSMutableArray new];
                      [itemsDic addObjectsFromArray: [[eventsList.JSON objectForKey:ITEMS_KEY] allObjects]];
                      for (NSDictionary *dic in itemsDic) {
@@ -163,7 +166,7 @@
     }
 }
 
-- (void)loadGoogleCalendarList {
+- (void)downloadGoogleCalendarList {
     [_googleCalendarsArray removeAllObjects];
     GTLRCalendarQuery_CalendarListList *query = [GTLRCalendarQuery_CalendarListList query];
     [self.service executeQuery:query
@@ -185,7 +188,6 @@
                          });
                      }
                  }
-                 
              }];
 }
 

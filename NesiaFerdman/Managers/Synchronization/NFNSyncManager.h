@@ -25,4 +25,25 @@
 - (void)writeResult:(NFNRsult*)resulte;
 - (void)writeCalendarToDataBase:(NFGoogleCalendar*)calendar;
 
+- (void)addCalendarToDBManager:(NFGoogleCalendar*)calendar;
+- (void)addEventToDBManager:(NFNEvent*)event;
+- (void)addValueToDBManager:(NFNValue*)value;
+- (void)addManifestationToDBManager:(NFNManifestation*)manifestation;
+- (void)addResultToDBManager:(NFNRsult*)result;
+
+- (void)removeCalendarFromDBManager:(NFGoogleCalendar*)calendar;
+- (void)removeEventFromDBManager:(NFNEvent*)event;
+- (void)removeValueFromDBManager:(NFNValue*)value;
+- (void)removeManifestationDBFromManager:(NFNManifestation*)manifestation;
+- (void)removeResultFromDBManager:(NFNRsult*)result;
+
+- (void)removeCalendarFromDB:(NFGoogleCalendar*)calendar;
+- (void)removeEventFromDB:(NFNEvent*)event;
+- (void)removeValueFromDB:(NFNValue*)value;
+- (void)removeManifestationDB:(NFNManifestation*)manifestation;
+- (void)removeResultFromDB:(NFNRsult*)result;
+
+
+
+
 @end

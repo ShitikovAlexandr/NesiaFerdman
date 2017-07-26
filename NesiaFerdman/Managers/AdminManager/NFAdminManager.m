@@ -12,6 +12,8 @@
 @implementation NFAdminManager
 
 
+
+
 + (void)writeAppStandartListOfValueToDataBase {
     for (NFNValue *val in [self standartListOfValues]) {
         [[NFFirebaseSyncManager sharedManager] writAppValueToDataBase:val];

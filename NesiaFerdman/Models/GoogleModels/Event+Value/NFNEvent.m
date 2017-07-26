@@ -125,8 +125,17 @@ NSString *const kNFNEventSocialId = @"socialId";
         self.eventType = NGoogleEvent;
         self.socialId = event.idField;
         self.calendarID = event.calendarId;
+        self.socialType = NGoogleEvent;
     }
     return self;
+}
+
+- (void)updateEvent:(NFNEvent*)oldEvent withNewEvent:(NFNEvent*)newEvent {
+    oldEvent.title = newEvent.title;
+    oldEvent.eventDescription = newEvent.eventDescription;
+    oldEvent.startDate = newEvent.startDate;
+    oldEvent.endDate = newEvent.endDate;
+    oldEvent.updateDate = newEvent.updateDate;
 }
 
 /**

@@ -37,6 +37,8 @@ typedef NS_ENUM(NSUInteger, NSocialType)
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (instancetype)initWithGoogleEvent:(NFNGoogleEvent *)event;
 
+- (void)updateEvent:(NFNEvent*)oldEvent withNewEvent:(NFNEvent*)newEvent;
+
 - (NSDictionary *)toDictionary;
 
 @end

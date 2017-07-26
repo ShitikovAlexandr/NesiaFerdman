@@ -10,6 +10,19 @@
 #import "NFFirebaseSyncManager.h"
 #import "NFGoogleSyncManager.h"
 
+@interface NFNSyncManager ()
+
+@property (strong, nonatomic) NSMutableArray *calendarList;
+@property (strong, nonatomic) NSMutableArray *eventsList;
+@property (strong, nonatomic) NSMutableArray *manifestationList;
+
+
+
+@property (assign, nonatomic) BOOL isGogleCalendar;
+@property (assign, nonatomic) BOOL isGoogleEvent;
+@property (assign, nonatomic) BOOL isDataBase;
+@end
+
 @implementation NFNSyncManager
 
 + (NFNSyncManager *)sharedManager {
@@ -28,36 +41,135 @@
     self = [super init];
     if (self) {
         //Googlle
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:NOTIFYCATIN_EVENT_LOAD object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(googleCalendarListEndDownload)name:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(googleEventsEndDownload)name:NOTIFYCATIN_EVENT_LOAD object:nil];
         //firebase
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endDownloadData)name:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataBaseEndDownload)name:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
     }
     return self;
 }
 
-- (void)loadDataFromDataBase {
-    NSLog(@"get data from firebase");
-    [[NFFirebaseSyncManager sharedManager] downloadAllData];
-}
-
-- (void)loadDataFromGoogle {
-    [[NFGoogleSyncManager sharedManager] loadGoogleCalendarList];
-    
-}
-
 - (void)updateData {
-    [self loadDataFromDataBase];
-    [self loadDataFromGoogle];
+    [[NFFirebaseSyncManager sharedManager] downloadAllData];
+    [[NFGoogleSyncManager sharedManager] downloadGoogleCalendarList];
 }
 
 
 #pragma mark - sync methods
 
-- (void)googleCalendarListIsDownloaded {
+- (void)googleCalendarListEndDownload {
+    _isGogleCalendar = true;
+    [self dataSynchronization];
 }
 
+- (void)googleEventsEndDownload {
+    _isGoogleEvent  = true;
+    [self eventsSynchronization];
+}
 
+- (void)dataBaseEndDownload {
+    _isDataBase = true;
+    [self dataSynchronization];
+}
+
+- (void)dataSynchronization {
+    
+    if (_isDataBase && _isGogleCalendar) {
+        [self calendarSynchronization];
+        [self appValueSynchronization];
+        [[NFGoogleSyncManager sharedManager] downloadGoogleEventsListWithCalendarsArray:[self selectedCalendars]];
+        _isDataBase = false;
+        _isGogleCalendar = false;
+        
+       
+        
+    }
+}
+
+- (void)calendarSynchronization {
+    NSMutableArray *googleCalendars = [NSMutableArray new];
+    NSMutableArray *dataBaseCalendars = [NSMutableArray new];
+    [googleCalendars addObjectsFromArray:[[NFGoogleSyncManager sharedManager] getCalendarList]];
+    [dataBaseCalendars addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.idField IN %@)", [dataBaseCalendars valueForKey:@"idField"]];
+    NSArray* newCalendarsArray = [googleCalendars filteredArrayUsingPredicate:predicate];
+    NSLog(@"result new calendars %@", newCalendarsArray);
+    
+    NSPredicate *removedPredicate = [NSPredicate predicateWithFormat:@"!(SELF.idField IN %@)", [googleCalendars valueForKey:@"idField"]];
+    NSArray* removedCalendarsArray = [dataBaseCalendars filteredArrayUsingPredicate:removedPredicate];
+    NSLog(@"result removed calendars %@", removedCalendarsArray);
+
+    for (NFGoogleCalendar *calendar in newCalendarsArray) {
+        [self writeCalendarToDataBase:calendar];
+        [self addCalendarToDBManager:calendar];
+    }
+    for (NFGoogleCalendar *calendar in removedCalendarsArray) {
+        [self removeCalendarFromDB:calendar];
+        [self removeCalendarFromDBManager:calendar];
+    }
+}
+
+- (void)appValueSynchronization {
+    NSArray *appValue = [NSArray arrayWithArray:[[NFFirebaseSyncManager sharedManager] getAppValueList]];
+    NSArray *userValue = [NSArray arrayWithArray:[[NFFirebaseSyncManager sharedManager] getValueList]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.valueId IN %@)", [userValue valueForKey:@"valueId"]]; //NFNValue
+    NSArray *newValue = [appValue filteredArrayUsingPredicate:predicate];
+    for (NFNValue *val in newValue) {
+        [self addValueToDBManager:val];
+        [self writeValueToDataBase:val];
+    }
+}
+
+- (void)eventsSynchronization {
+    
+//chack new event from google
+    NSMutableArray *googleEvents = [NSMutableArray new];
+    NSMutableArray *dataBaseEvents = [NSMutableArray new];
+    [googleEvents addObjectsFromArray:[[NFGoogleSyncManager sharedManager] getEventList]];
+    [dataBaseEvents addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getEvensList]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.socialId IN %@)", [dataBaseEvents valueForKey:@"socialId"]];
+    NSArray *newEvent = [googleEvents filteredArrayUsingPredicate:predicate];
+    for (NFNEvent *event in newEvent) {
+        [self addEventToDBManager:event];
+        [self writeEventToDataBase:event];
+    }
+    
+// chack if old event did change in google
+    NSPredicate *equalDBPredicate = [NSPredicate predicateWithFormat:@"SELF.socialId IN %@ AND !(SELF.updateDate IN %@)",
+                                     [googleEvents valueForKey:@"socialId"], [googleEvents valueForKey:@"updateDate"]];
+    NSArray *equalDBEvents = [dataBaseEvents filteredArrayUsingPredicate:equalDBPredicate];
+    NSLog(@"equalDBEvents %@", equalDBEvents);
+    
+    NSPredicate *equalGooglePredicate = [NSPredicate predicateWithFormat:@"SELF.socialId IN  %@", [equalDBEvents valueForKey:@"socialId"]];
+    NSArray *equalGoogleEvents = [googleEvents filteredArrayUsingPredicate:equalGooglePredicate];
+    NSLog(@"equalDBEvents %@", equalGoogleEvents);
+    for (NFNEvent *oldEvent in equalDBEvents) {
+        for (NFNEvent *newEvent in equalGoogleEvents) {
+            if ([oldEvent.socialId isEqualToString:newEvent.socialId]) {
+                [oldEvent updateEvent:oldEvent withNewEvent:newEvent];
+                [self writeEventToDataBase:oldEvent];
+            }
+        }
+    }
+    
+// filter deleted evens
+    NSPredicate *deletePredicate = [NSPredicate predicateWithFormat:@"SELF.isDeleted == YES"];
+    NSArray *deletedItems = [dataBaseEvents filteredArrayUsingPredicate:deletePredicate];
+    for (NFNEvent *event in deletedItems) {
+        [self removeEventFromDBManager:event];
+    }
+}
+
+//return selected calendars
+- (NSMutableArray*)selectedCalendars {
+    NSMutableArray *result = [NSMutableArray new];
+    for (NFGoogleCalendar *calendar in [[NFFirebaseSyncManager sharedManager] getCalendarList]) {
+        if (calendar.selectedInApp) {
+            [result addObject:calendar];
+        }
+    }
+    return result;
+}
 
 #pragma mark - data base methods
 
@@ -81,10 +193,76 @@
     [[NFFirebaseSyncManager sharedManager] writeCalendar:calendar];
 }
 
+- (void)removeCalendarFromDB:(NFGoogleCalendar*)calendar {
+    [[NFFirebaseSyncManager sharedManager] deleteCalendar:calendar];
+}
+
+- (void)removeEventFromDB:(NFNEvent*)event {
+    [[NFFirebaseSyncManager sharedManager] deleteEvent:event];
+}
+
+- (void)removeValueFromDB:(NFNValue*)value {
+    [[NFFirebaseSyncManager sharedManager] deleteValue:value];
+}
+
+- (void)removeManifestationDB:(NFNManifestation*)manifestation {
+    [[NFFirebaseSyncManager sharedManager] deleteManifestation:manifestation];
+}
+
+- (void)removeResultFromDB:(NFNRsult*)result {
+    [[NFFirebaseSyncManager sharedManager] deleteResult:result];
+}
+
+
 
 - (void)endDownloadData {
     NSLog(@"endDownloadData");
 }
+
+#pragma mark - managers methods 
+
+- (void)addCalendarToDBManager:(NFGoogleCalendar*)calendar {
+    [[NFFirebaseSyncManager sharedManager] addCalendarToManager:calendar];
+}
+
+- (void)addEventToDBManager:(NFNEvent*)event {
+    [[NFFirebaseSyncManager sharedManager] addEventToManager:event];
+}
+
+- (void)addValueToDBManager:(NFNValue*)value {
+    [[NFFirebaseSyncManager sharedManager] addValueToManager:value];
+}
+
+- (void)addManifestationToDBManager:(NFNManifestation*)manifestation {
+    [[NFFirebaseSyncManager sharedManager] addManifestationToManager:manifestation];
+}
+
+- (void)addResultToDBManager:(NFNRsult*)result {
+    [[NFFirebaseSyncManager sharedManager] addResultToManager:result];
+}
+
+//**********************
+
+- (void)removeCalendarFromDBManager:(NFGoogleCalendar*)calendar {
+    [[NFFirebaseSyncManager sharedManager] removeCalendarFromManager:calendar];
+}
+
+- (void)removeEventFromDBManager:(NFNEvent*)event {
+    [[NFFirebaseSyncManager sharedManager] removeEventFromManager:event];
+}
+
+- (void)removeValueFromDBManager:(NFNValue*)value {
+    [[NFFirebaseSyncManager sharedManager] removeValueFromManager:value];
+}
+
+- (void)removeManifestationDBFromManager:(NFNManifestation*)manifestation {
+    [[NFFirebaseSyncManager sharedManager] removeManifestationFromManager:manifestation];
+}
+
+- (void)removeResultFromDBManager:(NFNRsult*)result {
+    [[NFFirebaseSyncManager sharedManager]  removeResultFromManager:result];
+}
+
 
 
 @end

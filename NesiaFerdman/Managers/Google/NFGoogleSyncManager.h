@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Google/SignIn.h>
 #import <GTLRCalendar.h>
-#import "NFEvent.h"
+#import "NFNEvent.h"
+#import "NFNGoogleEvent.h"
+#import "NFGoogleCalendar.h"
+
 @import Firebase;
 
 #define NOTIFYCATIN_CALENDAR_LIST_LOAD @"kCalendarListIsLoaded"
@@ -19,6 +22,14 @@
 
 + (NFGoogleSyncManager *)sharedManager;
 
+/** return an array of Calendars */
+- (NSMutableArray<NFGoogleCalendar*>*)getCalendarList;
+
+/** return an array of Events */
+- (NSMutableArray<NFNEvent*>*)getEventList;
+
+//*******************************
+
 /** Load web login for Google */
 - (void)loginActionWithTarget:(id)target;
 /** logout from google */
@@ -27,15 +38,15 @@
 - (BOOL)isLogin ;
 
 /** Adds a new event to google calendar */
-- (void)addNewEvent:(NFEvent*)event;
+- (void)addNewEvent:(NFNEvent*)event;
 /** update event in google calendar */
-- (void)updateEvent:(NFEvent*)event;
+- (void)updateEvent:(NFNEvent*)event;
 /** delete event from google calendar */
-- (void)deleteEvent:(NFEvent*)event;
+- (void)deleteEvent:(NFNEvent*)event;
 
-/** load all events from calendars in array */
-- (void)loadGoogleEventsListWithCalendarsArray:(NSArray*)array;
-/** load a list of all the available calendars for the user */
-- (void)loadGoogleCalendarList;
+/** download all events from calendars in array */
+- (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array;
+/** download a list of all the available calendars for the user */
+- (void)downloadGoogleCalendarList;
 
 @end
