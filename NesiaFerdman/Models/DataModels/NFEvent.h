@@ -10,12 +10,12 @@
 #import <Foundation/Foundation.h>
 #import "NFValue.h"
 
-typedef NS_ENUM(NSUInteger, EventType)
-{
-    Event,
-    Important,
-    Conclusions
-};
+//typedef NS_ENUM(NSUInteger, EventType)
+//{
+//    Event,
+//    Important,
+//    Conclusions
+//};
 
 typedef NS_ENUM(NSUInteger, SocialType)
 {
@@ -35,7 +35,7 @@ typedef NS_ENUM(NSUInteger, SocialType)
 @property (assign, nonatomic) BOOL isRepeat;
 @property (strong, nonatomic) NSMutableArray *values;
 @property (assign, nonatomic) SocialType socialType;
-@property (assign, nonatomic) EventType eventType;
+//@property (assign, nonatomic) EventType eventType;
 @property (strong, nonatomic) NSString *eventId;
 @property (strong, nonatomic) NSString *socialId;
 @property (strong, nonatomic) NSString *calendarId;

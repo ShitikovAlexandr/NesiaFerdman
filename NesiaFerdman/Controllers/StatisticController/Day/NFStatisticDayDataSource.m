@@ -89,7 +89,6 @@
     [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:_selectedDate]];
     [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
-
 }
 
 #pragma mark - navigation

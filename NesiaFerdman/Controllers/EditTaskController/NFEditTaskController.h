@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFEvent.h"
+#import "NFNEvent.h"
 
 typedef NS_ENUM(NSUInteger, EditType)
 {
@@ -16,7 +16,7 @@ typedef NS_ENUM(NSUInteger, EditType)
 };
 
 @interface NFEditTaskController : UITableViewController
-@property (strong, nonatomic) NFEvent *event;
+@property (strong, nonatomic) NFNEvent *event;
 @property (assign, nonatomic) EditType screenType;
 
 @end

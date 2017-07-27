@@ -8,16 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "NFDayView.h"
-#import "NFEvent.h"
+#import "NFNEvent.h"
 
 @interface NFDayTableViewCell : UITableViewCell
 //@property (weak, nonatomic) IBOutlet NFDayView *drawView;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeTaskLabel;
-@property (strong, nonatomic) NFEvent *event;
+@property (strong, nonatomic) NFNEvent *event;
 @property (weak, nonatomic) IBOutlet UIView *topLine;
 @property (weak, nonatomic) IBOutlet UIView *downLine;
+@property (weak, nonatomic) IBOutlet UIView *calendarColorView;
 
 
 - (void) addData:(NSMutableArray *)events withIndexPath:(NSIndexPath *)index date:(NSDate*)currentDate ;

@@ -11,7 +11,6 @@
 #import "NFWeekTaskController.h"
 #import "NFMonthTaskController.h"
 #import "NFSegmentedControl.h"
-#import "NFGoogleCalendarController.h"
 #import "NFEditTaskController.h"
 #import "NFStatisticController.h"
 
@@ -131,13 +130,6 @@
     [self navigateToResultWeekScreen];
 }
 
-- (void)navigateToGoogleCalendarScreen {
-    
-    NFGoogleCalendarController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFGoogleCalendarController"];
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFGoogleCalendarNav"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-}
 
 - (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
     //NFEditTaskNavController

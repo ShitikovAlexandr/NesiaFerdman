@@ -48,7 +48,8 @@ NSString *const kNFNGoogleEventDate = @"date";
             self.end = [[dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDateTime] substringToIndex:19];
         } else {
             if ([dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate] != nil) {
-                self.end = [dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate];
+                self.end = [NSString stringWithFormat:@"%@T00:01:00", [dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate]];
+                ;
             } else {
                 self.end = [dictionary[kNFNGoogleEventCreated] substringToIndex:19];
             }
@@ -75,7 +76,7 @@ NSString *const kNFNGoogleEventDate = @"date";
             self.start = [[dictionary[kNFNGoogleEventStart] objectForKey:kNFNGoogleEventDateTime] substringToIndex:19];
         } else {
             if ([dictionary[kNFNGoogleEventStart] objectForKey:kNFNGoogleEventDate] != nil) {
-                self.start = [dictionary[kNFNGoogleEventStart] objectForKey:kNFNGoogleEventDate];
+                self.start = [NSString stringWithFormat:@"%@T00:01:00", [dictionary[kNFNGoogleEventStart] objectForKey:kNFNGoogleEventDate]];
             } else {
                 self.start = dictionary[kNFNGoogleEventCreated];
             }

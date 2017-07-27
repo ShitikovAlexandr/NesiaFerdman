@@ -24,7 +24,6 @@ static UIColor* _base_GREY = nil;
 static UIColor* _borderDarkGrey = nil;
 static UIColor* _lightGrey = nil;
 static UIColor* _googleRed = nil;
-//#define PLACEHOLDER_STANDART_COLOR [UIColor colorWithRed:199.f/255.f green:199.f/255.f blue:205.f/255.f alpha:1];
 static UIColor* _PLACEHOLDER_STANDART_COLOR = nil;
 
 #pragma mark Initialization
@@ -52,6 +51,14 @@ static UIColor* _PLACEHOLDER_STANDART_COLOR = nil;
 + (UIColor*)_lightGrey { return  _lightGrey; }
 + (UIColor*) _googleRed {return _googleRed;}
 + (UIColor*) _PLACEHOLDER_STANDART_COLOR {return _PLACEHOLDER_STANDART_COLOR;}
+
++ (UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
 
 
 #pragma mark Drawing Methods

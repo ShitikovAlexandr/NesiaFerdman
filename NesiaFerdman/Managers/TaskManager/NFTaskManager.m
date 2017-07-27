@@ -34,9 +34,42 @@
         self.resultsArray = [NSMutableArray array];
         self.resultsDictionary = [NSMutableDictionary dictionary];
         self.manifestationsArray = [NSMutableArray array];
+        self.calendarList = [NSMutableArray array];
     }
     return self;
 }
+
+//***************************
+- (void)setEventList:(NSArray*)eventList {
+    [_inputEventsArray addObjectsFromArray:eventList];
+}
+
+- (void)setValueList:(NSArray*)valueList {
+    [_valuesArray removeAllObjects];
+    [_valuesArray addObjectsFromArray:valueList];
+}
+
+- (void)setResultCategoryList:(NSArray*)resultCategoreList {
+    [_resultCategoryArray removeAllObjects];
+    [_resultCategoryArray addObjectsFromArray:resultCategoreList];
+}
+
+- (void)setManifestationList:(NSArray*)manifestationList {
+    [_manifestationsArray removeAllObjects];
+    [_manifestationsArray addObjectsFromArray:manifestationList];
+}
+
+- (void)setResultList:(NSArray*)resultList {
+    [_resultsArray removeAllObjects];
+    [_resultsArray addObjectsFromArray:resultList];
+}
+
+- (void)setCalendarList:(NSArray*)calendarList {
+    [_calendarArray addObjectsFromArray:calendarList];
+}
+
+
+//***************************
 
 - (NSMutableArray*) getAllManifestations {
     return self.manifestationsArray;
@@ -48,7 +81,7 @@
 
 - (NSMutableArray *)getAllValues {
     NSMutableArray *resultArray = [NSMutableArray array];
-    for (NFValue *value in self.valuesArray)
+    for (NFNValue *value in self.valuesArray)
         if (!value.isDeleted) {
             [resultArray addObject:value];
         }
@@ -59,10 +92,10 @@
     return self.resultsArray;
 }
 
-- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forDay:(NSDate*)date {
+- (NSMutableArray*)getResultWithFilter:(NFNRsultCategory*)resultCategory forDay:(NSDate*)date {
     NSMutableArray *tempArray = [NSMutableArray array];
-    for (NFResult *result in _resultsArray) {
-        if ([result.resultCategoryId isEqualToString:resultCategory.resultCategoryId]) {
+    for (NFNRsult *result in _resultsArray) {
+        if ([result.parentId isEqualToString:resultCategory.idField]) {
             [tempArray addObject:result];
         }
     }
@@ -73,10 +106,10 @@
     return result;
 }
 
-- (NSMutableArray*)getResultWithFilter:(NFResultCategory*)resultCategory forMonth:(NSDate*)date {
+- (NSMutableArray*)getResultWithFilter:(NFNRsultCategory*)resultCategory forMonth:(NSDate*)date {
     NSMutableArray *tempArray = [NSMutableArray array];
-    for (NFResult *result in _resultsArray) {
-        if ([result.resultCategoryId isEqualToString:resultCategory.resultCategoryId]) {
+    for (NFNRsult *result in _resultsArray) {
+        if ([result.parentId isEqualToString:resultCategory.idField]) {
             [tempArray addObject:result];
         }
     }
@@ -102,7 +135,7 @@
     return _selectedValuesArray.count > 0 ? result: _eventTaskDictionary;
 }
 
-- (NSMutableDictionary*)getAllTaskDictionaryWithFilterValue:(NFValue*)value{
+- (NSMutableDictionary*)getAllTaskDictionaryWithFilterValue:(NFNValue*)value{
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     [self convertToDictionary:result array:[self filterArray:_inputEventsArray withFilterArray:@[value]]];
     return result;
@@ -114,11 +147,11 @@
     return _selectedValuesArray.count > 0 ? [self filterArray:equalsEvent withFilterArray:_selectedValuesArray]:equalsEvent;
 }
 
-- (NSMutableArray *)getImportantForDay:(NSDate*)currentDate {
-    NSMutableArray *equalsEvent = [NSMutableArray array];
-    [equalsEvent addObjectsFromArray:[_eventImportantDictionary objectForKey:[self stringFromDate:currentDate]]];
-    return equalsEvent;
-}
+//- (NSMutableArray *)getImportantForDay:(NSDate*)currentDate {
+//    NSMutableArray *equalsEvent = [NSMutableArray array];
+//    [equalsEvent addObjectsFromArray:[_eventImportantDictionary objectForKey:[self stringFromDate:currentDate]]];
+//    return equalsEvent;
+//}
 
 - (NSMutableArray *)getTaskForMonth:(NSDate*)currentDate {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
@@ -135,7 +168,7 @@
     for (NSString *key in filtered) {
         NSMutableArray *tempDayArray = [NSMutableArray array];
         [tempDayArray addObjectsFromArray:[_eventTaskDictionary objectForKey:key]];
-        for (NFEvent *event in [_eventTaskDictionary objectForKey:key]) {
+        for (NFNEvent *event in [_eventTaskDictionary objectForKey:key]) {
             if (event.values) {
                 [tempDayArray removeObject:event];
             }
@@ -158,7 +191,7 @@
         //[tempDay removeAllObjects];
         tempDay = [NSMutableArray arrayWithArray:dayArray];
         
-        for (NFEvent* event in dayArray) {
+        for (NFNEvent* event in dayArray) {
             if(event.values) {
                 [tempDay removeObject:event];
             }
@@ -172,7 +205,7 @@
     return tempArray;
 }
 
-- (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFValue*)value {
+- (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFNValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
@@ -181,7 +214,7 @@
     return (NSMutableArray*)resultArray;
 }
 
-- (NSMutableDictionary*)getTaskForMonthDictionary:(NSDate*)currentDate withValue:(NFValue*)value {
+- (NSMutableDictionary*)getTaskForMonthDictionary:(NSDate*)currentDate withValue:(NFNValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
@@ -194,7 +227,7 @@
     return resultDic;
 }
 
-- (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFValue*)value {
+- (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFNValue*)value {
     NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
     [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
@@ -203,25 +236,25 @@
     return (NSMutableArray*)resultArray;
 }
 
-- (NSMutableArray *)getConclusionsForDay:(NSDate*)currentDate {
-    NSMutableArray *equalsEvent = [NSMutableArray array];
-    [equalsEvent addObjectsFromArray:[_eventConclusionsDictionary objectForKey:[self stringFromDate:currentDate]]];
-    return equalsEvent;
-}
-
-- (NSMutableArray *)getConclusionsForMonth:(NSDate*)currentDate {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
-    NSArray *filtered = [[[_eventConclusionsDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
-    NSArray *resultArray = [_eventConclusionsDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
-}
-
-- (NSMutableArray *)getImportantForMonth:(NSDate*)currentDate {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
-    NSArray *filtered = [[[_eventImportantDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
-    NSArray *resultArray = [_eventImportantDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
-}
+//- (NSMutableArray *)getConclusionsForDay:(NSDate*)currentDate {
+//    NSMutableArray *equalsEvent = [NSMutableArray array];
+//    [equalsEvent addObjectsFromArray:[_eventConclusionsDictionary objectForKey:[self stringFromDate:currentDate]]];
+//    return equalsEvent;
+//}
+//
+//- (NSMutableArray *)getConclusionsForMonth:(NSDate*)currentDate {
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
+//    NSArray *filtered = [[[_eventConclusionsDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+//    NSArray *resultArray = [_eventConclusionsDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
+//    return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
+//}
+//
+//- (NSMutableArray *)getImportantForMonth:(NSDate*)currentDate {
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:7]];
+//    NSArray *filtered = [[[_eventImportantDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+//    NSArray *resultArray = [_eventImportantDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
+//    return resultArray.count > 0 ? (NSMutableArray *)resultArray : nil;
+//}
 
 #pragma mark - Helpers
 
@@ -257,7 +290,7 @@
 
 - (void)convertToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     if (array.count > 0) {
-        for (NFEvent *event in array) {
+        for (NFNEvent *event in array) {
             NSDate *start = [self datefromString:event.startDate];
             NSDate *end = [self datefromString:event.endDate];
             NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
@@ -292,8 +325,8 @@
 
 - (void)convertResultToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     if (array.count > 0) {
-        for (NFResult *event in array) {
-            NSString *eventKey = [event.startDate substringToIndex:10];
+        for (NFNRsult *event in array) {
+            NSString *eventKey = [event.createDate substringToIndex:10];
             if(!dic[eventKey]){
                 dic[eventKey] = [NSMutableArray new];
             }
@@ -315,8 +348,8 @@
 
 - (NSMutableArray*)filterArray:(NSArray*)input withFilterArray:(NSArray*)filterArray {
     NSMutableArray *result = [NSMutableArray array];
-    for (NFEvent *event in input) {
-        for (NFValue *val in filterArray) {
+    for (NFNEvent *event in input) {
+        for (NFNValue *val in filterArray) {
             NSMutableArray *tempArray = [NSMutableArray array];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@",val.valueId];
             [tempArray addObjectsFromArray:[event.values filteredArrayUsingPredicate:predicate]];
@@ -332,8 +365,8 @@
 - (NSMutableDictionary *)eventSortedByValue:(NSMutableArray* )inputArray {
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     NSMutableArray *tempArrayVal = [NSMutableArray array];
-    for (NFEvent *event in inputArray) {
-        for (NFValue *val in _valuesArray) {
+    for (NFNEvent *event in inputArray) {
+        for (NFNValue *val in _valuesArray) {
             NSMutableArray *tempArray = [NSMutableArray array];
             NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@",val.valueId];
             [tempArray addObjectsFromArray:[event.values filteredArrayUsingPredicate:predicate]];
@@ -387,17 +420,17 @@
     [self.inputEventsArray addObjectsFromArray:eventsArray];
     [self convertToDictionary:_eventTaskDictionary array:_inputEventsArray];
     
-    NSMutableArray *eventsImportantArray = [NSMutableArray array];
-    NSPredicate *predicateImportan = [NSPredicate predicateWithFormat:@"self.eventType == %d", Important];
-    [eventsImportantArray addObjectsFromArray:[array filteredArrayUsingPredicate:predicateImportan]];
-    [self.inputImportantEventsArray addObjectsFromArray:eventsImportantArray];
-    [self convertToDictionary:_eventImportantDictionary array:_inputImportantEventsArray];
-    
-    NSMutableArray *eventsConclusions = [NSMutableArray array];
-    NSPredicate *predicateConclusions = [NSPredicate predicateWithFormat:@"self.eventType == %d", Conclusions];
-    [eventsConclusions addObjectsFromArray:[array filteredArrayUsingPredicate:predicateConclusions]];
-    [self.inputConclusionsEventsArray addObjectsFromArray:eventsConclusions];
-    [self convertToDictionary:_eventConclusionsDictionary array:_inputConclusionsEventsArray];
+//    NSMutableArray *eventsImportantArray = [NSMutableArray array];
+//    NSPredicate *predicateImportan = [NSPredicate predicateWithFormat:@"self.eventType == %d", Important];
+//    [eventsImportantArray addObjectsFromArray:[array filteredArrayUsingPredicate:predicateImportan]];
+//    [self.inputImportantEventsArray addObjectsFromArray:eventsImportantArray];
+//    [self convertToDictionary:_eventImportantDictionary array:_inputImportantEventsArray];
+//    
+//    NSMutableArray *eventsConclusions = [NSMutableArray array];
+//    NSPredicate *predicateConclusions = [NSPredicate predicateWithFormat:@"self.eventType == %d", Conclusions];
+//    [eventsConclusions addObjectsFromArray:[array filteredArrayUsingPredicate:predicateConclusions]];
+//    [self.inputConclusionsEventsArray addObjectsFromArray:eventsConclusions];
+//    [self convertToDictionary:_eventConclusionsDictionary array:_inputConclusionsEventsArray];
     
     [self convertResultToDictionary:self.resultsDictionary array:self.resultsArray]; // change
 }

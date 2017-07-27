@@ -7,7 +7,7 @@
 //
 
 #import "NFDayTableViewCell.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFStyleKit.h"
 
 @interface NFDayTableViewCell()
@@ -28,6 +28,8 @@
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
+    
+    
     self.timeLabel.layer.cornerRadius = self.timeLabel.frame.size.height/2.f;
     self.timeLabel.layer.masksToBounds = true;
 //    [self addSubview:_downBorder];
@@ -60,10 +62,11 @@
     if (_isTask) {
         self.timeLabel.layer.borderColor = [NFStyleKit bASE_GREEN].CGColor;
     }
+    
 }
 
 - (void) addData:(NSMutableArray *)events withIndexPath:(NSIndexPath *)index date:(NSDate*)currentDate {
-    NSArray *filtredArray = [NSArray arrayWithArray:[[NFTaskManager sharedManager] getTaskForHour:index.section  WithArray:events]];
+    NSArray *filtredArray = [NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getEventForHour:index.section  WithArray:events]];
     self.timeLabel.hidden = true;
     self.topLine.hidden = YES;
     self.downLine.hidden = YES;
@@ -74,8 +77,9 @@
     
     if (filtredArray.count > 0) {
         self.downLine.hidden = false;
-        NFEvent *event = [filtredArray objectAtIndex:index.row];
+        NFNEvent *event = [filtredArray objectAtIndex:index.row];
         _event = event;
+        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:event.calendarColor];
         self.titleLabel.text = event.title;
         
         _isTask = true;
@@ -139,6 +143,7 @@
     [_taskCircleView removeFromSuperview];
     self.timeLabel.layer.borderColor = [UIColor clearColor].CGColor;
     self.event = nil;
+    _calendarColorView.backgroundColor = [UIColor clearColor];
     [self setNeedsDisplay];
 }
 

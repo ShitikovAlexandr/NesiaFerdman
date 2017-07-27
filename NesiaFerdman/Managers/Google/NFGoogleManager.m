@@ -252,7 +252,7 @@ static NSString *const kAppCalendar = @"Nesia Ferdman";
         event.endDate = [[googleEvent.JSON objectForKey:@"created"] substringToIndex:19];
     }
     //updated
-    event.eventType = Event;
+   // event.eventType = Event;
     event.socialType = GoogleEvent;
     event.dateChange = [googleEvent.JSON objectForKey:@"updated"];
     event.calendarId = [[googleEvent.JSON objectForKey:@"organizer"] objectForKey:@"email"];

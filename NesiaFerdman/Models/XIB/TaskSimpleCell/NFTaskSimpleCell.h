@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFEvent.h"
+#import "NFNEvent.h"
 #import "NFTableViewCell.h"
 
 @interface NFTaskSimpleCell : NFTableViewCell
 @property (weak, nonatomic) UIImage *checkBox;
-@property (strong, nonatomic) NFEvent *event;
+@property (strong, nonatomic) NFNEvent *event;
 
-- (void)addData:(NFEvent*)event;
+- (void)addData:(NFNEvent*)event;
 
 @end

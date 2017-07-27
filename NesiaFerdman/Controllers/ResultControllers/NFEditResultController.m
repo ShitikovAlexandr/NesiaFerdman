@@ -78,7 +78,9 @@
         }
         _resultItem.startDate = [self stringDate:_dateTextField.text withFormat:@"LLLL, dd, yyyy" dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
         _resultItem.resultDescription = self.textView.text;
-        [[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];
+        
+#warning NFSync !!!!
+        //[[NFSyncManager sharedManager] writeResultToFirebase:_resultItem];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[NFSyncManager sharedManager]  updateAllData];
         });

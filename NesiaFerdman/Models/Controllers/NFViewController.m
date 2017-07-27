@@ -8,10 +8,8 @@
 
 #import "NFViewController.h"
 #import "NotifyList.h"
-#import "NFTAddImportantTaskTableViewController.h"
 #import "NFFilterValueControllerViewController.h"
 #import "NFEditTaskController.h"
-#import "NFGoogleCalendarController.h"
 
 @interface NFViewController ()
 
@@ -35,16 +33,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:VALUE_FILTER_PRESS object:nil];
 }
 
-- (void)filterAction {
-    NSLog(@"NFViewController filter notify");
-    NFTAddImportantTaskTableViewController *addVC = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTAddImportantTaskTableViewController"];
-    addVC.eventType = Important;
-    UINavigationController *navVCB = [self.storyboard instantiateViewControllerWithIdentifier:@"UINavViewController"];
-    navVCB.navigationBar.barStyle = UIBarStyleBlack;
-    [navVCB setViewControllers:@[addVC] animated:YES];
-    [self presentViewController:navVCB animated:YES completion:nil];
-}
-
 
 - (void)addButtonAction {
 }
@@ -56,7 +44,7 @@
     [self presentViewController:navController animated:YES completion:nil];
 }
 
-- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
+- (void)navigateToEditTaskScreenWithEvent:(NFNEvent*)event {
     //NFEditTaskNavController
     
     NFEditTaskController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskController"];

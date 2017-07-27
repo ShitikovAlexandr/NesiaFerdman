@@ -8,7 +8,7 @@
 
 #import "NFValueDetailController.h"
 #import "NFManifestation.h"
-#import "NFSyncManager.h"
+#import "NFNSyncManager.h"
 #import "NFAddValueCategoryController.h"
 #import "UIBarButtonItem+FHButtons.h"
 #import "NFValueDetailCell.h"

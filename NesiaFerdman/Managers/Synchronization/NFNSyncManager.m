@@ -9,6 +9,7 @@
 #import "NFNSyncManager.h"
 #import "NFFirebaseSyncManager.h"
 #import "NFGoogleSyncManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFNSyncManager ()
 
@@ -65,6 +66,7 @@
 - (void)googleEventsEndDownload {
     _isGoogleEvent  = true;
     [self eventsSynchronization];
+    [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
 }
 
 - (void)dataBaseEndDownload {
@@ -81,8 +83,11 @@
         _isDataBase = false;
         _isGogleCalendar = false;
         
-       
-        
+        [[NFDataSourceManager sharedManager] setResultCategoryList:[[NFFirebaseSyncManager sharedManager] getResultCategoryList]];
+        [[NFDataSourceManager sharedManager] setResultList:[[NFFirebaseSyncManager sharedManager] getResultList]];
+
+        [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
+        [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
     }
 }
 
@@ -262,6 +267,43 @@
 - (void)removeResultFromDBManager:(NFNRsult*)result {
     [[NFFirebaseSyncManager sharedManager]  removeResultFromManager:result];
 }
+
+#pragma mark - app run methods
+
+- (BOOL)isFirstRunApp {
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+    if (![defaults valueForKey:IS_FIRST_RUN_APP]) {
+        [defaults setValue:@"no" forKey:IS_FIRST_RUN_APP];
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isFirstRunToday {
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
+    NSString *dateOfLastRun = [defaults valueForKey:IS_FIRST_RUN_TODAY];
+    if (dateOfLastRun) {
+        if ([dateOfLastRun isEqualToString:[self stringFromDate:[NSDate date]]]) {
+            return NO;
+        } else {
+            [defaults setValue:[self stringFromDate:[NSDate date]] forKey:IS_FIRST_RUN_TODAY];
+            return YES;
+        }
+    } else {
+        [defaults setValue:[self stringFromDate:[NSDate date]] forKey:IS_FIRST_RUN_TODAY];
+        return YES;
+    }
+}
+
+- (NSString *)stringFromDate:(NSDate *)currentDate  {
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+    NSString* newDate = [dateFormatter1 stringFromDate:currentDate];
+    return newDate;
+}
+
+
 
 
 

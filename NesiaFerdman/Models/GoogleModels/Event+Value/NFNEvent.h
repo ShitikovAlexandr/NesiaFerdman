@@ -7,6 +7,13 @@
 #import "NFNValue.h"
 #import "NFNGoogleEvent.h"
 
+typedef NS_ENUM(NSUInteger, EventType)
+{
+    Event,
+    Important,
+    Conclusions
+};
+
 typedef NS_ENUM(NSUInteger, NSocialType)
 {
     NNesiaEvent,

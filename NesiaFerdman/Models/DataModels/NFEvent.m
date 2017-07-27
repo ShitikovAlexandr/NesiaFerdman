@@ -35,7 +35,7 @@
             }
         }
         self.socialType = [[dictionary objectForKey:@"socialType"] integerValue];
-        self.eventType = [[dictionary objectForKey:@"eventType"] integerValue];
+        //self.eventType = [[dictionary objectForKey:@"eventType"] integerValue];
         self.eventId = [dictionary objectForKey:@"eventId"];
         self.socialId = [dictionary objectForKey:@"socialId"];
         self.isImportant = [[dictionary objectForKey:@"isImportant"] boolValue];
@@ -72,7 +72,7 @@
             self.endDate = [[dictionary objectForKey:@"created"] substringToIndex:19];
         }
         
-        self.eventType = Event;
+        //self.eventType = Event;
         self.socialType = GoogleEvent;
         self.dateChange = [dictionary objectForKey:@"updated"];
         self.calendarId = [[dictionary objectForKey:@"organizer"] objectForKey:@"email"];
@@ -108,7 +108,7 @@
         self.eventId = newID;
         self.createDate = [NSString stringWithFormat:@"%@", [NSDate date]];
         self.startDate = [NSString stringWithFormat:@"%@", [NSDate date]];
-        self.eventType = Event;
+        //self.eventType = Event;
     }
     return self;
 }

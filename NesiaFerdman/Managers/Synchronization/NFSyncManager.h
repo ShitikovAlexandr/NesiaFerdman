@@ -31,7 +31,7 @@
 - (void)addStandartListOfMainifestations;
 - (void)addStandartListOfResultCategory;
 - (void)writeValueToFirebase:(NFValue *)value;
-- (void)writeResultToFirebase:(NFResult*)result;
+//- (void)writeResultToFirebase:(NFResult*)result;
 - (void)deleteValueFromFirebase:(NFValue *)value;
 - (void)deleteEventFromFirebase:(NFEvent *)event;
 

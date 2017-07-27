@@ -302,12 +302,12 @@ UICollectionViewDelegateFlowLayout
         [_indicator startAnimating];
         BOOL newEvent = false;
         if (!_event) {
-            _event = [[NFEvent alloc] init];
+            _event = [[NFNEvent alloc] init];
             newEvent = true;
         }
-        [_event.values removeAllObjects];
+        //[_event.values removeAllObjects];
         _event.values = [NSMutableArray array];
-        _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
+        //_selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
         _event.title = _titleOfTaskTextField.text;
         _event.eventDescription = _taskDescriptionTextView.text;
         _event.isDone = _compliteButton.selected;
@@ -319,9 +319,9 @@ UICollectionViewDelegateFlowLayout
                        dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
         
         if (newEvent) {
-            [[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
+            //[[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
         } else {
-            [[NFSyncManager sharedManager] editEventWithSetting:_event];
+            //[[NFSyncManager sharedManager] editEventWithSetting:_event];
         }
     }
 }

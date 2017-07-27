@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EPR-5a-asu" id="87v-id-jZU">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9LU-fg-qLX">
@@ -52,6 +52,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iof-Qd-CrZ">
+                        <rect key="frame" x="369" y="0.0" width="6" height="70"/>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="m2l-q8-Kc1"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="HhQ-Uq-Dl7" secondAttribute="bottom" constant="25.5" id="0YG-ay-5JK"/>
@@ -73,7 +80,13 @@
                     <constraint firstItem="9LU-fg-qLX" firstAttribute="top" secondItem="87v-id-jZU" secondAttribute="top" id="zFo-Rv-WVv"/>
                 </constraints>
             </tableViewCellContentView>
+            <constraints>
+                <constraint firstItem="iof-Qd-CrZ" firstAttribute="top" secondItem="EPR-5a-asu" secondAttribute="top" id="5dg-vd-oic"/>
+                <constraint firstAttribute="bottom" secondItem="iof-Qd-CrZ" secondAttribute="bottom" id="5ir-K4-rCl"/>
+                <constraint firstAttribute="trailing" secondItem="iof-Qd-CrZ" secondAttribute="trailing" id="j7T-o4-aB3"/>
+            </constraints>
             <connections>
+                <outlet property="calendarColorView" destination="iof-Qd-CrZ" id="qx8-73-sQo"/>
                 <outlet property="downLine" destination="xRq-ig-IuL" id="G6W-nW-e6w"/>
                 <outlet property="timeLabel" destination="b1B-g0-oZp" id="guu-m1-mwj"/>
                 <outlet property="timeTaskLabel" destination="NiT-FC-S3h" id="6ez-EG-eux"/>

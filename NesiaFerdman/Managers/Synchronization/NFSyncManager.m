@@ -197,9 +197,9 @@
     //[[NFFirebaseManager sharedManager] addValue:value withUserId:_userId];
 }
 
-- (void)writeResultToFirebase:(NFResult*)result {
-    //[[NFFirebaseManager sharedManager] addResult:result withUserId:_userId];
-}
+//- (void)writeResultToFirebase:(NFResult*)result {
+//    //[[NFFirebaseManager sharedManager] addResult:result withUserId:_userId];
+//}
 
 - (void)updateAllResults {
     //[[NFFirebaseManager sharedManager] getAllResultsWithUserId:_userId];

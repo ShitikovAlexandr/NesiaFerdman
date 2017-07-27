@@ -13,10 +13,22 @@
 @interface NFTaskSimpleCell ()
 @property (strong, nonatomic) UILongPressGestureRecognizer *lpgr;
 @property (assign, nonatomic) CGRect standartLabelFrame;
+@property (strong, nonatomic) UIView *calendarColorView;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 @end
 
 @implementation NFTaskSimpleCell
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    CGFloat calendarViewWidth = 6.0;
+    CGRect calFrame = CGRectMake(rect.size.width - calendarViewWidth, 0, calendarViewWidth, rect.size.height);
+    _calendarColorView = [[UIView alloc] initWithFrame:calFrame];
+    _calendarColorView.backgroundColor = [UIColor clearColor];
+    [self addSubview:_calendarColorView];
+}
 
 
 - (void)awakeFromNib {
@@ -34,11 +46,14 @@
     return self;
 }
 
-- (void)addData:(NFEvent*)event {
+- (void)addData:(NFNEvent*)event {
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (event) {
         self.event = event;
+        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:event.calendarColor];
         self.textLabel.text = event.title;
+        self.timeLabel.text = [NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];
+
         if (event.eventType == Event) {
             if (event.isDone) {
                 [self.imageView setImage:[UIImage imageNamed:@"checked_enable.png"]];
@@ -59,6 +74,8 @@
     [self.imageView setImage:nil];
     self.lpgr = nil;
     self.event = nil;
+    self.calendarColorView.backgroundColor = [UIColor clearColor];
+    self.timeLabel.text = @"";
 }
 
 - (void)layoutSubviews {
@@ -80,6 +97,17 @@
     [[NSNotificationCenter defaultCenter]postNotification:notification];
     
 }
+
+- (NSString *)dateFormater:(NSString *)dateString {
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
+    NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:16]];
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"HH:mm"];
+    NSString* newDate = [dateFormatter1 stringFromDate:dateFromString];
+    return newDate;
+}
+
 
 
     

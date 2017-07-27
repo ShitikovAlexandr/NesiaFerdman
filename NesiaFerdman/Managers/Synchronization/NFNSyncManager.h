@@ -12,6 +12,7 @@
 #import "NFGoogleCalendar.h"
 #import "NFNManifestation.h"
 #import "NFNRsult.h"
+#import "NotifyList.h"
 
 @interface NFNSyncManager : NSObject
 
@@ -43,6 +44,8 @@
 - (void)removeManifestationDB:(NFNManifestation*)manifestation;
 - (void)removeResultFromDB:(NFNRsult*)result;
 
+- (BOOL)isFirstRunToday;
+- (BOOL)isFirstRunApp;
 
 
 

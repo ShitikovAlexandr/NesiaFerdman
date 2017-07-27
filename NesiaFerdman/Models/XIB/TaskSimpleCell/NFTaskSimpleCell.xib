@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,26 +15,52 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Bk-qS-gBV" id="HnU-ci-v4j">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkZ-Tf-Tcq">
-                        <rect key="frame" x="50" y="10" width="317" height="21"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gkZ-Tf-Tcq">
+                        <rect key="frame" x="34" y="11" width="234" height="21"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="blW-AE-ny5"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BTU-pg-YcH">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BTU-pg-YcH">
                         <rect key="frame" x="18" y="17" width="8" height="8"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="672-2i-uvc"/>
+                            <constraint firstAttribute="height" constant="8" id="vTp-91-dW4"/>
+                        </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22:00 - 13:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkf-fO-Z8X">
+                        <rect key="frame" x="275.5" y="11" width="99.5" height="21"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="X5l-qD-L72"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="BTU-pg-YcH" firstAttribute="leading" secondItem="HnU-ci-v4j" secondAttribute="leadingMargin" constant="10" id="IVS-fS-KJS"/>
+                    <constraint firstItem="lkf-fO-Z8X" firstAttribute="centerY" secondItem="HnU-ci-v4j" secondAttribute="centerY" id="cDU-6H-42v"/>
+                    <constraint firstItem="gkZ-Tf-Tcq" firstAttribute="leading" secondItem="BTU-pg-YcH" secondAttribute="trailing" constant="8" id="fvn-LA-3RS"/>
+                    <constraint firstItem="lkf-fO-Z8X" firstAttribute="leading" secondItem="gkZ-Tf-Tcq" secondAttribute="trailing" constant="8" id="o89-8e-Z3V"/>
+                    <constraint firstItem="lkf-fO-Z8X" firstAttribute="trailing" secondItem="HnU-ci-v4j" secondAttribute="trailingMargin" constant="8" id="qp9-fc-5XE"/>
+                    <constraint firstItem="BTU-pg-YcH" firstAttribute="centerY" secondItem="HnU-ci-v4j" secondAttribute="centerY" id="yYv-QK-M2a"/>
+                    <constraint firstItem="gkZ-Tf-Tcq" firstAttribute="centerY" secondItem="HnU-ci-v4j" secondAttribute="centerY" id="zGT-lb-qxM"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="eventTitle" destination="gkZ-Tf-Tcq" id="geF-rg-vuM"/>
                 <outlet property="pointView" destination="BTU-pg-YcH" id="JFz-ST-TNp"/>
+                <outlet property="timeLabel" destination="lkf-fO-Z8X" id="AXr-XF-ai8"/>
             </connections>
             <point key="canvasLocation" x="-140.5" y="17"/>
         </tableViewCell>
