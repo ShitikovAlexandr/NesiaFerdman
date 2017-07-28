@@ -407,7 +407,6 @@
     }
 }
 
-
 - (NSMutableArray*)getObjectsFromArrayWithArrays:(NSMutableArray *)inputArray {
     NSMutableArray *resultArray = [NSMutableArray array];
     for (NSMutableArray *array in inputArray) {

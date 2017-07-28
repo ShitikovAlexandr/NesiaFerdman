@@ -23,11 +23,11 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    CGFloat calendarViewWidth = 6.0;
-    CGRect calFrame = CGRectMake(rect.size.width - calendarViewWidth, 0, calendarViewWidth, rect.size.height);
-    _calendarColorView = [[UIView alloc] initWithFrame:calFrame];
-    _calendarColorView.backgroundColor = [UIColor clearColor];
-    [self addSubview:_calendarColorView];
+//    CGFloat calendarViewWidth = 6.0;
+//    CGRect calFrame = CGRectMake(rect.size.width - calendarViewWidth, 0, calendarViewWidth, rect.size.height);
+//    _calendarColorView = [[UIView alloc] initWithFrame:calFrame];
+//    _calendarColorView.backgroundColor = [UIColor clearColor];
+//    [self addSubview:_calendarColorView];
 }
 
 

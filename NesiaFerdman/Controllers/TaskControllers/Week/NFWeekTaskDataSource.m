@@ -9,7 +9,9 @@
 #import "NFWeekTaskDataSource.h"
 #import "NFSettingManager.h"
 #import "NFDataSourceManager.h"
-#import "NFTaskSimpleCell.h"
+//#import "NFTaskSimpleCell.h"
+#import "NFTaskCellDescription.h"
+
 #import "NFHeaderForTaskSection.h"
 #import "NFNEvent.h"
 #import "NFEditTaskController.h"
@@ -35,7 +37,7 @@
         _keyArray = [NSMutableArray array];
         _dateLimits = [[NFDateModel alloc] initWithStartDate:[NFSettingManager getMinDate]
                                                      endDate:[NFSettingManager getMaxDate]];
-        [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskSimpleCell" bundle:nil] forCellReuseIdentifier:@"NFTaskSimpleCell"];
+        [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskCellDescription" bundle:nil] forCellReuseIdentifier:@"NFTaskCellDescription"];
     }
     return self;
 }
@@ -81,11 +83,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NFTaskSimpleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (!cell) {
-        cell = [[NFTaskSimpleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
+    NFTaskCellDescription *cell = [tableView dequeueReusableCellWithIdentifier:@"NFTaskCellDescription"];
     if (_eventsArray.count > 0) {
         NSArray *eventDayArray = [_eventsArray objectAtIndex:indexPath.section];
         NFNEvent *event = [eventDayArray objectAtIndex:indexPath.row];
@@ -97,6 +95,10 @@
 }
 
 #pragma mark - UITableViewDelegate
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [NFTaskCellDescription cellSize];
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     if (_eventsArray.count > 0) {
@@ -114,14 +116,13 @@
             if ([[_keyArray objectAtIndex:section] isKindOfClass:[NSDate class]]) {
                 [headerView setCurrentDate:[_keyArray objectAtIndex:section]];
             }
-        
         return headerView;
          }
     return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NFTaskCellDescription* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
     [self navigateToEditTaskScreenWithEvent:eventCell.event];
 }
 

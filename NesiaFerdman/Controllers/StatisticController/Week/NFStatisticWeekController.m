@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet NFValuesFilterView *filterView;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NFStatisticWeekDataSource *dataSource;
-
 @end
 
 @implementation NFStatisticWeekController
@@ -40,7 +39,6 @@
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_NOTIF object:nil];
 }
-
 
 - (void)updateData {
     [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];

@@ -29,18 +29,14 @@
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
     
-    
     self.timeLabel.layer.cornerRadius = self.timeLabel.frame.size.height/2.f;
     self.timeLabel.layer.masksToBounds = true;
-//    [self addSubview:_downBorder];
     CGFloat ovalRadius = 6.f;
-//    CGFloat timelineWidth = 2.f;
     _topLine.backgroundColor = [NFStyleKit sUPER_LIGHT_GREEN];
     _downLine.backgroundColor = [NFStyleKit sUPER_LIGHT_GREEN];
     self.timeLabel.backgroundColor = [NFStyleKit _base_GREY];
     self.timeLabel.layer.borderColor = [UIColor clearColor].CGColor;
     self.timeLabel.layer.borderWidth = 2;
-
     
     _taskCircleView = [[UIView alloc] initWithFrame:CGRectMake(_timeLabel.center.x - ovalRadius, _timeLabel.center.y - ovalRadius, ovalRadius * 2, ovalRadius * 2)];
     _taskCircleView.layer.cornerRadius = ovalRadius;
@@ -62,7 +58,6 @@
     if (_isTask) {
         self.timeLabel.layer.borderColor = [NFStyleKit bASE_GREEN].CGColor;
     }
-    
 }
 
 - (void) addData:(NSMutableArray *)events withIndexPath:(NSIndexPath *)index date:(NSDate*)currentDate {
@@ -81,9 +76,8 @@
         _event = event;
         self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:event.calendarColor];
         self.titleLabel.text = event.title;
-        
         _isTask = true;
-        self.timeTaskLabel.text = [NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];
+        self.timeTaskLabel.text = [self getTimeStringFromEvent:_event]; //[NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];
         if (index.row == filtredArray.count - 1) {
             self.separatorInset = UIEdgeInsetsZero;
             self.downLine.hidden = true;
@@ -139,7 +133,7 @@
     self.accessoryView = nil;
     self.timeLabel.backgroundColor = [NFStyleKit _base_GREY];
     self.timeLabel.textColor = [UIColor blackColor];
-    self.separatorInset = UIEdgeInsetsMake(0, 100.0, 0, 0);
+    self.separatorInset = UIEdgeInsetsMake(0, 90.0, 0, 0);
     [_taskCircleView removeFromSuperview];
     self.timeLabel.layer.borderColor = [UIColor clearColor].CGColor;
     self.event = nil;
@@ -166,27 +160,81 @@
     return dateOnly;
 }
 
-//- (void) startBlinkingLabel:(UILabel *)label
-//{
-//    label.alpha = 1.0f;
-//    [UIView animateWithDuration:0.32
-//                          delay:0.0
-//                        options: UIViewAnimationOptionAutoreverse |UIViewAnimationOptionRepeat | UIViewAnimationOptionCurveEaseInOut | UIViewAnimationOptionAllowUserInteraction |UIViewAnimationOptionBeginFromCurrentState
-//                     animations:^{
-//                         label.alpha = 0.0f;
-//                     }
-//                     completion:^(BOOL finished){
-//                         if (finished) {
-//                             
-//                         }
-//                     }];
-//}
-//
-//- (void) stopBlinkingLabel:(UILabel *)label
-//{
-//    // REMOVE ANIMATION
-//    [label.layer removeAnimationForKey:@"opacity"];
-//    label.alpha = 1.0f;
-//}
+- (NSString*)getTimeStringFromEvent:(NFNEvent*)event {
+    NSString *result = @"";
+    NSDate *start = [self datefromString:event.startDate];
+    NSDate *end = [self datefromString:event.endDate];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
+        NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
+        NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
+        if ([self getListOfDateWithStart:start end:end].count > 1) {
+            result = [NSString stringWithFormat:@"%@\n%@", [self stringFromDate:start],[self stringFromDate:end]];
+        } else {
+            result = [NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];
+        }
+    } else {
+        result = [NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];
+    }
+    return result;
+}
+
+- (NSMutableArray*)getListOfDateWithStart:(NSDate*)start end:(NSDate*)end {
+    NSMutableArray *result = [NSMutableArray new];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    
+    NSDateComponents *components = [calendar components:NSCalendarUnitDay
+                                               fromDate:start
+                                                 toDate:end
+                                                options:0];
+    NSInteger numberOfDays = components.day;
+    
+    NSDateComponents *offset = [[NSDateComponents alloc] init];
+    [result addObject:start];
+    
+    for (int i = 1; i <= numberOfDays; i++) {
+        [offset setDay:i];
+        NSDate *nextDay = [calendar dateByAddingComponents:offset toDate:start options:0];
+        [result addObject:nextDay];
+    }
+    if (result.count == 1) {
+        NSLog(@"result");
+    }
+    return result;
+}
+
+- (NSDate*)datefromString:(NSString*)dateString {
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
+    if (dateString.length >=16) {
+        NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:16]];
+        return dateFromString;
+    } else {
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dateFromString = [dateFormatter dateFromString:[dateString substringToIndex:10]];
+        return dateFromString;
+    }
+}
+
+- (NSDate*) dateWithNoTime:(NSDate*)date {
+    unsigned int flags = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    NSDateComponents* components = [calendar components:flags fromDate:date];
+    NSDate* dateOnly = [calendar dateFromComponents:components];
+    return dateOnly;
+}
+
+- (NSString*)stringFromDate:(NSDate*)date {
+    NFDateFormatter *dateFormatter1 = [[NFDateFormatter alloc] init];
+    [dateFormatter1 setDateFormat:@"d MMMM yyyy\tHH:mm"];
+    NSString* newDate = [dateFormatter1 stringFromDate:date];
+    return newDate;
+}
+
+
+
 
 @end
