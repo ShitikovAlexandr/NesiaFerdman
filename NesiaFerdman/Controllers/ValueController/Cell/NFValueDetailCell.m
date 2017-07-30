@@ -16,10 +16,10 @@
 }
 
 
-- (void)addDataToCell:(NFManifestation*)manifestation {
+- (void)addDataToCell:(NFNManifestation*)manifestation {
     
     if (manifestation) {
-        self.textLabel.text = manifestation.name;
+        self.textLabel.text = manifestation.title;
         self.manifestation = manifestation;
     } else {
         self.textLabel.text = @"Добавить";

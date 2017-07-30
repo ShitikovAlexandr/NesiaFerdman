@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TPKeyboardAvoidingTableView.h"
+
 
 @interface NFValueMainDataSource : NSObject
+
+- (instancetype)initWithTableView:(TPKeyboardAvoidingTableView*)tableView target:(UIViewController*)target;
+- (void)getData;
+- (void)addNavigationButtons;
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFManifestation.h"
+#import "NFNManifestation.h"
 
 @interface NFValueDetailCell : UITableViewCell
-@property (strong, nonatomic) NFManifestation *manifestation;
+@property (strong, nonatomic) NFNManifestation *manifestation;
 
-- (void)addDataToCell:(NFManifestation*)manifestation;
+- (void)addDataToCell:(NFNManifestation*)manifestation;
 
 @end

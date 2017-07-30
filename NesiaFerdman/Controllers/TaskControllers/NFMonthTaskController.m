@@ -205,9 +205,9 @@
 
 - (IBAction)scrollCalendarAction:(UIButton*)sender {
     if (sender.tag == 1) {
-        [self.calendarContentView loadPreviousPageWithAnimation];
+        [self.calendarManager.contentView loadPreviousPageWithAnimation];
     } else if (sender.tag == 2) {
-        [self.calendarContentView loadNextPageWithAnimation];
+        [self.calendarManager.contentView loadNextPageWithAnimation];
     }
 }
 

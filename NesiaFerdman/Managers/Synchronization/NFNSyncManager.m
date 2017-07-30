@@ -88,6 +88,7 @@
 
         [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
         [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
+        [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
     }
 }
 
@@ -123,6 +124,7 @@
         [self addValueToDBManager:val];
         [self writeValueToDataBase:val];
     }
+    
 }
 
 - (void)eventsSynchronization {
@@ -303,7 +305,30 @@
     return newDate;
 }
 
+- (void)updateDataSource {
+    [[NFDataSourceManager sharedManager] setResultCategoryList:[[NFFirebaseSyncManager sharedManager] getResultCategoryList]];
+    [[NFDataSourceManager sharedManager] setResultList:[[NFFirebaseSyncManager sharedManager] getResultList]];
+    
+    [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
+    [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
+    [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
+}
 
+- (void)updateValueDataSource {
+      [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
+}
+
+- (void)updateManifestationDataSource {
+    [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
+}
+
+
+- (NSMutableArray*)sortArray:(NSMutableArray *)array withKey:(NSString*)key {
+    NSSortDescriptor *sortDescriptor;
+    sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:YES];
+    NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    return (NSMutableArray*)[array sortedArrayUsingDescriptors:sortDescriptors];
+}
 
 
 

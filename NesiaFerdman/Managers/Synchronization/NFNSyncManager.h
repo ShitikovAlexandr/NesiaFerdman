@@ -47,6 +47,10 @@
 - (BOOL)isFirstRunToday;
 - (BOOL)isFirstRunApp;
 
+- (void)updateDataSource;
+- (void)updateValueDataSource;
+- (void)updateManifestationDataSource;
+
 
 
 @end

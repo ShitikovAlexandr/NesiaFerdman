@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFValue.h"
+#import "NFNValue.h"
 
 @interface NFValueDetailController : UIViewController
-@property (strong, nonatomic) NFValue *value;
+@property (strong, nonatomic) NFNValue *value;
 
 @end

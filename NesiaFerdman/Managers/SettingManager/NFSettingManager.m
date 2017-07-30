@@ -91,13 +91,13 @@
 + (NSInteger)getMinPerionOfSync {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger result =  [defaults integerForKey:MIN_PERIOD];
-    return result < 30 ? 30 : result;
+    return result < 30 ? 120 : result;
 }
 
 + (NSInteger)getMaxPerionOfSync {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger result =  [defaults integerForKey:MAX_PERIOD];
-    return result < 30 ? 30 : result;
+    return result < 30 ? 120 : result;
 }
 
 + (NSDate*)getMinDate {

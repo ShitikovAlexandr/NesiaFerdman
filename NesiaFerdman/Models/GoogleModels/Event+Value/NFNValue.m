@@ -17,6 +17,15 @@ NSString *const kNFNValueValueTitle = @"valueTitle";
 @end
 @implementation NFNValue
 
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.valueId = [[NSUUID UUID] UUIDString];
+    }
+    return self;
+}
+
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
  */

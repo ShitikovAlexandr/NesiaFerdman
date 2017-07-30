@@ -259,7 +259,7 @@ NSString *const kNFNEventSocialId = @"socialId";
 - (instancetype)copyWithZone:(NSZone *)zone
 {
 	NFNEvent *copy = [NFNEvent new];
-
+    
 	copy.calendarColor = [self.calendarColor copy];
 	copy.calendarID = [self.calendarID copy];
 	copy.createDate = [self.createDate copy];

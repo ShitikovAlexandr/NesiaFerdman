@@ -7,6 +7,7 @@
 //
 
 #import "NFDataSourceManager.h"
+#import "NFNManifestation.h"
 
 
 @interface NFDataSourceManager ()
@@ -261,7 +262,14 @@
 }
 
 - (NSArray*)getValueList {
-    return _valuesArray;
+    NSPredicate *deletePredicate = [NSPredicate predicateWithFormat:@"!SELF.isDeleted == YES"];
+    NSArray *items = [_valuesArray filteredArrayUsingPredicate:deletePredicate];
+    return [self sortArray:(NSMutableArray*)items withKey:@"valueIndex"];
+}
+
+- (NSArray*)getManifestationListWithValue:(NFNValue*)value {
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.parentId CONTAINS[c]%@",value.valueId];
+    return [_manifestationArray filteredArrayUsingPredicate:predicate];
 }
 
 - (NSArray*)getManifestationList {
@@ -422,5 +430,7 @@
     [self convertEventsListToDictionary:result array:[self filterArray:_eventsArray withFilterArray:@[value]]];
     return result;
 }
+
+
 
 @end

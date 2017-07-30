@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFValue.h"
-#import "NFManifestation.h"
-
-
+#import "NFNValue.h"
+#import "NFNManifestation.h"
 
 @interface NFAddValueCategoryController : UIViewController
-@property (strong, nonatomic) NFValue *value;
-@property (strong, nonatomic) NFManifestation *manifestation;
+@property (strong, nonatomic) NFNValue *value;
+@property (strong, nonatomic) NFNManifestation *manifestation;
 
 @end

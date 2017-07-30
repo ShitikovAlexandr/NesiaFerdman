@@ -10,17 +10,13 @@
 #import "NFActivityIndicatorView.h"
 #import <UITextView+Placeholder.h>
 #import "UIBarButtonItem+FHButtons.h"
-
 #import "NotifyList.h"
-#import "NFTaskManager.h"
 #import "NFTextView.h"
-#import "NFSyncManager.h"
-
+#import "NFNSyncManager.h"
 
 @interface NFAddValueCategoryController ()
 @property (weak, nonatomic) IBOutlet NFTextView *textView;
 @property (assign, nonatomic) BOOL isNew;
-
 @end
 
 @implementation NFAddValueCategoryController
@@ -46,23 +42,23 @@
 - (void)saveChanges {
     if ([self.textView isValidString]) {
         if (!_manifestation) {
-            _manifestation = [NFManifestation new];
+            _manifestation = [NFNManifestation new];
             _isNew = true;
         }
-        _manifestation.name = _textView.text;
-        _manifestation.categoryKey = _value.valueId;
+        _manifestation.title = _textView.text;
+        _manifestation.parentId = _value.valueId;
         if (_isNew) {
-            [_value.manifestations addObject:_manifestation];
+            //[_value.manifestations addObject:_manifestation];
+            [[NFNSyncManager sharedManager] writeManifestationToDataBase:_manifestation toValue:_value];
+            [[NFNSyncManager sharedManager] addManifestationToDBManager:_manifestation];
         }
-        [[NFSyncManager sharedManager] addMainifestation:_manifestation toValue:_value];
-        [[NFSyncManager sharedManager]  updateAllData];
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
 - (void)setStartDateTodisplay {
     if (_manifestation) {
-        self.textView.text = _manifestation.name;
+        self.textView.text = _manifestation.title;
     }
 }
 

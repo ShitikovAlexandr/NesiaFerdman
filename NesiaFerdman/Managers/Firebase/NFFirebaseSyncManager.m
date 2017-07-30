@@ -155,7 +155,7 @@
 }
 
 - (void)addManifestationToManager:(NFNManifestation*)manifestation {
-    [_valuesManifestationsArray addObject:manifestation];
+    [_valuesManifestationsArray addObject:[manifestation copy]];
 }
 
 - (void)addResultToManager:(NFNRsult*)result {

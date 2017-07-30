@@ -24,7 +24,7 @@
 }
 
 + (CGFloat)cellSize {
-    return 50.0;
+    return 60.0;
 }
     
 
@@ -90,8 +90,6 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
     if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
-        NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
-        NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
         if ([self getListOfDateWithStart:start end:end].count > 1) {
             result = [NSString stringWithFormat:@"%@\n%@", [self stringFromDate:start],[self stringFromDate:end]];
         } else {
