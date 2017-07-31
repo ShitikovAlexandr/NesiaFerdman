@@ -380,7 +380,7 @@
 
 - (void)writeManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value {
     manifestation.parentId = value.valueId;
-    [[[self userValueManifestationsRef] child:value.valueId] updateChildValues:[[manifestation copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+    [[[self userValueManifestationsRef] child:manifestation.idField] updateChildValues:[[manifestation copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         NSLog(@"Complite write manifestation");
     }];
 }

@@ -206,18 +206,22 @@
 
 - (void)removeEventFromDB:(NFNEvent*)event {
     [[NFFirebaseSyncManager sharedManager] deleteEvent:event];
+    [[NFDataSourceManager sharedManager] removeEventFromDataSource:event];
 }
 
 - (void)removeValueFromDB:(NFNValue*)value {
     [[NFFirebaseSyncManager sharedManager] deleteValue:value];
+    [[NFDataSourceManager sharedManager] removeValueFromDataSource:value];
 }
 
 - (void)removeManifestationDB:(NFNManifestation*)manifestation {
     [[NFFirebaseSyncManager sharedManager] deleteManifestation:manifestation];
+    [[NFDataSourceManager sharedManager] removeManifestationFromDataSource:manifestation];
 }
 
 - (void)removeResultFromDB:(NFNRsult*)result {
     [[NFFirebaseSyncManager sharedManager] deleteResult:result];
+    [[NFDataSourceManager sharedManager] removeResultFromDataSource:result];
 }
 
 
@@ -234,14 +238,17 @@
 
 - (void)addEventToDBManager:(NFNEvent*)event {
     [[NFFirebaseSyncManager sharedManager] addEventToManager:event];
+    [[NFDataSourceManager sharedManager] addEventToDataSource:event];
 }
 
 - (void)addValueToDBManager:(NFNValue*)value {
     [[NFFirebaseSyncManager sharedManager] addValueToManager:value];
+    [[NFDataSourceManager sharedManager] addValueToDataSource:value];
 }
 
 - (void)addManifestationToDBManager:(NFNManifestation*)manifestation {
     [[NFFirebaseSyncManager sharedManager] addManifestationToManager:manifestation];
+    [[NFDataSourceManager sharedManager] addManifestationToDataSource:manifestation];
 }
 
 - (void)addResultToDBManager:(NFNRsult*)result {

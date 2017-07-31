@@ -11,6 +11,7 @@
 #import "NFNValue.h"
 #import "NFNRsult.h"
 #import "NFNRsultCategory.h"
+#import "NFNManifestation.h"
 
 @interface NFDataSourceManager : NSObject
 
@@ -52,6 +53,18 @@
 - (NSArray*)getCalendarList;
 - (NSArray*)getQuoteList;
 - (NSArray*)getSelectedValueList;
+
+//****************************
+- (void)addEventToDataSource:(NFNEvent*)event;
+- (void)addValueToDataSource:(NFNValue*)value;
+- (void)addManifestationToDataSource:(NFNManifestation*)manifestation;
+- (void)addResultToDataSource:(NFNRsult*)result;
+
+- (void)removeEventFromDataSource:(NFNEvent*)event;
+- (void)removeValueFromDataSource:(NFNValue*)value;
+- (void)removeManifestationFromDataSource:(NFNManifestation*)manifestation;
+- (void)removeResultFromDataSource:(NFNRsult*)result;
+
 
 
 @end

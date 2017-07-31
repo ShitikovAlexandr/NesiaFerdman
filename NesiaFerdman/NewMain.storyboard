@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -141,15 +142,28 @@
                                     <constraint firstItem="bay-C7-Zoz" firstAttribute="leading" secondItem="yAe-zH-O88" secondAttribute="leading" constant="8" id="wBC-Mu-DS9"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PM8-g8-XuU">
+                                <rect key="frame" x="16" y="284" width="114" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="APH-bA-rkM"/>
+                                    <constraint firstAttribute="height" constant="30" id="KRD-e1-UGB"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="0.39530714900000002" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="PM8-g8-XuU" firstAttribute="leading" secondItem="1ak-ny-g9f" secondAttribute="leadingMargin" id="8Sp-Au-uzU"/>
                             <constraint firstAttribute="trailing" secondItem="yAe-zH-O88" secondAttribute="trailing" id="P0v-Jz-Jhl"/>
                             <constraint firstItem="yAe-zH-O88" firstAttribute="leading" secondItem="1ak-ny-g9f" secondAttribute="leading" id="RNQ-V4-Y6U"/>
+                            <constraint firstItem="PM8-g8-XuU" firstAttribute="top" secondItem="yAe-zH-O88" secondAttribute="bottom" constant="8" id="cZJ-1y-KRV"/>
                             <constraint firstItem="yAe-zH-O88" firstAttribute="top" secondItem="jeM-Hf-pmS" secondAttribute="bottom" constant="52" id="tE4-Eu-GtJ"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="deleteButton" destination="PM8-g8-XuU" id="z0t-pr-0dx"/>
                         <outlet property="textView" destination="bay-C7-Zoz" id="rLA-b8-SwK"/>
                     </connections>
                 </viewController>
@@ -162,7 +176,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFValueDetailControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="ImJ-PX-0Bf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="i2m-f6-WUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="i2m-f6-WUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -180,7 +194,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFCalendarListControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="0uy-oz-yTa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Nft-71-rXg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Nft-71-rXg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

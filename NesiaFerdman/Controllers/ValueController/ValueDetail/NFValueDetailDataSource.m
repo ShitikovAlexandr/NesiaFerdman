@@ -60,10 +60,11 @@
 }
 
 - (void)getData {
-    [[NFNSyncManager sharedManager] updateValueDataSource];
+   // [[NFNSyncManager sharedManager] updateManifestationDataSource];
     [_dataArray removeAllObjects];
-    [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getManifestationListWithValue:_target.value]];
-    [_tableView reloadData];
+        [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getManifestationListWithValue:_target.value]];
+        [_tableView reloadData];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
 }
 
 #pragma mark - UITableViewDataSource

@@ -7,7 +7,6 @@
 //
 
 #import "NFDataSourceManager.h"
-#import "NFNManifestation.h"
 
 
 @interface NFDataSourceManager ()
@@ -294,6 +293,39 @@
 
 - (NSArray*)getSelectedValueList {
     return _selectedValuesArray;
+}
+
+//*********************************
+
+- (void)addEventToDataSource:(NFNEvent*)event {
+    [_eventsArray addObject:event];
+}
+
+- (void)addValueToDataSource:(NFNValue*)value {
+    [_valuesArray addObject:value];
+}
+
+- (void)addManifestationToDataSource:(NFNManifestation*)manifestation {
+    [_manifestationArray addObject:manifestation];
+}
+
+- (void)addResultToDataSource:(NFNRsult*)result {
+    [_resultArray addObject:result];
+}
+
+- (void)removeEventFromDataSource:(NFNEvent*)event {
+    [_eventsArray removeObject:event];
+}
+
+- (void)removeValueFromDataSource:(NFNValue*)value {
+    [_valuesArray removeObject:value];
+}
+
+- (void)removeManifestationFromDataSource:(NFNManifestation*)manifestation {
+    [_manifestationArray removeObject:manifestation];
+}
+- (void)removeResultFromDataSource:(NFNRsult*)result {
+    [_resultArray removeObject:result];
 }
 
 #pragma mark - Helpers

@@ -16,6 +16,7 @@
 
 @interface NFAddValueCategoryController ()
 @property (weak, nonatomic) IBOutlet NFTextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (assign, nonatomic) BOOL isNew;
 @end
 
@@ -30,13 +31,14 @@
     [self.textView becomeFirstResponder];
 }
 
-
 #pragma mark - Helpers
 
 - (void)setNavigationButtons {
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:@"Сохранить" style:UIBarButtonItemStylePlain target:self action:@selector(saveChanges)];
     self.navigationItem.rightBarButtonItem = item;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+    [_deleteButton setTitle:@"Удалить" forState:UIControlStateNormal];
+    [_deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)saveChanges {
@@ -48,12 +50,18 @@
         _manifestation.title = _textView.text;
         _manifestation.parentId = _value.valueId;
         if (_isNew) {
-            //[_value.manifestations addObject:_manifestation];
             [[NFNSyncManager sharedManager] writeManifestationToDataBase:_manifestation toValue:_value];
             [[NFNSyncManager sharedManager] addManifestationToDBManager:_manifestation];
         }
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)deleteAction {
+    [[NFNSyncManager sharedManager] removeManifestationDBFromManager:_manifestation];
+    [[NFNSyncManager sharedManager] removeManifestationDB:_manifestation];
+    [self.navigationController popViewControllerAnimated:YES];
+
 }
 
 - (void)setStartDateTodisplay {
