@@ -9,7 +9,7 @@
 #import "NFStatisticRandomPeriodDataSource.h"
 #import "NFStatisticRandomPeriodDataSource.h"
 #import "NFStatisticMainCell.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFStatisticDetailController.h"
 
 @interface NFStatisticRandomPeriodDataSource () <UITableViewDelegate, UITableViewDataSource>
@@ -25,10 +25,10 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([NFTaskManager sharedManager].selectedValuesArray.count) {
-        return [NFTaskManager sharedManager].selectedValuesArray.count;
+    if ([[NFDataSourceManager sharedManager] getSelectedValueList].count) {
+        return [[NFDataSourceManager sharedManager] getSelectedValueList].count;
     } else {
-        return [[NFTaskManager sharedManager] getAllValues].count + 1;
+        return [[NFDataSourceManager sharedManager] getValueList].count + 1;
     }
 }
 
@@ -76,9 +76,9 @@
     [self.dataDictionary removeAllObjects];
     NSMutableArray* eventsArray = [NSMutableArray array];
     for (NSDate *day in _selectedDateArray) {
-        [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:day]];
+        [eventsArray addObjectsFromArray: [[NFDataSourceManager sharedManager] getEventForDay:day]];
     }
-    [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
+    [self.dataDictionary setDictionary:[[NFDataSourceManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
 }
 

@@ -14,5 +14,6 @@
 
 - (void)addData:(NFNEvent*)event;
 + (CGFloat)cellSize;
+- (void)setCellTite:(NSString*)text;
 
 @end

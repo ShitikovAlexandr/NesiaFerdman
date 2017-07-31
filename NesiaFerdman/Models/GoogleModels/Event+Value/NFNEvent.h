@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, NSocialType)
 @property (nonatomic, assign) NSInteger socialType;
 @property (nonatomic, strong) NSString * startDate;
 @property (nonatomic, strong) NSString * title;
-@property (nonatomic, strong) NSArray * values;
+@property (nonatomic, strong) NSMutableArray * values;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (instancetype)initWithGoogleEvent:(NFNGoogleEvent *)event;

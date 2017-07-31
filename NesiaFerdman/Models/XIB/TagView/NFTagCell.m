@@ -23,7 +23,7 @@
 }
 
 
-+ (CGSize)calculateSizeWithValue:(NFValue*)value isEditMode:(BOOL)editMode {
++ (CGSize)calculateSizeWithValue:(NFNValue*)value isEditMode:(BOOL)editMode {
     UILabel *label = [[UILabel alloc] init];
     label.text = [value valueForKey:@"valueTitle"];
     [label sizeToFit];
@@ -35,7 +35,7 @@
     
 }
 
-- (void)addDataToCell:(NFValue*)value isEditMode:(BOOL)editMode {
+- (void)addDataToCell:(NFNValue*)value isEditMode:(BOOL)editMode {
     _titleLabel.text = [value valueForKey:@"valueTitle"];
     if (editMode) {
         self.cancelButton.hidden = NO;

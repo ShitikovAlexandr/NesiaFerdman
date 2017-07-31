@@ -10,7 +10,8 @@
 #import "NFSettingManager.h"
 #import "NFStatisticMainCell.h"
 #import "NFValuesFilterView.h"
-#import "NFTaskManager.h"
+//#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFStatisticDetailController.h"
 
 @interface NFStatisticDayDataSource() <UITableViewDelegate, UITableViewDataSource>
@@ -28,10 +29,10 @@
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    if ([NFTaskManager sharedManager].selectedValuesArray.count) {
-        return [NFTaskManager sharedManager].selectedValuesArray.count;
+    if ([[NFDataSourceManager sharedManager] getSelectedValueList].count) {
+        return [[NFDataSourceManager sharedManager] getSelectedValueList].count;
     } else {
-        return [[NFTaskManager sharedManager] getAllValues].count + 1;
+        return [[NFDataSourceManager sharedManager] getValueList].count + 1;
     }
 }
 
@@ -86,8 +87,8 @@
 - (void)addDataToDisplay {
     [self.dataDictionary removeAllObjects];
     NSMutableArray* eventsArray = [NSMutableArray array];
-    [eventsArray addObjectsFromArray: [[NFTaskManager sharedManager] getTasksForDay:_selectedDate]];
-    [self.dataDictionary setDictionary:[[NFTaskManager sharedManager] eventSortedByValue:eventsArray]];
+    [eventsArray addObjectsFromArray: [[NFDataSourceManager sharedManager] getEventForDay:_selectedDate]];
+    [self.dataDictionary setDictionary:[[NFDataSourceManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
 }
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFValue.h"
+#import "NFNValue.h"
 #import "NFTagView.h"
 
 
@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 
-+ (CGSize)calculateSizeWithValue:(NFValue*)value isEditMode:(BOOL)mode;
-- (void)addDataToCell:(NFValue*)value isEditMode:(BOOL)editMode;
++ (CGSize)calculateSizeWithValue:(NFNValue*)value isEditMode:(BOOL)mode;
+- (void)addDataToCell:(NFNValue*)value isEditMode:(BOOL)editMode;
 
 @end

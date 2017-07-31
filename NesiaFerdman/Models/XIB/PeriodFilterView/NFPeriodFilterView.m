@@ -69,7 +69,6 @@
     [self addNewRangeOfDateToArrayFrom:start to:end];
     NSNotification *notification = [NSNotification notificationWithName:HEADER_RANDOM_PERIOD object:self];
     [[NSNotificationCenter defaultCenter]postNotification:notification];
-
 }
 
 - (void)addNewRangeOfDateToArrayFrom:(NSDate*)start to:(NSDate*)end {

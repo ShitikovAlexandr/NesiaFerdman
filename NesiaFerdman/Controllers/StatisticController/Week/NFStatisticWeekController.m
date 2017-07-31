@@ -11,7 +11,7 @@
 #import "NFValuesFilterView.h"
 #import "NFStatisticWeekDataSource.h"
 #import "NotifyList.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFStatisticWeekController ()
 @property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
@@ -41,10 +41,8 @@
 }
 
 - (void)updateData {
-    [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    [_filterView updateTitleFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
     [_dataSource setSelectedDate:[_headerView.dateSourse.weekArray objectAtIndex:_headerView.selectedIndex]];
 }
-
-
 
 @end

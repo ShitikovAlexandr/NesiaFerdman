@@ -9,7 +9,7 @@
 #import "NFStatisticMainCell.h"
 #import "NFProgressView.h"
 #import "NFStyleKit.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFEvent.h"
 
 @interface NFStatisticMainCell()
@@ -45,10 +45,10 @@
 
 - (void)addDatatoCellwithDictionary:(NSMutableDictionary*)inputDic indexPath:(NSIndexPath*)indexPath {
     NSMutableArray *dataArray = [NSMutableArray array];
-    if ([NFTaskManager sharedManager].selectedValuesArray.count > 0 ) {
-        [dataArray addObjectsFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    if ([[NFDataSourceManager sharedManager] getSelectedValueList].count > 0 ) {
+        [dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
     } else {
-        [dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllValues]];
+        [dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getValueList]];
     }
     NSString *key;
     if (indexPath.section == dataArray.count) {
@@ -56,7 +56,7 @@
         self.valueTitle.text = @"Другое";
         [_valieImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
     } else {
-        NFValue *value = [dataArray objectAtIndex:indexPath.section];
+        NFNValue *value = [dataArray objectAtIndex:indexPath.section];
         self.value = value;
         if (value.valueImage) {
             [_valieImage setImage:[UIImage imageNamed:value.valueImage]];
@@ -101,7 +101,7 @@
 - (CGFloat)doneValueWithTaskArray:(NSMutableArray*)taskArray {
     int done = 0;
     int allTasks = 0;
-    for (NFEvent *event in taskArray) {
+    for (NFNEvent *event in taskArray) {
         allTasks++;
         if (event.isDone) {
             done++;

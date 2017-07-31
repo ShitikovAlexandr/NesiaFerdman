@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFValue.h"
+#import "NFNValue.h"
+#import "NFNEvent.h"
 #import "NFViewController.h"
 #import "NFWeekDateModel.h"
 
@@ -20,7 +21,7 @@ typedef NS_ENUM(NSUInteger, StatisticDetailType)
 };
 
 @interface NFStatisticDetailController : NFViewController
-@property (strong, nonatomic) NFValue *value;
+@property (strong, nonatomic) NFNValue *value;
 @property (strong, nonatomic) NSDate *selectedDate;
 @property (strong, nonatomic) NFWeekDateModel *selectedWeek;
 @property (strong, nonatomic) NSMutableArray *selectedDateArray;

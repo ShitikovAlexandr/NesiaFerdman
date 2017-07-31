@@ -11,7 +11,7 @@
 #import "NFPeriodFilterView.h"
 #import "NFValuesFilterView.h"
 #import "NotifyList.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFStatisticRandomPeriodController ()
 @property (weak, nonatomic) IBOutlet NFPeriodFilterView *headerView;
@@ -39,7 +39,7 @@
 }
 
 - (void)updateData {
-    [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    [_filterView updateTitleFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
     [_dataSource setSelectedDate:_headerView.selectedDatePeriodArray];
 }
 

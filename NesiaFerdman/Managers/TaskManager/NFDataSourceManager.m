@@ -89,6 +89,31 @@
 
 // Events methods
 
+- (NSMutableDictionary *)eventSortedByValue:(NSMutableArray* )inputArray {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    NSMutableArray *tempArrayVal = [NSMutableArray array];
+    for (NFNEvent *event in inputArray) {
+        for (NFNValue *val in _valuesArray) {
+            NSMutableArray *tempArray = [NSMutableArray array];
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@",val.valueId];
+            [tempArray addObjectsFromArray:[event.values filteredArrayUsingPredicate:predicate]];
+            if (tempArray.count) {
+                NSString *eventKey = val.valueTitle;
+                if(!result[eventKey]){
+                    result[eventKey] = [NSMutableArray new];
+                }
+                [result[eventKey] addObject:event];
+            }
+        }
+        if (event.values.count < 1) {
+            [tempArrayVal addObject:event];
+        }
+    }
+    [result setObject:tempArrayVal forKey:@"other"];
+    return result;
+}
+
+
 - (NSMutableArray *)getEventForDay:(NSDate*)currentDate {
     NSMutableArray *equalsEvent = [NSMutableArray array];
     [equalsEvent addObjectsFromArray:[_eventsDictionary objectForKey:[self stringFromDate:currentDate]]];
@@ -189,6 +214,12 @@
     NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
     NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
     return (NSMutableArray*)resultArray;
+}
+
+
+// test method
+- (NSMutableArray*)getEventforDay:(NSDate*)date withValue:(NFNValue*)value {
+    return nil;
 }
 
 //*****************

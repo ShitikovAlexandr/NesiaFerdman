@@ -9,14 +9,13 @@
 #import "NFStatisticDetailController.h"
 #import "STCollapseTableView.h"
 #import "NFHeaderForTaskSection.h"
-#import "NFTaskSimpleCell.h"
 #import "NFStyleKit.h"
 #import "NFHeaderForTaskSection.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFRoundProgressView.h"
 #import "NFAnimatedLabel.h"
-
-
+#import "NFTaskCellDescription.h"
+#import "NFDataSourceManager.h"
 
 @interface NFStatisticDetailController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIView *topView;
@@ -45,8 +44,8 @@
     self.allTaskTitle.text = @"поставленных\nзадач";
     self.dataArray = [NSMutableArray array];
     self.tableView.tableFooterView = [UIView new];
-//    [self.tableView openSection:0 animated:NO];
     [self.navButton addTarget:self action:@selector(exitAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.tableView registerNib:[UINib nibWithNibName:@"NFTaskCellDescription" bundle:nil] forCellReuseIdentifier:@"NFTaskCellDescription"];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -65,24 +64,25 @@
     return sectionData.count > 0 ? sectionData.count : 1;;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFTaskSimpleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    if (!cell) {
-        cell = [[NFTaskSimpleCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
+  NFTaskCellDescription *cell = [tableView dequeueReusableCellWithIdentifier:@"NFTaskCellDescription"];
     if (self.dataArray.count > 0) {
         NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
-        NFEvent *event = [eventDayArray objectAtIndex:indexPath.row];
+        NFNEvent *event = [eventDayArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
-        cell.textLabel.text = @"Нет задач";
+        [cell setCellTite:@"Нет задач"];
     }
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [NFTaskCellDescription cellSize];
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFTaskSimpleCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NFTaskCellDescription* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
     if (eventCell.event) {
         [self navigateToEditTaskScreenWithEvent:eventCell.event];
     }
@@ -118,7 +118,11 @@
     [_dataArray removeAllObjects];
     if (_value) {
         self.screenTitle.text = self.value.valueTitle;
-        [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
+        if (_value.valueImage) {
+            [self.valueImage setImage:[UIImage imageNamed:_value.valueImage]];
+        } else {
+            [self.valueImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
+        }
     } else {
         self.screenTitle.text = @"Другое";
         [self.valueImage setImage:[UIImage imageNamed:@"defaultValue.png"]];
@@ -128,9 +132,10 @@
         case DayStatistic: {
             [_dateForTitleSection addObject:_selectedDate];
             if (_value) {
-                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDay:_selectedDate withValue:_value]];
+                [_dataArray addObjectsFromArray: [[NFDataSourceManager sharedManager] getTaskForDay:_selectedDate withValue:_value]];
             } else {
-                [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDayWithoutValues:_selectedDate]];
+                [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getEventsListForDayWithoutValues:_selectedDate]];
+                
             }
             break;
         }
@@ -138,7 +143,7 @@
             if (_value) {
                 for (NSDate* day in _selectedWeek.allDateOfWeek) {
                     NSMutableArray *tempArray = [NSMutableArray array];
-                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDay:day withValue:_value]];
+                    [tempArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getTaskForDay:day withValue:_value]];
                     if (tempArray.count > 0) {
                         [_dateForTitleSection addObject:day];
                         [_dataArray addObjectsFromArray:tempArray];
@@ -147,7 +152,7 @@
             } else {
                 for (NSDate* day in _selectedWeek.allDateOfWeek) {
                     NSMutableArray *tempArray = [NSMutableArray array];
-                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDayWithoutValues:day]];
+                    [tempArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getEventsListForDayWithoutValues:day]];
                     if (tempArray.count > 0) {
                         [_dateForTitleSection addObject:day];
                         [_dataArray addObjectsFromArray:tempArray];
@@ -158,14 +163,15 @@
         }
         case MonthStatistic: {
             if (_value) {
-                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFTaskManager sharedManager] getTaskForMonthDictionary:_selectedDate withValue:_value]];
+                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFDataSourceManager sharedManager] getTaskForMonthDictionary:_selectedDate withValue:_value]];
                 NSArray *filtered = [[tempDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                 for (NSString *key in filtered) {
                     [_dataArray addObject:[tempDictionary objectForKey:key]];
                     [_dateForTitleSection addObject:[self keyStringToDate:key]];
                 }
             } else {
-                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFTaskManager sharedManager] getTaskForMonthWithoutValues:_selectedDate]];
+                ;
+                NSDictionary *tempDictionary = [[NSDictionary alloc]  initWithDictionary:[[NFDataSourceManager sharedManager] getEventsListForMonthWithoutValues:_selectedDate]];
                 NSArray *filtered = [[tempDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
                 for (NSString *key in filtered) {
                     [_dataArray addObject:[tempDictionary objectForKey:key]];
@@ -178,7 +184,7 @@
             if (_value) {
                 for (NSDate* day in _selectedDateArray) {
                     NSMutableArray *tempArray = [NSMutableArray array];
-                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDay:day withValue:_value]];
+                    [tempArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getTaskForDay:day withValue:_value]];
                     if (tempArray.count > 0) {
                         [_dateForTitleSection addObject:day];
                         [_dataArray addObjectsFromArray:tempArray];
@@ -187,7 +193,7 @@
             } else {
                 for (NSDate* day in _selectedDateArray) {
                     NSMutableArray *tempArray = [NSMutableArray array];
-                    [tempArray addObjectsFromArray:[[NFTaskManager sharedManager] getTaskForDayWithoutValues:day]];
+                    [tempArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getEventsListForDayWithoutValues:day]];
                     if (tempArray.count > 0) {
                         [_dateForTitleSection addObject:day];
                         [_dataArray addObjectsFromArray:tempArray];
@@ -203,10 +209,9 @@
     self.monthLabel.text = [[self dateToString:[_dateForTitleSection firstObject]] uppercaseString];
     [self.tableView reloadData];
     [self setCountTasksWithArray:_dataArray];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.progressView.progressLayer.strokeEnd =  [self setProgressValueWithData:_dataArray];
     });
-    
 }
 
 - (void)exitAction {
@@ -239,7 +244,7 @@
     int taskCount = 0;
     if (_dataArray.count > 0) {
         for (NSArray *dayArray in dataArray) {
-            for (NFEvent *event in dayArray) {
+            for (NFNEvent *event in dayArray) {
                 taskCount++;
                 if (event.isDone) {
                     doneCount++;
@@ -256,7 +261,7 @@
         int doneCount = 0;
         int taskCount = 0;
         for (NSArray *dayArray in dataArray) {
-            for (NFEvent *event in dayArray) {
+            for (NFNEvent *event in dayArray) {
                 taskCount++;
                 if (event.isDone) {
                     doneCount++;

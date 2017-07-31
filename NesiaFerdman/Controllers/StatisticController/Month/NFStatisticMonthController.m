@@ -11,7 +11,7 @@
 #import "NFValuesFilterView.h"
 #import "NFStatisticMonthDataSource.h"
 #import "NotifyList.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
 
 
@@ -42,7 +42,7 @@
 }
 
 - (void)updateData {
-     [_filterView updateTitleFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+     [_filterView updateTitleFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
     [_dataSource setSelectedDate:_headerView.selectetDate];
 }
 

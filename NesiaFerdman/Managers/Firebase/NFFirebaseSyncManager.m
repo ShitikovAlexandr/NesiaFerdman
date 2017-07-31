@@ -38,9 +38,7 @@
 // app data
 @property (strong, nonatomic) NSMutableArray *appValuesArray;
 @property (strong, nonatomic) NSMutableArray *appResultsArray;
-
 @property (strong, nonatomic) NSMutableArray *appManifestationArray;
-
 
 @property (assign, nonatomic) BOOL isEventsList;
 @property (assign, nonatomic) BOOL isValueList;
@@ -51,10 +49,6 @@
 @property (assign, nonatomic) BOOL isAppValueList;
 @property (assign, nonatomic) BOOL isAppResultCategory;
 @property (assign, nonatomic) BOOL isAppManifestatioms;
-
-
-
-
 
 @end
 
@@ -86,9 +80,6 @@
     }
     return self;
 }
-
-
-
 
 #pragma mark - get methods
 
@@ -293,7 +284,6 @@
         [self downloadComplite];
     }];
 }
-
 
 #pragma mark - app data
 

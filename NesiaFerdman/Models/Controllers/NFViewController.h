@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NFSegmentedControl.h"
 #import "NFTaskManager.h"
+#import "NFNEvent.h"
 
 
 @interface NFViewController : UIViewController
@@ -20,9 +21,9 @@
 //
 //- (IBAction)pressSegment:(UISegmentedControl *)sender;
 
-- (void)filterAction;
+//- (void)filterAction;
 
 - (void)navigateToFilterScreen;
-- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event;
+- (void)navigateToEditTaskScreenWithEvent:(NFNEvent*)event;
 //- (void)navigateToGoogleCalendarScreen;
 @end

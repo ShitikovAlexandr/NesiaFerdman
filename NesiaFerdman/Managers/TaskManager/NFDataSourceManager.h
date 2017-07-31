@@ -34,6 +34,7 @@
 - (NSMutableArray*)getTaskForMonth:(NSDate*)currentDate withValue:(NFNValue*)value;
 - (NSMutableDictionary*)getTaskForMonthDictionary:(NSDate*)currentDate withValue:(NFNValue*)value;
 - (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFNValue*)value;
+- (NSMutableDictionary *)eventSortedByValue:(NSMutableArray* )inputArray ;
 
 - (void)setEventList:(NSArray*)array;
 - (void)setValueList:(NSArray*)array;

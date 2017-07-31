@@ -9,9 +9,7 @@
 #import "NFWeekTaskDataSource.h"
 #import "NFSettingManager.h"
 #import "NFDataSourceManager.h"
-//#import "NFTaskSimpleCell.h"
 #import "NFTaskCellDescription.h"
-
 #import "NFHeaderForTaskSection.h"
 #import "NFNEvent.h"
 #import "NFEditTaskController.h"
@@ -53,6 +51,7 @@
 
 - (void)getData {
     [self.eventsArray removeAllObjects];
+    [self.keyArray removeAllObjects];
     for (NSDate *dayDate in _selectedDate.allDateOfWeek) {
         NSMutableArray *dayArray = [NSMutableArray array];
         dayArray = [[NFDataSourceManager sharedManager] getEventForDay:dayDate];

@@ -9,7 +9,6 @@
 #import "NFEditTaskController.h"
 #import "NFDatePicker.h"
 #import "NFPickerView.h"
-#import "NFSyncManager.h"
 #import <UITextView+Placeholder.h>
 #import "NFTagView.h"
 #import "NFChackBox.h"
@@ -19,8 +18,9 @@
 #import "NFTextField.h"
 #import "NFTextView.h"
 #import "UIBarButtonItem+FHButtons.h"
-
-
+#import "NFDataSourceManager.h"
+#import "NFNSyncManager.h"
+#import "NFNValue.h"
 
 @interface NFEditTaskController ()
 <
@@ -84,13 +84,11 @@ UICollectionViewDelegateFlowLayout
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addDataToDisplay) name:PICKER_VIEW_IS_PRESSED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PICKER_VIEW_IS_PRESSED object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
 }
 
 #pragma mark - UITableViewDelegate
@@ -131,7 +129,6 @@ UICollectionViewDelegateFlowLayout
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
-    
     return YES;
 }
 
@@ -143,7 +140,6 @@ UICollectionViewDelegateFlowLayout
     }
     return YES;
 }
-
 
 #pragma mark - Actions
 
@@ -162,9 +158,6 @@ UICollectionViewDelegateFlowLayout
     [dateFormater setDateFormat:@"LLLL, dd, yyyy HH:mm"];
     return [dateFormater stringFromDate:date];
 }
-
-//@"LLLL, dd, yyyy HH:mm"
-//2017-04-27T15:30
 
 - (NSString *)stringDate:(NSString *)stringInput
               withFormat:(NSString *)inputFormat
@@ -202,11 +195,9 @@ UICollectionViewDelegateFlowLayout
         self.compliteButton.selected = _event.isDone;
     } else {
         self.deleteButton.hidden = YES;
-//        [self.saveButton setTitle:@"Сохранить"];
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
-        
     }
     [self.collectionView reloadData];
 }
@@ -217,15 +208,14 @@ UICollectionViewDelegateFlowLayout
     _datePickerEnd = [[NFDatePicker alloc] initWithTextField:_endTextField];
     _datePickerEnd.minimumDate = _datePickerStart.minimumDate;
     
-    _valuesArray = [NSMutableArray arrayWithArray:[[NFTaskManager sharedManager] getAllValues]];
-    //self.selectValueTextField.text = ((NFValue*)([_valuesArray firstObject])).valueTitle;
+    _valuesArray = [NSMutableArray arrayWithArray:[[NFDataSourceManager sharedManager] getValueList]];
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_selectValueTextField   keyTitle:@"valueTitle"];
 }
 
 - (void)addDataToDisplay {
     if (_selectedTags.count < 2) {
         if (_selectedTags.count == 1) {
-            NFValue *val = [_selectedTags firstObject];
+            NFNValue *val = [_selectedTags firstObject];
             if ([val.valueId isEqualToString:[_valuePicker.lastSelectedItem valueId]]) {
                 NSLog(@"value alredy exist");
             } else {
@@ -243,18 +233,21 @@ UICollectionViewDelegateFlowLayout
 
 - (void)deleteAction {
     [_indicator startAnimating];
-    [[NFSyncManager sharedManager] deleteEventWithSetting:_event];
-    [[NFTaskManager sharedManager].inputEventsArray removeObject:_event];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    [[NFNSyncManager sharedManager] removeEventFromDB:_event];
+    [[NFNSyncManager sharedManager] removeEventFromDBManager:_event];
+    [[NFNSyncManager sharedManager] updateDataSource];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_indicator stopAnimating];
         [self dismissViewControllerAnimated:YES completion:nil];
     });
 }
 
 - (void)compliteTaskAction {
     _compliteButton.selected = !_compliteButton.selected;
+    _event.isDone = _compliteButton.selected;
+    [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
 }
 
-// tag collection view
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -263,7 +256,7 @@ UICollectionViewDelegateFlowLayout
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFTagCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"NFTagCell" forIndexPath:indexPath];
-    NFValue *val = [self.selectedTags objectAtIndex:indexPath.item];
+    NFNValue *val = [self.selectedTags objectAtIndex:indexPath.item];
     [cell addDataToCell:val isEditMode:_isEditing];
     return cell;
 }
@@ -281,7 +274,7 @@ UICollectionViewDelegateFlowLayout
 #pragma mark - UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    NFValue *val = [self.selectedTags objectAtIndex:indexPath.item];
+    NFNValue *val = [self.selectedTags objectAtIndex:indexPath.item];
     return [NFTagCell calculateSizeWithValue:val isEditMode:_isEditing];
 }
 
@@ -305,9 +298,8 @@ UICollectionViewDelegateFlowLayout
             _event = [[NFNEvent alloc] init];
             newEvent = true;
         }
-        //[_event.values removeAllObjects];
         _event.values = [NSMutableArray array];
-        //_selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
+        _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
         _event.title = _titleOfTaskTextField.text;
         _event.eventDescription = _taskDescriptionTextView.text;
         _event.isDone = _compliteButton.selected;
@@ -319,9 +311,13 @@ UICollectionViewDelegateFlowLayout
                        dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
         
         if (newEvent) {
-            //[[NFSyncManager sharedManager] writeNewEventWithSetting:_event];
+            [[NFNSyncManager sharedManager] addEventToDBManager:_event];
+            [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+            [[NFNSyncManager sharedManager] updateDataSource];
+            [self endUpdate];
         } else {
-            //[[NFSyncManager sharedManager] editEventWithSetting:_event];
+            [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+            [self endUpdate];
         }
     }
 }
@@ -329,7 +325,6 @@ UICollectionViewDelegateFlowLayout
 - (void)endUpdate {
     [_indicator endAnimating];
     [self setPreviewOptions];
-    //[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)setPreviewOptions {
@@ -348,7 +343,6 @@ UICollectionViewDelegateFlowLayout
     [self.collectionView reloadData];
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-    
 }
 
 - (void)setEditOptions {
