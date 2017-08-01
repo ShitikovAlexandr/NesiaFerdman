@@ -18,6 +18,7 @@
 @property (strong, nonnull) NSMutableDictionary *dataDictionary;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 @property (strong, nonatomic) NSMutableArray *selectedDateArray;
+
 @end
 
 @implementation NFStatisticRandomPeriodDataSource

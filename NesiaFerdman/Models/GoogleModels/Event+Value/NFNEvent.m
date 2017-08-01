@@ -41,6 +41,21 @@ NSString *const kNFNEventSocialId = @"socialId";
     return self;
 }
 
+- (GTLRCalendar_Event*)toGoogleEvent {
+    GTLRCalendar_Event *calendarEvent = [[GTLRCalendar_Event alloc] init];
+    [calendarEvent setSummary:self.title];
+    [calendarEvent setDescriptionProperty:self.eventDescription];
+    NSDate *startDate = [self dateFromString:self.startDate];
+    NSDate *endDate = [self dateFromString:self.endDate];
+    GTLRDateTime *startTime = [GTLRDateTime dateTimeWithDate:startDate];
+    GTLRDateTime *endTime = [GTLRDateTime dateTimeWithDate:endDate];
+    [calendarEvent setStart:[GTLRCalendar_EventDateTime object]];
+    [calendarEvent setEnd:[GTLRCalendar_EventDateTime object]];
+    [calendarEvent.start setDateTime:startTime];
+    [calendarEvent.end  setDateTime:endTime];
+    return calendarEvent;
+}
+
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
@@ -279,4 +294,12 @@ NSString *const kNFNEventSocialId = @"socialId";
     copy.socialId = [self.socialId copy];
 	return copy;
 }
+
+- (NSDate *)dateFromString:(NSString*)dateString {
+    NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    NSDate *dateFromString = [dateFormatter dateFromString:dateString];
+    return dateFromString;
+}
+
 @end

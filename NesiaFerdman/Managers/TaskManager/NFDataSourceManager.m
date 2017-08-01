@@ -7,6 +7,7 @@
 //
 
 #import "NFDataSourceManager.h"
+#import "NFGoogleCalendar.h"
 
 
 @interface NFDataSourceManager ()
@@ -208,21 +209,50 @@
 }
 
 - (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFNValue*)value {
-    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
-    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
-    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
-    NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
-    return (NSMutableArray*)resultArray;
+//    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
+//    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
+//    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+//    NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    
+    return [self getEventforDay:currentDate withValue:value];//(NSMutableArray*)resultArray;
 }
 
 
 // test method
 - (NSMutableArray*)getEventforDay:(NSDate*)date withValue:(NFNValue*)value {
-    return nil;
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:date]  substringToIndex:10]];
+    NSArray *filtered = [[[_eventsDictionary allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    NSArray *resultArray = [_eventsDictionary objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    NSMutableArray *resultWithValue = [NSMutableArray array];
+    for (NSArray  *dayArray in resultArray) {
+        NSMutableArray *dayTempArray = [NSMutableArray array];
+        for (NFNEvent *event in dayArray) {
+            for (NFNValue *val in event.values) {
+                if ([val.valueId isEqualToString:value.valueId]) {
+                    [dayTempArray addObject:event];
+                    break;
+                }
+            }
+        }
+        if (dayTempArray.count > 0) {
+            [resultWithValue addObject:dayTempArray];
+        }
+    }
+    return resultWithValue;
 }
 
 //*****************
+
+- (NSString*)getHexColorWithGoogleCalendarId:(NSString*)calendarId {
+    for (NFGoogleCalendar *calendar in _calendarArray) {
+        if ([calendarId isEqualToString:calendar.idField]) {
+            return calendar.backgroundColor;
+            break;
+        }
+    }
+    return nil;
+}
 
 #pragma mark - get/set list methods
 
@@ -324,6 +354,14 @@
 
 - (NSArray*)getSelectedValueList {
     return _selectedValuesArray;
+}
+
+- (void)resetSelectedValueList {
+    [_selectedValuesArray removeAllObjects];
+}
+
+- (void)addValuesToSelectedList:(NSArray*)array {
+    [_selectedValuesArray addObjectsFromArray:array];
 }
 
 //*********************************

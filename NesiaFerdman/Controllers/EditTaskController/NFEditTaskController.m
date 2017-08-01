@@ -311,9 +311,13 @@ UICollectionViewDelegateFlowLayout
                        dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
         
         if (newEvent) {
-            [[NFNSyncManager sharedManager] addEventToDBManager:_event];
-            [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
-            [[NFNSyncManager sharedManager] updateDataSource];
+            if ([NFSettingManager isOnWriteToGoogle]) {
+                [[NFNSyncManager sharedManager] addNewEventToGoogle:_event];
+            } else {
+                [[NFNSyncManager sharedManager] addEventToDBManager:_event];
+                [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+                [[NFNSyncManager sharedManager] updateDataSource];
+            }
             [self endUpdate];
         } else {
             [[NFNSyncManager sharedManager] writeEventToDataBase:_event];

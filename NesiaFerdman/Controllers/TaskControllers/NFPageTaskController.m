@@ -12,7 +12,7 @@
 #import "NFMonthTaskController.h"
 #import "NFSegmentedControl.h"
 #import "NFEditTaskController.h"
-#import "NFStatisticController.h"
+#import "NFStatisticPageController.h"
 
 
 @interface NFPageTaskController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
@@ -107,7 +107,6 @@
 }
 
 - (IBAction)pressSegment:(NFSegmentedControl *)sender {
-    //NSLog(@"press segment at index %ld", sender.selectedSegmentIndex);
     UIViewController *currentVC = self.viewControllers[0];
     NSUInteger currentIndex = [_viewControllersArray indexOfObject:currentVC];
     if (currentIndex < self.segmentedControl.selectedSegmentIndex) {
@@ -122,7 +121,6 @@
 }
 
 - (void) addButtonAction {
-    //[self navigateToGoogleCalendarScreen];
     [self navigateToEditTaskScreenWithEvent:nil];
 }
 
@@ -131,9 +129,7 @@
 }
 
 
-- (void)navigateToEditTaskScreenWithEvent:(NFEvent*)event {
-    //NFEditTaskNavController
-    
+- (void)navigateToEditTaskScreenWithEvent:(NFNEvent*)event {
     NFEditTaskController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskController"];
     viewController.event = event;
     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskNavController"];
@@ -142,11 +138,10 @@
 }
 
 - (void)navigateToResultWeekScreen {
-    NFStatisticController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticControllerNav"];
+    NFStatisticPageController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
     [navController setViewControllers:@[viewController]];
     [self presentViewController:navController animated:YES completion:nil];
-    
 }
 
 - (void)setNavigationbarButtons {

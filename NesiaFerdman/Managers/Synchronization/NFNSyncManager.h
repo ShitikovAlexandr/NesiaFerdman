@@ -43,6 +43,8 @@
 - (void)removeValueFromDB:(NFNValue*)value;
 - (void)removeManifestationDB:(NFNManifestation*)manifestation;
 - (void)removeResultFromDB:(NFNRsult*)result;
+- (void)resetSelectedValuesList;
+- (void)addValuesToSelectedList:(NSArray*)array;
 
 - (BOOL)isFirstRunToday;
 - (BOOL)isFirstRunApp;
@@ -50,6 +52,12 @@
 - (void)updateDataSource;
 - (void)updateValueDataSource;
 - (void)updateManifestationDataSource;
+
+//google
+
+- (void)addNewEventToGoogle:(NFNEvent*)event;
+- (void)deleteEventFromGoogle:(NFNEvent*)event;
+- (void)updateGoogleEvent:(NFNEvent*)event;
 
 
 

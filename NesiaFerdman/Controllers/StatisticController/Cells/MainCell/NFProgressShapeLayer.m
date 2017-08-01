@@ -21,7 +21,11 @@
 - (CABasicAnimation *)makeAnimationForKey:(NSString *)key {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:key];
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        animation.duration = 1.f;
+    if (_isDisableAnimation) {
+        animation.duration = 0.0001;
+    } else {
+        animation.duration = 0.8;
+    }
     return animation;
 }
 

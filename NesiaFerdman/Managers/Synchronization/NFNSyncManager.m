@@ -10,6 +10,7 @@
 #import "NFFirebaseSyncManager.h"
 #import "NFGoogleSyncManager.h"
 #import "NFDataSourceManager.h"
+#import "NFSettingManager.h"
 
 @interface NFNSyncManager ()
 
@@ -112,6 +113,18 @@
     for (NFGoogleCalendar *calendar in removedCalendarsArray) {
         [self removeCalendarFromDB:calendar];
         [self removeCalendarFromDBManager:calendar];
+    }
+    [self updateCalendarListInfoFromOld:dataBaseCalendars toNew:googleCalendars];
+}
+
+- (void)updateCalendarListInfoFromOld:(NSArray*)oldList toNew:(NSArray*)newList {
+    for (NFGoogleCalendar *oldCalendar in oldList) {
+        for (NFGoogleCalendar *newCalendar in newList) {
+            if ([oldCalendar.idField isEqualToString:newCalendar.idField]) {
+                [oldCalendar updateInfoFromCalendar:newCalendar];
+                [[NFFirebaseSyncManager sharedManager] writeCalendar:oldCalendar];
+            }
+        }
     }
 }
 
@@ -275,6 +288,30 @@
 
 - (void)removeResultFromDBManager:(NFNRsult*)result {
     [[NFFirebaseSyncManager sharedManager]  removeResultFromManager:result];
+}
+
+- (void)resetSelectedValuesList {
+    [[NFDataSourceManager sharedManager] resetSelectedValueList];
+}
+
+- (void)addValuesToSelectedList:(NSArray*)array {
+    [[NFDataSourceManager sharedManager] addValuesToSelectedList:array];
+}
+
+//*********************************
+
+//google
+
+- (void)addNewEventToGoogle:(NFNEvent*)event {
+    [[NFGoogleSyncManager sharedManager] addNewEvent:event];
+}
+
+- (void)deleteEventFromGoogle:(NFNEvent*)event {
+    
+}
+
+- (void)updateGoogleEvent:(NFNEvent*)event {
+    
 }
 
 #pragma mark - app run methods

@@ -21,6 +21,7 @@
 @property (strong, nonatomic) id target;
 @property (strong, nonnull) NSMutableDictionary *dataDictionary;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
+
 @end
 
 @implementation NFStatisticWeekDataSource

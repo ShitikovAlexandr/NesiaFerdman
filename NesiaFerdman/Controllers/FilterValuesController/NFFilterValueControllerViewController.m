@@ -7,9 +7,10 @@
 //
 
 #import "NFFilterValueControllerViewController.h"
-#import "NFTaskManager.h"
-#import "NFValue.h"
+#import "NFDataSourceManager.h"
+#import "NFNValue.h"
 #import "NFValueFilterCell.h"
+#import "NFNSyncManager.h"
 
 @interface NFFilterValueControllerViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -27,7 +28,7 @@
     self.tableView.tableFooterView = [UIView new];
     _valuesArray = [NSMutableArray array];
     _selectedValue = [NSMutableArray array];
-    [_selectedValue addObjectsFromArray:[NFTaskManager sharedManager].selectedValuesArray];
+    [_selectedValue addObjectsFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
     [self getAllValues];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFValueFilterCell" bundle:nil] forCellReuseIdentifier:@"NFValueFilterCell"];
 }
@@ -40,7 +41,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NFValueFilterCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NFValueFilterCell"];
-    NFValue *val = [_valuesArray objectAtIndex:indexPath.row];
+    NFNValue *val = [_valuesArray objectAtIndex:indexPath.row];
     [cell addData:val];
     cell.valueSwitcer.tag = indexPath.row;
     [cell.valueSwitcer addTarget:self action:@selector(switchToggled:) forControlEvents:UIControlEventValueChanged];
@@ -56,28 +57,30 @@
 #pragma mark - Helpers
 
 - (IBAction)saveOrCancelAction:(UIBarButtonItem *)sender {
-    
-    
     if (sender.tag == 2) //save
     {
-        [[NFTaskManager sharedManager].selectedValuesArray removeAllObjects];
-        [[NFTaskManager sharedManager].selectedValuesArray addObjectsFromArray:_selectedValue];
+        [[NFNSyncManager sharedManager] resetSelectedValuesList];
+        [[NFNSyncManager sharedManager] addValuesToSelectedList:_selectedValue];
     }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)getAllValues {
-    [_valuesArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllValues]];
+    [_valuesArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getValueList]];
     [_tableView reloadData];
 }
 
 - (void) switchToggled:(UISwitch *)sender {
     if ([sender isOn]) {
-        NFValue *value = [_valuesArray objectAtIndex:sender.tag];
+        NFNValue *value = [_valuesArray objectAtIndex:sender.tag];
         [_selectedValue addObject:value];
     } else {
-        NFValue *value = [_valuesArray objectAtIndex:sender.tag];
-        [_selectedValue removeObject:value];
+        NFNValue *value = [_valuesArray objectAtIndex:sender.tag];
+        for (NFNValue *val in _selectedValue) {
+            if ([val.valueId isEqualToString:value.valueId]) {
+                [_selectedValue removeObject:val];
+            }
+        }
     }
 }
 

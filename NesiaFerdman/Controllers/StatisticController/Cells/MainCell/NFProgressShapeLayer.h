@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface NFProgressShapeLayer : CAShapeLayer
+@property (assign , nonatomic) BOOL isDisableAnimation;
 
 
 @end

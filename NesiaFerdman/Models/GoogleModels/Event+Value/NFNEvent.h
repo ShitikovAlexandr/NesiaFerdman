@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "NFNValue.h"
 #import "NFNGoogleEvent.h"
+#import <GTLRCalendar.h>
 
 typedef NS_ENUM(NSUInteger, EventType)
 {
@@ -47,5 +48,7 @@ typedef NS_ENUM(NSUInteger, NSocialType)
 - (void)updateEvent:(NFNEvent*)oldEvent withNewEvent:(NFNEvent*)newEvent;
 
 - (NSDictionary *)toDictionary;
+
+- (GTLRCalendar_Event*)toGoogleEvent;
 
 @end

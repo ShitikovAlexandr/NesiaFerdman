@@ -60,8 +60,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : [NSArray array];
-    return sectionData.count > 0 ? sectionData.count : 1;;
+    NSArray *sectionData = _dataArray.count > 0 ? [self.dataArray objectAtIndex:section] : nil ;
+    return sectionData.count > 0 ? sectionData.count : 1;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   NFTaskCellDescription *cell = [tableView dequeueReusableCellWithIdentifier:@"NFTaskCellDescription"];

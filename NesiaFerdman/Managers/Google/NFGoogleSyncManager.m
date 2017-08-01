@@ -11,8 +11,7 @@
 #import "NFNSyncManager.h"
 #import "NFFirebaseSyncManager.h"
 
-
-
+#define APP_CALENDAR_NAME @"Коуч ежедневик"
 #define ITEMS_KEY @"items"
 
 
@@ -116,12 +115,20 @@
 #pragma mark - google api
 
 - (void)addNewEvent:(NFNEvent*)event {
-    GTLRCalendar_Event *googleEvent = [[GTLRCalendar_Event alloc] init];
-#warning set current event
-    GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:googleEvent calendarId:@"primary"];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *calendarId = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
+    GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:[event toGoogleEvent] calendarId:calendarId];
     [self.service executeQuery:query
              completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+                 GTLRCalendar_Event *new = object;
+                 NFNGoogleEvent *googleEvent = [[NFNGoogleEvent alloc] initWithDictionary:new.JSON];
+                 event.socialId = googleEvent.idField;
+                 event.socialType = NGoogleEvent;
+                 event.calendarID = calendarId;
                  NSLog(@"write event to google");
+                 [[NFNSyncManager sharedManager] addEventToDBManager:event];
+                 [[NFNSyncManager sharedManager] writeEventToDataBase:event];
+                 [[NFNSyncManager sharedManager] updateDataSource];
              }];
 }
 
@@ -183,10 +190,41 @@
                              [_googleCalendarsArray addObject:calendar];
                          }
                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                             [self chackAPPCalendar];
                              NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
                              [[NSNotificationCenter defaultCenter] postNotification:notification];
                          });
                      }
+                 }
+             }];
+}
+
+- (void)chackAPPCalendar {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *calendarID = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
+    int i = 0;
+    for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
+        if ([calendar.idField isEqualToString:calendarID]) {
+            i++;
+            break;
+        }
+    }
+    i > 0 ? nil: [self createAppGoogleCalendar];
+}
+
+- (void)createAppGoogleCalendar {
+    GTLRCalendar_Calendar *newCalendar = [[GTLRCalendar_Calendar alloc] init];
+    newCalendar.summary = APP_CALENDAR_NAME;
+    GTLRCalendarQuery_CalendarsInsert *query = [GTLRCalendarQuery_CalendarsInsert queryWithObject:newCalendar];
+    [self.service executeQuery:query
+             completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+                 if (callbackError == nil) {
+                     NSLog(@"calendar new %@", object);
+                     GTLRCalendar_Calendar *cal = object;
+                     NFGoogleCalendar *new = [[NFGoogleCalendar alloc] initWithDictionary:cal.JSON];
+                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
+                     NSLog(@"create new calendar");
                  }
              }];
 }

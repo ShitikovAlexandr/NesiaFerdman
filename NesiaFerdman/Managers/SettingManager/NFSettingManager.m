@@ -59,9 +59,12 @@
 }
 
 + (BOOL)isOnWriteToGoogle {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL result = [defaults boolForKey:WRITE_TO_GOOGLE];
-    return result;
+    if ([self isOnGoogleSync]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        BOOL result = [defaults boolForKey:WRITE_TO_GOOGLE];
+        return result;
+    }
+    return false;
 }
 
 + (BOOL)isOnDeleteFromGoogle {

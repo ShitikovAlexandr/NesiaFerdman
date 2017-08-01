@@ -54,17 +54,22 @@
 - (NSArray*)getCalendarList;
 - (NSArray*)getQuoteList;
 - (NSArray*)getSelectedValueList;
+- (void)resetSelectedValueList;
 
 //****************************
 - (void)addEventToDataSource:(NFNEvent*)event;
 - (void)addValueToDataSource:(NFNValue*)value;
 - (void)addManifestationToDataSource:(NFNManifestation*)manifestation;
 - (void)addResultToDataSource:(NFNRsult*)result;
+- (void)addValuesToSelectedList:(NSArray*)array;
 
 - (void)removeEventFromDataSource:(NFNEvent*)event;
 - (void)removeValueFromDataSource:(NFNValue*)value;
 - (void)removeManifestationFromDataSource:(NFNManifestation*)manifestation;
 - (void)removeResultFromDataSource:(NFNRsult*)result;
+
+//****************************
+- (NSString*)getHexColorWithGoogleCalendarId:(NSString*)calendarId;
 
 
 

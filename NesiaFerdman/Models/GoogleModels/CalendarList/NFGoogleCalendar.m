@@ -24,6 +24,13 @@ NSString *const kNFGoogleCalendarTimeZone = @"timeZone";
 @end
 @implementation NFGoogleCalendar
 
+- (void)updateInfoFromCalendar:(NFGoogleCalendar*)calendar {
+    self.backgroundColor = calendar.backgroundColor;
+    self.summary = calendar.summary;
+    self.accessRole = calendar.accessRole;
+}
+
+
 /**
  * Instantiate the instance using the passed dictionary values to set the properties values
  */

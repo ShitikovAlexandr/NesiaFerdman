@@ -7,7 +7,7 @@
 //
 
 #import "NFValueFilterCell.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFValue.h"
 
 @implementation NFValueFilterCell
@@ -25,7 +25,7 @@
     // Configure the view for the selected state
 }
 
-- (void)addData:(NFValue *)value {
+- (void)addData:(NFNValue *)value {
     if (value) {
         _valueTitle.text = value.valueTitle;
         if (value.valueImage) {
@@ -34,8 +34,8 @@
            [_vaueIcon setImage:[UIImage imageNamed:@"defaultValue.png"]];
         }
         
-        if ([NFTaskManager sharedManager].selectedValuesArray.count > 0) {
-            for (NFValue *val in [NFTaskManager sharedManager].selectedValuesArray) {
+        if ([[NFDataSourceManager sharedManager] getSelectedValueList].count > 0) {
+            for (NFNValue *val in [[NFDataSourceManager sharedManager] getSelectedValueList]) {
                 if ([value.valueId isEqualToString:val.valueId]) {
                     [self.valueSwitcer setOn:true animated:true];
                     break;

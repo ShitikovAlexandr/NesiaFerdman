@@ -17,7 +17,10 @@
 @property (nonatomic, strong) NSString * summary;
 @property (nonatomic, strong) NSString * timeZone;
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
--(NSDictionary *)toDictionary;
+- (NSDictionary *)toDictionary;
+
+- (void)updateInfoFromCalendar:(NFGoogleCalendar*)calendar;
+
 @end

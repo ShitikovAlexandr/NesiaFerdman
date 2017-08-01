@@ -74,7 +74,8 @@
         self.downLine.hidden = false;
         NFNEvent *event = [filtredArray objectAtIndex:index.row];
         _event = event;
-        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:event.calendarColor];
+        NSString *hexColor = [[NFDataSourceManager sharedManager] getHexColorWithGoogleCalendarId:event.calendarID];
+        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:hexColor];
         self.titleLabel.text = event.title;
         _isTask = true;
         self.timeTaskLabel.text = [self getTimeStringFromEvent:_event]; //[NSString stringWithFormat:@"%@-%@", [self dateFormater:event.startDate],[self dateFormater:event.endDate]];

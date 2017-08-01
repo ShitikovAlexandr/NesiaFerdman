@@ -12,9 +12,9 @@
 #import "NFNEvent.h"
 #import "NFNGoogleEvent.h"
 #import "NFGoogleCalendar.h"
-
 @import Firebase;
 
+#define APP_GOOGLE_CALENDAR_ID @"kAppGoogleCalendarId"
 #define NOTIFYCATIN_CALENDAR_LIST_LOAD @"kCalendarListIsLoaded"
 #define NOTIFYCATIN_EVENT_LOAD @"kEventListIsLoaded"
 
@@ -48,5 +48,7 @@
 - (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array;
 /** download a list of all the available calendars for the user */
 - (void)downloadGoogleCalendarList;
+
+- (void)chackAPPCalendar;
 
 @end

@@ -25,6 +25,10 @@
 @property (weak, nonatomic) IBOutlet NFProgressView *realTaskProgressView;
 @property (weak, nonatomic) IBOutlet NFProgressView *doneTaskProgressView;
 
+@property (assign, nonatomic) NSInteger visibleIndex;
+
+
+
 @end
 
 @implementation NFStatisticMainCell
@@ -32,6 +36,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+
     _realTaskProgressView.progressColor = [NFStyleKit _borderDarkGrey];
     _doneTaskProgressView.progressColor = [NFStyleKit bASE_GREEN];
     _footerView.backgroundColor = [NFStyleKit _base_GREY];
@@ -44,6 +49,7 @@
 }
 
 - (void)addDatatoCellwithDictionary:(NSMutableDictionary*)inputDic indexPath:(NSIndexPath*)indexPath {
+    
     NSMutableArray *dataArray = [NSMutableArray array];
     if ([[NFDataSourceManager sharedManager] getSelectedValueList].count > 0 ) {
         [dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getSelectedValueList]];
@@ -78,18 +84,17 @@
 }
 
 - (void)setDoneLevelWithValue:(CGFloat)value {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //self.realTaskProgressView.progressLayer.strokeEnd = 1;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.doneTaskProgressView.progressLayer.isDisableAnimation = false;
         self.doneTaskProgressView.progressLayer.strokeEnd = value;
     });
 }
 - (void)setRealLevelToMax {
+    self.realTaskProgressView.progressLayer.isDisableAnimation = false;
     self.realTaskProgressView.progressLayer.strokeEnd = 1;
 }
 
 -(void)setAlltaskToZero {
-    self.realTaskProgressView.progressLayer.strokeEnd = 0;
-    self.doneTaskProgressView.progressLayer.strokeEnd = 0;
     self.doneTaskCount.text = @"0";
     self.realTaskCount.text = @"0";
 }
@@ -124,6 +129,10 @@
     [self isTaskChacked:false];
     self.value = nil;
     self.eventCount = 0;
+    self.doneTaskProgressView.progressLayer.isDisableAnimation = true;
+    self.doneTaskProgressView.progressLayer.strokeEnd = 0;
+    self.realTaskProgressView.progressLayer.isDisableAnimation = true;
+    self.realTaskProgressView.progressLayer.strokeEnd = 0;
 }
 
 - (void)isTaskChacked:(BOOL)chack {
@@ -133,6 +142,7 @@
         [self.doneTaskchackBoxImage setImage:[UIImage imageNamed:@"checked_disable.png"]];
     }
 }
+
 
 
 @end

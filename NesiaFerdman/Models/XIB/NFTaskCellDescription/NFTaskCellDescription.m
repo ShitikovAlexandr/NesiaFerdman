@@ -8,6 +8,7 @@
 
 #import "NFTaskCellDescription.h"
 #import "NFStyleKit.h"
+#import "NFDataSourceManager.h"
 
 @interface NFTaskCellDescription ()
 @property (weak, nonatomic) IBOutlet UIImageView *chackboxImj;
@@ -41,7 +42,8 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (event) {
         self.event = event;
-        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:event.calendarColor];
+        NSString *hexColor = [[NFDataSourceManager sharedManager] getHexColorWithGoogleCalendarId:event.calendarID];
+        self.calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:hexColor];
         self.titleTaskLabel.text = event.title;
         self.timeLabel.text = [self getTimeStringFromEvent:_event];
         [self.timeLabel sizeToFit];
