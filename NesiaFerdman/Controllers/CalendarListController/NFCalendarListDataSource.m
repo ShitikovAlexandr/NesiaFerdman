@@ -8,9 +8,9 @@
 
 #import "NFCalendarListDataSource.h"
 #import "NFGoogleCalendar.h"
-#import "NFSyncManager.h"
+#import "NFNSyncManager.h"
 #import "NFTCalendarListCell.h"
-#import "NFSyncManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFCalendarListDataSource () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -58,14 +58,14 @@
 
 - (void)updateData {
     [_dataArray removeAllObjects];
-    [_dataArray addObjectsFromArray:[[NFSyncManager sharedManager] getGoogleCalendarsList]];
+    [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getCalendarList]];
     [_tableView reloadData];
 }
 
 - (void) switchToggled:(UISwitch *)sender {
     NFGoogleCalendar *calendar = [_dataArray objectAtIndex:sender.tag];
     calendar.selectedInApp = sender.isOn;
-    [[NFSyncManager sharedManager] saveGoogleCalendar:calendar];
+    [[NFNSyncManager sharedManager] writeCalendarToDataBase:calendar];
 }
 
 

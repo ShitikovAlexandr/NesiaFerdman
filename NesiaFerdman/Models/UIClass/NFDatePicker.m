@@ -31,7 +31,7 @@
         self.layer.shadowOpacity = 3;
         self.layer.masksToBounds = NO;
         
-        [self setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        //[self setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
         NSLocale *loc = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
         [self setLocale: loc];
 //        self.maximumDate = [NFSettingManager getMaxDate];

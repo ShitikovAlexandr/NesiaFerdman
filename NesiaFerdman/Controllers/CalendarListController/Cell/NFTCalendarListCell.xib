@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NFTCalendarListCell" id="wm1-1w-ISv" customClass="NFTCalendarListCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NFTCalendarListCell" id="wm1-1w-ISv" customClass="NFTCalendarListCell">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wm1-1w-ISv" id="GdV-3e-Qck">
@@ -34,16 +34,27 @@
                             <constraint firstAttribute="height" constant="31" id="yoI-RM-JUg"/>
                         </constraints>
                     </switch>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rnk-sq-7Ys">
+                        <rect key="frame" x="369" y="0.0" width="6" height="44"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="6" id="8TE-UA-v7v"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="ALb-gj-HRw" firstAttribute="centerY" secondItem="GdV-3e-Qck" secondAttribute="centerY" id="0Q1-v6-gvp"/>
+                    <constraint firstAttribute="bottom" secondItem="rnk-sq-7Ys" secondAttribute="bottom" id="afG-qE-aJ5"/>
+                    <constraint firstItem="rnk-sq-7Ys" firstAttribute="top" secondItem="GdV-3e-Qck" secondAttribute="top" id="cbg-1O-cYO"/>
                     <constraint firstItem="3Ty-tN-7MQ" firstAttribute="centerY" secondItem="GdV-3e-Qck" secondAttribute="centerY" id="mpd-gS-6xQ"/>
                     <constraint firstAttribute="trailing" secondItem="3Ty-tN-7MQ" secondAttribute="trailing" constant="14" id="raT-Mb-XfQ"/>
+                    <constraint firstAttribute="trailing" secondItem="rnk-sq-7Ys" secondAttribute="trailing" id="tkk-uc-8S0"/>
                     <constraint firstItem="3Ty-tN-7MQ" firstAttribute="leading" secondItem="ALb-gj-HRw" secondAttribute="trailing" constant="14" id="yOl-YU-szy"/>
                     <constraint firstItem="ALb-gj-HRw" firstAttribute="leading" secondItem="GdV-3e-Qck" secondAttribute="leadingMargin" constant="14" id="zij-gc-2po"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="calendarColorView" destination="rnk-sq-7Ys" id="WEJ-hp-hLe"/>
                 <outlet property="calendarSwitcher" destination="3Ty-tN-7MQ" id="LGn-1a-tkJ"/>
                 <outlet property="calendarTitleLabel" destination="ALb-gj-HRw" id="EbP-N0-XBq"/>
             </connections>

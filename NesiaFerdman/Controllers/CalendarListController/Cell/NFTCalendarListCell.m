@@ -7,15 +7,19 @@
 //
 
 #import "NFTCalendarListCell.h"
-#import "NFSyncManager.h"
-
+#import "NFStyleKit.h"
 @interface NFTCalendarListCell ()
 @property (weak, nonatomic) IBOutlet UILabel *calendarTitleLabel;
 @property (strong, nonatomic) NFGoogleCalendar *calendar;
+@property (weak, nonatomic) IBOutlet UIView *calendarColorView;
 
 @end
 
 @implementation NFTCalendarListCell
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -28,6 +32,7 @@
     _calendarTitleLabel.text = calendar.summary;
     [_calendarSwitcher setOn:calendar.selectedInApp];
     _calendar = calendar;
+    _calendarColorView.backgroundColor = [NFStyleKit colorFromHexString:calendar.backgroundColor];
 }
 
 - (void)prepareForReuse {

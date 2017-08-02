@@ -94,20 +94,22 @@
     NSMutableDictionary *result = [NSMutableDictionary dictionary];
     NSMutableArray *tempArrayVal = [NSMutableArray array];
     for (NFNEvent *event in inputArray) {
-        for (NFNValue *val in _valuesArray) {
-            NSMutableArray *tempArray = [NSMutableArray array];
-            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@",val.valueId];
-            [tempArray addObjectsFromArray:[event.values filteredArrayUsingPredicate:predicate]];
-            if (tempArray.count) {
-                NSString *eventKey = val.valueTitle;
-                if(!result[eventKey]){
-                    result[eventKey] = [NSMutableArray new];
+        if (!event.isDeleted) {
+            for (NFNValue *val in _valuesArray) {
+                NSMutableArray *tempArray = [NSMutableArray array];
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.valueId contains[c] %@",val.valueId];
+                [tempArray addObjectsFromArray:[event.values filteredArrayUsingPredicate:predicate]];
+                if (tempArray.count) {
+                    NSString *eventKey = val.valueTitle;
+                    if(!result[eventKey]){
+                        result[eventKey] = [NSMutableArray new];
+                    }
+                    [result[eventKey] addObject:event];
                 }
-                [result[eventKey] addObject:event];
             }
-        }
-        if (event.values.count < 1) {
-            [tempArrayVal addObject:event];
+            if (event.values.count < 1) {
+                [tempArrayVal addObject:event];
+            }
         }
     }
     [result setObject:tempArrayVal forKey:@"other"];
@@ -479,28 +481,30 @@
 - (void)convertEventsListToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     if (array.count > 0) {
         for (NFNEvent *event in array) {
-            NSDate *start = [self datefromString:event.startDate];
-            NSDate *end = [self datefromString:event.endDate];
-            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-            [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-            if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
-                NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
-                NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
-                for (NSDate *date in [self getListOfDateWithStart:start end:end]) {
-                    NSString *eventKey = [self stringFromDate:date];
+            if (!event.isDeleted) {
+                NSDate *start = [self datefromString:event.startDate];
+                NSDate *end = [self datefromString:event.endDate];
+                NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+                [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+                if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
+                    NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
+                    NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
+                    for (NSDate *date in [self getListOfDateWithStart:start end:end]) {
+                        NSString *eventKey = [self stringFromDate:date];
+                        if(!dic[eventKey]){
+                            dic[eventKey] = [NSMutableArray new];
+                        }
+                        [dic[eventKey] addObject:event];
+                    }
+                } else {
+                    NSString *eventKey = [event.startDate substringToIndex:10];
                     if(!dic[eventKey]){
                         dic[eventKey] = [NSMutableArray new];
                     }
                     [dic[eventKey] addObject:event];
                 }
-            } else {
-                NSString *eventKey = [event.startDate substringToIndex:10];
-                if(!dic[eventKey]){
-                    dic[eventKey] = [NSMutableArray new];
-                }
-                [dic[eventKey] addObject:event];
             }
-        }
+        }//
     }
 }
 

@@ -68,9 +68,12 @@
 }
 
 + (BOOL)isOnDeleteFromGoogle {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    BOOL result = [defaults boolForKey:DELETE_FROM_GOOGLE];
-    return result;
+    if ([self isOnGoogleSync]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        BOOL result = [defaults boolForKey:DELETE_FROM_GOOGLE];
+        return result;
+    }
+    return false;
 }
 
 // Synchronization boundaries

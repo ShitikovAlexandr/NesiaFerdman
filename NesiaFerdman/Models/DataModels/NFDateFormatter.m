@@ -13,11 +13,14 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
         NSLocale *loc = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
         [self setLocale: loc];
-    }
+       // [self setTimeZone:[NSTimeZone systemTimeZone]];
+        
+            }
     return self;
 }
+
+
 
 @end

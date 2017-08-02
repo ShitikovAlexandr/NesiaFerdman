@@ -133,11 +133,19 @@
 }
 
 - (void)updateEvent:(NFNEvent*)event {
+    GTLRCalendarQuery_EventsUpdate *query = [GTLRCalendarQuery_EventsUpdate queryWithObject:[event toGoogleEvent] calendarId:event.calendarID eventId:event.socialId];
     
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+        NSLog(@"end update Event in google %@", object);
+    }];
 }
 
 - (void)deleteEvent:(NFNEvent*)event {
+    GTLRCalendarQuery_EventsDelete *query = [GTLRCalendarQuery_EventsDelete queryWithCalendarId:event.calendarID eventId:event.socialId];
     
+    [self.service executeQuery:query completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+        NSLog(@"delete from google %@", object);
+    }];
 }
 
 - (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array {
@@ -176,6 +184,7 @@
 - (void)downloadGoogleCalendarList {
     [_googleCalendarsArray removeAllObjects];
     GTLRCalendarQuery_CalendarListList *query = [GTLRCalendarQuery_CalendarListList query];
+
     [self.service executeQuery:query
              completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
                  if (callbackError == nil) {

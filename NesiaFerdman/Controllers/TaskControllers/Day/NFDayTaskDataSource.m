@@ -49,7 +49,13 @@
 
 - (void)getData {
     [self.eventsArray removeAllObjects];
-    [self.eventsArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getEventForDay:_selectedDate]];
+    NSMutableArray *tempArray = [NSMutableArray new];
+    for (NFNEvent *event in [[NFDataSourceManager sharedManager] getEventForDay:_selectedDate]) {
+        if (!event.isDeleted) {
+            [tempArray addObject:event];
+        }
+    }
+    [self.eventsArray addObjectsFromArray:tempArray];
     [self.tableView reloadData];
     NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
     NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];

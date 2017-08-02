@@ -65,6 +65,7 @@
     self.timeLabel.hidden = true;
     self.topLine.hidden = YES;
     self.downLine.hidden = YES;
+    self.calendarColorView.backgroundColor = [UIColor clearColor];
     if (index.row > 0) {
         _isMenyTask = true;
         self.topLine.hidden = false;

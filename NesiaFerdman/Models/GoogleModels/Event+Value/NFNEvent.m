@@ -43,11 +43,16 @@ NSString *const kNFNEventSocialId = @"socialId";
 
 - (GTLRCalendar_Event*)toGoogleEvent {
     GTLRCalendar_Event *calendarEvent = [[GTLRCalendar_Event alloc] init];
+    
     [calendarEvent setSummary:self.title];
     [calendarEvent setDescriptionProperty:self.eventDescription];
     NSDate *startDate = [self dateFromString:self.startDate];
     NSDate *endDate = [self dateFromString:self.endDate];
+    
     GTLRDateTime *startTime = [GTLRDateTime dateTimeWithDate:startDate];
+    //[calendarEvent.start setTimeZone:@"UTC"];
+    //[calendarEvent.end setTimeZone:@"UTC"];
+
     GTLRDateTime *endTime = [GTLRDateTime dateTimeWithDate:endDate];
     [calendarEvent setStart:[GTLRCalendar_EventDateTime object]];
     [calendarEvent setEnd:[GTLRCalendar_EventDateTime object]];
@@ -146,10 +151,11 @@ NSString *const kNFNEventSocialId = @"socialId";
 }
 
 - (void)updateEvent:(NFNEvent*)oldEvent withNewEvent:(NFNEvent*)newEvent {
+    NSLog(@"currnet utc %@", [self stringUTCDateFromString:newEvent.startDate]);
     oldEvent.title = newEvent.title;
     oldEvent.eventDescription = newEvent.eventDescription;
-    oldEvent.startDate = newEvent.startDate;
-    oldEvent.endDate = newEvent.endDate;
+    oldEvent.startDate = [self stringUTCDateFromString:newEvent.startDate];
+    oldEvent.endDate = [self stringUTCDateFromString:newEvent.endDate];
     oldEvent.updateDate = newEvent.updateDate;
 }
 
@@ -301,5 +307,16 @@ NSString *const kNFNEventSocialId = @"socialId";
     NSDate *dateFromString = [dateFormatter dateFromString:dateString];
     return dateFromString;
 }
+
+- (NSString*)stringUTCDateFromString:(NSString*)dateString {
+    NSDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
+    NSDate *dateFromString = [dateFormatter dateFromString:dateString];
+    [dateFormatter setTimeZone:[NSTimeZone systemTimeZone]];
+
+    return [dateFormatter stringFromDate:dateFromString];
+}
+
 
 @end

@@ -388,6 +388,11 @@
 #pragma mark - delete methods
 
 - (void)deleteEvent:(NFNEvent*)event {
+    for (NFNEvent *ev in _eventsArray) {
+        if ([event.eventId isEqualToString:ev.eventId]) {
+            ev.isDeleted = true;
+        }
+    }
     event.isDeleted = true;
     [self writeEvent:event];
 }

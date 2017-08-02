@@ -147,12 +147,12 @@
     NSMutableArray *dataBaseEvents = [NSMutableArray new];
     [googleEvents addObjectsFromArray:[[NFGoogleSyncManager sharedManager] getEventList]];
     [dataBaseEvents addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getEvensList]];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.socialId IN %@)", [dataBaseEvents valueForKey:@"socialId"]];
-    NSArray *newEvent = [googleEvents filteredArrayUsingPredicate:predicate];
-    for (NFNEvent *event in newEvent) {
-        [self addEventToDBManager:event];
-        [self writeEventToDataBase:event];
-    }
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.socialId IN %@)", [dataBaseEvents valueForKey:@"socialId"]];
+        NSArray *newEvent = [googleEvents filteredArrayUsingPredicate:predicate];
+        for (NFNEvent *event in newEvent) {
+            [self addEventToDBManager:event];
+            [self writeEventToDataBase:event];
+        }
     
 // chack if old event did change in google
     NSPredicate *equalDBPredicate = [NSPredicate predicateWithFormat:@"SELF.socialId IN %@ AND !(SELF.updateDate IN %@)",
@@ -239,9 +239,7 @@
 
 
 
-- (void)endDownloadData {
-    NSLog(@"endDownloadData");
-}
+
 
 #pragma mark - managers methods 
 
@@ -307,11 +305,11 @@
 }
 
 - (void)deleteEventFromGoogle:(NFNEvent*)event {
-    
+    [[NFGoogleSyncManager sharedManager] deleteEvent:event];
 }
 
 - (void)updateGoogleEvent:(NFNEvent*)event {
-    
+    [[NFGoogleSyncManager sharedManager] updateEvent:event];
 }
 
 #pragma mark - app run methods

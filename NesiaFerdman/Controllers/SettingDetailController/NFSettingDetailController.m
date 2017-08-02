@@ -9,32 +9,25 @@
 #import "NFSettingDetailController.h"
 #import "UIBarButtonItem+FHButtons.h"
 #import "NFSettingManager.h"
-#import "NFSyncManager.h"
+#import "NFNSyncManager.h"
 #import "NFActivityIndicatorView.h"
 #import "NotifyList.h"
 #import "NFCalendarListController.h"
 
-
-
 @interface NFSettingDetailController ()
 
 @property (strong, nonatomic) NSMutableArray *dataArray;
-
 @property (weak, nonatomic) IBOutlet UILabel *googleSyncLabel;
 @property (weak, nonatomic) IBOutlet UILabel *googleWriteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *googleDeleteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *updateLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *GoogleCalendarListLabel;
-
 
 @property (weak, nonatomic) IBOutlet UISwitch *googleSyncSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleWriteSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleDeleteSwitcher;
 @property (weak, nonatomic) IBOutlet UIButton *updateButton;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
-
-
 @end
 
 @implementation NFSettingDetailController
@@ -56,8 +49,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
 }
 
-
-
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -78,7 +69,6 @@
     }
 }
 
-
 - (void)addDataToDataSource {
     self.title = @"Настройки";
     _googleSyncLabel.text = @"Синхронизация с Google";
@@ -91,13 +81,10 @@
     [_googleWriteSwitcher setOn:[NFSettingManager isOnWriteToGoogle]];
     [_googleDeleteSwitcher setOn:[NFSettingManager isOnDeleteFromGoogle]];
     
-    
     [_googleSyncSwitcher addTarget:self action:@selector(syncAction:) forControlEvents:UIControlEventValueChanged];
     [_googleWriteSwitcher addTarget:self action:@selector(writeAction:) forControlEvents:UIControlEventValueChanged];
     [_googleDeleteSwitcher addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventValueChanged];
     [_updateButton addTarget:self action:@selector(updateAction) forControlEvents:UIControlEventTouchUpInside];
-    
-    
 }
 
 - (void)changeTableViewState {
@@ -110,9 +97,7 @@
 - (void)syncAction:(UISwitch*)sender {
     if (sender.isOn) {
         [NFSettingManager setOnGoogleSync];
-        _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
-        [_indicator startAnimating];
-        [[NFSyncManager sharedManager] updateAllData];
+        [[NFNSyncManager sharedManager] updateData];
         
     } else {
         [NFSettingManager setOffGoogleSync];
@@ -139,8 +124,8 @@
 - (void)updateAction {
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [_indicator startAnimating];
-    [[NFSyncManager sharedManager] updateAllData];
-
+    [[NFNSyncManager sharedManager] updateData];
+    [self endUpdate];
 }
 
 - (void)endUpdate {
@@ -157,7 +142,6 @@
     [navController setViewControllers:@[viewController]];
     [self presentViewController:navController animated:YES completion:nil];
 }
-
 
 
 @end

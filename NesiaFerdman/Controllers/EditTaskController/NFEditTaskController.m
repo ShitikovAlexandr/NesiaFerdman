@@ -198,15 +198,16 @@ UICollectionViewDelegateFlowLayout
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
+        NSLog(@"current date %@", [NSDate date]);
     }
     [self.collectionView reloadData];
 }
 
 - (void)configurePickers {
     _datePickerStart = [[NFDatePicker alloc] initWithTextField:_starttextField];
-    _datePickerStart.minimumDate = [NSDate date];
+    //_datePickerStart.minimumDate = [NSDate date];
     _datePickerEnd = [[NFDatePicker alloc] initWithTextField:_endTextField];
-    _datePickerEnd.minimumDate = _datePickerStart.minimumDate;
+    //_datePickerEnd.minimumDate = _datePickerStart.minimumDate;
     
     _valuesArray = [NSMutableArray arrayWithArray:[[NFDataSourceManager sharedManager] getValueList]];
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_selectValueTextField   keyTitle:@"valueTitle"];
@@ -232,11 +233,15 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)deleteAction {
+    _event.isDeleted = true;
     [_indicator startAnimating];
+    if ([NFSettingManager isOnDeleteFromGoogle] && _event.socialType == NGoogleEvent) {
+        [[NFNSyncManager sharedManager] deleteEventFromGoogle:_event];
+    }
     [[NFNSyncManager sharedManager] removeEventFromDB:_event];
     [[NFNSyncManager sharedManager] removeEventFromDBManager:_event];
     [[NFNSyncManager sharedManager] updateDataSource];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_indicator stopAnimating];
         [self dismissViewControllerAnimated:YES completion:nil];
     });
@@ -290,7 +295,7 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)saveChanges {
-    if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString]) {
+    if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString] && [self periodValidation]) {
         
         [_indicator startAnimating];
         BOOL newEvent = false;
@@ -320,6 +325,9 @@ UICollectionViewDelegateFlowLayout
             }
             [self endUpdate];
         } else {
+            if ([NFSettingManager isOnWriteToGoogle] && _event.socialType == NGoogleEvent) {
+                [[NFNSyncManager sharedManager] updateGoogleEvent:_event];
+            }
             [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
             [self endUpdate];
         }
@@ -374,6 +382,15 @@ UICollectionViewDelegateFlowLayout
     [self.tableView endUpdates];
 }
 
+- (BOOL)periodValidation {
+    if([_datePickerEnd.date compare:_datePickerStart.date] == NSOrderedAscending) {
+        [NFPop startAlertWithMassage:kWrongDatesPerion];
+        _endTextField.text = _starttextField.text;
+        _datePickerEnd.date = _datePickerStart.date;
+        return false;
+    }
+    return true;
+}
 
 
 
