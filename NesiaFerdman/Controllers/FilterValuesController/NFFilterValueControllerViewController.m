@@ -75,8 +75,9 @@
         NFNValue *value = [_valuesArray objectAtIndex:sender.tag];
         [_selectedValue addObject:value];
     } else {
+        NSArray *temp = [NSArray arrayWithArray:_valuesArray];
         NFNValue *value = [_valuesArray objectAtIndex:sender.tag];
-        for (NFNValue *val in _selectedValue) {
+        for (NFNValue *val in temp) {
             if ([val.valueId isEqualToString:value.valueId]) {
                 [_selectedValue removeObject:val];
             }

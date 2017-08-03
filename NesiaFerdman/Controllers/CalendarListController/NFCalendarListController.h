@@ -10,4 +10,7 @@
 
 @interface NFCalendarListController : NFViewController
 
+@property (assign, nonatomic) BOOL isFirstRun;
+@property (assign, nonatomic) BOOL isCompliteDownload;
+
 @end

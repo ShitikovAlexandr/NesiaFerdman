@@ -8,7 +8,7 @@
 
 #import "NFResultDayDataSource.h"
 #import "NFResultMenuCell.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
 #import "NFResultDetailController.h"
 
@@ -47,7 +47,7 @@
     if (!cell) {
         cell = [[NFResultMenuCell alloc] initWithDefaultStyle];
     }
-    NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
+    NFNRsultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [cell addDataToDayCell:category date:_selectedDate];
     return cell;
 }
@@ -55,7 +55,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
+    NFNRsultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [self navigateToDetailCategory:category];
 }
 
@@ -63,7 +63,7 @@
 
 - (void) addDataToDisplay {
     [_dataArray removeAllObjects];
-    [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
+    [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultCategoryList]];
     [self.tableView reloadData];
 }
 
@@ -78,7 +78,7 @@
 
 #pragma mark - Navigation
 
-- (void)navigateToDetailCategory:(NFResultCategory*)category {
+- (void)navigateToDetailCategory:(NFNRsultCategory*)category {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NFResultDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
     viewController.selectedDate = _selectedDate;

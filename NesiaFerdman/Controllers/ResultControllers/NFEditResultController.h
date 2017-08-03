@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFResultCategory.h"
-#import "NFResult.h"
+#import "NFNRsultCategory.h"
+#import "NFNRsult.h"
 
 @interface NFEditResultController : UIViewController
-@property (strong, nonatomic) NFResultCategory *category;
-@property (strong, nonatomic) NFResult *resultItem;
+@property (strong, nonatomic) NFNRsultCategory *category;
+@property (strong, nonatomic) NFNRsult *resultItem;
 @property (strong, nonatomic) NSDate *selectedDate;
 
 

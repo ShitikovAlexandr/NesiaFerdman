@@ -10,6 +10,8 @@
 #import "NFSettingManager.h"
 #import "NFNSyncManager.h"
 #import "NFFirebaseSyncManager.h"
+#import "NFLoginSimpleController.h"
+#import "NFDataSourceManager.h"
 
 #define APP_CALENDAR_NAME @"Коуч ежедневик"
 #define ITEMS_KEY @"items"
@@ -60,6 +62,9 @@
 
 
 #pragma mark - get methods
+- (void)resetCalendarList {
+    [_googleEventsArray removeAllObjects];
+}
 
 - (NSMutableArray<NFGoogleCalendar*>*)getCalendarList {
     return _googleCalendarsArray;
@@ -76,23 +81,35 @@
     if (error != nil) {
         self.service.authorizer = nil;
         NSLog(@"Not Login");
+        //[[NFLoginSimpleController sharedMenuController] logout];
     } else {
-        self.service.authorizer = user.authentication.fetcherAuthorizer;
         NSLog(@"Login");
-        [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
-        GIDAuthentication *authentication = user.authentication;
-        FIRAuthCredential *credential =
-        [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
-                                         accessToken:authentication.accessToken];
-        [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
-            if (error == nil) {
-                NSLog(@"singin to firebase");
-                
-            } else {
-                NSLog(@"not login to firebase");
-            }
-        }];
+        [self loginToFirebaser:user];
     }
+}
+
+- (void)loginToFirebaser:(GIDGoogleUser*)user {
+    self.service.authorizer = user.authentication.fetcherAuthorizer;
+    [GIDSignIn sharedInstance].clientID = [FIRApp defaultApp].options.clientID;
+    GIDAuthentication *authentication = user.authentication;
+    FIRAuthCredential *credential =
+    [FIRGoogleAuthProvider credentialWithIDToken:authentication.idToken
+                                     accessToken:authentication.accessToken];
+    [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
+        if (error == nil) {
+            NSLog(@"singin to firebase");
+            [[NFNSyncManager sharedManager] updateData];
+            NSNotification *notification = [NSNotification notificationWithName:LOGIN_FIREBASE object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        } else {
+            NSLog(@"not login to firebase");
+            [self logOutAction];
+            [NFPop startAlertWithMassage:kLoginError];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NFLoginSimpleController sharedMenuController] logout];
+            });
+        }
+    }];
 }
 
 #pragma mark - Authorization
@@ -103,9 +120,17 @@
 }
 
 - (void)logOutAction {
+    [[NFNSyncManager sharedManager] reset];
+    [[NFDataSourceManager sharedManager] reset];
+    [[NFFirebaseSyncManager sharedManager] reset];
+    
     NSError *signOutError;
     [[FIRAuth auth] signOut:&signOutError];
     [[GIDSignIn sharedInstance] signOut];
+    if (signOutError) {
+        NSError *signError;
+        [[FIRAuth auth] signOut:&signError];
+    }
 }
 
 - (BOOL)isLogin {
@@ -115,6 +140,7 @@
 #pragma mark - google api
 
 - (void)addNewEvent:(NFNEvent*)event {
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *calendarId = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
     GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:[event toGoogleEvent] calendarId:calendarId];
@@ -151,34 +177,41 @@
 - (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array {
     [_googleEventsArray removeAllObjects];
     _calendarsRequestCount = array.count;
-    
-    for (NFGoogleCalendar *calendar in array) {
-        NSString *calendarColor = calendar.backgroundColor;
-        GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
-        query.maxResults = 1000;
-        query.timeMin = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMinDate]];
-        query.timeMax = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMaxDate]];
-        query.singleEvents = YES;
-        query.orderBy = kGTLRCalendarOrderByStartTime;
-        [self.service executeQuery:query
-                 completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
-                     GTLRCalendar_Events *eventsList = object;
-                     NSMutableArray *itemsDic = [NSMutableArray new];
-                     [itemsDic addObjectsFromArray: [[eventsList.JSON objectForKey:ITEMS_KEY] allObjects]];
-                     for (NSDictionary *dic in itemsDic) {
-                         NFNEvent *nesiaEvent = [[NFNEvent alloc] initWithGoogleEvent:[[NFNGoogleEvent alloc] initWithDictionary:dic]];
-                         nesiaEvent.calendarColor = calendarColor;
-                         [_googleEventsArray addObject:nesiaEvent];
-                     }
-                     _calendarsRequestCount --;
-                     if (_calendarsRequestCount == 0) {
-                         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                             NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
-                             [[NSNotificationCenter defaultCenter] postNotification:notification];
-                         });
-                     }
-                 }];
+    if ([NFSettingManager isOnGoogleSync]) {
+        
+        for (NFGoogleCalendar *calendar in array) {
+            NSString *calendarColor = calendar.backgroundColor;
+            GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
+            query.maxResults = 1000;
+            query.timeMin = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMinDate]];
+            query.timeMax = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMaxDate]];
+            query.singleEvents = YES;
+            query.orderBy = kGTLRCalendarOrderByStartTime;
+            [self.service executeQuery:query
+                     completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
+                         GTLRCalendar_Events *eventsList = object;
+                         NSMutableArray *itemsDic = [NSMutableArray new];
+                         [itemsDic addObjectsFromArray: [[eventsList.JSON objectForKey:ITEMS_KEY] allObjects]];
+                         for (NSDictionary *dic in itemsDic) {
+                             NFNEvent *nesiaEvent = [[NFNEvent alloc] initWithGoogleEvent:[[NFNGoogleEvent alloc] initWithDictionary:dic]];
+                             nesiaEvent.calendarColor = calendarColor;
+                             [_googleEventsArray addObject:nesiaEvent];
+                         }
+                         _calendarsRequestCount --;
+                         if (_calendarsRequestCount == 0) {
+                             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                 NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
+                                 [[NSNotificationCenter defaultCenter] postNotification:notification];
+                             });
+                         }
+                     }];
+        }
+    } else {
+        NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
+    
+    
 }
 
 - (void)downloadGoogleCalendarList {
@@ -237,8 +270,6 @@
                  }
              }];
 }
-
-
 
 
 @end

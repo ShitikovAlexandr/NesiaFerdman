@@ -37,6 +37,20 @@
     return manager;
 }
 
+- (void)reset {
+    _eventsArray = [NSMutableArray new];
+    _valuesArray = [NSMutableArray new];
+    _manifestationArray = [NSMutableArray new];
+    _resultCategoryArray = [NSMutableArray new];
+    _resultArray = [NSMutableArray new];
+    _calendarArray = [NSMutableArray new];
+    _quoteArray = [NSMutableArray new];
+    
+    _selectedValuesArray = [NSMutableArray new];
+    _eventsDictionary = [NSMutableDictionary new];
+    _resultDictionary = [NSMutableDictionary new];
+}
+
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -310,11 +324,13 @@
     
     if (_resultArray.count > 0) {
         for (NFNRsult *event in _resultArray) {
+            if (event.createDate != nil) {
             NSString *eventKey = [event.createDate substringToIndex:10];
             if(!_resultDictionary[eventKey]){
                 _resultDictionary[eventKey] = [NSMutableArray new];
             }
             [_resultDictionary[eventKey] addObject:event];
+        }
         }
     }
 }
@@ -511,11 +527,13 @@
 - (void)convertResultToDictionary:(NSMutableDictionary *)dic array:(NSMutableArray *)array {
     if (array.count > 0) {
         for (NFNRsult *event in array) {
+            if (event.createDate != nil) {
             NSString *eventKey = [event.createDate substringToIndex:10];
             if(!dic[eventKey]){
                 dic[eventKey] = [NSMutableArray new];
             }
             [dic[eventKey] addObject:event];
+        }
         }
     }
 }

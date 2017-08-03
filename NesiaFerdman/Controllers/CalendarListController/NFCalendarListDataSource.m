@@ -15,12 +15,12 @@
 @interface NFCalendarListDataSource () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
-@property (strong, nonatomic) id target;
+@property (strong, nonatomic) UIViewController *target;
 @end
 
 @implementation NFCalendarListDataSource
 
-- (instancetype)initWithTableView:(UITableView*)tableView target:(id)target {
+- (instancetype)initWithTableView:(UITableView*)tableView target:(UIViewController*)target {
     self = [super init];
     if (self) {
         _target = target;

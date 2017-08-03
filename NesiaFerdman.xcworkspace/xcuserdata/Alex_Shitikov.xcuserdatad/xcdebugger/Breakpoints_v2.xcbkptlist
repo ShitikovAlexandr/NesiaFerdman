@@ -9,29 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Controllers/TaskControllers/Day/NFDayTaskDataSource.m"
-            timestampString = "523374659.643718"
+            filePath = "NesiaFerdman/Controllers/ResultControllers/NFEditResultController.m"
+            timestampString = "523467451.651258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "-getData"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-            timestampString = "523375214.440716"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
-            landmarkName = "-deleteEvent:"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-stringDate:withFormat:dateStringToFromat:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

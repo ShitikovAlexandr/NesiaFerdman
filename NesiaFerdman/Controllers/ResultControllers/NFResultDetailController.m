@@ -11,7 +11,7 @@
 #import "NFEditResultController.h"
 #import "NFResultCell.h"
 #import "NFHeaderForTaskSection.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFResultDetailController () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArray = [NSMutableArray array];
-    self.title = self.selectedCategory.resultCategoryTitle;
+    self.title = self.selectedCategory.title;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(createNewItem)];
     self.navigationItem.rightBarButtonItem = item;
@@ -62,8 +62,8 @@
         NFHeaderForTaskSection *headerView = [[NFHeaderForTaskSection alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, [NFHeaderForTaskSection headerSize])];
         [headerView.iconImage setImage:[UIImage imageNamed:@"task_section_icon.png"]];
         NSArray *eventDayArray = [_dataArray objectAtIndex:section];
-        NFResult *event = [eventDayArray firstObject];
-        [headerView setCurrentDate:[self stringDate:event.startDate withFormat:@"yyyy-MM-dd"]];
+        NFNRsult *event = [eventDayArray firstObject];
+        [headerView setCurrentDate:[self stringDate:event.createDate withFormat:@"yyyy-MM-dd"]];
         return headerView;
     } else {
         UIView *headerView = [[UIView alloc] init];
@@ -89,8 +89,7 @@
     }
     if (self.dataArray.count > 0) {
         NSArray *eventDayArray = [_dataArray objectAtIndex:indexPath.section];
-        NFResult *event = [eventDayArray objectAtIndex:indexPath.row];
-       // NFResult *event = [_dataArray objectAtIndex:indexPath.row];
+        NFNRsult *event = [eventDayArray objectAtIndex:indexPath.row];
         [cell addData:event];
     } else {
         [cell addData:nil];
@@ -114,25 +113,22 @@
     } else if (_monthDate) {
         _dateForNewItem = [self getFirsDayOfMonthWithDate:_monthDate];
         NSLog(@"select month detail");
-        [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forMonth:_monthDate]];
+        [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultWithFilter:_selectedCategory forMonth:_monthDate]];
     }
     [self.tableView reloadData];
-    //NSRange range = NSMakeRange(0, [self numberOfSectionsInTableView:self.tableView]);
-    //NSIndexSet *sections = [NSIndexSet indexSetWithIndexesInRange:range];
-    //[self.tableView reloadSections:sections withRowAnimation:UITableViewRowAnimationTop];
-}
+ }
 
 - (NSMutableArray*)getResultForDay:(NSDate*)day {
     NSMutableArray *result = [NSMutableArray array];
     NSMutableArray *dayArray = [NSMutableArray array];
-    [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:_selectedCategory forDay:day]];
+    [dayArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultWithFilter:_selectedCategory forDay:day]];
     if (dayArray.count > 0) {
         [result addObject:dayArray];
     }
     return result;
 }
 
-- (void)navigateToEditScreenWithItem:(NFResult*)result {
+- (void)navigateToEditScreenWithItem:(NFNRsult*)result {
     NFEditResultController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFEditResultController"];
     viewController.category = self.selectedCategory;
     viewController.resultItem = result;

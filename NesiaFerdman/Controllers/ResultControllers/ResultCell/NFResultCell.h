@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFResult.h"
+#import "NFNRsult.h"
 
 @interface NFResultCell : UITableViewCell
-@property (strong, nonatomic) NFResult *event;
+@property (strong, nonatomic) NFNRsult *event;
 
-- (void) addData:(NFResult*)event;
+- (void) addData:(NFNRsult*)event;
 
 @end

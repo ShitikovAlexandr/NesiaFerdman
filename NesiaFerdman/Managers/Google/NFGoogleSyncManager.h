@@ -14,9 +14,10 @@
 #import "NFGoogleCalendar.h"
 @import Firebase;
 
-#define APP_GOOGLE_CALENDAR_ID @"kAppGoogleCalendarId"
-#define NOTIFYCATIN_CALENDAR_LIST_LOAD @"kCalendarListIsLoaded"
-#define NOTIFYCATIN_EVENT_LOAD @"kEventListIsLoaded"
+#define APP_GOOGLE_CALENDAR_ID          @"kAppGoogleCalendarId"
+#define NOTIFYCATIN_CALENDAR_LIST_LOAD  @"kCalendarListIsLoaded"
+#define NOTIFYCATIN_EVENT_LOAD          @"kEventListIsLoaded"
+#define LOGIN_FIREBASE               @"kLoginFirebase"
 
 @interface NFGoogleSyncManager : NSObject
 
@@ -50,5 +51,6 @@
 - (void)downloadGoogleCalendarList;
 
 - (void)chackAPPCalendar;
+- (void)resetCalendarList;
 
 @end

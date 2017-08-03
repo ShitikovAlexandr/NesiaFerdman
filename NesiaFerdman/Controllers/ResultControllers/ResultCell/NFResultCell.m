@@ -16,11 +16,11 @@
 }
 
 
-- (void) addData:(NFResult*)event {
+- (void) addData:(NFNRsult*)event {
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (event) {
         self.event = event;
-        self.textLabel.text = event.resultDescription;
+        self.textLabel.text = event.title;
 //        if (event.eventType == Event) {
 //            if (event.isDone) {
 //                [self.imageView setImage:[UIImage imageNamed:@"checked_enable.png"]];

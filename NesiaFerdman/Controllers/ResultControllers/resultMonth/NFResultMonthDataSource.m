@@ -10,7 +10,7 @@
 #import "NFSettingManager.h"
 #import "NFResultMenuCell.h"
 #import "NFResultDetailController.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 
 @interface NFResultMonthDataSource() <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
@@ -45,7 +45,7 @@
     if (!cell) {
         cell = [[NFResultMenuCell alloc] initWithDefaultStyle];
     }
-    NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
+    NFNRsultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [cell addDataToMonthCell:category date:_selectedDate];
     return cell;
 }
@@ -53,7 +53,7 @@
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFResultCategory *category = [_dataArray objectAtIndex:indexPath.row];
+    NFNRsultCategory *category = [_dataArray objectAtIndex:indexPath.row];
     [self navigateToDitailCategory:category];
 }
 
@@ -61,7 +61,7 @@
 
 - (void) addDataToDisplay {
     [_dataArray removeAllObjects];
-    [_dataArray addObjectsFromArray:[[NFTaskManager sharedManager] getAllResultCategory]];
+    [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultCategoryList]];
     [self.tableView reloadData];
 }
 
@@ -72,7 +72,7 @@
 
 #pragma mark - Navigation
 
-- (void)navigateToDitailCategory:(NFResultCategory*)category {
+- (void)navigateToDitailCategory:(NFNRsultCategory*)category {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NFResultDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailController"];
     viewController.monthDate = _selectedDate;

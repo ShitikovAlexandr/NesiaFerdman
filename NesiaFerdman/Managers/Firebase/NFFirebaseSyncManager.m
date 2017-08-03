@@ -15,7 +15,6 @@
 
 
 //ref keys
-#define USER_UID [[[FIRAuth auth] currentUser] uid]
 #define USERS_DIRECTORY             @"Users"
 #define EVENT_DIRECTORY             @"Events"
 #define VALUE_DIRECTORY             @"Values"
@@ -63,6 +62,18 @@
         manager = [[self alloc] init];
     });
     return manager;
+}
+
+- (void)reset {
+    [_eventsArray removeAllObjects];
+    [_valueArray removeAllObjects];
+    [_valuesManifestationsArray removeAllObjects];
+    [_resultsArray removeAllObjects];
+    [_googleCalendarsArray removeAllObjects];
+    [_appValuesArray removeAllObjects];
+    [_appValuesArray removeAllObjects];
+    [_appManifestationArray removeAllObjects];
+    [self resetFlags];
 }
 
 - (instancetype)init {
@@ -194,6 +205,7 @@
         [_eventsArray removeAllObjects];
         [_eventsArray addObjectsFromArray:resultArray];
         _isEventsList = true;
+        NSLog(@"_isEventsList = true");
         [self downloadComplite];
        
     }];
@@ -239,6 +251,7 @@
         [_googleCalendarsArray removeAllObjects];
         [_googleCalendarsArray addObjectsFromArray:resultArray];
         _isCalendarList = true;
+        NSLog(@"_isCalendarList = true");
         [self downloadComplite];
     }];
 }
@@ -260,6 +273,7 @@
         [_valueArray removeAllObjects];
         [_valueArray addObjectsFromArray:resultArray];
         _isValueList = true;
+        NSLog(@"_isValueList = true");
         [self downloadComplite];
     }];
 }
@@ -281,6 +295,7 @@
         [_valuesManifestationsArray removeAllObjects];
         [_valuesManifestationsArray addObjectsFromArray:resultArray];
         _isValuesManifestations = true;
+        NSLog(@"_isValuesManifestations = true");
         [self downloadComplite];
     }];
 }
@@ -304,6 +319,7 @@
         [_appValuesArray removeAllObjects];
         [_appValuesArray addObjectsFromArray:resultArray];
         _isAppValueList = true;
+        NSLog(@"_isAppValueList = true");
         [self downloadComplite];
     }];
 }
@@ -325,6 +341,7 @@
         [_appManifestationArray removeAllObjects];
         [_appManifestationArray addObjectsFromArray:resultArray];
         _isAppManifestatioms = true;
+        NSLog(@"_isAppManifestatioms = true");
         [self downloadComplite];
     }];
 }
@@ -346,6 +363,7 @@
         [_appResultsArray removeAllObjects];
         [_appResultsArray addObjectsFromArray:resultArray];
         _isAppResultCategory = true;
+        NSLog(@"_isAppResultCategory = true");
         [self downloadComplite];
     }];
 

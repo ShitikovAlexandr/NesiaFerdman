@@ -21,6 +21,14 @@ NSString *const kNFNRsultTitle = @"title";
  * Instantiate the instance using the passed dictionary values to set the properties values
  */
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.idField = [[NSUUID UUID] UUIDString];
+    }
+    return self;
+}
+
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];

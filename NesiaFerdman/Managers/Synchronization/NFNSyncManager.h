@@ -14,6 +14,8 @@
 #import "NFNRsult.h"
 #import "NotifyList.h"
 
+#define END_UPDATE @"kEndUpdate"
+
 @interface NFNSyncManager : NSObject
 
 + (NFNSyncManager *)sharedManager;
@@ -59,6 +61,6 @@
 - (void)deleteEventFromGoogle:(NFNEvent*)event;
 - (void)updateGoogleEvent:(NFNEvent*)event;
 
-
+- (void)reset;
 
 @end

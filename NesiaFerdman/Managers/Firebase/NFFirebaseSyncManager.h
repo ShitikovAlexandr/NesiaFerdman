@@ -17,6 +17,8 @@
 
 //notification keys
 
+#define USER_UID [[[FIRAuth auth] currentUser] uid]
+
 #define DATA_BASE_EVENT_LIST_DOWNLOADED                 @"kNotificationDataBaseCompliteLoadEventsList"
 #define DATA_BASE_CALENDAR_LIST_DOWNLOADED              @"kNotificationDataBaseCompliteLoadCalendarsList"
 #define DATA_BASE_USER_VALUE_LIST_DOWNLOADED            @"kNotificationDataBaseCompliteLoadUserValueList"
@@ -59,6 +61,8 @@
 
 //*********************
 
+- (void)reset;
+
 - (BOOL)isLogin;
 
 - (void)downloadAllData;
@@ -96,5 +100,7 @@
 - (void)writAppValueToDataBase:(NFNValue*)value;
 - (void)writeAppResultCategoryToDataBase:(NFNRsultCategory*)resultCategory;
 - (void)writeAppManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value;
+
+- (void)reset;
 
 @end

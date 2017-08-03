@@ -11,14 +11,13 @@
 #import "NFGoogleSyncManager.h"
 #import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
+#import "NFFirebaseSyncManager.h"
 
 @interface NFNSyncManager ()
 
 @property (strong, nonatomic) NSMutableArray *calendarList;
 @property (strong, nonatomic) NSMutableArray *eventsList;
 @property (strong, nonatomic) NSMutableArray *manifestationList;
-
-
 
 @property (assign, nonatomic) BOOL isGogleCalendar;
 @property (assign, nonatomic) BOOL isGoogleEvent;
@@ -37,6 +36,16 @@
 //        [NFPop startAlertWithMassage:kErrorInternetconnection];
 //    }
     return manager;
+}
+
+- (void)reset {
+    [_calendarList removeAllObjects];
+    [_eventsList removeAllObjects];
+    [_manifestationList removeAllObjects];
+    _isDataBase = false;
+    _isGoogleEvent = false;
+    _isGogleCalendar = false;
+    
 }
 
 - (instancetype)init {
@@ -90,6 +99,9 @@
         [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
         [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
         [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
+        
+        NSNotification *notification = [NSNotification notificationWithName:END_UPDATE object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
 
@@ -115,6 +127,7 @@
         [self removeCalendarFromDBManager:calendar];
     }
     [self updateCalendarListInfoFromOld:dataBaseCalendars toNew:googleCalendars];
+    
 }
 
 - (void)updateCalendarListInfoFromOld:(NSArray*)oldList toNew:(NSArray*)newList {
@@ -137,7 +150,6 @@
         [self addValueToDBManager:val];
         [self writeValueToDataBase:val];
     }
-    
 }
 
 - (void)eventsSynchronization {
@@ -238,9 +250,6 @@
 }
 
 
-
-
-
 #pragma mark - managers methods 
 
 - (void)addCalendarToDBManager:(NFGoogleCalendar*)calendar {
@@ -263,6 +272,7 @@
 }
 
 - (void)addResultToDBManager:(NFNRsult*)result {
+    [[NFDataSourceManager sharedManager] addResultToDataSource:result];
     [[NFFirebaseSyncManager sharedManager] addResultToManager:result];
 }
 
@@ -315,9 +325,11 @@
 #pragma mark - app run methods
 
 - (BOOL)isFirstRunApp {
-    NSUserDefaults *defaults = [[NSUserDefaults alloc] init];
-    if (![defaults valueForKey:IS_FIRST_RUN_APP]) {
-        [defaults setValue:@"no" forKey:IS_FIRST_RUN_APP];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *userUID = [defaults valueForKey:IS_FIRST_RUN_APP];
+    if (![userUID isEqualToString:USER_UID]) {
+        [defaults setValue:USER_UID forKey:IS_FIRST_RUN_APP];
+        [defaults synchronize];
         return YES;
     } else {
         return NO;

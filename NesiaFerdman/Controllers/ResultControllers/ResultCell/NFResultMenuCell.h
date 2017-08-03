@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFResultCategory.h"
+#import "NFNRsultCategory.h"
 #import "NFWeekDateModel.h"
 
 @interface NFResultMenuCell : UITableViewCell
 
-- (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate;
-- (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate;
-- (void)addDataToMonthCell:(NFResultCategory*)category date:(NSDate*)currentDate;
+- (void)addDataToCell:(NFNRsultCategory*)category date:(NFWeekDateModel*)currentDate;
+- (void)addDataToDayCell:(NFNRsultCategory *)category date:(NSDate *)currentDate;
+- (void)addDataToMonthCell:(NFNRsultCategory*)category date:(NSDate*)currentDate;
 
 - (instancetype)initWithDefaultStyle;
 

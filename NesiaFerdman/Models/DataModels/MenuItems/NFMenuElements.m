@@ -18,6 +18,7 @@
 #import "NFManifestationsController.h"
 #import "NFSettingDetailController.h"
 #import "NFStatisticPageController.h"
+#import "NFNSyncManager.h"
 
 
 
@@ -26,7 +27,7 @@ typedef NS_ENUM(NSInteger, MenuItem)
    // Results,
     Statistic,
     Values,
-    Manifestations,
+    //Manifestations,
     Settings,
     Training,
     About,
@@ -75,14 +76,14 @@ typedef NS_ENUM(NSInteger, MenuItem)
             [target presentViewController:navController animated:YES completion:nil];
             break;
         }
-        case Manifestations:
-        {
-            NFManifestationsController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFManifestationsController class])];
-            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFManifestationsControllerNav"];
-            [navController setViewControllers:@[viewController]];
-            [target presentViewController:navController animated:YES completion:nil];
-            break;
-        }
+//        case Manifestations:
+//        {
+//            NFManifestationsController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFManifestationsController class])];
+//            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFManifestationsControllerNav"];
+//            [navController setViewControllers:@[viewController]];
+//            [target presentViewController:navController animated:YES completion:nil];
+//            break;
+//        }
         case Settings:
         {
             NFSettingDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFSettingDetailController class])];
@@ -112,6 +113,7 @@ typedef NS_ENUM(NSInteger, MenuItem)
 
         case Exit:
         {
+            
             [[NFLoginSimpleController sharedMenuController] logout];
             break;
         }
@@ -144,11 +146,11 @@ typedef NS_ENUM(NSInteger, MenuItem)
     myValues.imageName = @"value_icon.png";
     [_itemsArray addObject:myValues];
     
-    NFMenuItem *manifestations = [NFMenuItem new];
-    manifestations.title = @"Проявления";
-    manifestations.index = 4;
-    manifestations.imageName = @"manifestations_icon.png";
-    [_itemsArray addObject:manifestations];
+//    NFMenuItem *manifestations = [NFMenuItem new];
+//    manifestations.title = @"Проявления";
+//    manifestations.index = 4;
+//    manifestations.imageName = @"manifestations_icon.png";
+//    [_itemsArray addObject:manifestations];
     
     NFMenuItem *settings = [NFMenuItem new];
     settings.title = @"Настройки";

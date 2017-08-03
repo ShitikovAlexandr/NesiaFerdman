@@ -7,7 +7,7 @@
 //
 
 #import "NFResultMenuCell.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 
 @implementation NFResultMenuCell
 
@@ -43,38 +43,38 @@
 
 #pragma mark - parse data to cell methods
 
-- (void)addDataToCell:(NFResultCategory*)category date:(NFWeekDateModel*)currentDate {
+- (void)addDataToCell:(NFNRsultCategory*)category date:(NFWeekDateModel*)currentDate {
     [self animateLabel:self.detailTextLabel];
-    self.textLabel.text = category.resultCategoryTitle;
+    self.textLabel.text = category.title;
     self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForWeek:currentDate category:category]];
 
 }
 
-- (void)addDataToDayCell:(NFResultCategory *)category date:(NSDate *)currentDate {
+- (void)addDataToDayCell:(NFNRsultCategory *)category date:(NSDate *)currentDate {
     [self animateLabel:self.detailTextLabel];
-    self.textLabel.text = category.resultCategoryTitle;
+    self.textLabel.text = category.title;
     self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForDay:currentDate category:category]];
 }
 
-- (void)addDataToMonthCell:(NFResultCategory*)category date:(NSDate*)currentDate {
+- (void)addDataToMonthCell:(NFNRsultCategory*)category date:(NSDate*)currentDate {
     [self animateLabel:self.detailTextLabel];
-    self.textLabel.text = category.resultCategoryTitle;
+    self.textLabel.text = category.title;
     self.detailTextLabel.text = [NSString stringWithFormat:@"%li", (long)[self getCategoryCountForMonth:currentDate category:category]];
 }
 
 #pragma mark - Result count methods
 
-- (NSInteger)getCategoryCountForDay:(NSDate*)day category:(NFResultCategory*)category {
+- (NSInteger)getCategoryCountForDay:(NSDate*)day category:(NFNRsultCategory*)category {
     NSMutableArray *dayArray = [NSMutableArray array];
-    [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:category forDay:day]];
+    [dayArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultWithFilter:category forDay:day]];
     return dayArray.count;
 }
 
-- (NSInteger)getCategoryCountForWeek:(NFWeekDateModel*)week category:(NFResultCategory*)category {
+- (NSInteger)getCategoryCountForWeek:(NFWeekDateModel*)week category:(NFNRsultCategory*)category {
     NSInteger count = 0;
     for (NSDate *dayDate in week.allDateOfWeek) {
         NSMutableArray *dayArray = [NSMutableArray array];
-        [dayArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:category forDay:dayDate]];
+        [dayArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultWithFilter:category forDay:dayDate]];
         if (dayArray.count > 0) {
             count += dayArray.count;
         }
@@ -82,10 +82,10 @@
     return count;
 }
 
-- (NSInteger)getCategoryCountForMonth:(NSDate*)monthDate category:(NFResultCategory*)category {
+- (NSInteger)getCategoryCountForMonth:(NSDate*)monthDate category:(NFNRsultCategory*)category {
     NSInteger count = 0;
     NSMutableArray *monthArray = [NSMutableArray array];
-    [monthArray addObjectsFromArray:[[NFTaskManager sharedManager] getResultWithFilter:category forMonth:monthDate]];
+    [monthArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getResultWithFilter:category forMonth:monthDate]];
     if (monthArray.count > 0) {
         for (NSArray *dayArray in monthArray ) {
             count+=dayArray.count;

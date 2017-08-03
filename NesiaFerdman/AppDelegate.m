@@ -8,12 +8,10 @@
 
 #import "AppDelegate.h"
 #import "NFStyleKit.h"
-//#import "NFGoogleManager.h"
 #import "NFGoogleSyncManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 @import Firebase;
-#warning lock at Google manager in this class
 
 @interface AppDelegate () 
 @end
@@ -29,7 +27,7 @@
     [FIRApp configure];
     
     [self setNFStyleAndColors];
-    [NFGoogleSyncManager sharedManager];
+    //[NFGoogleSyncManager sharedManager];
 
     return YES;
 }

@@ -10,7 +10,6 @@
 #import "NFHeaderView.h"
 #import "NFResultMenuCell.h"
 #import "NFResultDetailController.h"
-#import "NFTaskManager.h"
 #import "NFDateModel.h"
 #import "NFSettingManager.h"
 #import "NotifyList.h"
