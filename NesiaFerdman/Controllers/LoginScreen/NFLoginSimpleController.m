@@ -15,10 +15,13 @@
 #import "NotifyList.h"
 #import "NFSyncManager.h"
 #import "NFActivityIndicatorView.h"
-
+#import "NFCalendarListController.h"
 #import "NFGoogleSyncManager.h"
 #import "NFNSyncManager.h"
-#warning lock at Google manager in this class
+#import "NFDataSourceManager.h"
+
+@import Firebase;
+
 
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.12
@@ -42,6 +45,8 @@ typedef NS_ENUM(NSUInteger, ScreenState)
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
+@property (assign, nonatomic) BOOL isFirstRun;
+@property (assign, nonatomic) BOOL isUpdate;
 
 
 @end
@@ -63,7 +68,9 @@ static NFLoginSimpleController *sharedController;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endLoadData) name:END_UPDATE_DATA object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginComplite) name:LOGIN_FIREBASE object:nil];
+    //END_UPDATE
+    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self chackLoginState];
     });
@@ -71,7 +78,8 @@ static NFLoginSimpleController *sharedController;
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:LOGIN_FIREBASE object:nil];
+//     [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE object:nil];
 }
 
 + (NFLoginSimpleController *)sharedMenuController {
@@ -116,9 +124,12 @@ static NFLoginSimpleController *sharedController;
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
 }
 
-
+- (void)loginComplite {
+    
+}
 
 - (void) transformToLogin {
+    [_indicator stopAnimating];
     _topConstrain.constant = TRANSFORM_VALUE;
     [UIView animateWithDuration:1.0
                           delay:0.0
@@ -133,52 +144,56 @@ static NFLoginSimpleController *sharedController;
 }
 
 - (void)chackLoginState {
-    NSLog(@"New manager stata is login %d", [[NFGoogleSyncManager sharedManager] isLogin]);
-    
     if (![[NFGoogleSyncManager sharedManager] isLogin]) {
         NSLog(@"not login");
+        [[NFGoogleSyncManager sharedManager] logOutAction];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self transformToLogin];
         });
-
+        
     } else {
         NSLog(@"login");
+        [_indicator startAnimating];
         _loginButton.userInteractionEnabled = false;
         _loginButton.alpha = 0;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [[NFNSyncManager sharedManager] updateData];
+        if ([[NFNSyncManager sharedManager] isFirstRunApp]) {
+            if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
+                [self navigateToCalendarListWithList:true];
+            } else {
+                [self navigateToCalendarListWithList:false];
+            }
+            
+        } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
             
             [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
-        });
-//        //[[NFSyncManager sharedManager] addStandartListOfResultCategory];
-//        if ([[NFSyncManager sharedManager] isFirstRunApp]) {
-//            [[NFSyncManager sharedManager] addStandartListOfValue];
-//        }
-//        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//             [[NFSyncManager sharedManager] updateAllData];
-//        });
-//       
-//    }
-//
+        } else {
+            
+            [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
+
+        }
     }
 }
 
 - (void)loginAction {
+
     [[NFGoogleSyncManager sharedManager] loginActionWithTarget:self];
 }
 
 - (void)logout {
-    //[[NFGoogleManager sharedManager] logOutWithTarget:self];
-    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [[NFGoogleSyncManager sharedManager] logOutAction];
+    [self transformToLogin];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)endLoadData {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_indicator endAnimating];
-        [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
-    });
-
+- (void)navigateToCalendarListWithList:(BOOL)listData {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"NewMain" bundle:[NSBundle mainBundle]];
+    NFCalendarListController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
+    viewController.isFirstRun = true;
+    viewController.isCompliteDownload = listData;
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
