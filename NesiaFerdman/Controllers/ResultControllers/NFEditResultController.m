@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateTitleLabel;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 @property (strong, nonatomic) NFDatePicker *datePickerStart;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @end
 
@@ -44,17 +45,19 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endUpdate) name:END_UPDATE_DATA object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA object:nil];
 }
 
 #pragma mark - Helpers
 
 - (void)setStartDataToDisplay {
+    [_deleteButton setTitle:@"Удалить" forState:UIControlStateNormal];
+    [_deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     self.dateTitleLabel.text = @"Дата";
     self.textView.placeholder = @"Описание";
     if (_resultItem) {
@@ -89,17 +92,6 @@
     }
 }
 
-//- (void)endUpdate {
-//    [_indicator endAnimating];
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
-
-//- (NSString*)convertStringDateToStringCurrentFormat:(NSString*)inputString {
-//    NSDate *newDate = [self dateFromString:inputString];
-//    NFDateFormatter *dateFormater = [NFDateFormatter new];
-//    [dateFormater setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss"];
-//    return [dateFormater stringFromDate:newDate];
-//}
 
 - (NSString *)stringFromDate:(NSDate *)date {
     NFDateFormatter *dateFormater = [NFDateFormatter new];
@@ -127,7 +119,11 @@
     return newDate;
 }
 
-
+- (void)deleteAction {
+    [[NFNSyncManager sharedManager] removeResultFromDB:_resultItem];
+    [[NFNSyncManager sharedManager] removeResultFromDBManager:_resultItem];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 @end

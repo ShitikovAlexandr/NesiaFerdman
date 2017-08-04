@@ -12,6 +12,7 @@
 #import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
 #import "NFFirebaseSyncManager.h"
+#import "Reachability.h"
 
 @interface NFNSyncManager ()
 
@@ -32,9 +33,6 @@
     dispatch_once(&onceToken, ^{
         manager = [[self alloc] init];
     });
-//    if (![self connectedInternet]) {
-//        [NFPop startAlertWithMassage:kErrorInternetconnection];
-//    }
     return manager;
 }
 
@@ -45,8 +43,8 @@
     _isDataBase = false;
     _isGoogleEvent = false;
     _isGogleCalendar = false;
-    
 }
+
 
 - (instancetype)init {
     self = [super init];
@@ -56,8 +54,26 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(googleEventsEndDownload)name:NOTIFYCATIN_EVENT_LOAD object:nil];
         //firebase
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(dataBaseEndDownload)name:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityDidChange:) name:kReachabilityChangedNotification object:nil];
     }
     return self;
+}
+
+- (void)reachabilityDidChange:(NSNotification *)notification {
+    Reachability *reachability = (Reachability *)[notification object];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    if (networkStatus  == NotReachable) {
+        [NFPop internetConnectionAlert];
+    }
+}
+
++ (void)connectedInternet
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    if (networkStatus  == NotReachable) {
+        [NFPop startAlertWithMassage:kErrorInternetconnection];
+    }
 }
 
 - (void)updateData {
@@ -249,10 +265,10 @@
     [[NFDataSourceManager sharedManager] removeResultFromDataSource:result];
 }
 
-
 #pragma mark - managers methods 
 
 - (void)addCalendarToDBManager:(NFGoogleCalendar*)calendar {
+    [[NFDataSourceManager sharedManager] addCalendarToDataSource:calendar];
     [[NFFirebaseSyncManager sharedManager] addCalendarToManager:calendar];
 }
 
@@ -295,6 +311,7 @@
 }
 
 - (void)removeResultFromDBManager:(NFNRsult*)result {
+    [[NFDataSourceManager sharedManager] removeResultFromDataSource:result];
     [[NFFirebaseSyncManager sharedManager]  removeResultFromManager:result];
 }
 
@@ -326,9 +343,11 @@
 
 - (BOOL)isFirstRunApp {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *userUID = [defaults valueForKey:IS_FIRST_RUN_APP];
-    if (![userUID isEqualToString:USER_UID]) {
-        [defaults setValue:USER_UID forKey:IS_FIRST_RUN_APP];
+    NSString *userEmail = [defaults valueForKey:IS_FIRST_RUN_APP];
+    if (![userEmail isEqualToString:[[NFGoogleSyncManager sharedManager] getUserEmail]]) {
+        NSString *email = [[NFGoogleSyncManager sharedManager] getUserEmail];
+        [defaults setValue:email forKey:IS_FIRST_RUN_APP];
+        NSLog(@"nil nil %@", email);
         [defaults synchronize];
         return YES;
     } else {
@@ -366,6 +385,7 @@
     [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
     [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
     [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
+    
 }
 
 - (void)updateValueDataSource {

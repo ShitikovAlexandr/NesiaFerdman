@@ -12,6 +12,7 @@
 #import "NFTaskSimpleCell.h"
 #import "NFValuesFilterView.h"
 #import "NFMonthTaskDataSource.h"
+#import "NFDataSourceManager.h"
 
 @interface NFMonthTaskController ()
 {
@@ -54,9 +55,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:END_UPDATE_DATA_SOURCE object:nil];
+
     [self addDataToDisplay];
     [_ValuesFilterView updateTitleFromArray:[_dataSource setValueFilter]];
     [_dataSource setSelectedDate:_dateSelected ? _dateSelected: _todayDate];
+}
+
+- (void)updateData {
+    //[_ValuesFilterView updateTitleFromArray:[_dataSource setValueFilter]];
+    [_dataSource setSelectedDate:_dateSelected ? _dateSelected: _todayDate];
+    [_calendarManager reload];
 }
 
 - (void)addDataToDisplay {

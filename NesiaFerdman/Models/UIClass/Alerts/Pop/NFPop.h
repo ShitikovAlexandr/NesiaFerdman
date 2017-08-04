@@ -12,15 +12,14 @@
 #define kGoogleReadError            @"Ошибка чтения с Google"
 #define kFirebaseWriteError         @"Ошибка записи в базу данных"
 #define kFirebaseReadError          @"Ошибка чтения с базы данных"
-#define kErrorInternetconnection    @"Проверте интернет соединение"
+#define kErrorInternetconnection    @"Проверьте интернет соединение"
 #define kWrongDatesPerion           @"Дата окончания не должна быть меньше даты начала"
 #define kLoginError                 @"Ошибка авторизации"
 
 @interface NFPop : ISMessages
 
-
-
-
 + (void)startAlertWithMassage:(NSString *)massage;
+
++ (void)internetConnectionAlert;
 
 @end

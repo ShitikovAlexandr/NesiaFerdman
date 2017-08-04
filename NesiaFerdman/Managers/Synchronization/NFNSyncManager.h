@@ -62,5 +62,6 @@
 - (void)updateGoogleEvent:(NFNEvent*)event;
 
 - (void)reset;
++ (void)connectedInternet;
 
 @end

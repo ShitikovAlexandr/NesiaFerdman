@@ -38,6 +38,8 @@
 /** return true if user is logged in */
 - (BOOL)isLogin ;
 
+- (NSString*)getUserEmail;
+
 /** Adds a new event to google calendar */
 - (void)addNewEvent:(NFNEvent*)event;
 /** update event in google calendar */

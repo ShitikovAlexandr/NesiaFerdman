@@ -12,6 +12,10 @@
 #import "NFNRsult.h"
 #import "NFNRsultCategory.h"
 #import "NFNManifestation.h"
+#import "NFGoogleCalendar.h"
+
+
+#define END_UPDATE_DATA_SOURCE @"kEndUpdateDataSourse"
 
 @interface NFDataSourceManager : NSObject
 
@@ -63,6 +67,7 @@
 - (void)addManifestationToDataSource:(NFNManifestation*)manifestation;
 - (void)addResultToDataSource:(NFNRsult*)result;
 - (void)addValuesToSelectedList:(NSArray*)array;
+- (void)addCalendarToDataSource:(NFGoogleCalendar*)calendar;
 
 - (void)removeEventFromDataSource:(NFNEvent*)event;
 - (void)removeValueFromDataSource:(NFNValue*)value;

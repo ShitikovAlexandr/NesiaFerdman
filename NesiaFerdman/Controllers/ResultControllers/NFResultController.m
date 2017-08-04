@@ -9,6 +9,7 @@
 #import "NFResultController.h"
 #import "NotifyList.h"
 #import "NFResultWeekDataSource.h"
+#import "NFDataSourceManager.h"
 
 @interface NFResultController ()
 @property (weak, nonatomic) IBOutlet NFHeaderView *headerView;
@@ -30,11 +31,15 @@
     [super viewWillAppear:animated];
     [self updateData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:HEADER_NOTIF object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:END_UPDATE_DATA_SOURCE object:nil];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:HEADER_NOTIF object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE_DATA_SOURCE object:nil];
+
 }
 
 - (void)updateData {

@@ -2104,7 +2104,7 @@
                                         <rect key="frame" x="129.5" y="64" width="116.5" height="116.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upgrate_value_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-GL-YBI">
-                                                <rect key="frame" x="42" y="44" width="31" height="29"/>
+                                                <rect key="frame" x="43" y="44" width="31" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -2474,20 +2474,33 @@
                                     <constraint firstAttribute="height" constant="46" id="dNE-Hn-Sc4"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xf5-fa-HFm">
+                                <rect key="frame" x="24" y="336" width="114" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="Hhl-C9-Dqj"/>
+                                    <constraint firstAttribute="height" constant="30" id="NzU-gR-HHj"/>
+                                </constraints>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="0.39530714900000002" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="xf5-fa-HFm" firstAttribute="leading" secondItem="WEn-3P-Mhm" secondAttribute="leadingMargin" constant="8" id="3VW-gy-w6v"/>
                             <constraint firstItem="QLl-8W-BGS" firstAttribute="leading" secondItem="WEn-3P-Mhm" secondAttribute="leading" id="9vK-gH-MD0"/>
                             <constraint firstItem="QLl-8W-BGS" firstAttribute="top" secondItem="whr-Wk-l0M" secondAttribute="bottom" constant="44" id="JAc-X9-6f4"/>
                             <constraint firstItem="whr-Wk-l0M" firstAttribute="top" secondItem="VR9-K9-dCV" secondAttribute="bottom" constant="46" id="cvF-dm-0g0"/>
                             <constraint firstItem="whr-Wk-l0M" firstAttribute="leading" secondItem="WEn-3P-Mhm" secondAttribute="leading" id="e94-O3-BAo"/>
                             <constraint firstAttribute="trailing" secondItem="QLl-8W-BGS" secondAttribute="trailing" id="rtY-mw-b7o"/>
                             <constraint firstAttribute="trailing" secondItem="whr-Wk-l0M" secondAttribute="trailing" id="sKh-u3-CpS"/>
+                            <constraint firstItem="xf5-fa-HFm" firstAttribute="top" secondItem="QLl-8W-BGS" secondAttribute="bottom" constant="8" id="zx2-Wy-AMi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="dateTextField" destination="of0-af-w2W" id="JYa-NF-AFJ"/>
                         <outlet property="dateTitleLabel" destination="4aR-vB-3nf" id="fnc-fI-8ZQ"/>
+                        <outlet property="deleteButton" destination="xf5-fa-HFm" id="iZ4-lb-FVq"/>
                         <outlet property="mainView" destination="whr-Wk-l0M" id="UEf-qi-Gir"/>
                         <outlet property="textView" destination="1e2-KJ-YpX" id="W9N-OM-ElZ"/>
                     </connections>
@@ -2629,7 +2642,7 @@
         <scene sceneID="Dxw-hg-OcH">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P62-oK-aXe" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Итоги" image="result_NEW_icon" id="yzd-p5-dpg"/>
+                    <tabBarItem key="tabBarItem" title="Итоги" image="result" selectedImage="resultFill" id="yzd-p5-dpg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7H-el-2sQ" customClass="NFNavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -2691,7 +2704,8 @@
         <image name="menu-options" width="23" height="17"/>
         <image name="menu_green" width="23" height="17"/>
         <image name="quote_img.png" width="750" height="660"/>
-        <image name="result_NEW_icon" width="19" height="19"/>
+        <image name="result" width="19" height="19"/>
+        <image name="resultFill" width="19" height="19"/>
         <image name="task" width="17" height="25"/>
         <image name="taskFill" width="17" height="25"/>
         <image name="uodate_icon" width="18" height="22"/>

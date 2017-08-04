@@ -111,6 +111,8 @@
 		C24AA50D1EBB160100ABA92C /* List_Document@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AA50C1EBB160100ABA92C /* List_Document@2x.png */; };
 		C24AA5131EBB281500ABA92C /* NFTaskSimpleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AA5121EBB281500ABA92C /* NFTaskSimpleCell.m */; };
 		C24AA5151EBB281C00ABA92C /* NFTaskSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24AA5141EBB281C00ABA92C /* NFTaskSimpleCell.xib */; };
+		C24AEA491F34845500AA88D2 /* result.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AEA481F34845500AA88D2 /* result.png */; };
+		C24AEA4B1F34868700AA88D2 /* resultFill.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AEA4A1F34868700AA88D2 /* resultFill.png */; };
 		C24B29D01F25D2AF0069C160 /* NFNSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */; };
 		C24B29D61F25E4AC0069C160 /* NFNEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D31F25E4AC0069C160 /* NFNEvent.m */; };
 		C24B29D71F25E4AC0069C160 /* NFNValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D51F25E4AC0069C160 /* NFNValue.m */; };
@@ -459,6 +461,8 @@
 		C24AA5111EBB281500ABA92C /* NFTaskSimpleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTaskSimpleCell.h; sourceTree = "<group>"; };
 		C24AA5121EBB281500ABA92C /* NFTaskSimpleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTaskSimpleCell.m; sourceTree = "<group>"; };
 		C24AA5141EBB281C00ABA92C /* NFTaskSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTaskSimpleCell.xib; sourceTree = "<group>"; };
+		C24AEA481F34845500AA88D2 /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
+		C24AEA4A1F34868700AA88D2 /* resultFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultFill.png; sourceTree = "<group>"; };
 		C24B29CE1F25D2AF0069C160 /* NFNSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNSyncManager.h; sourceTree = "<group>"; };
 		C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNSyncManager.m; sourceTree = "<group>"; };
 		C24B29D21F25E4AC0069C160 /* NFNEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNEvent.h; sourceTree = "<group>"; };
@@ -966,7 +970,6 @@
 				C24DF74C1EF943D6003FCF5C /* ResultControllers */,
 				C212DEE21EF119530082EF38 /* StatisticController */,
 				C2B3C8A91EE9355A000B917D /* ValueController */,
-				C2B3D9771EDF192800A0A44E /* EditTaskController */,
 				C2B3D96B1EDEABD100A0A44E /* FilterValuesController */,
 				C2DDBCDF1ED4595A00F61F02 /* LoginScreen */,
 				C20AF31D1EA9E2EF00637A49 /* MenuControllers */,
@@ -1609,7 +1612,8 @@
 				C2B3D9781EDF194200A0A44E /* NFEditTaskController.h */,
 				C2B3D9791EDF194200A0A44E /* NFEditTaskController.m */,
 			);
-			path = EditTaskController;
+			name = EditTaskController;
+			path = ../EditTaskController;
 			sourceTree = "<group>";
 		};
 		C2BA8BDA1EE058F4005EC650 /* TagList */ = {
@@ -1638,6 +1642,8 @@
 		C2C22D941EE9827B006BD83A /* menu */ = {
 			isa = PBXGroup;
 			children = (
+				C24AEA4A1F34868700AA88D2 /* resultFill.png */,
+				C24AEA481F34845500AA88D2 /* result.png */,
 				C209AF8C1F0A70890036A592 /* result_NEW_icon.png */,
 				C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */,
 				C2CD10991EF8212B00546566 /* menu_green.png */,
@@ -1889,6 +1895,7 @@
 		C2FE1C641E9F60E900B4E03A /* TaskControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C2B3D9771EDF192800A0A44E /* EditTaskController */,
 				C2E8C7181F2A27E2002B47C4 /* PageController */,
 				C2E8C7171F2A27CC002B47C4 /* Month */,
 				C23935411F2A109E003E82A2 /* Week */,
@@ -2110,6 +2117,7 @@
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
 				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
 				C2C22DA71EE98283006BD83A /* add_icon.png in Resources */,
+				C24AEA4B1F34868700AA88D2 /* resultFill.png in Resources */,
 				C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */,
 				C2C22DA91EE98283006BD83A /* exit_icon.png in Resources */,
 				C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */,
@@ -2157,6 +2165,7 @@
 				C25737A41E9D2B3F00C4A4EA /* NFQuoteDayView.xib in Resources */,
 				C2FA691C1EE1848500D58D18 /* NFTagCell.xib in Resources */,
 				C2C22DAE1EE98283006BD83A /* money_value_icon.png in Resources */,
+				C24AEA491F34845500AA88D2 /* result.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

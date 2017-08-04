@@ -60,6 +60,11 @@
     return self;
 }
 
+- (NSString*)getUserEmail {
+    GIDGoogleUser *user = [_signIn currentUser];
+    return user.profile.email;
+}
+
 
 #pragma mark - get methods
 - (void)resetCalendarList {
@@ -210,8 +215,6 @@
         NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
         [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
-    
-    
 }
 
 - (void)downloadGoogleCalendarList {
@@ -242,8 +245,10 @@
 }
 
 - (void)chackAPPCalendar {
+    NSString *email = [self getUserEmail];
+    NSLog(@"email %@", email);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *calendarID = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
+    NSString *calendarID = [defaults valueForKey:email];
     int i = 0;
     for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
         if ([calendar.idField isEqualToString:calendarID]) {
@@ -264,8 +269,11 @@
                      NSLog(@"calendar new %@", object);
                      GTLRCalendar_Calendar *cal = object;
                      NFGoogleCalendar *new = [[NFGoogleCalendar alloc] initWithDictionary:cal.JSON];
+                     [[NFNSyncManager sharedManager] addCalendarToDBManager:new];
+                     [[NFNSyncManager sharedManager] writeCalendarToDataBase:new];
                      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
+                     NSString *email = [self getUserEmail];
+                     [defaults setValue:new.idField forKey:email];
                      NSLog(@"create new calendar");
                  }
              }];

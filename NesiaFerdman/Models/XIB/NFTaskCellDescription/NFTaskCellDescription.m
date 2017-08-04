@@ -31,8 +31,6 @@
 - (void)setCellTite:(NSString*)text {
     _titleTaskLabel.text = text;
 }
-    
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -160,8 +158,6 @@
     NSString* newDate = [dateFormatter1 stringFromDate:date];
     return newDate;
 }
-
-
 
 
 @end

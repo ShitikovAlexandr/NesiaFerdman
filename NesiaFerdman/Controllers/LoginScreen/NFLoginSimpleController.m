@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, ScreenState)
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 @property (assign, nonatomic) BOOL isFirstRun;
 @property (assign, nonatomic) BOOL isUpdate;
+@property (assign, nonatomic) BOOL isSelectCalendars;
 
 
 @end
@@ -60,17 +61,13 @@ static NFLoginSimpleController *sharedController;
     sharedController = self;
     [self initViews];
     [_loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchDown];
-    
-
-    
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginComplite) name:LOGIN_FIREBASE object:nil];
-    //END_UPDATE
-    
+    _loginButton.userInteractionEnabled = false;
+    _loginButton.alpha = 0;
+
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self chackLoginState];
     });
@@ -78,8 +75,6 @@ static NFLoginSimpleController *sharedController;
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:LOGIN_FIREBASE object:nil];
-//     [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE object:nil];
 }
 
 + (NFLoginSimpleController *)sharedMenuController {
@@ -110,10 +105,6 @@ static NFLoginSimpleController *sharedController;
     [_logoImage setImage:[UIImage imageNamed:@"main_logo.png"]];
     _logoImage.center = _logoView.center;
     [self.mainView addSubview:_logoImage];
-    
-//    _circleViewOriginFrame = _circleView.frame;
-//    _logoViewOriginFrame = _logoView.frame;
-//    _logoImageOriginFrame = _logoImage.frame;
     _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
     _socialText.text = @"Вход\nчерез социальную сеть";
     _socialText.tintColor = [NFStyleKit _base_GREY];
@@ -138,44 +129,44 @@ static NFLoginSimpleController *sharedController;
                          _loginButton.alpha = 1;
                          _buttonView.alpha = 1.0;
                          _loginButton.userInteractionEnabled = true;
-                          [self.view layoutIfNeeded];
+                         [self.view layoutIfNeeded];
                      }
                      completion:NULL];
 }
 
 - (void)chackLoginState {
-    if (![[NFGoogleSyncManager sharedManager] isLogin]) {
+      if (![[NFGoogleSyncManager sharedManager] isLogin]) {
         NSLog(@"not login");
         [[NFGoogleSyncManager sharedManager] logOutAction];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self transformToLogin];
         });
-        
     } else {
         NSLog(@"login");
         [_indicator startAnimating];
         _loginButton.userInteractionEnabled = false;
         _loginButton.alpha = 0;
-        if ([[NFNSyncManager sharedManager] isFirstRunApp]) {
-            if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
-                [self navigateToCalendarListWithList:true];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            if ([[NFNSyncManager sharedManager] isFirstRunApp]) {
+                if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
+                    [self navigateToCalendarListWithList:true];
+                } else {
+                    [self navigateToCalendarListWithList:false];
+                }
+            } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
+                
+                [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                [self navigateToCalendarListWithList:false];
+                
+                [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
-            
-        } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
-            
-            [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
-        } else {
-            
-            [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
-
-        }
+        });
     }
 }
 
 - (void)loginAction {
-
+    _loginButton.alpha = 0;
+    _loginButton.userInteractionEnabled = false;
     [[NFGoogleSyncManager sharedManager] loginActionWithTarget:self];
 }
 

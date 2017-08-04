@@ -7,7 +7,6 @@
 //
 
 #import "NFDataSourceManager.h"
-#import "NFGoogleCalendar.h"
 
 
 @interface NFDataSourceManager ()
@@ -400,6 +399,10 @@
     [_resultArray addObject:result];
 }
 
+- (void)addCalendarToDataSource:(NFGoogleCalendar*)calendar {
+    [_calendarArray addObject:calendar];
+}
+
 - (void)removeEventFromDataSource:(NFNEvent*)event {
     [_eventsArray removeObject:event];
 }
@@ -521,6 +524,9 @@
                 }
             }
         }//
+        NSLog(@"complite updare DataSource events");
+        NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA_SOURCE object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
     }
 }
 

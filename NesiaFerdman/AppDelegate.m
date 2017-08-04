@@ -11,9 +11,11 @@
 #import "NFGoogleSyncManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import "Reachability.h"
 @import Firebase;
 
-@interface AppDelegate () 
+@interface AppDelegate ()
+@property (strong, nonatomic) Reachability *reachability;
 @end
 
 @implementation AppDelegate
@@ -27,7 +29,7 @@
     [FIRApp configure];
     
     [self setNFStyleAndColors];
-    //[NFGoogleSyncManager sharedManager];
+    [self reachabilityNetwork];
 
     return YES;
 }
@@ -143,7 +145,13 @@
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = [[NFStyleKit bASE_GREEN] colorWithAlphaComponent:0.3];
     [UITableViewCell appearance].selectedBackgroundView = bgColorView;
+}
 
+- (void)reachabilityNetwork {
+    // Initialize Reachability
+    _reachability = [Reachability reachabilityWithHostName:@"www.apple.com"];
+    // Start Monitoring
+    [_reachability startNotifier];
 }
 
 @end

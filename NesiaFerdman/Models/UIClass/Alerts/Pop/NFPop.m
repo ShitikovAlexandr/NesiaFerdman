@@ -40,12 +40,30 @@ static BOOL isShowAlert = false;
                               duration:3.f
                            hideOnSwipe:YES
                              hideOnTap:YES
-                             alertType:ISAlertTypeWarning
+                             alertType:ISAlertTypeError
                          alertPosition:ISAlertPositionTop
                                didHide:^(BOOL finished) {
                                    NSLog(@"Alert did hide.");
                                    isShowAlert = false;
                                }];
+    }
+
+}
+
++ (void)internetConnectionAlert {
+    if (!isShowAlert) {
+        isShowAlert = true;
+        [NFPop showCardAlertWithTitle:@""
+                              message:kErrorInternetconnection
+                             duration:3.f
+                          hideOnSwipe:YES
+                            hideOnTap:YES
+                            alertType:ISAlertTypeWarning
+                        alertPosition:ISAlertPositionTop
+                              didHide:^(BOOL finished) {
+                                  NSLog(@"Alert did hide.");
+                                  isShowAlert = false;
+                              }];
     }
 
 }
