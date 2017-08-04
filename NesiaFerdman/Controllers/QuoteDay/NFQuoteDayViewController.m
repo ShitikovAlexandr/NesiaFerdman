@@ -36,7 +36,6 @@
     [self setCurrentDateToScreen];
     if ([[NFFirebaseSyncManager sharedManager] getQuoteList].count > 0) {
         [self updateData];
-        [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
     }
 }
 
@@ -53,6 +52,7 @@
 }
 
 - (void)updateData {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
     [_indicator endAnimating];
     NSMutableArray *array = [NSMutableArray new];
     [array addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getQuoteList]];
