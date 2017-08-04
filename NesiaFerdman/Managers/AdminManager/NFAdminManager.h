@@ -23,4 +23,7 @@
 
 + (void)writeStandartManifestationsToDataBase;
 
++ (void)writeQuote;
++ (void)writeOption;
+
 @end

@@ -35,6 +35,25 @@
     }
 }
 
+
+
++ (void)writeQuote {
+    for (int i = 0; i < 31; i++) {
+        NFNQuote *quote = [[NFNQuote alloc] init];
+        quote.index = 0;
+        quote.date = @"2017-08-04";
+        quote.author = [NSString stringWithFormat:@"test author #%d", i];
+        quote.title = [NSString stringWithFormat:@"test quote #%d", i];
+        [[NFFirebaseSyncManager sharedManager] writeQuoteToDataBase:quote];
+    }
+}
+
++ (void)writeOption {
+    [[NFFirebaseSyncManager sharedManager] writeMaxTime:@120];
+    [[NFFirebaseSyncManager sharedManager] writeMinTime:@120];
+   // [[NFFirebaseSyncManager sharedManager] writeMaxLimitGoogle:@1000];
+}
+
 + (NSMutableArray*)satndartListOfManifestations {
     NSMutableArray *resultArray = [NSMutableArray array];
     

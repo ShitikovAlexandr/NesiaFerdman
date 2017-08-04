@@ -24,6 +24,12 @@
 #define RESULT_CATEGORY             @"ResultsCategory"
 #define CALENDAR_LIST               @"Calendars"
 
+#define APP_OPTIONS                 @"Options"
+#define MIN_TIME                    @"MinTime"
+#define MAX_TIME                    @"MaxTime"
+#define MAX_LOAD                    @"LimitDownloadingGoogleEvents"
+#define QUOTE                       @"Quotes"
+
 @interface NFFirebaseSyncManager ()
 @property (strong, nonatomic) FIRDatabaseReference *ref;
 
@@ -38,6 +44,8 @@
 @property (strong, nonatomic) NSMutableArray *appValuesArray;
 @property (strong, nonatomic) NSMutableArray *appResultsArray;
 @property (strong, nonatomic) NSMutableArray *appManifestationArray;
+@property (strong, nonatomic) NSMutableArray *appQuoteArray;
+
 
 @property (assign, nonatomic) BOOL isEventsList;
 @property (assign, nonatomic) BOOL isValueList;
@@ -73,6 +81,7 @@
     [_appValuesArray removeAllObjects];
     [_appValuesArray removeAllObjects];
     [_appManifestationArray removeAllObjects];
+    [_appQuoteArray removeAllObjects];
     [self resetFlags];
 }
 
@@ -88,6 +97,7 @@
         _appValuesArray = [NSMutableArray new];
         _appResultsArray = [NSMutableArray new];
         _appManifestationArray = [NSMutableArray new];
+        _appQuoteArray = [NSMutableArray array];
     }
     return self;
 }
@@ -141,6 +151,12 @@
 - (NSMutableArray*)getAppManifestationList {
     return _appManifestationArray;
 }
+
+- (NSMutableArray*)getQuoteList {
+    return _appQuoteArray;
+}
+
+
 
 //************************************************************************
 
@@ -301,6 +317,27 @@
 }
 
 #pragma mark - app data
+
+- (void)downloadQuoteList {
+    [[self appQuoteeRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSMutableArray *inputArray = [NSMutableArray array];
+        NSEnumerator *children = [snapshot children];
+        FIRDataSnapshot *child;
+        while (child = [children nextObject]) {
+            NSDictionary *itemDictionary = [NSDictionary dictionaryWithDictionary:(NSDictionary*)child.value];
+            [inputArray addObject:itemDictionary];
+        }
+        NSMutableArray *resultArray = [NSMutableArray new];
+        for (NSDictionary* dic in inputArray) {
+            NFNQuote *newObject = [[NFNQuote alloc] initWithDictionary:dic];
+            [resultArray addObject:newObject];
+        }
+        [_appQuoteArray removeAllObjects];
+        [_appQuoteArray addObjectsFromArray:resultArray];
+        NSNotification *notification = [NSNotification notificationWithName:QUOTE_END_LOAD object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }];
+}
 
 - (void)downloadAppValueList {
     [[self appValuesRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
@@ -497,6 +534,14 @@
     return [[self ref] child:MANIFESTATION_DIRECTORY];
 }
 
+- (FIRDatabaseReference*)appOptionsRef {
+    return [[self ref] child:APP_OPTIONS];
+}
+
+- (FIRDatabaseReference*)appQuoteeRef {
+    return [[self ref] child:QUOTE];
+}
+
 - (BOOL)isLogin {
     if ([FIRAuth auth].currentUser != nil) {
         return true;
@@ -518,6 +563,22 @@
 - (void)writeAppManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value {
     manifestation.parentId = value.valueId;
     [[[self appValueManifestationsRef] child:manifestation.idField] updateChildValues:[manifestation toDictionary]];
+}
+
+- (void)writeQuoteToDataBase:(NFNQuote*)quote {
+    [[[self appQuoteeRef] child:quote.idField] updateChildValues:[quote toDictionary]];
+}
+
+- (void)writeMinTime:(NSNumber*)min {
+    [[[self appOptionsRef] child:MIN_TIME] setValue:min];
+}
+
+- (void)writeMaxTime:(NSNumber*)max {
+    [[[self appOptionsRef] child:MAX_TIME] setValue:max];
+}
+
+- (void)writeMaxLimitGoogle:(NSNumber*)limit {
+    [[[self appOptionsRef] child:MAX_LOAD] setValue:limit];
 }
 
 

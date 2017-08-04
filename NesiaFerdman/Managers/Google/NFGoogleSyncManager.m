@@ -103,6 +103,7 @@
     [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
         if (error == nil) {
             NSLog(@"singin to firebase");
+            [[NFFirebaseSyncManager sharedManager]  downloadQuoteList];
             [[NFNSyncManager sharedManager] updateData];
             NSNotification *notification = [NSNotification notificationWithName:LOGIN_FIREBASE object:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];

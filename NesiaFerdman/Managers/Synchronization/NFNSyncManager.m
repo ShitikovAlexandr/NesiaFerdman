@@ -404,6 +404,9 @@
     return (NSMutableArray*)[array sortedArrayUsingDescriptors:sortDescriptors];
 }
 
+- (NSArray*)getQuotesList {
+    return  [[NFFirebaseSyncManager sharedManager] getQuoteList];
+}
 
 
 @end

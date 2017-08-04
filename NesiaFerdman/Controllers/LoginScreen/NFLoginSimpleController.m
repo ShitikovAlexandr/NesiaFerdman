@@ -157,8 +157,9 @@ static NFLoginSimpleController *sharedController;
                 
                 [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                
-                [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
+                [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
+
+                //[self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
         });
     }

@@ -113,6 +113,7 @@
 		C24AA5151EBB281C00ABA92C /* NFTaskSimpleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C24AA5141EBB281C00ABA92C /* NFTaskSimpleCell.xib */; };
 		C24AEA491F34845500AA88D2 /* result.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AEA481F34845500AA88D2 /* result.png */; };
 		C24AEA4B1F34868700AA88D2 /* resultFill.png in Resources */ = {isa = PBXBuildFile; fileRef = C24AEA4A1F34868700AA88D2 /* resultFill.png */; };
+		C24AEA4F1F34B79A00AA88D2 /* NFNQuote.m in Sources */ = {isa = PBXBuildFile; fileRef = C24AEA4E1F34B79A00AA88D2 /* NFNQuote.m */; };
 		C24B29D01F25D2AF0069C160 /* NFNSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */; };
 		C24B29D61F25E4AC0069C160 /* NFNEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D31F25E4AC0069C160 /* NFNEvent.m */; };
 		C24B29D71F25E4AC0069C160 /* NFNValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C24B29D51F25E4AC0069C160 /* NFNValue.m */; };
@@ -463,6 +464,8 @@
 		C24AA5141EBB281C00ABA92C /* NFTaskSimpleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTaskSimpleCell.xib; sourceTree = "<group>"; };
 		C24AEA481F34845500AA88D2 /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
 		C24AEA4A1F34868700AA88D2 /* resultFill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resultFill.png; sourceTree = "<group>"; };
+		C24AEA4D1F34B79A00AA88D2 /* NFNQuote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNQuote.h; sourceTree = "<group>"; };
+		C24AEA4E1F34B79A00AA88D2 /* NFNQuote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNQuote.m; sourceTree = "<group>"; };
 		C24B29CE1F25D2AF0069C160 /* NFNSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNSyncManager.h; sourceTree = "<group>"; };
 		C24B29CF1F25D2AF0069C160 /* NFNSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNSyncManager.m; sourceTree = "<group>"; };
 		C24B29D21F25E4AC0069C160 /* NFNEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNEvent.h; sourceTree = "<group>"; };
@@ -1085,6 +1088,7 @@
 		C2308B191F1F43FA006F6E87 /* GoogleModels */ = {
 			isa = PBXGroup;
 			children = (
+				C24AEA4C1F34B77F00AA88D2 /* Quote */,
 				C24B29DF1F260EEE0069C160 /* Result */,
 				C24B29DB1F260E120069C160 /* ResultCategory */,
 				C24B29D11F25E49C0069C160 /* Event+Value */,
@@ -1342,6 +1346,15 @@
 				C24AA5141EBB281C00ABA92C /* NFTaskSimpleCell.xib */,
 			);
 			path = TaskSimpleCell;
+			sourceTree = "<group>";
+		};
+		C24AEA4C1F34B77F00AA88D2 /* Quote */ = {
+			isa = PBXGroup;
+			children = (
+				C24AEA4D1F34B79A00AA88D2 /* NFNQuote.h */,
+				C24AEA4E1F34B79A00AA88D2 /* NFNQuote.m */,
+			);
+			path = Quote;
 			sourceTree = "<group>";
 		};
 		C24B29D11F25E49C0069C160 /* Event+Value */ = {
@@ -2426,6 +2439,7 @@
 				C2091B1D1F1E416F00BAA524 /* NFCalendarListDataSource.m in Sources */,
 				C26BA3301F14E9A00053A138 /* NFResultMonthDataSource.m in Sources */,
 				C2DDBCFE1ED4732F00F61F02 /* NFLogInButton.m in Sources */,
+				C24AEA4F1F34B79A00AA88D2 /* NFNQuote.m in Sources */,
 				C2091B141F1E19D300BAA524 /* NFStatisticRandomPeriodDataSource.m in Sources */,
 				C245526B1EBCC912003EBB11 /* NFToolbar.m in Sources */,
 				C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */,

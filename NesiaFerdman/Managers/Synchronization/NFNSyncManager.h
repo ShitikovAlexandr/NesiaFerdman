@@ -63,5 +63,6 @@
 
 - (void)reset;
 + (void)connectedInternet;
+- (NSArray*)getQuotesList;
 
 @end

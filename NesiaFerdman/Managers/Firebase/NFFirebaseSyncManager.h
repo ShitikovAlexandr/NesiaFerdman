@@ -13,6 +13,7 @@
 #import "NFNRsult.h"
 #import "NFNManifestation.h"
 #import "NFGoogleCalendar.h"
+#import "NFNQuote.h"
 @import Firebase;
 
 //notification keys
@@ -28,7 +29,7 @@
 #define DATA_BASE_APP_VALUE_LIST_DOWNLOADED             @"kNotificationDataBaseCompliteLoadAppValueList"
 
 #define DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA          @"kNotificationDataBaseCompliteLoadAllData"
-
+#define QUOTE_END_LOAD                                  @"kQouteEndLoad"
 
 @interface NFFirebaseSyncManager : NSObject
 
@@ -95,12 +96,20 @@
 - (void)removeManifestationFromManager:(NFNManifestation*)manifestation;
 - (void)removeResultFromManager:(NFNRsult*)result;
 
+
+
 //admin part
 
 - (void)writAppValueToDataBase:(NFNValue*)value;
 - (void)writeAppResultCategoryToDataBase:(NFNRsultCategory*)resultCategory;
 - (void)writeAppManifestation:(NFNManifestation*)manifestation toValue:(NFNValue*)value;
 
-- (void)reset;
+- (void)writeQuoteToDataBase:(NFNQuote*)quote;
+- (void)writeMinTime:(NSNumber*)min;
+- (void)writeMaxTime:(NSNumber*)max;
+- (void)writeMaxLimitGoogle:(NSNumber*)limit;
+
+- (void)downloadQuoteList;
+- (NSMutableArray*)getQuoteList;
 
 @end

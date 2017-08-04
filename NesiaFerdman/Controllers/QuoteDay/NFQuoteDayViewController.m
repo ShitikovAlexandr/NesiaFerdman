@@ -10,12 +10,11 @@
 #import "NFQuoteDay.h"
 #import "NFQuoteDayView.h"
 #import "NFRoundButton.h"
-//#import "NFGoogleManager.h"
-//#import "NFFirebaseManager.h"
-#import "NFEvent.h"
-#import "NFSyncManager.h"
+#import "NFFirebaseSyncManager.h"
+#import "NFActivityIndicatorView.h"
 
 
+//QUOTE_END_LOAD
 @interface NFQuoteDayViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *monthLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dayLabel;
@@ -23,20 +22,45 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *autorLabel;
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
+
 @end
 
 @implementation NFQuoteDayViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.quoteLabel.text = @"";
+    self.autorLabel.text = @"";
     self.titleLabel.text = @"Цитата дня";
-    NFQuoteDay *day = [[NFQuoteDay alloc] initTestData];
-    self.quoteLabel.text = day.quote;
-    [self.quoteLabel sizeToFit];
-    self.autorLabel.text = day.autor;
     [self setCurrentDateToScreen];
-    
-    
+    if ([[NFFirebaseSyncManager sharedManager] getQuoteList].count > 0) {
+        [self updateData];
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData)name:QUOTE_END_LOAD object:nil];
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    [_indicator startAnimating];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
+}
+
+- (void)updateData {
+    [_indicator endAnimating];
+    NSMutableArray *array = [NSMutableArray new];
+    [array addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getQuoteList]];
+    int randomIndex = arc4random_uniform((int)array.count);
+    NFNQuote *quote = [array objectAtIndex:randomIndex];
+    self.quoteLabel.text = quote.title;
+    [self.quoteLabel sizeToFit];
+    self.autorLabel.text = quote.author;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
