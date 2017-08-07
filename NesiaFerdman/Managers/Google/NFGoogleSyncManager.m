@@ -65,6 +65,16 @@
     return user.profile.email;
 }
 
+- (NSURL*)getUserAvatarURL {
+    GIDGoogleUser *user = [_signIn currentUser];
+    return [user.profile imageURLWithDimension:60];
+}
+
+- (UIImage*)getUserAvatar {
+    NSData *data = [NSData dataWithContentsOfURL:[self getUserAvatarURL]];
+    return [UIImage imageWithData:data];
+}
+
 
 #pragma mark - get methods
 - (void)resetCalendarList {
@@ -111,7 +121,7 @@
             NSLog(@"not login to firebase");
             [self logOutAction];
             [NFPop startAlertWithMassage:kLoginError];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [[NFLoginSimpleController sharedMenuController] logout];
             });
         }

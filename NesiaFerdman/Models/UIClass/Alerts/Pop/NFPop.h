@@ -8,13 +8,14 @@
 
 #import <ISMessages/ISMessages.h>
 
-#define kGoogleWriteError           @"Ошибка записи в Google"
-#define kGoogleReadError            @"Ошибка чтения с Google"
-#define kFirebaseWriteError         @"Ошибка записи в базу данных"
-#define kFirebaseReadError          @"Ошибка чтения с базы данных"
-#define kErrorInternetconnection    @"Проверьте интернет соединение"
-#define kWrongDatesPerion           @"Дата окончания не должна быть меньше даты начала"
-#define kLoginError                 @"Ошибка авторизации"
+#define kGoogleWriteError           @"Ошибка записи в Google!"
+#define kGoogleReadError            @"Ошибка чтения с Google!"
+#define kFirebaseWriteError         @"Ошибка записи в базу данных!"
+#define kFirebaseReadError          @"Ошибка чтения с базы данных!"
+#define kErrorInternetconnection    @"Проверьте интернет соединение!"
+#define kWrongDatesPerion           @"Дата окончания не должна быть меньше даты начала!"
+#define kLoginError                 @"Ошибка авторизации!"
+#define kValueCount                 @"Добавьте ценности!"
 
 @interface NFPop : ISMessages
 

@@ -44,6 +44,8 @@
 		C21320FC1EA65B3800CE2B5D /* NFWeekTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21320FB1EA65B3800CE2B5D /* NFWeekTaskController.m */; };
 		C21320FF1EA65B6100CE2B5D /* NFMonthTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21320FE1EA65B6100CE2B5D /* NFMonthTaskController.m */; };
 		C21321021EA65BAA00CE2B5D /* NFPageTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21321011EA65BAA00CE2B5D /* NFPageTaskController.m */; };
+		C2144C741F3867BD00307176 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2144C731F3867BD00307176 /* google_icon.png */; };
+		C2144C781F3896F000307176 /* NFTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2144C771F3896F000307176 /* NFTermsController.m */; };
 		C216D8A51EB1D5EE001D1006 /* NFDayTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8A41EB1D5EE001D1006 /* NFDayTask.m */; };
 		C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8A71EB1D627001D1006 /* NFHourTask.m */; };
 		C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8AA1EB1D64A001D1006 /* NFWeekTask.m */; };
@@ -342,6 +344,9 @@
 		C21321001EA65BAA00CE2B5D /* NFPageTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFPageTaskController.h; path = ../NFPageTaskController.h; sourceTree = "<group>"; };
 		C21321011EA65BAA00CE2B5D /* NFPageTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFPageTaskController.m; path = ../NFPageTaskController.m; sourceTree = "<group>"; };
 		C2136CDA1EB09FB6009E08D6 /* NotifyList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotifyList.h; sourceTree = "<group>"; };
+		C2144C731F3867BD00307176 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
+		C2144C761F3896F000307176 /* NFTermsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTermsController.h; sourceTree = "<group>"; };
+		C2144C771F3896F000307176 /* NFTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTermsController.m; sourceTree = "<group>"; };
 		C216D8A31EB1D5EE001D1006 /* NFDayTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayTask.h; sourceTree = "<group>"; };
 		C216D8A41EB1D5EE001D1006 /* NFDayTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDayTask.m; sourceTree = "<group>"; };
 		C216D8A61EB1D627001D1006 /* NFHourTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHourTask.h; sourceTree = "<group>"; };
@@ -646,8 +651,8 @@
 		C2E334911E9E78B20086FDDC /* NFNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNavigationBar.m; sourceTree = "<group>"; };
 		C2E334941E9E796D0086FDDC /* NFNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFNavigationController.h; sourceTree = "<group>"; };
 		C2E334951E9E796D0086FDDC /* NFNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFNavigationController.m; sourceTree = "<group>"; };
-		C2F7BC741EE6C3FD0016AC0B /* NFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFActivityIndicatorView.h; sourceTree = "<group>"; };
-		C2F7BC751EE6C3FD0016AC0B /* NFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFActivityIndicatorView.m; sourceTree = "<group>"; };
+		C2F7BC741EE6C3FD0016AC0B /* NFActivityIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFActivityIndicatorView.h; path = ../NFActivityIndicatorView.h; sourceTree = "<group>"; };
+		C2F7BC751EE6C3FD0016AC0B /* NFActivityIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFActivityIndicatorView.m; path = ../NFActivityIndicatorView.m; sourceTree = "<group>"; };
 		C2F7BC7A1EE6ED910016AC0B /* NFLoginSimpleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFLoginSimpleController.h; sourceTree = "<group>"; };
 		C2F7BC7B1EE6ED910016AC0B /* NFLoginSimpleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFLoginSimpleController.m; sourceTree = "<group>"; };
 		C2FA69071EE1436500D58D18 /* NFTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFTagView.h; path = ../../../Controllers/EditTaskController/TagList/NFTagView.h; sourceTree = "<group>"; };
@@ -852,6 +857,24 @@
 			path = MainCell;
 			sourceTree = "<group>";
 		};
+		C2144C721F384FD100307176 /* ActivityIndicator */ = {
+			isa = PBXGroup;
+			children = (
+				C2F7BC741EE6C3FD0016AC0B /* NFActivityIndicatorView.h */,
+				C2F7BC751EE6C3FD0016AC0B /* NFActivityIndicatorView.m */,
+			);
+			path = ActivityIndicator;
+			sourceTree = "<group>";
+		};
+		C2144C751F3896D200307176 /* TermsController */ = {
+			isa = PBXGroup;
+			children = (
+				C2144C761F3896F000307176 /* NFTermsController.h */,
+				C2144C771F3896F000307176 /* NFTermsController.m */,
+			);
+			path = TermsController;
+			sourceTree = "<group>";
+		};
 		C216D8A21EB1D5CF001D1006 /* TaskManagerModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -965,6 +988,7 @@
 		C22407B51E9CB4E8004B089A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C2144C751F3896D200307176 /* TermsController */,
 				C2091B171F1E40F200BAA524 /* CalendarListController */,
 				C2AA71FF1F028BF9007DB785 /* SettingDetailController */,
 				FA9966041EFFAF07003CF84A /* ManifestationsController */,
@@ -998,6 +1022,7 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2144C731F3867BD00307176 /* google_icon.png */,
 				C2091B151F1E37A500BAA524 /* task_section_icon.png */,
 				C2AA72121F02A0B2007DB785 /* uodate_icon.png */,
 				C23AD8D21EFD159300BAFF1E /* Screen1.png */,
@@ -1027,6 +1052,7 @@
 		C22407BC1E9CB5BC004B089A /* UIClass */ = {
 			isa = PBXGroup;
 			children = (
+				C2144C721F384FD100307176 /* ActivityIndicator */,
 				C209AF851F0A2F420036A592 /* Alerts */,
 				C2D9C7F71F066F2D00A36810 /* text */,
 				C21B0ED01EFA934D001D85CE /* UIBarButtonItem+FHButtons.h */,
@@ -1057,8 +1083,6 @@
 				C2DDBCFD1ED4732F00F61F02 /* NFLogInButton.m */,
 				C2FA690E1EE164BC00D58D18 /* NFChackBox.h */,
 				C2FA690F1EE164BC00D58D18 /* NFChackBox.m */,
-				C2F7BC741EE6C3FD0016AC0B /* NFActivityIndicatorView.h */,
-				C2F7BC751EE6C3FD0016AC0B /* NFActivityIndicatorView.m */,
 				C205956E1EF2A1F400BF3BFD /* NFViewWithDownBorder.h */,
 				C205956F1EF2A1F400BF3BFD /* NFViewWithDownBorder.m */,
 				C28DD0C11EF430CD004E0C7E /* NFAnimatedLabel.h */,
@@ -2116,6 +2140,7 @@
 				C2C22DA61EE98283006BD83A /* about_icon.png in Resources */,
 				C2C0D6031EC5F034003C7741 /* task@3x.png in Resources */,
 				C24AA50D1EBB160100ABA92C /* List_Document@2x.png in Resources */,
+				C2144C741F3867BD00307176 /* google_icon.png in Resources */,
 				C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */,
 				C2C22DB31EE98283006BD83A /* setting_icon.png in Resources */,
 				C2308B351F1F70E1006F6E87 /* NFTCalendarListCell.xib in Resources */,
@@ -2498,6 +2523,7 @@
 				C2DDBCFB1ED470D500F61F02 /* NFRightRoundetButton.m in Sources */,
 				C25E4CC11ECDD619003C100D /* NFTableView.m in Sources */,
 				C2CB58A01EA0E8AB0023ADAA /* NFHeaderCell.m in Sources */,
+				C2144C781F3896F000307176 /* NFTermsController.m in Sources */,
 				C24AA5131EBB281500ABA92C /* NFTaskSimpleCell.m in Sources */,
 				FA897FF51F2DD00400B3F954 /* NFValueMainDataSource.m in Sources */,
 				C2D13F7A1EEAE35000A9A4F3 /* NFAddFooterView.m in Sources */,

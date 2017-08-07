@@ -233,24 +233,28 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)deleteAction {
-    _event.isDeleted = true;
-    [_indicator startAnimating];
-    if ([NFSettingManager isOnDeleteFromGoogle] && _event.socialType == NGoogleEvent) {
-        [[NFNSyncManager sharedManager] deleteEventFromGoogle:_event];
+    if ([NFNSyncManager connectedInternet]) {
+        _event.isDeleted = true;
+        [_indicator startAnimating];
+        if ([NFSettingManager isOnDeleteFromGoogle] && _event.socialType == NGoogleEvent ) {
+            [[NFNSyncManager sharedManager] deleteEventFromGoogle:_event];
+        }
+        [[NFNSyncManager sharedManager] removeEventFromDB:_event];
+        [[NFNSyncManager sharedManager] removeEventFromDBManager:_event];
+        [[NFNSyncManager sharedManager] updateDataSource];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_indicator stopAnimating];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
     }
-    [[NFNSyncManager sharedManager] removeEventFromDB:_event];
-    [[NFNSyncManager sharedManager] removeEventFromDBManager:_event];
-    [[NFNSyncManager sharedManager] updateDataSource];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [_indicator stopAnimating];
-        [self dismissViewControllerAnimated:YES completion:nil];
-    });
 }
 
 - (void)compliteTaskAction {
-    _compliteButton.selected = !_compliteButton.selected;
-    _event.isDone = _compliteButton.selected;
-    [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+    if (_event.values.count > 0 && [NFNSyncManager connectedInternet]) {
+        _compliteButton.selected = !_compliteButton.selected;
+        _event.isDone = _compliteButton.selected;
+        [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -264,9 +268,6 @@ UICollectionViewDelegateFlowLayout
     NFNValue *val = [self.selectedTags objectAtIndex:indexPath.item];
     [cell addDataToCell:val isEditMode:_isEditing];
     return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 #pragma mark - UICollectionViewDelegate
@@ -295,41 +296,44 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)saveChanges {
-    if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString] && [self periodValidation]) {
+    if ([NFNSyncManager connectedInternet]) {
         
-        [_indicator startAnimating];
-        BOOL newEvent = false;
-        if (!_event) {
-            _event = [[NFNEvent alloc] init];
-            newEvent = true;
-        }
-        _event.values = [NSMutableArray array];
-        _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
-        _event.title = _titleOfTaskTextField.text;
-        _event.eventDescription = _taskDescriptionTextView.text;
-        _event.isDone = _compliteButton.selected;
-        _event.startDate = [self stringDate:_starttextField.text
-                                 withFormat:@"LLLL, dd, yyyy HH:mm"
-                         dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
-        _event.endDate = [self stringDate:_endTextField.text
-                               withFormat:@"LLLL, dd, yyyy HH:mm"
-                       dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
-        
-        if (newEvent) {
-            if ([NFSettingManager isOnWriteToGoogle]) {
-                [[NFNSyncManager sharedManager] addNewEventToGoogle:_event];
+        if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString] && [self periodValidation] && [self valueCountValid]) {
+            
+            [_indicator startAnimating];
+            BOOL newEvent = false;
+            if (!_event) {
+                _event = [[NFNEvent alloc] init];
+                newEvent = true;
+            }
+            _event.values = [NSMutableArray array];
+            _selectedTags.count > 0 ? [_event.values addObjectsFromArray:_selectedTags]: nil;
+            _event.title = _titleOfTaskTextField.text;
+            _event.eventDescription = _taskDescriptionTextView.text;
+            _event.isDone = _compliteButton.selected;
+            _event.startDate = [self stringDate:_starttextField.text
+                                     withFormat:@"LLLL, dd, yyyy HH:mm"
+                             dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+            _event.endDate = [self stringDate:_endTextField.text
+                                   withFormat:@"LLLL, dd, yyyy HH:mm"
+                           dateStringToFromat:@"yyyy-MM-dd'T'HH:mm:ss"];
+            
+            if (newEvent) {
+                if ([NFSettingManager isOnWriteToGoogle]) {
+                    [[NFNSyncManager sharedManager] addNewEventToGoogle:_event];
+                } else {
+                    [[NFNSyncManager sharedManager] addEventToDBManager:_event];
+                    [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
+                    [[NFNSyncManager sharedManager] updateDataSource];
+                }
+                [self endUpdate];
             } else {
-                [[NFNSyncManager sharedManager] addEventToDBManager:_event];
+                if ([NFSettingManager isOnWriteToGoogle] && _event.socialType == NGoogleEvent) {
+                    [[NFNSyncManager sharedManager] updateGoogleEvent:_event];
+                }
                 [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
-                [[NFNSyncManager sharedManager] updateDataSource];
+                [self endUpdate];
             }
-            [self endUpdate];
-        } else {
-            if ([NFSettingManager isOnWriteToGoogle] && _event.socialType == NGoogleEvent) {
-                [[NFNSyncManager sharedManager] updateGoogleEvent:_event];
-            }
-            [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
-            [self endUpdate];
         }
     }
 }
@@ -390,6 +394,19 @@ UICollectionViewDelegateFlowLayout
         return false;
     }
     return true;
+}
+
+- (BOOL)valueCountValid {
+    if (_event == nil) {
+        if (_selectedTags.count > 0) {
+            return true;
+        } else {
+            [NFPop startAlertWithMassage:kValueCount];
+            return false;
+        }
+    } else {
+        return true;
+    }
 }
 
 

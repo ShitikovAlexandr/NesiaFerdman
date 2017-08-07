@@ -34,25 +34,25 @@
     self.autorLabel.text = @"";
     self.titleLabel.text = @"Цитата дня";
     [self setCurrentDateToScreen];
-    if ([[NFFirebaseSyncManager sharedManager] getQuoteList].count > 0) {
-        [self updateData];
-    }
-}
+   }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData)name:QUOTE_END_LOAD object:nil];
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
     [_indicator startAnimating];
+    if ([[NFFirebaseSyncManager sharedManager] getQuoteList].count > 0) {
+        [self updateData];
+    }
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
 }
 
 - (void)updateData {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self name:QUOTE_END_LOAD object:nil];
     [_indicator endAnimating];
     NSMutableArray *array = [NSMutableArray new];
     [array addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getQuoteList]];
@@ -69,14 +69,12 @@
 
 - (IBAction)goNextAction:(NFRoundButton *)sender {
     NSLog(@"go next from quote of the day to the calendar ->");
-    
 }
 
 - (void)setCurrentDateToScreen {
     NSDate *currentDate = [NSDate date];
     self.dayLabel.text = [self stringFromDate:currentDate withFormat:@"dd"];
     self.monthLabel.text = [self stringFromDate:currentDate withFormat:@"MMMM"];
-    
 }
 
 - (NSString *)stringFromDate:(NSDate *)date withFormat:(NSString*)formar {

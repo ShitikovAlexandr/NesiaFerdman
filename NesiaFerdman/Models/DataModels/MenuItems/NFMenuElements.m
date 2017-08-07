@@ -124,9 +124,7 @@ typedef NS_ENUM(NSInteger, MenuItem)
 
 - (void)initItems {
     
-//    NFMenuItem *calendar = [NFMenuItem new];
-//    calendar.title = @"Календарь";
-//    calendar.index = 0;
+
     
 //    NFMenuItem *results = [NFMenuItem new];
 //    results.title = @"Итоги недели";
@@ -169,6 +167,13 @@ typedef NS_ENUM(NSInteger, MenuItem)
     about.index = 7;
     about.imageName = @"about_icon.png";
     [_itemsArray addObject:about];
+    
+//    NFMenuItem *support = [NFMenuItem new];
+//    support.title = @"Итоги недели";
+//    support.index = 1;
+//    support.imageName = @"result_NEW_icon.png";
+//    [_itemsArray addObject:support];
+//
     
     NFMenuItem *exit = [NFMenuItem new];
     exit.title = @"Выйти";

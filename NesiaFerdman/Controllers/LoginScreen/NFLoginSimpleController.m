@@ -10,19 +10,16 @@
 #import "NFRoundView.h"
 #import "NFCircleView.h"
 #import "NFLogoView.h"
-//#import "NFGoogleManager.h"
 #import "NFStyleKit.h"
 #import "NotifyList.h"
-#import "NFSyncManager.h"
 #import "NFActivityIndicatorView.h"
 #import "NFCalendarListController.h"
 #import "NFGoogleSyncManager.h"
 #import "NFNSyncManager.h"
 #import "NFDataSourceManager.h"
+#import "NFSettingManager.h"
 
 @import Firebase;
-
-
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.12
 
@@ -48,7 +45,6 @@ typedef NS_ENUM(NSUInteger, ScreenState)
 @property (assign, nonatomic) BOOL isFirstRun;
 @property (assign, nonatomic) BOOL isUpdate;
 @property (assign, nonatomic) BOOL isSelectCalendars;
-
 
 @end
 
@@ -108,7 +104,10 @@ static NFLoginSimpleController *sharedController;
     _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
     _socialText.text = @"Вход\nчерез социальную сеть";
     _socialText.tintColor = [NFStyleKit _base_GREY];
-    [_loginButton setTitle: @"Google" forState: UIControlStateNormal];
+    [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
+    [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
+    _loginButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    _loginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     _loginButton.userInteractionEnabled  = false;
     self.buttonView.alpha = 0;
     
@@ -138,7 +137,7 @@ static NFLoginSimpleController *sharedController;
       if (![[NFGoogleSyncManager sharedManager] isLogin]) {
         NSLog(@"not login");
         [[NFGoogleSyncManager sharedManager] logOutAction];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self transformToLogin];
         });
     } else {
@@ -146,8 +145,11 @@ static NFLoginSimpleController *sharedController;
         [_indicator startAnimating];
         _loginButton.userInteractionEnabled = false;
         _loginButton.alpha = 0;
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             if ([[NFNSyncManager sharedManager] isFirstRunApp]) {
+                [NFSettingManager setOnGoogleSync];
+                [NFSettingManager setOnWriteToGoogle];
+                [NFSettingManager setOnDeleteFromGoogle];
                 if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
                     [self navigateToCalendarListWithList:true];
                 } else {
@@ -157,8 +159,6 @@ static NFLoginSimpleController *sharedController;
                 
                 [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                //[self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
-
                 [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
         });

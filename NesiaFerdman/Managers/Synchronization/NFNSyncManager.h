@@ -62,7 +62,7 @@
 - (void)updateGoogleEvent:(NFNEvent*)event;
 
 - (void)reset;
-+ (void)connectedInternet;
++ (BOOL)connectedInternet;
 - (NSArray*)getQuotesList;
 
 @end

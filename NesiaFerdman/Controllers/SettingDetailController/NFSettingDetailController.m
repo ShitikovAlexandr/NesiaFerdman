@@ -13,6 +13,7 @@
 #import "NFActivityIndicatorView.h"
 #import "NotifyList.h"
 #import "NFCalendarListController.h"
+#import "NFTermsController.h"
 
 @interface NFSettingDetailController ()
 
@@ -22,6 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *googleDeleteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *updateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *GoogleCalendarListLabel;
+@property (weak, nonatomic) IBOutlet UILabel *termsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *supportLabel;
+
+
 
 @property (weak, nonatomic) IBOutlet UISwitch *googleSyncSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleWriteSwitcher;
@@ -66,6 +71,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 3) {
         [self navigateToCalendarList];
+    } else if (indexPath.row == 5) {
+        //Условия использования
+        [self navigateToTermsScreen];
+    } else if (indexPath.row == 6) {
+        //Связаться с службой поддержки
+        [self sendEmail];
     }
 }
 
@@ -76,6 +87,8 @@
     _googleDeleteLabel.text = @"Удаление с Google";
     _updateLabel.text = @"Обновить";
     _GoogleCalendarListLabel.text = @"Список доступных календарей";
+    _termsLabel.text = @"Условия использования";
+    _supportLabel.text = @"Связаться с службой поддержки";
     
     [_googleSyncSwitcher setOn:[NFSettingManager isOnGoogleSync]];
     [_googleWriteSwitcher setOn:[NFSettingManager isOnWriteToGoogle]];
@@ -141,6 +154,24 @@
     UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListControllerNav"];
     [navController setViewControllers:@[viewController]];
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)navigateToTermsScreen {
+    NSLog(@"Navigate to terms screen");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"NewMain" bundle:[NSBundle mainBundle]];
+    NFTermsController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFTermsController"];
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFTermsControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
+    
+}
+
+- (void)sendEmail {
+    NSURL* mailURL = [NSURL URLWithString:@"mailto:Inna.Drozd@gmail.com"];
+    if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
+        [[UIApplication sharedApplication] openURL:mailURL];
+    }
 }
 
 

@@ -21,6 +21,7 @@
 #define END_UPDATE_DATA @"kEndUpdateData"
 
 #define IS_FIRST_RUN_APP @"kFirstRunApp"
+#define FIRST_RUN_FLAG @"kFirstRunAppFlag"
 #define IS_FIRST_RUN_TODAY @"kFirstRunToday"
 
 #define CHANGE_IN_GOOGLR @"kChangeInGoogle"

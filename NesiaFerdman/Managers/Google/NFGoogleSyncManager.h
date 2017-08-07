@@ -17,7 +17,7 @@
 #define APP_GOOGLE_CALENDAR_ID          @"kAppGoogleCalendarId"
 #define NOTIFYCATIN_CALENDAR_LIST_LOAD  @"kCalendarListIsLoaded"
 #define NOTIFYCATIN_EVENT_LOAD          @"kEventListIsLoaded"
-#define LOGIN_FIREBASE               @"kLoginFirebase"
+#define LOGIN_FIREBASE                  @"kLoginFirebase"
 
 @interface NFGoogleSyncManager : NSObject
 
@@ -39,6 +39,8 @@
 - (BOOL)isLogin ;
 
 - (NSString*)getUserEmail;
+- (NSURL*)getUserAvatarURL;
+- (UIImage*)getUserAvatar;
 
 /** Adds a new event to google calendar */
 - (void)addNewEvent:(NFNEvent*)event;

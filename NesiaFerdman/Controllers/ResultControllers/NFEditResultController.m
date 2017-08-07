@@ -61,10 +61,12 @@
     self.dateTitleLabel.text = @"Дата";
     self.textView.placeholder = @"Описание";
     if (_resultItem) {
+        self.deleteButton.hidden = false;
         self.textView.text = self.resultItem.title;
         self.title = self.category.title;
         self.dateTextField.text = [self stringDate:_resultItem.createDate withFormat:@"yyyy-MM-dd'T'HH:mm:ss" dateStringToFromat:@"dd MMMM yyyy"];
     } else {
+        self.deleteButton.hidden = true;
         self.title = @"Создание";
         self.dateTextField.text = [self stringFromDate:_selectedDate];
     }

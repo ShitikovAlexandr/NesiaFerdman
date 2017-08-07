@@ -67,14 +67,19 @@
     }
 }
 
-+ (void)connectedInternet
++ (BOOL)connectedInternet
 {
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     if (networkStatus  == NotReachable) {
-        [NFPop startAlertWithMassage:kErrorInternetconnection];
+        [NFPop internetConnectionAlert];
+        return false;
+    } else {
+        return true;
     }
 }
+
+
 
 - (void)updateData {
     [[NFFirebaseSyncManager sharedManager] downloadAllData];
@@ -343,11 +348,9 @@
 
 - (BOOL)isFirstRunApp {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *userEmail = [defaults valueForKey:IS_FIRST_RUN_APP];
-    if (![userEmail isEqualToString:[[NFGoogleSyncManager sharedManager] getUserEmail]]) {
-        NSString *email = [[NFGoogleSyncManager sharedManager] getUserEmail];
-        [defaults setValue:email forKey:IS_FIRST_RUN_APP];
-        NSLog(@"nil nil %@", email);
+    NSString *runValue = [defaults valueForKey:IS_FIRST_RUN_APP];
+    if (![runValue isEqualToString:FIRST_RUN_FLAG]) {
+        [defaults setValue:FIRST_RUN_FLAG forKey:IS_FIRST_RUN_APP];
         [defaults synchronize];
         return YES;
     } else {
@@ -381,7 +384,6 @@
 - (void)updateDataSource {
     [[NFDataSourceManager sharedManager] setResultCategoryList:[[NFFirebaseSyncManager sharedManager] getResultCategoryList]];
     [[NFDataSourceManager sharedManager] setResultList:[[NFFirebaseSyncManager sharedManager] getResultList]];
-    
     [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
     [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
     [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];

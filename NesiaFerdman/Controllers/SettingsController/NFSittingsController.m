@@ -10,14 +10,15 @@
 #import "GTMOAuth2ViewControllerTouch.h"
 #import "NFMenuItem.h"
 #import "NFMenuElements.h"
-//#import "NFGoogleManager.h"
+#import "NFGoogleSyncManager.h"
 #import "NFMenuCell.h"
-#warning lock at Google manager in this class
+#import "NFStyleKit.h"
 
 
 @interface NFSittingsController () <UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
+@property (weak, nonatomic) IBOutlet UIImageView *avatarImageView;
 @property (weak, nonatomic) IBOutlet UILabel *email;
 @end
 
@@ -69,6 +70,17 @@
     NFMenuElements *menuElements = [[NFMenuElements alloc] init];
     [self.dataArray addObjectsFromArray:menuElements.itemsArray];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationBottom];
+    self.email.text = [[NFGoogleSyncManager sharedManager] getUserEmail];
+    UIImage *avatar = [[NFGoogleSyncManager sharedManager] getUserAvatar];
+    if (avatar != nil) {
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.size.height/2;
+        self.avatarImageView.layer.borderColor = [NFStyleKit bASE_GREEN].CGColor;
+        self.avatarImageView.layer.borderWidth = 2.f;
+        self.avatarImageView.layer.masksToBounds = YES;
+        [self.avatarImageView setImage:avatar];
+    } else {
+        [self.avatarImageView setImage:[UIImage imageNamed:@"user_icon.png"]];
+    }
 }
 
 - (void)setUserInfo {
