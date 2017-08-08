@@ -38,6 +38,9 @@
 /** Return synchronization end date */
 + (NSDate*)getMaxDate;
 
++ (void)setDownloadGoogleLimit:(NSNumber*)limit;
++ (NSInteger)getDownloadGoogleLimit;
+
 /** Return a list of all  Google calendars(Ids) available to the user, saved in the NSUserDefalts */
 + (NSArray*)getAllAvalibleCalendars;
 /** Return a list of all  Google calendars(Ids) enabled by the user, saved in the NSUserDefalts */

@@ -224,11 +224,11 @@
 }
 
 - (NSMutableArray*)getTaskForDay:(NSDate*)currentDate withValue:(NFNValue*)value {
-//    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
-//    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
-//    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
-//    NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
+    //    NSMutableDictionary* monthTaskaWithValue = [NSMutableDictionary dictionary];
+    //    [monthTaskaWithValue setDictionary:[self getAllTaskDictionaryWithFilterValue:value]];
+    //    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith %@", [[self stringFromDate:currentDate]  substringToIndex:10]];
+    //    NSArray *filtered = [[[monthTaskaWithValue allKeys] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)] filteredArrayUsingPredicate:predicate];
+    //    NSArray *resultArray = [monthTaskaWithValue objectsForKeys:filtered notFoundMarker:[NSNull null]];
     
     return [self getEventforDay:currentDate withValue:value];//(NSMutableArray*)resultArray;
 }
@@ -324,12 +324,12 @@
     if (_resultArray.count > 0) {
         for (NFNRsult *event in _resultArray) {
             if (event.createDate != nil) {
-            NSString *eventKey = [event.createDate substringToIndex:10];
-            if(!_resultDictionary[eventKey]){
-                _resultDictionary[eventKey] = [NSMutableArray new];
+                NSString *eventKey = [event.createDate substringToIndex:10];
+                if(!_resultDictionary[eventKey]){
+                    _resultDictionary[eventKey] = [NSMutableArray new];
+                }
+                [_resultDictionary[eventKey] addObject:event];
             }
-            [_resultDictionary[eventKey] addObject:event];
-        }
         }
     }
 }
@@ -525,8 +525,12 @@
             }
         }//
         NSLog(@"complite updare DataSource events");
-        NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA_SOURCE object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA_SOURCE object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            
+        });
     }
 }
 
@@ -534,12 +538,12 @@
     if (array.count > 0) {
         for (NFNRsult *event in array) {
             if (event.createDate != nil) {
-            NSString *eventKey = [event.createDate substringToIndex:10];
-            if(!dic[eventKey]){
-                dic[eventKey] = [NSMutableArray new];
+                NSString *eventKey = [event.createDate substringToIndex:10];
+                if(!dic[eventKey]){
+                    dic[eventKey] = [NSMutableArray new];
+                }
+                [dic[eventKey] addObject:event];
             }
-            [dic[eventKey] addObject:event];
-        }
         }
     }
 }

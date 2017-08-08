@@ -17,6 +17,7 @@
 
 #define MIN_PERIOD @"kMinPeriod"
 #define MAX_PERIOD @"kMaxPeriod"
+#define GOOGLE_DOWNLOAD_LIMIT @"kDownloadGoogleLimit"
 
 
 @implementation NFSettingManager
@@ -78,6 +79,17 @@
 
 // Synchronization boundaries
 
++ (void)setDownloadGoogleLimit:(NSNumber*)limit {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:[limit integerValue] forKey:GOOGLE_DOWNLOAD_LIMIT];
+}
+
++ (NSInteger)getDownloadGoogleLimit {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* limit = [defaults valueForKey:GOOGLE_DOWNLOAD_LIMIT];
+    return [limit integerValue] > 500 ? [limit integerValue]:500;
+}
+
 + (void)setStandartIntervalsOfSync {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setInteger:95 forKey:MIN_PERIOD];
@@ -97,13 +109,13 @@
 + (NSInteger)getMinPerionOfSync {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger result =  [defaults integerForKey:MIN_PERIOD];
-    return result < 30 ? 120 : result;
+    return result < 60 ? 60 : result;
 }
 
 + (NSInteger)getMaxPerionOfSync {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSInteger result =  [defaults integerForKey:MAX_PERIOD];
-    return result < 30 ? 120 : result;
+    return result < 60 ? 60 : result;
 }
 
 + (NSDate*)getMinDate {

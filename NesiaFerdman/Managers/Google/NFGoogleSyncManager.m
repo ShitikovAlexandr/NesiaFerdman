@@ -115,8 +115,11 @@
             NSLog(@"singin to firebase");
             [[NFFirebaseSyncManager sharedManager]  downloadQuoteList];
             [[NFNSyncManager sharedManager] updateData];
-            NSNotification *notification = [NSNotification notificationWithName:LOGIN_FIREBASE object:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                NSNotification *notification = [NSNotification notificationWithName:LOGIN_FIREBASE object:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+            });
+            
         } else {
             NSLog(@"not login to firebase");
             [self logOutAction];
@@ -198,7 +201,7 @@
         for (NFGoogleCalendar *calendar in array) {
             NSString *calendarColor = calendar.backgroundColor;
             GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
-            query.maxResults = 1000;
+            query.maxResults = [NFSettingManager getDownloadGoogleLimit];
             query.timeMin = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMinDate]];
             query.timeMax = [GTLRDateTime dateTimeWithDate: [NFSettingManager getMaxDate]];
             query.singleEvents = YES;
@@ -223,9 +226,12 @@
                      }];
         }
     } else {
-        NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
-    }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_EVENT_LOAD object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+
+        });
+            }
 }
 
 - (void)downloadGoogleCalendarList {

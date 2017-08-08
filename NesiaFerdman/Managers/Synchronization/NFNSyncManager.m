@@ -96,8 +96,11 @@
 
 - (void)googleEventsEndDownload {
     _isGoogleEvent  = true;
-    [self eventsSynchronization];
-    [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self eventsSynchronization];
+        [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
+    });
+   
 }
 
 - (void)dataBaseEndDownload {
@@ -120,10 +123,11 @@
         [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
         [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
         [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
-        
-        NSNotification *notification = [NSNotification notificationWithName:END_UPDATE object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
-    }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:END_UPDATE object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        });
+           }
 }
 
 - (void)calendarSynchronization {
@@ -174,6 +178,8 @@
 }
 
 - (void)eventsSynchronization {
+    
+    
     
 //chack new event from google
     NSMutableArray *googleEvents = [NSMutableArray new];
@@ -398,7 +404,6 @@
     [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
 }
 
-
 - (NSMutableArray*)sortArray:(NSMutableArray *)array withKey:(NSString*)key {
     NSSortDescriptor *sortDescriptor;
     sortDescriptor = [[NSSortDescriptor alloc] initWithKey:key ascending:YES];
@@ -408,6 +413,10 @@
 
 - (NSArray*)getQuotesList {
     return  [[NFFirebaseSyncManager sharedManager] getQuoteList];
+}
+
+- (void)deleteUser {
+    [[NFFirebaseSyncManager sharedManager] deleteUser];
 }
 
 

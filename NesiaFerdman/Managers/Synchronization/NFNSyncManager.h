@@ -65,4 +65,6 @@
 + (BOOL)connectedInternet;
 - (NSArray*)getQuotesList;
 
+- (void)deleteUser;
+
 @end
