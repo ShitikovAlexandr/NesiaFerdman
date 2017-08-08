@@ -25,7 +25,6 @@
     self.tableView.estimatedRowHeight = 44.0;
     self.tableView.tableFooterView = [UIView new];
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
-
 }
 
 

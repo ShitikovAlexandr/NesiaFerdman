@@ -14,6 +14,7 @@
 #import "NotifyList.h"
 #import "NFCalendarListController.h"
 #import "NFTermsController.h"
+#import "NFAlertController.h"
 
 @interface NFSettingDetailController ()
 
@@ -25,8 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *GoogleCalendarListLabel;
 @property (weak, nonatomic) IBOutlet UILabel *termsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *supportLabel;
-
-
+@property (weak, nonatomic) IBOutlet UIButton *deleteProfileButton;
 
 @property (weak, nonatomic) IBOutlet UISwitch *googleSyncSwitcher;
 @property (weak, nonatomic) IBOutlet UISwitch *googleWriteSwitcher;
@@ -89,6 +89,7 @@
     _GoogleCalendarListLabel.text = @"Список доступных календарей";
     _termsLabel.text = @"Условия использования";
     _supportLabel.text = @"Связаться с службой поддержки";
+    [_deleteProfileButton setTitle:@"Удалить профиль" forState:UIControlStateNormal];
     
     [_googleSyncSwitcher setOn:[NFSettingManager isOnGoogleSync]];
     [_googleWriteSwitcher setOn:[NFSettingManager isOnWriteToGoogle]];
@@ -98,11 +99,27 @@
     [_googleWriteSwitcher addTarget:self action:@selector(writeAction:) forControlEvents:UIControlEventValueChanged];
     [_googleDeleteSwitcher addTarget:self action:@selector(deleteAction:) forControlEvents:UIControlEventValueChanged];
     [_updateButton addTarget:self action:@selector(updateAction) forControlEvents:UIControlEventTouchUpInside];
+    [_deleteProfileButton addTarget:self action:@selector(deleteProfileAlert) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)changeTableViewState {
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
+   
+}
+
+
+- (void)deleteProfileAlert{
+//    NFAlertController *alert = [[NFAlertController alloc] initWithTarget:self selector:@selector(deleteProfileAction)];
+//    [alert alertDeleteProfile];
+    [NFAlertController alertDeleteProfileWithTarget:self action:@selector(deleteProfileAction)];
+}
+
+- (void)deleteProfileAction {
+    NSLog(@"delete porfile action");
+    [[NFNSyncManager sharedManager] deleteUser];
+    [self dismissViewControllerAnimated:YES completion:nil];
+
 }
 
 #pragma mark - Actions

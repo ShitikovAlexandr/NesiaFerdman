@@ -21,6 +21,7 @@
 /** write standart list of result category to db*/
 + (void)writeAppStandartListOfResultCategoryToDataBase;
 
+/** write standart list of result category to db*/
 + (void)writeStandartManifestationsToDataBase;
 
 + (void)writeQuote;

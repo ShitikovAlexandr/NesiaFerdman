@@ -12,6 +12,8 @@
 
 #import "NFFirebaseSyncManager.h"
 #import "NFAdminManager.h"
+#import "NFLoginSimpleController.h"
+#import "NFSettingManager.h"
 
 
 //ref keys
@@ -106,6 +108,11 @@
 
 - (void)downloadAllData {
     if ([self isLogin]) {
+        
+        [self getMinSyncInterval];
+        [self getMaxSyncInterval];
+        [self getLimitGoogleDownload];
+        
         [self downloadEvensList];
         [self downloadCalendarList];
         [self downloadValueList];
@@ -205,7 +212,7 @@
 //************************************************************************
 
 - (void)downloadEvensList {
-    [[self eventRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self eventRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -228,7 +235,7 @@
 }
 
 - (void)downloadResiltList {
-    [[self userResultRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self userResultRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -251,7 +258,7 @@
 }
 
 - (void)downloadCalendarList {
-    [[self userCalendarsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self userCalendarsRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -273,7 +280,7 @@
 }
 
 - (void)downloadValueList {
-    [[self userValueRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self userValueRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -295,7 +302,7 @@
 }
 
 - (void)downloadManifestationList {
-    [[self userValueManifestationsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self userValueManifestationsRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -319,7 +326,7 @@
 #pragma mark - app data
 
 - (void)downloadQuoteList {
-    [[self appQuoteeRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self appQuoteeRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -334,13 +341,16 @@
         }
         [_appQuoteArray removeAllObjects];
         [_appQuoteArray addObjectsFromArray:resultArray];
-        NSNotification *notification = [NSNotification notificationWithName:QUOTE_END_LOAD object:nil];
-        [[NSNotificationCenter defaultCenter] postNotification:notification];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSNotification *notification = [NSNotification notificationWithName:QUOTE_END_LOAD object:nil];
+            [[NSNotificationCenter defaultCenter] postNotification:notification];
+        });
+        
     }];
 }
 
 - (void)downloadAppValueList {
-    [[self appValuesRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self appValuesRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -362,7 +372,7 @@
 }
 
 - (void)downloadAppManifestationList {
-    [[self appValueManifestationsRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self appValueManifestationsRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -384,7 +394,7 @@
 }
 
 - (void)downloadAppResultCategory {
-    [[self appResultCategoryRef] observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+    [[self appResultCategoryRef] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
         NSMutableArray *inputArray = [NSMutableArray array];
         NSEnumerator *children = [snapshot children];
         FIRDataSnapshot *child;
@@ -403,9 +413,7 @@
         NSLog(@"_isAppResultCategory = true");
         [self downloadComplite];
     }];
-
 }
-
 
 #pragma mark - write methods
 
@@ -476,8 +484,10 @@
     if (_isEventsList && _isValueList && _isValuesManifestations && _isResult && _isCalendarList ) {
         if (_isAppValueList && _isAppResultCategory && _isAppManifestatioms) {
             [self resetFlags];
-            NSNotification *notification = [NSNotification notificationWithName:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
-            [[NSNotificationCenter defaultCenter] postNotification:notification];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                NSNotification *notification = [NSNotification notificationWithName:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
+                [[NSNotificationCenter defaultCenter] postNotification:notification];
+            });
         }
     }
 }
@@ -550,6 +560,47 @@
     }
 }
 
+- (void)deleteUser {
+    [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] removeValueWithCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
+        if (error == nil) {
+            [[NFLoginSimpleController sharedMenuController] logout];
+        }
+    }];
+}
+
+#pragma mark - options
+
+- (void)getMinSyncInterval {
+    [[[self appOptionsRef] child:MIN_TIME] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *interval = snapshot.value;
+        if (interval) {
+            [NFSettingManager setMinIntervalOfSync:interval];
+            NSLog(@"getMinSyncInterval %@", interval);
+        }
+    }];
+}
+
+- (void)getMaxSyncInterval {
+    [[[self appOptionsRef] child:MAX_TIME] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *interval = snapshot.value;
+        if (interval) {
+            [NFSettingManager setMaxIntervalOfSync:interval];
+            NSLog(@"getMaxSyncInterval %@", interval);
+        }
+    }];
+}
+
+- (void)getLimitGoogleDownload {
+    [[[self appOptionsRef] child:MAX_LOAD] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        NSNumber *interval = snapshot.value;
+        if (interval) {
+            [NFSettingManager setDownloadGoogleLimit:interval];
+            NSLog(@"getLimitGoogleDownload %@", interval);
+        }
+    }];
+    
+}
+
 #pragma mark - admin
 
 - (void)writAppValueToDataBase:(NFNValue*)value {
@@ -580,7 +631,6 @@
 - (void)writeMaxLimitGoogle:(NSNumber*)limit {
     [[[self appOptionsRef] child:MAX_LOAD] setValue:limit];
 }
-
 
 
 @end

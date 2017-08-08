@@ -22,6 +22,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     _calendarColorView.backgroundColor  = [UIColor clearColor];
+    
 }
 
 + (CGFloat)cellSize {
@@ -37,6 +38,7 @@
 }
 
 - (void)addData:(NFNEvent*)event {
+    self.timeLabel.text = @"";
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     if (event) {
         self.event = event;

@@ -87,6 +87,8 @@
 - (void)addValueToManager:(NFNValue*)value;
 - (void)addManifestationToManager:(NFNManifestation*)manifestation;
 - (void)addResultToManager:(NFNRsult*)result;
+- (NSMutableArray*)getQuoteList;
+- (void)deleteUser;
 
 //*********************
 
@@ -96,6 +98,11 @@
 - (void)removeManifestationFromManager:(NFNManifestation*)manifestation;
 - (void)removeResultFromManager:(NFNRsult*)result;
 
+// options
+
+- (void)getMinSyncInterval;
+- (void)getMaxSyncInterval;
+- (void)getLimitGoogleDownload;
 
 
 //admin part
@@ -110,6 +117,6 @@
 - (void)writeMaxLimitGoogle:(NSNumber*)limit;
 
 - (void)downloadQuoteList;
-- (NSMutableArray*)getQuoteList;
+
 
 @end

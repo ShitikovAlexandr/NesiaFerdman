@@ -965,6 +965,32 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="mx4-2d-6Bo">
+                                        <rect key="frame" x="0.0" y="340" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mx4-2d-6Bo" id="92H-Iu-WdT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xIU-CA-Z0w">
+                                                    <rect key="frame" x="16" y="6" width="165" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="V9Q-OO-hrC"/>
+                                                        <constraint firstAttribute="width" constant="165" id="Xys-Ri-uFK"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xIU-CA-Z0w" firstAttribute="leading" secondItem="92H-Iu-WdT" secondAttribute="leading" constant="16" id="Ghb-hx-rsL"/>
+                                                <constraint firstItem="xIU-CA-Z0w" firstAttribute="centerY" secondItem="92H-Iu-WdT" secondAttribute="centerY" id="eO3-ht-2fT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -976,6 +1002,7 @@
                     <navigationItem key="navigationItem" id="VD3-q7-Yj7"/>
                     <connections>
                         <outlet property="GoogleCalendarListLabel" destination="1m5-x3-U6R" id="6tO-GD-knD"/>
+                        <outlet property="deleteProfileButton" destination="xIU-CA-Z0w" id="CYG-V3-IQ7"/>
                         <outlet property="googleDeleteLabel" destination="erF-s0-kPg" id="7yE-j3-Gkp"/>
                         <outlet property="googleDeleteSwitcher" destination="p1M-m2-ogM" id="Xxl-LF-3Ag"/>
                         <outlet property="googleSyncLabel" destination="3Ar-PY-Q1i" id="69L-5x-jAZ"/>
@@ -990,7 +1017,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAa-Bb-OlY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5369" y="2038"/>
+            <point key="canvasLocation" x="5368.8000000000002" y="2037.9310344827588"/>
         </scene>
         <!--Создание задачи-->
         <scene sceneID="QtY-Sy-Xxc">
@@ -2155,7 +2182,7 @@
                                         <rect key="frame" x="129.5" y="64" width="116.5" height="116.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upgrate_value_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-GL-YBI">
-                                                <rect key="frame" x="43" y="44" width="31" height="29"/>
+                                                <rect key="frame" x="42" y="44" width="31" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>

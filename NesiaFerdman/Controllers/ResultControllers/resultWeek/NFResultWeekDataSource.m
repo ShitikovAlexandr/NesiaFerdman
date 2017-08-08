@@ -87,7 +87,6 @@
     UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultDetailControllerNav"];
     [navController setViewControllers:@[viewController]];
     [_target presentViewController:navController animated:YES completion:nil];
-    
 }
 
 @end

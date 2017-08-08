@@ -36,6 +36,7 @@
 		C20EBA121EA8F97E0074C0AF /* NFDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EBA111EA8F97E0074C0AF /* NFDateModel.m */; };
 		C20EBA151EA8FA9C0074C0AF /* NFWeekDateModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C20EBA141EA8FA9C0074C0AF /* NFWeekDateModel.m */; };
 		C20F386E1F2F03CE006CE7A5 /* NFAddValueCategoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = C20F386D1F2F03CE006CE7A5 /* NFAddValueCategoryController.m */; };
+		C211DBC91F39B41B0021FB64 /* NFAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C211DBC81F39B41B0021FB64 /* NFAlertController.m */; };
 		C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */ = {isa = PBXBuildFile; fileRef = C212DEE41EF1196A0082EF38 /* NFStatisticController.m */; };
 		C212DEEA1EF11BD20082EF38 /* NFStatisticMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C212DEE91EF11BD20082EF38 /* NFStatisticMainCell.m */; };
 		C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C212DEEB1EF11BE80082EF38 /* NFStatisticMainCell.xib */; };
@@ -328,6 +329,8 @@
 		C20EBA141EA8FA9C0074C0AF /* NFWeekDateModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekDateModel.m; sourceTree = "<group>"; };
 		C20F386C1F2F03CE006CE7A5 /* NFAddValueCategoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFAddValueCategoryController.h; path = NesiaFerdman/Controllers/ValueController/NFAddValueCategoryController.h; sourceTree = SOURCE_ROOT; };
 		C20F386D1F2F03CE006CE7A5 /* NFAddValueCategoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFAddValueCategoryController.m; path = NesiaFerdman/Controllers/ValueController/NFAddValueCategoryController.m; sourceTree = SOURCE_ROOT; };
+		C211DBC71F39B41B0021FB64 /* NFAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAlertController.h; sourceTree = "<group>"; };
+		C211DBC81F39B41B0021FB64 /* NFAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAlertController.m; sourceTree = "<group>"; };
 		C212DEE31EF1196A0082EF38 /* NFStatisticController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NFStatisticController.h; path = ../NFStatisticController.h; sourceTree = "<group>"; };
 		C212DEE41EF1196A0082EF38 /* NFStatisticController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFStatisticController.m; path = ../NFStatisticController.m; sourceTree = "<group>"; };
 		C212DEE81EF11BD20082EF38 /* NFStatisticMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFStatisticMainCell.h; sourceTree = "<group>"; };
@@ -795,6 +798,7 @@
 		C209AF851F0A2F420036A592 /* Alerts */ = {
 			isa = PBXGroup;
 			children = (
+				C211DBC61F39B26B0021FB64 /* AlertController */,
 				C209AF861F0A2F500036A592 /* Pop */,
 			);
 			path = Alerts;
@@ -817,6 +821,15 @@
 			);
 			name = MenuControllers;
 			path = SettingsController;
+			sourceTree = "<group>";
+		};
+		C211DBC61F39B26B0021FB64 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				C211DBC71F39B41B0021FB64 /* NFAlertController.h */,
+				C211DBC81F39B41B0021FB64 /* NFAlertController.m */,
+			);
+			path = AlertController;
 			sourceTree = "<group>";
 		};
 		C212DEE21EF119530082EF38 /* StatisticController */ = {
@@ -2481,6 +2494,7 @@
 				C20F386E1F2F03CE006CE7A5 /* NFAddValueCategoryController.m in Sources */,
 				C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
+				C211DBC91F39B41B0021FB64 /* NFAlertController.m in Sources */,
 				C212DEE51EF1196A0082EF38 /* NFStatisticController.m in Sources */,
 				C2FC126F1F1CDE8000EC7FD1 /* NFStatisticMonthDataSource.m in Sources */,
 				C209AF921F0A7DD30036A592 /* NFResultMenuCell.m in Sources */,

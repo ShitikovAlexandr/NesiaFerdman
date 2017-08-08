@@ -64,8 +64,7 @@
         self.selectetDate = [self.sourseArray objectAtIndex:newIndexPath.item];
 
         [_collectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
+        [self postHEADER_MONTHnotification];
     }
 }
 
@@ -76,9 +75,8 @@
         _currentIndex = newIndexPath.item;
         self.selectetDate = [self.sourseArray objectAtIndex:newIndexPath.item];
         [_collectionView scrollToItemAtIndexPath:newIndexPath atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally animated:YES];
-        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
-    }
+        [self postHEADER_MONTHnotification];
+           }
 }
 
 - (void)setUpConstraints {
@@ -138,8 +136,8 @@
     if (self.selectedIndex != self.currentIndex) {
         self.currentIndex = self.selectedIndex ;
         self.selectetDate = [self.sourseArray objectAtIndex:indexPath.item];
-        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
+        [self postHEADER_MONTHnotification];
+       
     }
 }
 
@@ -154,8 +152,7 @@
     if (self.selectedIndex != self.currentIndex) {
         self.currentIndex = self.selectedIndex ;
         self.selectetDate = [self.sourseArray objectAtIndex:centerCellIndexPath.item];
-        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
+        [self postHEADER_MONTHnotification];
     }
 }
 
@@ -170,8 +167,7 @@
     if (self.selectedIndex != self.currentIndex) {
         self.currentIndex = self.selectedIndex;
         self.selectetDate = [self.sourseArray objectAtIndex:centerCellIndexPath.item];
-        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
-        [[NSNotificationCenter defaultCenter]postNotification:notification];
+        [self postHEADER_MONTHnotification];
     }
 }
 
@@ -221,6 +217,12 @@
 }
 
 
+-(void)postHEADER_MONTHnotification {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSNotification *notification = [NSNotification notificationWithName:HEADER_MONTH object:self];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
+    });
+}
 
 
 

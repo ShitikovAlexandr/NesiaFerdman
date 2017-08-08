@@ -71,6 +71,7 @@
         [cell addData:event];
     } else {
         [cell setCellTite:@"Нет задач"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }

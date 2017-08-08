@@ -50,6 +50,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [[NFNSyncManager sharedManager] updateData];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE object:nil];
 }
 
