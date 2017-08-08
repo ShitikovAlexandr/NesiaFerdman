@@ -21,6 +21,7 @@
 #import "NFDataSourceManager.h"
 #import "NFNSyncManager.h"
 #import "NFNValue.h"
+#import "NFAlertController.h"
 
 @interface NFEditTaskController ()
 <
@@ -69,7 +70,7 @@ UICollectionViewDelegateFlowLayout
     [self.compliteButton addTarget:self action:@selector(compliteTaskAction) forControlEvents:UIControlEventTouchDown];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTagCell" bundle:nil] forCellWithReuseIdentifier:@"NFTagCell"];
     [self.collectionView reloadData];
-    [self.deleteButton addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.deleteButton addTarget:self action:@selector(deleteWithAlert) forControlEvents:UIControlEventTouchUpInside];
     [_titleOfTaskTextField validateWithTarget:self placeholderText:@"Заглавие"];
     [_taskDescriptionTextView validateWithTarget:self
                                  placeholderText:@"Описание" min:0 max:300];
@@ -205,10 +206,7 @@ UICollectionViewDelegateFlowLayout
 
 - (void)configurePickers {
     _datePickerStart = [[NFDatePicker alloc] initWithTextField:_starttextField];
-    //_datePickerStart.minimumDate = [NSDate date];
     _datePickerEnd = [[NFDatePicker alloc] initWithTextField:_endTextField];
-    //_datePickerEnd.minimumDate = _datePickerStart.minimumDate;
-    
     _valuesArray = [NSMutableArray arrayWithArray:[[NFDataSourceManager sharedManager] getValueList]];
     _valuePicker = [[NFPickerView alloc] initWithDataArray:_valuesArray textField:_selectValueTextField   keyTitle:@"valueTitle"];
 }
@@ -232,6 +230,14 @@ UICollectionViewDelegateFlowLayout
     }
 }
 
+- (void)deleteWithAlert {
+    if (_event.socialType == NGoogleEvent && [NFSettingManager isOnDeleteFromGoogle]) {
+        [NFAlertController alertDeleteGoogleEventWithTarget:self action:@selector(deleteAction)];
+    } else {
+        [NFAlertController alertDeleteEventWithTarget:self action:@selector(deleteAction)];
+    }
+}
+
 - (void)deleteAction {
     if ([NFNSyncManager connectedInternet]) {
         _event.isDeleted = true;
@@ -250,7 +256,7 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)compliteTaskAction {
-    if (_event.values.count > 0 && [NFNSyncManager connectedInternet]) {
+    if ([self valueCount] && [NFNSyncManager connectedInternet]) {
         _compliteButton.selected = !_compliteButton.selected;
         _event.isDone = _compliteButton.selected;
         [[NFNSyncManager sharedManager] writeEventToDataBase:_event];
@@ -297,7 +303,6 @@ UICollectionViewDelegateFlowLayout
 
 - (void)saveChanges {
     if ([NFNSyncManager connectedInternet]) {
-        
         if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString] && [self periodValidation] && [self valueCountValid]) {
             
             [_indicator startAnimating];
@@ -374,7 +379,6 @@ UICollectionViewDelegateFlowLayout
     
     UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:@"Сохранить" style:UIBarButtonItemStylePlain target:self action:@selector (saveChanges)];
     self.navigationItem.rightBarButtonItem = rigtButton;
-    
     self.titleOfTaskTextField.userInteractionEnabled = true;
     self.taskDescriptionTextView.userInteractionEnabled = true;
     self.starttextField.userInteractionEnabled = true;
@@ -409,6 +413,13 @@ UICollectionViewDelegateFlowLayout
     }
 }
 
-
+- (BOOL)valueCount {
+    if (_event.values.count > 0) {
+        return true;
+    } else {
+        [NFPop startAlertWithMassage:kValueCount];
+        return false;
+    }
+}
 
 @end
