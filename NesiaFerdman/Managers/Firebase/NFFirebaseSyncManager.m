@@ -598,7 +598,6 @@
             NSLog(@"getLimitGoogleDownload %@", interval);
         }
     }];
-    
 }
 
 #pragma mark - admin

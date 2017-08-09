@@ -73,11 +73,19 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if ([[[NFDataSourceManager sharedManager] getEventForHour:section WithArray:_eventsArray] count] > 0) {
-        return [[[NFDataSourceManager sharedManager] getEventForHour:section WithArray:_eventsArray] count];
-    } else {
-        return 1;
-    }
+//    if ([[[NFDataSourceManager sharedManager] getEventForHour:section WithArray:_eventsArray] count] > 0) {
+//        return [[[NFDataSourceManager sharedManager] getEventForHour:section WithArray:_eventsArray] count];
+//    } else {
+//        return 1;
+//    }
+    
+        if ([[[NFDataSourceManager sharedManager] getEventForHour:section date:_selectedDate fromArray:_eventsArray] count] > 0) {
+            return [[[NFDataSourceManager sharedManager] getEventForHour:section date:_selectedDate fromArray:_eventsArray] count];
+        } else {
+            return 1;
+        }
+
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

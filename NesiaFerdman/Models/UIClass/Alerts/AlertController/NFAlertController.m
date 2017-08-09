@@ -24,7 +24,9 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Удальть профиль?" message:DELETE_USER_INFO preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:DELETE_TITLE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
-        [target performSelector:userAction];
+        if ([target respondsToSelector:userAction]) {
+            [target performSelector:userAction];
+        }
     }];
     
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:CANCEL_TITLE style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {

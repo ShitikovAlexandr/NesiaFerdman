@@ -30,6 +30,7 @@
 
 - (NSMutableArray *)getEventForDay:(NSDate*)currentDate;
 - (NSMutableArray *)getEventForHour:(NSInteger)hour WithArray:(NSMutableArray *)eventsArray;
+- (NSMutableArray*)getEventForHour:(NSInteger)hour date:(NSDate*)date fromArray:(NSMutableArray*)array;
 - (NSMutableDictionary*)getAllEventsDictionaryWithFilter;
 - (NSMutableDictionary*)getAllEventsDictionaryWithFilterValue:(NFNValue*)value;
 - (NSMutableArray *)getEventsListForMonth:(NSDate*)currentDate;

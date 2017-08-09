@@ -140,6 +140,22 @@
     NSMutableArray *result = [NSMutableArray array];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.startDate contains[c] %@",[NSString stringWithFormat:@"T%02ld", (long)hour]];
     [result addObjectsFromArray:[eventsArray filteredArrayUsingPredicate:predicate]];
+    
+    return [self sortArray:result withKey:@"startDate"];
+    
+}
+
+//test
+
+- (NSMutableArray*)getEventForHour:(NSInteger)hour date:(NSDate*)date fromArray:(NSMutableArray*)array {
+    NSMutableArray *result = [NSMutableArray new];
+    NSString *timeString = [NSString stringWithFormat:@"%@T%02ld", [self stringFromDate:date], (long)hour];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.startDate contains[c] %@",timeString];
+    [result addObjectsFromArray:[array filteredArrayUsingPredicate:predicate]];
+    if (hour == 0) {
+         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"NOT (self.startDate contains[c] %@)",[self stringFromDate:date]];
+        [result addObjectsFromArray:[array filteredArrayUsingPredicate:predicate]];
+    }
     return [self sortArray:result withKey:@"startDate"];
 }
 
@@ -473,6 +489,7 @@
     NSString* newDate = [dateFormatter1 stringFromDate:currentDate];
     return newDate;
 }
+
 
 - (NSMutableArray*)filterArray:(NSArray*)input withFilterArray:(NSArray*)filterArray {
     NSMutableArray *result = [NSMutableArray array];

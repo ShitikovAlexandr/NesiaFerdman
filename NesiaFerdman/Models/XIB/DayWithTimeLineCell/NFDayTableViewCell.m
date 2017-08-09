@@ -61,7 +61,8 @@
 }
 
 - (void) addData:(NSMutableArray *)events withIndexPath:(NSIndexPath *)index date:(NSDate*)currentDate {
-    NSArray *filtredArray = [NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getEventForHour:index.section  WithArray:events]];
+//    NSArray *filtredArray = [NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getEventForHour:index.section  WithArray:events]];
+       NSArray *filtredArray =[NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getEventForHour:index.section date:currentDate fromArray:events]];
     self.timeLabel.hidden = true;
     self.topLine.hidden = YES;
     self.downLine.hidden = YES;
