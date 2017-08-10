@@ -111,6 +111,7 @@
 - (void)dataSynchronization {
     
     if (_isDataBase && _isGogleCalendar) {
+        [self manifestationsSynchronization];
         [self calendarSynchronization];
         [self appValueSynchronization];
         [[NFGoogleSyncManager sharedManager] downloadGoogleEventsListWithCalendarsArray:[self selectedCalendars]];
@@ -128,6 +129,18 @@
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         });
            }
+}
+
+- (void)manifestationsSynchronization {
+    if ([self isFirstRunApp]) {
+        NSMutableArray *appManifestation  = [NSMutableArray new];
+        [appManifestation addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getAppManifestationList]];
+        for (NFNManifestation *item in appManifestation) {
+            NFNValue *val = [[NFNValue alloc] init];
+            val.valueId = item.parentId;
+            [self writeManifestationToDataBase:item toValue:val];
+        }
+    }
 }
 
 - (void)calendarSynchronization {

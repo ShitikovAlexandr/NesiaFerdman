@@ -8,7 +8,6 @@
 
 #import "NFDataSourceManager.h"
 
-
 @interface NFDataSourceManager ()
 
 @property (strong, nonatomic) NSMutableArray *eventsArray;
@@ -140,9 +139,7 @@
     NSMutableArray *result = [NSMutableArray array];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.startDate contains[c] %@",[NSString stringWithFormat:@"T%02ld", (long)hour]];
     [result addObjectsFromArray:[eventsArray filteredArrayUsingPredicate:predicate]];
-    
     return [self sortArray:result withKey:@"startDate"];
-    
 }
 
 //test
