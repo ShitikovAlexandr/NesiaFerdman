@@ -455,10 +455,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назначение ценность" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0d-nh-sLe">
-                                                    <rect key="frame" x="12" y="14" width="148" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Назначение ценности" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0d-nh-sLe">
+                                                    <rect key="frame" x="12" y="14" width="150" height="17"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="148" id="cXa-ZM-glb"/>
+                                                        <constraint firstAttribute="width" constant="150" id="cXa-ZM-glb"/>
                                                         <constraint firstAttribute="height" constant="17" id="hsA-uE-ZIv"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>

@@ -79,7 +79,6 @@ UICollectionViewDelegateFlowLayout
     } else {
         [self setEditOptions];
     }
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {

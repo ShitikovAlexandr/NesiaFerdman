@@ -138,6 +138,8 @@
 }
 
 - (void)navigateToResultWeekScreen {
+    // for demo
+    
     NFStatisticPageController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
     UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
     [navController setViewControllers:@[viewController]];

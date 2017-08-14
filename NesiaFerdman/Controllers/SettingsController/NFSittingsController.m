@@ -56,6 +56,8 @@
 #pragma mark - UITableViewDataSource
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // for demo
+
     [NFMenuElements navigateToScreenWithIndex:indexPath.row target:self];
 }
 
