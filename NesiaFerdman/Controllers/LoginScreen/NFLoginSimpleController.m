@@ -96,9 +96,12 @@ static NFLoginSimpleController *sharedController;
     _logoView.backgroundColor = [UIColor clearColor];
     [self.mainView addSubview:_logoView];
     
-    _logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_logoView.frame) * 0.75, CGRectGetWidth(_logoView.frame) * 0.75)];
+    _logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_logoView.frame) * 0.9, CGRectGetWidth(_logoView.frame) * 0.9)]; // old 0.75
     _logoImage.backgroundColor  = [UIColor clearColor];
-    [_logoImage setImage:[UIImage imageNamed:@"main_logo.png"]];
+    //[_logoImage setImage:[UIImage imageNamed:@"main_logo.png"]];
+    [_logoImage setImage:[UIImage imageNamed:@"logoNewNesia.png"]]; // new logo
+    _logoImage.contentMode = UIViewContentModeScaleAspectFit;
+
     _logoImage.center = _logoView.center;
     [self.mainView addSubview:_logoImage];
     _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";

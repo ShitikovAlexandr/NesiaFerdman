@@ -59,6 +59,10 @@
 		C21B0ED21EFA9358001D85CE /* UIBarButtonItem+FHButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED11EFA9358001D85CE /* UIBarButtonItem+FHButtons.m */; };
 		C21B0ED51EFAAD84001D85CE /* NFEditResultController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED41EFAAD84001D85CE /* NFEditResultController.m */; };
 		C21B0ED91EFABE7F001D85CE /* NFResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C21B0ED81EFABE7F001D85CE /* NFResultCell.m */; };
+		C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */; };
+		C2213ED51F419B4C00A1D5C1 /* isInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED41F419B4C00A1D5C1 /* isInfoIcon@2x.png */; };
+		C2213ED71F41A21000A1D5C1 /* isInfoIconRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED61F41A21000A1D5C1 /* isInfoIconRed@2x.png */; };
+		C2213ED91F41A86B00A1D5C1 /* Splash149.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED81F41A86B00A1D5C1 /* Splash149.png */; };
 		C22407791E9CB351004B089A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C22407781E9CB351004B089A /* main.m */; };
 		C224077C1E9CB351004B089A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C224077B1E9CB351004B089A /* AppDelegate.m */; };
 		C22407821E9CB351004B089A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22407801E9CB351004B089A /* Main.storyboard */; };
@@ -373,6 +377,10 @@
 		C21B0ED41EFAAD84001D85CE /* NFEditResultController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFEditResultController.m; sourceTree = "<group>"; };
 		C21B0ED71EFABE7F001D85CE /* NFResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultCell.h; sourceTree = "<group>"; };
 		C21B0ED81EFABE7F001D85CE /* NFResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultCell.m; sourceTree = "<group>"; };
+		C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoNewNesia.png; sourceTree = "<group>"; };
+		C2213ED41F419B4C00A1D5C1 /* isInfoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "isInfoIcon@2x.png"; sourceTree = "<group>"; };
+		C2213ED61F41A21000A1D5C1 /* isInfoIconRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "isInfoIconRed@2x.png"; sourceTree = "<group>"; };
+		C2213ED81F41A86B00A1D5C1 /* Splash149.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash149.png; sourceTree = "<group>"; };
 		C22407741E9CB351004B089A /* NesiaFerdman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NesiaFerdman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22407781E9CB351004B089A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C224077A1E9CB351004B089A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -807,6 +815,7 @@
 		C209AF861F0A2F500036A592 /* Pop */ = {
 			isa = PBXGroup;
 			children = (
+				C2213ED31F4199BF00A1D5C1 /* alertImg */,
 				C209AF871F0A2F7F0036A592 /* NFPop.h */,
 				C209AF881F0A2F7F0036A592 /* NFPop.m */,
 			);
@@ -925,6 +934,15 @@
 			path = ResultCell;
 			sourceTree = "<group>";
 		};
+		C2213ED31F4199BF00A1D5C1 /* alertImg */ = {
+			isa = PBXGroup;
+			children = (
+				C2213ED61F41A21000A1D5C1 /* isInfoIconRed@2x.png */,
+				C2213ED41F419B4C00A1D5C1 /* isInfoIcon@2x.png */,
+			);
+			path = alertImg;
+			sourceTree = "<group>";
+		};
 		C224076B1E9CB351004B089A = {
 			isa = PBXGroup;
 			children = (
@@ -1035,6 +1053,8 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2213ED81F41A86B00A1D5C1 /* Splash149.png */,
+				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
 				C2144C731F3867BD00307176 /* google_icon.png */,
 				C2091B151F1E37A500BAA524 /* task_section_icon.png */,
 				C2AA72121F02A0B2007DB785 /* uodate_icon.png */,
@@ -2132,15 +2152,18 @@
 				C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */,
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
+				C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
 				C2C0D6071EC5F42C003C7741 /* importantIcon@3x.png in Resources */,
 				C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */,
 				C25737541E9CE7F900C4A4EA /* logo.png in Resources */,
+				C2213ED71F41A21000A1D5C1 /* isInfoIconRed@2x.png in Resources */,
 				C2A2015F1ECF32B200281058 /* checked_enable.png in Resources */,
 				C2C0D60B1EC5F72D003C7741 /* conclusionsIcon@3x.png in Resources */,
 				C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */,
 				C224078A1E9CB351004B089A /* LaunchScreen.storyboard in Resources */,
 				C24B29E71F2622060069C160 /* GoogleService-Info.plist in Resources */,
+				C2213ED91F41A86B00A1D5C1 /* Splash149.png in Resources */,
 				C2C22DB51EE98283006BD83A /* user_icon.png in Resources */,
 				C2C22DAD1EE98283006BD83A /* manifestations_icon.png in Resources */,
 				C2C0D60A1EC5F72D003C7741 /* conclusionsIcon@2x.png in Resources */,
@@ -2186,6 +2209,7 @@
 				C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */,
 				C2D13F741EEAC9F000A9A4F3 /* NFValueCell.xib in Resources */,
 				C2C22DAB1EE98283006BD83A /* heart_value_icon.png in Resources */,
+				C2213ED51F419B4C00A1D5C1 /* isInfoIcon@2x.png in Resources */,
 				C294231D1ED31F7E0017B0A7 /* logo_with_text.png in Resources */,
 				C2D13F771EEAE33600A9A4F3 /* NFAddFooterView.xib in Resources */,
 				C2FCC6F71EEEC918009D47B5 /* conclusionsFill@3x.png in Resources */,

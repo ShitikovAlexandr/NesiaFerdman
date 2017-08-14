@@ -104,7 +104,6 @@
 - (void)getMaxSyncInterval;
 - (void)getLimitGoogleDownload;
 
-
 //admin part
 
 - (void)writAppValueToDataBase:(NFNValue*)value;
