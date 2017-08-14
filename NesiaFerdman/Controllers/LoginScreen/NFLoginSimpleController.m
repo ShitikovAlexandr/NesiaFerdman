@@ -21,7 +21,7 @@
 
 @import Firebase;
 
-#define TRANSFORM_VALUE -self.view.frame.size.height * 0.12
+#define TRANSFORM_VALUE -self.view.frame.size.height * 0.08
 
 typedef NS_ENUM(NSUInteger, ScreenState)
 {
@@ -55,7 +55,8 @@ static NFLoginSimpleController *sharedController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sharedController = self;
-    [self initViews];
+    //[self initViews];
+    [self initLoginImageView];
     [_loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -189,6 +190,26 @@ static NFLoginSimpleController *sharedController;
     UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListControllerNav"];
     [navController setViewControllers:@[viewController]];
     [self presentViewController:navController animated:YES completion:nil];
+}
+
+- (void)initLoginImageView {
+//    UIImageView *loginImageView = [[UIImageView alloc] initWithFrame:_mainView.frame];
+//    loginImageView.contentMode = UIViewContentModeScaleAspectFit;
+//    [loginImageView setImage:[UIImage imageNamed:@"Splash149.png"]];
+//    [_mainView addSubview:loginImageView];
+    
+    _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
+    _socialText.text = @"Вход через социальную сеть";
+    _socialText.tintColor = [NFStyleKit _base_GREY];
+    [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
+    [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
+    _loginButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
+    _loginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    _loginButton.userInteractionEnabled  = false;
+    self.buttonView.alpha = 0;
+    
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
+
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

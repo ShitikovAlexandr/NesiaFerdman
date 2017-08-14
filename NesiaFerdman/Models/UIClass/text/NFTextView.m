@@ -91,17 +91,45 @@
 
 - (void)showAlertWithMasssage:(NSString*)massage {
     
-    [ISMessages showCardAlertWithTitle:massage
-                               message:nil
-                              duration:3.f
-                           hideOnSwipe:YES
-                             hideOnTap:YES
-                             alertType:ISAlertTypeError
-                         alertPosition:ISAlertPositionTop
-                               didHide:^(BOOL finished) {
-                                   _isShowAlert = false;
-                                   self.textColor = [UIColor blackColor];
-                               }];
+//    [ISMessages showCardAlertWithTitle:massage
+//                               message:nil
+//                              duration:3.f
+//                           hideOnSwipe:YES
+//                             hideOnTap:YES
+//                             alertType:ISAlertTypeError
+//                         alertPosition:ISAlertPositionTop
+//                               didHide:^(BOOL finished) {
+//                                   _isShowAlert = false;
+//                                   self.textColor = [UIColor blackColor];
+//                               }];
+    
+    ISMessages* alert = [ISMessages cardAlertWithTitle:@""
+                                               message:massage
+                                             iconImage:[UIImage imageNamed:@"isInfoIconRed"]
+                                              duration:3.f
+                                           hideOnSwipe:YES
+                                             hideOnTap:YES
+                                             alertType:ISAlertTypeCustom
+                                         alertPosition:ISAlertPositionTop];
+    
+    
+    alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
+    alert.titleLabelTextColor = [UIColor redColor];
+    
+    //alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
+    alert.messageLabelTextColor = [UIColor redColor];
+    
+    alert.alertViewBackgroundColor = [UIColor whiteColor];
+    
+    [alert show:^{
+        NSLog(@"Callback is working!");
+    } didHide:^(BOOL finished) {
+        NSLog(@"Custom alert without image did hide.");
+        _isShowAlert = false;
+        self.textColor = [UIColor blackColor];
+    }];
+    
+
 }
 
 - (void)setErrorAtributeString {
