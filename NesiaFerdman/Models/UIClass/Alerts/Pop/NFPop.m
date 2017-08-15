@@ -25,6 +25,7 @@ static BOOL isShowAlert = false;
     // Do any additional setup after loading the view.
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,24 +36,12 @@ static BOOL isShowAlert = false;
     
     if (!isShowAlert) {
         isShowAlert = true;
-//    [NFPop showCardAlertWithTitle:@""
-//                               message:massage
-//                              duration:3.f
-//                           hideOnSwipe:YES
-//                             hideOnTap:YES
-//                             alertType:ISAlertTypeError
-//                         alertPosition:ISAlertPositionTop
-//                               didHide:^(BOOL finished) {
-//                                   NSLog(@"Alert did hide.");
-//                                   isShowAlert = false;
-//                               }];
         
         UIImage *originalImage = [UIImage imageNamed:@"isInfoIconRed"];
         UIImage *newImage = [originalImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,50)]; // your image size
         imageView.tintColor = [UIColor redColor];  // or whatever color that has been selected
         imageView.image = newImage;
-        
         
         ISMessages* alert = [ISMessages cardAlertWithTitle:@""
                                                    message:massage
@@ -63,14 +52,18 @@ static BOOL isShowAlert = false;
                                                  alertType:ISAlertTypeCustom
                                              alertPosition:ISAlertPositionTop];
         
-        
         alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
         alert.titleLabelTextColor = [UIColor redColor];
-        
-        //alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
         alert.messageLabelTextColor = [UIColor redColor];
-        
         alert.alertViewBackgroundColor = [UIColor whiteColor];
+        alert.view.clipsToBounds = NO;
+        UIView *shadowView = [alert.view.subviews objectAtIndex:0];
+        shadowView.backgroundColor = [UIColor whiteColor];
+        shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+        shadowView.layer.shadowRadius = 2.f;
+        shadowView.layer.shadowOpacity = 0.5;
+        shadowView.layer.shadowOffset = CGSizeMake(0, 2);
+        shadowView.layer.cornerRadius = 4.f;
         
         [alert show:^{
             NSLog(@"Callback is working!");
@@ -79,10 +72,7 @@ static BOOL isShowAlert = false;
             isShowAlert = false;
         }];
 
-        
-        
-    }
-
+            }
 }
 
 + (void)internetConnectionAlert {
@@ -100,7 +90,10 @@ static BOOL isShowAlert = false;
                                   isShowAlert = false;
                               }];
     }
-
+    
+    
+    
+    
 }
 
 - (void)customAlert {
@@ -110,7 +103,6 @@ static BOOL isShowAlert = false;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,50)]; // your image size
     imageView.tintColor = [UIColor redColor];  // or whatever color that has been selected
     imageView.image = newImage;
-    
     
     ISMessages* alert = [ISMessages cardAlertWithTitle:@"This is custom alert with callback"
                                                message:@"This is your message!!"
@@ -123,11 +115,16 @@ static BOOL isShowAlert = false;
 				
     alert.titleLabelFont = [UIFont boldSystemFontOfSize:15.f];
     alert.titleLabelTextColor = [UIColor redColor];
-    
-    //alert.messageLabelFont = [UIFont italicSystemFontOfSize:13.f];
     alert.messageLabelTextColor = [UIColor redColor];
-    
-    alert.alertViewBackgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:0.8];
+    alert.alertViewBackgroundColor = [UIColor whiteColor];
+    alert.view.clipsToBounds = NO;
+    UIView *shadowView = [alert.view.subviews objectAtIndex:0];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowView.layer.shadowRadius = 2.f;
+    shadowView.layer.shadowOpacity = 0.5;
+    shadowView.layer.shadowOffset = CGSizeMake(0, 2);
+    shadowView.layer.cornerRadius = 4.f;
     
     [alert show:^{
         NSLog(@"Callback is working!");

@@ -63,7 +63,7 @@
     Reachability *reachability = (Reachability *)[notification object];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     if (networkStatus  == NotReachable) {
-        [NFPop internetConnectionAlert];
+        [NFPop startAlertWithMassage:kErrorInternetconnection];
     }
 }
 
@@ -72,14 +72,12 @@
     Reachability *reachability = [Reachability reachabilityForInternetConnection];
     NetworkStatus networkStatus = [reachability currentReachabilityStatus];
     if (networkStatus  == NotReachable) {
-        [NFPop internetConnectionAlert];
+        [NFPop startAlertWithMassage:kErrorInternetconnection];
         return false;
     } else {
         return true;
     }
 }
-
-
 
 - (void)updateData {
     [[NFFirebaseSyncManager sharedManager] downloadAllData];

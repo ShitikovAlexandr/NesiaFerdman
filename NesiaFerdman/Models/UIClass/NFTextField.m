@@ -111,6 +111,15 @@
     alert.messageLabelTextColor = [UIColor redColor];
     
     alert.alertViewBackgroundColor = [UIColor whiteColor];
+    alert.view.clipsToBounds = NO;
+    UIView *shadowView = [alert.view.subviews objectAtIndex:0];
+    shadowView.backgroundColor = [UIColor whiteColor];
+    shadowView.layer.shadowColor = [UIColor blackColor].CGColor;
+    shadowView.layer.shadowRadius = 2.f;
+    shadowView.layer.shadowOpacity = 0.5;
+    shadowView.layer.shadowOffset = CGSizeMake(0, 2);
+    shadowView.layer.cornerRadius = 4.f;
+
     
     [alert show:^{
         NSLog(@"Callback is working!");

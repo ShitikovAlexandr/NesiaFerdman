@@ -137,6 +137,10 @@ static NFLoginSimpleController *sharedController;
                      completion:NULL];
 }
 
+- (void)transformToSplash {
+    
+}
+
 - (void)chackLoginState {
       if (![[NFGoogleSyncManager sharedManager] isLogin]) {
         NSLog(@"not login");
@@ -199,7 +203,7 @@ static NFLoginSimpleController *sharedController;
 //    [_mainView addSubview:loginImageView];
     
     _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
-    _socialText.text = @"Вход через социальную сеть";
+    _socialText.text = @"Вход через учетную запись Google";
     _socialText.tintColor = [NFStyleKit _base_GREY];
     [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
     [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
@@ -209,7 +213,6 @@ static NFLoginSimpleController *sharedController;
     self.buttonView.alpha = 0;
     
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
-
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

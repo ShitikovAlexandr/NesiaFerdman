@@ -51,7 +51,7 @@
     if (array.count > 0) {
         title = [[array valueForKey:@"valueTitle"] componentsJoinedByString:@", "];
     } else {
-        title = @"Ценности все";
+        title = @"Все ценности";
     }
     _titleLabel.text = title;
 }
