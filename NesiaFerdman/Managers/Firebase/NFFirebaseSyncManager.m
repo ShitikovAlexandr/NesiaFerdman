@@ -466,7 +466,11 @@
 }
 
 - (void)deleteManifestation:(NFNManifestation*)manifestation {
-    [[[self userValueManifestationsRef] child:manifestation.idField] removeValue];
+    manifestation.isDeleted = true;
+    NFNValue *val = [[NFNValue alloc] init];
+    val.valueId = manifestation.parentId;
+    [self writeManifestation:manifestation toValue:val];
+    //[[[self userValueManifestationsRef] child:manifestation.idField] removeValue];
 }
 
 - (void)deleteResult:(NFNRsult*)result {

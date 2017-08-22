@@ -268,6 +268,7 @@
     int i = 0;
     for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
         if ([calendar.idField isEqualToString:calendarID]) {
+            [defaults setValue:calendar.idField forKey:APP_GOOGLE_CALENDAR_ID];
             i++;
             break;
         }
@@ -290,6 +291,7 @@
                      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                      NSString *email = [self getUserEmail];
                      [defaults setValue:new.idField forKey:email];
+                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
                      NSLog(@"create new calendar");
                  }
              }];

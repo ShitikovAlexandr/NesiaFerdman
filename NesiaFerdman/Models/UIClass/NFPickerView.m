@@ -74,10 +74,12 @@
 #pragma mark - Helpers
 
 - (void)doneButtonPressed:(id)sender {
-    _lastSelectedItem = [self.dataArray objectAtIndex:[self.selectedIndex integerValue]];
+    if (_dataArray.count > 0) {
+        _lastSelectedItem = [self.dataArray objectAtIndex:[self.selectedIndex integerValue]];
+        NSNotification *notification = [NSNotification notificationWithName:PICKER_VIEW_IS_PRESSED object:self];
+        [[NSNotificationCenter defaultCenter]postNotification:notification];
+    }
     [self.textfield resignFirstResponder];
-    NSNotification *notification = [NSNotification notificationWithName:PICKER_VIEW_IS_PRESSED object:self];
-    [[NSNotificationCenter defaultCenter]postNotification:notification];
 }
 
 @end

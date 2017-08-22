@@ -12,6 +12,7 @@
 @property (nonatomic, strong) NSString * idField;
 @property (nonatomic, strong) NSString * parentId;
 @property (nonatomic, strong) NSString * title;
+@property (assign, nonatomic) BOOL isDeleted;
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary;
 

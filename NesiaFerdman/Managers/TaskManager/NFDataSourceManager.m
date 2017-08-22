@@ -297,7 +297,11 @@
 
 - (void)setManifestationList:(NSArray*)array {
     [_manifestationArray removeAllObjects];
-    [_manifestationArray addObjectsFromArray:array];
+    for (NFNManifestation *manifistation in array) {
+        if (!manifistation.isDeleted) {
+            [_manifestationArray addObject:manifistation];
+        }
+    }
 }
 
 - (void)setResultCategoryList:(NSArray*)array {

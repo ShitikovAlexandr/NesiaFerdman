@@ -45,7 +45,6 @@
     _isGogleCalendar = false;
 }
 
-
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -98,7 +97,7 @@
         [self eventsSynchronization];
         [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
     });
-   
+    
 }
 
 - (void)dataBaseEndDownload {
@@ -118,7 +117,7 @@
         
         [[NFDataSourceManager sharedManager] setResultCategoryList:[[NFFirebaseSyncManager sharedManager] getResultCategoryList]];
         [[NFDataSourceManager sharedManager] setResultList:[[NFFirebaseSyncManager sharedManager] getResultList]];
-
+        
         [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
         [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
         [[NFDataSourceManager sharedManager] setManifestationList:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
@@ -126,18 +125,22 @@
             NSNotification *notification = [NSNotification notificationWithName:END_UPDATE object:nil];
             [[NSNotificationCenter defaultCenter] postNotification:notification];
         });
-           }
+    }
 }
 
 - (void)manifestationsSynchronization {
-    if ([self isFirstRunApp]) {
-        NSMutableArray *appManifestation  = [NSMutableArray new];
-        [appManifestation addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getAppManifestationList]];
-        for (NFNManifestation *item in appManifestation) {
-            NFNValue *val = [[NFNValue alloc] init];
-            val.valueId = item.parentId;
-            [self writeManifestationToDataBase:item toValue:val];
-        }
+    NSMutableArray *appManifestation  = [NSMutableArray new];
+    NSMutableArray *userManifestations = [NSMutableArray new];
+    [appManifestation addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getAppManifestationList]];
+    [userManifestations addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getUseManifestationList]];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.idField IN %@)", [userManifestations valueForKey:@"idField"]];
+    NSArray *newManifestation = [appManifestation filteredArrayUsingPredicate:predicate];
+    
+    for (NFNManifestation *item in newManifestation) {
+        NFNValue *val = [[NFNValue alloc] init];
+        val.valueId = item.parentId;
+        [self writeManifestationToDataBase:item toValue:val];
+        [self addManifestationToDBManager:item];
     }
 }
 
@@ -153,7 +156,7 @@
     NSPredicate *removedPredicate = [NSPredicate predicateWithFormat:@"!(SELF.idField IN %@)", [googleCalendars valueForKey:@"idField"]];
     NSArray* removedCalendarsArray = [dataBaseCalendars filteredArrayUsingPredicate:removedPredicate];
     NSLog(@"result removed calendars %@", removedCalendarsArray);
-
+    
     for (NFGoogleCalendar *calendar in newCalendarsArray) {
         [self writeCalendarToDataBase:calendar];
         [self addCalendarToDBManager:calendar];
@@ -190,21 +193,19 @@
 
 - (void)eventsSynchronization {
     
-    
-    
-//chack new event from google
+    //chack new event from google
     NSMutableArray *googleEvents = [NSMutableArray new];
     NSMutableArray *dataBaseEvents = [NSMutableArray new];
     [googleEvents addObjectsFromArray:[[NFGoogleSyncManager sharedManager] getEventList]];
     [dataBaseEvents addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getEvensList]];
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.socialId IN %@)", [dataBaseEvents valueForKey:@"socialId"]];
-        NSArray *newEvent = [googleEvents filteredArrayUsingPredicate:predicate];
-        for (NFNEvent *event in newEvent) {
-            [self addEventToDBManager:event];
-            [self writeEventToDataBase:event];
-        }
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"!(SELF.socialId IN %@)", [dataBaseEvents valueForKey:@"socialId"]];
+    NSArray *newEvent = [googleEvents filteredArrayUsingPredicate:predicate];
+    for (NFNEvent *event in newEvent) {
+        [self addEventToDBManager:event];
+        [self writeEventToDataBase:event];
+    }
     
-// chack if old event did change in google
+    // chack if old event did change in google
     NSPredicate *equalDBPredicate = [NSPredicate predicateWithFormat:@"SELF.socialId IN %@ AND !(SELF.updateDate IN %@)",
                                      [googleEvents valueForKey:@"socialId"], [googleEvents valueForKey:@"updateDate"]];
     NSArray *equalDBEvents = [dataBaseEvents filteredArrayUsingPredicate:equalDBPredicate];
@@ -222,7 +223,7 @@
         }
     }
     
-// filter deleted evens
+    // filter deleted evens
     NSPredicate *deletePredicate = [NSPredicate predicateWithFormat:@"SELF.isDeleted == YES"];
     NSArray *deletedItems = [dataBaseEvents filteredArrayUsingPredicate:deletePredicate];
     for (NFNEvent *event in deletedItems) {
@@ -287,7 +288,7 @@
     [[NFDataSourceManager sharedManager] removeResultFromDataSource:result];
 }
 
-#pragma mark - managers methods 
+#pragma mark - managers methods
 
 - (void)addCalendarToDBManager:(NFGoogleCalendar*)calendar {
     [[NFDataSourceManager sharedManager] addCalendarToDataSource:calendar];
@@ -404,11 +405,10 @@
     [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
     [[NFDataSourceManager sharedManager] setCalendarList:[[NFFirebaseSyncManager sharedManager] getCalendarList]];
     [[NFDataSourceManager sharedManager] setEventList:[[NFFirebaseSyncManager sharedManager] getEvensList]];
-    
 }
 
 - (void)updateValueDataSource {
-      [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
+    [[NFDataSourceManager sharedManager] setValueList:[[NFFirebaseSyncManager sharedManager] getValueList]];
 }
 
 - (void)updateManifestationDataSource {

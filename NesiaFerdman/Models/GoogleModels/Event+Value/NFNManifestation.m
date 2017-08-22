@@ -11,6 +11,7 @@ NSString *const kNFNManifestationCreateDate = @"createDate";
 NSString *const kNFNManifestationIdField = @"id";
 NSString *const kNFNManifestationParentId = @"parentId";
 NSString *const kNFNManifestationTitle = @"title";
+NSString *const kNFNManifestationIsDeleted = @"isDeleted";
 
 @interface NFNManifestation ()
 @end
@@ -46,7 +47,10 @@ NSString *const kNFNManifestationTitle = @"title";
 	}	
 	if(![dictionary[kNFNManifestationTitle] isKindOfClass:[NSNull class]]){
 		self.title = dictionary[kNFNManifestationTitle];
-	}	
+	}
+    if(![dictionary[kNFNManifestationIsDeleted] isKindOfClass:[NSNull class]]){
+        self.isDeleted = [dictionary[kNFNManifestationIsDeleted] boolValue];
+    }	
 	return self;
 }
 
@@ -69,6 +73,9 @@ NSString *const kNFNManifestationTitle = @"title";
 	if(self.title != nil){
 		dictionary[kNFNManifestationTitle] = self.title;
 	}
+    NSLog(@"self.isDeleted %@", @(self.isDeleted));
+    dictionary[kNFNManifestationIsDeleted] = [NSNumber numberWithBool:self.isDeleted];
+
 	return dictionary;
 }
 
@@ -92,6 +99,8 @@ NSString *const kNFNManifestationTitle = @"title";
 	if(self.title != nil){
 		[aCoder encodeObject:self.title forKey:kNFNManifestationTitle];
 	}
+    [aCoder encodeObject:@(self.isDeleted) forKey:kNFNManifestationIsDeleted];
+    
 }
 
 /**
@@ -105,6 +114,7 @@ NSString *const kNFNManifestationTitle = @"title";
 	self.idField = [aDecoder decodeObjectForKey:kNFNManifestationIdField];
 	self.parentId = [aDecoder decodeObjectForKey:kNFNManifestationParentId];
 	self.title = [aDecoder decodeObjectForKey:kNFNManifestationTitle];
+    self.isDeleted = [[aDecoder decodeObjectForKey:kNFNManifestationIsDeleted] boolValue];
 	return self;
 }
 
@@ -120,6 +130,7 @@ NSString *const kNFNManifestationTitle = @"title";
 	copy.idField = [self.idField copy];
 	copy.parentId = [self.parentId copy];
 	copy.title = [self.title copy];
+    copy.isDeleted = self.isDeleted;
 
 	return copy;
 }

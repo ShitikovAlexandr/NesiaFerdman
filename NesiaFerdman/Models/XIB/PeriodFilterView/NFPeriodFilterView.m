@@ -23,6 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
     _selectedDatePeriodArray = [NSMutableArray array];
     UINib *nib = [UINib nibWithNibName:NSStringFromClass([self class]) bundle:nil];
     UIView *subview = [[nib instantiateWithOwner:self options:nil] objectAtIndex:0];
@@ -45,10 +46,14 @@
     _startPicker = [[NFDatePicker alloc] initWithTextField:_startDateTextField];
     _startPicker.onlyDate = true;
     _startPicker.datePickerMode = UIDatePickerModeDate;
+    _startPicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:[self setPeriodMonth:-24]];
+    _startPicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:[self setPeriodMonth:24]];
     
     _endPicker = [[NFDatePicker alloc] initWithTextField:_endDateTextField];
     _endPicker.onlyDate = true;
     _endPicker.datePickerMode = UIDatePickerModeDate;
+    _endPicker.minimumDate = [NSDate dateWithTimeIntervalSinceNow:[self setPeriodMonth:-24]];
+    _endPicker.maximumDate = [NSDate dateWithTimeIntervalSinceNow:[self setPeriodMonth:24]];
     
     //set start date to textfields
     _startDateTextField.text = [_startPicker stringFromDateOnly:[NSDate date]];
@@ -83,6 +88,10 @@
     NFDateFormatter *dateFormater = [NFDateFormatter new];
     [dateFormater setDateFormat:@"dd MMMM yyyy"];
     return [dateFormater dateFromString:stringDate];
+}
+
+- (NSInteger)setPeriodMonth:(NSInteger)month {
+    return 2678400 * month;
 }
 
 @end
