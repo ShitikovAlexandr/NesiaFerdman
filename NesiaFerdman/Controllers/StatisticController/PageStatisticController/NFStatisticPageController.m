@@ -32,7 +32,7 @@
     [self setNavigationButton];
     [self addMaskViewNavigationBar];
     
-    NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", @"Друге", nil];
+    NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", @"Другое", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
     _segmentedControl.frame = CGRectMake(0, 49, self.view.frame.size.width - 30, 34);
     _segmentedControl.selectedSegmentIndex = 0;
@@ -49,7 +49,6 @@
     [self setViewControllers:@[dayController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
-
 }
 
 

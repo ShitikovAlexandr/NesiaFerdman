@@ -102,22 +102,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Managers/Synchronization/NFNSyncManager.m"
-            timestampString = "525085785.448147"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-manifestationsSynchronization"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -128,38 +112,6 @@
             startingLineNumber = "456"
             endingLineNumber = "456"
             landmarkName = "-deleteEvent:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-            timestampString = "525082494.70735"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "-getUseManifestationList"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Managers/TaskManager/NFDataSourceManager.m"
-            timestampString = "525084509.536279"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "299"
-            endingLineNumber = "299"
-            landmarkName = "-setManifestationList:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,12 +170,12 @@
                   moduleName = "NesiaFerdman"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Alex_Shitikov/Projects/NesiaFerdman/NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-                  timestampString = "525087628.023229"
+                  timestampString = "525108669.932562"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "436"
                   endingLineNumber = "436"
-                  offsetFromSymbolStart = "168">
+                  offsetFromSymbolStart = "160">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -233,12 +185,12 @@
                   moduleName = "NesiaFerdman"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Alex_Shitikov/Projects/NesiaFerdman/NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-                  timestampString = "525087628.025275"
+                  timestampString = "525108669.934074"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "437"
                   endingLineNumber = "437"
-                  offsetFromSymbolStart = "97">
+                  offsetFromSymbolStart = "80">
                </Location>
             </Locations>
          </BreakpointContent>

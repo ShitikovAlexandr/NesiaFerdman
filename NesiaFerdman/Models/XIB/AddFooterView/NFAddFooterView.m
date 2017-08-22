@@ -33,12 +33,12 @@
 
 - (void)setDefaultValues {
     _addButton = [UIButton new];
-//    [_addButton setImage:[UIImage imageNamed:@"Add.png"] forState:UIControlStateNormal];
-//    _addButton.translatesAutoresizingMaskIntoConstraints = NO;
-    _textField = [[UITextField alloc] init];
-//    uint padding = 10;//padding for iOS7
+    _textField = [[NFTextField alloc] init];
+//    _textField.placeholderText = @"Добавить";
+    [_textField setAttributedPlaceholder:[[NSMutableAttributedString alloc] initWithString:@"  Добавить" attributes:@{NSForegroundColorAttributeName: [UIColor grayColor]}]];
     UIImageView * iconImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Add.png"]];
     iconImageView.frame = CGRectMake(0, 0, 16, 16);
+    //[UIColor grayColor];
     _textField.clipsToBounds = YES;
     _textField.leftView = iconImageView;
     _textField.translatesAutoresizingMaskIntoConstraints = NO;

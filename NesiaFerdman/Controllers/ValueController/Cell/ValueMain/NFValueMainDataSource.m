@@ -80,6 +80,7 @@
 }
 
 - (void)addNewValueWithName:(NSString*)value andIndex:(NSInteger)index {
+    value = [value stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     if (value.length > 0) {
         NFNValue *newValue = [[NFNValue alloc] init];
         newValue.valueTitle = value;
@@ -90,6 +91,7 @@
     [self getData];
     [self addNavigationButtons];
 }
+
 
 #pragma mark - navigations buttons actions
 
@@ -171,6 +173,16 @@
             [_tableView reloadData];
         }
     }
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // Detemine if it's in editing mode
+    if (self.tableView.editing)
+    {
+        return UITableViewCellEditingStyleDelete;
+    }
+    return UITableViewCellEditingStyleNone;
 }
 
 - (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#include "NFTextField.h"
 @interface NFAddFooterView : UIView
 @property (strong, nonatomic) UIButton *addButton;
-@property (strong, nonatomic) UITextField *textField;
+@property (strong, nonatomic) NFTextField *textField;
 
 @end
