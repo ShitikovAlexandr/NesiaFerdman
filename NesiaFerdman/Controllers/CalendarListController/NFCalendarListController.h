@@ -7,10 +7,15 @@
 //
 
 #import "NFViewController.h"
+#import "NFActivityIndicatorView.h"
+
 
 @interface NFCalendarListController : NFViewController
 
 @property (assign, nonatomic) BOOL isFirstRun;
 @property (assign, nonatomic) BOOL isCompliteDownload;
+@property (strong, nonatomic) UIViewController *nextController;
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
+
 
 @end

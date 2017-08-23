@@ -11,16 +11,17 @@
 #import "NFNSyncManager.h"
 #import "NFTCalendarListCell.h"
 #import "NFDataSourceManager.h"
+#import "NFCalendarListController.h"
 
 @interface NFCalendarListDataSource () <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
-@property (strong, nonatomic) UIViewController *target;
+@property (strong, nonatomic) NFCalendarListController *target;
 @end
 
 @implementation NFCalendarListDataSource
 
-- (instancetype)initWithTableView:(UITableView*)tableView target:(UIViewController*)target {
+- (instancetype)initWithTableView:(UITableView*)tableView target:(NFCalendarListController*)target {
     self = [super init];
     if (self) {
         _target = target;
@@ -59,6 +60,9 @@
 - (void)updateData {
     [_dataArray removeAllObjects];
     [_dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getCalendarList]];
+    if (_dataArray.count > 0) {
+        [_target.indicator endAnimating];
+    }
     [_tableView reloadData];
 }
 
