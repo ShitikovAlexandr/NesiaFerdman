@@ -400,15 +400,11 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (BOOL)valueCountValid {
-    if (_event == nil) {
-        if (_selectedTags.count > 0) {
-            return true;
-        } else {
-            [NFPop startAlertWithMassage:kValueCount];
-            return false;
-        }
-    } else {
+    if (_selectedTags.count > 0) {
         return true;
+    } else {
+        [NFPop startAlertWithMassage:kValueCount];
+        return false;
     }
 }
 
