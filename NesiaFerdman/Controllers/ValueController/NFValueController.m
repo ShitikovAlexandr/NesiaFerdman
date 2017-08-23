@@ -10,6 +10,8 @@
 #import "TPKeyboardAvoidingTableView.h"
 #import "NFValueMainDataSource.h"
 
+#define kNFValueControllerTitle @"Мои ценности"
+
 @interface NFValueController ()
 @property (weak, nonatomic) IBOutlet TPKeyboardAvoidingTableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
@@ -22,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataSource = [[NFValueMainDataSource alloc] initWithTableView:_tableView target:self];
-    self.title = @"Мои ценности";
+    self.title = kNFValueControllerTitle;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -36,7 +38,7 @@
 
 - (void)updateData {
     [_dataSource getData];
-    [_dataSource addNavigationButtons];
+    [_dataSource setScreenState:_screenState];
 }
 
 

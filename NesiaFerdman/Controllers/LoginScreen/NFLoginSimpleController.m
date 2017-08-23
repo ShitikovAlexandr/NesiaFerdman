@@ -19,6 +19,10 @@
 #import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
 
+#import "NFValueController.h"
+#import "NFTutorialController.h"
+#import "NFQuoteDayViewController.h"
+
 @import Firebase;
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.08
@@ -158,16 +162,19 @@ static NFLoginSimpleController *sharedController;
                 [NFSettingManager setOnGoogleSync];
                 [NFSettingManager setOnWriteToGoogle];
                 [NFSettingManager setOnDeleteFromGoogle];
-                if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
-                    [self navigateToCalendarListWithList:true];
-                } else {
-                    [self navigateToCalendarListWithList:false];
-                }
+//                if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
+//                    [self navigateToCalendarListWithList:true];
+//                } else {
+//                    [self navigateToCalendarListWithList:false];
+//                }
+                [self navigateToTutorial];
+                
             } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
                 
                 [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
+                [self navigateToTutorial];
+                //[self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
         });
     }
@@ -188,6 +195,7 @@ static NFLoginSimpleController *sharedController;
 - (void)navigateToCalendarListWithList:(BOOL)listData {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
                                 @"NewMain" bundle:[NSBundle mainBundle]];
+    
     NFCalendarListController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
     viewController.isFirstRun = true;
     viewController.isCompliteDownload = listData;
@@ -214,6 +222,37 @@ static NFLoginSimpleController *sharedController;
     
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
 }
+
+- (void)navigateToTutorial {
+    //4
+    NFQuoteDayViewController *quoteController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFQuoteDayViewController"];
+    
+    //3
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"NewMain" bundle:[NSBundle mainBundle]];
+    NFValueController *valueController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFValueController"];
+    valueController.nextController = quoteController;
+    valueController.isFirstRun = true;
+    valueController.screenState = FirstRunValue;
+    //2
+    
+    NFCalendarListController *calendarListController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
+    calendarListController.isFirstRun = true;
+    calendarListController.nextController = valueController;
+    //1
+    
+    NFTutorialController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialController"];
+    viewController.isFirstRun = true;
+    viewController.nextController = calendarListController;
+    
+    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
+    
+    
+
+}
+
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;

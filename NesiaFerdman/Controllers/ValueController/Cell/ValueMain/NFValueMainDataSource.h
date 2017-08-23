@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "TPKeyboardAvoidingTableView.h"
+#import "NFValueController.h"
+
 
 
 @interface NFValueMainDataSource : NSObject
 
 - (instancetype)initWithTableView:(TPKeyboardAvoidingTableView*)tableView target:(UIViewController*)target;
 - (void)getData;
-- (void)addNavigationButtons;
+//- (void)addNavigationButtons;
+- (void)setScreenState:(ValueScreenState)state;
 
 @end

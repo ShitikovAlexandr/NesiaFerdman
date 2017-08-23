@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger, ValueScreenState)
+{
+    ViewValue,
+    EditValue,
+    FirstRunValue
+};
+
+
 @interface NFValueController : UIViewController
+@property (assign, nonatomic) BOOL isFirstRun;
+@property (assign, nonatomic) ValueScreenState screenState;
+@property (strong, nonatomic) UIViewController *nextController;
 
 @end

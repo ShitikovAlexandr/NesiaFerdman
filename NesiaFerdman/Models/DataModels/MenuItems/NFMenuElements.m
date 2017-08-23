@@ -71,6 +71,7 @@ typedef NS_ENUM(NSInteger, MenuItem)
         case Values:
         {
             NFValueController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFValueController class])];
+            viewController.screenState = ViewValue;
             UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFValueControllerNav"];
             [navController setViewControllers:@[viewController]];
             [target presentViewController:navController animated:YES completion:nil];
@@ -107,14 +108,17 @@ typedef NS_ENUM(NSInteger, MenuItem)
             UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFAboutControllerNav"];
             [navController setViewControllers:@[viewController]];
             [target presentViewController:navController animated:YES completion:nil];
-            
             break;
         }
 
         case Exit:
-        {
             
+        {
+            UIViewController *vc = target;
+            [vc.navigationController dismissViewControllerAnimated:YES completion:NULL];
             [[NFLoginSimpleController sharedMenuController] logout];
+            
+
             break;
         }
         default:

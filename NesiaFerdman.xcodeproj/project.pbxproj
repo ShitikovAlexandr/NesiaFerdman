@@ -152,6 +152,12 @@
 		C27C82B31F0FCDE3007AD793 /* NFResultDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B21F0FCDE3007AD793 /* NFResultDayController.m */; };
 		C27C82B91F0FCE16007AD793 /* NFRsultPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B81F0FCE16007AD793 /* NFRsultPageController.m */; };
 		C27C82BC1F0FCE8E007AD793 /* NFResultMonthController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82BB1F0FCE8E007AD793 /* NFResultMonthController.m */; };
+		C27CFB331F4DBAE400AF7B87 /* test1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB2D1F4DBAE400AF7B87 /* test1.jpg */; };
+		C27CFB341F4DBAE400AF7B87 /* test2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB2E1F4DBAE400AF7B87 /* test2.jpg */; };
+		C27CFB351F4DBAE400AF7B87 /* test3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB2F1F4DBAE400AF7B87 /* test3.jpg */; };
+		C27CFB361F4DBAE400AF7B87 /* test4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB301F4DBAE400AF7B87 /* test4.jpg */; };
+		C27CFB371F4DBAE400AF7B87 /* test5.png in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB311F4DBAE400AF7B87 /* test5.png */; };
+		C27CFB381F4DBAE400AF7B87 /* test6.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C27CFB321F4DBAE400AF7B87 /* test6.jpeg */; };
 		C28190061EAF40C100EE13AB /* NFGoogleUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = C28190051EAF40C100EE13AB /* NFGoogleUserInfo.m */; };
 		C286D5FF1EA61388007C2395 /* NFDayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C286D5FE1EA61388007C2395 /* NFDayTableViewCell.m */; };
 		C286D6011EA61394007C2395 /* NFDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C286D6001EA61394007C2395 /* NFDayTableViewCell.xib */; };
@@ -541,6 +547,12 @@
 		C27C82B81F0FCE16007AD793 /* NFRsultPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRsultPageController.m; sourceTree = "<group>"; };
 		C27C82BA1F0FCE8E007AD793 /* NFResultMonthController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultMonthController.h; sourceTree = "<group>"; };
 		C27C82BB1F0FCE8E007AD793 /* NFResultMonthController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultMonthController.m; sourceTree = "<group>"; };
+		C27CFB2D1F4DBAE400AF7B87 /* test1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test1.jpg; sourceTree = "<group>"; };
+		C27CFB2E1F4DBAE400AF7B87 /* test2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test2.jpg; sourceTree = "<group>"; };
+		C27CFB2F1F4DBAE400AF7B87 /* test3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test3.jpg; sourceTree = "<group>"; };
+		C27CFB301F4DBAE400AF7B87 /* test4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test4.jpg; sourceTree = "<group>"; };
+		C27CFB311F4DBAE400AF7B87 /* test5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test5.png; sourceTree = "<group>"; };
+		C27CFB321F4DBAE400AF7B87 /* test6.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test6.jpeg; sourceTree = "<group>"; };
 		C28190041EAF40C100EE13AB /* NFGoogleUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFGoogleUserInfo.h; sourceTree = "<group>"; };
 		C28190051EAF40C100EE13AB /* NFGoogleUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFGoogleUserInfo.m; sourceTree = "<group>"; };
 		C286D5FD1EA61388007C2395 /* NFDayTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayTableViewCell.h; sourceTree = "<group>"; };
@@ -1055,6 +1067,7 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C27CFB2C1F4DBAE400AF7B87 /* testTutorial */,
 				C2213EDA1F41BB3C00A1D5C1 /* splashBig.png */,
 				C2213ED81F41A86B00A1D5C1 /* Splash149.png */,
 				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
@@ -1567,6 +1580,19 @@
 				C27C82B81F0FCE16007AD793 /* NFRsultPageController.m */,
 			);
 			path = resultPageController;
+			sourceTree = "<group>";
+		};
+		C27CFB2C1F4DBAE400AF7B87 /* testTutorial */ = {
+			isa = PBXGroup;
+			children = (
+				C27CFB2D1F4DBAE400AF7B87 /* test1.jpg */,
+				C27CFB2E1F4DBAE400AF7B87 /* test2.jpg */,
+				C27CFB2F1F4DBAE400AF7B87 /* test3.jpg */,
+				C27CFB301F4DBAE400AF7B87 /* test4.jpg */,
+				C27CFB311F4DBAE400AF7B87 /* test5.png */,
+				C27CFB321F4DBAE400AF7B87 /* test6.jpeg */,
+			);
+			path = testTutorial;
 			sourceTree = "<group>";
 		};
 		C286D5FC1EA61335007C2395 /* DayWithTimeLineCell */ = {
@@ -2157,9 +2183,11 @@
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
 				C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
+				C27CFB361F4DBAE400AF7B87 /* test4.jpg in Resources */,
 				C2C0D6071EC5F42C003C7741 /* importantIcon@3x.png in Resources */,
 				C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */,
 				C25737541E9CE7F900C4A4EA /* logo.png in Resources */,
+				C27CFB341F4DBAE400AF7B87 /* test2.jpg in Resources */,
 				C2213ED71F41A21000A1D5C1 /* isInfoIconRed@2x.png in Resources */,
 				C2A2015F1ECF32B200281058 /* checked_enable.png in Resources */,
 				C2C0D60B1EC5F72D003C7741 /* conclusionsIcon@3x.png in Resources */,
@@ -2183,18 +2211,22 @@
 				C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */,
 				C2C22DB31EE98283006BD83A /* setting_icon.png in Resources */,
 				C2308B351F1F70E1006F6E87 /* NFTCalendarListCell.xib in Resources */,
+				C27CFB381F4DBAE400AF7B87 /* test6.jpeg in Resources */,
 				C2091B111F1DF78F00BAA524 /* NFPeriodFilterView.xib in Resources */,
 				C2C22DBD1EE98A25006BD83A /* NFMenuCell.xib in Resources */,
 				C2C22DB11EE98283006BD83A /* relax_value_icon.png in Resources */,
 				C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */,
 				C22407871E9CB351004B089A /* Assets.xcassets in Resources */,
+				C27CFB371F4DBAE400AF7B87 /* test5.png in Resources */,
 				C2FCC6FC1EEEC918009D47B5 /* taskFill@2x.png in Resources */,
 				C20595721EF2C39E00BF3BFD /* Right_arrow_label.png in Resources */,
 				C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */,
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
+				C27CFB351F4DBAE400AF7B87 /* test3.jpg in Resources */,
 				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
 				C2C22DA71EE98283006BD83A /* add_icon.png in Resources */,
 				C24AEA4B1F34868700AA88D2 /* resultFill.png in Resources */,
+				C27CFB331F4DBAE400AF7B87 /* test1.jpg in Resources */,
 				C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */,
 				C2C22DA91EE98283006BD83A /* exit_icon.png in Resources */,
 				C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */,

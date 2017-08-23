@@ -170,12 +170,12 @@
                   moduleName = "NesiaFerdman"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Alex_Shitikov/Projects/NesiaFerdman/NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-                  timestampString = "525108669.932562"
+                  timestampString = "525192618.594585"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "436"
                   endingLineNumber = "436"
-                  offsetFromSymbolStart = "160">
+                  offsetFromSymbolStart = "168">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -185,12 +185,12 @@
                   moduleName = "NesiaFerdman"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Alex_Shitikov/Projects/NesiaFerdman/NesiaFerdman/Managers/Firebase/NFFirebaseSyncManager.m"
-                  timestampString = "525108669.934074"
+                  timestampString = "525192618.596365"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "437"
                   endingLineNumber = "437"
-                  offsetFromSymbolStart = "80">
+                  offsetFromSymbolStart = "97">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -240,6 +240,22 @@
             startingLineNumber = "135"
             endingLineNumber = "135"
             landmarkName = "-copyWithZone:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NesiaFerdman/Controllers/LoginScreen/NFLoginSimpleController.m"
+            timestampString = "525192147.883418"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "-logout"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

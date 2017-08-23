@@ -11,6 +11,6 @@
 @interface NFTutorialCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-- (void)addDataToCell;
+- (void)addDataToCell:(UIImage*)image;
 
 @end

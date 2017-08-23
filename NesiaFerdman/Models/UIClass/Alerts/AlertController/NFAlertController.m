@@ -8,11 +8,13 @@
 
 #import "NFAlertController.h"
 
-#define DELETE_USER_INFO @"Все данные будут удалены из приложения!"
-#define CANCEL_TITLE @"Отмена"
-#define DELETE_TITLE @"Удалить"
-#define REMOVE_FROM_GOOGLE @"Задача так же будет удалена из Google"
-#define REMOVE_EVENT @"Вы действительно хотите удалить задачу ?"
+#define DELETE_USER_INFO        @"Все данные будут удалены из приложения!"
+#define CANCEL_TITLE            @"Отмена"
+#define DELETE_TITLE            @"Удалить"
+#define REMOVE_FROM_GOOGLE      @"Задача так же будет удалена из Google"
+#define REMOVE_EVENT            @"Вы действительно хотите удалить задачу ?"
+#define DELETE_EVENT            @"Удаление задачи"
+#define DELETE_PROFOLE_TITLE    @"Удалить профиль?"
 
 @interface NFAlertController()
 
@@ -21,7 +23,7 @@
 @implementation NFAlertController
 
 + (void)alertDeleteProfileWithTarget:(id)target action:(SEL)userAction {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Удальть профиль?" message:DELETE_USER_INFO preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DELETE_PROFOLE_TITLE message:DELETE_USER_INFO preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:DELETE_TITLE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         if ([target respondsToSelector:userAction]) {
@@ -38,7 +40,7 @@
 }
 
 + (void)alertDeleteGoogleEventWithTarget:(id)target action:(SEL)userAction {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Удаление задачи" message:REMOVE_FROM_GOOGLE preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DELETE_EVENT message:REMOVE_FROM_GOOGLE preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:DELETE_TITLE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [target performSelector:userAction];
@@ -53,7 +55,7 @@
 }
 
 + (void)alertDeleteEventWithTarget:(id)target action:(SEL)userAction {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Удаление задачи" message:REMOVE_EVENT preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:DELETE_EVENT message:REMOVE_EVENT preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *ok = [UIAlertAction actionWithTitle:DELETE_TITLE style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         [target performSelector:userAction];

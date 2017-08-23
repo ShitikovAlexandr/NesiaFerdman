@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NFTutorialController : UIViewController
+@property (strong, nonatomic) UIViewController *nextController;
+@property (assign, nonatomic) BOOL isFirstRun;
 
 @end

@@ -18,8 +18,8 @@
 }
 
 
-- (void)addDataToCell {
-    
+- (void)addDataToCell:(UIImage*)image {
+    [_imageView setImage:image];
 }
 
 @end

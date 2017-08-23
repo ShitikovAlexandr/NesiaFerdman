@@ -17,6 +17,9 @@
 #define kLoginError                 @"Ошибка авторизации!"
 #define kValueCount                 @"Добавьте ценности!"
 
+#define kValueMaxCount              @"Количество ценностей не должно превышать 11"
+#define kValueMinCount              @"Количество ценностей не должно быть меньше 7"
+
 @interface NFPop : ISMessages
 
 + (void)startAlertWithMassage:(NSString *)massage;
