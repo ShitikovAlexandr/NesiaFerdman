@@ -2,7 +2,7 @@
 //  NFValuesFilterView.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 5/29/17.
+//  Created by Alex_Shitikov on 8/29/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

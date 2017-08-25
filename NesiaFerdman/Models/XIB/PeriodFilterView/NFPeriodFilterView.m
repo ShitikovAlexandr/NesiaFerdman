@@ -2,14 +2,14 @@
 //  NFPeriodFilterView.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/18/17.
+//  Created by Alex_Shitikov on 8/18/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
 #import "NFPeriodFilterView.h"
 #import "NFStyleKit.h"
 #import "NFDatePicker.h"
-#import "NFTaskManager.h"
+#import "NFDataSourceManager.h"
 #import "NotifyList.h"
 
 @interface NFPeriodFilterView () <UITextFieldDelegate>
@@ -78,7 +78,7 @@
 
 - (void)addNewRangeOfDateToArrayFrom:(NSDate*)start to:(NSDate*)end {
     [_selectedDatePeriodArray removeAllObjects];
-    [_selectedDatePeriodArray addObjectsFromArray:[[NFTaskManager sharedManager] getListOfDateWithStart:start end:end]];
+    [_selectedDatePeriodArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getListOfDateWithStart:start end:end]];
     NSLog(@"range of date array %@", _selectedDatePeriodArray);
 }
 

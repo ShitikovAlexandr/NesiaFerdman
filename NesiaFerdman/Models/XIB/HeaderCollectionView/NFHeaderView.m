@@ -2,7 +2,7 @@
 //  NFHeaderView.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/14/17.
+//  Created by Alex_Shitikov on 8/14/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -53,7 +53,7 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         self.backgroundColor = [NFStyleKit _borderDarkGrey];
-
+        
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
         
@@ -66,11 +66,6 @@
         self.collectionView.showsHorizontalScrollIndicator = NO;
         self.collectionView.backgroundColor = [NFStyleKit _base_GREY];
         [self addSubview:self.collectionView];
-        
-//        self.layer.shadowColor = [UIColor blackColor].CGColor;
-//        self.layer.shadowOffset = CGSizeMake(0.f, 1.f);
-//        self.layer.shadowRadius = 0.f;
-//        self.layer.shadowOpacity = 1.f;
         
         [self.collectionView registerNib:[UINib nibWithNibName:@"NFHeaderCell" bundle:nil] forCellWithReuseIdentifier:@"NFHeaderCell"];
         self.sourseArray = [NSMutableArray array];
@@ -125,7 +120,6 @@
     return 0;
 }
 
-
 #pragma mark - UICollectionViewDelegateFlowLayout -
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -167,7 +161,6 @@
     
 }
 
-
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     NSIndexPath *centerCellIndexPath =
     [self.collectionView indexPathForItemAtPoint:
@@ -182,12 +175,7 @@
         NSNotification *notification = [NSNotification notificationWithName:HEADER_NOTIF object:self];
         [[NSNotificationCenter defaultCenter]postNotification:notification];
     }
-    
-    
-    
-    
 }
-
 
 - (NSString *)dateToString:(NSDate *)date {
     NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
@@ -234,16 +222,12 @@
                     self.selectedIndex = self.currentIndex;
                     NSNotification *notification = [NSNotification notificationWithName:HEADER_NOTIF object:self];
                     [[NSNotificationCenter defaultCenter]postNotification:notification];
-
+                    
                     
                     break;
                 }
             }
         }
-        
-        /*
-         [[NSCalendar currentCalendar] isDate:[NSDate date] inSameDayAsDate:currentDate]
-         */
         
     } else {
         NSInteger currentIndex = [self.sourseArray indexOfObject:self.dateSourse.currentDateString];
@@ -255,7 +239,6 @@
                                             animated:true];
         self.currentIndex = centerCellIndexPath.item;
         
-
     }
 }
 

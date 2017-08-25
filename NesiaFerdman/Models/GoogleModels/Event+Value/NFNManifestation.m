@@ -1,7 +1,7 @@
 //	NFNManifestation.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/12/17.
+//  Created by Alex_Shitikov on 8/12/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 
 #import "NFNManifestation.h"
@@ -29,7 +29,7 @@ NSString *const kNFNManifestationIsDeleted = @"isDeleted";
  * Instantiate the instance using the passed dictionary values to set the properties values
  */
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
 	self = [super init];
 	if(![dictionary[kNFNManifestationIndex] isKindOfClass:[NSNull class]]){
@@ -57,7 +57,7 @@ NSString *const kNFNManifestationIsDeleted = @"isDeleted";
 /**
  * Returns all the available property values in the form of NSDictionary object where the key is the approperiate json key and the value is the value of the corresponding property
  */
--(NSDictionary *)toDictionary
+- (NSDictionary *)toDictionary
 {
 	NSMutableDictionary * dictionary = [NSMutableDictionary dictionary];
 	dictionary[kNFNManifestationIndex] = @(self.index);

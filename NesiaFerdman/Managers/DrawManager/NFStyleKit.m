@@ -12,7 +12,6 @@
 #import "NFStyleKit.h"
 #import "NFAddFooterView.h"
 
-
 @implementation NFStyleKit
 
 #pragma mark Cache
@@ -56,14 +55,13 @@ static UIColor* _PLACEHOLDER_STANDART_COLOR = nil;
     if (hexString !=nil) {
         unsigned rgbValue = 0;
         NSScanner *scanner = [NSScanner scannerWithString:hexString];
-        [scanner setScanLocation:1]; // bypass '#' character
+        [scanner setScanLocation:1]; 
         [scanner scanHexInt:&rgbValue];
         return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
     } else {
         return [UIColor clearColor];
     }
 }
-
 
 #pragma mark Drawing Methods
 

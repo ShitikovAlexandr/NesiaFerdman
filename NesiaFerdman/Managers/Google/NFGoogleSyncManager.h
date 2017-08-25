@@ -2,7 +2,7 @@
 //  NFGoogleSyncManager.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/20/17.
+//  Created by Alex_Shitikov on 8/20/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -38,8 +38,11 @@
 /** return true if user is logged in */
 - (BOOL)isLogin ;
 
+/**return user email*/
 - (NSString*)getUserEmail;
+/**return user avatar URL*/
 - (NSURL*)getUserAvatarURL;
+/**return user avatar UIImage*/
 - (UIImage*)getUserAvatar;
 
 /** Adds a new event to google calendar */
@@ -54,7 +57,9 @@
 /** download a list of all the available calendars for the user */
 - (void)downloadGoogleCalendarList;
 
+/**Checks if there is a calendar created by the application. If it is missing or changed creates a new one*/
 - (void)chackAPPCalendar;
+/**remove all Google calendars from manager*/
 - (void)resetCalendarList;
 
 @end

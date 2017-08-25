@@ -2,7 +2,7 @@
 //  NFLogInButton.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 5/23/17.
+//  Created by Alex_Shitikov on 8/23/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -19,7 +19,6 @@
     self.layer.shadowRadius = 6.0;
     self.layer.shadowOffset = CGSizeMake(0, 4);
     self.tintColor = [UIColor whiteColor];
-
     
     //// Rectangle Drawing
     UIBezierPath* rectanglePath = [UIBezierPath bezierPathWithRoundedRect: rect cornerRadius: rect.size.height/2.0];

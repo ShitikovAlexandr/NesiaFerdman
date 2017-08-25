@@ -2,7 +2,7 @@
 //  NFFirebaseSyncManager.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/21/17.
+//  Created by Alex_Shitikov on 8/21/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -47,7 +47,6 @@
 @property (strong, nonatomic) NSMutableArray *appResultsArray;
 @property (strong, nonatomic) NSMutableArray *appManifestationArray;
 @property (strong, nonatomic) NSMutableArray *appQuoteArray;
-
 
 @property (assign, nonatomic) BOOL isEventsList;
 @property (assign, nonatomic) BOOL isValueList;
@@ -163,8 +162,6 @@
     return _appQuoteArray;
 }
 
-
-
 //************************************************************************
 
 - (void)addCalendarToManager:(NFGoogleCalendar*)calendar {
@@ -252,9 +249,7 @@
         [_resultsArray addObjectsFromArray:resultArray];
         _isResult = true;
         [self downloadComplite];
-        
     }];
-
 }
 
 - (void)downloadCalendarList {

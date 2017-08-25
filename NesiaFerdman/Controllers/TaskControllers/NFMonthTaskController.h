@@ -2,7 +2,7 @@
 //  NFMonthTaskController.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/18/17.
+//  Created by Alex_Shitikov on 8/18/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -13,9 +13,7 @@
 @interface NFMonthTaskController : NFViewController <JTCalendarDelegate>
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
 @property (strong, nonatomic) IBOutlet JTHorizontalCalendarView *calendarContentView;
-
 @property (strong, nonatomic) JTCalendarManager *calendarManager;
-
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
 
 @end

@@ -2,7 +2,7 @@
 //  NFViewWithDownBorder.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/15/17.
+//  Created by Alex_Shitikov on 8/15/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  NFWeekTaskCell.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/20/17.
+//  Created by Alex_Shitikov on 8/20/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 #define LINE_COLOR [UIColor colorWithRed:238/255.0 green:239/255.0 blue:241/255.0 alpha:1]

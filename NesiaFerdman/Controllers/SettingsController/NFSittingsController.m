@@ -2,7 +2,7 @@
 //  NFSittingsController.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/21/17.
+//  Created by Alex_Shitikov on 8/21/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Меню";
-    [self setUserInfo];
+//    [self setUserInfo];
     self.dataArray = [NSMutableArray array];
     [self.tableView registerNib:[UINib nibWithNibName:@"NFMenuCell" bundle:nil] forCellReuseIdentifier:@"NFMenuCell"];
     self.tableView.tableFooterView = [UIView new];
@@ -85,9 +85,5 @@
 //    }
 }
 
-- (void)setUserInfo {
-    // GTMOAuth2Authentication *user = [NFGoogleManager sharedManager].service.authorizer;
-   // self.email.text = [user.parameters objectForKey:@"email"];
-}
 
 @end

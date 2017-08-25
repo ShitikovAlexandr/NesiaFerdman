@@ -2,7 +2,7 @@
 //  NFResultCell.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/21/17.
+//  Created by Alex_Shitikov on 8/21/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  NFLabel.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 5/23/17.
+//  Created by Alex_Shitikov on 8/23/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -24,8 +24,6 @@
     animation.type = kCATransitionFade;
     animation.duration = 1.0;
     [self.layer addAnimation:animation forKey:@"kCATransitionFade"];
-
-
 }
 
 @end

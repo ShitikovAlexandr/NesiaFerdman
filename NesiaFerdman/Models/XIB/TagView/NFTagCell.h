@@ -2,7 +2,7 @@
 //  NFTagCell.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/1/17.
+//  Created by Alex_Shitikov on 8/1/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

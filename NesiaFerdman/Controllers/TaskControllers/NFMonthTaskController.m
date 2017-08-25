@@ -1,7 +1,7 @@
 //  NFMonthTaskController.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/18/17.
+//  Created by Alex_Shitikov on 8/18/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 #define GREEN_COLOR [UIColor colorWithRed:43/255.0 green:154/255.0 blue:63/255.0 alpha:1]
@@ -125,7 +125,6 @@
 - (void)calendar:(JTCalendarManager *)calendar didTouchDayView:(JTCalendarDayView *)dayView
 {
     _dateSelected = dayView.date;
-//    [self setEventsToTableViewWithCurrentDate:dayView.date];
     [_dataSource setSelectedDate:dayView.date];
     
     // Animation for the circleView
@@ -219,7 +218,5 @@
         [self.calendarManager.contentView loadNextPageWithAnimation];
     }
 }
-
-
 
 @end

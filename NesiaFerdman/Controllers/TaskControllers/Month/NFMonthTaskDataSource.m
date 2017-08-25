@@ -2,7 +2,7 @@
 //  NFMonthTaskDataSource.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/28/17.
+//  Created by Alex_Shitikov on 8/28/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -14,14 +14,12 @@
 #import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
 
-
 @interface NFMonthTaskDataSource() <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NSDate* selectedDate;
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) UIViewController *target;
 @property (strong, nonatomic) id calendarView;
-
 @end
 
 @implementation NFMonthTaskDataSource

@@ -2,7 +2,7 @@
 //  NFMenuElements.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/8/17.
+//  Created by Alex_Shitikov on 8/8/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -12,22 +12,23 @@
 #import "NFLoginSimpleController.h"
 #import "NFValueController.h"
 #import "NFResultController.h"
-#import "NFStatisticController.h"
 #import "NFAboutController.h"
 #import "NFTutorialController.h"
-#import "NFManifestationsController.h"
 #import "NFSettingDetailController.h"
 #import "NFStatisticPageController.h"
 #import "NFNSyncManager.h"
 
-
+#define NFMenuElementsStatistic @"Статистика"
+#define NFMenuElementsValues @"Мои ценности"
+#define NFMenuElementsSettings @"Настройки"
+#define NFMenuElementsTraining @"Обучалка"
+#define NFMenuElementsAbout @"О нас"
+#define NFMenuElementsExit @"Выйти"
 
 typedef NS_ENUM(NSInteger, MenuItem)
 {
-   // Results,
     Statistic,
     Values,
-    //Manifestations,
     Settings,
     Training,
     About,
@@ -49,25 +50,14 @@ typedef NS_ENUM(NSInteger, MenuItem)
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
                                     @"Main" bundle:[NSBundle mainBundle]];
     switch (index) {
-//        case Results:
-//        {
-//            NFResultController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFResultController class])];
-//            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultControllerNav"];
-//            [navController setViewControllers:@[viewController]];
-//            [target presentViewController:navController animated:YES completion:nil];
-//            
-//            break;
-//        }
         case Statistic:
         {
-            //NFStatisticController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticController"];
             NFStatisticPageController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
             UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
             [navController setViewControllers:@[viewController]];
             [target presentViewController:navController animated:YES completion:nil];
             break;
         }
-
         case Values:
         {
             NFValueController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFValueController class])];
@@ -77,14 +67,6 @@ typedef NS_ENUM(NSInteger, MenuItem)
             [target presentViewController:navController animated:YES completion:nil];
             break;
         }
-//        case Manifestations:
-//        {
-//            NFManifestationsController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFManifestationsController class])];
-//            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFManifestationsControllerNav"];
-//            [navController setViewControllers:@[viewController]];
-//            [target presentViewController:navController animated:YES completion:nil];
-//            break;
-//        }
         case Settings:
         {
             NFSettingDetailController *viewController = [storyboard instantiateViewControllerWithIdentifier:NSStringFromClass([NFSettingDetailController class])];
@@ -110,15 +92,11 @@ typedef NS_ENUM(NSInteger, MenuItem)
             [target presentViewController:navController animated:YES completion:nil];
             break;
         }
-
         case Exit:
-            
         {
             UIViewController *vc = target;
             [vc.navigationController dismissViewControllerAnimated:YES completion:NULL];
             [[NFLoginSimpleController sharedMenuController] logout];
-            
-
             break;
         }
         default:
@@ -128,59 +106,38 @@ typedef NS_ENUM(NSInteger, MenuItem)
 
 - (void)initItems {
     
-
-    
-//    NFMenuItem *results = [NFMenuItem new];
-//    results.title = @"Итоги недели";
-//    results.index = 1;
-//    results.imageName = @"result_NEW_icon.png";
-//    [_itemsArray addObject:results];
-    
     NFMenuItem *statistic = [NFMenuItem new];
-    statistic.title = @"Статистика";
+    statistic.title = NFMenuElementsStatistic;
     statistic.index = 2;
     statistic.imageName = @"statistic_NEW_icon.png";
     [_itemsArray addObject:statistic];
     
     NFMenuItem *myValues = [NFMenuItem new];
-    myValues.title = @"Мои ценности";
+    myValues.title = NFMenuElementsValues;
     myValues.index = 3;
     myValues.imageName = @"value_icon.png";
     [_itemsArray addObject:myValues];
     
-//    NFMenuItem *manifestations = [NFMenuItem new];
-//    manifestations.title = @"Проявления";
-//    manifestations.index = 4;
-//    manifestations.imageName = @"manifestations_icon.png";
-//    [_itemsArray addObject:manifestations];
-    
     NFMenuItem *settings = [NFMenuItem new];
-    settings.title = @"Настройки";
+    settings.title = NFMenuElementsSettings;
     settings.index = 5;
     settings.imageName = @"setting_icon.png";
     [_itemsArray addObject:settings];
     
     NFMenuItem *training = [NFMenuItem new];
-    training.title = @"Обучалка";
+    training.title = NFMenuElementsTraining;
     training.index = 6;
     training.imageName =@"question_icon.png";
     [_itemsArray addObject:training];
     
     NFMenuItem *about = [NFMenuItem new];
-    about.title = @"О нас";
+    about.title = NFMenuElementsAbout;
     about.index = 7;
     about.imageName = @"about_icon.png";
     [_itemsArray addObject:about];
     
-//    NFMenuItem *support = [NFMenuItem new];
-//    support.title = @"Итоги недели";
-//    support.index = 1;
-//    support.imageName = @"result_NEW_icon.png";
-//    [_itemsArray addObject:support];
-//
-    
     NFMenuItem *exit = [NFMenuItem new];
-    exit.title = @"Выйти";
+    exit.title = NFMenuElementsExit;
     exit.index = 8;
     exit.imageName = @"exit_icon.png";
     [_itemsArray addObject:exit];

@@ -2,7 +2,7 @@
 //  NFTaskCellDescription.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/28/17.
+//  Created by Alex_Shitikov on 8/28/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

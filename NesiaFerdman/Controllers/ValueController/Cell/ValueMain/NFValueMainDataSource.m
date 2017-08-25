@@ -16,7 +16,6 @@
 #import "NFPop.h"
 #import "UIBarButtonItem+FHButtons.h"
 
-
 #define kDone       @"Готово"
 #define kEdit       @"Изменить"
 #define kCancel     @"Отмена"
@@ -97,56 +96,11 @@
         [[NFNSyncManager sharedManager] writeValueToDataBase:newValue];
         [_dataArray addObject:newValue];
         [self.tableView reloadData];
-        
-//        [self getData];
     }
-    
-//    [self addNavigationButtons];
 }
 
 
 #pragma mark - navigations buttons actions
-
-//- (void)addNavigationButtons {
-//    [self addNavigationButton];
-//    
-//    UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:@"Изменить" style:UIBarButtonItemStylePlain target:self action:@selector (editButtonAction)];
-//    _target.navigationItem.rightBarButtonItem = rigtButton;
-//    _target.navigationItem.rightBarButtonItem.customView.hidden = NO;
-//}
-
-//- (void)addNavigationButton {
-//    UIBarButtonItem *backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Back_standart"] style:UIBarButtonItemStylePlain target:self action:@selector(exitAction)];
-//    _target.navigationItem.leftBarButtonItem = backBarButtonItem;
-//}
-
-//- (void)addCancelButton {
-//    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Отмена"  style:UIBarButtonItemStylePlain target:self action:@selector(cancelAction)];
-//    _target.navigationItem.leftBarButtonItem = cancelButton;
-//}
-
-//- (IBAction) editButtonAction {
-//    if (!_tableView.editing) {
-//        [_tableView setEditing:!_tableView.editing animated:YES];
-//    }
-//
-//    if (_tableView.editing) {
-//        if ([self validateValue:_dataArray]) {
-//            [_target.navigationItem.rightBarButtonItem setTitle:@"Готово"];
-//        }
-//        
-//        
-//        [self addCancelButton];
-//    } else if ([self validateValue:_dataArray]) {
-//        [_target.navigationItem.rightBarButtonItem setTitle:@"Изменить"];
-//        [_tableView setEditing:!_tableView.editing animated:YES];
-//        [self saveChanges];
-//        [self addNavigationButton];
-//    }
-//}
-
-
-//***************************************
 
 - (void)setNavButtonForFirstRun {
     [_tableView setEditing:YES animated:YES];
@@ -165,27 +119,16 @@
         return true;
     }
 }
-//***************************************
-
 
 - (void)exitAction {
     [_target dismissViewControllerAnimated:YES completion:nil];
 }
-
-//- (void)cancelAction {
-//    [_tableView setEditing:NO animated:YES];
-//    [self addNavigationButton];
-//    [_target.navigationItem.rightBarButtonItem setTitle:@"Изменить"];
-//    [self getData];
-//}
-
 
 #pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _dataArray.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NFValueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NFValueCell"];
@@ -194,7 +137,6 @@
     [cell addData:value];
     return cell;
 }
-
 
 #pragma mark - UITableViewDelegate
 
@@ -256,7 +198,6 @@
     [self addNewValueWithName:textField.text andIndex:_dataArray.count];
     textField.text = @"";
     [self setScreenState:_target.screenState];
-    
     return YES;
 }
 
@@ -315,12 +256,9 @@
         case FirstRunValue: {
             break;
         }
-            
-            
         default:
             break;
     }
-    
 }
 
 - (void)setScreenState:(ValueScreenState)state {
@@ -347,9 +285,7 @@
             UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:kDone style:UIBarButtonItemStylePlain target:self action:@selector (rightButtonsAction)];
             _target.navigationItem.rightBarButtonItem = rigtButton;
             _target.navigationItem.rightBarButtonItem.customView.hidden = NO;
-
             break;
-            
         }
             
         case FirstRunValue:{
@@ -359,19 +295,12 @@
             _target.navigationItem.rightBarButtonItem = rigtButton;
             _target.navigationItem.rightBarButtonItem.customView.hidden = NO;
             [_target.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:_target];
-
-            
-            
             break;
-            
         }
-            
-            
         default:
             break;
     }
 }
-
 
 #pragma mark - navigation
 

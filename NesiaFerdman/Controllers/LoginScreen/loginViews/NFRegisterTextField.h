@@ -2,7 +2,7 @@
 //  NFRegisterTextField.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 5/25/17.
+//  Created by Alex_Shitikov on 8/25/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

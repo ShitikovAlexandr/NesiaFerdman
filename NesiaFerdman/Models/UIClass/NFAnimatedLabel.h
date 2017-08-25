@@ -2,7 +2,7 @@
 //  NFAnimatedLabel.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/16/17.
+//  Created by Alex_Shitikov on 8/16/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

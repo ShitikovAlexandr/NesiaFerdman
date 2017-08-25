@@ -2,7 +2,7 @@
 //  NFValueCell.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/9/17.
+//  Created by Alex_Shitikov on 8/9/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -13,7 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    //self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

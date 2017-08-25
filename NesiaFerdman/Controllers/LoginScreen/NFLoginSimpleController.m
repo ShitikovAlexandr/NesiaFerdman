@@ -2,14 +2,12 @@
 //  NFLoginSimpleController.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/6/17.
+//  Created by Alex_Shitikov on 8/6/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
 #import "NFLoginSimpleController.h"
 #import "NFRoundView.h"
-#import "NFCircleView.h"
-#import "NFLogoView.h"
 #import "NFStyleKit.h"
 #import "NotifyList.h"
 #import "NFActivityIndicatorView.h"
@@ -18,14 +16,16 @@
 #import "NFNSyncManager.h"
 #import "NFDataSourceManager.h"
 #import "NFSettingManager.h"
-
 #import "NFValueController.h"
 #import "NFTutorialController.h"
 #import "NFQuoteDayViewController.h"
 
+#import "NFLoginSimpleDataSource.h"
+
 @import Firebase;
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.08
+#define kNFLoginSimpleControllerSocialTitle @"Вход через учетную запись"
 
 typedef NS_ENUM(NSUInteger, ScreenState)
 {
@@ -36,19 +36,18 @@ typedef NS_ENUM(NSUInteger, ScreenState)
 @interface NFLoginSimpleController ()
 @property (weak, nonatomic) IBOutlet NFRoundView *mainView;
 @property (weak, nonatomic) IBOutlet UILabel *socialText;
-@property (strong, nonatomic) NFCircleView *circleView;
 @property (strong, nonatomic) UIImageView *logoImage;
-@property (strong ,nonatomic) NFLogoView *logoView;
 @property (assign, nonatomic) CGFloat heightFactor;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstrain;
-@property (weak, nonatomic) IBOutlet UILabel *titleLable;
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIView *buttonView;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
 @property (assign, nonatomic) BOOL isFirstRun;
 @property (assign, nonatomic) BOOL isUpdate;
 @property (assign, nonatomic) BOOL isSelectCalendars;
+
+@property (strong, nonatomic) NFLoginSimpleDataSource *dataSource;
 
 @end
 
@@ -59,13 +58,14 @@ static NFLoginSimpleController *sharedController;
 - (void)viewDidLoad {
     [super viewDidLoad];
     sharedController = self;
-    //[self initViews];
     [self initLoginImageView];
     [_loginButton addTarget:self action:@selector(loginAction) forControlEvents:UIControlEventTouchDown];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    _dataSource = [[NFLoginSimpleDataSource alloc] initWithTarget:self];
     [super viewWillAppear:animated];
+    [self startIndicator];
     _loginButton.userInteractionEnabled = false;
     _loginButton.alpha = 0;
 
@@ -82,52 +82,8 @@ static NFLoginSimpleController *sharedController;
     return sharedController;
 }
 
-- (void)initViews {
-    
-    _heightFactor = 0.42;
-    
-    _mainView.backgroundColor = [UIColor whiteColor];
-    [self.view layoutIfNeeded];
-    
-    CGRect circleFrame = CGRectMake(0, 0, CGRectGetWidth(_mainView.frame) * 0.9, CGRectGetWidth(_mainView.frame) * 0.9);
-    _circleView = [[NFCircleView alloc]  initWithFrame:circleFrame];
-    _circleView.center = CGPointMake(_mainView.center.x, _mainView.frame.size.height - _circleView.frame.size.height/2 - 4.0);
-    _circleView.backgroundColor = [UIColor clearColor];
-    [self.mainView addSubview:_circleView];
-    
-    CGRect logoFrame = CGRectMake(0, 0, CGRectGetWidth(_circleView.frame) * 0.7, CGRectGetWidth(_circleView.frame) * 0.7);
-    _logoView = [[NFLogoView alloc]  initWithFrame:logoFrame];
-    _logoView.center = CGPointMake(_circleView.center.x, _mainView.frame.size.height - _logoView.frame.size.height/2 - 18.0);
-    _logoView.backgroundColor = [UIColor clearColor];
-    [self.mainView addSubview:_logoView];
-    
-    _logoImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(_logoView.frame) * 0.9, CGRectGetWidth(_logoView.frame) * 0.9)]; // old 0.75
-    _logoImage.backgroundColor  = [UIColor clearColor];
-    //[_logoImage setImage:[UIImage imageNamed:@"main_logo.png"]];
-    [_logoImage setImage:[UIImage imageNamed:@"logoNewNesia.png"]]; // new logo
-    _logoImage.contentMode = UIViewContentModeScaleAspectFit;
-
-    _logoImage.center = _logoView.center;
-    [self.mainView addSubview:_logoImage];
-    _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
-    _socialText.text = @"Вход\nчерез социальную сеть";
-    _socialText.tintColor = [NFStyleKit _base_GREY];
-    [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
-    [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
-    _loginButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
-    _loginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    _loginButton.userInteractionEnabled  = false;
-    self.buttonView.alpha = 0;
-    
-    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
-}
-
-- (void)loginComplite {
-    
-}
-
 - (void) transformToLogin {
-    [_indicator stopAnimating];
+    [_indicator endAnimating];
     _topConstrain.constant = TRANSFORM_VALUE;
     [UIView animateWithDuration:1.0
                           delay:0.0
@@ -139,10 +95,6 @@ static NFLoginSimpleController *sharedController;
                          [self.view layoutIfNeeded];
                      }
                      completion:NULL];
-}
-
-- (void)transformToSplash {
-    
 }
 
 - (void)chackLoginState {
@@ -162,18 +114,13 @@ static NFLoginSimpleController *sharedController;
                 [NFSettingManager setOnGoogleSync];
                 [NFSettingManager setOnWriteToGoogle];
                 [NFSettingManager setOnDeleteFromGoogle];
-//                if ([[NFDataSourceManager sharedManager] getCalendarList].count > 0) {
-//                    [self navigateToCalendarListWithList:true];
-//                } else {
-//                    [self navigateToCalendarListWithList:false];
-//                }
-                [self navigateToTutorial];
+                [_dataSource navigateToTutorial];
+            } else if ([[NFNSyncManager sharedManager] isFirstRunToday] && ![[NFNSyncManager sharedManager] isFirstRunApp]) {
                 
-            } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
                 
                 [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                [self navigateToTutorial];
+                [_dataSource navigateToTutorial];
                 //[self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
         });
@@ -192,26 +139,8 @@ static NFLoginSimpleController *sharedController;
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-- (void)navigateToCalendarListWithList:(BOOL)listData {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
-                                @"NewMain" bundle:[NSBundle mainBundle]];
-    
-    NFCalendarListController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
-    viewController.isFirstRun = true;
-    viewController.isCompliteDownload = listData;
-    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListControllerNav"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-}
-
 - (void)initLoginImageView {
-//    UIImageView *loginImageView = [[UIImageView alloc] initWithFrame:_mainView.frame];
-//    loginImageView.contentMode = UIViewContentModeScaleAspectFit;
-//    [loginImageView setImage:[UIImage imageNamed:@"Splash149.png"]];
-//    [_mainView addSubview:loginImageView];
-    
-    _titleLable.text = @"КОУЧ\nЕЖЕДНЕВНИК";
-    _socialText.text = @"Вход через учетную запись Google";
+    _socialText.text = kNFLoginSimpleControllerSocialTitle;
     _socialText.tintColor = [NFStyleKit _base_GREY];
     [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
     [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
@@ -219,38 +148,39 @@ static NFLoginSimpleController *sharedController;
     _loginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     _loginButton.userInteractionEnabled  = false;
     self.buttonView.alpha = 0;
-    
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
 }
 
-- (void)navigateToTutorial {
-    //4
-    NFQuoteDayViewController *quoteController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFQuoteDayViewController"];
-    
-    //3
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
-                                @"NewMain" bundle:[NSBundle mainBundle]];
-    NFValueController *valueController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFValueController"];
-    valueController.nextController = quoteController;
-    valueController.isFirstRun = true;
-    valueController.screenState = FirstRunValue;
-    //2
-    
-    NFCalendarListController *calendarListController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
-    calendarListController.isFirstRun = true;
-    calendarListController.nextController = valueController;
-    //1
-    
-    NFTutorialController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialController"];
-    viewController.isFirstRun = true;
-    viewController.nextController = calendarListController;
-    
-    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
-    [navController setViewControllers:@[viewController]];
-    [self presentViewController:navController animated:YES completion:nil];
-    
-    
+//- (void)navigateToTutorial {
+//    //4
+//    NFQuoteDayViewController *quoteController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFQuoteDayViewController"];
+//    
+//    //3
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+//                                @"NewMain" bundle:[NSBundle mainBundle]];
+//    NFValueController *valueController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFValueController"];
+//    valueController.nextController = quoteController;
+//    valueController.isFirstRun = true;
+//    valueController.screenState = FirstRunValue;
+//    //2
+//    
+//    NFCalendarListController *calendarListController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
+//    calendarListController.isFirstRun = true;
+//    calendarListController.nextController = valueController;
+//    //1
+//    
+//    NFTutorialController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialController"];
+//    viewController.isFirstRun = true;
+//    viewController.nextController = calendarListController;
+//    
+//    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
+//    [navController setViewControllers:@[viewController]];
+//    [self presentViewController:navController animated:YES completion:nil];
+//}
 
+- (void)startIndicator {
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
+    [_indicator startAnimating];
 }
 
 

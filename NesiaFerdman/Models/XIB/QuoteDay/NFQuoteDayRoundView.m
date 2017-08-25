@@ -2,7 +2,7 @@
 //  NFQuoteDayRoundView.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 4/21/17.
+//  Created by Alex_Shitikov on 8/21/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -12,14 +12,11 @@
 
 - (void)drawRect:(CGRect)rect{
     [super drawRect:rect];
-    
 }
 
 - (void)layoutSubviews {
     self.invertIndex = 0.022;
     [self elipseOneSideWithInvertIndex:self.invertIndex];
-//    [self setImage:[UIImage imageNamed:@"Digits.png"]];
-//    self.contentMode = UIViewContentModeScaleAspectFit;
 }
 
 - (void)elipseOneSideWithInvertIndex: (CGFloat)invertIndex {

@@ -2,7 +2,7 @@
 //  NFValueDetailController.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/6/17.
+//  Created by Alex_Shitikov on 8/6/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 

@@ -2,7 +2,7 @@
 //  NFMenuCell.m
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 6/8/17.
+//  Created by Alex_Shitikov on 8/8/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -30,13 +30,6 @@
     self.titleItemLabel.text = item.title;
     [self.iconView setImage:[UIImage imageNamed:item.imageName]];
 }
-
-//- (void)layoutSubviews {
-//    [super layoutSubviews];
-//    CGFloat imageDiametr = 24.f;
-//    self.imageView.frame = CGRectMake(16, self.imageView.center.y - imageDiametr/2, imageDiametr , imageDiametr);
-//    //self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-//}
 
 - (void)prepareForReuse {
     self.textLabel.text = @"";

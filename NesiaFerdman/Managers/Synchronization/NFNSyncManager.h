@@ -2,7 +2,7 @@
 //  NFNSyncManager.h
 //  NesiaFerdman
 //
-//  Created by Alex_Shitikov on 7/24/17.
+//  Created by Alex_Shitikov on 8/24/17.
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
@@ -20,6 +20,7 @@
 
 + (NFNSyncManager *)sharedManager;
 
+/** Start process of updating all sources */
 - (void)updateData;
 
 - (void)writeEventToDataBase:(NFNEvent*)event;
