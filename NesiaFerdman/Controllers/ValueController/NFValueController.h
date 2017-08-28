@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NFActivityIndicatorView.h"
+
 
 typedef NS_ENUM(NSUInteger, ValueScreenState)
 {
@@ -20,5 +22,7 @@ typedef NS_ENUM(NSUInteger, ValueScreenState)
 @property (assign, nonatomic) BOOL isFirstRun;
 @property (assign, nonatomic) ValueScreenState screenState;
 @property (strong, nonatomic) UIViewController *nextController;
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
+
 
 @end

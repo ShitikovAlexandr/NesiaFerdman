@@ -9,6 +9,7 @@
 #import "NFValueController.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import "NFValueMainDataSource.h"
+#import "NFNSyncManager.h"
 
 #define kNFValueControllerTitle @"Мои ценности"
 
@@ -29,11 +30,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:END_UPDATE object:nil];
+    _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    [_indicator startAnimating];
     [self updateData];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE object:nil];
 }
 
 - (void)updateData {
