@@ -19,13 +19,13 @@
 #import "NFValueController.h"
 #import "NFTutorialController.h"
 #import "NFQuoteDayViewController.h"
-
 #import "NFLoginSimpleDataSource.h"
 
 @import Firebase;
 
 #define TRANSFORM_VALUE -self.view.frame.size.height * 0.08
 #define kNFLoginSimpleControllerSocialTitle @"Вход через учетную запись"
+#define kNFLoginSimpleControllerLoginButtonTitle @"Google"
 
 typedef NS_ENUM(NSUInteger, ScreenState)
 {
@@ -115,10 +115,9 @@ static NFLoginSimpleController *sharedController;
                 [NFSettingManager setOnWriteToGoogle];
                 [NFSettingManager setOnDeleteFromGoogle];
                 [_dataSource navigateToTutorial];
-            } else if ([[NFNSyncManager sharedManager] isFirstRunToday] && ![[NFNSyncManager sharedManager] isFirstRunApp]) {
-                
-                
-                [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
+            } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
+                [_dataSource navigateToTutorial];
+                //[self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
                 [_dataSource navigateToTutorial];
                 //[self performSegueWithIdentifier:@"TaskSegue" sender:nil];
@@ -143,7 +142,7 @@ static NFLoginSimpleController *sharedController;
     _socialText.text = kNFLoginSimpleControllerSocialTitle;
     _socialText.tintColor = [NFStyleKit _base_GREY];
     [_loginButton setImage:[UIImage imageNamed:@"google_icon"] forState:UIControlStateNormal];
-    [_loginButton setTitle: @"Google +" forState: UIControlStateNormal];
+    [_loginButton setTitle:kNFLoginSimpleControllerLoginButtonTitle forState: UIControlStateNormal];
     _loginButton.titleLabel.font = [UIFont boldSystemFontOfSize:16.0];
     _loginButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     _loginButton.userInteractionEnabled  = false;
@@ -151,38 +150,10 @@ static NFLoginSimpleController *sharedController;
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
 }
 
-//- (void)navigateToTutorial {
-//    //4
-//    NFQuoteDayViewController *quoteController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFQuoteDayViewController"];
-//    
-//    //3
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
-//                                @"NewMain" bundle:[NSBundle mainBundle]];
-//    NFValueController *valueController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFValueController"];
-//    valueController.nextController = quoteController;
-//    valueController.isFirstRun = true;
-//    valueController.screenState = FirstRunValue;
-//    //2
-//    
-//    NFCalendarListController *calendarListController = [storyboard instantiateViewControllerWithIdentifier:@"NFCalendarListController"];
-//    calendarListController.isFirstRun = true;
-//    calendarListController.nextController = valueController;
-//    //1
-//    
-//    NFTutorialController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialController"];
-//    viewController.isFirstRun = true;
-//    viewController.nextController = calendarListController;
-//    
-//    UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
-//    [navController setViewControllers:@[viewController]];
-//    [self presentViewController:navController animated:YES completion:nil];
-//}
-
 - (void)startIndicator {
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view style:DGActivityIndicatorAnimationTypeBallClipRotateMultiple];
     [_indicator startAnimating];
 }
-
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
