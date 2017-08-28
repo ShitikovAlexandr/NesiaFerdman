@@ -9,6 +9,8 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
+#define NSLog if(0) NSLog
+
 #import "NFDateFormatter.h"
 #import "NFPop.h"
 #import "NFCalendar.h"

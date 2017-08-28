@@ -30,7 +30,7 @@
     
     [self setNFStyleAndColors];
     [self reachabilityNetwork];
-
+    [NFGoogleSyncManager sharedManager];
     return YES;
 }
 
@@ -143,7 +143,7 @@
     
     //cell
     UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [[NFStyleKit bASE_GREEN] colorWithAlphaComponent:0.3];
+    bgColorView.backgroundColor = [[NFStyleKit bASE_GREEN] colorWithAlphaComponent:0.2];
     [UITableViewCell appearance].selectedBackgroundView = bgColorView;
 }
 
