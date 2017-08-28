@@ -14,12 +14,10 @@
 
 - (void)drawRect:(CGRect)rect {
     //[NFStyleKit drawRoundetViewWithFrame:rect];
-    
     UIImageView *loginImageView = [[UIImageView alloc] initWithFrame:rect];
     loginImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [loginImageView setImage:[UIImage imageNamed:@"splashBig.png"]];
+    [loginImageView setImage:[UIImage imageNamed:@"splash_.png"]];
     [self addSubview:loginImageView];
-
 }
 
 

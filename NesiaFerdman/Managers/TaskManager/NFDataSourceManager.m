@@ -524,8 +524,9 @@
                 NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
                 [calendar setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
                 if (![calendar isDate:[self dateWithNoTime:start] inSameDayAsDate:[self dateWithNoTime:end]]) {
-                    NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
-                    NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
+                        NSLog(@"is repeat event %@ - %@", event.startDate, event.endDate);
+                        NSLog(@"list of repeat date %@", [self getListOfDateWithStart:start end:end]);
+                    
                     for (NSDate *date in [self getListOfDateWithStart:start end:end]) {
                         NSString *eventKey = [self stringFromDate:date];
                         if(!dic[eventKey]){
@@ -542,7 +543,7 @@
                 }
             }
         }//
-        NSLog(@"complite updare DataSource events");
+            NSLog(@"complite updare DataSource events");
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             NSNotification *notification = [NSNotification notificationWithName:END_UPDATE_DATA_SOURCE object:nil];

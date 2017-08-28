@@ -198,7 +198,6 @@ UICollectionViewDelegateFlowLayout
         self.title = @"Создание задачи";
         self.starttextField.text = [self stringFromDate:[NSDate date]];
         self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];
-        NSLog(@"current date %@", [NSDate date]);
     }
     [self.collectionView reloadData];
 }

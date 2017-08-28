@@ -15,6 +15,7 @@
 
 
 
+
 /** write standart list of value to db*/
 + (void)writeAppStandartListOfValueToDataBase;
 

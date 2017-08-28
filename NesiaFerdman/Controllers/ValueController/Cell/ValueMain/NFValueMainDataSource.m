@@ -53,6 +53,9 @@
         [self.dataArray removeAllObjects];
         [self.dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getValueList]];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    if (self.dataArray.count > 0) {
+        [_target.indicator endAnimating];
+    }
 }
 
 - (void)saveChanges {

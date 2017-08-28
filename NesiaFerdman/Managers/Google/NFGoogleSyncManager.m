@@ -161,7 +161,9 @@
 - (void)addNewEvent:(NFNEvent*)event {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *calendarId = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
+     NSString *email = [self getUserEmail];
+    NSString *calendarId = [defaults valueForKey:email];
+    //NSString *calendarId = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
     GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:[event toGoogleEvent] calendarId:calendarId];
     [self.service executeQuery:query
              completionHandler:^(GTLRServiceTicket * _Nonnull callbackTicket, id  _Nullable object, NSError * _Nullable callbackError) {
@@ -261,19 +263,21 @@
 }
 
 - (void)chackAPPCalendar {
-    NSString *email = [self getUserEmail];
-    NSLog(@"email %@", email);
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *calendarID = [defaults valueForKey:email];
-    int i = 0;
-    for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
-        if ([calendar.idField isEqualToString:calendarID]) {
-            [defaults setValue:calendar.idField forKey:APP_GOOGLE_CALENDAR_ID];
-            i++;
-            break;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        NSString *email = [self getUserEmail];
+        NSLog(@"email %@", email);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *calendarID = [defaults valueForKey:email];
+        int i = 0;
+        for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
+            if ([calendar.idField isEqualToString:calendarID]) {
+                [defaults setValue:calendar.idField forKey:APP_GOOGLE_CALENDAR_ID];
+                i++;
+                break;
+            }
         }
-    }
-    i > 0 ? nil: [self createAppGoogleCalendar];
+        i > 0 ? nil: [self createAppGoogleCalendar];
+    });
 }
 
 - (void)createAppGoogleCalendar {
@@ -286,6 +290,7 @@
                      NSLog(@"calendar new %@", object);
                      GTLRCalendar_Calendar *cal = object;
                      NFGoogleCalendar *new = [[NFGoogleCalendar alloc] initWithDictionary:cal.JSON];
+                     new.selectedInApp = true;
                      [[NFNSyncManager sharedManager] addCalendarToDBManager:new];
                      [[NFNSyncManager sharedManager] writeCalendarToDataBase:new];
                      NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

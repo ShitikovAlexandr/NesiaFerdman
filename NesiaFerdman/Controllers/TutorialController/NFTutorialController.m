@@ -55,7 +55,7 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFTutorialCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NFTutorialCell" forIndexPath:indexPath];
-    [cell addDataToCell:[_dataArray objectAtIndex:indexPath.item]];
+    [cell addDataToCell:[_dataArray objectAtIndex:indexPath.item] index:indexPath.row];
     return cell;
 }
 
@@ -81,8 +81,8 @@
 
 - (NSMutableArray*)getImageTest {
     NSMutableArray* array = [NSMutableArray new];
-    for (int i = 1 ; i < 5; i++) {
-        NSString *imgName = [NSString stringWithFormat:@"test%d.jpg",i];
+    for (int i = 13 ; i < 20; i++) {
+        NSString *imgName = [NSString stringWithFormat:@"IMG_27%d.PNG.png",i];
         UIImage *img = [[UIImage alloc] init];
         img = [UIImage imageNamed:imgName];
         [array addObject:img];

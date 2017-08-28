@@ -212,10 +212,12 @@
 #pragma mark - Helpers
 
 - (IBAction)scrollCalendarAction:(UIButton*)sender {
-    if (sender.tag == 1) {
-        [self.calendarManager.contentView loadPreviousPageWithAnimation];
-    } else if (sender.tag == 2) {
-        [self.calendarManager.contentView loadNextPageWithAnimation];
+    if (![_calendarMenuView scrollView].tracking) {
+        if (sender.tag == 1) {
+            [self.calendarManager.contentView loadPreviousPageWithAnimation];
+        } else if (sender.tag == 2) {
+            [self.calendarManager.contentView loadNextPageWithAnimation];
+        }
     }
 }
 

@@ -10,7 +10,8 @@
 
 @interface NFTutorialCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
-- (void)addDataToCell:(UIImage*)image;
+- (void)addDataToCell:(UIImage*)image index:(NSInteger)index;
 
 @end

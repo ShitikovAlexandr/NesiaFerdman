@@ -18,19 +18,33 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O8l-XW-cCs">
-                        <rect key="frame" x="8" y="8" width="293" height="282"/>
+                        <rect key="frame" x="16" y="16" width="277" height="229"/>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8V-pb-Twx">
+                        <rect key="frame" x="16" y="261" width="277" height="21"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0E0-s2-gnJ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="O8l-XW-cCs" secondAttribute="bottom" constant="8" id="Bkq-La-AtX"/>
-                <constraint firstItem="O8l-XW-cCs" firstAttribute="leading" secondItem="A53-4Q-Xyj" secondAttribute="leading" constant="8" id="HO1-ef-714"/>
-                <constraint firstItem="O8l-XW-cCs" firstAttribute="top" secondItem="A53-4Q-Xyj" secondAttribute="top" constant="8" id="gyl-O8-mL4"/>
-                <constraint firstAttribute="trailing" secondItem="O8l-XW-cCs" secondAttribute="trailing" constant="8" id="ljC-H0-rQU"/>
+                <constraint firstItem="I8V-pb-Twx" firstAttribute="top" secondItem="O8l-XW-cCs" secondAttribute="bottom" constant="16" id="1P6-BW-J5J"/>
+                <constraint firstItem="I8V-pb-Twx" firstAttribute="leading" secondItem="A53-4Q-Xyj" secondAttribute="leading" constant="16" id="7kQ-F0-lYl"/>
+                <constraint firstAttribute="trailing" secondItem="I8V-pb-Twx" secondAttribute="trailing" constant="16" id="CfO-wk-4xR"/>
+                <constraint firstAttribute="trailing" secondItem="O8l-XW-cCs" secondAttribute="trailing" constant="16" id="Sw5-dc-X22"/>
+                <constraint firstItem="O8l-XW-cCs" firstAttribute="top" secondItem="A53-4Q-Xyj" secondAttribute="top" constant="16" id="W3F-BO-ZJi"/>
+                <constraint firstAttribute="bottom" secondItem="I8V-pb-Twx" secondAttribute="bottom" constant="16" id="iXk-yo-hlN"/>
+                <constraint firstItem="O8l-XW-cCs" firstAttribute="leading" secondItem="A53-4Q-Xyj" secondAttribute="leading" constant="16" id="rX0-yE-DrI"/>
             </constraints>
             <size key="customSize" width="309" height="298"/>
             <connections>
                 <outlet property="imageView" destination="O8l-XW-cCs" id="NEj-Fa-5xL"/>
+                <outlet property="infoLabel" destination="I8V-pb-Twx" id="PTZ-3b-ci3"/>
             </connections>
             <point key="canvasLocation" x="8.5" y="28"/>
         </collectionViewCell>
