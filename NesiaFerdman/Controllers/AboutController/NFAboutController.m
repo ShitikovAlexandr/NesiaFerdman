@@ -8,7 +8,7 @@
 
 #import "NFAboutController.h"
 #import "UIBarButtonItem+FHButtons.h"
-#import <Crashlytics/Crashlytics.h>
+#import "NFAboutDataSource.h"
 
 #define kNFAboutControllerTitle @"О нас"
 
@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *label1;
 @property (weak, nonatomic) IBOutlet UILabel *label2;
 @property (weak, nonatomic) IBOutlet UILabel *label3;
+@property (weak, nonatomic) IBOutlet UIButton *linkButton;
+@property (strong, nonatomic) NFAboutDataSource *dataSource;
 
 @end
 
@@ -23,26 +25,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataSource = [[NFAboutDataSource alloc]init];
     self.title = kNFAboutControllerTitle;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     [self setData];
-
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)setData {
-    _label1.text = @"О нас:";
-    
-    _label2.text = @"Personal Development Centre. Иерусалим.\nhttp://www.nesia-ferdman.com";
+    _label1.text = kNFAboutDataSourceText1;
+    [_linkButton setTitle:kNFAboutDataSourceText2 forState:UIControlStateNormal];
     [_label2 sizeToFit];
-    
-    _label3.text = @"Работаем для частных лиц и организаций (индивидуально и с компанией в целом). Мы учим использовать наилучшие возможности для достижения высокого результата. В нашем Центре Вы можете пройти и заказать тренинги, курсы и специализированные программы обучения как групповые, так и индивидуальные. Тренеры центра работают в любых точках мира.";
+    _label3.text = kNFAboutDataSourceText3;
     [_label3 sizeToFit];
 }
+
+- (IBAction)buttonAction:(UIButton *)sender {
+    [_dataSource linkAction:kNFAboutDataSourceText2];
+}
+
 
 
 @end

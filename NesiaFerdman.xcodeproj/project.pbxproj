@@ -137,6 +137,7 @@
 		C25737A81E9D2B8700C4A4EA /* NFQuoteDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25737A71E9D2B8700C4A4EA /* NFQuoteDayView.m */; };
 		C25CBA771ECC543E00026855 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25CBA761ECC543E00026855 /* EventKit.framework */; };
 		C25E4CC11ECDD619003C100D /* NFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E4CC01ECDD619003C100D /* NFTableView.m */; };
+		C2652AD71F5581530083475E /* NFAboutDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C2652AD61F5581530083475E /* NFAboutDataSource.m */; };
 		C26887EC1F14B48B004E1ED9 /* NFResultDayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */; };
 		C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2697EEB1EDD578E00E1F6C5 /* NFFilterLabel.m */; };
 		C26BA32D1F14D7B30053A138 /* NFResultWeekDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */; };
@@ -512,6 +513,8 @@
 		C25CBA761ECC543E00026855 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		C25E4CBF1ECDD619003C100D /* NFTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTableView.h; sourceTree = "<group>"; };
 		C25E4CC01ECDD619003C100D /* NFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTableView.m; sourceTree = "<group>"; };
+		C2652AD51F5581530083475E /* NFAboutDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAboutDataSource.h; sourceTree = "<group>"; };
+		C2652AD61F5581530083475E /* NFAboutDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAboutDataSource.m; sourceTree = "<group>"; };
 		C26887EA1F14B48B004E1ED9 /* NFResultDayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDayDataSource.h; sourceTree = "<group>"; };
 		C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultDayDataSource.m; sourceTree = "<group>"; };
 		C2697EEA1EDD578E00E1F6C5 /* NFFilterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFFilterLabel.h; sourceTree = "<group>"; };
@@ -1218,6 +1221,8 @@
 			children = (
 				C23AD8CC1EFD10BB00BAFF1E /* NFAboutController.h */,
 				C23AD8CD1EFD10BB00BAFF1E /* NFAboutController.m */,
+				C2652AD51F5581530083475E /* NFAboutDataSource.h */,
+				C2652AD61F5581530083475E /* NFAboutDataSource.m */,
 			);
 			path = AboutController;
 			sourceTree = "<group>";
@@ -2505,6 +2510,7 @@
 				C20F386E1F2F03CE006CE7A5 /* NFAddValueCategoryController.m in Sources */,
 				C2308B331F1F70D4006F6E87 /* NFTCalendarListCell.m in Sources */,
 				C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */,
+				C2652AD71F5581530083475E /* NFAboutDataSource.m in Sources */,
 				C211DBC91F39B41B0021FB64 /* NFAlertController.m in Sources */,
 				C2FC126F1F1CDE8000EC7FD1 /* NFStatisticMonthDataSource.m in Sources */,
 				C209AF921F0A7DD30036A592 /* NFResultMenuCell.m in Sources */,
