@@ -12,13 +12,16 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
- 
-    
+    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
+    _imageView.layer.shadowRadius = 8.0;
+    _imageView.layer.shadowOffset = CGSizeMake(0, 2);
+    _imageView.layer.masksToBounds = NO;
+    _imageView.layer.shadowOpacity = 0.7;
 }
 
 
 - (void)addDataToCell:(UIImage*)image index:(NSInteger)index {
-    [_imageView setImage:[self imageWithShadowForImage:image]];
+    [_imageView setImage:image];
     _infoLabel.text = [NSString stringWithFormat:@"Test text #%ld", (long)index+1];
 }
 
@@ -36,7 +39,6 @@
     
     UIImage * shadowedImage = [UIImage imageWithCGImage:shadowedCGImage];
     CGImageRelease(shadowedCGImage);
-    
     return shadowedImage;
 }
 @end

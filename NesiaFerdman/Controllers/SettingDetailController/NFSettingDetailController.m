@@ -15,6 +15,7 @@
 #import "NFCalendarListController.h"
 #import "NFTermsController.h"
 #import "NFAlertController.h"
+#import "NFLoginSimpleController.h"
 
 @interface NFSettingDetailController ()
 
@@ -105,7 +106,6 @@
 - (void)changeTableViewState {
     [self.tableView beginUpdates];
     [self.tableView endUpdates];
-   
 }
 
 
@@ -118,6 +118,7 @@
 - (void)deleteProfileAction {
     NSLog(@"delete porfile action");
     [[NFNSyncManager sharedManager] deleteUser];
+    [[NFLoginSimpleController sharedMenuController] logout];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

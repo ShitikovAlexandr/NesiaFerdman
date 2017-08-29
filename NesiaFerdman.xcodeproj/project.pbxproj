@@ -175,13 +175,6 @@
 		C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */ = {isa = PBXBuildFile; fileRef = C2B3D9751EDEBCEE00A0A44E /* response-value45.png */; };
 		C2B3D97A1EDF194200A0A44E /* NFEditTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B3D9791EDF194200A0A44E /* NFEditTaskController.m */; };
 		C2BE2B671F5437CB000D183A /* splash_.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B661F5437CB000D183A /* splash_.png */; };
-		C2BE2B731F547275000D183A /* IMG_2713.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B6C1F547275000D183A /* IMG_2713.PNG.png */; };
-		C2BE2B741F547275000D183A /* IMG_2714.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B6D1F547275000D183A /* IMG_2714.PNG.png */; };
-		C2BE2B751F547275000D183A /* IMG_2715.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B6E1F547275000D183A /* IMG_2715.PNG.png */; };
-		C2BE2B761F547275000D183A /* IMG_2716.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B6F1F547275000D183A /* IMG_2716.PNG.png */; };
-		C2BE2B771F547275000D183A /* IMG_2717.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B701F547275000D183A /* IMG_2717.PNG.png */; };
-		C2BE2B781F547275000D183A /* IMG_2718.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B711F547275000D183A /* IMG_2718.PNG.png */; };
-		C2BE2B791F547275000D183A /* IMG_2719.PNG.png in Resources */ = {isa = PBXBuildFile; fileRef = C2BE2B721F547275000D183A /* IMG_2719.PNG.png */; };
 		C2C0D6021EC5F034003C7741 /* task@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2C0D6001EC5F034003C7741 /* task@2x.png */; };
 		C2C0D6031EC5F034003C7741 /* task@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2C0D6011EC5F034003C7741 /* task@3x.png */; };
 		C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2C0D6041EC5F42C003C7741 /* importantIcon@2x.png */; };
@@ -227,6 +220,13 @@
 		C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = C2D13F7B1EEAE5B700A9A4F3 /* Add.png */; };
 		C2D9C7F61F066F2000A36810 /* NFTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D9C7F51F066F2000A36810 /* NFTextField.m */; };
 		C2D9C7FA1F066F5300A36810 /* NFTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D9C7F91F066F5300A36810 /* NFTextView.m */; };
+		C2DCFCFD1F5547EF005B3CDF /* IMG_2713.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */; };
+		C2DCFCFE1F5547EF005B3CDF /* IMG_2714.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */; };
+		C2DCFCFF1F5547EF005B3CDF /* IMG_2715.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */; };
+		C2DCFD001F5547EF005B3CDF /* IMG_2716.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */; };
+		C2DCFD011F5547EF005B3CDF /* IMG_2717.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */; };
+		C2DCFD021F5547EF005B3CDF /* IMG_2718.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */; };
+		C2DCFD031F5547EF005B3CDF /* IMG_2719.png in Resources */ = {isa = PBXBuildFile; fileRef = C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */; };
 		C2DDBCE61ED45A1200F61F02 /* NFRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCE51ED45A1200F61F02 /* NFRoundView.m */; };
 		C2DDBCE91ED45A2500F61F02 /* NFCircleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCE81ED45A2500F61F02 /* NFCircleView.m */; };
 		C2DDBCEC1ED45A4300F61F02 /* NFLogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2DDBCEB1ED45A4300F61F02 /* NFLogoView.m */; };
@@ -576,13 +576,6 @@
 		C2B3D9781EDF194200A0A44E /* NFEditTaskController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFEditTaskController.h; sourceTree = "<group>"; };
 		C2B3D9791EDF194200A0A44E /* NFEditTaskController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFEditTaskController.m; sourceTree = "<group>"; };
 		C2BE2B661F5437CB000D183A /* splash_.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash_.png; sourceTree = "<group>"; };
-		C2BE2B6C1F547275000D183A /* IMG_2713.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2713.PNG.png; sourceTree = "<group>"; };
-		C2BE2B6D1F547275000D183A /* IMG_2714.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2714.PNG.png; sourceTree = "<group>"; };
-		C2BE2B6E1F547275000D183A /* IMG_2715.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2715.PNG.png; sourceTree = "<group>"; };
-		C2BE2B6F1F547275000D183A /* IMG_2716.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2716.PNG.png; sourceTree = "<group>"; };
-		C2BE2B701F547275000D183A /* IMG_2717.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2717.PNG.png; sourceTree = "<group>"; };
-		C2BE2B711F547275000D183A /* IMG_2718.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2718.PNG.png; sourceTree = "<group>"; };
-		C2BE2B721F547275000D183A /* IMG_2719.PNG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2719.PNG.png; sourceTree = "<group>"; };
 		C2C0D6001EC5F034003C7741 /* task@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "task@2x.png"; sourceTree = "<group>"; };
 		C2C0D6011EC5F034003C7741 /* task@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "task@3x.png"; sourceTree = "<group>"; };
 		C2C0D6041EC5F42C003C7741 /* importantIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "importantIcon@2x.png"; sourceTree = "<group>"; };
@@ -638,6 +631,13 @@
 		C2D9C7F51F066F2000A36810 /* NFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFTextField.m; path = ../NFTextField.m; sourceTree = "<group>"; };
 		C2D9C7F81F066F5300A36810 /* NFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTextView.h; sourceTree = "<group>"; };
 		C2D9C7F91F066F5300A36810 /* NFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTextView.m; sourceTree = "<group>"; };
+		C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2713.png; sourceTree = "<group>"; };
+		C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2714.png; sourceTree = "<group>"; };
+		C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2715.png; sourceTree = "<group>"; };
+		C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2716.png; sourceTree = "<group>"; };
+		C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2717.png; sourceTree = "<group>"; };
+		C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2718.png; sourceTree = "<group>"; };
+		C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2719.png; sourceTree = "<group>"; };
 		C2DDBCE41ED45A1200F61F02 /* NFRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRoundView.h; sourceTree = "<group>"; };
 		C2DDBCE51ED45A1200F61F02 /* NFRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRoundView.m; sourceTree = "<group>"; };
 		C2DDBCE71ED45A2500F61F02 /* NFCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCircleView.h; sourceTree = "<group>"; };
@@ -1048,6 +1048,13 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */,
+				C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */,
+				C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */,
+				C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */,
+				C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */,
+				C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */,
+				C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */,
 				C2BE2B6B1F547275000D183A /* tutorial_test */,
 				C2BE2B661F5437CB000D183A /* splash_.png */,
 				C2213EDA1F41BB3C00A1D5C1 /* splashBig.png */,
@@ -1675,13 +1682,6 @@
 		C2BE2B6B1F547275000D183A /* tutorial_test */ = {
 			isa = PBXGroup;
 			children = (
-				C2BE2B6C1F547275000D183A /* IMG_2713.PNG.png */,
-				C2BE2B6D1F547275000D183A /* IMG_2714.PNG.png */,
-				C2BE2B6E1F547275000D183A /* IMG_2715.PNG.png */,
-				C2BE2B6F1F547275000D183A /* IMG_2716.PNG.png */,
-				C2BE2B701F547275000D183A /* IMG_2717.PNG.png */,
-				C2BE2B711F547275000D183A /* IMG_2718.PNG.png */,
-				C2BE2B721F547275000D183A /* IMG_2719.PNG.png */,
 			);
 			path = tutorial_test;
 			sourceTree = "<group>";
@@ -2132,30 +2132,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2DCFD011F5547EF005B3CDF /* IMG_2717.png in Resources */,
 				C23AD8D51EFD159300BAFF1E /* Screen2.png in Resources */,
 				C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */,
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
-				C2BE2B771F547275000D183A /* IMG_2717.PNG.png in Resources */,
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
 				C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
-				C2BE2B781F547275000D183A /* IMG_2718.PNG.png in Resources */,
 				C2C0D6071EC5F42C003C7741 /* importantIcon@3x.png in Resources */,
 				C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */,
 				C25737541E9CE7F900C4A4EA /* logo.png in Resources */,
 				C2213ED71F41A21000A1D5C1 /* isInfoIconRed@2x.png in Resources */,
 				C2A2015F1ECF32B200281058 /* checked_enable.png in Resources */,
 				C2C0D60B1EC5F72D003C7741 /* conclusionsIcon@3x.png in Resources */,
-				C2BE2B741F547275000D183A /* IMG_2714.PNG.png in Resources */,
 				C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */,
 				C224078A1E9CB351004B089A /* LaunchScreen.storyboard in Resources */,
 				C24B29E71F2622060069C160 /* GoogleService-Info.plist in Resources */,
 				C2213ED91F41A86B00A1D5C1 /* Splash149.png in Resources */,
 				C2C22DB51EE98283006BD83A /* user_icon.png in Resources */,
 				C2C22DAD1EE98283006BD83A /* manifestations_icon.png in Resources */,
-				C2BE2B751F547275000D183A /* IMG_2715.PNG.png in Resources */,
 				C2C0D60A1EC5F72D003C7741 /* conclusionsIcon@2x.png in Resources */,
 				C205956C1EF2875E00BF3BFD /* Laft_arr_heade.png in Resources */,
+				C2DCFCFE1F5547EF005B3CDF /* IMG_2714.png in Resources */,
 				C2C0D6021EC5F034003C7741 /* task@2x.png in Resources */,
 				C2CB589D1EA0E8580023ADAA /* NFHeaderCell.xib in Resources */,
 				C24AA5151EBB281C00ABA92C /* NFTaskSimpleCell.xib in Resources */,
@@ -2172,12 +2170,13 @@
 				C2C22DBD1EE98A25006BD83A /* NFMenuCell.xib in Resources */,
 				C2C22DB11EE98283006BD83A /* relax_value_icon.png in Resources */,
 				C22531871EF01C950050BB24 /* result_nav_bar_icon@2x.png in Resources */,
-				C2BE2B761F547275000D183A /* IMG_2716.PNG.png in Resources */,
 				C2BE2B671F5437CB000D183A /* splash_.png in Resources */,
 				C22407871E9CB351004B089A /* Assets.xcassets in Resources */,
 				C2FCC6FC1EEEC918009D47B5 /* taskFill@2x.png in Resources */,
 				C20595721EF2C39E00BF3BFD /* Right_arrow_label.png in Resources */,
+				C2DCFCFD1F5547EF005B3CDF /* IMG_2713.png in Resources */,
 				C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */,
+				C2DCFD001F5547EF005B3CDF /* IMG_2716.png in Resources */,
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
 				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
 				C2C22DA71EE98283006BD83A /* add_icon.png in Resources */,
@@ -2200,22 +2199,22 @@
 				C2D13F741EEAC9F000A9A4F3 /* NFValueCell.xib in Resources */,
 				C2C22DAB1EE98283006BD83A /* heart_value_icon.png in Resources */,
 				C2213EDB1F41BB3C00A1D5C1 /* splashBig.png in Resources */,
-				C2BE2B731F547275000D183A /* IMG_2713.PNG.png in Resources */,
 				C2213ED51F419B4C00A1D5C1 /* isInfoIcon@2x.png in Resources */,
 				C294231D1ED31F7E0017B0A7 /* logo_with_text.png in Resources */,
+				C2DCFD021F5547EF005B3CDF /* IMG_2718.png in Resources */,
 				C2D13F771EEAE33600A9A4F3 /* NFAddFooterView.xib in Resources */,
 				C2FCC6F71EEEC918009D47B5 /* conclusionsFill@3x.png in Resources */,
 				C2FCC6F91EEEC918009D47B5 /* importantIconFill@3x.png in Resources */,
 				C2FA690D1EE15C2000D58D18 /* cancelTag.png in Resources */,
 				C294231C1ED31F7E0017B0A7 /* main_logo.png in Resources */,
 				C2FCC6FA1EEEC918009D47B5 /* importantIconFill@2x.png in Resources */,
+				C2DCFD031F5547EF005B3CDF /* IMG_2719.png in Resources */,
 				C2C0D6121EC60140003C7741 /* menu-options@2x.png in Resources */,
 				C286D6011EA61394007C2395 /* NFDayTableViewCell.xib in Resources */,
 				C235A0011EC9C74800EB8FDC /* chevron_down.png in Resources */,
 				C2C22DB01EE98283006BD83A /* relations_value_icon.png in Resources */,
 				C207EF561EA89BB900BFF383 /* NFWeekTaskCell.xib in Resources */,
 				C209AF8F1F0A70890036A592 /* statistic_NEW_icon.png in Resources */,
-				C2BE2B791F547275000D183A /* IMG_2719.PNG.png in Resources */,
 				C20876701ED83144005FF719 /* NFLogin.storyboard in Resources */,
 				C2AA72131F02A0B2007DB785 /* uodate_icon.png in Resources */,
 				C205D8CF1F2B194900A97605 /* NFTaskCellDescription.xib in Resources */,
@@ -2229,6 +2228,7 @@
 				C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */,
 				C24AA5081EBB11A400ABA92C /* NFHeaderForTaskSection.xib in Resources */,
 				C2FCC6F81EEEC918009D47B5 /* conclusionsFill@2x.png in Resources */,
+				C2DCFCFF1F5547EF005B3CDF /* IMG_2715.png in Resources */,
 				C2C22DBF1EE99420006BD83A /* ChevronMediumBack@2x.png in Resources */,
 				C25737A41E9D2B3F00C4A4EA /* NFQuoteDayView.xib in Resources */,
 				C2FA691C1EE1848500D58D18 /* NFTagCell.xib in Resources */,

@@ -81,8 +81,8 @@
 
 - (NSMutableArray*)getImageTest {
     NSMutableArray* array = [NSMutableArray new];
-    for (int i = 13 ; i < 20; i++) {
-        NSString *imgName = [NSString stringWithFormat:@"IMG_27%d.PNG.png",i];
+    for (int i = 16 ; i < 20; i++) {
+        NSString *imgName = [NSString stringWithFormat:@"IMG_27%d.png",i];
         UIImage *img = [[UIImage alloc] init];
         img = [UIImage imageNamed:imgName];
         [array addObject:img];
