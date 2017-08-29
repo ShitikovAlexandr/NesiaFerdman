@@ -98,6 +98,10 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [NFValueDetailCell cellSize];
+}
+
 
 
 @end

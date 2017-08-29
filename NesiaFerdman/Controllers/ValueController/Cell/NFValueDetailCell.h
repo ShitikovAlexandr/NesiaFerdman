@@ -14,4 +14,6 @@
 
 - (void)addDataToCell:(NFNManifestation*)manifestation;
 
++ (CGFloat)cellSize;
+
 @end

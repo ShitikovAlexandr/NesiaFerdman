@@ -33,4 +33,9 @@
         }
     }
 }
+
++ (CGFloat)cellSize {
+    return 60.0;
+}
+
 @end

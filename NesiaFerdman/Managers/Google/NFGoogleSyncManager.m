@@ -298,6 +298,7 @@
                      [defaults setValue:new.idField forKey:email];
                      [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
                      NSLog(@"create new calendar");
+                     [self downloadGoogleCalendarList];
                  }
              }];
 }

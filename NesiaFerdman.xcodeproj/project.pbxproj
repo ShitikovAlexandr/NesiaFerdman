@@ -26,7 +26,6 @@
 		C2091B1A1F1E410D00BAA524 /* NFCalendarListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2091B191F1E410D00BAA524 /* NFCalendarListController.m */; };
 		C2091B1D1F1E416F00BAA524 /* NFCalendarListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C2091B1C1F1E416F00BAA524 /* NFCalendarListDataSource.m */; };
 		C209AF891F0A2F7F0036A592 /* NFPop.m in Sources */ = {isa = PBXBuildFile; fileRef = C209AF881F0A2F7F0036A592 /* NFPop.m */; };
-		C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8A1F0A6FDD0036A592 /* defaultValue.png */; };
 		C209AF8E1F0A70890036A592 /* result_NEW_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8C1F0A70890036A592 /* result_NEW_icon.png */; };
 		C209AF8F1F0A70890036A592 /* statistic_NEW_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */; };
 		C209AF921F0A7DD30036A592 /* NFResultMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C209AF911F0A7DD30036A592 /* NFResultMenuCell.m */; };
@@ -61,8 +60,6 @@
 		C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */; };
 		C2213ED51F419B4C00A1D5C1 /* isInfoIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED41F419B4C00A1D5C1 /* isInfoIcon@2x.png */; };
 		C2213ED71F41A21000A1D5C1 /* isInfoIconRed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED61F41A21000A1D5C1 /* isInfoIconRed@2x.png */; };
-		C2213ED91F41A86B00A1D5C1 /* Splash149.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213ED81F41A86B00A1D5C1 /* Splash149.png */; };
-		C2213EDB1F41BB3C00A1D5C1 /* splashBig.png in Resources */ = {isa = PBXBuildFile; fileRef = C2213EDA1F41BB3C00A1D5C1 /* splashBig.png */; };
 		C22407791E9CB351004B089A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C22407781E9CB351004B089A /* main.m */; };
 		C224077C1E9CB351004B089A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C224077B1E9CB351004B089A /* AppDelegate.m */; };
 		C22407821E9CB351004B089A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C22407801E9CB351004B089A /* Main.storyboard */; };
@@ -90,8 +87,6 @@
 		C23AD8C91EFCF26D00BAFF1E /* TextFieldValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8C71EFCF26D00BAFF1E /* TextFieldValidator.m */; };
 		C23AD8CE1EFD10BB00BAFF1E /* NFAboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8CD1EFD10BB00BAFF1E /* NFAboutController.m */; };
 		C23AD8D11EFD10CB00BAFF1E /* NFTutorialController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8D01EFD10CB00BAFF1E /* NFTutorialController.m */; };
-		C23AD8D41EFD159300BAFF1E /* Screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8D21EFD159300BAFF1E /* Screen1.png */; };
-		C23AD8D51EFD159300BAFF1E /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8D31EFD159300BAFF1E /* Screen2.png */; };
 		C23AD8D91EFD18B300BAFF1E /* NFTutorialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C23AD8D81EFD18B300BAFF1E /* NFTutorialCell.m */; };
 		C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */; };
 		C24422E21F18A5980008CF49 /* NFCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = C24422E11F18A5980008CF49 /* NFCalendar.m */; };
@@ -138,6 +133,7 @@
 		C25CBA771ECC543E00026855 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25CBA761ECC543E00026855 /* EventKit.framework */; };
 		C25E4CC11ECDD619003C100D /* NFTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C25E4CC01ECDD619003C100D /* NFTableView.m */; };
 		C2652AD71F5581530083475E /* NFAboutDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C2652AD61F5581530083475E /* NFAboutDataSource.m */; };
+		C2652ADB1F55A1EC0083475E /* defaultValue.png in Resources */ = {isa = PBXBuildFile; fileRef = C2652ADA1F55A1EC0083475E /* defaultValue.png */; };
 		C26887EC1F14B48B004E1ED9 /* NFResultDayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */; };
 		C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2697EEB1EDD578E00E1F6C5 /* NFFilterLabel.m */; };
 		C26BA32D1F14D7B30053A138 /* NFResultWeekDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */; };
@@ -319,7 +315,6 @@
 		C2091B1C1F1E416F00BAA524 /* NFCalendarListDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFCalendarListDataSource.m; sourceTree = "<group>"; };
 		C209AF871F0A2F7F0036A592 /* NFPop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFPop.h; sourceTree = "<group>"; };
 		C209AF881F0A2F7F0036A592 /* NFPop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFPop.m; sourceTree = "<group>"; };
-		C209AF8A1F0A6FDD0036A592 /* defaultValue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultValue.png; sourceTree = "<group>"; };
 		C209AF8C1F0A70890036A592 /* result_NEW_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result_NEW_icon.png; sourceTree = "<group>"; };
 		C209AF8D1F0A70890036A592 /* statistic_NEW_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = statistic_NEW_icon.png; sourceTree = "<group>"; };
 		C209AF901F0A7DD30036A592 /* NFResultMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultMenuCell.h; sourceTree = "<group>"; };
@@ -381,8 +376,6 @@
 		C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoNewNesia.png; sourceTree = "<group>"; };
 		C2213ED41F419B4C00A1D5C1 /* isInfoIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "isInfoIcon@2x.png"; sourceTree = "<group>"; };
 		C2213ED61F41A21000A1D5C1 /* isInfoIconRed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "isInfoIconRed@2x.png"; sourceTree = "<group>"; };
-		C2213ED81F41A86B00A1D5C1 /* Splash149.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash149.png; sourceTree = "<group>"; };
-		C2213EDA1F41BB3C00A1D5C1 /* splashBig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashBig.png; sourceTree = "<group>"; };
 		C22407741E9CB351004B089A /* NesiaFerdman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NesiaFerdman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22407781E9CB351004B089A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C224077A1E9CB351004B089A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -431,8 +424,6 @@
 		C23AD8CD1EFD10BB00BAFF1E /* NFAboutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAboutController.m; sourceTree = "<group>"; };
 		C23AD8CF1EFD10CB00BAFF1E /* NFTutorialController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTutorialController.h; sourceTree = "<group>"; };
 		C23AD8D01EFD10CB00BAFF1E /* NFTutorialController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTutorialController.m; sourceTree = "<group>"; };
-		C23AD8D21EFD159300BAFF1E /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen1.png; sourceTree = "<group>"; };
-		C23AD8D31EFD159300BAFF1E /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		C23AD8D71EFD18B300BAFF1E /* NFTutorialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTutorialCell.h; sourceTree = "<group>"; };
 		C23AD8D81EFD18B300BAFF1E /* NFTutorialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTutorialCell.m; sourceTree = "<group>"; };
 		C23AD8DA1EFD18BD00BAFF1E /* NFTutorialCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFTutorialCell.xib; sourceTree = "<group>"; };
@@ -515,6 +506,7 @@
 		C25E4CC01ECDD619003C100D /* NFTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTableView.m; sourceTree = "<group>"; };
 		C2652AD51F5581530083475E /* NFAboutDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAboutDataSource.h; sourceTree = "<group>"; };
 		C2652AD61F5581530083475E /* NFAboutDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFAboutDataSource.m; sourceTree = "<group>"; };
+		C2652ADA1F55A1EC0083475E /* defaultValue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultValue.png; sourceTree = "<group>"; };
 		C26887EA1F14B48B004E1ED9 /* NFResultDayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDayDataSource.h; sourceTree = "<group>"; };
 		C26887EB1F14B48B004E1ED9 /* NFResultDayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultDayDataSource.m; sourceTree = "<group>"; };
 		C2697EEA1EDD578E00E1F6C5 /* NFFilterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFFilterLabel.h; sourceTree = "<group>"; };
@@ -1060,14 +1052,10 @@
 				C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */,
 				C2BE2B6B1F547275000D183A /* tutorial_test */,
 				C2BE2B661F5437CB000D183A /* splash_.png */,
-				C2213EDA1F41BB3C00A1D5C1 /* splashBig.png */,
-				C2213ED81F41A86B00A1D5C1 /* Splash149.png */,
 				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
 				C2144C731F3867BD00307176 /* google_icon.png */,
 				C2091B151F1E37A500BAA524 /* task_section_icon.png */,
 				C2AA72121F02A0B2007DB785 /* uodate_icon.png */,
-				C23AD8D21EFD159300BAFF1E /* Screen1.png */,
-				C23AD8D31EFD159300BAFF1E /* Screen2.png */,
 				C21B0ECD1EFA642C001D85CE /* quote_img.png */,
 				C2CD10971EF8026E00546566 /* point.png */,
 				C20595711EF2C39E00BF3BFD /* Right_arrow_label.png */,
@@ -1745,7 +1733,7 @@
 		C2C22DC01EE99744006BD83A /* value */ = {
 			isa = PBXGroup;
 			children = (
-				C209AF8A1F0A6FDD0036A592 /* defaultValue.png */,
+				C2652ADA1F55A1EC0083475E /* defaultValue.png */,
 				C2D13F6D1EEA7CB200A9A4F3 /* Home_life_value_icon.png */,
 				C2C22D991EE98283006BD83A /* famely_value_icon.png */,
 				C2C22D9A1EE98283006BD83A /* heart_value_icon.png */,
@@ -2138,7 +2126,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C2DCFD011F5547EF005B3CDF /* IMG_2717.png in Resources */,
-				C23AD8D51EFD159300BAFF1E /* Screen2.png in Resources */,
 				C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */,
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
@@ -2153,7 +2140,6 @@
 				C23AD8DB1EFD18BD00BAFF1E /* NFTutorialCell.xib in Resources */,
 				C224078A1E9CB351004B089A /* LaunchScreen.storyboard in Resources */,
 				C24B29E71F2622060069C160 /* GoogleService-Info.plist in Resources */,
-				C2213ED91F41A86B00A1D5C1 /* Splash149.png in Resources */,
 				C2C22DB51EE98283006BD83A /* user_icon.png in Resources */,
 				C2C22DAD1EE98283006BD83A /* manifestations_icon.png in Resources */,
 				C2C0D60A1EC5F72D003C7741 /* conclusionsIcon@2x.png in Resources */,
@@ -2180,7 +2166,6 @@
 				C2FCC6FC1EEEC918009D47B5 /* taskFill@2x.png in Resources */,
 				C20595721EF2C39E00BF3BFD /* Right_arrow_label.png in Resources */,
 				C2DCFCFD1F5547EF005B3CDF /* IMG_2713.png in Resources */,
-				C209AF8B1F0A6FDD0036A592 /* defaultValue.png in Resources */,
 				C2DCFD001F5547EF005B3CDF /* IMG_2716.png in Resources */,
 				C2FA690B1EE1438300D58D18 /* NFTagView.xib in Resources */,
 				C2AA720B1F029001007DB785 /* NFMenuSwitcherCell.xib in Resources */,
@@ -2197,13 +2182,11 @@
 				C2C22DB21EE98283006BD83A /* result_icon.png in Resources */,
 				C22407821E9CB351004B089A /* Main.storyboard in Resources */,
 				C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */,
-				C23AD8D41EFD159300BAFF1E /* Screen1.png in Resources */,
 				C2AA720D1F029014007DB785 /* NFMenuUpdateCell.xib in Resources */,
 				C2C22DAF1EE98283006BD83A /* question_icon.png in Resources */,
 				C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */,
 				C2D13F741EEAC9F000A9A4F3 /* NFValueCell.xib in Resources */,
 				C2C22DAB1EE98283006BD83A /* heart_value_icon.png in Resources */,
-				C2213EDB1F41BB3C00A1D5C1 /* splashBig.png in Resources */,
 				C2213ED51F419B4C00A1D5C1 /* isInfoIcon@2x.png in Resources */,
 				C294231D1ED31F7E0017B0A7 /* logo_with_text.png in Resources */,
 				C2DCFD021F5547EF005B3CDF /* IMG_2718.png in Resources */,
@@ -2231,6 +2214,7 @@
 				C2FCC6FB1EEEC918009D47B5 /* taskFill@3x.png in Resources */,
 				C2C6A4E61EDC5D1B00E70BDD /* NFValuesFilterView.xib in Resources */,
 				C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */,
+				C2652ADB1F55A1EC0083475E /* defaultValue.png in Resources */,
 				C24AA5081EBB11A400ABA92C /* NFHeaderForTaskSection.xib in Resources */,
 				C2FCC6F81EEEC918009D47B5 /* conclusionsFill@2x.png in Resources */,
 				C2DCFCFF1F5547EF005B3CDF /* IMG_2715.png in Resources */,

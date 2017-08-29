@@ -15,4 +15,6 @@
 
 - (void)addData:(NFValue *)value;
 
++ (CGFloat)cellSize;
+
 @end

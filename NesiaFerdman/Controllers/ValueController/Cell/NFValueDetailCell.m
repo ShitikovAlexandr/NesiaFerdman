@@ -41,4 +41,8 @@
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
 }
 
++ (CGFloat)cellSize {
+    return 60.0;
+}
+
 @end
