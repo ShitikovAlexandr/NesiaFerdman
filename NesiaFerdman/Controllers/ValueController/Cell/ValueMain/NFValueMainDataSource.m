@@ -54,7 +54,9 @@
         [self.dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getValueList]];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     if (self.dataArray.count > 0) {
-        [_target.indicator endAnimating];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [_target.indicator endAnimating];
+        });
     }
 }
 
