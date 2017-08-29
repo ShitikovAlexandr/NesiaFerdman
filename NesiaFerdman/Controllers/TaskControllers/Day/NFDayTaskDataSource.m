@@ -101,6 +101,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NFDayTableViewCell* eventCell = [self.tableView cellForRowAtIndexPath:indexPath];
+    _selectedDate = [self setHour:indexPath.section min:0 toDate:_selectedDate];
     [self navigateToEditTaskScreenWithEvent:eventCell.event];
 }
 
@@ -136,9 +137,16 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     NFEditTaskController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskController"];
     viewController.event = event;
+    viewController.selectedDate = _selectedDate;
     UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFEditTaskNavController"];
     [navController setViewControllers:@[viewController]];
     [_target presentViewController:navController animated:YES completion:nil];
+}
+
+- (NSDate*)setHour:(NSInteger)hour min:(NSInteger)min toDate:(NSDate*)date {
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
+    NSDate *newDate = [calendar dateBySettingHour:hour minute:min second:0 ofDate:date options:0];
+    return newDate;
 }
 
 @end

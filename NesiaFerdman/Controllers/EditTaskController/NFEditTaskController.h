@@ -18,5 +18,6 @@ typedef NS_ENUM(NSUInteger, EditType)
 @interface NFEditTaskController : UITableViewController
 @property (strong, nonatomic) NFNEvent *event;
 @property (assign, nonatomic) EditType screenType;
+@property (strong, nonatomic) NSDate *selectedDate;
 
 @end

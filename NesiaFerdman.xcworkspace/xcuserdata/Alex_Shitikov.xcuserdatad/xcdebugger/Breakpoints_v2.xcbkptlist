@@ -38,16 +38,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NesiaFerdman/Controllers/ValueController/Cell/ValueMain/NFValueMainDataSource.m"
-            timestampString = "525622110.916183"
+            filePath = "NesiaFerdman/Controllers/EditTaskController/NFEditTaskController.m"
+            timestampString = "525692833.341454"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-getData"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "-setStartDataToDisplay"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NesiaFerdman/Controllers/EditTaskController/NFEditTaskController.m"
+            timestampString = "525692835.267959"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "-setStartDataToDisplay"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NesiaFerdman/Controllers/EditTaskController/NFEditTaskController.m"
+            timestampString = "525692836.293148"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
+            landmarkName = "-setStartDataToDisplay"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
