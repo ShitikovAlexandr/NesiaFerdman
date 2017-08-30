@@ -118,9 +118,10 @@
 - (void)deleteProfileAction {
     NSLog(@"delete porfile action");
     [[NFNSyncManager sharedManager] deleteUser];
-    [[NFLoginSimpleController sharedMenuController] logout];
-    [self dismissViewControllerAnimated:YES completion:nil];
-
+    [self dismissViewControllerAnimated:YES completion:^{
+        NSNotification *notification = [NSNotification notificationWithName:DELETE_USER object:nil];
+        [[NSNotificationCenter defaultCenter] postNotification:notification];
+    }];
 }
 
 #pragma mark - Actions

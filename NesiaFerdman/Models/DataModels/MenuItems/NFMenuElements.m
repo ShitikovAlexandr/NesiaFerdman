@@ -25,15 +25,6 @@
 #define NFMenuElementsAbout @"О нас"
 #define NFMenuElementsExit @"Выйти"
 
-typedef NS_ENUM(NSInteger, MenuItem)
-{
-    Statistic,
-    Values,
-    Settings,
-    Training,
-    About,
-    Exit
-};
 
 @implementation NFMenuElements
 
@@ -95,7 +86,7 @@ typedef NS_ENUM(NSInteger, MenuItem)
         case Exit:
         {
             UIViewController *vc = target;
-            [vc.navigationController dismissViewControllerAnimated:YES completion:NULL];
+            [vc.navigationController dismissViewControllerAnimated:YES completion:nil];
             [[NFLoginSimpleController sharedMenuController] logout];
             break;
         }

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "NFSettingItem.h"
 
+#define DELETE_USER @"kDeleteUser"
+
 @interface NFSettingDetailController : UITableViewController
 
 @end

@@ -13,6 +13,9 @@
 #import "NFGoogleSyncManager.h"
 #import "NFMenuCell.h"
 #import "NFStyleKit.h"
+#import "NFSettingDetailController.h"
+#import "NFMenuElements.h"
+
 
 
 @interface NFSittingsController () <UITableViewDelegate, UITableViewDataSource>
@@ -37,6 +40,18 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self addDataToDisplay];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(exitAction) name:DELETE_USER object:nil];
+
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:DELETE_USER object:nil];
+
+}
+
+- (void)exitAction {
+    [NFMenuElements navigateToScreenWithIndex:Exit target:self];
 }
 
 #pragma mark - UITableViewDelegate

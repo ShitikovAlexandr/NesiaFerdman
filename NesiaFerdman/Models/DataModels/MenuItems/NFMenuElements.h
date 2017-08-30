@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, MenuItem)
+{
+    Statistic,
+    Values,
+    Settings,
+    Training,
+    About,
+    Exit
+};
+
+
 @interface NFMenuElements : NSObject
 
 @property (strong, nonatomic) NSMutableArray *itemsArray;
