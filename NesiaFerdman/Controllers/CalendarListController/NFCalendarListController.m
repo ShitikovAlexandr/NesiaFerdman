@@ -18,6 +18,7 @@
 @interface NFCalendarListController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NFCalendarListDataSource *dataSource;
+@property (strong, nonatomic) UIBarButtonItem *doneButton;
 
 @end
 
@@ -25,7 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    }
+    
+}
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -42,8 +44,8 @@
         [_dataSource updateData];
     } else {
         self.title = kNFCalendarListControllerFirstTitle;
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:kNFCalendarListControllerDone style:UIBarButtonItemStylePlain target:self action:@selector(exit)];
-        self.navigationItem.rightBarButtonItem = doneButton;
+        _doneButton = [[UIBarButtonItem alloc] initWithTitle:kNFCalendarListControllerDone style:UIBarButtonItemStylePlain target:self action:@selector(exit)];
+        self.navigationItem.rightBarButtonItem = _doneButton;
         [_dataSource updateData];
     }
 }

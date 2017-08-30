@@ -51,7 +51,7 @@
 - (void)getData {
     [[NFNSyncManager sharedManager] updateValueDataSource];
         [self.dataArray removeAllObjects];
-        [self.dataArray addObjectsFromArray:[[NFDataSourceManager sharedManager] getValueList]];
+        [self.dataArray addObjectsFromArray:[[[NFDataSourceManager sharedManager] getValueList] copy]];
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     if (self.dataArray.count > 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -99,6 +99,7 @@
         newValue.valueIndex = index;
         [[NFNSyncManager sharedManager] addValueToDBManager:newValue];
         [[NFNSyncManager sharedManager] writeValueToDataBase:newValue];
+        
         [_dataArray addObject:newValue];
         [self.tableView reloadData];
     }
@@ -283,7 +284,7 @@
         case EditValue:{
             _target.screenState = EditValue;
             [_tableView setEditing:YES animated:YES];
-            [self getData];
+            //[self getData];
             UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:kCancel  style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonsAction)];
             _target.navigationItem.leftBarButtonItem = cancelButton;
             
@@ -315,7 +316,8 @@
     viewController.value = value;
     UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFValueDetailControllerNav"];
     [navController setViewControllers:@[viewController]];
-    [_target presentViewController:navController animated:YES completion:nil];
+        [_target presentViewController:navController animated:YES completion:nil];
+    
 }
 
 

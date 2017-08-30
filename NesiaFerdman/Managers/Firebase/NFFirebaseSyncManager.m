@@ -31,6 +31,9 @@
 #define MAX_TIME                    @"MaxTime"
 #define MAX_LOAD                    @"LimitDownloadingGoogleEvents"
 #define QUOTE                       @"Quotes"
+#define USER_INFO                   @"UserInfo"
+#define USER_EMAIL                  @"Email"
+#define GOOFLE_CALENDAR_ID          @"GoogleAppCalendarId"
 
 @interface NFFirebaseSyncManager ()
 @property (strong, nonatomic) FIRDatabaseReference *ref;
@@ -57,6 +60,9 @@
 @property (assign, nonatomic) BOOL isAppValueList;
 @property (assign, nonatomic) BOOL isAppResultCategory;
 @property (assign, nonatomic) BOOL isAppManifestatioms;
+@property (assign, nonatomic) BOOL isGoogleCalendarId;
+
+@property (strong, nonatomic) NSString *googleAppCalendarId;
 
 @end
 
@@ -107,7 +113,7 @@
 
 - (void)downloadAllData {
     if ([self isLogin]) {
-        
+        [self getGoogleCalendarAPPId];
         [self getMinSyncInterval];
         [self getMaxSyncInterval];
         [self getLimitGoogleDownload];
@@ -124,6 +130,10 @@
     } else {
         NSLog(@"not login firebase");
     }
+}
+
+- (NSString*)getAppGoogleCalendarId {
+    return _googleAppCalendarId;
 }
 
 - (NSMutableArray*)getEvensList {
@@ -412,6 +422,11 @@
 
 #pragma mark - write methods
 
+- (void)writeAppCalendarId:(NSString*)calendarId {
+    [[self userAppCalendarIdRef] setValue:calendarId];
+}
+
+
 - (void)writeEvent:(NFNEvent*)event {
     [[[self eventRef] child:event.eventId] updateChildValues:[[event copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         NSLog(@"Complite write event");
@@ -444,6 +459,8 @@
 }
 
 #pragma mark - delete methods
+
+
 
 - (void)deleteEvent:(NFNEvent*)event {
     for (NFNEvent *ev in _eventsArray) {
@@ -480,8 +497,8 @@
 
 - (void)downloadComplite {
     NSLog(@"complite download FIR");
-    if (_isEventsList && _isValueList && _isValuesManifestations && _isResult && _isCalendarList ) {
-        if (_isAppValueList && _isAppResultCategory && _isAppManifestatioms) {
+    if (_isEventsList && _isValueList && _isValuesManifestations && _isResult && _isCalendarList && _isGoogleCalendarId ) {
+        if (_isAppValueList && _isAppResultCategory && _isAppManifestatioms ) {
             [self resetFlags];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 NSNotification *notification = [NSNotification notificationWithName:DATA_BASE_COMPLITE_DOWNLOADED_ALL_DATA object:nil];
@@ -500,6 +517,7 @@
     _isAppValueList = false;
     _isAppResultCategory = false;
     _isAppManifestatioms = false;
+    _isGoogleCalendarId = false;
 }
 
 
@@ -528,6 +546,14 @@
 
 - (FIRDatabaseReference*)userResultItemRef {
     return [[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:RESULT_ITEM];
+}
+
+- (FIRDatabaseReference*)userEmailRef {
+    return [[[[self ref] child:USERS_DIRECTORY] child:USER_INFO] child:USER_EMAIL];
+}
+
+- (FIRDatabaseReference*)userAppCalendarIdRef {
+    return [[[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:USER_INFO] child:GOOFLE_CALENDAR_ID];
 }
 
 // App ref
@@ -588,6 +614,15 @@
         }
     }];
 }
+
+- (void)getGoogleCalendarAPPId {
+    [[self userAppCalendarIdRef]  observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        _googleAppCalendarId = snapshot.value;
+        _isGoogleCalendarId = true;
+        [self downloadComplite];
+    }];
+}
+
 
 - (void)getLimitGoogleDownload {
     [[[self appOptionsRef] child:MAX_LOAD] observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {

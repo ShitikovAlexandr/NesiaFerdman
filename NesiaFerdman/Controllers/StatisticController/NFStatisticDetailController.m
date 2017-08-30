@@ -241,34 +241,38 @@
 }
 
 - (CGFloat)setProgressValueWithData:(NSMutableArray*)dataArray; {
+    NSMutableArray *allEvents = [NSMutableArray new];
+    for (NSMutableArray *dayArray in dataArray) {
+        [allEvents addObjectsFromArray:dayArray];
+    }
+    
     int doneCount = 0;
     int taskCount = 0;
     if (_dataArray.count > 0) {
-        for (NSArray *dayArray in dataArray) {
-            for (NFNEvent *event in dayArray) {
-                taskCount++;
-                if (event.isDone) {
-                    doneCount++;
-                }
+        for (NFNEvent *event in [self arrayWithoutDublicaltFromArray:allEvents]) {
+            taskCount++;
+            if (event.isDone) {
+                doneCount++;
             }
-        }
-        return (1.0/(CGFloat)taskCount) * doneCount;
+        }        return (1.0/(CGFloat)taskCount) * doneCount;
     } else {
         return 0;
     }
 }
 
 - (void)setCountTasksWithArray:(NSMutableArray*)dataArray {
+    NSMutableArray *allEvents = [NSMutableArray new];
         int doneCount = 0;
         int taskCount = 0;
-        for (NSArray *dayArray in dataArray) {
-            for (NFNEvent *event in dayArray) {
+        for (NSMutableArray *dayArray in dataArray) {
+            [allEvents addObjectsFromArray:dayArray];
+        }
+            for (NFNEvent *event in [self arrayWithoutDublicaltFromArray:allEvents]) {
                 taskCount++;
                 if (event.isDone) {
                     doneCount++;
                 }
             }
-        }
         self.doneTaskCount.text = [NSString stringWithFormat:@"%i", doneCount];
         self.allTaskCount.text = [NSString stringWithFormat:@"%i", taskCount];
 }
@@ -277,6 +281,13 @@
     NFDateFormatter *formatter = [[NFDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
     return [formatter dateFromString:key];
+}
+
+- (NSMutableArray*)arrayWithoutDublicaltFromArray:(NSMutableArray*)inputArray {
+    NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:inputArray];
+    NSArray *arrayWithoutDuplicates = [orderedSet array];
+    NSLog(@"arrayWithoutDuplicates %@", arrayWithoutDuplicates);
+    return (NSMutableArray*)arrayWithoutDuplicates;
 }
 
 @end

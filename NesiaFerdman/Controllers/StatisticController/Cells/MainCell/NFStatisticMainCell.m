@@ -73,7 +73,8 @@
         self.valueTitle.text = key;
     }
     NSMutableArray *taskArray = [NSMutableArray array];
-    [taskArray  addObjectsFromArray:[inputDic valueForKey:key]];
+    [taskArray  addObjectsFromArray:[self arrayWithoutDublicaltFromArray:[inputDic valueForKey:key]]];
+    
     _realTaskCount.text = [NSString stringWithFormat:@"%ld", (unsigned long)taskArray.count];
     if (!taskArray.count) {
         [self setAlltaskToZero];
@@ -104,6 +105,8 @@
 }
 
 - (CGFloat)doneValueWithTaskArray:(NSMutableArray*)taskArray {
+    
+    
     int done = 0;
     int allTasks = 0;
     for (NFNEvent *event in taskArray) {
@@ -141,6 +144,13 @@
     } else {
         [self.doneTaskchackBoxImage setImage:[UIImage imageNamed:@"checked_disable.png"]];
     }
+}
+
+- (NSMutableArray*)arrayWithoutDublicaltFromArray:(NSMutableArray*)inputArray {
+    NSOrderedSet *orderedSet = [NSOrderedSet orderedSetWithArray:inputArray];
+    NSArray *arrayWithoutDuplicates = [orderedSet array];
+    NSLog(@"arrayWithoutDuplicates %@", arrayWithoutDuplicates);
+    return (NSMutableArray*)arrayWithoutDuplicates;
 }
 
 

@@ -55,6 +55,8 @@
 /** return an array of standart app Manifestations */
 - (NSMutableArray<NFNManifestation*>*)getAppManifestationList;
 
+- (NSString*)getAppGoogleCalendarId;
+- (void)writeAppCalendarId:(NSString*)calendarId;
 
 //******************************************************************************************************************
 

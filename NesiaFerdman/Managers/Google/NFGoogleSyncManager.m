@@ -160,9 +160,9 @@
 
 - (void)addNewEvent:(NFNEvent*)event {
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-     NSString *email = [self getUserEmail];
-    NSString *calendarId = [defaults valueForKey:email];
+   // NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//     NSString *email = [self getUserEmail];
+    NSString *calendarId = [[NFFirebaseSyncManager sharedManager] getAppGoogleCalendarId];
     //NSString *calendarId = [defaults valueForKey:APP_GOOGLE_CALENDAR_ID];
     GTLRCalendarQuery_EventsInsert *query = [GTLRCalendarQuery_EventsInsert queryWithObject:[event toGoogleEvent] calendarId:calendarId];
     [self.service executeQuery:query
@@ -196,6 +196,7 @@
 }
 
 - (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array {
+    [self chackAPPCalendar];
     [_googleEventsArray removeAllObjects];
     _calendarsRequestCount = array.count;
     if ([NFSettingManager isOnGoogleSync]) {
@@ -253,7 +254,6 @@
                              [_googleCalendarsArray addObject:calendar];
                          }
                          dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                             [self chackAPPCalendar];
                              NSNotification *notification = [NSNotification notificationWithName:NOTIFYCATIN_CALENDAR_LIST_LOAD object:nil];
                              [[NSNotificationCenter defaultCenter] postNotification:notification];
                          });
@@ -263,15 +263,17 @@
 }
 
 - (void)chackAPPCalendar {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        NSString *email = [self getUserEmail];
-        NSLog(@"email %@", email);
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        NSString *calendarID = [defaults valueForKey:email];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSString *email = [self getUserEmail];
+//        NSLog(@"email %@", email);
+//        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//        NSString *calendarID = [defaults valueForKey:email];
+        NSString *calendarID = [[NFFirebaseSyncManager sharedManager] getAppGoogleCalendarId] != nil ? [[NFFirebaseSyncManager sharedManager] getAppGoogleCalendarId]:@" ";
+        
         int i = 0;
         for (NFGoogleCalendar *calendar in _googleCalendarsArray) {
             if ([calendar.idField isEqualToString:calendarID]) {
-                [defaults setValue:calendar.idField forKey:APP_GOOGLE_CALENDAR_ID];
+//                [defaults setValue:calendar.idField forKey:APP_GOOGLE_CALENDAR_ID];
                 i++;
                 break;
             }
@@ -293,12 +295,15 @@
                      new.selectedInApp = true;
                      [[NFNSyncManager sharedManager] addCalendarToDBManager:new];
                      [[NFNSyncManager sharedManager] writeCalendarToDataBase:new];
-                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                     NSString *email = [self getUserEmail];
-                     [defaults setValue:new.idField forKey:email];
-                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
-                     NSLog(@"create new calendar");
-                     [self downloadGoogleCalendarList];
+                     [[NFFirebaseSyncManager sharedManager] writeAppCalendarId:new.idField];
+                     
+                     
+//                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+//                     NSString *email = [self getUserEmail];
+//                     [defaults setValue:new.idField forKey:email];
+//                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
+//                     NSLog(@"create new calendar");
+//                     [self downloadGoogleCalendarList];
                  }
              }];
 }

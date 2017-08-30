@@ -132,6 +132,14 @@
 - (NSMutableArray *)getEventForDay:(NSDate*)currentDate {
     NSMutableArray *equalsEvent = [NSMutableArray array];
     [equalsEvent addObjectsFromArray:[_eventsDictionary objectForKey:[self stringFromDate:currentDate]]];
+    [self getEventForStatisticDay:currentDate];
+    return _selectedValuesArray.count > 0 ? [self filterArray:equalsEvent withFilterArray:_selectedValuesArray]:equalsEvent;
+}
+
+- (NSMutableArray*)getEventForStatisticDay:(NSDate*)currentDate {
+    NSMutableArray *equalsEvent = [NSMutableArray array];
+    [equalsEvent addObjectsFromArray:[_eventsDictionary objectForKey:[self stringFromDate:currentDate]]];
+    NSLog(@"equalsEvent %@", equalsEvent);
     return _selectedValuesArray.count > 0 ? [self filterArray:equalsEvent withFilterArray:_selectedValuesArray]:equalsEvent;
 }
 
