@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) NFCalendarListDataSource *dataSource;
 @property (strong, nonatomic) UIBarButtonItem *doneButton;
+@property (assign, nonatomic) BOOL isPush;
 
 @end
 
@@ -32,6 +33,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     _indicator = [[NFActivityIndicatorView alloc] initWithView:self.view];
+    _isPush = false;
     [_indicator startAnimating];
     
      [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateByNotification) name:END_UPDATE object:nil];
@@ -62,7 +64,11 @@
 }
 
 - (void)exit {
-    [self.navigationController pushViewController:_nextController animated:YES];
+    if (!_isPush) {
+        _isPush = true;
+        [self.navigationController pushViewController:_nextController animated:YES];
+        NSLog(@"NFCalendarListController push");
+    }
 }
 
 @end

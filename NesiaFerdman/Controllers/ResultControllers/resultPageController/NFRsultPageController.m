@@ -105,6 +105,8 @@
 #pragma mark - Actions
 
 - (IBAction)pressSegment:(NFSegmentedControl *)sender {
+
+    
     UIViewController *currentVC = self.viewControllers[0];
     NSUInteger currentIndex = [_viewControllersArray indexOfObject:currentVC];
     if (currentIndex < self.segmentedControl.selectedSegmentIndex) {

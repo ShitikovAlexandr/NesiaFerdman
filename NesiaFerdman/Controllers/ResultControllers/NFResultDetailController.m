@@ -154,7 +154,7 @@
 - (NSDate*)getFirsDayOfMonthWithDate:(NSDate*)currentDate {
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear
                                                                    fromDate:currentDate];
-    components.day = 2;
+    components.day = 1;
     NSDate *firstDayOfMonthDate = [[NSCalendar currentCalendar] dateFromComponents: components];
     return firstDayOfMonthDate;
 }

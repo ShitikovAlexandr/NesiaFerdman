@@ -239,6 +239,7 @@
                 [self saveChanges];
                 [_target.navigationController setNavigationBarHidden:YES];
                 [_target.navigationController pushViewController:_target.nextController animated:YES];
+                NSLog(@"NFValueMainDataSource push");
             }
             break;
         }

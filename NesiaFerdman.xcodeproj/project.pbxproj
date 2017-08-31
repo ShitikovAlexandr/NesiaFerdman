@@ -626,13 +626,13 @@
 		C2D9C7F51F066F2000A36810 /* NFTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NFTextField.m; path = ../NFTextField.m; sourceTree = "<group>"; };
 		C2D9C7F81F066F5300A36810 /* NFTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTextView.h; sourceTree = "<group>"; };
 		C2D9C7F91F066F5300A36810 /* NFTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTextView.m; sourceTree = "<group>"; };
-		C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2713.png; sourceTree = "<group>"; };
-		C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2714.png; sourceTree = "<group>"; };
-		C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2715.png; sourceTree = "<group>"; };
-		C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2716.png; sourceTree = "<group>"; };
-		C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2717.png; sourceTree = "<group>"; };
-		C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2718.png; sourceTree = "<group>"; };
-		C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IMG_2719.png; sourceTree = "<group>"; };
+		C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2713.png; path = ../IMG_2713.png; sourceTree = "<group>"; };
+		C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2714.png; path = ../IMG_2714.png; sourceTree = "<group>"; };
+		C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2715.png; path = ../IMG_2715.png; sourceTree = "<group>"; };
+		C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2716.png; path = ../IMG_2716.png; sourceTree = "<group>"; };
+		C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2717.png; path = ../IMG_2717.png; sourceTree = "<group>"; };
+		C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2718.png; path = ../IMG_2718.png; sourceTree = "<group>"; };
+		C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = IMG_2719.png; path = ../IMG_2719.png; sourceTree = "<group>"; };
 		C2DDBCE41ED45A1200F61F02 /* NFRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRoundView.h; sourceTree = "<group>"; };
 		C2DDBCE51ED45A1200F61F02 /* NFRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRoundView.m; sourceTree = "<group>"; };
 		C2DDBCE71ED45A2500F61F02 /* NFCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFCircleView.h; sourceTree = "<group>"; };
@@ -1043,13 +1043,6 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */,
-				C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */,
-				C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */,
-				C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */,
-				C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */,
-				C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */,
-				C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */,
 				C2BE2B6B1F547275000D183A /* tutorial_test */,
 				C2BE2B661F5437CB000D183A /* splash_.png */,
 				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
@@ -1675,6 +1668,13 @@
 		C2BE2B6B1F547275000D183A /* tutorial_test */ = {
 			isa = PBXGroup;
 			children = (
+				C2DCFCF61F5547EF005B3CDF /* IMG_2713.png */,
+				C2DCFCF71F5547EF005B3CDF /* IMG_2714.png */,
+				C2DCFCF81F5547EF005B3CDF /* IMG_2715.png */,
+				C2DCFCF91F5547EF005B3CDF /* IMG_2716.png */,
+				C2DCFCFA1F5547EF005B3CDF /* IMG_2717.png */,
+				C2DCFCFB1F5547EF005B3CDF /* IMG_2718.png */,
+				C2DCFCFC1F5547EF005B3CDF /* IMG_2719.png */,
 			);
 			path = tutorial_test;
 			sourceTree = "<group>";

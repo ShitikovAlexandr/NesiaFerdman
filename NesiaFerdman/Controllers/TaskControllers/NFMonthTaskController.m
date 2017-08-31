@@ -13,6 +13,7 @@
 #import "NFValuesFilterView.h"
 #import "NFMonthTaskDataSource.h"
 #import "NFDataSourceManager.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface NFMonthTaskController ()
 {
@@ -28,6 +29,7 @@
 @property (weak, nonatomic) IBOutlet UIView *headerMainView;
 @property (weak, nonatomic) IBOutlet NFValuesFilterView *ValuesFilterView;
 @property (strong, nonatomic) NFMonthTaskDataSource *dataSource;
+@property (assign, nonatomic) BOOL isScroll;
 @end
 
 @implementation NFMonthTaskController
@@ -55,6 +57,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    _isScroll = false;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateData) name:END_UPDATE_DATA_SOURCE object:nil];
 
     [self addDataToDisplay];
@@ -161,11 +164,13 @@
 - (void)calendarDidLoadNextPage:(JTCalendarManager *)calendar
 {
     NSLog(@"Next page loaded");
+
 }
 
 - (void)calendarDidLoadPreviousPage:(JTCalendarManager *)calendar
 {
     NSLog(@"Previous page loaded");
+
 }
 
 #pragma mark - Fake data
@@ -212,13 +217,20 @@
 #pragma mark - Helpers
 
 - (IBAction)scrollCalendarAction:(UIButton*)sender {
-    if (![_calendarMenuView scrollView].tracking) {
+    if (!_isScroll) {
+        _isScroll = true;
         if (sender.tag == 1) {
             [self.calendarManager.contentView loadPreviousPageWithAnimation];
         } else if (sender.tag == 2) {
             [self.calendarManager.contentView loadNextPageWithAnimation];
         }
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            _isScroll = false;
+        });
     }
+    
 }
+
+
 
 @end

@@ -18,13 +18,17 @@
 
 - (void)addManifestation:(NFNManifestation*)manifestation {
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-    self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.textLabel.numberOfLines = 0;
+//    self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//    self.textLabel.numberOfLines = 0;
     if (manifestation) {
         self.manifestation = manifestation;
         self.textLabel.text = manifestation.title;
         [self.imageView setImage:[UIImage imageNamed:@"point.png"]];
+    } else {
+        self.textLabel.text = @"Добавить";
+        [self.imageView setImage:[UIImage imageNamed:@"Add.png"]];
     }
+
 }
 
 - (void)addData:(NFNRsult*)event {

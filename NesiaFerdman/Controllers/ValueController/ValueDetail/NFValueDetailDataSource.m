@@ -30,8 +30,8 @@
         _tableView = tableView;
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        self.tableView.rowHeight = UITableViewAutomaticDimension;
-        self.tableView.estimatedRowHeight = 60;
+//        self.tableView.rowHeight = UITableViewAutomaticDimension;
+//        self.tableView.estimatedRowHeight = 60;
         self.tableView.tableFooterView = [UIView new];
         _target = target;
     }
