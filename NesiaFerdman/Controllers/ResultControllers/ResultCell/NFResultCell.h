@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "NFNRsult.h"
+#import "NFNManifestation.h"
 
 @interface NFResultCell : UITableViewCell
 @property (strong, nonatomic) NFNRsult *event;
+@property (strong, nonatomic) NFNManifestation *manifestation;
 
-- (void) addData:(NFNRsult*)event;
+- (void)addData:(NFNRsult*)event;
+- (void)addManifestation:(NFNManifestation*)manifestation;
 
 @end

@@ -43,7 +43,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    NFResultMenuCell *cell  = [tableView dequeueReusableCellWithIdentifier:@"NFResultMenuCell"];
     if (!cell) {
         cell = [[NFResultMenuCell alloc] initWithDefaultStyle];
     }

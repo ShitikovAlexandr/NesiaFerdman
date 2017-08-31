@@ -25,9 +25,11 @@
 #pragma mark - init methods
 
 - (instancetype)initWithDefaultStyle {
-    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"Cell"];
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"NFResultMenuCell"];
     if (self) {
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+//        self.textLabel.lineBreakMode = NSLineBreakByWordWrapping;
+//        self.textLabel.numberOfLines = 0;
 
     }
     return self;
@@ -93,6 +95,15 @@
     }
     return count;
   }
+
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+    CGRect textLabelFrame = self.textLabel.frame;
+    if (textLabelFrame.origin.x + textLabelFrame.size.width >= self.detailTextLabel.frame.origin.x) {
+        textLabelFrame.size.width -= self.detailTextLabel.frame.size.width;
+        self.textLabel.frame = textLabelFrame;
+    }}
 
 
 

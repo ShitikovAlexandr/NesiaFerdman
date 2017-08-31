@@ -11,6 +11,7 @@
 #import "NFAddValueCategoryController.h"
 #import "NFDataSourceManager.h"
 #import "NFValueDetailCell.h"
+#import "NFResultCell.h"
 #import "NFNSyncManager.h"
 
 @interface NFValueDetailDataSource () <UITableViewDelegate, UITableViewDataSource>
@@ -30,6 +31,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         self.tableView.rowHeight = UITableViewAutomaticDimension;
+        self.tableView.estimatedRowHeight = 60;
         self.tableView.tableFooterView = [UIView new];
         _target = target;
     }
@@ -74,15 +76,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFValueDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    NFResultCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NFResultCell"];
     if (!cell) {
-        cell = [[NFValueDetailCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+        cell = [[NFResultCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"NFResultCell"];
     }
     if (_dataArray.count > 0) {
         NFNManifestation *item = [_dataArray objectAtIndex:indexPath.row];
-        [cell addDataToCell:item];
+        [cell addManifestation:item];
     } else {
-        [cell addDataToCell:nil];
+        [cell addManifestation:nil];
     }
     return cell;
 }
@@ -91,16 +93,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (_dataArray.count > 0) {
-        NFValueDetailCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        NFResultCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [self navigateToEditscreenWithManifestation:cell.manifestation];
     } else {
         [self addButtonAction];
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [NFValueDetailCell cellSize];
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return [NFValueDetailCell cellSize];
+//}
 
 
 
