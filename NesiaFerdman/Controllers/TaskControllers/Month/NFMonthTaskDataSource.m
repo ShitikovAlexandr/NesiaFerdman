@@ -108,6 +108,8 @@
             [headerView setCurrentDate:_selectedDate];
             return headerView;
         }
+        [headerView setCurrentDate:_selectedDate];
+
         return headerView;
     }
 }

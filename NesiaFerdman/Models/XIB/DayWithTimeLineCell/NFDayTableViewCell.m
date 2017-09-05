@@ -144,7 +144,6 @@
     [self setNeedsDisplay];
 }
 
-
 - (NSString *)dateFormater:(NSString *)dateString {
     NFDateFormatter *dateFormatter = [[NFDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm"];
@@ -234,8 +233,6 @@
     NSString* newDate = [dateFormatter1 stringFromDate:date];
     return newDate;
 }
-
-
 
 
 @end

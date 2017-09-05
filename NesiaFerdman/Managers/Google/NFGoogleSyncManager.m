@@ -13,7 +13,7 @@
 #import "NFLoginSimpleController.h"
 #import "NFDataSourceManager.h"
 
-#define APP_CALENDAR_NAME @"Коуч ежедневик"
+#define APP_CALENDAR_NAME @"My Date"
 #define ITEMS_KEY @"items"
 
 
@@ -278,7 +278,9 @@
                 break;
             }
         }
-        i > 0 ? nil: [self createAppGoogleCalendar];
+        if (i > 0) {
+            [self createAppGoogleCalendar];
+        }
     });
 }
 
@@ -293,6 +295,7 @@
                      GTLRCalendar_Calendar *cal = object;
                      NFGoogleCalendar *new = [[NFGoogleCalendar alloc] initWithDictionary:cal.JSON];
                      new.selectedInApp = true;
+                     [_googleEventsArray addObject:new];
                      [[NFNSyncManager sharedManager] addCalendarToDBManager:new];
                      [[NFNSyncManager sharedManager] writeCalendarToDataBase:new];
                      [[NFFirebaseSyncManager sharedManager] writeAppCalendarId:new.idField];
