@@ -9,7 +9,7 @@
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
 
-#define NSLog if(0) NSLog
+#define NSLog if(1) NSLog
 
 #import "NFDateFormatter.h"
 #import "NFPop.h"

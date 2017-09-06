@@ -7,23 +7,23 @@
 
 #import "NFNEvent.h"
 //firebase
-NSString *const kNFNEventCalendarColor = @"calendarColor";
-NSString *const kNFNEventCalendarID = @"calendarID";
-NSString *const kNFNEventCreateDate = @"createDate";
-NSString *const kNFNEventEndDate = @"endDate";
+NSString *const kNFNEventCalendarColor    = @"calendarColor";
+NSString *const kNFNEventCalendarID       = @"calendarID";
+NSString *const kNFNEventCreateDate       = @"createDate";
+NSString *const kNFNEventEndDate          = @"endDate";
 NSString *const kNFNEventEventDescription = @"eventDescription";
-NSString *const kNFNEventEventId = @"eventId";
-NSString *const kNFNEventEventType = @"eventType";
-NSString *const kNFNEventIsDeleted = @"isDeleted";
-NSString *const kNFNEventIsDone = @"isDone";
-NSString *const kNFNEventIsImportant = @"isImportant";
-NSString *const kNFNEventIsRepeat = @"isRepeat";
-NSString *const kNFNEventSocialType = @"socialType";
-NSString *const kNFNEventStartDate = @"startDate";
-NSString *const kNFNEventTitle = @"title";
-NSString *const kNFNEventValues = @"values";
-NSString *const kNFNEventUpdateDate = @"updateDate";
-NSString *const kNFNEventSocialId = @"socialId";
+NSString *const kNFNEventEventId          = @"eventId";
+NSString *const kNFNEventEventType        = @"eventType";
+NSString *const kNFNEventIsDeleted        = @"isDeleted";
+NSString *const kNFNEventIsDone           = @"isDone";
+NSString *const kNFNEventIsImportant      = @"isImportant";
+NSString *const kNFNEventIsRepeat         = @"isRepeat";
+NSString *const kNFNEventSocialType       = @"socialType";
+NSString *const kNFNEventStartDate        = @"startDate";
+NSString *const kNFNEventTitle            = @"title";
+NSString *const kNFNEventValues           = @"values";
+NSString *const kNFNEventUpdateDate       = @"updateDate";
+NSString *const kNFNEventSocialId         = @"socialId";
 
 @interface NFNEvent ()
 @end

@@ -196,11 +196,10 @@
 }
 
 - (void)downloadGoogleEventsListWithCalendarsArray:(NSArray*)array {
-    [self chackAPPCalendar];
     [_googleEventsArray removeAllObjects];
     _calendarsRequestCount = array.count;
     if ([NFSettingManager isOnGoogleSync]) {
-        
+        [self chackAPPCalendar];
         for (NFGoogleCalendar *calendar in array) {
             NSString *calendarColor = calendar.backgroundColor;
             GTLRCalendarQuery_EventsList *query = [GTLRCalendarQuery_EventsList queryWithCalendarId:calendar.idField];
@@ -278,7 +277,7 @@
                 break;
             }
         }
-        if (i > 0) {
+        if (i == 0) {
             [self createAppGoogleCalendar];
         }
     });
@@ -299,14 +298,7 @@
                      [[NFNSyncManager sharedManager] addCalendarToDBManager:new];
                      [[NFNSyncManager sharedManager] writeCalendarToDataBase:new];
                      [[NFFirebaseSyncManager sharedManager] writeAppCalendarId:new.idField];
-                     
-                     
-//                     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-//                     NSString *email = [self getUserEmail];
-//                     [defaults setValue:new.idField forKey:email];
-//                     [defaults setValue:new.idField forKey:APP_GOOGLE_CALENDAR_ID];
-//                     NSLog(@"create new calendar");
-//                     [self downloadGoogleCalendarList];
+
                  }
              }];
 }

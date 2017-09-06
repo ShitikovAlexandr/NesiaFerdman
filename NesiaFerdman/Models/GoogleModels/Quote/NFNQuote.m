@@ -6,11 +6,11 @@
 
 #import "NFNQuote.h"
 
-NSString *const kNFNQuoteIndex = @"Index";
-NSString *const kNFNQuoteAuthor = @"author";
-NSString *const kNFNQuoteDate = @"date";
+NSString *const kNFNQuoteIndex   = @"Index";
+NSString *const kNFNQuoteAuthor  = @"author";
+NSString *const kNFNQuoteDate    = @"date";
 NSString *const kNFNQuoteIdField = @"id";
-NSString *const kNFNQuoteTitle = @"title";
+NSString *const kNFNQuoteTitle   = @"title";
 
 @interface NFNQuote ()
 @end
@@ -30,23 +30,23 @@ NSString *const kNFNQuoteTitle = @"title";
 
 -(instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
-	self = [super init];
+    self         = [super init];
 	if(![dictionary[kNFNQuoteIndex] isKindOfClass:[NSNull class]]){
-		self.index = [dictionary[kNFNQuoteIndex] integerValue];
+    self.index   = [dictionary[kNFNQuoteIndex] integerValue];
 	}
 
 	if(![dictionary[kNFNQuoteAuthor] isKindOfClass:[NSNull class]]){
-		self.author = dictionary[kNFNQuoteAuthor];
-	}	
+    self.author  = dictionary[kNFNQuoteAuthor];
+	}
 	if(![dictionary[kNFNQuoteDate] isKindOfClass:[NSNull class]]){
-		self.date = dictionary[kNFNQuoteDate];
-	}	
+    self.date    = dictionary[kNFNQuoteDate];
+	}
 	if(![dictionary[kNFNQuoteIdField] isKindOfClass:[NSNull class]]){
-		self.idField = dictionary[kNFNQuoteIdField];
-	}	
+    self.idField = dictionary[kNFNQuoteIdField];
+	}
 	if(![dictionary[kNFNQuoteTitle] isKindOfClass:[NSNull class]]){
-		self.title = dictionary[kNFNQuoteTitle];
-	}	
+    self.title   = dictionary[kNFNQuoteTitle];
+	}
 	return self;
 }
 

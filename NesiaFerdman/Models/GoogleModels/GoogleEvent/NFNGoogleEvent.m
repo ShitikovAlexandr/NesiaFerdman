@@ -48,8 +48,7 @@ NSString *const kNFNGoogleEventDate = @"date";
             self.end = [[dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDateTime] substringToIndex:19];
         } else {
             if ([dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate] != nil) {
-                self.end = [NSString stringWithFormat:@"%@T00:01:00", [dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate]];
-                ;
+                self.end = [NSString stringWithFormat:@"%@T23:59:00", [self dateMinesDayFromDate:[dictionary[kNFNGoogleEventEnd] objectForKey:kNFNGoogleEventDate]]];
             } else {
                 self.end = [dictionary[kNFNGoogleEventCreated] substringToIndex:19];
             }
@@ -231,4 +230,25 @@ NSString *const kNFNGoogleEventDate = @"date";
 
 	return copy;
 }
+
+- (NSString*)dateMinesDayFromDate:(NSString*)dateString {
+    NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+    [formater setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+    NSDate *oldDate = [formater dateFromString:dateString];
+    
+    NSDate *dayAgo = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                              value:-1
+                                                             toDate:oldDate
+                                                            options:0];
+    
+//
+//    NSDateComponents *dateComponents = [[NSDateComponents alloc] ini];
+//    //[dateComponents setDay:-1];
+//    dateComponents.day -=1;
+//    NSDate *dayAgo = [[NSCalendar currentCalendar] dateByAddingComponents:dateComponents toDate:oldDate options:0];
+    NSString *tempString = [formater stringFromDate:dayAgo];
+    return [formater stringFromDate:dayAgo];
+}
+
 @end
