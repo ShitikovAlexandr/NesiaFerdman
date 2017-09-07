@@ -81,13 +81,22 @@
 
 + (void)setDownloadGoogleLimit:(NSNumber*)limit {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[limit integerValue] forKey:GOOGLE_DOWNLOAD_LIMIT];
+    if (![limit isKindOfClass:[NSNull class]]) {
+        [defaults setInteger:[limit integerValue] forKey:GOOGLE_DOWNLOAD_LIMIT];
+    } else {
+        [defaults setInteger:500 forKey:GOOGLE_DOWNLOAD_LIMIT];
+    }
 }
 
 + (NSInteger)getDownloadGoogleLimit {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber* limit = [defaults valueForKey:GOOGLE_DOWNLOAD_LIMIT];
-    return [limit integerValue] > 500 ? [limit integerValue]:500;
+    if(![[defaults valueForKey:GOOGLE_DOWNLOAD_LIMIT] isKindOfClass:[NSNull class]]) {
+        NSNumber* limit = [defaults valueForKey:GOOGLE_DOWNLOAD_LIMIT];
+        return [limit integerValue] > 500 ? [limit integerValue]:500;
+    } else {
+        return 500;
+    }
+    
 }
 
 + (void)setStandartIntervalsOfSync {
@@ -98,12 +107,16 @@
 
 + (void)setMinIntervalOfSync:(NSNumber*)dayInterval {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setInteger:[dayInterval integerValue] forKey:MIN_PERIOD];
+    if (![dayInterval isKindOfClass:[NSNull class]]) {
+        [defaults setInteger:[dayInterval integerValue] forKey:MIN_PERIOD];
+    }
 }
 
 + (void)setMaxIntervalOfSync:(NSNumber*)dayInterval {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![dayInterval isKindOfClass:[NSNull class]]) {
     [defaults setInteger:[dayInterval integerValue] forKey:MAX_PERIOD];
+    }
 }
 
 + (NSInteger)getMinPerionOfSync {

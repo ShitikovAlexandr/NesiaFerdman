@@ -66,6 +66,8 @@
 + (BOOL)connectedInternet;
 - (NSArray*)getQuotesList;
 
+- (void)updateFIRToken:(NSString*)token;
+
 - (void)deleteUser;
 
 @end

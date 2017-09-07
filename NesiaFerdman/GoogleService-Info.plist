@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>715183039903-bt0ddrdj7d0n09h06ntbulcph6gkekil.apps.googleusercontent.com</string>
+	<string>590281643092-54a8u7tbach5topr4isskmhggtm9uoou.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.715183039903-bt0ddrdj7d0n09h06ntbulcph6gkekil</string>
+	<string>com.googleusercontent.apps.590281643092-54a8u7tbach5topr4isskmhggtm9uoou</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAc4jh7_weMMBl4T98tzzMNNRPAiulEtEE</string>
+	<string>AIzaSyB5pE_rTSUtd0I-s966oxt8w29Qc08OgzY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>715183039903</string>
+	<string>590281643092</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.Gemicle.Coach</string>
+	<string>com.Gemicle.MyDate</string>
 	<key>PROJECT_ID</key>
-	<string>coach-diary-451ad</string>
+	<string>firebase-my-date</string>
 	<key>STORAGE_BUCKET</key>
-	<string>coach-diary-451ad.appspot.com</string>
+	<string>firebase-my-date.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:715183039903:ios:4de0cfbd23b3dfc2</string>
+	<string>1:590281643092:ios:24d0ba603b80d69e</string>
 	<key>DATABASE_URL</key>
-	<string>https://coach-diary-451ad.firebaseio.com</string>
+	<string>https://fir-my-date.firebaseio.com</string>
 </dict>
 </plist>

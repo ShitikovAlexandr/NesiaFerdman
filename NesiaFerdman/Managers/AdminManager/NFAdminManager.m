@@ -49,9 +49,9 @@
 }
 
 + (void)writeOption {
-    [[NFFirebaseSyncManager sharedManager] writeMaxTime:@120];
-    [[NFFirebaseSyncManager sharedManager] writeMinTime:@120];
-   // [[NFFirebaseSyncManager sharedManager] writeMaxLimitGoogle:@1000];
+    [[NFFirebaseSyncManager sharedManager] writeMaxTime:@184];
+    [[NFFirebaseSyncManager sharedManager] writeMinTime:@61];
+    [[NFFirebaseSyncManager sharedManager] writeMaxLimitGoogle:@800];
 }
 
 + (NSMutableArray*)satndartListOfManifestations {

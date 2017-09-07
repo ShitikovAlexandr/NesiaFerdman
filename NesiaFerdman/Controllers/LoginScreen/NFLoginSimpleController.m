@@ -116,11 +116,11 @@ static NFLoginSimpleController *sharedController;
                 [NFSettingManager setOnDeleteFromGoogle];
                 [_dataSource navigateToTutorial];
             } else if ([[NFNSyncManager sharedManager] isFirstRunToday]) {
-                [_dataSource navigateToTutorial];
-                //[self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
+                //[_dataSource navigateToTutorial];
+                [self performSegueWithIdentifier:@"QuoteSegue" sender:nil];
             } else {
-                [_dataSource navigateToTutorial];
-                //[self performSegueWithIdentifier:@"TaskSegue" sender:nil];
+                //[_dataSource navigateToTutorial];
+                [self performSegueWithIdentifier:@"TaskSegue" sender:nil];
             }
         });
     }

@@ -113,6 +113,13 @@
     [[FIRAuth auth] signInWithCredential:credential completion:^(FIRUser * _Nullable user, NSError * _Nullable error) {
         if (error == nil) {
             NSLog(@"singin to firebase");
+            
+            NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+            NSLog(@"InstanceID token: %@", refreshedToken);
+            if (refreshedToken !=nil) {
+                [[NFNSyncManager sharedManager] updateFIRToken:refreshedToken];
+            }
+            
             [[NFFirebaseSyncManager sharedManager]  downloadQuoteList];
             [[NFNSyncManager sharedManager] updateData];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -139,6 +146,10 @@
 }
 
 - (void)logOutAction {
+    if ([[NFGoogleSyncManager sharedManager] isLogin]) {
+        [[NFNSyncManager sharedManager] updateFIRToken:nil];
+    }
+    
     [[NFNSyncManager sharedManager] reset];
     [[NFDataSourceManager sharedManager] reset];
     [[NFFirebaseSyncManager sharedManager] reset];

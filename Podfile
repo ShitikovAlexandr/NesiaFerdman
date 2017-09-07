@@ -16,6 +16,7 @@ target 'NesiaFerdman' do
     pod 'Firebase/Storage'
 	pod 'Firebase/Auth'
 	pod 'Firebase/RemoteConfig'
+    pod 'Firebase/Messaging'
 	pod 'UITextView+Placeholder'
 	pod 'STCollapseTableView'
 	pod 'JVFloatLabeledTextField'

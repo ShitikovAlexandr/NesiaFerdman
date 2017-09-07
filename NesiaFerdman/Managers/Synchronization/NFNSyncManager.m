@@ -83,6 +83,10 @@
     [[NFGoogleSyncManager sharedManager] downloadGoogleCalendarList];
 }
 
+- (void)updateFIRToken:(NSString*)token {
+    [[NFFirebaseSyncManager sharedManager] writePushToken:token];
+}
+
 
 #pragma mark - sync methods
 

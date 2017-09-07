@@ -57,6 +57,7 @@
 
 - (NSString*)getAppGoogleCalendarId;
 - (void)writeAppCalendarId:(NSString*)calendarId;
+- (void)writePushToken:(NSString*)tokenString;
 
 //******************************************************************************************************************
 

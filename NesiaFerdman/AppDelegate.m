@@ -9,14 +9,32 @@
 #import "AppDelegate.h"
 #import "NFStyleKit.h"
 #import "NFGoogleSyncManager.h"
+#import "NFNSyncManager.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Reachability.h"
 @import Firebase;
 
+
+
+#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+@import UserNotifications;
+#endif
+
+#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+@interface AppDelegate () <UNUserNotificationCenterDelegate, FIRMessagingDelegate>
+@end
+#endif
+
+#ifndef NSFoundationVersionNumber_iOS_9_x_Max
+#define NSFoundationVersionNumber_iOS_9_x_Max 1299
+#endif
+
 @interface AppDelegate ()
 @property (strong, nonatomic) Reachability *reachability;
+
 @end
+
 
 @implementation AppDelegate
 
@@ -31,6 +49,8 @@
     [self setNFStyleAndColors];
     [self reachabilityNetwork];
     [NFGoogleSyncManager sharedManager];
+    [self registerPushNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return YES;
 }
 
@@ -42,6 +62,18 @@
                                sourceApplication:sourceApplication
                                       annotation:annotation];
 }
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+
+    if (application.applicationState == UIApplicationStateBackground) {
+        NSLog(@"UIApplicationStateBackground");
+    } else if (application.applicationState == UIApplicationStateInactive) {
+        NSLog(@"UIApplicationStateInactive");
+    }
+
+}
+
 
 
 
@@ -153,5 +185,129 @@
     // Start Monitoring
     [_reachability startNotifier];
 }
+
+#pragma mark - Firebase Massage
+
+- (void)registerPushNotifications {
+    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
+        UIUserNotificationType allNotificationTypes =
+        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    } else {
+        // iOS 10 or later
+#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+        UNAuthorizationOptions authOptions = UNAuthorizationOptionAlert | UNAuthorizationOptionSound | UNAuthorizationOptionBadge;
+        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            NSLog(@"PUSH GRANTED %@", @(granted));
+        }];
+        
+        // For iOS 10 display notification (sent via APNS)
+        //[UNUserNotificationCenter currentNotificationCenter].delegate = self;
+        // For iOS 10 data message (sent via FCM)
+        [FIRMessaging messaging].remoteMessageDelegate = self;
+#endif
+    }
+    
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tokenRefreshNotification:)
+                                                 name:kFIRInstanceIDTokenRefreshNotification object:nil];
+}
+
+- (void)tokenRefreshNotification:(NSNotification *)notification {
+    // Note that this callback will be fired everytime a new token is generated, including the first
+    // time. So if you need to retrieve the token as soon as it is available this is where that
+    // should be done.
+    NSString *refreshedToken = [[FIRInstanceID instanceID] token];
+    NSLog(@"InstanceID token: %@", refreshedToken);
+    if (refreshedToken !=nil) {
+        //[[NFNSyncManager sharedManager] updateFIRToken:refreshedToken];
+    }
+   // [[NSUserDefaults standardUserDefaults] setValue:refreshedToken forKey:PUSH_TOKEN];
+    
+    // Connect to FCM since connection may have failed when attempted before having a token.
+    [self connectToFcm];
+    
+    // TODO: If necessary send token to application server.
+    
+}
+
+- (void)connectToFcm {
+    [[FIRMessaging messaging] connectWithCompletion:^(NSError * _Nullable error) {
+        if (error != nil) {
+            NSLog(@"Unable to connect to FCM. %@", error);
+        } else {
+            NSLog(@"Connected to FCM.");
+        }
+    }];
+}
+
+
+
+
+
+
+//- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(nonnull NSData *)deviceToken {
+//    if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_9_x_Max) {
+//        UIUserNotificationType allNotificationTypes =
+//        (UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge);
+//        UIUserNotificationSettings *settings =
+//        [UIUserNotificationSettings settingsForTypes:allNotificationTypes categories:nil];
+//        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+//    } else {
+//        // iOS 10 or later
+//#if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
+//        // For iOS 10 display notification (sent via APNS)
+//        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+//        UNAuthorizationOptions authOptions =
+//        UNAuthorizationOptionAlert
+//        | UNAuthorizationOptionSound
+//        | UNAuthorizationOptionBadge;
+//        [[UNUserNotificationCenter currentNotificationCenter] requestAuthorizationWithOptions:authOptions completionHandler:^(BOOL granted, NSError * _Nullable error) {
+//        }];
+//#endif
+//    }
+//    
+//    [[UIApplication sharedApplication] registerForRemoteNotifications];
+//}
+
+- (void)messaging:(nonnull FIRMessaging *)messaging didRefreshRegistrationToken:(nonnull NSString *)fcmToken {
+    // Note that this callback will be fired everytime a new token is generated, including the first
+    // time. So if you need to retrieve the token as soon as it is available this is where that
+    // should be done.
+    NSLog(@"FCM registration token: %@", fcmToken);
+    
+    // TODO: If necessary send token to application server.
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    // If you are receiving a notification message while your app is in the background,
+    // this callback will not be fired till the user taps on the notification launching the application.
+    // TODO: Handle data of notification
+    
+    // With swizzling disabled you must let Messaging know about the message, for Analytics
+    // [[FIRMessaging messaging] appDidReceiveMessage:userInfo];
+    
+    // Print message ID.
+//    if (userInfo[kGCMMessageIDKey]) {
+//        NSLog(@"Message ID: %@", userInfo[kGCMMessageIDKey]);
+//    }
+    
+    // Print full message.
+    NSLog(@"%@", userInfo);
+}
+
+
+// [START ios_10_data_message_handling]
+#if defined(__IPHONE_10_0) && IPHONE_OS_VERSION_MAX_ALLOWED >= IPHONE_10_0
+// Receive data message on iOS 10 devices while app is in the foreground.
+- (void)applicationReceivedRemoteMessage:(FIRMessagingRemoteMessage *)remoteMessage {
+    // Print full message
+    NSLog(@"%@", [remoteMessage appData]);
+}
+#endif
+// [END ios_10_data_message_handling]
+
 
 @end

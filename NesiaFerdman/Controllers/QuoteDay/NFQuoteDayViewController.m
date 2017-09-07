@@ -12,6 +12,7 @@
 #import "NFRoundButton.h"
 #import "NFFirebaseSyncManager.h"
 #import "NFActivityIndicatorView.h"
+#import "NFQuoteDataSource.h"
 
 
 //QUOTE_END_LOAD
@@ -23,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *quoteLabel;
 @property (weak, nonatomic) IBOutlet UILabel *autorLabel;
 @property (strong, nonatomic) NFActivityIndicatorView *indicator;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NFQuoteDataSource *dataSource;
 
 @end
 
@@ -30,8 +33,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.quoteLabel.text = @"";
-    self.autorLabel.text = @"";
+    _dataSource = [[NFQuoteDataSource alloc] initWithTableView:_tableView];
+    
+//    self.quoteLabel.text = @"";
+//    self.autorLabel.text = @"";
     self.titleLabel.text = @"Цитата дня";
     [self setCurrentDateToScreen];
    }
@@ -58,9 +63,10 @@
     [array addObjectsFromArray:[[NFFirebaseSyncManager sharedManager] getQuoteList]];
     int randomIndex = arc4random_uniform((int)array.count);
     NFNQuote *quote = [array objectAtIndex:randomIndex];
-    self.quoteLabel.text = quote.title;
-    [self.quoteLabel sizeToFit];
-    self.autorLabel.text = quote.author;
+    [_dataSource setQuote:quote];
+//    self.quoteLabel.text = quote.title;
+//    [self.quoteLabel sizeToFit];
+//    self.autorLabel.text = quote.author;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {

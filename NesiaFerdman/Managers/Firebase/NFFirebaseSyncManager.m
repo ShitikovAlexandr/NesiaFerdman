@@ -34,6 +34,8 @@
 #define USER_INFO                   @"UserInfo"
 #define USER_EMAIL                  @"Email"
 #define GOOFLE_CALENDAR_ID          @"GoogleAppCalendarId"
+#define FIR_TOKEN                   @"FirebaseToken"
+
 
 @interface NFFirebaseSyncManager ()
 @property (strong, nonatomic) FIRDatabaseReference *ref;
@@ -426,6 +428,11 @@
     [[self userAppCalendarIdRef] setValue:calendarId];
 }
 
+- (void)writePushToken:(NSString*)tokenString {
+    [[self pushFIRTokenRef] setValue:tokenString];
+}
+
+
 
 - (void)writeEvent:(NFNEvent*)event {
     [[[self eventRef] child:event.eventId] updateChildValues:[[event copy] toDictionary] withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
@@ -554,6 +561,10 @@
 
 - (FIRDatabaseReference*)userAppCalendarIdRef {
     return [[[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:USER_INFO] child:GOOFLE_CALENDAR_ID];
+}
+
+- (FIRDatabaseReference*)pushFIRTokenRef {
+    return [[[[[self ref] child:USERS_DIRECTORY] child:USER_UID] child:USER_INFO] child:FIR_TOKEN];
 }
 
 // App ref
