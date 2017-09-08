@@ -10,6 +10,8 @@
 #define PrefixHeader_pch
 
 #define NSLog if(1) NSLog
+#define PUSH_ACTION_KEY @"kPushAction"
+#define PUSH_ACTION_VALUE @"kHavePush"
 
 #import "NFDateFormatter.h"
 #import "NFPop.h"

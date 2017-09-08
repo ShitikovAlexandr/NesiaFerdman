@@ -13,8 +13,10 @@
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 #import "Reachability.h"
+#import "NFStatisticPageController.h"
 @import Firebase;
 
+#define ROOTVIEW [[[UIApplication sharedApplication] keyWindow] rootViewController]
 
 
 #if defined(__IPHONE_10_0) && __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_10_0
@@ -50,7 +52,6 @@
     [self reachabilityNetwork];
     [NFGoogleSyncManager sharedManager];
     [self registerPushNotifications];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     return YES;
 }
 
@@ -65,16 +66,17 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-
-    if (application.applicationState == UIApplicationStateBackground) {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (application.applicationState == UIApplicationStateActive) {
+        NSLog(@"UIApplicationStateActive");
+    } else if (application.applicationState == UIApplicationStateBackground) {
         NSLog(@"UIApplicationStateBackground");
+        [defaults setValue:PUSH_ACTION_VALUE forKey:PUSH_ACTION_KEY];
     } else if (application.applicationState == UIApplicationStateInactive) {
         NSLog(@"UIApplicationStateInactive");
+        [defaults setValue:PUSH_ACTION_VALUE forKey:PUSH_ACTION_KEY];
     }
-
 }
-
-
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -95,8 +97,35 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    if ([[NFGoogleSyncManager sharedManager] isLogin]) {
+        //[ROOTVIEW presentViewController:interstitialViewController animated:YES completion:^{}];
+        [self presentStatistic];
+    }
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
+
+- (void)presentStatistic {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *pushData = [defaults objectForKey:PUSH_ACTION_KEY];
+    if ([pushData isEqualToString:PUSH_ACTION_VALUE]) {
+        [ROOTVIEW.presentedViewController dismissViewControllerAnimated:YES completion:^{
+        }];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [defaults setValue:@"no" forKey:PUSH_ACTION_KEY];
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            NFStatisticPageController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
+            UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
+            [navController setViewControllers:@[viewController]];
+            [ROOTVIEW presentViewController:navController animated:YES completion:nil];
+            
+        });
+    }
+}
+
+
+
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {

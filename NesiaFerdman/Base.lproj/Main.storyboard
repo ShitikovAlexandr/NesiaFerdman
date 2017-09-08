@@ -8,6 +8,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1311,7 +1312,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AjO-eZ-zbR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4295.1999999999998" y="-278.41079460269867"/>
+            <point key="canvasLocation" x="5234.3999999999996" y="-278.41079460269867"/>
         </scene>
         <!--Rsult Page Controller-->
         <scene sceneID="DN5-X8-ap3">
@@ -1665,7 +1666,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sQ7-Pb-PcP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5031.884057971015" y="-278.804347826087"/>
+            <point key="canvasLocation" x="5970.3999999999996" y="-279.31034482758622"/>
         </scene>
         <!--Week Task Controller-->
         <scene sceneID="YoW-Mx-lUO">
@@ -1721,7 +1722,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UKC-do-H7Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5824.6376811594209" y="-272.28260869565219"/>
+            <point key="canvasLocation" x="6762.3999999999996" y="-273.01349325337333"/>
         </scene>
         <!--Month Task Controller-->
         <scene sceneID="2pD-96-sKZ">
@@ -1828,7 +1829,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4FW-3y-ti6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6655.1999999999998" y="-273.01349325337333"/>
+            <point key="canvasLocation" x="7594.3999999999996" y="-273.01349325337333"/>
         </scene>
         <!--Result Month Controller-->
         <scene sceneID="CrS-F7-a2v">
@@ -1877,7 +1878,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="lSO-Za-P0M">
             <objects>
-                <tabBarController id="3bQ-gU-hly" sceneMemberID="viewController">
+                <tabBarController id="3bQ-gU-hly" customClass="NFTabBarController" sceneMemberID="viewController">
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="GUV-9l-UV0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -1916,6 +1917,30 @@
             </objects>
             <point key="canvasLocation" x="1316" y="930"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="vHr-gq-AcC">
+            <objects>
+                <viewController id="3SK-F7-hwe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rIJ-y0-fZQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="XF0-5p-duA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="DfK-ec-q49">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="of9-I9-gkM">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="trash" id="20U-uM-W7O"/>
+                            <barButtonItem systemItem="compose" id="Mly-Yd-NSn"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ziF-IK-nUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3260" y="-764.16791604197908"/>
+        </scene>
         <!--Задачи-->
         <scene sceneID="W5t-0Y-3Ew">
             <objects>
@@ -1937,7 +1962,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCG-NH-WkY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3532" y="-278"/>
+            <point key="canvasLocation" x="4471.1999999999998" y="-278.41079460269867"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jQP-0p-EBV">
@@ -2120,7 +2145,7 @@
                                         <rect key="frame" x="129.5" y="64" width="116.5" height="116.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="upgrate_value_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="FCR-GL-YBI">
-                                                <rect key="frame" x="42" y="44" width="31" height="29"/>
+                                                <rect key="frame" x="43" y="45" width="31" height="29"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                             </imageView>
                                         </subviews>
@@ -2708,6 +2733,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZHP-TK-Y0X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3532" y="1111"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="6CO-5a-19c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6A0-10-vDT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Wba-2d-64a">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="3SK-F7-hwe" kind="relationship" relationship="rootViewController" id="PZi-ff-Fsj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cee-Cg-yJT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2320.8000000000002" y="-764.16791604197908"/>
         </scene>
     </scenes>
     <resources>

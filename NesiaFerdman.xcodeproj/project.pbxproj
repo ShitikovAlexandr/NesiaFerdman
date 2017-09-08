@@ -45,6 +45,7 @@
 		C21321021EA65BAA00CE2B5D /* NFPageTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = C21321011EA65BAA00CE2B5D /* NFPageTaskController.m */; };
 		C2144C741F3867BD00307176 /* google_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C2144C731F3867BD00307176 /* google_icon.png */; };
 		C2144C781F3896F000307176 /* NFTermsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2144C771F3896F000307176 /* NFTermsController.m */; };
+		C216A1341F629601001109DE /* NFTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C216A1331F629601001109DE /* NFTabBarController.m */; };
 		C216D8A51EB1D5EE001D1006 /* NFDayTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8A41EB1D5EE001D1006 /* NFDayTask.m */; };
 		C216D8A81EB1D627001D1006 /* NFHourTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8A71EB1D627001D1006 /* NFHourTask.m */; };
 		C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C216D8AA1EB1D64A001D1006 /* NFWeekTask.m */; };
@@ -351,6 +352,8 @@
 		C2144C731F3867BD00307176 /* google_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = google_icon.png; sourceTree = "<group>"; };
 		C2144C761F3896F000307176 /* NFTermsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTermsController.h; sourceTree = "<group>"; };
 		C2144C771F3896F000307176 /* NFTermsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTermsController.m; sourceTree = "<group>"; };
+		C216A1321F629601001109DE /* NFTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTabBarController.h; sourceTree = "<group>"; };
+		C216A1331F629601001109DE /* NFTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTabBarController.m; sourceTree = "<group>"; };
 		C216D8A31EB1D5EE001D1006 /* NFDayTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayTask.h; sourceTree = "<group>"; };
 		C216D8A41EB1D5EE001D1006 /* NFDayTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDayTask.m; sourceTree = "<group>"; };
 		C216D8A61EB1D627001D1006 /* NFHourTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHourTask.h; sourceTree = "<group>"; };
@@ -893,6 +896,15 @@
 			path = TermsController;
 			sourceTree = "<group>";
 		};
+		C216A1311F6295DE001109DE /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				C216A1321F629601001109DE /* NFTabBarController.h */,
+				C216A1331F629601001109DE /* NFTabBarController.m */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
 		C216D8A21EB1D5CF001D1006 /* TaskManagerModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -1016,6 +1028,7 @@
 		C22407B51E9CB4E8004B089A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C216A1311F6295DE001109DE /* TabBarController */,
 				C2144C751F3896D200307176 /* TermsController */,
 				C2091B171F1E40F200BAA524 /* CalendarListController */,
 				C2AA71FF1F028BF9007DB785 /* SettingDetailController */,
@@ -2095,6 +2108,9 @@
 						DevelopmentTeam = CYK6AE4N3X;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -2443,6 +2459,7 @@
 				C2B3C8AC1EE935FA000B917D /* NFValueController.m in Sources */,
 				C286D6041EA613EC007C2395 /* NFDayView.m in Sources */,
 				C28DD0C31EF430CD004E0C7E /* NFAnimatedLabel.m in Sources */,
+				C216A1341F629601001109DE /* NFTabBarController.m in Sources */,
 				C2697EEC1EDD578E00E1F6C5 /* NFFilterLabel.m in Sources */,
 				C23935441F2A10C0003E82A2 /* NFWeekTaskDataSource.m in Sources */,
 				C24422F71F18EE0E0008CF49 /* NFStatisticMonthController.m in Sources */,
