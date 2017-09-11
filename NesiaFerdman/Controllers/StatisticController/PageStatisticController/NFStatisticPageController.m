@@ -26,7 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _pushIndex = 1;
+    //_pushIndex = 1;
     self.delegate = self;
     self.dataSource = self;
     self.navigationItem.title = @"Статистика";

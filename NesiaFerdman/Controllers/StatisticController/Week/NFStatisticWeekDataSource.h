@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "NFDateModel.h"
 #import "NFWeekDateModel.h"
+#import "NFStatisticWeekController.h"
+
 
 
 @interface NFStatisticWeekDataSource : NSObject
 
-- (instancetype)initWithTableView:(UITableView*)tableView target:(id)target;
+- (instancetype)initWithTableView:(UITableView*)tableView target:(NFStatisticWeekController*)target;
 
 - (void)setSelectedDate:(NFWeekDateModel*)week;
 - (NFDateModel*)getDateLimits;

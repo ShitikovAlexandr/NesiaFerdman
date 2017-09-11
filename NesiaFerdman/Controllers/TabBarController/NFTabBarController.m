@@ -35,12 +35,14 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *pushData = [defaults objectForKey:PUSH_ACTION_KEY];
     if ([pushData isEqualToString:PUSH_ACTION_VALUE]) {
-        [self.presentedViewController dismissViewControllerAnimated:YES completion:^{
-                   }];
+       // if ([self.presentedViewController isKindOfClass:[NFStatisticPageController class]]) {
+            [self.presentedViewController dismissViewControllerAnimated:YES completion:^{}];
+       // }
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [defaults setValue:@"no" forKey:PUSH_ACTION_KEY];
             NFStatisticPageController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
+            viewController.pushIndex = 1;
             UINavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
             [navController setViewControllers:@[viewController]];
             [self presentViewController:navController animated:YES completion:nil];

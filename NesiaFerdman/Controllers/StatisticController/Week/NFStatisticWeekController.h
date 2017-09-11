@@ -7,7 +7,10 @@
 //
 
 #import "NFViewController.h"
+#import "NFActivityIndicatorView.h"
+
 
 @interface NFStatisticWeekController : NFViewController
+@property (strong, nonatomic) NFActivityIndicatorView *indicator;
 
 @end

@@ -199,6 +199,8 @@ UICollectionViewDelegateFlowLayout
         if (_selectedDate != nil) {
             self.starttextField.text = [self stringFromDate:_selectedDate];
             self.endTextField.text = [self stringFromDate:[_selectedDate dateByAddingTimeInterval:900]];
+            self.datePickerStart.date = _selectedDate;
+            self.datePickerEnd.date = [_selectedDate dateByAddingTimeInterval:900];
         } else {
             self.starttextField.text = [self stringFromDate:[NSDate date]];
             self.endTextField.text = [self stringFromDate:[NSDate  dateWithTimeIntervalSinceNow:900]];

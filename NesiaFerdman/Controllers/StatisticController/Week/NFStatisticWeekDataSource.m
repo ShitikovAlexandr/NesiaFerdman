@@ -13,12 +13,13 @@
 #import "NFDataSourceManager.h"
 #import "NFStatisticDetailController.h"
 
+
 @interface NFStatisticWeekDataSource() <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSMutableArray *dataArray;
 @property (strong, nonatomic) NFWeekDateModel *selectedWeek;
 @property (strong, nonatomic) NFDateModel *dateLimits;
-@property (strong, nonatomic) id target;
+@property (strong, nonatomic) NFStatisticWeekController *target;
 @property (strong, nonnull) NSMutableDictionary *dataDictionary;
 @property (strong, nonatomic) NSMutableArray *valuesArray;
 
@@ -58,7 +59,7 @@
 
 #pragma mark - Helpers
 
-- (instancetype)initWithTableView:(UITableView*)tableView target:(id)target {
+- (instancetype)initWithTableView:(UITableView*)tableView target:(NFStatisticWeekController*)target {
     if (self) {
         _target = target;
         _tableView = tableView;
@@ -91,6 +92,9 @@
     }
     [self.dataDictionary setDictionary:[[NFDataSourceManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
+    if ([_dataDictionary allKeys].count > 1) {
+        [_target.indicator endAnimating];
+    }
 }
 
 #pragma mark - navigation

@@ -109,13 +109,15 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *pushData = [defaults objectForKey:PUSH_ACTION_KEY];
     if ([pushData isEqualToString:PUSH_ACTION_VALUE]) {
-        [ROOTVIEW.presentedViewController dismissViewControllerAnimated:YES completion:^{
-        }];
+//        if ([ROOTVIEW.presentedViewController isKindOfClass:[NFStatisticPageController class]]) {
+            [ROOTVIEW.presentedViewController dismissViewControllerAnimated:YES completion:^{}];        //}
+       
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [defaults setValue:@"no" forKey:PUSH_ACTION_KEY];
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
             NFStatisticPageController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageController"];
+            viewController.pushIndex = 1;
             UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFStatisticPageControllerNav"];
             [navController setViewControllers:@[viewController]];
             [ROOTVIEW presentViewController:navController animated:YES completion:nil];
