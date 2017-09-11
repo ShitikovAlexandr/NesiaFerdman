@@ -15,6 +15,7 @@
 #import "NFTutorialController.h"
 #import "NFQuoteDayViewController.h"
 #import "NFCalendarListController.h"
+#import "NFAboutValueInfoController.h"
 
 @interface NFLoginSimpleDataSource ()
 @property (strong, nonatomic) NFLoginSimpleController *target;
@@ -52,9 +53,19 @@
     viewController.isFirstRun = true;
     viewController.nextController = calendarListController;
     
-    UINavigationController *navController = [_target.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
-    [navController setViewControllers:@[viewController]];
+    //    UINavigationController *navController = [_target.storyboard instantiateViewControllerWithIdentifier:@"NFTutorialControllerNav"];
+    //    [navController setViewControllers:@[viewController]];
+    //    [_target presentViewController:navController animated:YES completion:nil];
+    
+    //0
+    NFAboutValueInfoController *aboutValueController = [storyboard instantiateViewControllerWithIdentifier:@"NFAboutValueInfoController"];
+    aboutValueController.nextController = viewController;
+    
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFAboutValueInfoControllerNav"];
+    [navController setViewControllers:@[aboutValueController]];
     [_target presentViewController:navController animated:YES completion:nil];
+    
+    
 }
 
 

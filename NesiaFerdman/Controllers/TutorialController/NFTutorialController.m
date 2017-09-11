@@ -70,6 +70,8 @@
         UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:kNFTutorialControllerDone style:UIBarButtonItemStylePlain target:self action:@selector (goNextAction)];
         self.navigationItem.rightBarButtonItem = rigtButton;
         self.navigationItem.rightBarButtonItem.customView.hidden = NO;
+        [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
+
     } else {
         [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     }

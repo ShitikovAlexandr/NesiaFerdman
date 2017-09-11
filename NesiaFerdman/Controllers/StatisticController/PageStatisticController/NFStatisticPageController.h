@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface NFStatisticPageController : UIPageViewController
+@property (assign, nonatomic) NSInteger pushIndex;
+
 
 @end

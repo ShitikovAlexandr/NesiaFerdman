@@ -10,14 +10,12 @@
 #import "NFDayTaskController.h"
 #import "NFWeekTaskController.h"
 #import "NFMonthTaskController.h"
-#import "NFSegmentedControl.h"
 #import "NFEditTaskController.h"
 #import "NFStatisticPageController.h"
 
 
 @interface NFPageTaskController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (strong, nonatomic) NSArray *viewControllersArray;
-@property (strong, nonatomic) NFSegmentedControl *segmentedControl;
 @end
 
 @implementation NFPageTaskController
@@ -32,7 +30,7 @@
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width - 30, 34);
-    _segmentedControl.selectedSegmentIndex = 0;
+   
     [self.navigationController.navigationBar addSubview:_segmentedControl];
     _segmentedControl.center = self.navigationController.navigationBar.center;
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
@@ -47,6 +45,8 @@
     [self setViewControllers:@[dayController]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
+    
+        _segmentedControl.selectedSegmentIndex = 0;
 }
 
 

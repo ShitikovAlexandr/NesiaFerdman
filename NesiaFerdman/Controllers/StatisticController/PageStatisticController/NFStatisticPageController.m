@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _pushIndex = 1;
     self.delegate = self;
     self.dataSource = self;
     self.navigationItem.title = @"Статистика";
@@ -36,7 +37,6 @@
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", @"Другое", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
     _segmentedControl.frame = CGRectMake(0, 49, self.view.frame.size.width - 30, 34);
-    _segmentedControl.selectedSegmentIndex = 0;
     [self.navigationController.navigationBar addSubview:_segmentedControl];
     _segmentedControl.center = CGPointMake(self.navigationController.navigationBar.center.x, self.navigationController.navigationBar.center.y + 20.0);
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
@@ -45,9 +45,11 @@
     NFStatisticWeekController *weekController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticWeekController"];
     NFStatisticMonthController *monthController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticMonthController"];
     NFStatisticRandomPeriodController *randomPeriodController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFStatisticRandomPeriodController"];
-    
+    _segmentedControl.selectedSegmentIndex = _pushIndex;
+
     _viewControllersArray = [NSArray arrayWithObjects:dayController, weekController, monthController, randomPeriodController, nil];
-    [self setViewControllers:@[dayController]
+    UIViewController *obj = [_viewControllersArray objectAtIndex:_segmentedControl.selectedSegmentIndex];
+    [self setViewControllers:@[obj]
                    direction:UIPageViewControllerNavigationDirectionForward
                     animated:NO completion:nil];
 }

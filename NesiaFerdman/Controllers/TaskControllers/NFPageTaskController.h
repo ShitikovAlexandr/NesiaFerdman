@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NFSegmentedControl.h"
+
 
 @interface NFPageTaskController : UIPageViewController
+@property (strong, nonatomic) NFSegmentedControl *segmentedControl;
+
 
 @end
