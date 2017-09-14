@@ -55,8 +55,13 @@
 /** return an array of standart app Manifestations */
 - (NSMutableArray<NFNManifestation*>*)getAppManifestationList;
 
+/**read google calendar id created by the application*/
 - (NSString*)getAppGoogleCalendarId;
+
+/**write google calendar id created by the application*/
 - (void)writeAppCalendarId:(NSString*)calendarId;
+
+/**write push token cratet by FIR Push API*/
 - (void)writePushToken:(NSString*)tokenString;
 
 //******************************************************************************************************************

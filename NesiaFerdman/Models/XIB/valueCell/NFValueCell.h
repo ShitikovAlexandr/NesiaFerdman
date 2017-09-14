@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NFValue.h"
+#import "NFNValue.h"
 
 @interface NFValueCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *valueTitle;
 @property (weak, nonatomic) IBOutlet UIImageView *vaueIcon;
 
-- (void)addData:(NFValue *)value;
+- (void)addData:(NFNValue *)value;
 
 + (CGFloat)cellSize;
 

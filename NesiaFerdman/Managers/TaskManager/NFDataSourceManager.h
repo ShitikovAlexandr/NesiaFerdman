@@ -53,6 +53,7 @@
 
 - (NSArray*)getEventList;
 - (NSArray*)getValueList;
+- (NSArray*)getAllValueList;
 - (NSArray*)getManifestationList;
 - (NSArray*)getManifestationListWithValue:(NFNValue*)value;
 - (NSArray*)getResultCategoryList;

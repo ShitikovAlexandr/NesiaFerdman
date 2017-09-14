@@ -23,7 +23,7 @@
     // Configure the view for the selected state
 }
 
-- (void)addData:(NFValue *)value {
+- (void)addData:(NFNValue *)value {
     if (value) {
         _valueTitle.text = value.valueTitle;
         if (value.valueImage) {

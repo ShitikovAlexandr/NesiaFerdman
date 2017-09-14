@@ -92,7 +92,7 @@
     }
     [self.dataDictionary setDictionary:[[NFDataSourceManager sharedManager] eventSortedByValue:eventsArray]];
     [self.tableView reloadData];
-    if ([_dataDictionary allKeys].count > 1) {
+    if ([[NFDataSourceManager sharedManager] getValueList].count > 0) {
         [_target.indicator endAnimating];
     }
 }

@@ -369,6 +369,10 @@
     return [self sortArray:(NSMutableArray*)items withKey:@"valueIndex"];
 }
 
+- (NSArray*)getAllValueList {
+    return [self sortArray:_valuesArray withKey:@"valueIndex"];
+}
+
 - (NSArray*)getManifestationListWithValue:(NFNValue*)value {
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.parentId CONTAINS[c]%@",value.valueId];
     return [_manifestationArray filteredArrayUsingPredicate:predicate];

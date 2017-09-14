@@ -95,7 +95,7 @@ UICollectionViewDelegateFlowLayout
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row == 4) {
-        return _textFrame.size.height < 90.f ? 90 : _textFrame.size.height;
+        return _textFrame.size.height < 70.f ? 90 : _textFrame.size.height + 21.0;
     } else if (indexPath.row == 2) {
         return 62.0;
     } else  if (indexPath.row == 0 || indexPath.row == 1) {
@@ -116,11 +116,13 @@ UICollectionViewDelegateFlowLayout
     CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    if (newFrame.size.height != textView.frame.size.height) {
+    if (newFrame.size.height != textView.frame.size.height + 21.0) {
         textView.frame = newFrame;
         self.textFrame = newFrame;
-        [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
-        [textView becomeFirstResponder];
+        [self.tableView beginUpdates];
+       // [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:1 inSection:0]] withRowAnimation:UITableViewRowAnimationNone];
+        [self.tableView endUpdates];
+        //[textView becomeFirstResponder];
     }
 }
 
