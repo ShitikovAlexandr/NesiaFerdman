@@ -403,6 +403,30 @@
     return newDate;
 }
 
+- (void)filterEventsWithActiveValue {
+//    //NFNValue
+    NSArray *allValues = [NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getAllValueList]];
+    NSPredicate *notActiveValuePredicate = [NSPredicate predicateWithFormat:@"SELF.isDeleted == YES"];
+    NSArray *notActiveValue = [allValues filteredArrayUsingPredicate:notActiveValuePredicate];
+    
+    //NFNEvent
+    NSArray *allEvents = [NSArray arrayWithArray:[[NFDataSourceManager sharedManager] getEventList]];
+       NSPredicate *eventsWithNoActiveValuePredicate = [NSPredicate predicateWithFormat:@"ANY SELF.values.valueId IN %@", [notActiveValue valueForKey:@"valueId"]];
+    NSArray *resultEventArray = [allEvents filteredArrayUsingPredicate:eventsWithNoActiveValuePredicate];
+    NSLog(@"resultEventArray %@", resultEventArray);
+    for (NFNEvent *event in resultEventArray) {
+        NSMutableArray *tempValue = [NSMutableArray arrayWithArray:event.values];
+        for (NFNValue *val in tempValue) {
+            for (NFNValue *noActiveVal in notActiveValue) {
+                if ([noActiveVal.valueId isEqualToString:val.valueId]) {
+                    [event.values removeObject:val];
+                }
+            }
+        }
+        [[NFNSyncManager sharedManager] writeEventToDataBase:event];
+    }
+}
+
 - (void)updateDataSource {
     [[NFDataSourceManager sharedManager] setResultCategoryList:[[NFFirebaseSyncManager sharedManager] getResultCategoryList]];
     [[NFDataSourceManager sharedManager] setResultList:[[NFFirebaseSyncManager sharedManager] getResultList]];

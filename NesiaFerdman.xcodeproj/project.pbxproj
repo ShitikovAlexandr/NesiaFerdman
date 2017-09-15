@@ -157,6 +157,10 @@
 		C296148D1F617F1400C2153E /* NFQuoteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C296148C1F617F1400C2153E /* NFQuoteDataSource.m */; };
 		C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A2015C1ECF32B200281058 /* checked_disable.png */; };
 		C2A2015F1ECF32B200281058 /* checked_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A2015D1ECF32B200281058 /* checked_enable.png */; };
+		C2A228791F6C076000C53D35 /* onboarding1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228761F6C076000C53D35 /* onboarding1.png */; };
+		C2A2287A1F6C076000C53D35 /* onboarding2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228771F6C076000C53D35 /* onboarding2.png */; };
+		C2A2287B1F6C076000C53D35 /* onboarding3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228781F6C076000C53D35 /* onboarding3.png */; };
+		C2A2287E1F6C07CA00C53D35 /* NFTutorialItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2287D1F6C07CA00C53D35 /* NFTutorialItem.m */; };
 		C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A541911EBA061B005BEC47 /* NFWeekDaysHeader.m */; };
 		C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A541931EBA062A005BEC47 /* NFWeekDaysHeader.xib */; };
 		C2A541971EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A541961EBA0DC0005BEC47 /* NFHeaderDayOfWeek.m */; };
@@ -553,6 +557,11 @@
 		C296148C1F617F1400C2153E /* NFQuoteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFQuoteDataSource.m; sourceTree = "<group>"; };
 		C2A2015C1ECF32B200281058 /* checked_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_disable.png; sourceTree = "<group>"; };
 		C2A2015D1ECF32B200281058 /* checked_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_enable.png; sourceTree = "<group>"; };
+		C2A228761F6C076000C53D35 /* onboarding1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding1.png; sourceTree = "<group>"; };
+		C2A228771F6C076000C53D35 /* onboarding2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding2.png; sourceTree = "<group>"; };
+		C2A228781F6C076000C53D35 /* onboarding3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding3.png; sourceTree = "<group>"; };
+		C2A2287C1F6C07CA00C53D35 /* NFTutorialItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTutorialItem.h; sourceTree = "<group>"; };
+		C2A2287D1F6C07CA00C53D35 /* NFTutorialItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTutorialItem.m; sourceTree = "<group>"; };
 		C2A541901EBA061B005BEC47 /* NFWeekDaysHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFWeekDaysHeader.h; sourceTree = "<group>"; };
 		C2A541911EBA061B005BEC47 /* NFWeekDaysHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFWeekDaysHeader.m; sourceTree = "<group>"; };
 		C2A541931EBA062A005BEC47 /* NFWeekDaysHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFWeekDaysHeader.xib; sourceTree = "<group>"; };
@@ -1079,6 +1088,7 @@
 		C22407B71E9CB500004B089A /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				C2A2286F1F6C05BD00C53D35 /* tutorial */,
 				C2BE2B6B1F547275000D183A /* tutorial_test */,
 				C2BE2B661F5437CB000D183A /* splash_.png */,
 				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
@@ -1250,6 +1260,8 @@
 				C23AD8D61EFD189400BAFF1E /* TutorialCell */,
 				C23AD8CF1EFD10CB00BAFF1E /* NFTutorialController.h */,
 				C23AD8D01EFD10CB00BAFF1E /* NFTutorialController.m */,
+				C2A2287C1F6C07CA00C53D35 /* NFTutorialItem.h */,
+				C2A2287D1F6C07CA00C53D35 /* NFTutorialItem.m */,
 			);
 			path = TutorialController;
 			sourceTree = "<group>";
@@ -1596,6 +1608,16 @@
 				C2A2015D1ECF32B200281058 /* checked_enable.png */,
 			);
 			path = chackbox;
+			sourceTree = "<group>";
+		};
+		C2A2286F1F6C05BD00C53D35 /* tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				C2A228761F6C076000C53D35 /* onboarding1.png */,
+				C2A228771F6C076000C53D35 /* onboarding2.png */,
+				C2A228781F6C076000C53D35 /* onboarding3.png */,
+			);
+			path = tutorial;
 			sourceTree = "<group>";
 		};
 		C2A5418F1EBA0605005BEC47 /* WeekDaysHeader */ = {
@@ -2219,6 +2241,7 @@
 				C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */,
 				C2C22DA91EE98283006BD83A /* exit_icon.png in Resources */,
 				C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */,
+				C2A228791F6C076000C53D35 /* onboarding1.png in Resources */,
 				C2C0D6131EC60140003C7741 /* menu-options@3x.png in Resources */,
 				C2B3D9741EDEB74800A0A44E /* NFValueFilterCell.xib in Resources */,
 				C2091B161F1E37A500BAA524 /* task_section_icon.png in Resources */,
@@ -2227,6 +2250,7 @@
 				C2C22DB21EE98283006BD83A /* result_icon.png in Resources */,
 				C22407821E9CB351004B089A /* Main.storyboard in Resources */,
 				C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */,
+				C2A2287B1F6C076000C53D35 /* onboarding3.png in Resources */,
 				C2AA720D1F029014007DB785 /* NFMenuUpdateCell.xib in Resources */,
 				C2C22DAF1EE98283006BD83A /* question_icon.png in Resources */,
 				C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */,
@@ -2241,6 +2265,7 @@
 				C2FA690D1EE15C2000D58D18 /* cancelTag.png in Resources */,
 				C294231C1ED31F7E0017B0A7 /* main_logo.png in Resources */,
 				C2FCC6FA1EEEC918009D47B5 /* importantIconFill@2x.png in Resources */,
+				C2A2287A1F6C076000C53D35 /* onboarding2.png in Resources */,
 				C2DCFD031F5547EF005B3CDF /* IMG_2719.png in Resources */,
 				C2C0D6121EC60140003C7741 /* menu-options@2x.png in Resources */,
 				C286D6011EA61394007C2395 /* NFDayTableViewCell.xib in Resources */,
@@ -2496,6 +2521,7 @@
 				C20EBA031EA8A93C0074C0AF /* NFWeekDayView.m in Sources */,
 				C26BA3331F14FA2E0053A138 /* NFHeaderMonthView.m in Sources */,
 				C2D13F721EEAC9E400A9A4F3 /* NFValueCell.m in Sources */,
+				C2A2287E1F6C07CA00C53D35 /* NFTutorialItem.m in Sources */,
 				C2176C9F1F0B7DB700748C64 /* NFDateFormatter.m in Sources */,
 				C24B29E21F2610220069C160 /* NFNRsult.m in Sources */,
 				C216D8AB1EB1D64A001D1006 /* NFWeekTask.m in Sources */,

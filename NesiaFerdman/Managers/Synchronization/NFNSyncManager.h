@@ -49,6 +49,8 @@
 - (void)resetSelectedValuesList;
 - (void)addValuesToSelectedList:(NSArray*)array;
 
+- (void)filterEventsWithActiveValue;
+
 - (BOOL)isFirstRunToday;
 - (BOOL)isFirstRunApp;
 

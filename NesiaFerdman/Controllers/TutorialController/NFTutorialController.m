@@ -9,6 +9,7 @@
 #import "NFTutorialController.h"
 #import "NFTutorialCell.h"
 #import "UIBarButtonItem+FHButtons.h"
+#import "NFTutorialItem.h"
 
 #define kNFTutorialControllerTitle  @"Обучалка"
 #define kNFTutorialControllerDone   @"Готово"
@@ -26,7 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _dataArray = [NSMutableArray new];
-    [_dataArray addObjectsFromArray:[self getImageTest]];
+    [self getData];
     [self setNavigationButtons];
     [self.collectionView registerNib:[UINib nibWithNibName:@"NFTutorialCell" bundle:nil] forCellWithReuseIdentifier:@"NFTutorialCell"];
     self.title = kNFTutorialControllerTitle;
@@ -92,5 +93,25 @@
     return array;
 }
 
+- (void)getData {
+    [_dataArray removeAllObjects];
+    NFTutorialItem *item1 = [[NFTutorialItem alloc] init];
+    item1.title = @"";
+    item1.imageName = @"";
+    item1.text = @"";
+    [_dataArray addObject:item1];
+    
+    NFTutorialItem *item2 = [[NFTutorialItem alloc] init];
+    item2.title = @"";
+    item2.imageName = @"";
+    item2.text = @"";
+    [_dataArray addObject:item2];
+    
+    NFTutorialItem *item3 = [[NFTutorialItem alloc] init];
+    item3.title = @"";
+    item3.imageName = @"";
+    item3.text = @"";
+    [_dataArray addObject:item3];
+}
 
 @end

@@ -89,6 +89,8 @@
     [newArray addObjectsFromArray:[self updateIndexInValuesArray:_allDataArray]];
     [self saveValuesArrayToDataBase:newArray];
     
+    [[NFNSyncManager sharedManager] filterEventsWithActiveValue];
+    
     
     //    if (_deletedValues.count > 0) {
     //        for (NFNValue *val in _deletedValues) {
