@@ -56,7 +56,8 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFTutorialCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NFTutorialCell" forIndexPath:indexPath];
-    [cell addDataToCell:[_dataArray objectAtIndex:indexPath.item] index:indexPath.row];
+    NFTutorialItem *item = [_dataArray objectAtIndex:indexPath.row];
+    [cell addDataToCell:item];
     return cell;
 }
 
@@ -82,35 +83,24 @@
     [self.navigationController pushViewController:_nextController animated:YES];
 }
 
-- (NSMutableArray*)getImageTest {
-    NSMutableArray* array = [NSMutableArray new];
-    for (int i = 16 ; i < 20; i++) {
-        NSString *imgName = [NSString stringWithFormat:@"IMG_27%d.png",i];
-        UIImage *img = [[UIImage alloc] init];
-        img = [UIImage imageNamed:imgName];
-        [array addObject:img];
-    }
-    return array;
-}
-
 - (void)getData {
     [_dataArray removeAllObjects];
     NFTutorialItem *item1 = [[NFTutorialItem alloc] init];
-    item1.title = @"";
-    item1.imageName = @"";
-    item1.text = @"";
+    item1.title = @"Синхронизация календаря с google";
+    item1.imageName = @"onboarding1.png";
+    item1.text = @"Вы можете синхронизировать данное приложение с гугл календарем и пользоваться всеми функциями календаря.";
     [_dataArray addObject:item1];
     
     NFTutorialItem *item2 = [[NFTutorialItem alloc] init];
-    item2.title = @"";
-    item2.imageName = @"";
-    item2.text = @"";
+    item2.title = @"Список ценностей";
+    item2.imageName = @"onboarding2.png";
+    item2.text = @"Выбирай ценности, которые важны и значимы для вас. Вы можете пользоваться не только предложенным списком, а и дописать свои ценности.";
     [_dataArray addObject:item2];
     
     NFTutorialItem *item3 = [[NFTutorialItem alloc] init];
-    item3.title = @"";
-    item3.imageName = @"";
-    item3.text = @"";
+    item3.title = @"Самокоучинг";
+    item3.imageName = @"onboarding3.png";
+    item3.text = @"Используя инструменты самокоучинга, составив список своих ценностей Вы сможете прослеживать эффективность их реализации в своей жизни.";
     [_dataArray addObject:item3];
 }
 

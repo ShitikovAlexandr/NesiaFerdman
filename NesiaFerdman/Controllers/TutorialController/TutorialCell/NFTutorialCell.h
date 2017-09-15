@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NFTutorialItem.h"
+
 
 @interface NFTutorialCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
-- (void)addDataToCell:(UIImage*)image index:(NSInteger)index;
+- (void)addDataToCell:(NFTutorialItem*)item;
 
 @end
