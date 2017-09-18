@@ -91,6 +91,26 @@ UICollectionViewDelegateFlowLayout
     [[NSNotificationCenter defaultCenter] removeObserver:self name:PICKER_VIEW_IS_PRESSED object:nil];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    switch (indexPath.row) {
+        case 1: {
+            [_selectValueTextField becomeFirstResponder];
+            break;
+        }
+        case 6: {
+            [_starttextField becomeFirstResponder];
+            break;
+        }
+        case 7: {
+            [_endTextField becomeFirstResponder];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
 #pragma mark - UITableViewDelegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

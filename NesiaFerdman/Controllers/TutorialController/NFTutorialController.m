@@ -66,7 +66,7 @@
         self.pageControl.currentPage = [[[self.collectionView indexPathsForVisibleItems] firstObject] row];
     });
 }
-
+///Users/Alex_Shitikov/flexihouse_ios/Flexi House/FHActivitiLoader.m
 - (void) setNavigationButtons {
     if (_isFirstRun) {
         UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:kNFTutorialControllerDone style:UIBarButtonItemStylePlain target:self action:@selector (goNextAction)];
@@ -86,7 +86,7 @@
 - (void)getData {
     [_dataArray removeAllObjects];
     NFTutorialItem *item1 = [[NFTutorialItem alloc] init];
-    item1.title = @"Синхронизация календаря с google";
+    item1.title = @"Синхронизация календаря\nс google";
     item1.imageName = @"onboarding1.png";
     item1.text = @"Вы можете синхронизировать данное приложение с гугл календарем и пользоваться всеми функциями календаря.";
     [_dataArray addObject:item1];
@@ -94,7 +94,7 @@
     NFTutorialItem *item2 = [[NFTutorialItem alloc] init];
     item2.title = @"Список ценностей";
     item2.imageName = @"onboarding2.png";
-    item2.text = @"Выбирай ценности, которые важны и значимы для вас. Вы можете пользоваться не только предложенным списком, а и дописать свои ценности.";
+    item2.text = @"Выбирайте ценности, которые важны и значимы для Вас. Вы можете пользоваться не только предложенным списком, а и дописать свои ценности.";
     [_dataArray addObject:item2];
     
     NFTutorialItem *item3 = [[NFTutorialItem alloc] init];

@@ -39,6 +39,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _topView.backgroundColor = [NFStyleKit bASE_GREEN];
     _dateForTitleSection = [NSMutableArray array];
     self.doneTaskTitle.text = @"выполненных\nзадач";
     self.allTaskTitle.text = @"поставленных\nзадач";

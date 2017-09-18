@@ -149,6 +149,7 @@
 		C286D5FF1EA61388007C2395 /* NFDayTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C286D5FE1EA61388007C2395 /* NFDayTableViewCell.m */; };
 		C286D6011EA61394007C2395 /* NFDayTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C286D6001EA61394007C2395 /* NFDayTableViewCell.xib */; };
 		C286D6041EA613EC007C2395 /* NFDayView.m in Sources */ = {isa = PBXBuildFile; fileRef = C286D6031EA613EC007C2395 /* NFDayView.m */; };
+		C28724A71F6FFB7600BE8780 /* splash-edit.png in Resources */ = {isa = PBXBuildFile; fileRef = C28724A61F6FFB7600BE8780 /* splash-edit.png */; };
 		C28C9BB51EC06B80002D74C0 /* NFValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C28C9BB41EC06B80002D74C0 /* NFValue.m */; };
 		C28DD0C31EF430CD004E0C7E /* NFAnimatedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C28DD0C21EF430CD004E0C7E /* NFAnimatedLabel.m */; };
 		C294231C1ED31F7E0017B0A7 /* main_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = C294231A1ED31F7E0017B0A7 /* main_logo.png */; };
@@ -545,6 +546,7 @@
 		C286D6001EA61394007C2395 /* NFDayTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NFDayTableViewCell.xib; sourceTree = "<group>"; };
 		C286D6021EA613EC007C2395 /* NFDayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFDayView.h; sourceTree = "<group>"; };
 		C286D6031EA613EC007C2395 /* NFDayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFDayView.m; sourceTree = "<group>"; };
+		C28724A61F6FFB7600BE8780 /* splash-edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash-edit.png"; sourceTree = "<group>"; };
 		C28C9BB31EC06B80002D74C0 /* NFValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFValue.h; sourceTree = "<group>"; };
 		C28C9BB41EC06B80002D74C0 /* NFValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFValue.m; sourceTree = "<group>"; };
 		C28DD0C11EF430CD004E0C7E /* NFAnimatedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFAnimatedLabel.h; sourceTree = "<group>"; };
@@ -1091,6 +1093,7 @@
 				C2A2286F1F6C05BD00C53D35 /* tutorial */,
 				C2BE2B6B1F547275000D183A /* tutorial_test */,
 				C2BE2B661F5437CB000D183A /* splash_.png */,
+				C28724A61F6FFB7600BE8780 /* splash-edit.png */,
 				C2213ED11F418F1300A1D5C1 /* logoNewNesia.png */,
 				C2144C731F3867BD00307176 /* google_icon.png */,
 				C2091B151F1E37A500BAA524 /* task_section_icon.png */,
@@ -2279,6 +2282,7 @@
 				C2C22DA81EE98283006BD83A /* Back_standart.png in Resources */,
 				C205956D1EF2875E00BF3BFD /* Right_arr_header.png in Resources */,
 				C2D13F6E1EEA7CB200A9A4F3 /* Home_life_value_icon.png in Resources */,
+				C28724A71F6FFB7600BE8780 /* splash-edit.png in Resources */,
 				C2C22DB41EE98283006BD83A /* upgrate_value_icon.png in Resources */,
 				C209AF8E1F0A70890036A592 /* result_NEW_icon.png in Resources */,
 				C2FCC6FB1EEEC918009D47B5 /* taskFill@3x.png in Resources */,

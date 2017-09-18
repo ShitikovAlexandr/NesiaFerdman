@@ -40,7 +40,7 @@
         self.selectedDate = [NSDate date];
         UIBarButtonItem *doneBtn=[[UIBarButtonItem alloc]initWithTitle:@"OK" style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
         UIBarButtonItem *space=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
-        self.toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 44)];
+        self.toolBar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 38)];
         
         [self.toolBar setTintColor:[UIColor grayColor]];
         [self.toolBar setItems:[NSArray arrayWithObjects:space,doneBtn, nil]];

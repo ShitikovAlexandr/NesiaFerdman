@@ -12,19 +12,14 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-//    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _imageView.layer.shadowRadius = 8.0;
-//    _imageView.layer.shadowOffset = CGSizeMake(0, 2);
-//    _imageView.layer.masksToBounds = NO;
-//    _imageView.layer.shadowOpacity = 0.7;
+    
 }
 
 
 - (void)addDataToCell:(NFTutorialItem*)item  {
     [_imageView setImage:[UIImage imageNamed:item.imageName]];
     _infoLabel.text = item.title;
-    _descriptionLabel.text = item.text;
-    
+    _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:item.text];
 }
 
 - (UIImage*)imageWithShadowForImage:(UIImage *)initialImage {

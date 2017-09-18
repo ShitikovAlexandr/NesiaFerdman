@@ -16,7 +16,7 @@
     //[NFStyleKit drawRoundetViewWithFrame:rect];
     UIImageView *loginImageView = [[UIImageView alloc] initWithFrame:rect];
     loginImageView.contentMode = UIViewContentModeScaleAspectFill;
-    [loginImageView setImage:[UIImage imageNamed:@"splash_.png"]];
+    [loginImageView setImage:[UIImage imageNamed:@"splash-edit.png"]];
     [self addSubview:loginImageView];
 }
 
