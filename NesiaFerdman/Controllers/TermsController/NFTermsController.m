@@ -8,6 +8,7 @@
 
 #import "NFTermsController.h"
 #import "UIBarButtonItem+FHButtons.h"
+#import "NFTermsDataSource.h"
 
 
 @interface NFTermsController () <UITableViewDataSource, UITableViewDelegate>
@@ -40,6 +41,8 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
+    NFTermsDataSource *dataSource = [[NFTermsDataSource alloc] init];
+    cell.textLabel.text = dataSource.mainInfo;
     return cell;
 }
 

@@ -183,7 +183,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Yl-ud-Igt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Yl-ud-Igt">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -295,7 +295,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFValueDetailControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="ImJ-PX-0Bf" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="i2m-f6-WUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="i2m-f6-WUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -313,7 +313,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFCalendarListControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="0uy-oz-yTa" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="Nft-71-rXg">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="Nft-71-rXg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -331,7 +331,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFTermsControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="2Ok-Gh-pPT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="qPr-Mp-HM7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="qPr-Mp-HM7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -349,7 +349,7 @@
             <objects>
                 <navigationController storyboardIdentifier="NFAboutValueInfoControllerNav" automaticallyAdjustsScrollViewInsets="NO" id="iWx-Ub-RVd" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" id="76c-z3-Zyt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="76c-z3-Zyt">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
