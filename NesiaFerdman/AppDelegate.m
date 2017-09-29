@@ -202,13 +202,23 @@ fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     [UINavigationBar.appearance setTranslucent:NO];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
+                                      forBarPosition:UIBarPositionAny
+                                          barMetrics:UIBarMetricsDefault];
+    
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     
     //cell
     UIView *bgColorView = [[UIView alloc] init];
     bgColorView.backgroundColor = [[NFStyleKit bASE_GREEN] colorWithAlphaComponent:0.2];
     [UITableViewCell appearance].selectedBackgroundView = bgColorView;
+    [UITableViewCell appearance].preservesSuperviewLayoutMargins = true;
+    [UITableViewCell appearance].contentView.preservesSuperviewLayoutMargins = true;
+    
 }
+
 
 - (void)reachabilityNetwork {
     // Initialize Reachability

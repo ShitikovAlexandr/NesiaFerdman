@@ -1353,7 +1353,6 @@
 				C2470C201EFBEA37003BA93D /* DrawManager */,
 				C2470C231EFBEA37003BA93D /* Firebase */,
 				C2470C261EFBEA37003BA93D /* Google */,
-				C2470C291EFBEA37003BA93D /* Phone */,
 				C2470C2A1EFBEA37003BA93D /* SettingManager */,
 				C2470C2D1EFBEA37003BA93D /* Synchronization */,
 				C2470C301EFBEA37003BA93D /* TaskManager */,
@@ -1386,13 +1385,6 @@
 				C2FEBC581F208F7D00440B24 /* NFGoogleSyncManager.m */,
 			);
 			path = Google;
-			sourceTree = "<group>";
-		};
-		C2470C291EFBEA37003BA93D /* Phone */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Phone;
 			sourceTree = "<group>";
 		};
 		C2470C2A1EFBEA37003BA93D /* SettingManager */ = {

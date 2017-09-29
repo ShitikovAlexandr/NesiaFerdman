@@ -12,10 +12,14 @@
 #import "NFMonthTaskController.h"
 #import "NFEditTaskController.h"
 #import "NFStatisticPageController.h"
+#import "NFStyleKit.h"
+
 
 
 @interface NFPageTaskController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (strong, nonatomic) NSArray *viewControllersArray;
+@property (strong, nonatomic) UIView *maskView;
+
 @end
 
 @implementation NFPageTaskController
@@ -30,9 +34,9 @@
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width - 30, 34);
-   
-    [self.navigationController.navigationBar addSubview:_segmentedControl];
-    _segmentedControl.center = self.navigationController.navigationBar.center;
+    _segmentedControl.selectedSegmentIndex = 0;
+    [self.view addSubview:_segmentedControl];
+    _segmentedControl.center = self.maskView.center;
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
     
     [self setNavigationbarButtons];
@@ -158,9 +162,10 @@
 }
 
 - (void)addMaskViewNavigationBar {
-    UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 42, self.view.frame.size.width, 52.0)];
-    maskView.backgroundColor = [UIColor clearColor];
-    [self.navigationController.navigationBar addSubview:maskView];
+    _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, NAV_BAR_MASK_HEIGHT)];
+    _maskView.backgroundColor = [NFStyleKit bASE_GREEN];
+    _maskView.userInteractionEnabled = false;
+    [self.view addSubview:_maskView];
 }
 
 @end

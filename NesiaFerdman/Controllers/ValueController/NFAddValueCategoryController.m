@@ -67,6 +67,8 @@
 - (void)setStartDateTodisplay {
     if (_manifestation) {
         self.textView.text = _manifestation.title;
+    } else {
+        self.deleteButton.hidden = YES;
     }
 }
 

@@ -6,16 +6,20 @@
 //  Copyright © 2017 Gemicle. All rights reserved.
 //
 
+
+
 #import "NFRsultPageController.h"
 #import "NFResultDayController.h"
 #import "NFResultController.h" 
 #import "NFResultMonthController.h"
 #import "NFSegmentedControl.h"
+#import "NFStyleKit.h"
 
 
 @interface NFRsultPageController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 @property (strong, nonatomic) NSArray *viewControllersArray;
 @property (strong, nonatomic) NFSegmentedControl *segmentedControl;
+@property (strong, nonatomic) UIView *maskView;
 @end
 
 @implementation NFRsultPageController
@@ -32,8 +36,8 @@
     self.segmentedControl = [[NFSegmentedControl alloc] initWithItems:itemArray];
     _segmentedControl.frame = CGRectMake(0, 0, self.view.frame.size.width - 30, 34);
     _segmentedControl.selectedSegmentIndex = 0;
-    [self.navigationController.navigationBar addSubview:_segmentedControl];
-    _segmentedControl.center = self.navigationController.navigationBar.center;
+    [self.view addSubview:_segmentedControl];
+    _segmentedControl.center = self.maskView.center;
     [_segmentedControl addTarget:self action:@selector(pressSegment:) forControlEvents:UIControlEventValueChanged];
     
     NFResultDayController *dayController = [self.storyboard instantiateViewControllerWithIdentifier:@"NFResultDayController"];
@@ -123,9 +127,10 @@
 #pragma mark - Helpers
 
 - (void)addMaskViewNavigationBar {
-    UIView *maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 42, self.view.frame.size.width, 52.0)];
-    maskView.backgroundColor = [UIColor clearColor];
-    [self.navigationController.navigationBar addSubview:maskView];
+    _maskView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, NAV_BAR_MASK_HEIGHT)];
+    _maskView.backgroundColor = [NFStyleKit bASE_GREEN];
+    _maskView.userInteractionEnabled = false;
+    [self.view addSubview:_maskView];
 }
 
 

@@ -23,6 +23,9 @@ const CGFloat navigationBarHeightIncrease = 48.f;
         self.barTintColor = [UIColor colorWithRed:43/255.0 green:154/255.0 blue:63/255.0 alpha:1];
         self.tintColor = [UIColor whiteColor];
         self.barStyle = UIBarStyleBlack;
+        //self.prefersLargeTitles = YES;
+        
+        
         [self initialize];
     }
     
@@ -44,24 +47,24 @@ const CGFloat navigationBarHeightIncrease = 48.f;
     // Set tittle position for top
     
     [self setTitleVerticalPositionAdjustment:-(navigationBarHeightIncrease) forBarMetrics:UIBarMetricsDefault];
-
 }
 
 - (CGSize)sizeThatFits:(CGSize)size {
     // Increase NavBar size
     CGSize amendedSize = [super sizeThatFits:size];
     amendedSize.height += navigationBarHeightIncrease;
-    
     return amendedSize;
 }
+
+
+
+
+
 
 - (void)layoutSubviews {
     // Set buttons position for top
     [super layoutSubviews];
-    
     NSArray *classNamesToReposition = @[@"UINavigationButton"];
-    
-    
     for (UIView *view in [self subviews]) {
         
         if ([classNamesToReposition containsObject:NSStringFromClass([view class])]) {
