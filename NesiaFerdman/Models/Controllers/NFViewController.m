@@ -23,6 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    //self.viewRespectsSystemMinimumLayoutMargins = NO;
     //NFNavigationBar *customNavBar = [[NFNavigationBar alloc] init];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(navigateToFilterScreen) name:VALUE_FILTER_PRESS object:nil];
     

@@ -40,6 +40,7 @@
         _tableView = tableView;
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView. allowsSelectionDuringEditing = YES;
         _target = target;
         [self.tableView registerNib:[UINib nibWithNibName:@"NFValueCell" bundle:nil] forCellReuseIdentifier:@"NFValueCell"];
         [NFStyleKit foterViewWithAddTextFieldtoTableView:_tableView withTarget:self];
@@ -58,13 +59,13 @@
     NSArray *selectedListValue = [[NSArray alloc] initWithArray:[[NFDataSourceManager sharedManager] getValueList] copyItems:YES];
 
     
-    
-    
     [self.dataArray addObjectsFromArray:selectedListValue];
     [self.allDataArray addObjectsFromArray:allListValue];
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
+    //[self.tableView reloadData];
+
     if (self.dataArray.count > 0) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [_target.indicator endAnimating];
         });
     }
@@ -72,8 +73,13 @@
 
 - (void)saveChanges {
     
+    _target.indicator = [[NFActivityIndicatorView alloc] initWithView:_target.view];
+    [_target.indicator startAnimating];
+    
+    [_dataArray removeAllObjects];
+
     for (NFNValue *val in _allDataArray) {
-        [_dataArray removeAllObjects];
+
         if (!val.isDeleted) {
             [_dataArray addObject:val];
         }
@@ -90,19 +96,13 @@
     [self saveValuesArrayToDataBase:newArray];
     
     [[NFNSyncManager sharedManager] filterEventsWithActiveValue];
+   [_tableView reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_target.indicator endAnimating];
+    });
     
     
-    //    if (_deletedValues.count > 0) {
-    //        for (NFNValue *val in _deletedValues) {
-    //            [[NFNSyncManager sharedManager] removeValueFromDB:val];
-    //            [[NFNSyncManager sharedManager] removeValueFromDBManager:val];
-    //        }
-    //    }
-    //        [_deletedValues removeAllObjects];
-    //        NSMutableArray *newArray = [NSMutableArray array];
-    //        [newArray addObjectsFromArray:[self updateIndexInValuesArray:_dataArray]];
-    //        [self saveValuesArrayToDataBase:newArray];
-}
+  }
 
 - (void)saveValuesArrayToDataBase:(NSMutableArray*)array {
     for (NFNValue *val in array) {
@@ -167,12 +167,6 @@
 }
 
 #pragma mark - UITableViewDataSource
-/*
- ViewValue,
- EditValue,
- FirstRunValue
- */
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (_target.screenState == ViewValue) {
@@ -197,74 +191,71 @@
         }
     }
     [cell addData:value];
+    [cell.pressAction addTarget:self action:@selector(actionSelectValue:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFNValue *value = [_dataArray objectAtIndex:indexPath.row];
-    [self navigateToDetailWithValue:value];
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-    value.isDeleted = !value.isDeleted;
-    [tableView beginUpdates];
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView endUpdates];
-}
-
-- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-    value.isDeleted = !value.isDeleted;    [tableView beginUpdates];
-    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-    [tableView endUpdates];
+    if (tableView.isEditing) {
+        NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
+        value.isDeleted = !value.isDeleted;
+        [_tableView beginUpdates];
+        [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [_tableView endUpdates];
+    } else  {
+        NFNValue *value = [_dataArray objectAtIndex:indexPath.row];
+        [self navigateToDetailWithValue:value];
+    }
     
-    return nil;
+   
 }
-
 
 //- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [_deletedValues addObject:[_dataArray objectAtIndex:indexPath.row]];
-//        [_dataArray removeObjectAtIndex:indexPath.row];
-//        if (_dataArray.count > 0) {
-//            [self.tableView beginUpdates];
-//            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//            [self.tableView endUpdates];
-//        } else {
-//            [_tableView reloadData];
-//        }
-//    }
-//    if (_target.screenState == FirstRunValue) {
-//        [self saveChanges];
-//    }
-//}
+//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
+//    value.isDeleted = false;
+//    [tableView beginUpdates];
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [tableView endUpdates];
+//    //[self.tableView reloadData];
 //
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    // Detemine if it's in editing mode
-//    if (self.tableView.editing)
-//    {
-//        return UITableViewCellEditingStyleDelete;
-//    }
-//    return UITableViewCellEditingStyleNone;
+//
+//}
+
+//- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
+//    value.isDeleted = true;
+//    [tableView beginUpdates];
+//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//    [tableView endUpdates];
+//    //[self.tableView reloadData];
+//
+//
+//    return [NSArray array];
 //}
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-    if (value.isDeleted) {
-        return UITableViewCellEditingStyleInsert;
-    } else {
-        return UITableViewCellEditingStyleDelete;
-    }
+//    if (_tableView.isEditing) {
+//        
+//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
+//    if (value.isDeleted) {
+//        return UITableViewCellEditingStyleNone;
+//    } else {
+//        return UITableViewCellEditingStyleNone;
+//    }
+//    }
+    return UITableViewCellEditingStyleNone;
+
 }
 
-
 - (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+//    if (_tableView.isEditing) {
+//        return YES;
+//    } else {
+//        return NO;
+//    }
     return YES;
 }
 
@@ -282,6 +273,16 @@
     }
 }
 
+- (void)actionSelectValue:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:buttonPosition];
+    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
+    value.isDeleted = !value.isDeleted;
+    [_tableView beginUpdates];
+    [_tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+    [_tableView endUpdates];
+}
+
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -297,7 +298,7 @@
     NSLog(@"new value");
     _target.navigationItem.rightBarButtonItem = nil;
     _target.navigationItem.leftBarButtonItem = nil;
-    [_tableView setEditing:NO animated:YES];
+    //[_tableView setEditing:NO animated:YES];
 }
 
 - (void)updateData {
@@ -315,8 +316,8 @@
         }
         case EditValue: {
             if ([self validateValue:_allDataArray]) {
-                [self saveChanges];
                 [self setScreenState:ViewValue];
+                [self saveChanges];
             }
            
             break;
@@ -373,7 +374,7 @@
         case EditValue:{
             _target.screenState = EditValue;
             _tableView.tableFooterView.hidden = false;
-            [_tableView setEditing:YES animated:YES];
+            [_tableView setEditing:YES animated:NO];
             //[self getData];
             UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:kCancel  style:UIBarButtonItemStylePlain target:self action:@selector(leftButtonsAction)];
             _target.navigationItem.leftBarButtonItem = cancelButton;
@@ -381,13 +382,14 @@
             UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:kDone style:UIBarButtonItemStylePlain target:self action:@selector (rightButtonsAction)];
             _target.navigationItem.rightBarButtonItem = rigtButton;
             _target.navigationItem.rightBarButtonItem.customView.hidden = NO;
+            
             break;
         }
             
         case FirstRunValue:{
             _target.screenState = FirstRunValue;
             _tableView.tableFooterView.hidden = false;
-            [_tableView setEditing:YES animated:YES];
+            [_tableView setEditing:YES animated:NO];
             UIBarButtonItem *rigtButton = [[UIBarButtonItem alloc] initWithTitle:kDone style:UIBarButtonItemStylePlain target:self action:@selector (rightButtonsAction)];
             _target.navigationItem.rightBarButtonItem = rigtButton;
             _target.navigationItem.rightBarButtonItem.customView.hidden = NO;

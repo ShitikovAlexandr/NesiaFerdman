@@ -8,13 +8,18 @@
 
 #import "NFValueCell.h"
 
+
+@interface NFValueCell()
+@property (weak, nonatomic) NFNValue *value;
+@end
+
 @implementation NFValueCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     //self.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    //self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -25,17 +30,26 @@
 
 - (void)addData:(NFNValue *)value {
     if (value) {
+        _pressAction.selected = !value.isDeleted;
+        _value = value;
         _valueTitle.text = value.valueTitle;
-        if (value.valueImage) {
-            [_vaueIcon setImage:[UIImage imageNamed:value.valueImage]];
-        } else {
-            [_vaueIcon setImage:[UIImage imageNamed:@"defaultValue.png"]];
-        }
+        [_vaueIcon setImage:[UIImage imageNamed:@"defaultValue.png"]];
+    } else {
+        NSLog(@"no value in cell");
     }
+}
+
+- (IBAction)pressButtonAction:(UIButton *)sender {
+    _value.isDeleted = !_value.isDeleted;
+    NSLog(@"cell action is %@", @(_value.isDeleted));
 }
 
 + (CGFloat)cellSize {
     return 60.0;
+}
+
+- (void)prepareForReuse {
+    _value = nil;
 }
 
 @end
