@@ -14,6 +14,8 @@
 #import "NFResultMonthController.h"
 #import "NFSegmentedControl.h"
 #import "NFStyleKit.h"
+#import "NFResultInfoController.h"
+
 
 
 @interface NFRsultPageController () <UIPageViewControllerDelegate, UIPageViewControllerDataSource>
@@ -30,6 +32,7 @@
     self.dataSource = self;
     self.navigationItem.title = @"Итоги";
     self.tabBarItem.title = @"Итоги";
+    [self addInfoButton];
     [self addMaskViewNavigationBar];
     
     NSArray *itemArray = [NSArray arrayWithObjects: @"День", @"Неделя", @"Месяц", nil];
@@ -124,6 +127,16 @@
     }
 }
 
+- (void)showInfoScreen {
+    NSLog(@"showInfoScreen");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:
+                                @"NewMain" bundle:[NSBundle mainBundle]];
+    NFResultInfoController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultInfoController"];
+    UINavigationController *navController = [storyboard instantiateViewControllerWithIdentifier:@"NFResultInfoControllerNav"];
+    [navController setViewControllers:@[viewController]];
+    [self presentViewController:navController animated:YES completion:nil];
+}
+
 #pragma mark - Helpers
 
 - (void)addMaskViewNavigationBar {
@@ -131,6 +144,20 @@
     _maskView.backgroundColor = [NFStyleKit bASE_GREEN];
     _maskView.userInteractionEnabled = false;
     [self.view addSubview:_maskView];
+}
+
+- (void)addInfoButton {
+    // Create the info button
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    
+    // Adjust the frame by adding an addition 10 points to its width so the button is padded nicely
+    infoButton.frame = CGRectMake(infoButton.frame.origin.x, infoButton.frame.origin.y, infoButton.frame.size.width, infoButton.frame.size.height);
+    
+    // Hook the button up to an action
+    [infoButton addTarget:self action:@selector(showInfoScreen) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Add the button to the nav bar
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
 }
 
 

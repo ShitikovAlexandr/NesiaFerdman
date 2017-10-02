@@ -38,6 +38,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [_indicator endAnimating];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:END_UPDATE object:nil];
 }
 

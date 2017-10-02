@@ -373,6 +373,7 @@
     NSString *runValue = [defaults valueForKey:IS_FIRST_RUN_APP];
     if (![runValue isEqualToString:FIRST_RUN_FLAG]) {
         [defaults setValue:FIRST_RUN_FLAG forKey:IS_FIRST_RUN_APP];
+        [defaults setValue:[self stringFromDate:[NSDate date]] forKey:IS_FIRST_RUN_TODAY];
         [defaults synchronize];
         return YES;
     } else {

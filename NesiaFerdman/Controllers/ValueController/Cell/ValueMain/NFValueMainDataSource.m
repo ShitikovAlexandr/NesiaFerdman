@@ -64,7 +64,7 @@
     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationFade];
     //[self.tableView reloadData];
 
-    if (self.dataArray.count > 0) {
+    if (self.dataArray.count > 0 || self.allDataArray.count > 0) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [_target.indicator endAnimating];
         });
@@ -199,6 +199,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView.isEditing) {
+        if (_target.navigationItem.rightBarButtonItem == nil) {
+            [self setScreenState:_target.screenState];
+        }
+        
         NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
         value.isDeleted = !value.isDeleted;
         [_tableView beginUpdates];

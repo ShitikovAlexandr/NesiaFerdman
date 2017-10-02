@@ -187,7 +187,7 @@
 }
 
 - (void)sendEmail {
-    NSURL* mailURL = [NSURL URLWithString:@"mailto:test@gmail.com"];
+    NSURL* mailURL = [NSURL URLWithString:@"mailto:drozd.inna11@gmail.com"];
     if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
         [[UIApplication sharedApplication] openURL:mailURL];
     }
