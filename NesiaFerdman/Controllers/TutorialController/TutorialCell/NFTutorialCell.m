@@ -7,16 +7,19 @@
 //
 
 #import "NFTutorialCell.h"
+#import "NFStyleKit.h"
 
 @implementation NFTutorialCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.stepCountLabel.textColor = [NFStyleKit bASE_GREEN];
     
 }
 
 
-- (void)addDataToCell:(NFTutorialItem*)item  {
+- (void)addDataToCell:(NFTutorialItem*)item number:(NSInteger)numper  {
+    self.stepCountLabel.text = [NSString stringWithFormat:@"Шаг %ld", numper + 1];
     [_imageView setImage:[UIImage imageNamed:item.imageName]];
     _infoLabel.text = item.title;
     _descriptionLabel.attributedText = [[NSAttributedString alloc] initWithString:item.text];

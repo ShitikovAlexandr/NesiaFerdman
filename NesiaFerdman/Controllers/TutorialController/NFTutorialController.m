@@ -57,7 +57,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NFTutorialCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"NFTutorialCell" forIndexPath:indexPath];
     NFTutorialItem *item = [_dataArray objectAtIndex:indexPath.row];
-    [cell addDataToCell:item];
+    [cell addDataToCell:item number:indexPath.row];
     return cell;
 }
 
@@ -86,22 +86,35 @@
 - (void)getData {
     [_dataArray removeAllObjects];
     NFTutorialItem *item1 = [[NFTutorialItem alloc] init];
-    item1.title = @"Синхронизация календаря\nс google";
+    item1.title = @"Определение ценностей";
     item1.imageName = @"onboarding1.png";
-    item1.text = @"Вы можете синхронизировать данное приложение с гугл календарем и пользоваться всеми функциями календаря.";
+    item1.text = @"Создайте список своих ценностей. В этом вам поможет предложенный список. Так же вы можете дописывать свои ценности, которых нет в списке";
     [_dataArray addObject:item1];
     
     NFTutorialItem *item2 = [[NFTutorialItem alloc] init];
-    item2.title = @"Список ценностей";
+    item2.title = @"Проявления";
     item2.imageName = @"onboarding2.png";
-    item2.text = @"Выбирайте ценности, которые важны и значимы для Вас. Вы можете пользоваться не только предложенным списком, а и дописать свои ценности.";
+    item2.text = @"Напишите для каждой выбранной вами ценности действия – проявления (минимум по 3 на каждую ценность).\nЭти действия внесите в календарь с указанием дня и времени реализации.";
     [_dataArray addObject:item2];
     
     NFTutorialItem *item3 = [[NFTutorialItem alloc] init];
-    item3.title = @"Самокоучинг";
+    item3.title = @"Задачи";
     item3.imageName = @"onboarding3.png";
-    item3.text = @"Используя инструменты самокоучинга, составив список своих ценностей Вы сможете прослеживать эффективность их реализации в своей жизни.";
+    item3.text = @"Вы можете присвоить ценность всем вашим повседневным задачам в календаре";
     [_dataArray addObject:item3];
+    
+    NFTutorialItem *item4 = [[NFTutorialItem alloc] init];
+    item4.title = @"Итоги";
+    item4.imageName = @"onboarding4.png";
+    item4.text = @"Вписывайте ваши наблюдения в раздел «Итоги» - это поможет вам проанализировать прошедшую неделю / месяц / год";
+    [_dataArray addObject:item4];
+    
+    NFTutorialItem *item5 = [[NFTutorialItem alloc] init];
+    item5.title = @"Статистика";
+    item5.imageName = @"onboarding5.png";
+    item5.text = @"В разделе «статистика» вы сможете ознакомиться с вашими успехами по «проявлению ценностей» за прошедший период";
+    [_dataArray addObject:item5];
+
 }
 
 @end

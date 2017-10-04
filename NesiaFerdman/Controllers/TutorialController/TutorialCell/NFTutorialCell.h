@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *stepCountLabel;
 
-- (void)addDataToCell:(NFTutorialItem*)item;
+- (void)addDataToCell:(NFTutorialItem*)item number:(NSInteger)numper;
 
 @end

@@ -44,7 +44,6 @@
         _target = target;
         [self.tableView registerNib:[UINib nibWithNibName:@"NFValueCell" bundle:nil] forCellReuseIdentifier:@"NFValueCell"];
         [NFStyleKit foterViewWithAddTextFieldtoTableView:_tableView withTarget:self];
-
     }
     return self;
 }

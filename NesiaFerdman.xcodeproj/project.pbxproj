@@ -141,6 +141,11 @@
 		C26BA32D1F14D7B30053A138 /* NFResultWeekDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32C1F14D7B30053A138 /* NFResultWeekDataSource.m */; };
 		C26BA3301F14E9A00053A138 /* NFResultMonthDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA32F1F14E9A00053A138 /* NFResultMonthDataSource.m */; };
 		C26BA3331F14FA2E0053A138 /* NFHeaderMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */; };
+		C26BD8EC1F85123200E544B5 /* onboarding1.png in Resources */ = {isa = PBXBuildFile; fileRef = C26BD8E71F85123200E544B5 /* onboarding1.png */; };
+		C26BD8ED1F85123200E544B5 /* onboarding2.png in Resources */ = {isa = PBXBuildFile; fileRef = C26BD8E81F85123200E544B5 /* onboarding2.png */; };
+		C26BD8EE1F85123200E544B5 /* onboarding3.png in Resources */ = {isa = PBXBuildFile; fileRef = C26BD8E91F85123200E544B5 /* onboarding3.png */; };
+		C26BD8EF1F85123200E544B5 /* onboarding4.png in Resources */ = {isa = PBXBuildFile; fileRef = C26BD8EA1F85123200E544B5 /* onboarding4.png */; };
+		C26BD8F01F85123200E544B5 /* onboarding5.png in Resources */ = {isa = PBXBuildFile; fileRef = C26BD8EB1F85123200E544B5 /* onboarding5.png */; };
 		C26F333E1EF3BF6000A8E0F3 /* NFRoundProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = C26F333D1EF3BF6000A8E0F3 /* NFRoundProgressView.m */; };
 		C27C82B31F0FCDE3007AD793 /* NFResultDayController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B21F0FCDE3007AD793 /* NFResultDayController.m */; };
 		C27C82B91F0FCE16007AD793 /* NFRsultPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27C82B81F0FCE16007AD793 /* NFRsultPageController.m */; };
@@ -161,9 +166,6 @@
 		C296148D1F617F1400C2153E /* NFQuoteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = C296148C1F617F1400C2153E /* NFQuoteDataSource.m */; };
 		C2A2015E1ECF32B200281058 /* checked_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A2015C1ECF32B200281058 /* checked_disable.png */; };
 		C2A2015F1ECF32B200281058 /* checked_enable.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A2015D1ECF32B200281058 /* checked_enable.png */; };
-		C2A228791F6C076000C53D35 /* onboarding1.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228761F6C076000C53D35 /* onboarding1.png */; };
-		C2A2287A1F6C076000C53D35 /* onboarding2.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228771F6C076000C53D35 /* onboarding2.png */; };
-		C2A2287B1F6C076000C53D35 /* onboarding3.png in Resources */ = {isa = PBXBuildFile; fileRef = C2A228781F6C076000C53D35 /* onboarding3.png */; };
 		C2A2287E1F6C07CA00C53D35 /* NFTutorialItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A2287D1F6C07CA00C53D35 /* NFTutorialItem.m */; };
 		C2A541921EBA061B005BEC47 /* NFWeekDaysHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = C2A541911EBA061B005BEC47 /* NFWeekDaysHeader.m */; };
 		C2A541941EBA062A005BEC47 /* NFWeekDaysHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2A541931EBA062A005BEC47 /* NFWeekDaysHeader.xib */; };
@@ -536,6 +538,11 @@
 		C26BA32F1F14E9A00053A138 /* NFResultMonthDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFResultMonthDataSource.m; sourceTree = "<group>"; };
 		C26BA3311F14FA2E0053A138 /* NFHeaderMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFHeaderMonthView.h; sourceTree = "<group>"; };
 		C26BA3321F14FA2E0053A138 /* NFHeaderMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFHeaderMonthView.m; sourceTree = "<group>"; };
+		C26BD8E71F85123200E544B5 /* onboarding1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding1.png; sourceTree = "<group>"; };
+		C26BD8E81F85123200E544B5 /* onboarding2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding2.png; sourceTree = "<group>"; };
+		C26BD8E91F85123200E544B5 /* onboarding3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding3.png; sourceTree = "<group>"; };
+		C26BD8EA1F85123200E544B5 /* onboarding4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding4.png; sourceTree = "<group>"; };
+		C26BD8EB1F85123200E544B5 /* onboarding5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding5.png; sourceTree = "<group>"; };
 		C26F333C1EF3BF6000A8E0F3 /* NFRoundProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFRoundProgressView.h; sourceTree = "<group>"; };
 		C26F333D1EF3BF6000A8E0F3 /* NFRoundProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFRoundProgressView.m; sourceTree = "<group>"; };
 		C27C82B11F0FCDE3007AD793 /* NFResultDayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFResultDayController.h; sourceTree = "<group>"; };
@@ -570,9 +577,6 @@
 		C296148C1F617F1400C2153E /* NFQuoteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFQuoteDataSource.m; sourceTree = "<group>"; };
 		C2A2015C1ECF32B200281058 /* checked_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_disable.png; sourceTree = "<group>"; };
 		C2A2015D1ECF32B200281058 /* checked_enable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checked_enable.png; sourceTree = "<group>"; };
-		C2A228761F6C076000C53D35 /* onboarding1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding1.png; sourceTree = "<group>"; };
-		C2A228771F6C076000C53D35 /* onboarding2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding2.png; sourceTree = "<group>"; };
-		C2A228781F6C076000C53D35 /* onboarding3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = onboarding3.png; sourceTree = "<group>"; };
 		C2A2287C1F6C07CA00C53D35 /* NFTutorialItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFTutorialItem.h; sourceTree = "<group>"; };
 		C2A2287D1F6C07CA00C53D35 /* NFTutorialItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NFTutorialItem.m; sourceTree = "<group>"; };
 		C2A541901EBA061B005BEC47 /* NFWeekDaysHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NFWeekDaysHeader.h; sourceTree = "<group>"; };
@@ -1654,9 +1658,11 @@
 		C2A2286F1F6C05BD00C53D35 /* tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				C2A228761F6C076000C53D35 /* onboarding1.png */,
-				C2A228771F6C076000C53D35 /* onboarding2.png */,
-				C2A228781F6C076000C53D35 /* onboarding3.png */,
+				C26BD8E71F85123200E544B5 /* onboarding1.png */,
+				C26BD8E81F85123200E544B5 /* onboarding2.png */,
+				C26BD8E91F85123200E544B5 /* onboarding3.png */,
+				C26BD8EA1F85123200E544B5 /* onboarding4.png */,
+				C26BD8EB1F85123200E544B5 /* onboarding5.png */,
 			);
 			path = tutorial;
 			sourceTree = "<group>";
@@ -2239,6 +2245,7 @@
 				C2C22DB61EE98283006BD83A /* value_icon.png in Resources */,
 				C2249D0B1F0E3C5200E7269E /* NewMain.storyboard in Resources */,
 				C2213ED21F418F1300A1D5C1 /* logoNewNesia.png in Resources */,
+				C26BD8F01F85123200E544B5 /* onboarding5.png in Resources */,
 				C23AD8C81EFCF26D00BAFF1E /* error@2x.png in Resources */,
 				C2C0D6071EC5F42C003C7741 /* importantIcon@3x.png in Resources */,
 				C212DEEC1EF11BE80082EF38 /* NFStatisticMainCell.xib in Resources */,
@@ -2282,7 +2289,7 @@
 				C2B3D9761EDEBCEE00A0A44E /* response-value45.png in Resources */,
 				C2C22DA91EE98283006BD83A /* exit_icon.png in Resources */,
 				C2D13F7C1EEAE5B700A9A4F3 /* Add.png in Resources */,
-				C2A228791F6C076000C53D35 /* onboarding1.png in Resources */,
+				C26BD8EC1F85123200E544B5 /* onboarding1.png in Resources */,
 				C2C0D6131EC60140003C7741 /* menu-options@3x.png in Resources */,
 				C2B3D9741EDEB74800A0A44E /* NFValueFilterCell.xib in Resources */,
 				C2091B161F1E37A500BAA524 /* task_section_icon.png in Resources */,
@@ -2291,7 +2298,7 @@
 				C2C22DB21EE98283006BD83A /* result_icon.png in Resources */,
 				C22407821E9CB351004B089A /* Main.storyboard in Resources */,
 				C245525F1EBC5EA0003EBB11 /* plus-symbol.png in Resources */,
-				C2A2287B1F6C076000C53D35 /* onboarding3.png in Resources */,
+				C26BD8EE1F85123200E544B5 /* onboarding3.png in Resources */,
 				C2AA720D1F029014007DB785 /* NFMenuUpdateCell.xib in Resources */,
 				C2C22DAF1EE98283006BD83A /* question_icon.png in Resources */,
 				C2C0D6061EC5F42C003C7741 /* importantIcon@2x.png in Resources */,
@@ -2306,7 +2313,7 @@
 				C2FA690D1EE15C2000D58D18 /* cancelTag.png in Resources */,
 				C294231C1ED31F7E0017B0A7 /* main_logo.png in Resources */,
 				C2FCC6FA1EEEC918009D47B5 /* importantIconFill@2x.png in Resources */,
-				C2A2287A1F6C076000C53D35 /* onboarding2.png in Resources */,
+				C26BD8ED1F85123200E544B5 /* onboarding2.png in Resources */,
 				C2DCFD031F5547EF005B3CDF /* IMG_2719.png in Resources */,
 				C2C0D6121EC60140003C7741 /* menu-options@2x.png in Resources */,
 				C286D6011EA61394007C2395 /* NFDayTableViewCell.xib in Resources */,
@@ -2327,6 +2334,7 @@
 				C21B0ECE1EFA642C001D85CE /* quote_img.png in Resources */,
 				C2652ADB1F55A1EC0083475E /* defaultValue.png in Resources */,
 				C24AA5081EBB11A400ABA92C /* NFHeaderForTaskSection.xib in Resources */,
+				C26BD8EF1F85123200E544B5 /* onboarding4.png in Resources */,
 				C2FCC6F81EEEC918009D47B5 /* conclusionsFill@2x.png in Resources */,
 				C2DCFCFF1F5547EF005B3CDF /* IMG_2715.png in Resources */,
 				C2C22DBF1EE99420006BD83A /* ChevronMediumBack@2x.png in Resources */,
