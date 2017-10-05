@@ -215,50 +215,12 @@
    
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-//    value.isDeleted = false;
-//    [tableView beginUpdates];
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    [tableView endUpdates];
-//    //[self.tableView reloadData];
-//
-//
-//}
-
-//- (nullable NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-//    value.isDeleted = true;
-//    [tableView beginUpdates];
-//    [tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//    [tableView endUpdates];
-//    //[self.tableView reloadData];
-//
-//
-//    return [NSArray array];
-//}
-
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    if (_tableView.isEditing) {
-//        
-//    NFNValue *value = [_allDataArray objectAtIndex:indexPath.row];
-//    if (value.isDeleted) {
-//        return UITableViewCellEditingStyleNone;
-//    } else {
-//        return UITableViewCellEditingStyleNone;
-//    }
-//    }
     return UITableViewCellEditingStyleNone;
-
 }
 
 - (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (_tableView.isEditing) {
-//        return YES;
-//    } else {
-//        return NO;
-//    }
     return YES;
 }
 

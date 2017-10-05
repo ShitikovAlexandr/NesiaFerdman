@@ -17,4 +17,6 @@
                          textField:(UITextField *)textField
                           keyTitle:(NSString *)keyForTitle;
 
+- (void)resignView;
+
 @end

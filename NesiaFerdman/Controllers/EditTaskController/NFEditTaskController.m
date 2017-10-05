@@ -254,6 +254,9 @@ UICollectionViewDelegateFlowLayout
             [self.collectionView.layer addAnimation:[self swipeTransitionToLeftSide:YES ] forKey:nil];
             [self.collectionView reloadData];
         }
+    } else {
+        NSLog(@"max value count");
+        [NFPop startAlertWithMassage:kValueTaskCount];
     }
 }
 
@@ -329,6 +332,7 @@ UICollectionViewDelegateFlowLayout
 }
 
 - (void)saveChanges {
+    [_valuePicker resignView];
     if ([NFNSyncManager connectedInternet]) {
         if ([_titleOfTaskTextField isValidString] && [_taskDescriptionTextView isValidString] && [self periodValidation] && [self valueCountValid]) {
             

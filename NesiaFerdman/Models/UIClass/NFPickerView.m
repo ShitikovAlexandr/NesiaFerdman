@@ -82,4 +82,8 @@
     [self.textfield resignFirstResponder];
 }
 
+- (void)resignView {
+     [self.textfield resignFirstResponder];
+}
+
 @end

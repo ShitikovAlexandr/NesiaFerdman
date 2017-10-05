@@ -14,18 +14,18 @@
 - (NSArray*)getData {
     NSMutableArray* dataArray = [NSMutableArray new];
     
-    NFResultInfoItem *item1 = [[NFResultInfoItem alloc] init];
-    item1.title = @"Итог:";
-    item1.isBold = true;
-    [dataArray addObject:item1];
+//    NFResultInfoItem *item1 = [[NFResultInfoItem alloc] init];
+//    item1.title = @"Итог:";
+//    item1.isBold = true;
+//    [dataArray addObject:item1];
     
     NFResultInfoItem *item2 = [[NFResultInfoItem alloc] init];
-    item2.title = @"\tВ конце каждой недели – вы сможете подвести итог ваших действий и проявления ваших ценностей . Важно, чтоб возле каждого действия была указана та ценностей, которую проявляет это действия. Это поможет вам работать над проявлением этой ценности.";
+    item2.title = @"В конце каждой недели – вы сможете подвести итог ваших действий и проявления ваших ценностей . Важно, чтоб возле каждого действия была указана та ценностей, которую проявляет это действия. Это поможет вам работать над проявлением этой ценности.";
     item2.isBold = false;
     [dataArray addObject:item2];
     
     NFResultInfoItem *item3 = [[NFResultInfoItem alloc] init];
-    item3.title = @"\tУ вас есть возможность в течении  недели/месяца записывать и просматривать , когда вам удобно Ваши:";
+    item3.title = @"У вас есть возможность в течении  недели/месяца записывать и просматривать , когда вам удобно Ваши:";
     item3.isBold = false;
     [dataArray addObject:item3];
     

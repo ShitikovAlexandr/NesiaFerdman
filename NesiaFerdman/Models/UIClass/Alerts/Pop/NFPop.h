@@ -19,6 +19,8 @@
 
 #define kValueMaxCount              @"Количество ценностей не должно превышать 11"
 #define kValueMinCount              @"Количество ценностей не должно быть меньше 7"
+#define kValueTaskCount              @"Количество ценностей не должно превышать 2"
+
 
 @interface NFPop : ISMessages
 

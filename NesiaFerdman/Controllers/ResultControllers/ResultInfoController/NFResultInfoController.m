@@ -24,7 +24,7 @@
     [super viewDidLoad];
     self.title = kNFResultInfoControllerTitle;
     self.tableView.tableFooterView = [UIView new];
-    self.tableView.estimatedRowHeight = 60.0;
+    self.tableView.estimatedRowHeight = 20.0;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     [self.navigationItem setLeftButtonType:FHLeftNavigationButtonTypeBack controller:self];
     self.dataArray = [NSMutableArray new];
@@ -40,6 +40,7 @@
 }
 
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NFResultInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NFResultInfoCell"];
     if (!cell) {
@@ -52,6 +53,12 @@
 
 
 #pragma mark - UITableViewDelegate
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    CGFloat height = UITableViewAutomaticDimension + 10.0;
+//    
+//        return height;
+//}
 
 
 @end
