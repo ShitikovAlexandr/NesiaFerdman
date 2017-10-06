@@ -25,7 +25,7 @@
     [dataArray addObject:item2];
     
     NFResultInfoItem *item3 = [[NFResultInfoItem alloc] init];
-    item3.title = @"У вас есть возможность в течении  недели/месяца записывать и просматривать , когда вам удобно Ваши:";
+    item3.title = @"У вас есть возможность в течении  недели/месяца записывать и просматривать, когда вам удобно Ваши:";
     item3.isBold = false;
     [dataArray addObject:item3];
     

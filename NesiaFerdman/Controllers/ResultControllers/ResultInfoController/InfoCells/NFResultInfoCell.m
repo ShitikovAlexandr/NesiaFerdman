@@ -63,8 +63,8 @@
         CGFloat imageDiametr = 14.f;
         self.imageView.frame = CGRectMake(14.0, 14.0, imageDiametr , imageDiametr);
         self.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        CGRect textLabelFrame = self.textLabel.frame;
-        textLabelFrame.origin.x = 40.0;
+//        CGRect textLabelFrame = self.textLabel.frame;
+        CGRect textLabelFrame = CGRectMake(40.0, self.textLabel.frame.origin.y, self.textLabel.frame.size.width + 17.0, self.textLabel.frame.size.height);
         self.textLabel.frame = textLabelFrame;
     }
 }
