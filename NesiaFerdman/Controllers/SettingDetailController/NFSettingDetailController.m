@@ -85,11 +85,11 @@
     self.title = @"Настройки";
     _googleSyncLabel.text = @"Синхронизация с Google";
     _googleWriteLabel.text = @"Запись в Google";
-    _googleDeleteLabel.text = @"Удаление с Google";
+    _googleDeleteLabel.text = @"Удаление из Google";
     _updateLabel.text = @"Обновить";
     _GoogleCalendarListLabel.text = @"Список доступных календарей";
     _termsLabel.text = @"Условия использования";
-    _supportLabel.text = @"Связаться с службой поддержки";
+    _supportLabel.text = @"Связаться со службой поддержки";
     [_deleteProfileButton setTitle:@"Удалить профиль" forState:UIControlStateNormal];
     
     [_googleSyncSwitcher setOn:[NFSettingManager isOnGoogleSync]];
@@ -187,7 +187,7 @@
 }
 
 - (void)sendEmail {
-    NSURL* mailURL = [NSURL URLWithString:@"mailto:drozd.inna11@gmail.com"];
+    NSURL* mailURL = [NSURL URLWithString:@"mailto:centr.nesia.ferdman@gmail.com"];
     if ([[UIApplication sharedApplication] canOpenURL:mailURL]) {
         [[UIApplication sharedApplication] openURL:mailURL];
     }

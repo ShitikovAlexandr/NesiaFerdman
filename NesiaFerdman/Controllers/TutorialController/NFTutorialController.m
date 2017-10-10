@@ -88,7 +88,7 @@
     NFTutorialItem *item1 = [[NFTutorialItem alloc] init];
     item1.title = @"Определение ценностей";
     item1.imageName = @"onboarding1.png";
-    item1.text = @"Создайте список своих ценностей. В этом вам поможет предложенный список. Так же вы можете дописывать свои ценности, которых нет в списке";
+    item1.text = @"Создайте список своих ценностей. В этом вам поможет предложенный список. Также вы можете дописывать свои ценности, которых нет в списке";
     [_dataArray addObject:item1];
     
     NFTutorialItem *item2 = [[NFTutorialItem alloc] init];
@@ -106,13 +106,13 @@
     NFTutorialItem *item4 = [[NFTutorialItem alloc] init];
     item4.title = @"Итоги";
     item4.imageName = @"onboarding4.png";
-    item4.text = @"Вписывайте ваши наблюдения в раздел «Итоги» - это поможет вам проанализировать прошедшую неделю / месяц / год";
+    item4.text = @"Вписывайте ваши наблюдения в раздел «Итоги». Это поможет вам проанализировать прошедшую неделю / месяц / год";
     [_dataArray addObject:item4];
     
     NFTutorialItem *item5 = [[NFTutorialItem alloc] init];
     item5.title = @"Статистика";
     item5.imageName = @"onboarding5.png";
-    item5.text = @"В разделе «статистика» вы сможете ознакомиться с вашими успехами по «проявлению ценностей» за прошедший период";
+    item5.text = @"В разделе «Статистика» вы сможете ознакомиться с вашими успехами по «проявлению ценностей» за прошедший период";
     [_dataArray addObject:item5];
 
 }

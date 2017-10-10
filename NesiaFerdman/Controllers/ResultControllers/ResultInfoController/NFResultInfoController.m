@@ -52,13 +52,7 @@
 }
 
 
-#pragma mark - UITableViewDelegate
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    CGFloat height = UITableViewAutomaticDimension + 10.0;
-//    
-//        return height;
-//}
+
 
 
 @end

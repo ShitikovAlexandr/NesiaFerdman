@@ -20,12 +20,12 @@
 //    [dataArray addObject:item1];
     
     NFResultInfoItem *item2 = [[NFResultInfoItem alloc] init];
-    item2.title = @"В конце каждой недели – вы сможете подвести итог ваших действий и проявления ваших ценностей . Важно, чтоб возле каждого действия была указана та ценностей, которую проявляет это действия. Это поможет вам работать над проявлением этой ценности.";
+    item2.title = @"В конце каждой недели вы сможете подвести итог своих действий и проявления ваших ценностей. Важно, чтобы возле каждого действия была указана та ценность, которую проявляет это действие. Это поможет вам работать над проявлением этой ценности.";
     item2.isBold = false;
     [dataArray addObject:item2];
     
     NFResultInfoItem *item3 = [[NFResultInfoItem alloc] init];
-    item3.title = @"У вас есть возможность в течении  недели/месяца записывать и просматривать, когда вам удобно Ваши:";
+    item3.title = @"У вас есть возможность в течение  недели/месяца записывать и просматривать, когда вам удобно ваши:";
     item3.isBold = false;
     [dataArray addObject:item3];
     
@@ -43,19 +43,19 @@
     [dataArray addObject:item5];
     
     NFResultInfoItem *item6 = [[NFResultInfoItem alloc] init];
-    item6.title = @"Открытия (Что стало новым?  В себе, в людях, в темах…)";
+    item6.title = @"Открытия (Что стало новым? В себе, в людях, в событиях…)";
     item6.isBold = false;
     item6.inList = true;
     [dataArray addObject:item6];
     
     NFResultInfoItem *item7 = [[NFResultInfoItem alloc] init];
-    item7.title = @"Люди (Все, кто оказал на тебя влияние. Реальные люди и персонажи)";
+    item7.title = @"Люди (Все, кто оказал на тебя влияние. Реальные люди и выдуманные персонажи)";
     item7.isBold = false;
     item7.inList = true;
     [dataArray addObject:item7];
     
     NFResultInfoItem *item8 = [[NFResultInfoItem alloc] init];
-    item8.title = @"Цитаты и мысли (То, что сегодня зацепило, стало важным в речах людей, чтении, диалогах)";
+    item8.title = @"Цитаты и мысли (То, что сегодня зацепило, стало важным в речах людей, прочитанном, диалогах)";
     item8.isBold = false;
     item8.inList = true;
     [dataArray addObject:item8];
@@ -67,7 +67,7 @@
     [dataArray addObject:item9];
     
     NFResultInfoItem *item10 = [[NFResultInfoItem alloc] init];
-    item10.title = @"Порадовало (Об этом мы часто забываем, но именно это, делает наш день чудесным. Это могут быть приятные мелочи, без которых наши дни были бы другими)";
+    item10.title = @"Порадовало (Об этом мы часто забываем, но именно это делает наш день чудесным. Это могут быть приятные мелочи, без которых наши дни были бы другими)";
     item10.isBold = false;
     item10.inList = true;
     [dataArray addObject:item10];
@@ -79,7 +79,7 @@
     [dataArray addObject:item11];
     
     NFResultInfoItem *item12 = [[NFResultInfoItem alloc] init];
-    item12.title = @"Благодарность (Это один из важнейших пунктов для осознания всего происходящего, замечания приятных мелочей, понимания важности каждого момента и его причинности и возможности сказать: «спасибо»)";
+    item12.title = @"Благодарность (Это один из важнейших пунктов для осознания всего происходящего, замечания приятных мелочей, понимания важности каждого момента и его причинности)";
     item12.isBold = false;
     item12.inList = true;
     [dataArray addObject:item12];
